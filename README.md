@@ -1,4 +1,4 @@
-# Fb::Metadata::Presenter
+# MetadataPresenter
 Short description and motivation.
 
 ## Usage
@@ -8,7 +8,7 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'fb-metadata-presenter'
+gem 'metadata_presenter'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install fb-metadata-presenter
+$ gem install metadata_presenter
 ```
 
 ## Contributing
