@@ -1,0 +1,84 @@
+Started GET "/fb-metadata-presenter" for ::1 at 2020-11-16 11:38:11 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/fb-metadata-presenter"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+rack (2.2.3) lib/rack/handler/webrick.rb:95:in `service'
+/Users/tomasdestefi/.rvm/rubies/ruby-2.6.3/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+/Users/tomasdestefi/.rvm/rubies/ruby-2.6.3/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+/Users/tomasdestefi/.rvm/rubies/ruby-2.6.3/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+Started GET "/metadata_presenter" for ::1 at 2020-11-16 11:38:32 +0000
+Processing by MetadataPresenter::ServiceController#start as HTML
+  Rendering /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application
+  Rendered /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application (Duration: 0.5ms | Allocations: 342)
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.0ms | Allocations: 15201)
+
+
+Started GET "/metadata_presenter" for ::1 at 2020-11-16 11:38:33 +0000
+Processing by MetadataPresenter::ServiceController#start as HTML
+  Rendering /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application
+  Rendered /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application (Duration: 0.0ms | Allocations: 10)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 1804)
+
+
+Started GET "/metadata_presenter" for ::1 at 2020-11-16 11:38:34 +0000
+Processing by MetadataPresenter::ServiceController#start as HTML
+  Rendering /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application
+  Rendered /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application (Duration: 0.1ms | Allocations: 10)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms | Allocations: 1781)
+
+
+Started GET "/metadata_presenter" for ::1 at 2020-11-16 11:38:34 +0000
+Processing by MetadataPresenter::ServiceController#start as HTML
+  Rendering /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application
+  Rendered /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application (Duration: 0.1ms | Allocations: 10)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 1789)
+
+
+Started GET "/metadata_presenter" for ::1 at 2020-11-16 11:38:35 +0000
+Processing by MetadataPresenter::ServiceController#start as HTML
+  Rendering /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application
+  Rendered /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application (Duration: 0.1ms | Allocations: 10)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 1791)
+
+
+Started GET "/metadata_presenter" for ::1 at 2020-11-16 11:38:36 +0000
+Processing by MetadataPresenter::ServiceController#start as HTML
+  Rendering /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application
+  Rendered /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application (Duration: 0.0ms | Allocations: 10)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 1787)
+
+
+Started GET "/metadata_presenter" for ::1 at 2020-11-16 11:38:36 +0000
+Processing by MetadataPresenter::ServiceController#start as HTML
+  Rendering /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application
+  Rendered /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application (Duration: 0.3ms | Allocations: 10)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 1787)
+
+
+Started GET "/metadata_presenter" for ::1 at 2020-11-16 11:38:37 +0000
+Processing by MetadataPresenter::ServiceController#start as HTML
+  Rendering /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application
+  Rendered /Users/tomasdestefi/work/fb-metadata-presenter/app/views/metadata_presenter/service/start.html.erb within layouts/application (Duration: 0.1ms | Allocations: 10)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 1788)
+
+
