@@ -2,6 +2,6 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
 
   def start
     @service = MetadataPresenter::Service.new(service_metadata)
-    @start_page = @service.pages.first
+    @start_page = @service.start_page
   end
 end
