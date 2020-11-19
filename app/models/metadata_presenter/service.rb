@@ -39,6 +39,10 @@ class MetadataPresenter::Service
     raw_metadata['locale']
   end
 
+  def start_page
+    pages.first
+  end
+
   def render
     ApplicationController.render(template: 'service/start')
   end
