@@ -11,7 +11,11 @@ jobs:
       - checkout
       - run:
           name: test
-          command: bundle install && bundle exec rspec
+          command: |
+            sudo apt-get update
+            sudo apt-get install sqlite3 libsqlite3-dev
+            bundle install
+            bundle exec rspec
       - slack/status: &slack_status
           fail_only: true
           only_for_branches: main
