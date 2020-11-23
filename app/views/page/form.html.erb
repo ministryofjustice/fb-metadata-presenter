@@ -1,0 +1,11 @@
+<div class="fb-main-grid-wrapper" data-block-id="" data-block-type="start_page" data-block-pagetype="">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <% if @page.body %>
+        <p class="govuk-body-l" data-block-id="<%= @page.id %>" data-block-property="lede">
+        <%= to_markdown(@page.body) %>
+        </p>
+      <%- end %>
+    </div>
+  </div>
+</div>

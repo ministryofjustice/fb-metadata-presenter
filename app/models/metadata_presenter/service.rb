@@ -43,7 +43,7 @@ class MetadataPresenter::Service
     pages.first
   end
 
-  def render
-    ApplicationController.render(template: 'service/start')
+  def next_page(path)
+    pages.find { |page| page.url.gsub('/', '') == path }
   end
 end

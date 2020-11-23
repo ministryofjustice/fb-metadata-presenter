@@ -23,7 +23,7 @@
     },
     {
       "_id": "page-2",
-      "_type": "page",
+      "_type": "page.form",
       "body": "This is page two",
       "url": "/page-2"
     }

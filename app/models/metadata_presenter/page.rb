@@ -44,4 +44,8 @@ class MetadataPresenter::Page
   def components
     # at some point
   end
+
+  def template
+    page['_type'].gsub('.', '/')
+  end
 end
