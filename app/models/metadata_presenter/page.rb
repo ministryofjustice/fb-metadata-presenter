@@ -1,57 +1,15 @@
-class MetadataPresenter::Page
-  attr_reader :page
-
-  def initialize(page)
-    @page = page
-  end
-
+class MetadataPresenter::Page < MetadataPresenter::Metadata
   def ==(other)
     id == other.id
   end
 
-  def id
-    page['_id']
-  end
-
-  def type
-    page['_type']
-  end
-
-  def body
-    page['body']
-  end
-
-  def lede
-    page['lede']
-  end
-
-  def heading
-    page['heading']
-  end
-
-  def section_heading
-    page['section_heading']
-  end
-
-  def heading_class
-    ''
-  end
-
-  def url
-    page['url']
-  end
-
-  def steps
-    page['steps']
-  end
-
   def components
-    page['components']&.map do |component|
+    metadata.components&.map do |component|
       MetadataPresenter::Component.new(component)
     end
   end
 
   def template
-    page['_type'].gsub('.', '/')
+    type.gsub('.', '/')
   end
 end
