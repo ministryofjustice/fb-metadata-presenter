@@ -5,6 +5,10 @@ class MetadataPresenter::Page
     @page = page
   end
 
+  def ==(other)
+    id == other.id
+  end
+
   def id
     page['_id']
   end
@@ -43,5 +47,9 @@ class MetadataPresenter::Page
 
   def components
     # at some point
+  end
+
+  def template
+    page['_type'].gsub('.', '/')
   end
 end
