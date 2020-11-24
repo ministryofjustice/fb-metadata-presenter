@@ -5,6 +5,10 @@ class MetadataPresenter::Page
     @page = page
   end
 
+  def ==(other)
+    id == other.id
+  end
+
   def id
     page['_id']
   end
