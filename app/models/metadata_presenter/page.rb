@@ -46,7 +46,9 @@ class MetadataPresenter::Page
   end
 
   def components
-    # at some point
+    page['components'].map do |component|
+      MetadataPresenter::Component.new(component)
+    end
   end
 
   def template
