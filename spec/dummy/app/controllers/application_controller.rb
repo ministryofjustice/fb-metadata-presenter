@@ -9,9 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
   def load_user_data
-    Rails.logger.info('=' * 80)
-    Rails.logger.info(session[:user_data])
-    Rails.logger.info('=' * 80)
     session[:user_data]
   end
 end

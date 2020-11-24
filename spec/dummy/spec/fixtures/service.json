@@ -16,16 +16,24 @@
       "heading": "Complain about a court or tribunal",
       "lede": "Your complaint will not affect your case.",
       "steps": [
-        "page-2",
-        "page.do-you-have-a-case-number"
+        "page.text-first",
+        "page.text-second"
       ],
       "url": "/"
     },
     {
-      "_id": "page-2",
+      "_id": "page.text-first",
       "_type": "page.form",
-      "body": "This is page two",
-      "url": "/page-2"
+      "sectionHeading": "Text - First - section heading",
+      "body": "This is page text one",
+      "url": "/text-first"
+    },
+    {
+      "_id": "page.text-second",
+      "_type": "page.form",
+      "sectionHeading": "Text - Second - section heading",
+      "body": "This is page text two",
+      "url": "/text-second"
     }
   ],
   "locale": "en"
