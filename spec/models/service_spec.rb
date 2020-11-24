@@ -17,5 +17,17 @@ RSpec.describe MetadataPresenter::Service do
     it 'returns the correct start page' do
       expect(service.start_page.id).to eq(service_metadata['pages'][0]['_id'])
     end
+
+    it 'finds the correct page' do
+      path = service_metadata['pages'][1]['url']
+      page = service.find_page(path)
+      expect(page.id).to eq(service_metadata['pages'][1]['_id'])
+    end
+
+    it 'returns the next page' do
+      path = service_metadata['pages'][1]['url']
+      page = service.next_page(from: path)
+      expect(page.id).to eq(service_metadata['pages'][2]['_id'])
+    end
   end
 end

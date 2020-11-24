@@ -12,7 +12,6 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
 
     @service = MetadataPresenter::Service.new(service_metadata) # method signature
     current_page = URI(request.referer).path
-
     redirect_to @service.next_page(from: current_page).url
   end
 
