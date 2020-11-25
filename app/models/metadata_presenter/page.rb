@@ -1,6 +1,6 @@
 class MetadataPresenter::Page < MetadataPresenter::Metadata
   def ==(other)
-    id == other.id
+    id == other.id if other.respond_to? :id
   end
 
   def components
@@ -9,7 +9,7 @@ class MetadataPresenter::Page < MetadataPresenter::Metadata
     end
   end
 
-  def template
+  def to_partial_path
     type.gsub('.', '/')
   end
 end

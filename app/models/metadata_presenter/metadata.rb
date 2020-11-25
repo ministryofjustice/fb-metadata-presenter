@@ -1,4 +1,6 @@
 class MetadataPresenter::Metadata
+  include ActiveModel::Conversion
+
   attr_reader :metadata
 
   def initialize(metadata)
@@ -11,6 +13,10 @@ class MetadataPresenter::Metadata
 
   def type
     metadata._type
+  end
+
+  def respond_to_missing?(method_name, include_private = false)
+    metadata.respond_to?(method_name)
   end
 
   def method_missing(method, *args, &block)

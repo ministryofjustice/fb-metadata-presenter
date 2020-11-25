@@ -3,12 +3,14 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
 
   def start
     @start_page = service.start_page
-    render template: @start_page.template
+    render @start_page
   end
 
   def answers
     save_user_data # method signature
 
+    # TODO: We need to see what to do with these line
+    # because of bots/hackers/etc
     current_page = URI(request.referer).path
     next_page = service.next_page(from: current_page)
 
@@ -27,7 +29,7 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
     @page = service.find_page(request.path)
 
     if @page
-      render template: @page.template
+      render @page
     else
       render template: 'errors/404', status: 404
     end
