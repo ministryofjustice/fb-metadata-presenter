@@ -10,7 +10,13 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
     save_user_data # method signature
 
     current_page = URI(request.referer).path
-    redirect_to service.next_page(from: current_page).url
+    next_page = service.next_page(from: current_page)
+
+    if next_page.present?
+      redirect_to next_page.url
+    else
+      render template: 'errors/404', status: 404
+    end
   end
 
   def render_page
@@ -23,7 +29,7 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
     if @page
       render template: @page.template
     else
-      render template: 'errors/404'
+      render template: 'errors/404', status: 404
     end
   end
 
