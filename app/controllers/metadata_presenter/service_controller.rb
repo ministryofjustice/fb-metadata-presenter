@@ -2,8 +2,9 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
   helper MetadataPresenter::ApplicationHelper
 
   def start
+    @service = service
     @start_page = service.start_page
-    render @start_page
+    render template: @start_page.template
   end
 
   def answers
@@ -29,7 +30,7 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
     @page = service.find_page(request.path)
 
     if @page
-      render @page
+      render template: @page.template
     else
       render template: 'errors/404', status: 404
     end

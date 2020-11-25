@@ -12,4 +12,8 @@ class MetadataPresenter::Page < MetadataPresenter::Metadata
   def to_partial_path
     type.gsub('.', '/')
   end
+
+  def template
+    "metadata_presenter/#{type.gsub('.', '/')}"
+  end
 end
