@@ -34,8 +34,4 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
       render template: 'errors/404', status: 404
     end
   end
-
-  def service
-    MetadataPresenter::Service.new(service_metadata)
-  end
 end
