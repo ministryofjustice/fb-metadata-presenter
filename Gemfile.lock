@@ -3,6 +3,7 @@ PATH
   specs:
     metadata_presenter (0.1.0)
       govspeak
+      json-schema
       rails (~> 6.0.3, >= 6.0.3.4)
 
 GEM
@@ -65,10 +66,18 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    better_errors (2.9.1)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     builder (3.2.4)
     byebug (11.1.3)
+    coderay (1.1.3)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+    debug_inspector (0.0.3)
     diff-lcs (1.4.4)
     erubi (1.10.0)
     faraday (1.1.0)
@@ -102,6 +111,8 @@ GEM
     htmlentities (4.3.4)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    json-schema (2.8.1)
+      addressable (>= 2.4)
     kgio (2.11.3)
     kramdown (2.3.0)
       rexml
@@ -215,6 +226,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   byebug
   metadata_presenter!
   rspec-rails

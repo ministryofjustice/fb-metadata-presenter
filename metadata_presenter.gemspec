@@ -18,7 +18,10 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", "~> 6.0.3", ">= 6.0.3.4"
   spec.add_dependency "govspeak"
+  spec.add_dependency "json-schema"
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "rspec-rails"
+  spec.add_development_dependency 'better_errors'
+  spec.add_development_dependency 'binding_of_caller'
 end
