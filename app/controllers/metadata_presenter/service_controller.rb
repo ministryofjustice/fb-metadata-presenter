@@ -2,32 +2,29 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
   helper MetadataPresenter::ApplicationHelper
 
   def start
-    @service = service
-    @start_page = service.start_page
-    render template: @start_page.template
+    @page = service.start_page
+    render template: @page.template
   end
 
   def answers
     save_user_data # method signature
 
-    # TODO: We need to see what to do with these line
-    # because of bots/hackers/etc
-    current_page = URI(request.referer).path
+    current_page = params[:page_url]
     next_page = service.next_page(from: current_page)
 
     if next_page.present?
-      redirect_to next_page.url
+      redirect_to File.join(request.script_name, next_page.url)
     else
       render template: 'errors/404', status: 404
     end
   end
 
   def render_page
-    load_user_data # method signature
+    @user_data = load_user_data # method signature
 
     # we need verify that the user can't jump pages??
     #
-    @page = service.find_page(request.path)
+    @page = service.find_page(request.env['PATH_INFO'])
 
     if @page
       render template: @page.template

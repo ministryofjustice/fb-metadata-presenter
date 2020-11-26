@@ -1,7 +1,7 @@
 <div class="fb-main-grid-wrapper" data-block-id="" data-block-type="start_page" data-block-pagetype="">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <%= form_tag(reserved_answers_path, method: :post) do  %>
+      <%= form_tag(reserved_answers_path(@page.url), method: :post) do  %>
         <% @page.components.each do |component| %>
           <%= render partial: component, locals: { component: component } %>
         <% end %>
