@@ -43,4 +43,12 @@ RSpec.describe MetadataPresenter::Page do
       end
     end
   end
+
+  describe '#to_partial_path' do
+    subject(:page) { described_class.new(_type: 'page.singlequestion') }
+
+    it 'returns the type of the page' do
+      expect(page.to_partial_path).to eq('page/singlequestion')
+    end
+  end
 end
