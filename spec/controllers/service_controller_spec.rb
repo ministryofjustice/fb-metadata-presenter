@@ -4,7 +4,9 @@ RSpec.describe MetadataPresenter::ServiceController, type: :controller do
   routes { MetadataPresenter::Engine.routes }
 
   let(:service_metadata) do
-    File.read(Rails.root.join('spec', 'fixtures', 'service.json'))
+    File.read(
+      MetadataPresenter::Engine.root.join('spec', 'fixtures', 'service.json')
+    )
   end
 
   let(:params) do

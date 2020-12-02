@@ -60,7 +60,9 @@ RSpec.feature 'Navigation' do
   def complain_about_tribunal_metadata
     JSON.parse(
       File.read(
-        Rails.root.join('spec', 'fixtures', 'complain_about_tribunal.json')
+        MetadataPresenter::Engine.root.join(
+          'spec', 'fixtures', 'service.json'
+        )
       )
     )
   end
