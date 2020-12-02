@@ -8,5 +8,5 @@
     <p><%= component.hint %></p>
   </div>
 
-  <input class="govuk-input" id="<%= component.id %>" name="<%= component.name %>" type="text" aria-describedby="<%= component.id %>-hint">
+  <input class="govuk-input" id="<%= component.id %>" name="answers[<%= component.name %>]" type="text" aria-describedby="<%= component.id %>-hint" value="<%= @user_data[component.name] %>">
 </div>
