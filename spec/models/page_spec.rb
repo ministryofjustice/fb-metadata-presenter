@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe MetadataPresenter::Page do
   let(:service_metadata) do
-    JSON.parse(File.read(Rails.root.join('spec', 'fixtures', 'service.json')))
+    JSON.parse(
+      File.read(
+        MetadataPresenter::Engine.root.join('spec', 'fixtures', 'service.json')
+      )
+    )
   end
 
   describe '#==' do
@@ -41,6 +45,14 @@ RSpec.describe MetadataPresenter::Page do
       components.each do |component|
         expect(component).to be_kind_of(MetadataPresenter::Component)
       end
+    end
+  end
+
+  describe '#to_partial_path' do
+    subject(:page) { described_class.new(_type: 'page.singlequestion') }
+
+    it 'returns the type of the page' do
+      expect(page.to_partial_path).to eq('page/singlequestion')
     end
   end
 end

@@ -1,10 +1,14 @@
 class ServiceMetadataNotFoundError < StandardError
 end
 
-if File.exist?(Rails.root.join('spec', 'fixtures', 'service.json'))
+fixture = Rails.root.join('..', '..', 'spec', 'fixtures', 'service.json')
+
+if File.exist?(fixture)
   Rails.configuration.service_metadata = JSON.parse(
-    File.read(Rails.root.join('spec', 'fixtures', 'service.json'))
+    File.read(fixture)
   )
 else
-  raise ServiceMetadataNotFoundError.new('No service metadata found')
+  raise ServiceMetadataNotFoundError.new(
+    "Failed to load #{File.expand_path(fixture)} but service metadata did not exist"
+  )
 end
