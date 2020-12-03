@@ -1,14 +1,16 @@
 <div class="fb-main-grid-wrapper" data-block-id="" data-block-type="start_page" data-block-pagetype="">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <%= form_tag(reserved_answers_path(@page.url), method: :post) do  %>
+      <h1 class="<%= @page.heading_class %>" data-block-id="<%= @page.id %>" data-block-property="heading">
+          <%= @page.heading.html_safe %>
+      </h1>
+
+      <%= form_for @page.id, url: reserved_answers_path(@page.url), builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
         <% @page.components.each do |component| %>
-          <%= render partial: component, locals: { component: component } %>
+          <%= render partial: component, locals: { component: component, f: f } %>
         <% end %>
 
-        <button data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
-          Continue
-        </button>
+        <%= f.govuk_submit %>
       <% end %>
     </div>
   </div>

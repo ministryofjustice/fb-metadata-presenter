@@ -1,5 +1,6 @@
 class MetadataPresenter::Metadata
   include ActiveModel::Conversion
+  extend ActiveModel::Naming
 
   attr_reader :metadata
 

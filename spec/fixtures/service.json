@@ -38,6 +38,7 @@
     {
       "_id": "page.email-address",
       "_type": "page.singlequestion",
+      "heading": "Email address",
       "components": [
         {
           "_id": "page.email-address--email.auto_name__2",

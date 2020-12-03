@@ -1,12 +1,7 @@
-<div class="fb-block fb-block-text govuk-form-group" data-block-id="<%= component.id %>" data-block-type="text">
-  <h1 class="govuk-label-wrapper">
-    <label class="govuk-label govuk-label--xl" data-block-id="<%= component.id %>" data-block-property="label" for="<%= component.id %>">
-      <%= component.label %>
-    </label>
-    </h1>
-  <div id="<%= component.id %>-hint" class="govuk-hint" data-block-id="<%= component.id %>" data-block-property="hint">
-    <p><%= component.hint %></p>
-  </div>
-
-  <input class="govuk-input" id="<%= component.id %>" name="answers[<%= component.name %>]" type="text" aria-describedby="<%= component.id %>-hint" value="<%= @user_data[component.name] %>">
-</div>
+<%=
+  f.govuk_text_field component.id,
+    label: { text: component.label },
+    hint: { text: component.hint },
+    name: "answers[#{component.name}]",
+    value: @user_data[component.name]
+%>
