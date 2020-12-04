@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
   def load_user_data
     session[:user_data] || {}
   end
+
+  def default_metadata
+    Rails.application.config.default_metadata
+  end
 end
