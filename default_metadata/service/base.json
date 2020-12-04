@@ -1,0 +1,18 @@
+{
+  "_id": "service.base",
+  "_type": "service.base",
+  "service_name": "Service name goes here",
+  "configuration": {},
+  "pages": [
+    {
+      "_id": "page.start",
+      "_type": "page.start",
+      "heading": "Start page heading",
+      "body": "Start page body text",
+      "lede": "Start page lede text",
+      "steps": [],
+      "url": "/"
+    }
+  ],
+  "locale": "en"
+}
