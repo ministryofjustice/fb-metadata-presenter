@@ -1,0 +1,24 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/definition/condition/value_type",
+  "_name": "definition.condition.value_type",
+  "title": "Condition value type properties",
+  "properties": {
+    "value": {
+      "type": "string"
+    },
+    "value_type": {
+      "type": "string",
+      "enum": [
+        "value",
+        "input",
+        "feature"
+      ]
+    }
+  },
+  "required": [
+    "value_type"
+  ],
+  "category": [
+    "definition"
+  ]
+}

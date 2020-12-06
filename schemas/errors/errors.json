@@ -1,0 +1,142 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/errors",
+  "_name": "errors",
+  "title": "Error strings",
+  "type": "object",
+  "definitions": {
+    "error_strings": {
+      "type": "object",
+      "properties": {
+        "inline": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "required": {
+      "title": "Error strings for required",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
+    "min_length": {
+      "title": "Error strings for minimum length",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
+    "max_length": {
+      "title": "Error strings for maximum length",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
+    "pattern": {
+      "title": "Error strings for pattern",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
+    "multiple_of": {
+      "title": "Error strings for multiple of",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
+    "maximum": {
+      "title": "Error strings for maximum",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
+    "exclusive_maximum": {
+      "title": "Error strings for exclusive maximum",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
+    "minimum": {
+      "title": "Error strings for minimum",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
+    "exclusive_minimum": {
+      "title": "Error strings for exclusive minimum",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
+    "required_errors": {
+      "properties": {
+        "errors": {
+          "properties": {
+            "required": {
+              "$ref": "#/definitions/required"
+            }
+          }
+        }
+      }
+    },
+    "string_errors": {
+      "properties": {
+        "errors": {
+          "properties": {
+            "min_length": {
+              "$ref": "#/definitions/min_length"
+            },
+            "max_length": {
+              "$ref": "#/definitions/max_length"
+            },
+            "pattern": {
+              "$ref": "#/definitions/pattern"
+            }
+          }
+        }
+      }
+    },
+    "number_errors": {
+      "properties": {
+        "errors": {
+          "properties": {
+            "multiple_of": {
+              "$ref": "#/definitions/multiple_of"
+            },
+            "maximum": {
+              "$ref": "#/definitions/maximum"
+            },
+            "exclusive_maximum": {
+              "$ref": "#/definitions/exclusive_maximum"
+            },
+            "minimum": {
+              "$ref": "#/definitions/minimum"
+            },
+            "exclusive_minimum": {
+              "$ref": "#/definitions/exclusive_minimum"
+            }
+          }
+        }
+      }
+    }
+  }
+}

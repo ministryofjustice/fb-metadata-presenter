@@ -1,0 +1,27 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/config/meta",
+  "_name": "config.meta",
+  "title": "Form meta links",
+  "description": "List of links to display in GOVUK footer",
+  "usage": "Use the config.meta component to provide a list of links in the footer",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "definition.link_list"
+    }
+  ],
+  "properties": {
+    "_id": {
+      "const": "config.meta"
+    },
+    "_type": {
+      "const": "config.meta"
+    },
+    "title": {
+      "type": "null"
+    }
+  },
+  "category": [
+    "configuration"
+  ]
+}

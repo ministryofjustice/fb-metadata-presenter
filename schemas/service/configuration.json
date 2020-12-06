@@ -1,0 +1,22 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/configuration",
+  "_name": "configuration",
+  "title": "Service configuration",
+  "description": "Service configuration",
+  "type": "object",
+  "properties": {
+    "service": {
+      "$ref": "config.service"
+    },
+    "meta": {
+      "$ref": "config.meta"
+    }
+  },
+  "required": [
+    "service",
+    "meta"
+  ],
+  "category": [
+    "configuration"
+  ]
+}

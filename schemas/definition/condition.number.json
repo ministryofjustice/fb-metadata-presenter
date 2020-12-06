@@ -1,0 +1,49 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/definition/condition/number",
+  "_name": "definition.condition.number",
+  "title": "Number condition properties",
+  "allOf": [
+    {
+      "$ref": "definition.condition.base"
+    }
+  ],
+  "properties": {
+    "operator": {
+      "title": "Operator",
+      "type": "string",
+      "enum": [
+        "equals",
+        "greater_than",
+        "greater_than_or_equal_to",
+        "less_than",
+        "less_than_or_equal_to",
+        "multiple_of"
+      ]
+    },
+    "value": {
+      "title": "Value"
+    }
+  },
+  "if": {
+    "required": [
+      "value_type"
+    ]
+  },
+  "then": {
+    "$ref": "definition.condition.value_type"
+  },
+  "else": {
+    "properties": {
+      "value": {
+        "type": "number"
+      }
+    }
+  },
+  "required": [
+    "operator",
+    "value"
+  ],
+  "category": [
+    "definition"
+  ]
+}
