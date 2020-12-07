@@ -2,10 +2,11 @@ class MetadataPresenter::Metadata
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_reader :metadata
+  attr_reader :metadata, :errors
 
   def initialize(metadata)
     @metadata = OpenStruct.new(metadata)
+    @errors = ActiveModel::Errors.new(self)
   end
 
   def id

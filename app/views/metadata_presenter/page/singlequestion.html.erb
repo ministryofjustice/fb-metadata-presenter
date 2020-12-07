@@ -5,7 +5,8 @@
           <%= @page.heading.html_safe %>
       </h1>
 
-      <%= form_for @page.id, url: reserved_answers_path(@page.url), builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+      <%= form_for @page, url: reserved_answers_path(@page.url) do |f| %>
+        <%= f.govuk_error_summary %>
         <% @page.components.each do |component| %>
           <%= render partial: component, locals: { component: component, f: f } %>
         <% end %>
