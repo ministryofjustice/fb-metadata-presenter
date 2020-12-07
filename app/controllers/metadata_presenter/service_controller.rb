@@ -1,5 +1,6 @@
 class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller.constantize
   helper MetadataPresenter::ApplicationHelper
+  default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
   def start
     @page = service.start_page
