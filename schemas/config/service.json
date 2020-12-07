@@ -1,0 +1,106 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/config/service",
+  "title": "Service configuration options",
+  "_name": "config.service",
+  "description": "Configuration options for a service",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "const": "config.service"
+    },
+    "_type": {
+      "const": "config.service"
+    },
+    "homepage_url": {
+      "title": "Homepage URL",
+      "description": "The Homepage URL of the service",
+      "type": "string"
+    },
+    "service_email_address": {
+      "title": "Service Email Address",
+      "description": "The email address of the service",
+      "type": "string"
+    },
+    "service_url": {
+      "title": "Service URL",
+      "description": "The URL of the first page of the service",
+      "type": "string"
+    },
+    "phase": {
+      "title": "Form phase",
+      "type": "string",
+      "enum": [
+        "none",
+        "alpha",
+        "beta"
+      ],
+      "default": "alpha"
+    },
+    "phase_text": {
+      "title": "Form phase text",
+      "type": "string",
+      "content": true
+    },
+    "code": {
+      "title": "Form code",
+      "description": "Code used for form (eg. C100)",
+      "type": "string"
+    },
+    "pdf_heading": {
+      "title": "PDF heading",
+      "description": "Used as form’s heading when generating PDF output",
+      "type": "string"
+    },
+    "pdf_sub_heading": {
+      "title": "PDF subheading",
+      "description": "Used as form’s subheading when generating PDF output",
+      "type": "string"
+    },
+    "email_input_name_user": {
+      "title": "CC email address field",
+      "description": "Name of input used as email address to send user a copy of submission details",
+      "type": "string"
+    },
+    "attach_user_submission": {
+      "title": "Attach confirmation of submission to user email",
+      "type": "boolean",
+      "default": false
+    },
+    "email_subject_user": {
+      "title": "CC email subject",
+      "type": "string"
+    },
+    "email_template_user": {
+      "title": "CC email template",
+      "type": "string",
+      "multiline": true
+    },
+    "email_subject_team": {
+      "title": "Form team email subject",
+      "type": "string"
+    },
+    "email_template_team": {
+      "title": "Form team email template",
+      "type": "string",
+      "multiline": true
+    },
+    "session_duration": {
+      "title": "Session duration",
+      "description": "How many minutes a user’s session should last",
+      "type": "number"
+    },
+    "data_retention_duration": {
+      "title": "User data retention duration",
+      "description": "How many days a user’s data should be kept for",
+      "type": "number"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "definition.data"
+    }
+  ],
+  "category": [
+    "configuration"
+  ]
+}

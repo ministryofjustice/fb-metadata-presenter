@@ -4,7 +4,7 @@ RSpec.describe MetadataPresenter::Service do
   let(:service_metadata) do
     JSON.parse(
       File.read(
-        MetadataPresenter::Engine.root.join('spec', 'fixtures', 'service.json')
+        MetadataPresenter::Engine.root.join('spec', 'fixtures', 'version.json')
       )
     )
   end

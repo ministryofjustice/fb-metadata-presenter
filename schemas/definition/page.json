@@ -1,0 +1,109 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/definition/page",
+  "_name": "definition.page",
+  "id_seed": "url",
+  "title": "Page definition",
+  "properties": {
+    "url": {
+      "title": "URL",
+      "description": "The page’s relative url - it must not contain any spaces",
+      "type": "string",
+      "pattern": "^[\\w\\-_\\/]+$"
+    },
+    "heading": {
+      "title": "Heading",
+      "description": "The page’s top-level heading (H1) - appears at the top of the page",
+      "type": "string",
+      "content": true
+    },
+    "title": {
+      "title": "Title",
+      "description": "The text to use as the page’s title in the document title element - uses heading value by default",
+      "type": "string",
+      "content": true,
+      "category": [
+        "content"
+      ]
+    },
+    "lede": {
+      "title": "First paragraph",
+      "description": "Introductory paragraph after the heading (it‘s also known as the ‘lede’) - use [markdown](https://www.gov.uk/guidance/how-to-publish-on-gov-uk/markdown) to format text or add hyperlinks",
+      "type": "string",
+      "content": true,
+      "category": [
+        "content"
+      ]
+    },
+    "body": {
+      "title": "Content",
+      "description": "Free-form content after the heading and first paragraph - use [markdown](https://www.gov.uk/guidance/how-to-publish-on-gov-uk/markdown) to format text or add hyperlinks",
+      "type": "string",
+      "content": true,
+      "multiline": true,
+      "category": [
+        "content"
+      ]
+    },
+    "cookie_message": {
+      "title": "Cookie message",
+      "description": "Set dynamically - exists here to enable formatting of value",
+      "type": "string",
+      "content": true,
+      "default": "[% cookie.message %]",
+      "category": [
+        "dynamic"
+      ]
+    },
+    "action_type": {
+      "title": "Primary action",
+      "description": "Text for primary action button",
+      "type": "string",
+      "enum": [
+        "continue",
+        "save_continue",
+        "save",
+        "confirm",
+        "send.email",
+        "send.sms",
+        "custom-1",
+        "custom-2",
+        "custom-3",
+        "custom-4",
+        "custom-5"
+      ],
+      "default": "continue",
+      "category": [
+        "additional"
+      ]
+    },
+    "back_link": {
+      "title": "Back link text",
+      "type": "string",
+      "default": "[% link.back %]",
+      "content": true,
+      "category": [
+        "additional"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "definition.block"
+    },
+    {
+      "$ref": "definition.components"
+    }
+  ],
+  "required": [
+    "url"
+  ],
+  "category": [
+    "definition",
+    "page"
+  ],
+  "transforms": {
+    "namespace": {
+      "propagation": "components[?(@.$control || @.$grouping)]"
+    }
+  }
+}

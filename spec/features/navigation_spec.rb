@@ -61,7 +61,7 @@ RSpec.feature 'Navigation' do
     JSON.parse(
       File.read(
         MetadataPresenter::Engine.root.join(
-          'spec', 'fixtures', 'service.json'
+          'spec', 'fixtures', 'version.json'
         )
       )
     )

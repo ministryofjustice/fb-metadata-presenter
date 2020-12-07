@@ -1,0 +1,26 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/definition/field",
+  "_name": "definition.field",
+  "title": "Field definition",
+  "allOf": [
+    {
+      "$ref": "definition.label"
+    },
+    {
+      "$ref": "definition.control"
+    },
+    {
+      "$ref": "definition.repeatable"
+    },
+    {
+      "$ref": "definition.name"
+    }
+  ],
+  "required": [
+    "name",
+    "label"
+  ],
+  "category": [
+    "field"
+  ]
+}

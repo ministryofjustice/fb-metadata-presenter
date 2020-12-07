@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rails', '~> 6.0.3', '>= 6.0.3.4'
   spec.add_dependency 'govspeak', '>= 6.5.10'
   spec.add_dependency 'govuk_design_system_formbuilder', '>= 2.1.5'
+  spec.add_dependency 'json-schema', '>= 2.8.1'
   spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'rspec-rails'

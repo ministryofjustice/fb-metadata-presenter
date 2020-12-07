@@ -1,0 +1,12 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/service/locale",
+  "_name": "service.locale",
+  "title": "Service version locale",
+  "description": "The locale of a version of a service",
+  "type": "string",
+  "default": "en",
+  "enum": [
+    "en",
+    "cy"
+  ]
+}

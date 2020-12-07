@@ -1,7 +1,4 @@
-Rails.application.config.default_metadata_directory = File.join(
-  File.dirname(__FILE__),
-  '../../default_metadata'
-)
+Rails.application.config.default_metadata_directory = MetadataPresenter::Engine.root.join('default_metadata')
 
 Rails.application.config.default_metadata = {}
 
