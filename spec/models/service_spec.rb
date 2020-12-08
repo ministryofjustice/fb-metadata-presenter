@@ -56,4 +56,22 @@ RSpec.describe MetadataPresenter::Service do
       end
     end
   end
+
+  describe '#previous_page' do
+    context 'when previous page exists' do
+      it 'returns the previous page' do
+        current_page = service.find_page(service_metadata['pages'][1]['url'])
+        previous_page = service.previous_page(current_page: current_page)
+        expect(previous_page.id).to eq(service_metadata['pages'][0]['_id'])
+      end
+    end
+
+    context 'when previous page does not exists' do
+      it 'returns nil' do
+        current_page = service.find_page(service_metadata['pages'][0]['url'])
+        previous_page = service.previous_page(current_page: current_page)
+        expect(previous_page).to be(nil)
+      end
+    end
+  end
 end

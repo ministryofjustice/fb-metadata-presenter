@@ -29,5 +29,9 @@ RSpec.describe MetadataPresenter::ServiceController, type: :controller do
       start_page_heading = JSON.parse(service_metadata)['pages'][0]['heading']
       expect(response.body).to include(start_page_heading)
     end
+
+    it 'has no back link' do
+      expect(response.body).not_to include('govuk-back-link')
+    end
   end
 end

@@ -15,4 +15,8 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     current_page = find_page(from)
     pages[pages.index(current_page) + 1] if current_page.present?
   end
+
+  def previous_page(current_page:)
+    pages[pages.index(current_page) - 1] unless current_page == start_page
+  end
 end
