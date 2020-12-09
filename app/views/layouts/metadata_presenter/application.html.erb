@@ -21,6 +21,10 @@
     <%= render template: 'metadata_presenter/header/show' %>
     <div class="govuk-width-container govuk-body-m">
       <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+      <% if @back_link %>
+        <a class="govuk-back-link" href="<%= @back_link %>">Back</a
+      <% end %>
+
         <%= yield %>
       </main>
     </div>

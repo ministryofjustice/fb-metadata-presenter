@@ -28,6 +28,7 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
     @page = service.find_page(request.env['PATH_INFO'])
 
     if @page
+      @back_link = service.previous_page(current_page: @page)&.url
       render template: @page.template
     else
       render template: 'errors/404', status: 404
