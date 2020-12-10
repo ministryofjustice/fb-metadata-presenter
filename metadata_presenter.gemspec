@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  spec.add_dependency 'rails', '~> 6.0.3', '>= 6.0.3.4'
+  spec.add_dependency 'rails', '>= 6.0.3.4', '< 6.2.0'
   spec.add_dependency 'govspeak', '>= 6.5.10'
   spec.add_dependency 'govuk_design_system_formbuilder', '>= 2.1.5'
   spec.add_dependency 'json-schema', '>= 2.8.1'
