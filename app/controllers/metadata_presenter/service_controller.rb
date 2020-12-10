@@ -8,15 +8,22 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
   end
 
   def answers
-    save_user_data # method signature
+    @page = MetadataPresenter::Page.new(service.find_page(params[:page_url]).metadata)
 
-    current_page = params[:page_url]
-    next_page = service.next_page(from: current_page)
+    answers_params = params[:answers] ? params[:answers].permit! : {}
 
-    if next_page.present?
-      redirect_to File.join(request.script_name, next_page.url)
+    if @page.validate_answers(answers_params)
+      save_user_data # method signature
+      next_page = service.next_page(from: params[:page_url])
+
+      if next_page.present?
+        redirect_to File.join(request.script_name, next_page.url)
+      else
+        render template: 'errors/404', status: 404
+      end
     else
-      render template: 'errors/404', status: 404
+      @user_data = params[:answers]
+      render template: @page.template
     end
   end
 

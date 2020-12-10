@@ -2,7 +2,7 @@
   "_id": "service.base",
   "_type": "service.base",
   "service_id": "d243f5c0-e8a2-4b13-982c-7b5f3fa128cf",
-  "service_name": "Complain about a court or tribunal",
+  "service_name": "Main fixture to test Form builder",
   "created_by": "4634ec01-5618-45ec-a4e2-bb5aa587e751",
   "configuration": {
     "service": {
@@ -46,7 +46,8 @@
       "lede": "Your complaint will not affect your case.",
       "steps": [
         "page.name",
-        "page.email-address"
+        "page.email-address",
+        "page.parent_name"
       ],
       "url": "/"
     },
@@ -58,7 +59,12 @@
           "_id": "page.name--text.auto_name__1",
           "_type": "text",
           "label": "Full name",
-          "name": "full_name"
+          "name": "full_name",
+          "validation": {
+            "required": true,
+            "max_length": 10,
+            "min_length": 2
+          }
         }
       ],
       "heading": "Your name",
@@ -76,16 +82,34 @@
             "format": {},
             "required": {
               "any": "Enter an email address"
+            },
+            "max_length": {
+              "any": "%{control} is too long."
             }
           },
           "label": "Your email address",
           "name": "email_address",
           "validation": {
-            "required": true
+            "required": true,
+            "max_length": 30
           }
         }
       ],
       "url": "/email-address"
+    },
+    {
+      "_id": "page.parent_name",
+      "_type": "page.singlequestion",
+      "components": [
+        {
+          "_id": "page.parent-name--text.auto_name__3",
+          "_type": "text",
+          "label": "Parent name",
+          "name": "parent_name"
+        }
+      ],
+      "heading": "Parent name",
+      "url": "/parent-name"
     }
   ],
   "locale": "en"
