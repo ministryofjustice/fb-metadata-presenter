@@ -85,13 +85,17 @@
             },
             "max_length": {
               "any": "%{control} is too long."
+            },
+            "min_length": {
+              "any": "%{control} is too short."
             }
           },
           "label": "Your email address",
           "name": "email_address",
           "validation": {
             "required": true,
-            "max_length": 30
+            "max_length": 30,
+            "min_length": 2
           }
         }
       ],

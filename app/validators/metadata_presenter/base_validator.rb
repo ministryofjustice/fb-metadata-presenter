@@ -45,11 +45,14 @@ module MetadataPresenter
     end
 
     def schema_key
-      self.class.name.demodulize.gsub('Validator', '').underscore
+      @schema_key ||= self.class.name.demodulize.gsub('Validator', '').underscore
     end
 
     def error_message_hash(component)
-      { control: component.label }
+      {
+        control: component.label,
+        schema_key.to_sym => component.validation[schema_key]
+      }
     end
 
     def components_to_validate
