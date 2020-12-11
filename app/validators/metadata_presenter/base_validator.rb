@@ -1,4 +1,6 @@
 module MetadataPresenter
+  class NoDefaultMessage < StandardError; end
+
   class BaseValidator
     attr_reader :page, :answers
 
@@ -25,10 +27,17 @@ module MetadataPresenter
     end
 
     def default_error_message(component)
-      Rails
-        .application
-        .config
-        .default_metadata["error.#{schema_key}"]['value'] % error_message_hash(component)
+      default_error_message_key = "error.#{schema_key}"
+      default_message = Rails
+                          .application
+                          .config
+                          .default_metadata[default_error_message_key]
+
+      if default_message.present?
+        default_message['value'] % error_message_hash(component)
+      else
+        raise NoDefaultMessage, "No default message found for key '#{default_error_message_key}'."
+      end
     end
 
     def valid_answer?(component:, answers:)
