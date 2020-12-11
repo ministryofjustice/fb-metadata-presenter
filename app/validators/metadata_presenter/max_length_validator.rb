@@ -4,10 +4,6 @@ module MetadataPresenter
       answers[component.name].size > component.validation['max_length']
     end
 
-    def schema_key
-      'max_length'
-    end
-
     def error_message_hash(component)
       {
         control: component.label,

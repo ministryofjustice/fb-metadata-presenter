@@ -45,7 +45,7 @@ module MetadataPresenter
     end
 
     def schema_key
-      raise NotImplementedError
+      self.class.name.demodulize.gsub('Validator', '').underscore
     end
 
     def error_message_hash(component)
