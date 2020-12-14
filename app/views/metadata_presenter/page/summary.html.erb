@@ -1,0 +1,63 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <% if @page.section_heading.present? %>
+      <p class="govuk-caption-l fb-section-heading" data-block-id="<%= @page.id %>" data-block-property="section_heading">
+        <%= @page.section_heading %>
+      </p>
+    <% end %>
+
+    <% if @page.heading.present? %>
+      <h1 class="govuk-heading-xl" data-block-id="<%= @page.id %>" data-block-property="heading">
+        <%= @page.heading %>
+      </h1>
+    <% end %>
+
+    <% if @page.lede.present? %>
+      <p class="govuk-body-l" data-block-id="<%= @page.id %>" data-block-property="lede">
+        <%= @page.lede %>
+      </p>
+    <% end %>
+
+    <% if @page.body.present? %>
+      <div class="fb-body govuk-prose-scope" data-block-id="<%= @page.id %>" data-block-property="body">
+        <p><%= @page.body %></p>
+      </div>
+    <% end %>
+
+    <%= form_for @page, url: reserved_confirmation_path do |f| %>
+      <div data-block-id="page.summary.answers" data-block-type="answers">
+        <dl class="fb-block fb-block-answers govuk-summary-list">
+          <% @service.all_components.each do |component| %>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                <%= component.label %>
+              </dt>
+
+              <dd class="govuk-summary-list__value">
+                <%= @user_data[component.name] %>
+              </dd>
+            </div>
+          <% end %>
+        </dl>
+      </div>
+
+      <% if @page.send_heading.present? %>
+        <h2 class="fb-send-heading govuk-heading-m" data-block-id="<%= @page.id %>" data-block-property="send_heading">
+          <%= @page.send_heading %>
+        </h2>
+      <% end %>
+
+      <% if @page.send_body.present? %>
+        <div class="fb-send-body" data-block-id="<%= @page.id %>" data-block-property="send_body">
+          <p>
+            <%= @page.send_body %>
+          </p>
+        </div>
+      <% end %>
+
+      <button data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
+        Accept and send application
+      </button>
+    <% end %>
+  </div>
+</div>

@@ -65,4 +65,16 @@ RSpec.describe MetadataPresenter::Service do
       end
     end
   end
+
+  describe '#all_components' do
+    let(:expected_components) do
+      ['full_name', 'email_address', 'parent_name']
+    end
+
+    it 'returns all components for the service' do
+      expect(service.all_components.map(&:name)).to include(
+        *expected_components
+      )
+    end
+  end
 end

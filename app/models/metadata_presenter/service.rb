@@ -19,4 +19,8 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   def previous_page(current_page:)
     pages[pages.index(current_page) - 1] unless current_page == start_page
   end
+
+  def all_components
+    pages.map(&:components).compact.flatten
+  end
 end
