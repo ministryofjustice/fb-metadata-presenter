@@ -77,4 +77,10 @@ RSpec.describe MetadataPresenter::Service do
       )
     end
   end
+
+  describe '#confirmation_page' do
+    it 'returns the confirmation page for the service' do
+      expect(service.confirmation_page.type).to eq('page.confirmation')
+    end
+  end
 end

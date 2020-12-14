@@ -31,6 +31,16 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
     end
   end
 
+  def confirmation
+    @page = service.confirmation_page
+
+    if @page
+      redirect_to @page.url
+    else
+      render template: 'errors/404', status: 404
+    end
+  end
+
   def back_link
     return if @page.blank?
 

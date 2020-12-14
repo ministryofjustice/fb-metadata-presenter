@@ -23,4 +23,10 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   def all_components
     pages.map(&:components).compact.flatten
   end
+
+  def confirmation_page
+    @confirmation_page ||= pages.find do |page|
+      page.type == 'page.confirmation'
+    end
+  end
 end
