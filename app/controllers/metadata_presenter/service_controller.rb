@@ -22,8 +22,8 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
         render template: 'errors/404', status: 404
       end
     else
-      @user_data = params[:answers]
-      render template: @page.template
+      @user_data = answers_params
+      render template: @page.template, status: :unprocessable_entity
     end
   end
 

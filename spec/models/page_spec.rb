@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe MetadataPresenter::Page do
   describe '#validate_answers' do
     let(:page) { described_class.new(_id: 'foo') }
