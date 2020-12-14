@@ -109,7 +109,10 @@
           "_id": "page.parent-name--text.auto_name__3",
           "_type": "text",
           "label": "Parent name",
-          "name": "parent_name"
+          "name": "parent_name",
+          "validation": {
+            "required": false
+          }
         }
       ],
       "heading": "Parent name",

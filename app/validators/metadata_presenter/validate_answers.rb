@@ -30,7 +30,8 @@ module MetadataPresenter
 
     def component_validations(component)
       return [] if component.validation.blank?
-      component.validation.keys
+
+      component.validation.reject { |_,value| value.blank? }.keys
     end
   end
 end

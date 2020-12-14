@@ -14,6 +14,15 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
       end
     end
 
+    context 'when validation are false in metadata' do
+      let(:page) { service.find_page('/parent-name') }
+      let(:answers) { { 'parent_name' => '' } }
+
+      it 'returns true' do
+        expect(validate_answers).to be_valid
+      end
+    end
+
     context 'when is invalid' do
       let(:answers) { { 'full_name' => '' } }
 
