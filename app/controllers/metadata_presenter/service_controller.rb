@@ -10,20 +10,10 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
   def answers
     @page = MetadataPresenter::Page.new(service.find_page(params[:page_url]).metadata)
 
-    answers_params = params[:answers] ? params[:answers].permit! : {}
-
     if @page.validate_answers(answers_params)
-      save_user_data # method signature
-      next_page = service.next_page(from: params[:page_url])
-
-      if next_page.present?
-        redirect_to File.join(request.script_name, next_page.url)
-      else
-        render template: 'errors/404', status: 404
-      end
+      redirect_to_next_page
     else
-      @user_data = answers_params
-      render template: @page.template, status: :unprocessable_entity
+      render_validation_error
     end
   end
 
@@ -35,10 +25,38 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
     @page = service.find_page(request.env['PATH_INFO'])
 
     if @page
-      @back_link = service.previous_page(current_page: @page)&.url
       render template: @page.template
     else
       render template: 'errors/404', status: 404
     end
+  end
+
+  def back_link
+    return if @page.blank?
+
+    @back_link ||= service.previous_page(current_page: @page)&.url
+  end
+  helper_method :back_link
+
+  private
+
+  def redirect_to_next_page
+    save_user_data # method signature
+    next_page = service.next_page(from: params[:page_url])
+
+    if next_page.present?
+      redirect_to File.join(request.script_name, next_page.url)
+    else
+      render template: 'errors/404', status: 404
+    end
+  end
+
+  def render_validation_error
+    @user_data = answers_params
+    render template: @page.template, status: :unprocessable_entity
+  end
+
+  def answers_params
+    params[:answers] ? params[:answers].permit! : {}
   end
 end
