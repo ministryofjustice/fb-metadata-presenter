@@ -1,30 +1,12 @@
 RSpec.describe MetadataPresenter::RequiredValidator do
-  subject(:validator) { described_class.new(page: page, answers: answers) }
-  let(:service) { MetadataPresenter::Service.new(service_metadata) }
-  let(:service_metadata) do
-    JSON.parse(
-      File.read(
-        MetadataPresenter::Engine.root.join('spec', 'fixtures', 'version.json')
-      )
-    )
+  subject(:validator) do
+    described_class.new(page: page, answers: answers, component: component)
   end
+  let(:component) { page.components.first }
 
   describe '#valid?' do
     before do
       validator.valid?
-    end
-
-    context 'when there is no validations on the metadata' do
-      let(:page) { service.find_page('/parent-name') }
-      let(:answers) { { } }
-
-      it 'be valid' do
-        expect(validator).to be_valid
-      end
-
-      it 'does not have any errors' do
-        expect(page.errors.full_messages).to eq([])
-      end
     end
 
     context 'when there is required validations on the metadata' do
@@ -57,6 +39,15 @@ RSpec.describe MetadataPresenter::RequiredValidator do
               ['Enter an email address']
             )
           end
+        end
+      end
+
+      context 'when required is valid' do
+        let(:answers) { {'full_name' => 'Gandalf' } }
+        let(:page) { service.find_page('/name') }
+
+        it 'returns no errors' do
+          expect(page.errors.full_messages).to eq([])
         end
       end
     end

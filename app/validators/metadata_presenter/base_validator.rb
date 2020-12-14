@@ -2,31 +2,30 @@ module MetadataPresenter
   class NoDefaultMessage < StandardError; end
 
   class BaseValidator
-    attr_reader :page, :answers
+    attr_reader :page, :answers, :component
 
-    def initialize(page:, answers:)
+    def initialize(page:, answers:, component:)
       @page = page
       @answers = answers
+      @component = component
     end
 
     def valid?
-      components_to_validate.each do |component|
-        if valid_answer?(component: component, answers: answers)
-          error_message = custom_error_message(component) || default_error_message(component)
-          page.errors.add(component.id, error_message)
-        end
+      if invalid_answer?
+        error_message = custom_error_message || default_error_message
+        page.errors.add(component.id, error_message)
       end
 
       page.errors.blank?
     end
 
-    def custom_error_message(component)
+    def custom_error_message
       message = component.dig('errors', schema_key, 'any')
 
-      message % error_message_hash(component) if message.present?
+      message % error_message_hash if message.present?
     end
 
-    def default_error_message(component)
+    def default_error_message
       default_error_message_key = "error.#{schema_key}"
       default_message = Rails
                           .application
@@ -34,13 +33,13 @@ module MetadataPresenter
                           .default_metadata[default_error_message_key]
 
       if default_message.present?
-        default_message['value'] % error_message_hash(component)
+        default_message['value'] % error_message_hash
       else
         raise NoDefaultMessage, "No default message found for key '#{default_error_message_key}'."
       end
     end
 
-    def valid_answer?(component:, answers:)
+    def invalid_answer?
       raise NotImplementedError
     end
 
@@ -48,17 +47,11 @@ module MetadataPresenter
       @schema_key ||= self.class.name.demodulize.gsub('Validator', '').underscore
     end
 
-    def error_message_hash(component)
+    def error_message_hash
       {
         control: component.label,
         schema_key.to_sym => component.validation[schema_key]
       }
-    end
-
-    def components_to_validate
-      Array(page.components).select do |component|
-        component.validation.present? && component.validation[schema_key].present?
-      end
     end
   end
 end

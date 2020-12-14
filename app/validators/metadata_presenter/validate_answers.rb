@@ -9,9 +9,7 @@ module MetadataPresenter
     end
 
     def valid?
-      validators.all? do |validator|
-        validator.new(page: page, answers: answers).valid?
-      end
+      validators.map { |validator| validator.valid? }.all?
     end
 
     def invalid?
@@ -19,13 +17,20 @@ module MetadataPresenter
     end
 
     def validators
-      validations = components.map do |component|
-        component.validation&.keys
+      components.map do |component|
+        component_validations(component).map do |key|
+          "MetadataPresenter::#{key.classify}Validator".constantize.new(
+            page: page,
+            answers: answers,
+            component: component
+          )
+        end
       end.compact.flatten
+    end
 
-      validations.map do |validation|
-        "MetadataPresenter::#{validation.classify}Validator".constantize
-      end
+    def component_validations(component)
+      return [] if component.validation.blank?
+      component.validation.keys
     end
   end
 end

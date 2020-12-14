@@ -1,15 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe MetadataPresenter::Page do
-  let(:service) { MetadataPresenter::Service.new(service_metadata) }
-  let(:service_metadata) do
-    JSON.parse(
-      File.read(
-        MetadataPresenter::Engine.root.join('spec', 'fixtures', 'version.json')
-      )
-    )
-  end
-
   describe '#validate_answers' do
     let(:page) { described_class.new(_id: 'foo') }
 

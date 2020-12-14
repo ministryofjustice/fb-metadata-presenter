@@ -1,6 +1,6 @@
 module MetadataPresenter
   class MinLengthValidator < BaseValidator
-    def valid_answer?(component:, answers:)
+    def invalid_answer?
       answers[component.name].size < component.validation[schema_key]
     end
   end

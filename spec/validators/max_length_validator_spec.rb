@@ -1,15 +1,8 @@
 RSpec.describe MetadataPresenter::MaxLengthValidator do
   subject(:validator) do
-    described_class.new(page: page, answers: answers)
+    described_class.new(page: page, answers: answers, component: component)
   end
-  let(:service) { MetadataPresenter::Service.new(service_metadata) }
-  let(:service_metadata) do
-    JSON.parse(
-      File.read(
-        MetadataPresenter::Engine.root.join('spec', 'fixtures', 'version.json')
-      )
-    )
-  end
+  let(:component) { page.components.first }
 
   describe '#validate' do
     before do
