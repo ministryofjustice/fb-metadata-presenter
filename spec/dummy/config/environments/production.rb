@@ -1,6 +1,3 @@
-ENV['GOVUK_APP_DOMAIN'] = ''
-ENV['GOVUK_WEBSITE_ROOT'] = ''
-
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
