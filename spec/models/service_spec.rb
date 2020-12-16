@@ -1,15 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe MetadataPresenter::Service do
-  let(:service_metadata) do
-    JSON.parse(
-      File.read(
-        MetadataPresenter::Engine.root.join('spec', 'fixtures', 'version.json')
-      )
-    )
-  end
-  let(:service) { MetadataPresenter::Service.new(service_metadata) }
-
   describe '#pages' do
     it 'returns an array of Page objects' do
       service.pages.each do |page|

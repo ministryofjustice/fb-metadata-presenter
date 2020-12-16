@@ -1,12 +1,28 @@
-require 'rails_helper'
-
 RSpec.describe MetadataPresenter::Page do
-  let(:service_metadata) do
-    JSON.parse(
-      File.read(
-        MetadataPresenter::Engine.root.join('spec', 'fixtures', 'service.json')
-      )
-    )
+  describe '#validate_answers' do
+    let(:page) { described_class.new(_id: 'foo') }
+
+    before do
+      expect_any_instance_of(
+        MetadataPresenter::ValidateAnswers
+      ).to receive(:valid?).and_return(valid)
+    end
+
+    context 'when valid' do
+      let(:valid) { true }
+
+      it 'returns true' do
+        expect(page.validate_answers({})).to be_truthy
+      end
+    end
+
+    context 'when invalid' do
+      let(:valid) { false }
+
+      it 'returns false' do
+        expect(page.validate_answers({})).to be_falsey
+      end
+    end
   end
 
   describe '#==' do
@@ -38,8 +54,6 @@ RSpec.describe MetadataPresenter::Page do
   end
 
   context 'when creating a new service object' do
-    let(:service) { MetadataPresenter::Service.new(service_metadata) }
-
     it '#components should return an array of Component objects' do
     components = service.pages.map(&:components).flatten.compact
       components.each do |component|

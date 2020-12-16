@@ -1,0 +1,6 @@
+{
+  "_id": "error.min_length",
+  "_type": "string.error",
+  "description": "Input (string) is too short",
+  "value": "Your answer for '%{control}' is too short (%{min_length} characters at least)"
+}
