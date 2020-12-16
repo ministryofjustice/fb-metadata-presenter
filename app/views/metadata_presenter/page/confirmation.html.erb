@@ -1,0 +1,21 @@
+<div class="govuk-panel govuk-panel--confirmation" data-block-id="<%= @page.id %>" data-block-property="heading" data-block-property-class="govuk-panel__body:lede">
+  <h1 class="govuk-panel__title">
+    <%= @page.heading %>
+  </h1>
+
+  <% if @page.lede %>
+    <div class="govuk-panel__body">
+      <p><%= @page.lede %></p>
+    </div>
+  <% end %>
+</div>
+
+<% if @page.body %>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="fb-body govuk-prose-scope" data-block-id="<%= @page.id %>" data-block-property="body">
+        <%= @page.body %>
+      </div>
+    </div>
+  </div>
+<% end %>

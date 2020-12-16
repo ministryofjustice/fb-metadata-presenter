@@ -47,9 +47,7 @@
       "steps": [
         "page.name",
         "page.email-address",
-        "page.parent_name",
-        "page.check-answers",
-        "page._confirmation"
+        "page.parent_name"
       ],
       "url": "/"
     },
@@ -119,25 +117,6 @@
       ],
       "heading": "Parent name",
       "url": "/parent-name"
-    },
-    {
-      "_id": "page._check-answers",
-      "_type": "page.summary",
-      "body": "Optional content",
-      "heading": "Review your answer",
-      "lede": "First paragraph",
-      "section_heading": "This section is optional",
-      "send_body": "By submitting this answer you confirm all your answers",
-      "send_heading": "Send your answer",
-      "url": "/check-answers"
-    },
-    {
-      "_id": "page._confirmation",
-      "_type": "page.confirmation",
-      "body": "You'll receive a confirmation email",
-      "heading": "Complaint sent",
-      "lede": "Optional lede",
-      "url": "/confirmation"
     }
   ],
   "locale": "en"

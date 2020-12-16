@@ -78,13 +78,63 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     end
 
     context 'when next page does not exist' do
+      let(:service_metadata) do
+        JSON.parse(
+          File.read(
+            MetadataPresenter::Engine.root.join(
+              'spec',
+              'fixtures',
+              'non_finished_service.json'
+            )
+          )
+        )
+      end
+
       before do
+        expect(Rails.configuration).to receive(:service_metadata).and_return(service_metadata)
         post '/reserved/%2Fparent-name/answers',
           params: { answers: { parent_name: 'Test' } }
       end
 
       it 'returns not found' do
         expect(response.status).to be(404)
+      end
+    end
+  end
+
+  describe 'POST /confirmation' do
+    context 'when there is a confirmation in the metadata' do
+      before do
+        post '/reserved/confirmation'
+      end
+
+      it 'redirect to the confirmation' do
+        expect(response).to redirect_to('/confirmation')
+      end
+    end
+
+    context 'when there is no confirmation in the metadata' do
+      let(:service_metadata) do
+        JSON.parse(
+          File.read(
+            MetadataPresenter::Engine.root.join(
+              'spec',
+              'fixtures',
+              'non_finished_service.json'
+            )
+          )
+        )
+      end
+
+      before do
+        expect(Rails.configuration).to receive(:service_metadata).and_return(service_metadata)
+        post '/reserved/confirmation'
+      end
+
+      it 'returns not found' do
+        expect(response.body).to include(
+          "The page you were looking for doesn't exist."
+        )
       end
     end
   end
