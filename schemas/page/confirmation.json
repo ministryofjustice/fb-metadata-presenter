@@ -1,0 +1,35 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/page/confirmation",
+  "_name": "page.confirmation",
+  "title": "Confirmation",
+  "description": "Confirm to users that they’ve completed their answers",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "const": "page.confirmation"
+    },
+    "_type": {
+      "const": "page.confirmation"
+    },
+    "heading": {
+      "multiline": true
+    },
+    "body": {
+      "multiline": true
+    },
+    "lede": {
+      "multiline": true
+    }
+  },
+  "required": [
+    "_id",
+    "_type",
+    "heading"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$ref": "definition.page.content"
+    }
+  ]
+}

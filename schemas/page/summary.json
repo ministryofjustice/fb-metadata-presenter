@@ -1,0 +1,63 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/page/summary",
+  "_name": "page.summary",
+  "title": "Check answers",
+  "description": "Let users check and change their answers before submitting",
+  "type": "object",
+  "properties": {
+    "_type": {
+      "const": "page.summary"
+    },
+    "section_heading": {
+      "title": "Section heading",
+      "type": "string",
+      "description": "Section to display before the heading"
+    },
+    "heading": {
+      "type": "string",
+      "default": "Check your answers"
+    },
+    "lede": {
+      "title": "Lede",
+      "type": "string",
+      "description": "Content before the body"
+    },
+    "body": {
+      "title": "Body",
+      "type": "string",
+      "description": "Optional content before showing the summary"
+    },
+    "summary_of": {
+      "title": "Summary of",
+      "description": "Page/section that summary summarises"
+    },
+    "send_heading": {
+      "title": "Send heading",
+      "description": "Heading to display before accept and send button",
+      "type": "string",
+      "content": true,
+      "default": "Now send your application"
+    },
+    "send_body": {
+      "title": "Send content",
+      "description": "Content to display before accept and send button - use [markdown](https://www.gov.uk/guidance/how-to-publish-on-gov-uk/markdown) to format text or add hyperlinks",
+      "type": "string",
+      "content": true,
+      "multiline": true,
+      "default": "By submitting this application you confirm that, to the best of your knowledge, the details you are providing are correct."
+    }
+  },
+  "required": [
+    "_id",
+    "_type",
+    "heading",
+    "send_heading",
+    "send_body"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$ref": "definition.page.form"
+    }
+  ]
+}
