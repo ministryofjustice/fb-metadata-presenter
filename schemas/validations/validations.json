@@ -12,18 +12,6 @@
           "description": "Error message users see if their answer fails validation - write {control} to show the question in the message",
           "type": "string",
           "role": "error_string"
-        },
-        "inline": {
-          "title": "Input error",
-          "description": "Specific error message users see next to the input if their answer fails validation - only set if your input message absolutely must be different to that shown in the summary",
-          "type": "string",
-          "role": "error_string"
-        },
-        "summary": {
-          "title": "Summary error",
-          "description": "Specific error message users see at the top of a page if their answer fails validation - only set if your summary message absolutely must be different to that shown for the input",
-          "type": "string",
-          "role": "error_string"
         }
       }
     },
