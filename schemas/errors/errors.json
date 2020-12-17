@@ -7,10 +7,7 @@
     "error_strings": {
       "type": "object",
       "properties": {
-        "inline": {
-          "type": "string"
-        },
-        "summary": {
+        "any": {
           "type": "string"
         }
       }
