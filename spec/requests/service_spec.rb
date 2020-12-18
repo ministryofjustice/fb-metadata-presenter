@@ -138,4 +138,18 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       end
     end
   end
+
+  describe 'POST /reserved/change-answer' do
+    before do
+      post '/reserved/change-answer', params: { url: '/name' }
+    end
+
+    it 'sets the session to return to check your answer page' do
+      expect(session[:return_to_check_you_answer]).to be_truthy
+    end
+
+    it 'redirect to the url' do
+      expect(response).to redirect_to('/name')
+    end
+  end
 end
