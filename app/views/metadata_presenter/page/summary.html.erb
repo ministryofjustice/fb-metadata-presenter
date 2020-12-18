@@ -27,16 +27,26 @@
     <%= form_for @page, url: reserved_confirmation_path do |f| %>
       <div data-block-id="page.summary.answers" data-block-type="answers">
         <dl class="fb-block fb-block-answers govuk-summary-list">
-          <% @service.all_components.each do |component| %>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                <%= component.label %>
-              </dt>
+          <% @service.pages.each do |page| %>
+            <% Array(page.components).each do |component| %>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  <%= component.label %>
+                </dt>
 
-              <dd class="govuk-summary-list__value">
-                <%= @user_data[component.name] %>
-              </dd>
-            </div>
+                <dd class="govuk-summary-list__value">
+                  <%= @user_data[component.name] %>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                <%= link_to(change_answer_path(url: page.url),
+                       class: 'govuk-link',
+                       method: :post) do %>
+                       Change<span class="govuk-visually-hidden"> Your answer for <%= component.label %></span>
+                  <% end %>
+                  </a>
+                </dd>
+              </div>
+            <% end %>
           <% end %>
         </dl>
       </div>

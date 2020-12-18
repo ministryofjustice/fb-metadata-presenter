@@ -20,10 +20,6 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     pages[pages.index(current_page) - 1] unless current_page == start_page
   end
 
-  def all_components
-    pages.map(&:components).compact.flatten
-  end
-
   def confirmation_page
     @confirmation_page ||= pages.find do |page|
       page.type == 'page.confirmation'
