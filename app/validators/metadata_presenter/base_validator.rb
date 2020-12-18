@@ -1,8 +1,39 @@
 module MetadataPresenter
   class NoDefaultMessage < StandardError; end
 
+  # Abstract base class for validation utilities.
+  # Provides an interface for implementing validation from the metadata.
+  #
+  # @abstract
+  #
+  # The Base validator expects the subclass to implement only #invalid_answer?
+  # as long the conventions are followed:
+  #
+  # 1. The default metadata for error messages follows the "error.name_of_the_class_without_validator"
+  # 2. The class should have the same name as the schema e.g 'required' will lookup for RequiredValidator.
+  #
+  # On the example below the base validator will look for the custom message
+  # on "errors" -> "grogu" -> "any" and if there is none, then will
+  # look for the default message on default metadata as "error.grogu".
+  #
+  # @example Custom validator
+  #   class GroguValidator < BaseValidator
+  #     def invalid_answer?
+  #       user_answer = answers[component.name]
+  #
+  #       user_answer.to_s == 'Grogu'
+  #     end
+  #   end
+  #
   class BaseValidator
-    attr_reader :page, :answers, :component
+    # @return [MetadataPresenter::Page] page object from the metadata
+    attr_reader :page
+
+    # @return [Hash] the user answers
+    attr_reader :answers
+
+    # @return [MetadataPresenter::Component] component object from the metadata
+    attr_reader :component
 
     def initialize(page:, answers:, component:)
       @page = page
@@ -19,12 +50,25 @@ module MetadataPresenter
       page.errors.blank?
     end
 
+    # The custom message will be lookup from the schema key on the metadata.
+    # Assuming for example that the schema key is 'grogu' then the message
+    # will lookup for 'errors.grogu.any'.
+    #
+    # @return [String] message from the service metadata
+    #
     def custom_error_message
       message = component.dig('errors', schema_key, 'any')
 
       message % error_message_hash if message.present?
     end
 
+    # The default error message will be look using the schema key.
+    # Assuming the schema key is 'grogu' then the default message
+    # will look for 'error.grogu.value'.
+    #
+    # @return [String] returns the default error message
+    # @raise [MetadataPresenter::NoDefaultMessage] raises no default message if
+    # is not present
     def default_error_message
       default_error_message_key = "error.#{schema_key}"
       default_message = Rails
@@ -39,14 +83,32 @@ module MetadataPresenter
       end
     end
 
+    # Needs to be implemented on the subclass
+    #
+    # @return [TrueClass] if is invalid
+    # @return [FalseClass] if is valid
+    #
     def invalid_answer?
       raise NotImplementedError
     end
 
+    # The convention to be looked on the metadata is by the name of the class.
+    # E.g the GroguValidator will look for 'grogu' on the metadata.
+    # Overwrite this method if the validator doesn't follow the convetions.
+    #
+    # @return [String] schema key to be looked on the metadata and in the
+    # default metadata
+    #
     def schema_key
       @schema_key ||= self.class.name.demodulize.gsub('Validator', '').underscore
     end
 
+    # Error message hash that will be interpolate with the custom message or
+    # the default metadata
+    #
+    # The message could include '%{control}' to add the label name.
+    # Or for the GroguValidator will be '%{grogu}' and the value setup in the metadata.
+    #
     def error_message_hash
       {
         control: component.label,

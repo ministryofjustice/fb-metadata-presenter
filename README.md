@@ -62,3 +62,7 @@ An example of implementation:
    end
  end
 ```
+
+## Generate documentation
+
+Run `rake doc` and open the doc/index.html
