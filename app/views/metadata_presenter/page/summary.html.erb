@@ -24,7 +24,7 @@
       </div>
     <% end %>
 
-    <%= form_for @page, url: reserved_confirmation_path do |f| %>
+    <%= form_for @page, url: reserved_submissions_path do |f| %>
       <div data-block-id="page.summary.answers" data-block-type="answers">
         <dl class="fb-block fb-block-answers govuk-summary-list">
           <% @service.pages.each do |page| %>
