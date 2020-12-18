@@ -31,6 +31,11 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
     end
   end
 
+  def change_answer
+    session[:return_to_check_you_answer] = true
+    redirect_to params[:url]
+  end
+
   def confirmation
     @page = service.confirmation_page
 
@@ -52,7 +57,12 @@ class MetadataPresenter::ServiceController < MetadataPresenter.parent_controller
 
   def redirect_to_next_page
     save_user_data # method signature
-    next_page = service.next_page(from: params[:page_url])
+    next_page = if session[:return_to_check_you_answer].present?
+                  session[:return_to_check_you_answer] = nil
+                  service.pages.find { |page| page.type == 'page.summary' }
+                else
+                  service.next_page(from: params[:page_url])
+                end
 
     if next_page.present?
       redirect_to File.join(request.script_name, next_page.url)
