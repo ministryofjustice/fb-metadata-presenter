@@ -105,7 +105,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
   describe 'POST /confirmation' do
     context 'when there is a confirmation in the metadata' do
       before do
-        post '/reserved/confirmation'
+        post '/reserved/submissions'
       end
 
       it 'redirect to the confirmation' do
@@ -128,7 +128,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
 
       before do
         expect(Rails.configuration).to receive(:service_metadata).and_return(service_metadata)
-        post '/reserved/confirmation'
+        post '/reserved/submissions'
       end
 
       it 'returns not found' do
