@@ -14,12 +14,29 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
       end
     end
 
-    context 'when validation are false in metadata' do
+    context 'when validation required = false in metadata' do
       let(:page) { service.find_page('/parent-name') }
-      let(:answers) { { 'parent_name' => '' } }
 
-      it 'returns true' do
-        expect(validate_answers).to be_valid
+      context 'when no answer is provided' do
+        let(:answers) { { 'parent_name' => '' } }
+
+        it 'does not attempt any validations' do
+          expect_any_instance_of(MetadataPresenter::RequiredValidator).not_to receive(:invalid_answer?)
+          expect_any_instance_of(MetadataPresenter::MinLengthValidator).not_to receive(:invalid_answer?)
+          expect_any_instance_of(MetadataPresenter::MaxLengthValidator).not_to receive(:invalid_answer?)
+          expect(validate_answers).to be_valid
+        end
+      end
+
+      context 'when an answer is provided' do
+        let(:answers) { { 'parent_name' => 'Grogu' } }
+
+        it 'should validate the answer' do
+          expect_any_instance_of(MetadataPresenter::RequiredValidator).not_to receive(:invalid_answer?)
+          expect_any_instance_of(MetadataPresenter::MinLengthValidator).to receive(:invalid_answer?)
+          expect_any_instance_of(MetadataPresenter::MaxLengthValidator).to receive(:invalid_answer?)
+          expect(validate_answers).to be_valid
+        end
       end
     end
 
@@ -31,7 +48,7 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
       end
     end
 
-    context 'validates from metadata' do
+    context 'validates form metadata' do
       let(:answers) { {} }
 
       before do
