@@ -113,7 +113,9 @@
           "label": "Parent name",
           "name": "parent_name",
           "validation": {
-            "required": false
+            "required": false,
+            "max_length": 10,
+            "min_length": 2
           }
         }
       ],
