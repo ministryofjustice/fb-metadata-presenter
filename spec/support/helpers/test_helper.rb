@@ -7,7 +7,7 @@ module TestHelper
     metadata_fixture(:version)
     JSON.parse(
       File.read(
-        MetadataPresenter::Engine.root.join('spec', 'fixtures', 'version.json')
+        MetadataPresenter::Engine.fixtures_directory.join('version.json')
       )
     )
   end
@@ -15,11 +15,7 @@ module TestHelper
   def metadata_fixture(fixture_name)
     JSON.parse(
       File.read(
-        MetadataPresenter::Engine.root.join(
-          'spec',
-          'fixtures',
-          "#{fixture_name}.json"
-        )
+        MetadataPresenter::Engine.fixtures_directory.join("#{fixture_name}.json")
       )
     )
   end

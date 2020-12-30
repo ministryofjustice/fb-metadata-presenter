@@ -81,11 +81,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       let(:service_metadata) do
         JSON.parse(
           File.read(
-            MetadataPresenter::Engine.root.join(
-              'spec',
-              'fixtures',
-              'non_finished_service.json'
-            )
+            MetadataPresenter::Engine.fixtures_directory.join('non_finished_service.json')
           )
         )
       end
@@ -117,11 +113,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       let(:service_metadata) do
         JSON.parse(
           File.read(
-            MetadataPresenter::Engine.root.join(
-              'spec',
-              'fixtures',
-              'non_finished_service.json'
-            )
+            MetadataPresenter::Engine.fixtures_directory.join('non_finished_service.json')
           )
         )
       end
