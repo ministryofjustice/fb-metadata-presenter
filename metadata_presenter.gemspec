@@ -28,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'site_prism'
   spec.add_development_dependency 'simplecov-console'
   spec.add_development_dependency 'yard'
+  spec.add_development_dependency 'brakeman'
 end
