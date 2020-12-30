@@ -1,0 +1,46 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "05100c0eaef79ac7502aceca55479b0fec62a889d68981ffdab16ad479e61106",
+      "check_name": "Render",
+      "message": "Render path contains request value",
+      "file": "app/controllers/metadata_presenter/pages_controller.rb",
+      "line": 8,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(template => service.find_page(request.env[\"PATH_INFO\"]).template, {})",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "MetadataPresenter::PagesController",
+        "method": "show"
+      },
+      "user_input": "request.env[\"PATH_INFO\"]",
+      "confidence": "Weak",
+      "note": "Necessary for now in order to find the next page"
+    },
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 70,
+      "fingerprint": "8f7ae8aee6aaa43ea7b1220c67d3cbe0a1053bf56a11245026c3ab88eecedeb9",
+      "check_name": "MassAssignment",
+      "message": "Specify exact keys allowed for mass assignment instead of using `permit!` which allows any keys",
+      "file": "app/controllers/metadata_presenter/answers_controller.rb",
+      "line": 39,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params[:answers].permit!",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "MetadataPresenter::AnswersController",
+        "method": "answers_params"
+      },
+      "user_input": null,
+      "confidence": "Medium",
+      "note": "These are for user answers for forms. Each form has custom answers the keys for which we cannot know in advance"
+    }
+  ],
+  "updated": "2020-12-30 11:00:36 +0000",
+  "brakeman_version": "4.10.1"
+}
