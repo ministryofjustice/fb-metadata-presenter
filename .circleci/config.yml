@@ -4,26 +4,70 @@ orbs:
 
 jobs:
   test:
-    working_directory: ~/circle
     docker:
       - image: cimg/ruby:2.7.2
     steps:
       - checkout
       - run:
-          name: test
+          name: Dependencies
           command: |
             sudo apt-get update
             sudo apt-get install sqlite3 libsqlite3-dev
             bundle install
-            bundle exec rspec
+      - run:
+          name: Security
+          command: bundle exec brakeman -q --no-pager -i brakeman.ignore
+      - run:
+          name: Test
+          command: bundle exec rspec
       - slack/status: &slack_status
           fail_only: true
           only_for_branches: main
           failure_message: ":facepalm:  Failed job $CIRCLE_JOB  :homer-disappear:"
           include_job_number_field: false
+  publish:
+    docker:
+      - image: cimg/ruby:2.7.2
+    steps:
+      - checkout
+      - run:
+          name: Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install sqlite3 libsqlite3-dev
+            bundle install
+      - run:
+          name: Setup Rubygems
+          command: |
+            mkdir ~/.gem
+            echo -e "---\r\n:rubygems_api_key: $RUBYGEMS_API_KEY" > ~/.gem/credentials
+            chmod 0600 /home/circleci/.gem/credentials
+      - run:
+          name: Publish to Rubygems
+          command: |
+            set -e
+
+            VERSION=$(ruby -e "require './lib/metadata_presenter/version.rb'; puts MetadataPresenter::VERSION")
+            PUBLISHED_VERSION=$(curl https://rubygems.org/api/v1/versions/metadata_presenter/latest.json | sed -e 's/[{}]/''/g' | sed s/\"//g | awk -v RS=',' -F: '$1=="version"{print $2}')
+
+            if [ "$VERSION" != "$PUBLISHED_VERSION" ]
+            then
+              bundle exec gem build metadata_presenter.gemspec
+              bundle exec gem push metadata_presenter-*.gem
+              curl -X POST -H 'Content-type: application/json' --data "{\"text\":\":woohoo:  Successfully published ${CIRCLE_PROJECT_REPONAME} ${VERSION}  :ship_it_parrot:\"}" "$SLACK_WEBHOOK"
+            fi
+      - slack/status: *slack_status
 
 workflows:
   version: 2
   test_and_build:
     jobs:
       - test
+      - publish:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: main

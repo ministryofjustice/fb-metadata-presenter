@@ -16,3 +16,7 @@ spec/dummy/.sass-cache
 coverage/
 doc/
 .yardoc/
+
+*.gem
+
+Gemfile.lock
