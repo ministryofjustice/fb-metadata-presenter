@@ -1,7 +1,7 @@
 class ServiceMetadataNotFoundError < StandardError
 end
 
-fixture = MetadataPresenter::Engine.fixtures_directory.join('version.json')
+fixture = MetadataPresenter::Engine.root.join('fixtures', 'version.json')
 
 if File.exist?(fixture)
   Rails.configuration.service_metadata = JSON.parse(File.read(fixture))

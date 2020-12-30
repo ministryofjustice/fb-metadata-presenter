@@ -80,9 +80,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     context 'when next page does not exist' do
       let(:service_metadata) do
         JSON.parse(
-          File.read(
-            MetadataPresenter::Engine.fixtures_directory.join('non_finished_service.json')
-          )
+          File.read(fixtures_directory.join('non_finished_service.json'))
         )
       end
 
@@ -112,9 +110,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     context 'when there is no confirmation in the metadata' do
       let(:service_metadata) do
         JSON.parse(
-          File.read(
-            MetadataPresenter::Engine.fixtures_directory.join('non_finished_service.json')
-          )
+          File.read(fixtures_directory.join('non_finished_service.json'))
         )
       end
 
