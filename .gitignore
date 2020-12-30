@@ -18,3 +18,5 @@ doc/
 .yardoc/
 
 *.gem
+
+Gemfile.lock
