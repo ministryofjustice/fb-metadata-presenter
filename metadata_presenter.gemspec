@@ -5,14 +5,19 @@ require 'metadata_presenter/version'
 Gem::Specification.new do |spec|
   spec.name        = 'metadata_presenter'
   spec.version     = MetadataPresenter::VERSION
-  spec.authors     = ["MoJ Online"]
-  spec.email       = ["moj-online@digital.justice.gov.uk"]
+  spec.authors     = ['MoJ Online']
+  spec.email       = ['moj-online@digital.justice.gov.uk']
   spec.homepage    = 'https://moj-online.service.justice.gov.uk'
   spec.summary     = 'Service Metadata Presenter'
   spec.description = 'Service Metadata Presenter for the Form Builder product'
   spec.license     = 'MIT'
 
-  spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  spec.files = Dir[
+    '{app,config,db,default_metadata,lib,fixtures,schemas}/**/*',
+    'MIT-LICENSE',
+    'Rakefile',
+    'README.md'
+  ]
 
   spec.add_dependency 'rails', '>= 6.0.3.4', '< 6.2.0'
   spec.add_dependency 'kramdown', '>= 2.3.0'
