@@ -38,9 +38,10 @@
                   <%= @user_data[component.name] %>
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                <%= link_to(change_answer_path(url: page.url),
-                       class: 'govuk-link',
-                       method: :post) do %>
+                <%= link_to(
+                      change_answer_path(url: page.url),
+                      class: 'govuk-link'
+                    ) do %>
                        Change<span class="govuk-visually-hidden"> Your answer for <%= component.label %></span>
                   <% end %>
                   </a>

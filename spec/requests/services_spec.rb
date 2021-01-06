@@ -127,9 +127,9 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     end
   end
 
-  describe 'POST /reserved/change-answer' do
+  describe 'GET /reserved/change-answer' do
     before do
-      post '/reserved/change-answer', params: { url: '/name' }
+      get '/reserved/change-answer', params: { url: '/name' }
     end
 
     it 'sets the session to return to check your answer page' do
