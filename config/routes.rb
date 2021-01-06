@@ -3,6 +3,6 @@ MetadataPresenter::Engine.routes.draw do
 
   post '/reserved/:page_url/answers', to: 'answers#create', as: :reserved_answers
   post '/reserved/submissions', to: 'submissions#create', as: :reserved_submissions
-  post '/reserved/change-answer', to: 'change_answer#create', as: :change_answer
+  get '/reserved/change-answer', to: 'change_answer#create', as: :change_answer
   match '*path', to: 'pages#show', via: :all
 end
