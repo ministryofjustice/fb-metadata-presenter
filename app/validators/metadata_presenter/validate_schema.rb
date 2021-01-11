@@ -6,8 +6,7 @@ class MetadataPresenter::ValidateSchema
     def before(controller)
       return unless controller.request.post?
 
-      schema_name = "request.#{controller.request.params['controller']}"
-      validate(controller.request.params, schema_name)
+      validate(controller.request.params, 'request.service')
     rescue JSON::Schema::ValidationError, JSON::Schema::SchemaError, SchemaNotFoundError => e
       controller.render(
         json: ErrorsSerializer.new(message: e.message).attributes,
