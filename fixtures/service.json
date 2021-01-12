@@ -1,15 +1,12 @@
 {
   "_id": "service.base",
   "_type": "service.base",
-  "service_name": "Complain about a court or tribunal",
+  "service_name": "Service name",
   "created_by": "4634ec01-5618-45ec-a4e2-bb5aa587e751",
   "configuration": {
     "service": {
       "_id": "config.service",
-      "_type": "config.service",
-      "homepage_url": "https://www.gov.uk",
-      "service_email_address": "moj-online@digital.justice.gov.uk",
-      "service_url": "page.start"
+      "_type": "config.service"
     },
     "meta": {
       "_id": "config.meta",
@@ -40,9 +37,9 @@
     {
       "_id": "page.start",
       "_type": "page.start",
-      "body": "You cannot use this form to complain about:\r\n\r\n* the result of a case\r\n* a judge, magistrate, coroner or member of a tribunal\r\n\r\nThis online form is also available in [Welsh (Cymraeg)](https://complain-about-a-court-or-tribunal.form.service.justice.gov.uk/cy).",
-      "heading": "Complain about a court or tribunal",
-      "lede": "Your complaint will not affect your case.",
+      "heading": "Service name goes here",
+      "lede": "Use this service to:",
+      "body": "Use this service to:\r\n\r\n* do something\r\n* update your name, address or other details\r\n* do something else\r\n\r\nRegistering takes around 5 minutes.",
       "steps": [],
       "url": "/"
     }
