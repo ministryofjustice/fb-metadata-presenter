@@ -42,7 +42,6 @@
   "required": [
     "_id",
     "_type",
-    "service_id",
     "service_name",
     "created_by",
     "locale",

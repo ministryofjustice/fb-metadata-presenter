@@ -1,7 +1,4 @@
 {
   "_id": "config.service",
-  "_type": "config.service",
-  "homepage_url": "https://www.gov.uk",
-  "service_email_address": "moj-online@digital.justice.gov.uk",
-  "service_url": "page.start"
+  "_type": "config.service"
 }
