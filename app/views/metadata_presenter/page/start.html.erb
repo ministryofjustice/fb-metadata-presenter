@@ -33,6 +33,12 @@
           </svg>
         </button>
       <% end %>
+
+      <% if @page.before_you_start %>
+        <p class="govuk-body-l" data-block-id="<%= @page.id %>" data-block-property="before-you-start">
+        <%= to_markdown(@page.before_you_start) %>
+        </p>
+      <%- end %>
     </div>
   </div>
 </div>
