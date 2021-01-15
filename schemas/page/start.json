@@ -5,8 +5,15 @@
   "description": "Let users start using a service",
   "type": "object",
   "properties": {
+    "_id": {
+      "const": "page.start"
+    },
     "_type": {
       "const": "page.start"
+    },
+    "before_you_start": {
+      "title": "Before you start",
+      "description": "A body of text that goes after the Start button"
     },
     "enable_steps": {
       "const": true
@@ -25,10 +32,14 @@
   "ui_category": {
     "main": [
       "lede",
-      "body"
+      "body",
+      "before_you_start"
     ]
   },
   "required": [
+    "_id",
+    "_type",
+    "heading",
     "steps"
   ]
 }
