@@ -1,0 +1,8 @@
+{
+  "_id": "component.text",
+  "_type": "text",
+  "errors": {},
+  "hint": "Component hint",
+  "label": "Component label",
+  "name": "component-name"
+}
