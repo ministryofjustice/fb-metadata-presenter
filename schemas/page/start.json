@@ -41,5 +41,6 @@
     "_type",
     "heading",
     "steps"
-  ]
+  ],
+  "additionalProperties": false
 }
