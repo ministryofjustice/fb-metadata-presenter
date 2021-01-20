@@ -1,5 +1,6 @@
 {
   "_id": "page.summary",
+  "_type": "page.summary",
   "heading": "Check your answers",
   "send_heading": "Now send your application",
   "send_body": "By submitting this application you confirm that, to the best of your knowledge, the details you are providing are correct."
