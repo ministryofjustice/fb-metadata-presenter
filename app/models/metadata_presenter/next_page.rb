@@ -9,7 +9,7 @@ module MetadataPresenter
     def find(session:, current_page_url:)
       if session[:return_to_check_you_answer].present?
         session[:return_to_check_you_answer] = nil
-        service.pages.find { |page| page.type == 'page.summary' }
+        service.pages.find { |page| page.type == 'page.checkanswers' }
       else
         service.next_page(from: current_page_url)
       end
