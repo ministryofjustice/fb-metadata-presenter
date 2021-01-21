@@ -1,12 +1,12 @@
 {
-  "$id": "http://gov.uk/schema/v1.0.0/page/summary",
-  "_name": "page.summary",
+  "$id": "http://gov.uk/schema/v1.0.0/page/checkanswers",
+  "_name": "page.checkanswers",
   "title": "Check answers",
   "description": "Let users check and change their answers before submitting",
   "type": "object",
   "properties": {
     "_type": {
-      "const": "page.summary"
+      "const": "page.checkanswers"
     },
     "section_heading": {
       "title": "Section heading",
