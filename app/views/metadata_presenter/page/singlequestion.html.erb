@@ -11,7 +11,7 @@
           <%= render partial: component, locals: { component: component, f: f } %>
         <% end %>
 
-        <%= f.govuk_submit %>
+        <%= f.govuk_submit(disabled: editable?) %>
       <% end %>
     </div>
   </div>
