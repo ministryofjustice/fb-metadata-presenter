@@ -47,6 +47,7 @@ that you need to write the following methods in your controller:
 
 1. save_user_data
 2. load_user_data
+3. editable?
 
 The user answers can be accessed via `params[:answers]`.
 
@@ -61,6 +62,18 @@ An example of implementation:
      session[:user_data]
    end
  end
+```
+
+The `editable?` is related if the pages and components could be editable in the
+mountable app:
+
+```ruby
+  class MyAwesomeController
+    def editable?
+      false
+    end
+    helper_method :editable?
+  end
 ```
 
 ## Generate documentation

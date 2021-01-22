@@ -3,5 +3,5 @@
     label: { text: component.label },
     hint: { text: component.hint },
     name: "answers[#{component.name}]",
-    value: @user_data[component.name]
+    value: @user_data ? @user_data[component.name] : nil
 %>

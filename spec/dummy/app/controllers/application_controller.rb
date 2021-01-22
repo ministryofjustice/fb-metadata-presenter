@@ -24,4 +24,9 @@ class ApplicationController < ActionController::Base
   def default_metadata
     Rails.application.config.default_metadata
   end
+
+  def editable?
+    false
+  end
+  helper_method :editable?
 end
