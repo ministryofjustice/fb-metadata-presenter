@@ -62,6 +62,17 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
+  describe '#editable_attributes' do
+    it 'rejects non editable attributes' do
+      expect(service.pages.first.editable_attributes.keys).to include(
+        :heading,
+        :body,
+        :lede,
+        :url
+      )
+    end
+  end
+
   describe '#to_partial_path' do
     subject(:page) { described_class.new(_type: 'page.singlequestion') }
 
