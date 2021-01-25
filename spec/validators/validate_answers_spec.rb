@@ -4,7 +4,7 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
   end
 
   describe '#valid?' do
-    let(:page) { service.find_page('/name') }
+    let(:page) { service.find_page_by_url('/name') }
 
     context 'when is valid' do
       let(:answers) { { 'full_name' => 'Gandalf' } }
@@ -15,7 +15,7 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
     end
 
     context 'when validation required = false in metadata' do
-      let(:page) { service.find_page('/parent-name') }
+      let(:page) { service.find_page_by_url('/parent-name') }
 
       context 'when no answer is provided' do
         let(:answers) { { 'parent_name' => '' } }

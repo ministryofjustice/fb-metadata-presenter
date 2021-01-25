@@ -11,7 +11,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
 
     context 'when there is required validations on the metadata' do
       context 'when there is no custom error message' do
-        let(:page) { service.find_page('/name') }
+        let(:page) { service.find_page_by_url('/name') }
         let(:answers) { { } }
 
         it 'be invalid' do
@@ -27,7 +27,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
 
       context 'when there is custom error message' do
         context 'when there is "any"' do
-          let(:page) { service.find_page('/email-address') }
+          let(:page) { service.find_page_by_url('/email-address') }
           let(:answers) { { 'email_address' => '' } }
 
           it 'be invalid' do
@@ -44,7 +44,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
 
       context 'when required is valid' do
         let(:answers) { {'full_name' => 'Gandalf' } }
-        let(:page) { service.find_page('/name') }
+        let(:page) { service.find_page_by_url('/name') }
 
         it 'returns no errors' do
           expect(page.errors.full_messages).to eq([])

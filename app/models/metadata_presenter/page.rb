@@ -6,6 +6,10 @@ module MetadataPresenter
       ValidateAnswers.new(page: self, answers: answers).valid?
     end
 
+    def uuid
+      _uuid
+    end
+
     def ==(other)
       id == other.id if other.respond_to? :id
     end

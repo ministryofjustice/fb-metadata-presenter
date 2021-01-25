@@ -36,6 +36,7 @@
   },
   "pages": [
     {
+      "_uuid": "fa391697-ae82-4416-adc3-3433e54ce535",
       "_id": "page.start",
       "_type": "page.start",
       "heading": "Service name goes here",
@@ -52,6 +53,7 @@
       "url": "/"
     },
     {
+      "_uuid": "847c4a0c-1c5f-4391-8847-42c8d82f1d0b",
       "_id": "page.name",
       "_type": "page.singlequestion",
       "components": [
@@ -71,6 +73,7 @@
       "url": "/name"
     },
     {
+      "_uuid": "ccf49acb-ad33-4fd3-8a7e-f0594b86cc96",
       "_id": "page.email-address",
       "_type": "page.singlequestion",
       "heading": "Email address",
@@ -102,6 +105,7 @@
       "url": "/email-address"
     },
     {
+      "_uuid": "7b748584-100e-4d81-a54a-5049190136cc",
       "_id": "page.parent_name",
       "_type": "page.singlequestion",
       "components": [
@@ -121,6 +125,7 @@
       "url": "/parent-name"
     },
     {
+      "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",
       "_id": "page._check-answers",
       "_type": "page.checkanswers",
       "body": "Optional content",
@@ -132,6 +137,7 @@
       "url": "/check-answers"
     },
     {
+      "_uuid": "b238a22f-c180-48d0-a7d9-8aad2036f1f2",
       "_id": "page._confirmation",
       "_type": "page.confirmation",
       "body": "You'll receive a confirmation email",

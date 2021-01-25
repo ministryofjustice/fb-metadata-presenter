@@ -1,5 +1,7 @@
 module MetadataPresenter
   class AnswersController < EngineController
+    before_action :check_page_exists
+
     def create
       if page.validate_answers(answers_params)
         save_user_data # method signature
@@ -12,15 +14,16 @@ module MetadataPresenter
     private
 
     def page
-      @page ||= MetadataPresenter::Page.new(
-        service.find_page(params[:page_url]).metadata
-      )
+      @page ||= begin
+        current_page = service.find_page_by_url(page_url)
+        MetadataPresenter::Page.new(current_page.metadata) if current_page
+      end
     end
 
     def redirect_to_next_page
       next_page = NextPage.new(service).find(
         session: session,
-        current_page_url: params[:page_url]
+        current_page_url: page_url
       )
 
       if next_page.present?
@@ -37,6 +40,14 @@ module MetadataPresenter
 
     def answers_params
       params[:answers] ? params[:answers].permit! : {}
+    end
+
+    def page_url
+      request.env['PATH_INFO']
+    end
+
+    def check_page_exists
+      not_found if page.blank?
     end
   end
 end

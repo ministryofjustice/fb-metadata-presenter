@@ -4,6 +4,10 @@
   "id_seed": "url",
   "title": "Page definition",
   "properties": {
+    "_uuid": {
+      "title": "Unique identifier of the page",
+      "description": "Used internally in the editor and the runner."
+    },
     "url": {
       "title": "URL",
       "description": "The page’s relative url - it must not contain any spaces",
@@ -95,6 +99,7 @@
     }
   ],
   "required": [
+    "_uuid",
     "url"
   ],
   "category": [
