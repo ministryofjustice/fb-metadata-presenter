@@ -49,10 +49,10 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     end
   end
 
-  describe 'POST /reserved/%2Fname/answers' do
+  describe 'POST to page URL' do
     context 'when valid' do
       before do
-        post '/reserved/%2Fname/answers',
+        post '/name',
           params: { answers: { full_name: 'Mithrandir' } }
       end
 
@@ -63,7 +63,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
 
     context 'when invalid' do
       before do
-        post '/reserved/%2Fname/answers',
+        post '/name',
           params: { answers: { } }
       end
 
@@ -86,11 +86,21 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
 
       before do
         expect(Rails.configuration).to receive(:service_metadata).and_return(service_metadata)
-        post '/reserved/%2Fparent-name/answers',
+        post '/parent-name',
           params: { answers: { parent_name: 'Test' } }
       end
 
       it 'returns not found' do
+        expect(response.status).to be(404)
+      end
+    end
+
+    context 'when URL does not exist' do
+      before do
+        post '/non-existent-url'
+      end
+
+      it 'should return a 404' do
         expect(response.status).to be(404)
       end
     end

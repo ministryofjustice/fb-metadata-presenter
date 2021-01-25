@@ -73,6 +73,14 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
+  describe '#uuid' do
+    it 'returns _uuid attribute' do
+      expect(
+        described_class.new(_uuid: 'kylo-ren').uuid
+      ).to eq('kylo-ren')
+    end
+  end
+
   describe '#to_partial_path' do
     subject(:page) { described_class.new(_type: 'page.singlequestion') }
 

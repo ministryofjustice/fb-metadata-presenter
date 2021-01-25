@@ -2,7 +2,7 @@ RSpec.describe MetadataPresenter::BaseValidator do
   subject(:validator) do
     described_class.new(page: page, answers: answers, component: component)
   end
-  let(:page) { service.find_page('/name') }
+  let(:page) { service.find_page_by_url('/name') }
   let(:answers) { {} }
   let(:component) { page.components.first }
 
