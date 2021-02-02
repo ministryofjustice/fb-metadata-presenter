@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe MetadataPresenter::Service do
+  describe '#to_json' do
+    it 'returns json object' do
+      expect(JSON.parse(service.to_json)).to include(
+        'service_name' => 'Service name'
+      )
+    end
+  end
+
   describe '#pages' do
     it 'returns an array of Page objects' do
       service.pages.each do |page|

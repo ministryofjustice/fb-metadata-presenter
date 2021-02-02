@@ -8,6 +8,10 @@ class MetadataPresenter::Metadata
     @metadata = OpenStruct.new(metadata)
   end
 
+  def to_json
+    self.to_h.to_json
+  end
+
   def id
     metadata._id
   end
