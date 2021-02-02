@@ -9,11 +9,34 @@ RSpec.describe MetadataPresenter::Service do
     end
   end
 
-  describe '#find_page' do
-    it 'finds the correct page' do
-      path = service_metadata['pages'][1]['url']
-      page = service.find_page_by_url(path)
-      expect(page.id).to eq(service_metadata['pages'][1]['_id'])
+  describe '#find_page_by_url' do
+    context 'when passing without slash in the beginning' do
+      let(:path) { 'name' }
+
+      it 'finds the correct page' do
+        page = service.find_page_by_url(path)
+        expect(page.id).to eq(service_metadata['pages'][1]['_id'])
+      end
+    end
+
+    context 'when passing with slash in the beginning' do
+      let(:path) { '/name' }
+
+      it 'finds the correct page' do
+        page = service.find_page_by_url(path)
+        expect(page.id).to eq(service_metadata['pages'][1]['_id'])
+      end
+    end
+
+    context 'when page does not exist' do
+      let(:path) do
+        "/darth-vader-nooooooooo"
+      end
+
+      it 'finds the correct page' do
+        page = service.find_page_by_url(path)
+        expect(page).to be_nil
+      end
     end
   end
 

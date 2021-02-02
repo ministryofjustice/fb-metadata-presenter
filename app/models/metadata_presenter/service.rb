@@ -8,7 +8,7 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   def find_page_by_url(url)
-    pages.find { |page| page.url == url }
+    pages.find { |page| strip_slash(page.url) == strip_slash(url) }
   end
 
   def find_page_by_uuid(uuid)
@@ -28,5 +28,13 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     @confirmation_page ||= pages.find do |page|
       page.type == 'page.confirmation'
     end
+  end
+
+  private
+
+  def strip_slash(url)
+    return url if url == '/'
+
+    url.gsub(/^\//, '')
   end
 end
