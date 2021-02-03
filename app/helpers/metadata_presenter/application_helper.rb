@@ -9,7 +9,7 @@ module MetadataPresenter
     # variable as long your load_user_data in the controller sets the variable.
     #
     # @example
-    #   <%= a('first_name') %>
+    #   <%=a 'first_name' %>
     #
     def a(component_key)
       if @user_data.present?
@@ -18,8 +18,14 @@ module MetadataPresenter
     end
     alias answer a
 
-    def to_markdown(text)
+    # Renders markdown given a text.
+    #
+    # @example
+    #   <%=m '# Some markdown' %>
+    #
+    def m(text)
       (Kramdown::Document.new(text).to_html).html_safe
     end
+    alias to_markdown m
   end
 end

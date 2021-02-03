@@ -69,6 +69,26 @@ RSpec.describe MetadataPresenter::Service do
     end
   end
 
+  describe '#find_page_by_uuid' do
+    subject(:page) { service.find_page_by_uuid(uuid) }
+
+    context 'when uuid exists' do
+      let(:uuid) { 'fa391697-ae82-4416-adc3-3433e54ce535' }
+
+      it 'finds the correct page' do
+        expect(page.id).to eq(service_metadata['pages'][0]['_id'])
+      end
+    end
+
+    context 'when uuid does not exist in metadata' do
+      let(:uuid) { SecureRandom.uuid }
+
+      it 'returns nil' do
+        expect(page).to be_nil
+      end
+    end
+  end
+
   describe '#start_page' do
     it 'returns the correct start page' do
       expect(service.start_page.id).to eq(service_metadata['pages'][0]['_id'])
