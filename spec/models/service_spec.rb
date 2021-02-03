@@ -1,6 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe MetadataPresenter::Service do
+  describe '#service_slug' do
+    let(:service_names) do
+      {
+        'grogu' => 'grogu',
+        'Darth Vader' => 'darth-vader',
+        'emperor-palpatine' => 'emperor-palpatine',
+        'princess Leia' => 'princess-leia'
+      }
+    end
+
+    it 'returns the name parameterized' do
+      service_names.each do |service_name, expected|
+        expect(
+          described_class.new(
+          'service_name' => service_name
+          ).service_slug
+        ).to eq(expected)
+      end
+    end
+  end
+
   describe '#to_json' do
     it 'returns json object' do
       expect(JSON.parse(service.to_json)).to include(

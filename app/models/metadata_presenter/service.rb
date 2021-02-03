@@ -7,6 +7,10 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     pages.first
   end
 
+  def service_slug
+    service_name.parameterize
+  end
+
   def find_page_by_url(url)
     pages.find { |page| strip_slash(page.url) == strip_slash(url) }
   end
