@@ -1,6 +1,27 @@
 require 'rails_helper'
 
 RSpec.describe MetadataPresenter::Service do
+  describe '#service_slug' do
+    let(:service_names) do
+      {
+        'grogu' => 'grogu',
+        'Darth Vader' => 'darth-vader',
+        'emperor-palpatine' => 'emperor-palpatine',
+        'princess Leia' => 'princess-leia'
+      }
+    end
+
+    it 'returns the name parameterized' do
+      service_names.each do |service_name, expected|
+        expect(
+          described_class.new(
+          'service_name' => service_name
+          ).service_slug
+        ).to eq(expected)
+      end
+    end
+  end
+
   describe '#to_json' do
     it 'returns json object' do
       expect(JSON.parse(service.to_json)).to include(
@@ -43,6 +64,26 @@ RSpec.describe MetadataPresenter::Service do
 
       it 'finds the correct page' do
         page = service.find_page_by_url(path)
+        expect(page).to be_nil
+      end
+    end
+  end
+
+  describe '#find_page_by_uuid' do
+    subject(:page) { service.find_page_by_uuid(uuid) }
+
+    context 'when uuid exists' do
+      let(:uuid) { 'fa391697-ae82-4416-adc3-3433e54ce535' }
+
+      it 'finds the correct page' do
+        expect(page.id).to eq(service_metadata['pages'][0]['_id'])
+      end
+    end
+
+    context 'when uuid does not exist in metadata' do
+      let(:uuid) { SecureRandom.uuid }
+
+      it 'returns nil' do
         expect(page).to be_nil
       end
     end
