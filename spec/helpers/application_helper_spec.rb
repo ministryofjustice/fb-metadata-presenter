@@ -1,11 +1,12 @@
 RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
   describe '#a' do
+    before do
+      helper.instance_variable_set(:@user_data, user_data)
+    end
+
     context 'when there is an answer' do
-      before do
-        helper.instance_variable_set(
-          :@user_data,
-          { 'ewoks-communication' =>'ewokie talkies' }
-        )
+      let(:user_data) do
+        { 'ewoks-communication' => 'ewokie talkies' }
       end
 
       it 'returns answer for a question' do
@@ -16,8 +17,36 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
     end
 
     context 'when there is no answer' do
+      let(:user_data) { {} }
+
       it 'returns answer for a question' do
         expect(helper.a('ewoks-communication')).to be_nil
+      end
+    end
+  end
+
+  describe '#formatted_answer' do
+    before do
+      helper.instance_variable_set(:@user_data, user_data)
+    end
+
+    context 'when answer has a format' do
+      let(:user_data) do
+        { 'what-do-gungans-put-things-in' => "Gungans put things in: \n Jar Jars" }
+      end
+
+      it 'returns answer for a question with simple format' do
+        expect(helper.formatted_answer('what-do-gungans-put-things-in')).to eq(
+          "<p>Gungans put things in: \n<br /> Jar Jars</p>"
+        )
+      end
+    end
+
+    context 'when there is no answer' do
+      let(:user_data) { {} }
+
+      it 'returns answer for a question' do
+        expect(helper.formatted_answer('ewoks-communication')).to be_nil
       end
     end
   end

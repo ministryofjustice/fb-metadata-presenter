@@ -1,0 +1,55 @@
+{
+  "_id": "component.textarea",
+  "_name": "textarea",
+  "title": "Textarea",
+  "description": "Let users enter text that can be longer than a single line",
+  "type": "object",
+  "properties": {
+    "_type": {
+      "const": "textarea"
+    },
+    "maxwords": {
+      "type": "number",
+      "title": "Maximum words",
+      "description": "Set a word limit",
+      "category": [
+        "userinput"
+      ]
+    },
+    "maxchars": {
+      "type": "number",
+      "title": "Maximum characters",
+      "description": "Set a character limit",
+      "category": [
+        "userinput"
+      ]
+    },
+    "threshold": {
+      "type": "number",
+      "title": "Threshold percentage",
+      "description": "Display the message about maximum length or words after a user has entered a certain amount",
+      "category": [
+        "userinput"
+      ]
+    },
+    "rows": {
+      "type": "number",
+      "title": "Number of rows in the textarea",
+      "description": "Set the number of rows",
+      "category": [
+        "userinput"
+      ]
+    }
+  },
+  "allOf": [
+   {
+      "$ref": "definition.field"
+    },
+    {
+      "$ref": "validations#/definitions/string_bundle"
+    },
+    {
+      "$ref": "definition.width_class.input"
+    }
+  ]
+}
