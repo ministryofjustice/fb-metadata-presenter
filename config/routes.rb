@@ -6,5 +6,7 @@ MetadataPresenter::Engine.routes.draw do
 
   post '/', to: 'answers#create'
   match '*path', to: 'answers#create', via: :post
-  match '*path', to: 'pages#show', via: :all
+  match '*path', to: 'pages#show',
+    via: :all,
+    constraints: lambda {|req| req.path !~ /\.(png|jpg|js|css|ico)$/ }
 end
