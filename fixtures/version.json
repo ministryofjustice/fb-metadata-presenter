@@ -125,6 +125,25 @@
       "url": "/parent-name"
     },
     {
+      "_uuid": "7b748584-100e-4d81-a54a-5049190136cc",
+      "_id": "page.family_hobbies",
+      "_type": "page.singlequestion",
+      "components": [
+        {
+          "_id": "page.family-hobbies--text.auto_name__3",
+          "_type": "textarea",
+          "label": "Your family hobbies",
+          "name": "family_hobbies",
+          "rows": 5,
+          "validation": {
+            "required": true
+          }
+        }
+      ],
+      "heading": "Family Hobbies",
+      "url": "/family-hobbies"
+    },
+    {
       "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",
       "_id": "page._check-answers",
       "_type": "page.checkanswers",

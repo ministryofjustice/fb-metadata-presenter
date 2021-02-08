@@ -18,6 +18,14 @@ module MetadataPresenter
     end
     alias answer a
 
+    ## Display user answers on the view formatted.
+    ##
+    def formatted_answer(component_key)
+      user_answer = answer(component_key)
+
+      simple_format(user_answer) if user_answer.present?
+    end
+
     # Renders markdown given a text.
     #
     # @example

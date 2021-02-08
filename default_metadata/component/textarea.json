@@ -1,0 +1,12 @@
+{
+  "_id": "component.textarea",
+  "_type": "textarea",
+  "errors": {},
+  "hint": "Component hint",
+  "label": "Component label",
+  "name": "component-name",
+  "rows": 5,
+  "validation": {
+    "required": true
+  }
+}
