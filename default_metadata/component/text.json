@@ -4,5 +4,8 @@
   "errors": {},
   "hint": "Component hint",
   "label": "Component label",
-  "name": "component-name"
+  "name": "component-name",
+  "validation": {
+    "required": true
+  }
 }
