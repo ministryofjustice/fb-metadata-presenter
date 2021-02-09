@@ -1,6 +1,6 @@
 {
   "$id": "http://gov.uk/schema/v1.0.0/text",
-  "_name": "text",
+  "_name": "component.text",
   "title": "Text",
   "description": "Let users enter text that’s no longer than a single line",
   "type": "object",

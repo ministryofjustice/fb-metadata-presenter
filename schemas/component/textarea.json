@@ -1,6 +1,6 @@
 {
-  "_id": "component.textarea",
-  "_name": "textarea",
+	"$id": "http://gov.uk/schema/v1.0.0/textarea",
+	"_name": "component.textarea",
   "title": "Textarea",
   "description": "Let users enter text that can be longer than a single line",
   "type": "object",
