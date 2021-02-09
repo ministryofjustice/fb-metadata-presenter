@@ -14,7 +14,6 @@
 
     <%= stylesheet_pack_tag 'govuk' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
   </head>
 
   <body class="govuk-template__body">
@@ -28,6 +27,7 @@
         <%= yield %>
       </main>
     </div>
+    <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag 'govuk' %>
   </body>
 </html>
