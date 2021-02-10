@@ -31,18 +31,7 @@ module MetadataPresenter
     def component_validations(component)
       return [] if component.validation.blank?
 
-      component.validation.reject do |_, value|
-        value.blank? ||
-        (optional_question?(component) && question_not_answered?)
-      end.keys
-    end
-
-    def optional_question?(component)
-      component.validation['required'] == false
-    end
-
-    def question_not_answered?
-      answers.values.any?(&:blank?)
+      component.validation.select { |_,value| value.present? }.keys
     end
   end
 end
