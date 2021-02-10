@@ -125,6 +125,28 @@
       "url": "/parent-name"
     },
     {
+      "_id": "page.your_age",
+      "url": "your-age",
+      "_type":"page.singlequestion",
+      "_uuid":"59d1326c-32e6-45e9-b57a-bcc8e2fb6b2c",
+      "heading":"Your age",
+      "components": [
+        {
+          "_id": "your_age_number_1",
+          "hint": "Component hint",
+          "name": "your_age_number_1",
+          "_type": "number",
+          "label": "Your age",
+          "errors": {},
+          "validation": {
+            "required": true,
+            "number": true
+          },
+          "width_class_input": "10"
+        }
+      ]
+    },
+    {
       "_uuid": "7b748584-100e-4d81-a54a-5049190136cc",
       "_id": "page.family_hobbies",
       "_type": "page.singlequestion",
