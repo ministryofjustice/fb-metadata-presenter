@@ -166,6 +166,37 @@
       "url": "/family-hobbies"
     },
     {
+      "_uuid": "4251b25e-08de-4dcb-8f2f-dd9848dcdca6",
+      "_id": "page.radio-buttons",
+      "_type": "page.singlequestion",
+      "components": [
+        {
+          "_id": "radio-buttons_radios_1",
+          "_type": "radios",
+          "errors": {},
+          "hint": "Component hint",
+          "label": "Component label",
+          "items": [
+            {
+              "_id": "radio-buttons_radio_1",
+              "_type": "radio",
+              "label": "Yes",
+              "value": "radio_value_1"
+            },
+            {
+              "_id": "radio-buttons_radio_2",
+              "_type": "radio",
+              "label": "No",
+              "value": "radio_value_2"
+            }
+          ],
+          "name": "radio-buttons_radios_1"
+        }
+      ],
+      "heading": "Parent name",
+      "url": "/radio-buttons"
+    },
+    {
       "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",
       "_id": "page._check-answers",
       "_type": "page.checkanswers",

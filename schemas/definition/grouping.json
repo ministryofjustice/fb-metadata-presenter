@@ -1,0 +1,27 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/definition/grouping",
+  "_name": "definition.grouping",
+  "title": "Grouping definition",
+  "allOf": [
+    {
+      "$ref": "definition.component"
+    },
+    {
+      "$ref": "definition.components"
+    },
+    {
+      "$ref": "definition.namespace"
+    },
+    {
+      "$ref": "definition.html_attributes"
+    }
+  ],
+  "category": [
+    "grouping"
+  ],
+  "transforms": {
+    "namespace": {
+      "propagation": "components[?(@.$control || @.$grouping)]"
+    }
+  }
+}
