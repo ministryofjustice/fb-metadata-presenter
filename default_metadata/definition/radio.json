@@ -1,0 +1,6 @@
+{
+  "_id": "definition.radio",
+  "_type": "radio",
+  "label": "Required label",
+  "value": "radio-value"
+}

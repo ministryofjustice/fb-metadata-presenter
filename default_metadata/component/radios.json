@@ -1,0 +1,10 @@
+{
+  "_id": "component.radios",
+  "_type": "radios",
+  "errors": {},
+  "hint": "Component hint",
+  "label": "Component label",
+  "items": [],
+  "name": "component-name",
+  "legend": "Required legend"
+}
