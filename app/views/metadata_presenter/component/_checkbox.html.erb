@@ -1,0 +1,9 @@
+<%=
+  f.govuk_collection_check_boxes component.id.to_sym,
+    component.items,
+    :id,
+    :name,
+    :description,
+    legend: { text: input_title },
+    hint: { text: component.hint }
+%>

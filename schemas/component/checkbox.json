@@ -1,0 +1,37 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/checkbox",
+  "_name": "component.checkbox",
+  "title": "Checkbox items",
+  "description": "Component that provides a checkbox item",
+  "type": "object",
+  "properties": {
+    "_type": {
+      "const": "checkbox"
+    },
+    "items": {
+      "title": "Options",
+      "description": "Items that users can select",
+      "type": "array",
+      "items": {
+        "$ref": "definition.radio"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "definition.fieldset"
+    },
+    {
+      "$ref": "definition.name"
+    }
+  ],
+  "transforms": {
+    "namespace": {
+      "propagation": "items[*].conditional_component"
+    }
+  },
+  "required": [
+    "name",
+    "items"
+  ]
+}
