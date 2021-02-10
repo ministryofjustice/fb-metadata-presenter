@@ -1,0 +1,12 @@
+{
+  "_id": "component.number",
+  "_type": "number",
+  "errors": {},
+  "hint": "Component hint",
+  "label": "Component label",
+  "name": "component-name",
+  "width_class_input": "10",
+  "validation": {
+    "number": true
+  }
+}
