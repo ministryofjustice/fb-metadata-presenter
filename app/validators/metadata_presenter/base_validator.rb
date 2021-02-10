@@ -62,6 +62,12 @@ module MetadataPresenter
       message % error_message_hash if message.present?
     end
 
+    # @return [String] user answer for the specific component
+    #
+    def user_answer
+      answers[component.name]
+    end
+
     # The default error message will be look using the schema key.
     # Assuming the schema key is 'grogu' then the default message
     # will look for 'error.grogu.value'.

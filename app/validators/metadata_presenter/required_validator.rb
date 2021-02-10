@@ -1,7 +1,7 @@
 module MetadataPresenter
   class RequiredValidator < BaseValidator
     def invalid_answer?
-      answers[component.name].blank?
+      user_answer.blank?
     end
   end
 end
