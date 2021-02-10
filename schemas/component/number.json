@@ -1,0 +1,29 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/number",
+  "_name": "component.number",
+  "title": "Number",
+  "description": "Let users enter a number",
+  "type": "object",
+  "properties": {
+    "_type": {
+      "const": "number"
+    },
+    "name": {
+      "inputType": "number"
+    },
+    "width_class_input": {
+      "default": "10"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "definition.field"
+    },
+    {
+      "$ref": "validations#/definitions/number_bundle"
+    },
+    {
+      "$ref": "definition.width_class.input"
+    }
+  ]
+}
