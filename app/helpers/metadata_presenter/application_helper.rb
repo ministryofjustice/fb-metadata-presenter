@@ -1,5 +1,19 @@
 module MetadataPresenter
   module ApplicationHelper
+    def main_h1(component)
+      if component.legend.present?
+        content_tag(:legend, class: 'govuk-fieldset__legend govuk-fieldset__legend--l') do
+          content_tag(:h1, class: 'govuk-fieldset__heading') do
+            component.legend
+          end
+        end
+      else
+        content_tag(:h1, class: 'govuk-heading-xl') do
+          component.label
+        end
+      end
+    end
+
     ## Display user answers on the view
     ## When the user doesn't answered yet the component will be blank
     # or with data otherwise, so doing the if in every output is not
