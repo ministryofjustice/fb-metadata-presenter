@@ -42,6 +42,8 @@ module MetadataPresenter
     end
 
     def valid?
+      return true if user_answer.blank? && allow_blank?
+
       if invalid_answer?
         error_message = custom_error_message || default_error_message
         page.errors.add(component.id, error_message)
@@ -120,6 +122,16 @@ module MetadataPresenter
         control: component.label,
         schema_key.to_sym => component.validation[schema_key]
       }
+    end
+
+    # Method signature to be overwrite in the subclass if you do not want to allow
+    # blank values. We should not allow blank when performing the required
+    # validation.
+    #
+    # @return [TrueClass]
+    #
+    def allow_blank?
+      true unless self.class.name.demodulize.include?('RequiredValidator')
     end
   end
 end

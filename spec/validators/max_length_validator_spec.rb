@@ -4,9 +4,18 @@ RSpec.describe MetadataPresenter::MaxLengthValidator do
   end
   let(:component) { page.components.first }
 
-  describe '#validate' do
+  describe '#valid?' do
     before do
       validator.valid?
+    end
+
+    context 'when answer is blank' do
+      let(:answers) { {'full_name' => '' } }
+      let(:page) { service.find_page_by_url('/name') }
+
+      it 'returns valid' do
+        expect(validator).to be_valid
+      end
     end
 
     context 'when maximum length is invalid' do
