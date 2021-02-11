@@ -1,14 +1,14 @@
 <div class="fb-main-grid-wrapper" data-block-id="<%= @page.id %>" data-block-type="page" data-block-pagetype="<%= @page.type %>">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="<%= @page.heading_class %>" data-block-id="<%= @page.id %>" data-block-property="heading">
-          <%= @page.heading.html_safe %>
-      </h1>
-
-      <%= form_for @page, url: @page.url, method: :post do |f| %>
+      <%= form_for @page, as: :answers, url: @page.url, method: :post do |f| %>
         <%= f.govuk_error_summary %>
         <% @page.components.each do |component| %>
-          <%= render partial: component, locals: { component: component, f: f } %>
+          <%= render partial: component, locals: {
+            component: component,
+            f: f,
+            input_title: main_h1(component) }
+          %>
         <% end %>
 
         <%= f.govuk_submit(disabled: editable?) %>

@@ -1,4 +1,30 @@
 RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
+  describe '#main_h1' do
+    context 'when component has a legend' do
+      let(:component) do
+        MetadataPresenter::Component.new(legend: 'Luke Skywalker')
+      end
+
+      it 'returns h1 wrapped in a legend' do
+        expect(helper.main_h1(component)).to eq(
+          %{<legend class="govuk-fieldset__legend govuk-fieldset__legend--l"><h1 class="govuk-fieldset__heading">Luke Skywalker</h1></legend>}
+        )
+      end
+    end
+
+    context 'when component has a label' do
+      let(:component) do
+        MetadataPresenter::Component.new(label: 'Luke Skywalker')
+      end
+
+      it 'returns h1 wrapped in a legend' do
+        expect(helper.main_h1(component)).to eq(
+          %{<h1 class="govuk-heading-xl">Luke Skywalker</h1>}
+        )
+      end
+    end
+  end
+
   describe '#a' do
     before do
       helper.instance_variable_set(:@user_data, user_data)

@@ -28,7 +28,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     end
 
     it 'renders the view correctly' do
-      page_heading = service_metadata['pages'][1]['heading']
+      page_heading = service_metadata['pages'][1]['components'][0]['label']
       expect(response.body).to include(page_heading)
     end
   end
@@ -72,7 +72,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       end
 
       it 'render same page' do
-        page_heading = service_metadata['pages'][1]['heading']
+        page_heading = service_metadata['pages'][1]['components'][0]['label']
         expect(response.body).to include(page_heading)
       end
     end
