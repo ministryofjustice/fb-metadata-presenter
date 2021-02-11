@@ -1,0 +1,6 @@
+{
+  "_id": "error.date",
+  "_type": "string.error",
+  "description": "Input (date) is not a valid date",
+  "value": "Enter a valid date for %{control}"
+}

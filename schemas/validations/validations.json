@@ -25,6 +25,15 @@
       ],
       "default": true
     },
+    "date": {
+      "title": "Date",
+      "description": "Whether the user must answer with a valid date",
+      "oneOf": [
+        {
+          "$ref": "definition.conditional.boolean"
+        }
+      ]
+    },
     "errors_required": {
       "title": "Error messages for ‘Required’",
       "allOf": [
