@@ -10,7 +10,7 @@ RSpec.describe MetadataPresenter::MaxLengthValidator do
     end
 
     context 'when answer is blank' do
-      let(:answers) { {'full_name' => '' } }
+      let(:answers) { {'name_text_1' => '' } }
       let(:page) { service.find_page_by_url('/name') }
 
       it 'returns valid' do
@@ -19,7 +19,7 @@ RSpec.describe MetadataPresenter::MaxLengthValidator do
     end
 
     context 'when maximum length is invalid' do
-      let(:answers) { {'full_name' => 'Gandalf the Grey' } }
+      let(:answers) { {'name_text_1' => 'Gandalf the Grey' } }
 
       context 'when there is no custom error message' do
         let(:page) { service.find_page_by_url('/name') }
@@ -38,7 +38,7 @@ RSpec.describe MetadataPresenter::MaxLengthValidator do
       context 'when there is a custom error message' do
         let(:page) { service.find_page_by_url('/email-address') }
         let(:answers) do
-          { 'email_address' => 'gandalf.mithrandir@middleearth.gov.uk' }
+          { 'email-address_email_1' => 'gandalf.mithrandir@middleearth.gov.uk' }
         end
 
         it 'uses the custom error message' do
@@ -50,7 +50,7 @@ RSpec.describe MetadataPresenter::MaxLengthValidator do
     end
 
     context 'when maximum length is valid' do
-      let(:answers) { {'full_name' => 'Gandalf' } }
+      let(:answers) { {'name_text_1' => 'Gandalf' } }
       let(:page) { service.find_page_by_url('/name') }
 
       it 'returns no errors' do

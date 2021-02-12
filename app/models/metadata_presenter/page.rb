@@ -1,5 +1,6 @@
 module MetadataPresenter
   class Page < MetadataPresenter::Metadata
+    include ActiveModel::Validations
 
     def uuid
       _uuid

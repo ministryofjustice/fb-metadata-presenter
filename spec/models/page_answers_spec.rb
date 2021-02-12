@@ -1,5 +1,32 @@
 RSpec.describe MetadataPresenter::PageAnswers do
-  subject(:page_answers) { described_class.new(answers) }
+  subject(:page_answers) { described_class.new(page, answers) }
+  let(:page) { service.find_page_by_url('name') }
+
+  describe '#validate_answers' do
+    let(:answers) { {} }
+
+    before do
+      expect_any_instance_of(
+        MetadataPresenter::ValidateAnswers
+      ).to receive(:valid?).and_return(valid)
+    end
+
+    context 'when valid' do
+      let(:valid) { true }
+
+      it 'returns true' do
+        expect(page_answers.validate_answers).to be_truthy
+      end
+    end
+
+    context 'when invalid' do
+      let(:valid) { false }
+
+      it 'returns false' do
+        expect(page_answers.validate_answers).to be_falsey
+      end
+    end
+  end
 
   describe '#method_missing' do
     context 'when the components exist in a page' do

@@ -1,30 +1,4 @@
 RSpec.describe MetadataPresenter::Page do
-  describe '#validate_answers' do
-    let(:page) { described_class.new(_id: 'foo') }
-
-    before do
-      expect_any_instance_of(
-        MetadataPresenter::ValidateAnswers
-      ).to receive(:valid?).and_return(valid)
-    end
-
-    context 'when valid' do
-      let(:valid) { true }
-
-      it 'returns true' do
-        expect(page.validate_answers({})).to be_truthy
-      end
-    end
-
-    context 'when invalid' do
-      let(:valid) { false }
-
-      it 'returns false' do
-        expect(page.validate_answers({})).to be_falsey
-      end
-    end
-  end
-
   describe '#==' do
     let(:page) { described_class.new(_id: 'foo') }
 
