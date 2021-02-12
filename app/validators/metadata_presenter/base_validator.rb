@@ -115,7 +115,7 @@ module MetadataPresenter
     #
     def error_message_hash
       {
-        control: component.label,
+        control: component.humanised_title,
         schema_key.to_sym => component.validation[schema_key]
       }
     end

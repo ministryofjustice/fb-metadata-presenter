@@ -166,6 +166,42 @@
       "url": "/family-hobbies"
     },
     {
+      "_uuid": "4251b25e-08de-4dcb-8f2f-dd9848dcdca6",
+      "_id": "page.do-you-like-star-wars",
+      "_type": "page.singlequestion",
+      "components": [
+        {
+          "_id": "do-you-like-star-wars_radios_1",
+          "_type": "radios",
+          "errors": {},
+          "hint": "Component hint",
+          "legend": "Do you like Star Wars?",
+          "items": [
+            {
+              "_id": "do-you-like-star-wars_radio_1",
+              "_type": "radio",
+              "label": "Only on weekends",
+              "hint": "Optional item hint",
+              "value": "only-on-weekends"
+            },
+            {
+              "_id": "do-you-like-star-wars_radio_2",
+              "_type": "radio",
+              "label": "Hell no!",
+              "hint": "Optional item hint",
+              "value": "hell-no"
+            }
+          ],
+          "name": "do-you-like-star-wars_radios_1",
+          "validation": {
+            "required": true
+          }
+        }
+      ],
+      "heading": "Radio buttons",
+      "url": "/do-you-like-star-wars"
+    },
+    {
       "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",
       "_id": "page._check-answers",
       "_type": "page.checkanswers",
