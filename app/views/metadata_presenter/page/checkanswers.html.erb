@@ -27,27 +27,25 @@
     <%= form_for @page, url: reserved_submissions_path do |f| %>
       <div data-block-id="page.checkanswers.answers" data-block-type="answers">
         <dl class="fb-block fb-block-answers govuk-summary-list">
-          <% @service.pages.each do |page| %>
-            <% Array(page.components).each do |component| %>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  <%= component.humanised_title %>
-                </dt>
+          <% page_answers_presenters.each do |page_answers_presenter| %>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                <%= page_answers_presenter.humanised_title %>
+              </dt>
 
-                <dd class="govuk-summary-list__value">
-                  <%= formatted_answer(component) %>
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                <%= link_to(
-                      change_answer_path(url: page.url),
-                      class: 'govuk-link'
-                    ) do %>
-                       Change<span class="govuk-visually-hidden"> Your answer for <%= component.label %></span>
-                  <% end %>
-                  </a>
-                </dd>
-              </div>
-            <% end %>
+              <dd class="govuk-summary-list__value">
+                <%= page_answers_presenter.answer %>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+              <%= link_to(
+                    change_answer_path(url: page_answers_presenter.url),
+                    class: 'govuk-link'
+                  ) do %>
+                     Change<span class="govuk-visually-hidden"> Your answer for <%= page_answers_presenter.humanised_title %></span>
+                <% end %>
+                </a>
+              </dd>
+            </div>
           <% end %>
         </dl>
       </div>

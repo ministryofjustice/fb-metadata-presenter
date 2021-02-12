@@ -11,5 +11,14 @@ module MetadataPresenter
         not_found
       end
     end
+
+    def page_answers_presenters
+      PageAnswersPresenter.map(
+        view: view_context,
+        pages: service.pages,
+        answers: @user_data
+      )
+    end
+    helper_method :page_answers_presenters
   end
 end
