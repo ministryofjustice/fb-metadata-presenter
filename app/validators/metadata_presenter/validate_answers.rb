@@ -1,11 +1,10 @@
 module MetadataPresenter
   class ValidateAnswers
-    attr_reader :page, :components, :answers
+    attr_reader :page_answers, :components
 
-    def initialize(page:, answers:)
-      @page = page
-      @answers = answers
-      @components = Array(page.components)
+    def initialize(page_answers, components:)
+      @page_answers = page_answers
+      @components = Array(components)
     end
 
     def valid?
@@ -16,12 +15,13 @@ module MetadataPresenter
       !valid?
     end
 
+    private
+
     def validators
       components.map do |component|
         component_validations(component).map do |key|
           "MetadataPresenter::#{key.classify}Validator".constantize.new(
-            page: page,
-            answers: answers,
+            page_answers: page_answers,
             component: component
           )
         end

@@ -1,11 +1,11 @@
 RSpec.describe MetadataPresenter::ValidateAnswers do
   subject(:validate_answers) do
-    described_class.new(page: page, answers: answers)
+    described_class.new(page_answers, components: page.components)
   end
+  let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
+  let(:page) { service.find_page_by_url('/name') }
 
   describe '#valid?' do
-    let(:page) { service.find_page_by_url('/name') }
-
     context 'when is valid' do
       let(:answers) { { 'name_text_1' => 'Gandalf' } }
 
@@ -52,7 +52,11 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
       let(:answers) { {} }
 
       before do
-        [MetadataPresenter::RequiredValidator, MetadataPresenter::MinLengthValidator, MetadataPresenter::MaxLengthValidator].each do |klass|
+        [
+          MetadataPresenter::RequiredValidator,
+          MetadataPresenter::MinLengthValidator,
+          MetadataPresenter::MaxLengthValidator
+        ].each do |klass|
           expect_any_instance_of(klass).to receive(:valid?).and_return(valid)
         end
       end

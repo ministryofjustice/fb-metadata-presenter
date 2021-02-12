@@ -9,7 +9,7 @@ module MetadataPresenter
     end
 
     def validate_answers
-      ValidateAnswers.new(page: self, answers: answers).valid?
+      ValidateAnswers.new(self, components: components).valid?
     end
 
     def components

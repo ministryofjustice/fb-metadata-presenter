@@ -26,18 +26,14 @@ module MetadataPresenter
   #   end
   #
   class BaseValidator
-    # @return [MetadataPresenter::Page] page object from the metadata
-    attr_reader :page
-
-    # @return [Hash] the user answers
-    attr_reader :answers
+    # @return [MetadataPresenter::PageAnswers] page answers object
+    attr_reader :page_answers
 
     # @return [MetadataPresenter::Component] component object from the metadata
     attr_reader :component
 
-    def initialize(page:, answers:, component:)
-      @page = page
-      @answers = answers
+    def initialize(page_answers:, component:)
+      @page_answers = page_answers
       @component = component
     end
 
@@ -46,10 +42,10 @@ module MetadataPresenter
 
       if invalid_answer?
         error_message = custom_error_message || default_error_message
-        page.errors.add(component.id, error_message)
+        page_answers.errors.add(component.id, error_message)
       end
 
-      page.errors.blank?
+      page_answers.errors.blank?
     end
 
     # The custom message will be lookup from the schema key on the metadata.
@@ -67,7 +63,7 @@ module MetadataPresenter
     # @return [String] user answer for the specific component
     #
     def user_answer
-      answers[component.name]
+      page_answers.send(component.name)
     end
 
     # The default error message will be look using the schema key.

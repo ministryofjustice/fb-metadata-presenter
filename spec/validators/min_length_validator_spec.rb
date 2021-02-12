@@ -1,8 +1,9 @@
 RSpec.describe MetadataPresenter::MinLengthValidator do
   subject(:validator) do
-    described_class.new(page: page, answers: answers, component: component)
+    described_class.new(page_answers: page_answers, component: component)
   end
   let(:component) { page.components.first }
+  let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
 
   describe '#valid?' do
     before do
@@ -29,7 +30,7 @@ RSpec.describe MetadataPresenter::MinLengthValidator do
         end
 
         it 'uses the default error message' do
-          expect(page.errors.full_messages).to eq(
+          expect(page_answers.errors.full_messages).to eq(
             ["Your answer for 'Full name' is too short (2 characters at least)"]
           )
         end
@@ -42,7 +43,7 @@ RSpec.describe MetadataPresenter::MinLengthValidator do
         end
 
         it 'uses the custom error message' do
-          expect(page.errors.full_messages).to eq(
+          expect(page_answers.errors.full_messages).to eq(
             ['Your email address is too short.']
           )
         end
@@ -54,7 +55,7 @@ RSpec.describe MetadataPresenter::MinLengthValidator do
       let(:page) { service.find_page_by_url('/name') }
 
       it 'returns no errors' do
-        expect(page.errors.full_messages).to eq([])
+        expect(page_answers.errors.full_messages).to eq([])
       end
     end
   end
