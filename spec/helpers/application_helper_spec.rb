@@ -7,7 +7,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
 
       it 'returns h1 wrapped in a legend' do
         expect(helper.main_h1(component)).to eq(
-          %{<legend class="govuk-fieldset__legend govuk-fieldset__legend--l"><h1 class="govuk-fieldset__heading">Luke Skywalker</h1></legend>}
+          %{<legend class="govuk-fieldset__legend govuk-fieldset__legend--l"><h1 class="govuk-heading-xl">Luke Skywalker</h1></legend>}
         )
       end
     end
