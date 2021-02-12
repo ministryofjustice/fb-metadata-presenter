@@ -3,7 +3,8 @@ module MetadataPresenter
     before_action :check_page_exists
 
     def create
-      if page.validate_answers(answers_params)
+      @page_answers = PageAnswers.new(page, answer_params)
+      if @page_answers.validate_answers
         save_user_data # method signature
         redirect_to_next_page
       else

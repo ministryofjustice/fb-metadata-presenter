@@ -1,10 +1,5 @@
 module MetadataPresenter
   class Page < MetadataPresenter::Metadata
-    include ActiveModel::Validations
-
-    def validate_answers(answers)
-      ValidateAnswers.new(page: self, answers: answers).valid?
-    end
 
     def uuid
       _uuid
