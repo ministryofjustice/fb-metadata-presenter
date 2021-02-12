@@ -58,10 +58,10 @@
       "_type": "page.singlequestion",
       "components": [
         {
-          "_id": "page.name--text.auto_name__1",
+          "_id": "name_text_1",
           "_type": "text",
           "label": "Full name",
-          "name": "full_name",
+          "name": "name_text_1",
           "validation": {
             "required": true,
             "max_length": 10,
@@ -79,7 +79,7 @@
       "heading": "Email address",
       "components": [
         {
-          "_id": "page.email-address--email.auto_name__2",
+          "_id": "email-address_email_1",
           "_type": "text",
           "errors": {
             "format": {},
@@ -94,7 +94,7 @@
             }
           },
           "label": "Your email address",
-          "name": "email_address",
+          "name": "email-address_email_1",
           "validation": {
             "required": true,
             "max_length": 30,
@@ -110,10 +110,10 @@
       "_type": "page.singlequestion",
       "components": [
         {
-          "_id": "page.parent-name--text.auto_name__3",
+          "_id": "parent-name_text_1",
           "_type": "text",
           "label": "Parent name",
-          "name": "parent_name",
+          "name": "parent-name_text_1",
           "validation": {
             "required": false,
             "max_length": 10,
@@ -132,9 +132,9 @@
       "heading":"Your age",
       "components": [
         {
-          "_id": "your_age_number_1",
+          "_id": "your-age_number_1",
           "hint": "Component hint",
-          "name": "your_age_number_1",
+          "name": "your-age_number_1",
           "_type": "number",
           "label": "Your age",
           "errors": {},
@@ -152,10 +152,10 @@
       "_type": "page.singlequestion",
       "components": [
         {
-          "_id": "page.family-hobbies--text.auto_name__3",
+          "_id": "family-hobbies_text_1",
           "_type": "textarea",
           "label": "Your family hobbies",
-          "name": "family_hobbies",
+          "name": "family-hobbies_text_1",
           "rows": 5,
           "validation": {
             "required": true
@@ -164,37 +164,6 @@
       ],
       "heading": "Family Hobbies",
       "url": "/family-hobbies"
-    },
-    {
-      "_uuid": "4251b25e-08de-4dcb-8f2f-dd9848dcdca6",
-      "_id": "page.radio-buttons",
-      "_type": "page.singlequestion",
-      "components": [
-        {
-          "_id": "radio-buttons_radios_1",
-          "_type": "radios",
-          "errors": {},
-          "hint": "Component hint",
-          "label": "Component label",
-          "items": [
-            {
-              "_id": "radio-buttons_radio_1",
-              "_type": "radio",
-              "label": "Yes",
-              "value": "radio_value_1"
-            },
-            {
-              "_id": "radio-buttons_radio_2",
-              "_type": "radio",
-              "label": "No",
-              "value": "radio_value_2"
-            }
-          ],
-          "name": "radio-buttons_radios_1"
-        }
-      ],
-      "heading": "Parent name",
-      "url": "/radio-buttons"
     },
     {
       "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",

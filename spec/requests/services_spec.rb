@@ -53,7 +53,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     context 'when valid' do
       before do
         post '/name',
-          params: { answers: { full_name: 'Mithrandir' } }
+          params: { answers: { name_text_1: 'Mithrandir' } }
       end
 
       it 'redirects to next page' do

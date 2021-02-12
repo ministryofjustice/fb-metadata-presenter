@@ -24,7 +24,7 @@ class MetadataPresenter::Metadata
     metadata.respond_to?(method_name)
   end
 
-  def method_missing(method, *args, &block)
-    metadata.send(method, *args, &block)
+  def method_missing(method_name, *args, &block)
+    metadata.send(method_name, *args, &block)
   end
 end

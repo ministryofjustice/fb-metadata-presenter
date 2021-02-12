@@ -1,13 +1,13 @@
 RSpec.describe MetadataPresenter::ValidateAnswers do
   subject(:validate_answers) do
-    described_class.new(page: page, answers: answers)
+    described_class.new(page_answers, components: page.components)
   end
+  let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
+  let(:page) { service.find_page_by_url('/name') }
 
   describe '#valid?' do
-    let(:page) { service.find_page_by_url('/name') }
-
     context 'when is valid' do
-      let(:answers) { { 'full_name' => 'Gandalf' } }
+      let(:answers) { { 'name_text_1' => 'Gandalf' } }
 
       it 'returns true' do
         expect(validate_answers).to be_valid
@@ -18,7 +18,7 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
       let(:page) { service.find_page_by_url('/parent-name') }
 
       context 'when no answer is provided' do
-        let(:answers) { { 'parent_name' => '' } }
+        let(:answers) { { 'parent-name_text_1' => '' } }
 
         it 'does not attempt any validations' do
           expect_any_instance_of(MetadataPresenter::RequiredValidator).not_to receive(:invalid_answer?)
@@ -29,7 +29,7 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
       end
 
       context 'when an answer is provided' do
-        let(:answers) { { 'parent_name' => 'Grogu' } }
+        let(:answers) { { 'parent-name_text_1' => 'Grogu' } }
 
         it 'should validate the answer' do
           expect_any_instance_of(MetadataPresenter::RequiredValidator).not_to receive(:invalid_answer?)
@@ -41,7 +41,7 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
     end
 
     context 'when is invalid' do
-      let(:answers) { { 'full_name' => '' } }
+      let(:answers) { { 'name_text_1' => '' } }
 
       it 'returns false' do
         expect(validate_answers).to be_invalid
@@ -52,7 +52,11 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
       let(:answers) { {} }
 
       before do
-        [MetadataPresenter::RequiredValidator, MetadataPresenter::MinLengthValidator, MetadataPresenter::MaxLengthValidator].each do |klass|
+        [
+          MetadataPresenter::RequiredValidator,
+          MetadataPresenter::MinLengthValidator,
+          MetadataPresenter::MaxLengthValidator
+        ].each do |klass|
           expect_any_instance_of(klass).to receive(:valid?).and_return(valid)
         end
       end

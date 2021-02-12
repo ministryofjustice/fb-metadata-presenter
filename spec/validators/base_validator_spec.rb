@@ -1,10 +1,11 @@
 RSpec.describe MetadataPresenter::BaseValidator do
   subject(:validator) do
-    described_class.new(page: page, answers: answers, component: component)
+    described_class.new(page_answers: page_answers, component: component)
   end
   let(:page) { service.find_page_by_url('/name') }
   let(:answers) { {} }
   let(:component) { page.components.first }
+  let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
 
   describe '#default_error_message' do
     it 'raises no default message error' do

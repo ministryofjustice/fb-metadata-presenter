@@ -1,7 +1,7 @@
 <div class="fb-main-grid-wrapper" data-block-id="<%= @page.id %>" data-block-type="page" data-block-pagetype="<%= @page.type %>">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <%= form_for @page, as: :answers, url: @page.url, method: :post do |f| %>
+      <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
         <%= f.govuk_error_summary %>
         <% @page.components.each do |component| %>
           <%= render partial: component, locals: {
