@@ -51,6 +51,44 @@ RSpec.describe MetadataPresenter::RequiredValidator do
           expect(page_answers.errors.full_messages).to eq([])
         end
       end
+
+      context 'when date field' do
+        let(:page) { service.find_page_by_url('/holiday') }
+        let(:answers) do
+          {
+            'holiday_date_1(3i)' => day,
+            'holiday_date_1(2i)' => month,
+            'holiday_date_1(1i)' => year
+          }
+        end
+
+        context 'when date is nil' do
+          let(:day) { nil }
+          let(:month) { '10' }
+          let(:year) { '2020' }
+
+          it 'returns invalid' do
+            expect(validator).to_not be_valid
+          end
+
+          it 'returns errors' do
+            validator.valid?
+            expect(page_answers.errors[:holiday_date_1]).to include(
+              "Enter an answer for What is the day that you like to take holidays?"
+            )
+          end
+        end
+
+        context 'when date is present' do
+          let(:day) { '1' }
+          let(:month) { '10' }
+          let(:year) { '2020' }
+
+          it 'returns valid' do
+            expect(validator).to be_valid
+          end
+        end
+      end
     end
   end
 end

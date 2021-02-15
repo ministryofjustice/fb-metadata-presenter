@@ -17,11 +17,33 @@ module MetadataPresenter
     end
 
     def respond_to_missing?(method_name, include_private = false)
-      answers[method_name.to_s].present?
+      method_name.to_s.in?(components.map(&:id))
     end
 
     def method_missing(method_name, *args, &block)
-      answers[method_name.to_s]
+      component = components.find { |component| component.id == method_name.to_s }
+
+      if component && component.type == 'date'
+        date_answer(component.id)
+      else
+        answers[method_name.to_s]
+      end
+    end
+
+    def date_answer(component_id)
+      date = raw_date_answer(component_id)
+
+      MetadataPresenter::DateField.new(day: date[0], month: date[1], year: date[2])
+    end
+
+    def raw_date_answer(component_id)
+      [
+        GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:day],
+        GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:month],
+        GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:year]
+      ].map do |segment|
+        answers["#{component_id.to_s}(#{segment})"]
+      end
     end
 
     private

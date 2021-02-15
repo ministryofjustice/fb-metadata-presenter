@@ -1,0 +1,12 @@
+{
+  "_id": "component.date",
+  "_type": "date",
+  "errors": {},
+  "hint": "Component hint",
+  "legend": "Component legend",
+  "name": "component-name",
+  "date_type": "day-month-year",
+  "validation": {
+    "date": true
+  }
+}

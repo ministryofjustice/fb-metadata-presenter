@@ -38,7 +38,7 @@ module MetadataPresenter
     end
 
     def valid?
-      return true if user_answer.blank? && allow_blank?
+      return true if allow_blank?
 
       if invalid_answer?
         error_message = custom_error_message || default_error_message
@@ -127,7 +127,7 @@ module MetadataPresenter
     # @return [TrueClass]
     #
     def allow_blank?
-      true unless self.class.name.demodulize.include?('RequiredValidator')
+      user_answer.blank? && !self.class.name.demodulize.include?('RequiredValidator')
     end
   end
 end

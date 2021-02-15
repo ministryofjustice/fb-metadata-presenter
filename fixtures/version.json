@@ -202,6 +202,28 @@
       "url": "/do-you-like-star-wars"
     },
     {
+      "_id": "page.holiday",
+      "url": "holiday",
+      "_type":"page.singlequestion",
+      "_uuid":"ff4557b2-486b-481e-9eef-f315718639e8",
+      "heading":"Question",
+      "components": [
+        {
+          "_id": "holiday_date_1",
+          "hint": "Component hint",
+          "name": "holiday_date_1",
+          "_type": "date",
+          "legend": "What is the day that you like to take holidays?",
+          "errors": {},
+          "date_type": "day-month-year",
+          "validation": {
+            "date": true,
+            "required": true
+          }
+        }
+      ]
+    },
+    {
       "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",
       "_id": "page._check-answers",
       "_type": "page.checkanswers",

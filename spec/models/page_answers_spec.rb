@@ -52,20 +52,39 @@ RSpec.describe MetadataPresenter::PageAnswers do
     end
   end
 
-  describe '#respond_to' do
+  describe '#respond_to?' do
     context 'when there are answers' do
-      let(:answers) { { 'name_text_1' => 'Mando' } }
+      context 'when answers contain dates' do
+        let(:answers) { { 'name_text_1' => 'Mando' } }
 
-      it 'returns the value of the answer' do
-        expect(page_answers.respond_to?(:name_text_1)).to be_truthy
+        it 'returns true' do
+          expect(page_answers.respond_to?(:name_text_1)).to be_truthy
+        end
+      end
+
+      context 'when answers contain other components' do
+        let(:page) { service.find_page_by_url('holiday') }
+        let(:answers) { { 'holiday_date_1(3i)' => '2020' } }
+
+        it 'returns true' do
+          expect(page_answers.respond_to?(:holiday_date_1)).to be_truthy
+        end
       end
     end
 
     context 'when there are no answers' do
       let(:answers) { {} }
 
-      it 'returns nil' do
-        expect(page_answers.respond_to?(:name_text_1)).to be_falsey
+      it 'returns true' do
+        expect(page_answers.respond_to?(:name_text_1)).to be_truthy
+      end
+    end
+
+    context 'when id does not exist in page metadata' do
+      let(:answers) { {} }
+
+      it 'returns falsey' do
+        expect(page_answers.respond_to?(:omg_I_dont_exist)).to be_falsey
       end
     end
   end
