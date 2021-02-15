@@ -47,7 +47,7 @@ module MetadataPresenter
     end
 
     def textarea(value)
-      view.simple_format(value)
+      view.simple_format(value, {}, wrapper_tag: 'span')
     end
 
     def checkbox(value)

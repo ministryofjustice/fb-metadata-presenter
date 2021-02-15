@@ -63,7 +63,12 @@ module MetadataPresenter
     # @return [String] user answer for the specific component
     #
     def user_answer
-      page_answers.send(component.name)
+      value = page_answers.send(component.name)
+      if component.type == 'checkbox'
+        Array(value).reject(&:blank?)
+      else
+        value
+      end
     end
 
     # The default error message will be look using the schema key.
