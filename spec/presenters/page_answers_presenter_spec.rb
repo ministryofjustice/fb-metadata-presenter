@@ -32,7 +32,7 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
 
         it 'returns formatted value' do
           expect(presenter.answer).to eq(
-            %{<p>Play Star Wars\n<br />Watch Mandalorian</p>}
+            %{<span>Play Star Wars\n<br />Watch Mandalorian</span>}
           )
         end
       end

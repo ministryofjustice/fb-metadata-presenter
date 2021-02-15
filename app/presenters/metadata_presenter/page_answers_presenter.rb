@@ -37,7 +37,7 @@ module MetadataPresenter
           format: '%d %B %Y'
         )
       elsif component.type == 'textarea'
-        view.simple_format(value)
+        view.simple_format(value, {}, wrapper_tag: 'span')
       else
         value
       end
