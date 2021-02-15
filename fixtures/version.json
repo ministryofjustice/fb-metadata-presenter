@@ -236,21 +236,21 @@
           "legend": "What would you like on your burger?",
           "items": [
             {
-              "_id": "burgers_checkbox.1",
+              "_id": "burgers_checkbox_1",
               "_type": "checkbox",
               "label": "Beef, cheese, tomato",
               "hint": "Optional item hint",
               "value": "beef-cheese-tomato"
             },
             {
-              "_id": "burgers_checkbox.2",
+              "_id": "burgers_checkbox_2",
               "_type": "checkbox",
               "label": "Chicken, cheese, tomato",
               "hint": "Optional item hint",
               "value": "chicken-cheese-tomato"
             },
             {
-              "_id": "burgers_checkbox.3",
+              "_id": "burgers_checkbox_3",
               "_type": "checkbox",
               "label": "Mozzarella, cheddar, feta",
               "hint": "Optional item hint",
