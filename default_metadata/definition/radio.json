@@ -1,6 +1,7 @@
 {
   "_id": "definition.radio",
   "_type": "radio",
-  "label": "Required label",
+  "label": "Option",
+  "hint": "[Hint text (optional)]",
   "value": "radio-value"
 }
