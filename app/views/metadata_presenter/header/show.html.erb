@@ -26,7 +26,7 @@
     </div>
     <% if service.service_name.present? %>
       <div class="govuk-header__content">
-        <a href="/" class="govuk-header__link govuk-header__link--service-name">
+        <a href="<%= root_path %>" class="govuk-header__link govuk-header__link--service-name">
           <%= service.service_name %>
         </a>
     <% end %>
