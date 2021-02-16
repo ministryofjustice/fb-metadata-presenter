@@ -3,7 +3,22 @@
   "_type": "checkboxes",
   "errors": {},
   "hint": "[Hint text (optional)]",
-  "items": [],
+  "items": [
+    {
+      "_id": "component_checkbox_1",
+      "_type": "checkbox",
+      "label": "Option",
+      "hint": "[Hint text (optional)]",
+      "value": "value-1"
+    },
+    {
+      "_id": "component_checkbox_2",
+      "_type": "checkbox",
+      "label": "Option",
+      "hint": "[Hint text (optional)]",
+      "value": "value-2"
+    }
+  ],
   "name": "component-name",
   "legend": "Question"
 }
