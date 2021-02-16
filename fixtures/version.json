@@ -224,6 +224,49 @@
       ]
     },
     {
+      "_uuid": "7b748584-100e-4d81-a54a-5049190136cc",
+      "_id": "page.burgers",
+      "_type": "page.singlequestion",
+      "components": [
+        {
+          "_id": "burgers_checkboxes_1",
+          "_type": "checkboxes",
+          "errors": {},
+          "hint": "Select all that apply",
+          "legend": "What would you like on your burger?",
+          "items": [
+            {
+              "_id": "burgers_checkbox_1",
+              "_type": "checkbox",
+              "label": "Beef, cheese, tomato",
+              "hint": "Optional item hint",
+              "value": "beef-cheese-tomato"
+            },
+            {
+              "_id": "burgers_checkbox_2",
+              "_type": "checkbox",
+              "label": "Chicken, cheese, tomato",
+              "hint": "Optional item hint",
+              "value": "chicken-cheese-tomato"
+            },
+            {
+              "_id": "burgers_checkbox_3",
+              "_type": "checkbox",
+              "label": "Mozzarella, cheddar, feta",
+              "hint": "Optional item hint",
+              "value": "mozzarella-cheddar-feta"
+            }
+          ],
+          "name": "burgers_checkboxes_1",
+          "validation": {
+            "required": true
+          }
+        }
+      ],
+      "heading": "Checkboxes",
+      "url": "/burgers"
+    },
+    {
       "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",
       "_id": "page._check-answers",
       "_type": "page.checkanswers",

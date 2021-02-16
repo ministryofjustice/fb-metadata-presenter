@@ -30,17 +30,28 @@ module MetadataPresenter
       value = @page_answers.send(component.id)
 
       return '' if value.blank?
-
-      if component.type == 'date'
-        I18n.l(
-          Date.civil(value.year.to_i, value.month.to_i, value.day.to_i),
-          format: '%d %B %Y'
-        )
-      elsif component.type == 'textarea'
-        view.simple_format(value, {}, wrapper_tag: 'span')
+      if self.class.private_method_defined?(component.type.to_sym)
+        send(component.type.to_sym, value)
       else
         value
       end
+    end
+
+    private
+
+    def date(value)
+      I18n.l(
+        Date.civil(value.year.to_i, value.month.to_i, value.day.to_i),
+        format: '%d %B %Y'
+      )
+    end
+
+    def textarea(value)
+      view.simple_format(value, {}, wrapper_tag: 'span')
+    end
+
+    def checkboxes(value)
+      value.reject(&:blank?).join("<br>").html_safe
     end
   end
 end

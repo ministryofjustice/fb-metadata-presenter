@@ -73,6 +73,19 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
       end
     end
 
+    context 'when component is a checkbox' do
+      let(:page) { service.find_page_by_url('/burgers') }
+      context 'when there are two boxes checked' do
+        let(:answers) do
+          { component.id => ["Chicken, cheese, tomato", "Mozzarella, cheddar, feta"] }
+        end
+
+        it 'returns formatted answer' do
+          expect(presenter.answer).to eq("Chicken, cheese, tomato<br>Mozzarella, cheddar, feta")
+        end
+      end
+    end
+
     context 'when component is normal formatting' do
       let(:page) { service.find_page_by_url('/name') }
       let(:answers) { { component.id => 'Mando' } }

@@ -52,6 +52,15 @@ RSpec.describe MetadataPresenter::RequiredValidator do
         end
       end
 
+      context 'when checkbox' do
+        let(:page) { service.find_page_by_url('/burgers') }
+        let(:answers) { { 'burgers_checkbox_1' => [""] } }
+
+        it 'returns invalid' do
+          expect(validator).to_not be_valid
+        end
+      end
+
       context 'when date field' do
         let(:page) { service.find_page_by_url('/holiday') }
         let(:answers) do

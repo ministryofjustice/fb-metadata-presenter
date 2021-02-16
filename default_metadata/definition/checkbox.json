@@ -1,0 +1,7 @@
+{
+	"_id": "definition.checkbox",
+	"_type": "checkbox",
+	"label": "Option",
+	"hint": "[Hint text (optional)]",
+	"value": "checkbox-value"
+}
