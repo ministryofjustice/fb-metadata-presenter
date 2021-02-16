@@ -50,7 +50,7 @@ module MetadataPresenter
       view.simple_format(value, {}, wrapper_tag: 'span')
     end
 
-    def checkbox(value)
+    def checkboxes(value)
       value.reject(&:blank?).join("<br>").html_safe
     end
   end

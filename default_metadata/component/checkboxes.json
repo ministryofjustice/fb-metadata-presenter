@@ -1,0 +1,9 @@
+{
+  "_id": "component.checkboxes",
+  "_type": "checkboxes",
+  "errors": {},
+  "hint": "[Hint text (optional)]",
+  "items": [],
+  "name": "component-name",
+  "legend": "Question"
+}

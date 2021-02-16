@@ -229,8 +229,8 @@
       "_type": "page.singlequestion",
       "components": [
         {
-          "_id": "burgers_checkbox_1",
-          "_type": "checkbox",
+          "_id": "burgers_checkboxes_1",
+          "_type": "checkboxes",
           "errors": {},
           "hint": "Select all that apply",
           "legend": "What would you like on your burger?",
@@ -257,7 +257,7 @@
               "value": "mozzarella-cheddar-feta"
             }
           ],
-          "name": "burgers_checkbox_1",
+          "name": "burgers_checkboxes_1",
           "validation": {
             "required": true
           }

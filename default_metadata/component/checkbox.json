@@ -1,9 +1,0 @@
-{
-  "_id": "component.checkbox",
-  "_type": "checkbox",
-  "errors": {},
-  "hint": "Component hint",
-  "items": [],
-  "name": "component-name",
-  "legend": "Required legend"
-}

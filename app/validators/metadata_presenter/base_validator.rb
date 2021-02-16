@@ -64,7 +64,7 @@ module MetadataPresenter
     #
     def user_answer
       value = page_answers.send(component.name)
-      if component.type == 'checkbox'
+      if component.type == 'checkboxes'
         Array(value).reject(&:blank?)
       else
         value
