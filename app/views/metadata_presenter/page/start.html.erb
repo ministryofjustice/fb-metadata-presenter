@@ -1,28 +1,36 @@
-<div class="fb-main-grid-wrapper" data-block-id="<%= @page.id %>" data-block-type="page" data-block-pagetype="<%= @page.type %>">
+<div class="fb-main-grid-wrapper" data-fb-pagetype="<%= @page.type %>">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <% if @page.section_heading -%>
-        <p class="govuk-caption-l fb-section_heading" data-block-id="<%= @page.id %>" data-block-property="section_heading">
+        <p class="fb-editable govuk-caption-l fb-section_heading"
+           data-fb-content-type="element"
+           data-fb-content-id="page[section_heading]">
           <%= @page.section_heading.html_safe %>
         </p>
       <%- end %>
 
       <% if @page.heading %>
-        <h1 class="<%= @page.heading_class %>" data-block-id="<%= @page.id %>" data-block-property="heading">
+        <h1 class="fb-editable <%= @page.heading_class %>"
+            data-fb-content-id="page[heading]"
+            data-fb-content-type="element">
           <%= @page.heading.html_safe %>
         </h1>
       <% end %>
 
       <% if @page.lede %>
-        <p class="govuk-body-l" data-block-id="<%= @page.id %>" data-block-property="lede">
+        <div class="fb-editable"
+             data-fb-content-id="page[lede]"
+             data-fb-content-type="content">
           <%= @page.lede.html_safe %>
-        </p>
+        </div>
       <%- end %>
 
       <% if @page.body %>
-        <p class="govuk-body-l" data-block-id="<%= @page.id %>" data-block-property="lede">
-        <%= to_markdown(@page.body) %>
-        </p>
+        <div class="fb-editable"
+             data-fb-content-id="page[body]"
+             data-fb-content-type="content">
+          <%= to_markdown(@page.body) %>
+        </div>
       <%- end %>
 
       <%= form_tag(root_path, method: :post) do %>
@@ -35,9 +43,11 @@
       <% end %>
 
       <% if @page.before_you_start %>
-        <p class="govuk-body-l" data-block-id="<%= @page.id %>" data-block-property="before-you-start">
-        <%= to_markdown(@page.before_you_start) %>
-        </p>
+        <div class="fb-editable"
+             data-fb-content-id="page[before_you_start]"
+             data-fb-content-type="content">
+          <%= to_markdown(@page.before_you_start) %>
+        </div>
       <%- end %>
     </div>
   </div>
