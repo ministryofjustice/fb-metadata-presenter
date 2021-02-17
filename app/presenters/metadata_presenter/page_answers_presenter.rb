@@ -51,7 +51,7 @@ module MetadataPresenter
     end
 
     def checkboxes(value)
-      value.reject(&:blank?).join("<br>").html_safe
+      value.join("<br>").html_safe
     end
   end
 end
