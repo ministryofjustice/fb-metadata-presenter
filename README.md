@@ -48,6 +48,7 @@ that you need to write the following methods in your controller:
 1. save_user_data
 2. load_user_data
 3. editable?
+4. create_submission
 
 The user answers can be accessed via `params[:answers]`.
 
@@ -75,6 +76,9 @@ mountable app:
     helper_method :editable?
   end
 ```
+
+The `create_submission` is related to process the submission in a backend
+service.
 
 ## Generate documentation
 
