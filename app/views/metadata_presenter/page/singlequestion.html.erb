@@ -3,9 +3,10 @@
     <div class="govuk-grid-column-two-thirds">
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
         <%= f.govuk_error_summary %>
-        <% @page.components.each do |component| %>
+        <% @page.components.each_with_index do |component, index| %>
           <%= render partial: component, locals: {
             component: component,
+            component_id: "page[components[#{index}]]",
             f: f,
             input_title: main_h1(component) }
           %>
