@@ -1,7 +1,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <% if @page.section_heading.present? %>
-      <p class="govuk-caption-l fb-section-heading"
+      <p class="fb-section-heading fb-editable govuk-caption-l"
          data-fb-content-type="element"
          data-fb-content-id="page[section_heading]">
         <%= @page.section_heading %>
@@ -9,7 +9,7 @@
     <% end %>
 
     <% if @page.heading.present? %>
-      <h1 class="fb-editable fb-editable govuk-heading-xl"
+      <h1 class="fb-editable govuk-heading-xl"
           data-fb-content-type="element"
           data-fb-content-id="page[heading]">
         <%= @page.heading %>
@@ -25,10 +25,10 @@
     <% end %>
 
     <% if @page.body.present? %>
-      <div class="fb-editable fb-body govuk-prose-scope"
+      <div class="fb-body fb-editable govuk-prose-scope"
            data-fb-content-type="content"
            data-fb-content-id="page[body]">
-        <p><%= @page.body %></p>
+        <%= @page.body %>
       </div>
     <% end %>
 
@@ -59,7 +59,7 @@
       </div>
 
       <% if @page.send_heading.present? %>
-        <h2 class="fb-editable fb-send-heading govuk-heading-m"
+        <h2 class="fb-send-heading fb-editable govuk-heading-m"
             data-fb-content-type="element"
             data-fb-content-id="page[send_heading]">
           <%= @page.send_heading %>
@@ -67,7 +67,7 @@
       <% end %>
 
       <% if @page.send_body.present? %>
-        <div class="fb-editable fb-send-body"
+        <div class="fb-send-body fb-editable"
              data-fb-content-type="content"
              data-fb-content-id="page[send_body]">
           <%= @page.send_body %>

@@ -1,19 +1,25 @@
 <div class="govuk-panel govuk-panel--confirmation" data-block-id="<%= @page.id %>" data-block-property="heading" data-block-property-class="govuk-panel__body:lede">
-  <h1 class="govuk-panel__title">
+  <h1 class="fb-editable govuk-panel__title"
+      data-fb-content-type="element"
+      data-fb-content-id="page[heading]">
     <%= @page.heading %>
   </h1>
 
   <% if @page.lede %>
-    <div class="govuk-panel__body">
-      <p><%= @page.lede %></p>
-    </div>
+    <p class="fb-editable govuk-panel__body"
+       data-fb-content-type="element"
+       data-fb-content-id="page[lede]">
+      <%= @page.lede %>
+    </p>
   <% end %>
 </div>
 
 <% if @page.body %>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <div class="fb-body govuk-prose-scope" data-block-id="<%= @page.id %>" data-block-property="body">
+      <div class="fb-editable fb-body govuk-prose-scope"
+           data-fb-content-type="content"
+           data-fb-content-id="page[body]">
         <%= @page.body %>
       </div>
     </div>
