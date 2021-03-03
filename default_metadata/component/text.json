@@ -2,8 +2,8 @@
   "_id": "component.text",
   "_type": "text",
   "errors": {},
-  "hint": "Component hint F",
-  "label": "Component label",
+  "label": "Question",
+  "hint": "Hint (optional)",
   "name": "component-name",
   "validation": {
     "required": true
