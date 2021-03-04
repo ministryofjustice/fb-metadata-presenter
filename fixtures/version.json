@@ -267,6 +267,59 @@
       "url": "/burgers"
     },
     {
+      "_uuid": "9403b67a-19b5-4422-a91d-0774537e4c96",
+      "_id": "page.star-wars-knowledge",
+      "_type": "page.multiplequestions",
+      "components": [
+        {
+          "_id": "star-wars-knowledge_text_1",
+          "_type": "text",
+          "label": "What was the name of the band playing in Jabba's palace?",
+          "name": "star-wars-knowledge_text_1",
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "_id": "star-wars-knowledge_radios_1",
+          "_type": "radios",
+          "errors": {},
+          "hint": "Component hint",
+          "legend": "What is The Mandalorian's real name?",
+          "items": [
+            {
+              "_id": "star-wars-knowledge_radio_1",
+              "_type": "radio",
+              "label": "Harry Potter",
+              "hint": "Optional item hint",
+              "value": "harry-potter"
+            },
+            {
+              "_id": "star-wars-knowledge_radio_2",
+              "_type": "radio",
+              "label": "Din Jarrin",
+              "hint": "Optional item hint",
+              "value": "din-jarrin"
+            },
+            {
+              "_id": "star-wars-knowledge_radio_3",
+              "_type": "radio",
+              "label": "Tony Stark",
+              "hint": "Optional item hint",
+              "value": "tony-stark"
+            }
+          ],
+          "name": "star-wars-knowledge_radios_1",
+          "validation": {
+            "required": true
+          }
+        }
+      ],
+      "heading": "How well do you know Star Wars?",
+      "section_heading": "That's no moon",
+      "url": "/star-wars-knowledge"
+    },
+    {
       "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",
       "_id": "page._check-answers",
       "_type": "page.checkanswers",

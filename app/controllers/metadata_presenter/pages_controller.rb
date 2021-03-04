@@ -12,13 +12,13 @@ module MetadataPresenter
       end
     end
 
-    def page_answers_presenters
+    def pages_presenters
       PageAnswersPresenter.map(
         view: view_context,
         pages: service.pages,
         answers: @user_data
       )
     end
-    helper_method :page_answers_presenters
+    helper_method :pages_presenters
   end
 end

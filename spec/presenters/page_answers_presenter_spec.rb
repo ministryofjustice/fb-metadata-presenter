@@ -13,11 +13,18 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
 
   describe '.map' do
     let(:answers) { {} }
+    let(:page_answers) do
+      described_class.map(view: view, pages: pages, answers: answers)
+    end
 
-    it 'returns instance of page answers' do
-      expect(
-        described_class.map(view: view, pages: pages, answers: answers).collect(&:url)
-      ).to include('/name')
+    it 'returns a collection of page answers presenters' do
+      expect(page_answers.flatten).to all(be_a(MetadataPresenter::PageAnswersPresenter))
+    end
+
+    it 'groups page answer presenters by page' do
+      page_answers.each do |page|
+        page.map(&:page).collect(&:id).uniq.length == 1
+      end
     end
   end
 
