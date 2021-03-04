@@ -7,7 +7,7 @@ RSpec.describe MetadataPresenter::PagesController do
 
     it 'maps the answers' do
       expect(MetadataPresenter::PageAnswersPresenter).to receive(:map)
-      controller.page_answers_presenters
+      controller.pages_presenters
     end
   end
 end

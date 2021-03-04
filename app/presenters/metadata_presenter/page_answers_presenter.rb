@@ -1,5 +1,7 @@
 module MetadataPresenter
   class PageAnswersPresenter
+    FIRST_ANSWER = 0.freeze
+
     def self.map(view:, pages:, answers:)
       pages.map do |page|
         Array(page.components).map do |component|
@@ -10,7 +12,7 @@ module MetadataPresenter
             answers: answers
           )
         end
-      end.flatten
+      end.reject { |page| page.empty? }
     end
 
     attr_reader :view, :component, :page, :answers
@@ -35,6 +37,10 @@ module MetadataPresenter
       else
         value
       end
+    end
+
+    def display_heading?(index)
+      page.type == 'page.multiplequestions' && index == FIRST_ANSWER
     end
 
     private

@@ -1,0 +1,33 @@
+<div class="fb-main-grid-wrapper" data-block-id="<%= @page.id %>" data-block-type="page" data-block-pagetype="<%= @page.type %>">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <% if @page.section_heading %>
+        <p class="fb-editable govuk-caption-l fb-section_heading"
+           data-fb-content-type="element"
+           data-fb-content-id="page[section_heading]">
+          <%= @page.section_heading.html_safe %>
+        </p>
+      <%- end %>
+
+      <h1 class="govuk-heading-xl"><%= @page.heading %></h1>
+
+      <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
+        <%= f.govuk_error_summary %>
+        <% @page.components.each_with_index do |component, index| %>
+          <%= render partial: component, locals: {
+            component: component,
+            component_id: "page[components[#{index}]]",
+            f: f,
+            input_title: main_title(
+              component: component,
+              tag: :h2,
+              classes: 'govuk-heading-m govuk-!-margin-top-8'
+            ) }
+          %>
+        <% end %>
+
+        <%= f.govuk_submit(disabled: editable?) %>
+      <% end %>
+    </div>
+  </div>
+</div>
