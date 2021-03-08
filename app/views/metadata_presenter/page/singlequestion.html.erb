@@ -3,13 +3,18 @@
     <div class="govuk-grid-column-two-thirds">
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
         <%= f.govuk_error_summary %>
+
         <% @page.components.each_with_index do |component, index| %>
-          <%= render partial: component, locals: {
-            component: component,
-            component_id: "page[components[#{index}]]",
-            f: f,
-            input_title: main_title(component: component) }
-          %>
+          <div class="fb-editable"
+               data-fb-content-type="<%= component._type %>"
+               data-fb-content-id="<%= "page[components[#{index}]]" %>"
+               data-fb-content-data="<%= component.to_json %>">
+            <%= render partial: component, locals: {
+              component: component,
+              f: f,
+              input_title: main_h1(component) }
+            %>
+          </div>
         <% end %>
 
         <%= f.govuk_submit(disabled: editable?) %>

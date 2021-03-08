@@ -1,8 +1,6 @@
-<div class="fb-editable" data-fb-content-type="<%= component._type %>" data-fb-content-id="<%= component_id %>" data-fb-content-data="<%= component.to_json %>">
-  <%=
-    f.govuk_text_field component.id.to_sym,
-      label: { text: input_title },
-      hint: { text: component.hint },
-      name: "answers[#{component.name}]"
-  %>
-</div>
+<%=
+  f.govuk_text_field component.id.to_sym,
+    label: { text: input_title },
+    hint: { text: component.hint },
+    name: "answers[#{component.name}]"
+%>
