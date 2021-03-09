@@ -1,8 +1,8 @@
 {
   "_id": "page.multiplequestions",
   "_type": "page.multiplequestions",
-  "section_heading": "[Section heading (optional)]",
-  "heading": "Question",
+  "section_heading": "[Optional section heading]",
+  "heading": "Title",
   "components": [],
   "url": ""
 }

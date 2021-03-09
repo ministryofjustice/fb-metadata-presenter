@@ -2,8 +2,8 @@
   "_id": "component.date",
   "_type": "date",
   "errors": {},
-  "hint": "Component hint",
-  "legend": "Component legend",
+  "hint": "[Optional hint text]",
+  "legend": "Question",
   "name": "component-name",
   "date_type": "day-month-year",
   "validation": {
