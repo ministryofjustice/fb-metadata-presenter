@@ -2,8 +2,8 @@
   "_id": "component.number",
   "_type": "number",
   "errors": {},
-  "hint": "Component hint",
-  "label": "Component label",
+  "hint": "[Optional hint text]",
+  "label": "Question",
   "name": "component-name",
   "width_class_input": "10",
   "validation": {
