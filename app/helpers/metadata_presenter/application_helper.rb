@@ -2,10 +2,8 @@ module MetadataPresenter
   module ApplicationHelper
     def main_title(component:, tag: :h1, classes: 'govuk-heading-xl')
       if component.legend.present?
-        content_tag(:legend, class: 'govuk-fieldset__legend govuk-fieldset__legend--l') do
-          content_tag(tag, class: classes) do
-            component.legend
-          end
+        content_tag(:h1, class: 'govuk-heading-xl') do
+          component.legend
         end
       else
         content_tag(tag, class: classes) do
