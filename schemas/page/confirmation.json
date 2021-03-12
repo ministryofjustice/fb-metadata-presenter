@@ -22,11 +22,8 @@
     }
   },
   "required": [
-    "_id",
-    "_type",
     "heading"
   ],
-  "additionalProperties": false,
   "allOf": [
     {
       "$ref": "definition.page.content"

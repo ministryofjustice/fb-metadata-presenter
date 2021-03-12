@@ -48,13 +48,10 @@
     }
   },
   "required": [
-    "_id",
-    "_type",
     "heading",
     "send_heading",
     "send_body"
   ],
-  "additionalProperties": false,
   "allOf": [
     {
       "$ref": "definition.page.form"

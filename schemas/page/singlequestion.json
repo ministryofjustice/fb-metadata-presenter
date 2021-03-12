@@ -21,6 +21,7 @@
     }
   ],
   "required": [
+    "heading",
     "components"
   ],
   "surplus_properties": [
