@@ -320,6 +320,16 @@
       "url": "/star-wars-knowledge"
     },
     {
+      "_uuid": "1ed3e4ad-5098-41c9-b4b6-426e89f7804e",
+      "_id": "page.how-many-lights",
+      "_type": "page.content",
+      "section_heading": "Chain of Command",
+      "heading": "Tell me how many lights you see",
+      "body": "There are four lights!",
+      "components": [],
+      "url": "how-many-lights"
+    },
+    {
       "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",
       "_id": "page._check-answers",
       "_type": "page.checkanswers",
