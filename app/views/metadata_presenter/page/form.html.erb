@@ -2,7 +2,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <% if @page.body %>
-        <p class="govuk-body-l" data-block-id="<%= @page.id %>" data-block-property="lede">
+        <p class="govuk-body-l" data-block-id="<%= @page.id %>" data-block-property="body">
         <%= to_markdown(@page.body) %>
         </p>
       <%- end %>
