@@ -14,13 +14,7 @@
 
       <%= render 'metadata_presenter/attribute/lede' %>
 
-      <% if @page.body %>
-        <div class="fb-editable"
-             data-fb-content-id="page[body]"
-             data-fb-content-type="content">
-          <%= to_markdown(@page.body) %>
-        </div>
-      <%- end %>
+      <%= render 'metadata_presenter/attribute/body' %>
 
       <%= form_tag(root_path, method: :post) do %>
         <button <%= 'disabled' if editable? %> class='govuk-button govuk-button--start govuk-!-margin-top-2'>
