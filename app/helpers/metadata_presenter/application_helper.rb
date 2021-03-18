@@ -21,5 +21,9 @@ module MetadataPresenter
       (Kramdown::Document.new(text).to_html).html_safe
     end
     alias to_markdown m
+
+    def default_text(property)
+      MetadataPresenter::DefaultText[property]
+    end
   end
 end
