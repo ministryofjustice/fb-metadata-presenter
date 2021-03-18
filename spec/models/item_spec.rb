@@ -1,10 +1,18 @@
 RSpec.describe MetadataPresenter::Item do
   subject(:item) { described_class.new(metadata) }
 
+  describe '#id' do
+    let(:metadata) { { 'label' => 'Some label' } }
+
+    it 'returns label' do
+      expect(item.id).to eq('Some label')
+    end
+  end
+
   describe '#name' do
     let(:metadata) { { 'label' => 'Some label' } }
 
-    it 'returns hint' do
+    it 'returns label' do
       expect(item.name).to eq('Some label')
     end
   end
