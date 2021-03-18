@@ -12,13 +12,7 @@
         </h1>
       <% end %>
 
-      <% if @page.lede %>
-        <div class="fb-editable"
-             data-fb-content-id="page[lede]"
-             data-fb-content-type="element">
-          <%= @page.lede %>
-        </div>
-      <%- end %>
+      <%= render 'metadata_presenter/attribute/lede' %>
 
       <% if @page.body %>
         <div class="fb-editable"

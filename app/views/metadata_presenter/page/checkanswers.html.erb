@@ -11,13 +11,7 @@
       </h1>
     <% end %>
 
-    <% if @page.lede.present? %>
-      <p class="fb-editable govuk-body-l"
-         data-fb-content-type="element"
-         data-fb-content-id="page[lede]">
-        <%= @page.lede %>
-      </p>
-    <% end %>
+    <%= render partial: 'metadata_presenter/attribute/lede' %>
 
     <% if @page.body.present? %>
       <div class="fb-body fb-editable govuk-prose-scope"

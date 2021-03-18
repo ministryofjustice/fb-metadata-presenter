@@ -2,7 +2,7 @@
   "_id": "page.singlequestion",
   "_type": "page.singlequestion",
   "heading": "Question",
-  "lede": "This is the lede",
+  "lede": "",
   "body": "Body section",
   "components": [],
   "url": ""

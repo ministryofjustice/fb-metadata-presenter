@@ -5,13 +5,7 @@
     <%= @page.heading %>
   </h1>
 
-  <% if @page.lede %>
-    <p class="fb-editable govuk-panel__body"
-       data-fb-content-type="element"
-       data-fb-content-id="page[lede]">
-      <%= @page.lede %>
-    </p>
-  <% end %>
+  <%= render 'metadata_presenter/attribute/lede' %>
 </div>
 
 <% if @page.body %>
