@@ -9,11 +9,7 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
 
   def items
     metadata.items.map do |item|
-      OpenStruct.new(
-        id: item['label'],
-        name: item['label'],
-        description: item['hint']
-      )
+      MetadataPresenter::Item.new(item, editor: editor?)
     end
   end
 end

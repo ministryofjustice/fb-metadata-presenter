@@ -4,8 +4,9 @@ class MetadataPresenter::Metadata
 
   attr_reader :metadata
 
-  def initialize(metadata)
+  def initialize(metadata, editor: false)
     @metadata = OpenStruct.new(metadata)
+    @editor = editor
   end
 
   def to_json
@@ -25,6 +26,11 @@ class MetadataPresenter::Metadata
   end
 
   def method_missing(method_name, *args, &block)
-    metadata.send(method_name, *args, &block)
+    value = metadata.send(method_name, *args, &block)
+    value.blank? && editor? ? MetadataPresenter::DefaultText[method_name] : value
+  end
+
+  def editor?
+    @editor.present?
   end
 end

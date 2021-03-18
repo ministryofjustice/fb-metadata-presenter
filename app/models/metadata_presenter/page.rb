@@ -16,7 +16,7 @@ module MetadataPresenter
 
     def components
       metadata.components&.map do |component|
-        MetadataPresenter::Component.new(component)
+        MetadataPresenter::Component.new(component, editor: editor?)
       end
     end
 

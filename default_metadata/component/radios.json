@@ -2,20 +2,20 @@
   "_id": "component.radios",
   "_type": "radios",
   "errors": {},
-  "hint": "[Optional hint text]",
+  "hint": "",
   "items": [
     {
       "_id": "component_radio_1",
       "_type": "radio",
       "label": "Option",
-      "hint": "[Optional hint text]",
+      "hint": "",
       "value": "value-1"
     },
     {
       "_id": "component_radio_2",
       "_type": "radio",
       "label": "Option",
-      "hint": "[Optional hint text]",
+      "hint": "",
       "value": "value-2"
     }
   ],

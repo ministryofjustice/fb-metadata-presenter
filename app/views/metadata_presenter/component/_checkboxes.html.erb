@@ -5,6 +5,9 @@
     :name,
     :description,
     legend: { text: input_title },
-    hint: { text: component.hint },
+    hint: {
+      data: { "fb-default-text" => default_text('hint') },
+      text: component.hint
+    },
     include_hidden: false
 %>

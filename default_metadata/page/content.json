@@ -1,9 +1,9 @@
 {
   "_id": "page.content",
   "_type": "page.content",
-  "section_heading": "[Optional section heading]",
+  "section_heading": "",
   "heading": "Title",
-  "lede": "[Optional lede paragraph]",
+  "lede": "",
   "body": "[Optional content]",
   "components": [],
   "url": ""

@@ -1,6 +1,8 @@
 class MetadataPresenter::Service < MetadataPresenter::Metadata
   def pages
-    @_pages ||= metadata.pages.map { |page| MetadataPresenter::Page.new(page) }
+    @_pages ||= metadata.pages.map do |page|
+      MetadataPresenter::Page.new(page, editor: editor?)
+    end
   end
 
   def start_page

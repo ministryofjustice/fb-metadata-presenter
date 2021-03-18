@@ -1,13 +1,8 @@
 <div class="fb-main-grid-wrapper" data-fb-pagetype="<%= @page.type %>">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <% if @page.section_heading -%>
-        <p class="fb-editable govuk-caption-l fb-section_heading"
-           data-fb-content-type="element"
-           data-fb-content-id="page[section_heading]">
-          <%= @page.section_heading %>
-        </p>
-      <%- end %>
+
+      <%= render 'metadata_presenter/attribute/section_heading' %>
 
       <% if @page.heading %>
         <h1 class="fb-editable govuk-heading-xl"
@@ -17,21 +12,9 @@
         </h1>
       <% end %>
 
-      <% if @page.lede %>
-        <div class="fb-editable govuk-body-l"
-             data-fb-content-id="page[lede]"
-             data-fb-content-type="element">
-          <%= @page.lede %>
-        </div>
-      <%- end %>
+      <%= render 'metadata_presenter/attribute/lede' %>
 
-      <% if @page.body %>
-        <div class="fb-editable"
-             data-fb-content-id="page[body]"
-             data-fb-content-type="content">
-          <%= to_markdown(@page.body) %>
-        </div>
-      <%- end %>
+      <%= render 'metadata_presenter/attribute/body' %>
 
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
         <%= f.govuk_error_summary %>

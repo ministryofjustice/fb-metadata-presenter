@@ -2,7 +2,7 @@
   "_id": "component.date",
   "_type": "date",
   "errors": {},
-  "hint": "[Optional hint text]",
+  "hint": "",
   "legend": "Question",
   "name": "component-name",
   "date_type": "day-month-year",

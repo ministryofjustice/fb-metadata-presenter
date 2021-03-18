@@ -1,12 +1,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <% if @page.section_heading.present? %>
-      <p class="fb-section-heading fb-editable govuk-caption-l"
-         data-fb-content-type="element"
-         data-fb-content-id="page[section_heading]">
-        <%= @page.section_heading %>
-      </p>
-    <% end %>
+
+    <%= render partial: 'metadata_presenter/attribute/section_heading' %>
 
     <% if @page.heading.present? %>
       <h1 class="fb-editable govuk-heading-xl"
@@ -16,21 +11,9 @@
       </h1>
     <% end %>
 
-    <% if @page.lede.present? %>
-      <p class="fb-editable govuk-body-l"
-         data-fb-content-type="element"
-         data-fb-content-id="page[lede]">
-        <%= @page.lede %>
-      </p>
-    <% end %>
+    <%= render 'metadata_presenter/attribute/lede' %>
 
-    <% if @page.body.present? %>
-      <div class="fb-body fb-editable govuk-prose-scope"
-           data-fb-content-type="content"
-           data-fb-content-id="page[body]">
-        <%= @page.body %>
-      </div>
-    <% end %>
+    <%= render 'metadata_presenter/attribute/body' %>
 
     <%= form_for @page, url: reserved_submissions_path do |f| %>
       <div data-block-id="page.checkanswers.answers" data-block-type="answers">
