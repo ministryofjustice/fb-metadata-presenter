@@ -2,7 +2,7 @@
   "_id": "component.number",
   "_type": "number",
   "errors": {},
-  "hint": "[Optional hint text]",
+  "hint": "",
   "label": "Question",
   "name": "component-name",
   "width_class_input": "10",
