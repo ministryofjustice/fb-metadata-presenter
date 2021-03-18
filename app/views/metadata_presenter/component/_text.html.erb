@@ -1,6 +1,9 @@
 <%=
   f.govuk_text_field component.id.to_sym,
     label: { text: input_title },
-    hint: { text: component.hint },
+    hint: {
+      data: { "fb-default-text" => default_text('hint') },
+      text: component.hint
+    },
     name: "answers[#{component.name}]"
 %>

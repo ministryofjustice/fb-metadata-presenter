@@ -3,7 +3,7 @@
   "_type": "text",
   "errors": {},
   "label": "Question",
-  "hint": "[Optional hint text]",
+  "hint": "",
   "name": "component-name",
   "validation": {
     "required": true
