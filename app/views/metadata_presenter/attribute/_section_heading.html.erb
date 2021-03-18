@@ -1,0 +1,8 @@
+<% if @page.section_heading %>
+  <p class="fb-editable govuk-caption-l fb-section_heading"
+      data-fb-content-type="element"
+      data-fb-content-id="page[section_heading]"
+      data-fb-default-text="<%= default_text('section_heading') %>">
+    <%= @page.section_heading %>
+  </p>
+<%- end %>

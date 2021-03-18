@@ -1,12 +1,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <% if @page.section_heading.present? %>
-      <p class="fb-section-heading fb-editable govuk-caption-l"
-         data-fb-content-type="element"
-         data-fb-content-id="page[section_heading]">
-        <%= @page.section_heading %>
-      </p>
-    <% end %>
+
+    <%= render partial: 'metadata_presenter/attribute/section_heading' %>
 
     <% if @page.heading.present? %>
       <h1 class="fb-editable govuk-heading-xl"
