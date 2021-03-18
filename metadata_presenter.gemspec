@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.license     = 'MIT'
 
   spec.files = Dir[
-    '{app,config,db,default_metadata,lib,fixtures,schemas}/**/*',
+    '{app,config,db,default_metadata,default_text,lib,fixtures,schemas}/**/*',
     'MIT-LICENSE',
     'Rakefile',
     'README.md'
