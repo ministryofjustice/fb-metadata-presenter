@@ -7,6 +7,7 @@
   "name": "component-name",
   "date_type": "day-month-year",
   "validation": {
+    "required": true,
     "date": true
   }
 }
