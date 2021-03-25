@@ -20,5 +20,8 @@
     }
   ],
   "name": "component-name",
-  "legend": "Question"
+  "legend": "Question",
+  "validation": {
+    "required": true
+  }
 }
