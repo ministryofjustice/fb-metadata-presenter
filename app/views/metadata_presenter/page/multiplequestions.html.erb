@@ -9,16 +9,23 @@
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
         <%= f.govuk_error_summary %>
         <% @page.components.each_with_index do |component, index| %>
-          <%= render partial: component, locals: {
-            component: component,
-            component_id: "page[components[#{index}]]",
-            f: f,
-            input_title: main_title(
+          <div class="fb-editable"
+               id="<%= component.id %>"
+               data-fb-content-type="<%= component.type %>"
+               data-fb-content-id="<%= "page[components[#{index}]]" %>"
+               data-fb-content-data="<%= component.to_json %>">
+
+            <%= render partial: component, locals: {
               component: component,
-              tag: :h2,
-              classes: 'govuk-heading-m govuk-!-margin-top-8'
-            ) }
-          %>
+              component_id: "page[components[#{index}]]",
+              f: f,
+              input_title: main_title(
+                component: component,
+                tag: :h2,
+                classes: 'govuk-heading-m govuk-!-margin-top-8'
+              ) }
+            %>
+          </div>
         <% end %>
 
         <%= f.govuk_submit(disabled: editable?) %>
