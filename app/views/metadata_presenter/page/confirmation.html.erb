@@ -13,3 +13,11 @@
     <%= render 'metadata_presenter/attribute/body' %>
   </div>
 </div>
+
+<%= render partial: 'metadata_presenter/component/components',
+           locals: {
+             f: nil,
+             components: @page.components,
+             tag: nil,
+             classes: nil
+           } %>

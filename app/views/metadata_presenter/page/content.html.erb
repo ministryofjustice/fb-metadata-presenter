@@ -17,20 +17,14 @@
       <%= render 'metadata_presenter/attribute/body' %>
 
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
-        <%= f.govuk_error_summary %>
 
-        <% @page.components.each_with_index do |component, index| %>
-          <div class="fb-editable"
-               data-fb-content-type="<%= component._type %>"
-               data-fb-content-id="<%= "page[components[#{index}]]" %>"
-               data-fb-content-data="<%= component.to_json %>">
-            <%= render partial: component, locals: {
-              component: component,
-              f: f,
-              input_title: main_title(component: component) }
-            %>
-          </div>
-        <% end %>
+        <%= render partial: 'metadata_presenter/component/components',
+                   locals: {
+                     f: f,
+                     components: @page.components,
+                     tag: nil,
+                     classes: nil
+                   } %>
 
         <%= f.govuk_submit(disabled: editable?) %>
       <% end %>

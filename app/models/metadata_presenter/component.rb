@@ -12,4 +12,8 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
       MetadataPresenter::Item.new(item, editor: editor?)
     end
   end
+
+  def content?
+    type == 'content'
+  end
 end
