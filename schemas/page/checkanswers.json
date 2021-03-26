@@ -45,6 +45,14 @@
       "content": true,
       "multiline": true,
       "default": "By submitting this application you confirm that, to the best of your knowledge, the details you are providing are correct."
+    },
+    "components": {
+      "title": "Components",
+      "description": "The form or content elements used on the page",
+      "type": "array",
+      "items": {
+        "$ref": "component.content"
+      }
     }
   },
   "required": [
