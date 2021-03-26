@@ -17,16 +17,6 @@
       "type": "string",
       "default": "Check your answers"
     },
-    "lede": {
-      "title": "Lede",
-      "type": "string",
-      "description": "Content before the body"
-    },
-    "body": {
-      "title": "Body",
-      "type": "string",
-      "description": "Optional content before showing the summary"
-    },
     "summary_of": {
       "title": "Summary of",
       "description": "Page/section that summary summarises"

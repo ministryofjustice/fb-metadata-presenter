@@ -11,10 +11,6 @@
       </h1>
     <% end %>
 
-    <%= render 'metadata_presenter/attribute/lede' %>
-
-    <%= render 'metadata_presenter/attribute/body' %>
-
     <%= form_for @page, url: reserved_submissions_path do |f| %>
       <div data-block-id="page.checkanswers.answers" data-block-type="answers">
         <dl class="fb-block fb-block-answers govuk-summary-list">
