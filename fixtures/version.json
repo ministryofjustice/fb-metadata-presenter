@@ -326,20 +326,31 @@
       "section_heading": "Chain of Command",
       "heading": "Tell me how many lights you see",
       "body": "There are four lights!",
-      "components": [],
+      "components": [
+        {
+          "_id": "how-many-lights_content_1",
+          "_type": "content",
+          "html": "What lights?"
+        }
+      ],
       "url": "how-many-lights"
     },
     {
       "_uuid": "e819d0c2-7062-4997-89cf-44d26d098404",
       "_id": "page._check-answers",
       "_type": "page.checkanswers",
-      "body": "Optional content",
       "heading": "Review your answer",
-      "lede": "First paragraph",
       "section_heading": "This section is optional",
       "send_body": "By submitting this answer you confirm all your answers",
       "send_heading": "Send your answer",
-      "url": "/check-answers"
+      "url": "/check-answers",
+      "components": [
+        {
+          "_id": "check-answers_content_1",
+          "_type": "content",
+          "html": "Check yourself before you wreck yourself."
+        }
+      ]
     },
     {
       "_uuid": "b238a22f-c180-48d0-a7d9-8aad2036f1f2",
@@ -348,7 +359,14 @@
       "body": "You'll receive a confirmation email",
       "heading": "Complaint sent",
       "lede": "Optional lede",
-      "url": "/confirmation"
+      "url": "/confirmation",
+      "components": [
+        {
+          "_id": "confirmation_content_1",
+          "_type": "content",
+          "html": "Some day I will be the most powerful Jedi ever!"
+        }
+      ]
     }
   ],
   "locale": "en"
