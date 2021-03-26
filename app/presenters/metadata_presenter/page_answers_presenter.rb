@@ -1,9 +1,10 @@
 module MetadataPresenter
   class PageAnswersPresenter
     FIRST_ANSWER = 0.freeze
+    NO_USER_INPUT = %w(page.checkanswers page.confirmation page.content).freeze
 
     def self.map(view:, pages:, answers:)
-      pages.map do |page|
+      user_input_pages(pages).map do |page|
         Array(page.components).map do |component|
           new(
             view: view,
@@ -13,6 +14,10 @@ module MetadataPresenter
           )
         end
       end.reject { |page| page.empty? }
+    end
+
+    def self.user_input_pages(pages)
+      pages.reject { |page| page.type.in?(NO_USER_INPUT) }
     end
 
     attr_reader :view, :component, :page, :answers
