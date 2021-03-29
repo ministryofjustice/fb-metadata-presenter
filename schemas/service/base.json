@@ -35,7 +35,26 @@
     "pages": {
       "type": "array",
       "items": {
-        "$ref": "definition.page"
+        "anyOf": [
+          {
+            "$ref": "page.start"
+          },
+          {
+            "$ref": "page.checkanswers"
+          },
+          {
+            "$ref": "page.confirmation"
+          },
+          {
+            "$ref": "page.content"
+          },
+          {
+            "$ref": "page.multiplequestions"
+          },
+          {
+            "$ref": "page.singlequestion"
+          }
+        ]
       }
     }
   },

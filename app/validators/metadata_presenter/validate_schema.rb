@@ -7,6 +7,11 @@ class MetadataPresenter::ValidateSchema
       return unless controller.request.post?
 
       validate(controller.request.params, 'request.service')
+
+      metadata = controller.request.params['metadata']
+      Array(metadata['pages']).each do |page|
+        validate(page, page['_type'])
+      end
     rescue JSON::Schema::ValidationError, JSON::Schema::SchemaError, SchemaNotFoundError => e
       controller.render(
         json: ErrorsSerializer.new(message: e.message).attributes,
