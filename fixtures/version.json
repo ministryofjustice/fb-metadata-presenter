@@ -360,13 +360,7 @@
       "heading": "Complaint sent",
       "lede": "Optional lede",
       "url": "/confirmation",
-      "components": [
-        {
-          "_id": "confirmation_content_1",
-          "_type": "content",
-          "html": "Some day I will be the most powerful Jedi ever!"
-        }
-      ]
+      "components": []
     }
   ],
   "locale": "en"
