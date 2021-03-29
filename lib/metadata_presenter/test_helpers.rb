@@ -11,7 +11,6 @@ module MetadataPresenter
 
     def service_metadata
       metadata_fixture(:version)
-      JSON.parse(File.read(fixtures_directory.join('version.json')))
     end
 
     def metadata_fixture(fixture_name)
