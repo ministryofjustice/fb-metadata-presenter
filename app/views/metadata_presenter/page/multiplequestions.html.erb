@@ -3,8 +3,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <%= render 'metadata_presenter/attribute/section_heading' %>
-
-      <h1 class="govuk-heading-xl"><%= @page.heading %></h1>
+      <%= render 'metadata_presenter/attribute/heading' %>
 
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
         <%= f.govuk_error_summary %>

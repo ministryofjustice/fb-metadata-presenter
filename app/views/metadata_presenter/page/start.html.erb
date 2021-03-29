@@ -2,18 +2,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-    <%= render 'metadata_presenter/attribute/section_heading' %>
-
-      <% if @page.heading %>
-        <h1 class="fb-editable govuk-heading-xl"
-            data-fb-content-id="page[heading]"
-            data-fb-content-type="element">
-          <%= @page.heading %>
-        </h1>
-      <% end %>
-
+      <%= render 'metadata_presenter/attribute/section_heading' %>
+      <%= render 'metadata_presenter/attribute/heading' %>
       <%= render 'metadata_presenter/attribute/lede' %>
-
       <%= render 'metadata_presenter/attribute/body' %>
 
       <%= form_tag(root_path, method: :post) do %>
