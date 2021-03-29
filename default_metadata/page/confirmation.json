@@ -1,5 +1,6 @@
 {
   "_id": "page.confirmation",
   "_type": "page.confirmation",
-  "heading": "Application complete"
+  "heading": "Application complete",
+  "components": []
 }

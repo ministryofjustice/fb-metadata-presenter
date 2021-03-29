@@ -8,18 +8,14 @@
 
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
         <%= f.govuk_error_summary %>
-        <% @page.components.each_with_index do |component, index| %>
-          <%= render partial: component, locals: {
-            component: component,
-            component_id: "page[components[#{index}]]",
+
+        <%= render partial: 'metadata_presenter/component/components', locals: {
             f: f,
-            input_title: main_title(
-              component: component,
-              tag: :h2,
-              classes: 'govuk-heading-m govuk-!-margin-top-8'
-            ) }
-          %>
-        <% end %>
+            components: @page.components,
+            tag: :h2,
+            classes: 'govuk-heading-m govuk-!-margin-top-8'
+          }
+        %>
 
         <%= f.govuk_submit(disabled: editable?) %>
       <% end %>

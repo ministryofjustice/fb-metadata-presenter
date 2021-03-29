@@ -11,10 +11,6 @@
       </h1>
     <% end %>
 
-    <%= render 'metadata_presenter/attribute/lede' %>
-
-    <%= render 'metadata_presenter/attribute/body' %>
-
     <%= form_for @page, url: reserved_submissions_path do |f| %>
       <div data-block-id="page.checkanswers.answers" data-block-type="answers">
         <dl class="fb-block fb-block-answers govuk-summary-list">
@@ -67,6 +63,14 @@
           <%= @page.send_body %>
         </div>
       <% end %>
+
+      <%= render partial: 'metadata_presenter/component/components',
+                 locals: {
+                   f: f,
+                   components: @page.components,
+                   tag: nil,
+                   classes: nil
+                 } %>
 
       <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
         Accept and send application

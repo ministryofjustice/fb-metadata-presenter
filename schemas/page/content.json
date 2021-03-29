@@ -7,6 +7,14 @@
   "properties": {
     "_type": {
       "const": "page.content"
+    },
+    "components": {
+      "title": "Components",
+      "description": "The form or content elements used on the page",
+      "type": "array",
+      "items": {
+        "$ref": "component.content"
+      }
     }
   },
   "allOf": [
