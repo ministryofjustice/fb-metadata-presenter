@@ -29,6 +29,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'better_errors'
   spec.add_development_dependency 'binding_of_caller'
+  spec.add_development_dependency 'rubocop', '~> 1.10.0'
+  spec.add_development_dependency 'rubocop-govuk'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'site_prism'
   spec.add_development_dependency 'simplecov-console'
