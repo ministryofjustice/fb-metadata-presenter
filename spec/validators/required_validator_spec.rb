@@ -13,7 +13,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
     context 'when there is required validations on the metadata' do
       context 'when there is no custom error message' do
         let(:page) { service.find_page_by_url('/name') }
-        let(:answers) { { } }
+        let(:answers) { {} }
 
         it 'be invalid' do
           expect(validator).to_not be_valid
@@ -44,7 +44,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
       end
 
       context 'when required is valid' do
-        let(:answers) { {'name_text_1' => 'Gandalf' } }
+        let(:answers) { { 'name_text_1' => 'Gandalf' } }
         let(:page) { service.find_page_by_url('/name') }
 
         it 'returns no errors' do
@@ -54,7 +54,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
 
       context 'when checkbox' do
         let(:page) { service.find_page_by_url('/burgers') }
-        let(:answers) { { 'burgers_checkbox_1' => [""] } }
+        let(:answers) { { 'burgers_checkbox_1' => [''] } }
 
         it 'returns invalid' do
           expect(validator).to_not be_valid
@@ -83,7 +83,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
           it 'returns errors' do
             validator.valid?
             expect(page_answers.errors[:holiday_date_1]).to include(
-              "Enter an answer for What is the day that you like to take holidays?"
+              'Enter an answer for What is the day that you like to take holidays?'
             )
           end
         end

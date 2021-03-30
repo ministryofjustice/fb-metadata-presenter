@@ -23,7 +23,7 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
 
     it 'groups page answer presenters by page' do
       page_answers.each do |page|
-        page.map(&:page).collect(&:id).uniq.length == 1
+        expect(page.map(&:page).collect(&:id).uniq.length).to be 1
       end
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
 
         it 'returns formatted value' do
           expect(presenter.answer).to eq(
-            %{<span>Play Star Wars\n<br />Watch Mandalorian</span>}
+            %(<span>Play Star Wars\n<br />Watch Mandalorian</span>)
           )
         end
       end
@@ -60,9 +60,9 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
       context 'when there is an answer' do
         let(:answers) do
           {
-            "#{component.id}(3i)" => "01",
-            "#{component.id}(2i)" => "07",
-            "#{component.id}(1i)" => "2021"
+            "#{component.id}(3i)" => '01',
+            "#{component.id}(2i)" => '07',
+            "#{component.id}(1i)" => '2021'
           }
         end
 
@@ -84,11 +84,11 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
       let(:page) { service.find_page_by_url('/burgers') }
       context 'when there are two boxes checked' do
         let(:answers) do
-          { component.id => ["Chicken, cheese, tomato", "Mozzarella, cheddar, feta"] }
+          { component.id => ['Chicken, cheese, tomato', 'Mozzarella, cheddar, feta'] }
         end
 
         it 'returns formatted answer' do
-          expect(presenter.answer).to eq("Chicken, cheese, tomato<br>Mozzarella, cheddar, feta")
+          expect(presenter.answer).to eq('Chicken, cheese, tomato<br>Mozzarella, cheddar, feta')
         end
       end
     end

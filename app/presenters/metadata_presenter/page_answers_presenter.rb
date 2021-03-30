@@ -1,10 +1,10 @@
 module MetadataPresenter
   class PageAnswersPresenter
-    FIRST_ANSWER = 0.freeze
-    NO_USER_INPUT = %w(page.checkanswers page.confirmation page.content).freeze
+    FIRST_ANSWER = 0
+    NO_USER_INPUT = %w[page.checkanswers page.confirmation page.content].freeze
 
     def self.map(view:, pages:, answers:)
-      user_input_pages(pages).map do |page|
+      user_input_pages(pages).map { |page|
         Array(page.components).map do |component|
           new(
             view: view,
@@ -13,7 +13,7 @@ module MetadataPresenter
             answers: answers
           )
         end
-      end.reject { |page| page.empty? }
+      }.reject(&:empty?)
     end
 
     def self.user_input_pages(pages)
@@ -21,6 +21,7 @@ module MetadataPresenter
     end
 
     attr_reader :view, :component, :page, :answers
+
     delegate :url, to: :page
     delegate :humanised_title, to: :component
 
@@ -37,6 +38,7 @@ module MetadataPresenter
       value = @page_answers.send(component.id)
 
       return '' if value.blank?
+
       if self.class.private_method_defined?(component.type.to_sym)
         send(component.type.to_sym, value)
       else
@@ -48,7 +50,7 @@ module MetadataPresenter
       page.type == 'page.multiplequestions' && index == FIRST_ANSWER
     end
 
-    private
+  private
 
     def date(value)
       I18n.l(
@@ -62,7 +64,7 @@ module MetadataPresenter
     end
 
     def checkboxes(value)
-      value.join("<br>").html_safe
+      value.join('<br>').html_safe
     end
   end
 end

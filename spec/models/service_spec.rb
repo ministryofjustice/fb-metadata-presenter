@@ -15,7 +15,7 @@ RSpec.describe MetadataPresenter::Service do
       service_names.each do |service_name, expected|
         expect(
           described_class.new(
-          'service_name' => service_name
+            'service_name' => service_name
           ).service_slug
         ).to eq(expected)
       end
@@ -59,7 +59,7 @@ RSpec.describe MetadataPresenter::Service do
 
     context 'when page does not exist' do
       let(:path) do
-        "/darth-vader-nooooooooo"
+        '/darth-vader-nooooooooo'
       end
 
       it 'finds the correct page' do

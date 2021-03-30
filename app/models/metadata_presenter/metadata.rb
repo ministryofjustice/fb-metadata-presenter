@@ -9,8 +9,8 @@ class MetadataPresenter::Metadata
     @editor = editor
   end
 
-  def to_json
-    self.to_h.to_json
+  def to_json(*_args)
+    to_h.to_json
   end
 
   def id
@@ -21,7 +21,7 @@ class MetadataPresenter::Metadata
     metadata._type
   end
 
-  def respond_to_missing?(method_name, include_private = false)
+  def respond_to_missing?(method_name, _include_private = false)
     metadata.respond_to?(method_name)
   end
 

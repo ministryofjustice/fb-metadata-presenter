@@ -9,7 +9,9 @@ module MetadataPresenter
     end
 
     def present?
+      # rubocop:disable Rails/Present
       !blank?
+      # rubocop:enable Rails/Present
     end
 
     def blank?

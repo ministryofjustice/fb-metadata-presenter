@@ -8,30 +8,30 @@ module MetadataPresenter
     end
 
     def valid?
-      validators.map { |validator| validator.valid? }.all?
+      validators.map(&:valid?).all?
     end
 
     def invalid?
       !valid?
     end
 
-    private
+  private
 
     def validators
-      components.map do |component|
+      components.map { |component|
         component_validations(component).map do |key|
           "MetadataPresenter::#{key.classify}Validator".constantize.new(
             page_answers: page_answers,
             component: component
           )
         end
-      end.compact.flatten
+      }.compact.flatten
     end
 
     def component_validations(component)
       return [] if component.validation.blank?
 
-      component.validation.select { |_,value| value.present? }.keys
+      component.validation.select { |_, value| value.present? }.keys
     end
   end
 end

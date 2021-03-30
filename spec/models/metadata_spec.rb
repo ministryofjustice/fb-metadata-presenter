@@ -7,7 +7,6 @@ RSpec.describe MetadataPresenter::Metadata do
     context 'when no text is in the metadata for a field with default content' do
       let(:meta) { { 'section_heading' => '' } }
 
-
       it 'should present the default text' do
         expect(metadata.section_heading).to eq('[Optional section heading]')
       end

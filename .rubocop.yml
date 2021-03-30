@@ -14,6 +14,9 @@ AllCops:
     - "config/**/*"
     - "tmp/**/*"
     - "node_modules/**/*"
+    - "spec/dummy/config/puma.rb"
+    - "spec/dummy/config/environments/production.rb"
+    - "metadata_presenter.gemspec"
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes

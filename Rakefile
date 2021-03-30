@@ -21,7 +21,7 @@ end
 
 task default: :rspec
 
-APP_RAKEFILE = File.expand_path("spec/dummy/Rakefile", __dir__)
+APP_RAKEFILE = File.expand_path('spec/dummy/Rakefile', __dir__)
 load 'rails/tasks/engine.rake'
 load 'rails/tasks/statistics.rake'
 Bundler::GemHelper.install_tasks

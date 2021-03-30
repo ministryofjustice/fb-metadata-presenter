@@ -19,21 +19,21 @@ Gem::Specification.new do |spec|
     'README.md'
   ]
 
-  spec.add_dependency 'rails', '>= 6.0.3.4', '< 6.2.0'
-  spec.add_dependency 'kramdown', '>= 2.3.0'
   spec.add_dependency 'govuk_design_system_formbuilder', '>= 2.1.5'
   spec.add_dependency 'json-schema', '>= 2.8.1'
+  spec.add_dependency 'kramdown', '>= 2.3.0'
+  spec.add_dependency 'rails', '>= 6.0.3.4', '< 6.2.0'
 
-  spec.add_development_dependency 'sqlite3'
-  spec.add_development_dependency 'byebug'
-  spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'better_errors'
   spec.add_development_dependency 'binding_of_caller'
+  spec.add_development_dependency 'brakeman'
+  spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop', '~> 1.10.0'
   spec.add_development_dependency 'rubocop-govuk'
   spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'site_prism'
   spec.add_development_dependency 'simplecov-console'
+  spec.add_development_dependency 'site_prism'
+  spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'yard'
-  spec.add_development_dependency 'brakeman'
 end

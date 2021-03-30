@@ -21,8 +21,7 @@ class ApplicationController < ActionController::Base
     session[:user_data] || {}
   end
 
-  def create_submission
-  end
+  def create_submission; end
 
   def default_metadata
     Rails.application.config.default_metadata

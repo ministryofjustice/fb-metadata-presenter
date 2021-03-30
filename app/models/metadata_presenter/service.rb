@@ -1,6 +1,6 @@
 class MetadataPresenter::Service < MetadataPresenter::Metadata
   def pages
-    @_pages ||= metadata.pages.map do |page|
+    @pages ||= metadata.pages.map do |page|
       MetadataPresenter::Page.new(page, editor: editor?)
     end
   end
@@ -36,7 +36,7 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     end
   end
 
-  private
+private
 
   def strip_slash(url)
     return url if url == '/'

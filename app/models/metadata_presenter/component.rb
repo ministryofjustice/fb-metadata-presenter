@@ -4,7 +4,7 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
   end
 
   def humanised_title
-    self.label || self.legend
+    label || legend
   end
 
   def items

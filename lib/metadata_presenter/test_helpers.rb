@@ -5,7 +5,7 @@ module MetadataPresenter
     end
 
     def fixtures_directory
-      @_fixtures_directory ||=
+      @fixtures_directory ||=
         Pathname.new(MetadataPresenter::Engine.root.join('fixtures'))
     end
 
