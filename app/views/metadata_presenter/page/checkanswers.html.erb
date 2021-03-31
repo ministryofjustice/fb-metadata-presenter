@@ -69,7 +69,9 @@
                    f: f,
                    components: @page.components,
                    tag: nil,
-                   classes: nil
+                   classes: nil,
+                   input_components: @page.input_components,
+                   content_components: @page.content_components
                  } %>
 
       <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
