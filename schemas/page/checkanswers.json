@@ -43,6 +43,14 @@
       "items": {
         "$ref": "component.content"
       }
+    },
+    "extra_components": {
+      "title": "Extra Components",
+      "description": "More form or content elements used on the page",
+      "type": "array",
+      "items": {
+        "$ref": "component.content"
+      }
     }
   },
   "required": [
