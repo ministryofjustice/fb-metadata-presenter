@@ -53,7 +53,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     context 'when valid' do
       before do
         post '/name',
-          params: { answers: { name_text_1: 'Mithrandir' } }
+             params: { answers: { name_text_1: 'Mithrandir' } }
       end
 
       it 'redirects to next page' do
@@ -64,7 +64,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     context 'when invalid' do
       before do
         post '/name',
-          params: { answers: { } }
+             params: { answers: {} }
       end
 
       it 'returns unprocessable entity' do
@@ -87,7 +87,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       before do
         expect(Rails.configuration).to receive(:service_metadata).and_return(service_metadata)
         post '/parent-name',
-          params: { answers: { parent_name: 'Test' } }
+             params: { answers: { parent_name: 'Test' } }
       end
 
       it 'returns not found' do

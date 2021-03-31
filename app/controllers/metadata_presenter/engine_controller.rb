@@ -17,7 +17,7 @@ module MetadataPresenter
     private
 
     def not_found
-      render template: 'errors/404', status: 404
+      render template: 'errors/404', status: :not_found
     end
 
     def redirect_to_page(url)

@@ -11,7 +11,7 @@ RSpec.describe MetadataPresenter::NumberValidator do
     end
 
     context 'when is not a number' do
-      %w(centuries . $ # % , 1.a 2.b).each do |invalid_answer|
+      %w[centuries . $ # % , 1.a 2.b].each do |invalid_answer|
         let(:answers) { { 'your-age_number_1' => invalid_answer } }
         let(:page) { service.find_page_by_url('/your-age') }
 
@@ -22,7 +22,7 @@ RSpec.describe MetadataPresenter::NumberValidator do
     end
 
     context 'when is a number' do
-      %w(1 1.1 100).each do |valid_answer|
+      %w[1 1.1 100].each do |valid_answer|
         let(:answers) { { 'your-age_number_1' => valid_answer } }
         let(:page) { service.find_page_by_url('/your-age') }
 

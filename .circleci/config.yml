@@ -18,6 +18,9 @@ jobs:
           name: Security
           command: bundle exec brakeman -q --no-pager -i brakeman.ignore
       - run:
+          name: Lint
+          command: bundle exec rubocop
+      - run:
           name: Test
           command: bundle exec rspec
       - slack/status: &slack_status

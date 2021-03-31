@@ -12,9 +12,9 @@ module MetadataPresenter
     #   <%=m '# Some markdown' %>
     #
     def m(text)
-      (Kramdown::Document.new(text).to_html).html_safe
+      Kramdown::Document.new(text).to_html.html_safe
     end
-    alias to_markdown m
+    alias_method :to_markdown, :m
 
     def default_text(property)
       MetadataPresenter::DefaultText[property]

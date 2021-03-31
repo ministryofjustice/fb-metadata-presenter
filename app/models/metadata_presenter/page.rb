@@ -11,7 +11,7 @@ module MetadataPresenter
     end
 
     def editable_attributes
-      self.to_h.reject { |k,_| k.in?([:_id, :_type, :steps]) }
+      to_h.reject { |k, _| k.in?(%i[_id _type steps]) }
     end
 
     def components

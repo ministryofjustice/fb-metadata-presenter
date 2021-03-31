@@ -12,16 +12,14 @@ module MetadataPresenter
       ValidateAnswers.new(self, components: components).valid?
     end
 
-    def components
-      page.components
-    end
+    delegate :components, to: :page
 
-    def respond_to_missing?(method_name, include_private = false)
+    def respond_to_missing?(method_name, _include_private = false)
       method_name.to_s.in?(components.map(&:id))
     end
 
-    def method_missing(method_name, *args, &block)
-      component = components.find { |component| component.id == method_name.to_s }
+    def method_missing(method_name, *_args)
+      component = components.find { |c| c.id == method_name.to_s }
 
       if component && component.type == 'date'
         date_answer(component.id)
@@ -42,7 +40,7 @@ module MetadataPresenter
         GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:month],
         GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:year]
       ].map do |segment|
-        answers["#{component_id.to_s}(#{segment})"]
+        answers["#{component_id}(#{segment})"]
       end
     end
 

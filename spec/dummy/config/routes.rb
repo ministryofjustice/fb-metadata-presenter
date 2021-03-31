@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount MetadataPresenter::Engine => "/"
+  mount MetadataPresenter::Engine => '/'
 end

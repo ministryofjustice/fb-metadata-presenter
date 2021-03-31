@@ -37,7 +37,7 @@ class MetadataPresenter::ValidateSchema
       JSON::Validator.add_schema(jschema)
       JSON::Validator.schema_for_uri(schema_name).schema
     rescue Errno::ENOENT
-      raise SchemaNotFoundError.new("Schema not found => #{schema_name}")
+      raise SchemaNotFoundError, "Schema not found => #{schema_name}"
     end
   end
 end
