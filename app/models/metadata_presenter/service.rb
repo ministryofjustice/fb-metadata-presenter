@@ -36,7 +36,7 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     end
   end
 
-private
+  private
 
   def strip_slash(url)
     return url if url == '/'

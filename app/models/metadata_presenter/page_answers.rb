@@ -44,7 +44,7 @@ module MetadataPresenter
       end
     end
 
-  private
+    private
 
     attr_reader :page, :answers
   end

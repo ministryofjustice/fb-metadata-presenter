@@ -35,3 +35,6 @@ Metrics/BlockLength:
 
 Rails/FilePath:
   EnforcedStyle: arguments
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: indent

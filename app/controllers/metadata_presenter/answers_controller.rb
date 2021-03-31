@@ -13,7 +13,7 @@ module MetadataPresenter
       end
     end
 
-  private
+    private
 
     def page
       @page ||= begin

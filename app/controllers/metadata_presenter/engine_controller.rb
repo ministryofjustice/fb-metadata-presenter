@@ -14,7 +14,7 @@ module MetadataPresenter
     end
     helper_method :back_link
 
-  private
+    private
 
     def not_found
       render template: 'errors/404', status: :not_found

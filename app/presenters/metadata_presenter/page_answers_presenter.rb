@@ -50,7 +50,7 @@ module MetadataPresenter
       page.type == 'page.multiplequestions' && index == FIRST_ANSWER
     end
 
-  private
+    private
 
     def date(value)
       I18n.l(

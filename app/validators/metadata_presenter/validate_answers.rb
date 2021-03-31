@@ -15,7 +15,7 @@ module MetadataPresenter
       !valid?
     end
 
-  private
+    private
 
     def validators
       components.map { |component|
