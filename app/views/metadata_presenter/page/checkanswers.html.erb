@@ -12,6 +12,17 @@
     <% end %>
 
     <%= form_for @page, url: reserved_submissions_path do |f| %>
+
+    <%= render partial: 'metadata_presenter/component/components',
+                locals: {
+                  f: f,
+                  components: @page.extra_components,
+                  tag: nil,
+                  classes: nil,
+                  input_components: @page.input_components,
+                  content_components: @page.content_components
+                } %>
+
       <div data-block-id="page.checkanswers.answers" data-block-type="answers">
         <dl class="fb-block fb-block-answers govuk-summary-list">
           <% pages_presenters.each do |page_answers_presenters| %>
@@ -69,7 +80,9 @@
                    f: f,
                    components: @page.components,
                    tag: nil,
-                   classes: nil
+                   classes: nil,
+                   input_components: @page.input_components,
+                   content_components: @page.content_components
                  } %>
 
       <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">

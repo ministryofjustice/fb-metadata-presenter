@@ -23,7 +23,9 @@
                      f: f,
                      components: @page.components,
                      tag: nil,
-                     classes: nil
+                     classes: nil,
+                     input_components: @page.input_components,
+                     content_components: @page.content_components
                    } %>
 
         <%= f.govuk_submit(disabled: editable?) %>
