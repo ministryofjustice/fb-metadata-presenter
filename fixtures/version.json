@@ -178,14 +178,14 @@
           "legend": "Do you like Star Wars?",
           "items": [
             {
-              "_id": "do-you-like-star-wars_radio_1",
+              "_id": "do-you-like-star-wars_radios_1_item_1",
               "_type": "radio",
               "label": "Only on weekends",
               "hint": "Optional item hint",
               "value": "only-on-weekends"
             },
             {
-              "_id": "do-you-like-star-wars_radio_2",
+              "_id": "do-you-like-star-wars_radios_1_item_2",
               "_type": "radio",
               "label": "Hell no!",
               "hint": "Optional item hint",
@@ -236,21 +236,21 @@
           "legend": "What would you like on your burger?",
           "items": [
             {
-              "_id": "burgers_checkbox_1",
+              "_id": "burgers_checkboxes_1_item_1",
               "_type": "checkbox",
               "label": "Beef, cheese, tomato",
               "hint": "Optional item hint",
               "value": "beef-cheese-tomato"
             },
             {
-              "_id": "burgers_checkbox_2",
+              "_id": "burgers_checkboxes_1_item_2",
               "_type": "checkbox",
               "label": "Chicken, cheese, tomato",
               "hint": "Optional item hint",
               "value": "chicken-cheese-tomato"
             },
             {
-              "_id": "burgers_checkbox_3",
+              "_id": "burgers_checkboxes_1_item_3",
               "_type": "checkbox",
               "label": "Mozzarella, cheddar, feta",
               "hint": "Optional item hint",
@@ -350,7 +350,8 @@
           "_type": "content",
           "html": "Check yourself before you wreck yourself."
         }
-      ]
+      ],
+      "extra_components": []
     },
     {
       "_uuid": "b238a22f-c180-48d0-a7d9-8aad2036f1f2",
