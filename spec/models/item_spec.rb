@@ -3,14 +3,11 @@ RSpec.describe MetadataPresenter::Item do
 
   describe '#id' do
     let(:metadata) do
-      {
-        '_id' => 'some-id',
-        'label' => 'Some label'
-      }
+      { 'label' => 'Some label' }
     end
 
     it 'returns the id' do
-      expect(item.id).to eq('some-id')
+      expect(item.id).to eq('Some label')
     end
   end
 
