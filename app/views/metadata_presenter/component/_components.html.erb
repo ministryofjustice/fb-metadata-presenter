@@ -18,23 +18,3 @@
     %>
   </div>
 <% end %>
-
-<% if editable? %>
-  <ul class="component-activated-menu govuk-navigation editor-button govuk-button fb-govuk-button">
-    <% if input_components.present? %>
-      <ul>
-        <% input_components.each do |component| %>
-          <li><a href="#add-input-component" data-component-type="<%= component %>"></a>+ Add <%= component %> component</li>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <% if content_components.present? %>
-      <ul>
-        <% content_components.each do |component| %>
-          <li><a href="#add-content-component" data-component-type="<%= component %>">+ Add <%= component %> component</a></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </ul>
-<% end %>
