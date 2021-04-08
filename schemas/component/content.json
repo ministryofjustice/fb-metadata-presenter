@@ -11,7 +11,7 @@
     "_type": {
       "const": "content"
     },
-    "html": {
+    "content": {
       "title": "Content",
       "description": "Content to display - use [markdown](https://www.gov.uk/guidance/how-to-publish-on-gov-uk/markdown) to format text or add hyperlinks",
       "type": "string",
@@ -25,6 +25,6 @@
     }
   ],
   "required": [
-    "html"
+    "content"
   ]
 }
