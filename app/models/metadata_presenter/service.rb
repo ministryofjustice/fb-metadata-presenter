@@ -36,6 +36,10 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     end
   end
 
+  def meta
+    MetadataPresenter::Meta.new(configuration['meta'])
+  end
+
   private
 
   def strip_slash(url)

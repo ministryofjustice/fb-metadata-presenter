@@ -143,4 +143,10 @@ RSpec.describe MetadataPresenter::Service do
       expect(service.confirmation_page.type).to eq('page.confirmation')
     end
   end
+
+  describe '#meta' do
+    it 'returns a meta object' do
+      expect(service.meta).to be_kind_of(MetadataPresenter::Meta)
+    end
+  end
 end
