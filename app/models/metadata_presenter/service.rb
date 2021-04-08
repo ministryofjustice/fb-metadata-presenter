@@ -33,7 +33,7 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   def previous_page(current_page:)
-    unless current_page == start_page
+    unless no_back_link?(current_page)
       page_index = pages.index(current_page)
       pages[page_index - 1] if page_index.present?
     end
@@ -53,6 +53,10 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
 
   def all_pages
     @all_pages ||= pages + standalone_pages
+  end
+
+  def no_back_link?(current_page)
+    current_page == start_page || current_page == confirmation_page
   end
 
   def strip_slash(url)
