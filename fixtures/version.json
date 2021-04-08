@@ -330,7 +330,7 @@
         {
           "_id": "how-many-lights_content_1",
           "_type": "content",
-          "html": "What lights?"
+          "content": "What lights?"
         }
       ],
       "url": "how-many-lights"
@@ -348,7 +348,7 @@
         {
           "_id": "check-answers_content_1",
           "_type": "content",
-          "html": "Check yourself before you wreck yourself."
+          "content": "Check yourself before you wreck yourself."
         }
       ],
       "extra_components": []
@@ -365,7 +365,7 @@
         {
           "_id": "confirmation_content_1",
           "_type": "content",
-          "html": "Some day I will be the most powerful Jedi ever!"
+          "content": "Some day I will be the most powerful Jedi ever!"
         }
       ]
     }

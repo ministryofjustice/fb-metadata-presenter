@@ -6,15 +6,14 @@ module MetadataPresenter
       end
     end
 
-    # Renders markdown given a text.
+    # Renders html given markdown.
     #
     # @example
-    #   <%=m '# Some markdown' %>
+    #   <%=to_html '# Some markdown' %>
     #
-    def m(text)
+    def to_html(text)
       Kramdown::Document.new(text).to_html.html_safe
     end
-    alias_method :to_markdown, :m
 
     def default_text(property)
       MetadataPresenter::DefaultText[property]

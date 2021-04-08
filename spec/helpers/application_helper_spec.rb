@@ -39,9 +39,9 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
     end
   end
 
-  describe '#to_markdown' do
+  describe '#to_html' do
     it 'renders markdown' do
-      expect(helper.m('# Jedi Denial - Obi-Wan Cannot be')).to eq(
+      expect(helper.to_html('# Jedi Denial - Obi-Wan Cannot be')).to eq(
         "<h1 id=\"jedi-denial---obi-wan-cannot-be\">Jedi Denial - Obi-Wan Cannot be</h1>\n"
       )
     end
