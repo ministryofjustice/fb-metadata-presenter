@@ -5,6 +5,12 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     end
   end
 
+  def standalone_pages
+    @standalone_pages ||= metadata.standalone_pages.map do |page|
+      MetadataPresenter::Page.new(page, editor: editor?)
+    end
+  end
+
   def start_page
     pages.first
   end
@@ -14,11 +20,11 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   def find_page_by_url(url)
-    pages.find { |page| strip_slash(page.url) == strip_slash(url) }
+    all_pages.find { |page| strip_slash(page.url) == strip_slash(url) }
   end
 
   def find_page_by_uuid(uuid)
-    pages.find { |page| page.uuid == uuid }
+    all_pages.find { |page| page.uuid == uuid }
   end
 
   def next_page(from:)
@@ -27,7 +33,10 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   def previous_page(current_page:)
-    pages[pages.index(current_page) - 1] unless current_page == start_page
+    unless current_page == start_page
+      page_index = pages.index(current_page)
+      pages[page_index - 1] if page_index.present?
+    end
   end
 
   def confirmation_page
@@ -41,6 +50,10 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   private
+
+  def all_pages
+    @all_pages ||= pages + standalone_pages
+  end
 
   def strip_slash(url)
     return url if url == '/'

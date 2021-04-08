@@ -39,11 +39,12 @@ RSpec.describe MetadataPresenter::Service do
   end
 
   describe '#find_page_by_url' do
+    subject(:page) { service.find_page_by_url(path) }
+
     context 'when passing without slash in the beginning' do
       let(:path) { 'name' }
 
       it 'finds the correct page' do
-        page = service.find_page_by_url(path)
         expect(page.id).to eq(service_metadata['pages'][1]['_id'])
       end
     end
@@ -52,7 +53,6 @@ RSpec.describe MetadataPresenter::Service do
       let(:path) { '/name' }
 
       it 'finds the correct page' do
-        page = service.find_page_by_url(path)
         expect(page.id).to eq(service_metadata['pages'][1]['_id'])
       end
     end
@@ -62,9 +62,16 @@ RSpec.describe MetadataPresenter::Service do
         '/darth-vader-nooooooooo'
       end
 
-      it 'finds the correct page' do
-        page = service.find_page_by_url(path)
+      it 'returns nil' do
         expect(page).to be_nil
+      end
+    end
+
+    context 'standalone pages' do
+      let(:path) { '/cookies' }
+
+      it 'finds the correct page' do
+        expect(page.id).to eq('page.cookies')
       end
     end
   end
@@ -85,6 +92,14 @@ RSpec.describe MetadataPresenter::Service do
 
       it 'returns nil' do
         expect(page).to be_nil
+      end
+    end
+
+    context 'when standalone pages' do
+      let(:uuid) { '67c91f95-805e-4731-969e-648c7d3d172f' }
+
+      it 'finds the correct page' do
+        expect(page.id).to eq('page.accessibility')
       end
     end
   end

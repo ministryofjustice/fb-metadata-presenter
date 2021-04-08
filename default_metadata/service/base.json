@@ -4,5 +4,6 @@
   "service_name": "Service name",
   "configuration": {},
   "pages": [],
+  "standalone_pages": [],
   "locale": "en"
 }
