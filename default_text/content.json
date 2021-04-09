@@ -3,5 +3,7 @@
   "lede": "[Optional lede paragraph]",
   "body": "[Optional content]",
   "content": "[Optional content]",
-  "hint": "[Optional hint text]"
+  "hint": "[Optional hint text]",
+  "option": "[Required option text]",
+  "option_hint": "[Optional hint text]"
 }
