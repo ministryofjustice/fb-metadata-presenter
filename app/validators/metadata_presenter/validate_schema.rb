@@ -9,9 +9,8 @@ class MetadataPresenter::ValidateSchema
       validate(controller.request.params, 'request.service')
 
       metadata = controller.request.params['metadata']
-      Array(metadata['pages']).each do |page|
-        validate(page, page['_type'])
-      end
+      validate_pages(metadata['pages'])
+      validate_pages(metadata['standalone_pages'])
     rescue JSON::Schema::ValidationError, JSON::Schema::SchemaError, SchemaNotFoundError => e
       controller.render(
         json: ErrorsSerializer.new(message: e.message).attributes,
@@ -38,6 +37,12 @@ class MetadataPresenter::ValidateSchema
       JSON::Validator.schema_for_uri(schema_name).schema
     rescue Errno::ENOENT
       raise SchemaNotFoundError, "Schema not found => #{schema_name}"
+    end
+
+    def validate_pages(pages)
+      Array(pages).each do |page|
+        validate(page, page['_type'])
+      end
     end
   end
 end
