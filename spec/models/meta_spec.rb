@@ -4,26 +4,26 @@ RSpec.describe MetadataPresenter::Meta do
   describe '#items' do
     let(:metadata) do
       {
-        "_id": "config.meta",
-        "_type": "config.meta",
+        "_id": 'config.meta',
+        "_type": 'config.meta',
         "items": [
           {
-            "_id": "config.meta--link",
-            "_type": "link",
-            "href": "/cookies",
-            "text": "Cookies"
+            "_id": 'config.meta--link',
+            "_type": 'link',
+            "href": '/cookies',
+            "text": 'Cookies'
           },
           {
-            "_id": "config.meta--link--2",
-            "_type": "link",
-            "href": "/privacy",
-            "text": "Privacy"
+            "_id": 'config.meta--link--2',
+            "_type": 'link',
+            "href": '/privacy',
+            "text": 'Privacy'
           },
           {
-            "_id": "config.meta--link--3",
-            "_type": "link",
-            "href": "/accessibility",
-            "text": "Accessibility"
+            "_id": 'config.meta--link--3',
+            "_type": 'link',
+            "href": '/accessibility',
+            "text": 'Accessibility'
           }
         ]
       }

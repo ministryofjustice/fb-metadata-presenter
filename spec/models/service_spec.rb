@@ -151,7 +151,8 @@ RSpec.describe MetadataPresenter::Service do
       it 'returns nil' do
         current_page = service.find_page_by_url(service_metadata['pages'][0]['url']) # start page
         previous_page = service.previous_page(
-          current_page: current_page, referrer: nil)
+          current_page: current_page, referrer: nil
+        )
         expect(previous_page).to be(nil)
       end
     end

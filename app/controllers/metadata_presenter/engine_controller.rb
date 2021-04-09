@@ -10,7 +10,7 @@ module MetadataPresenter
 
       previous_page = service.previous_page(
         current_page: @page,
-        referrer: request.referrer
+        referrer: request.referer
       )&.url
 
       @back_link ||= File.join(request.script_name, previous_page) if previous_page
