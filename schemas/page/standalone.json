@@ -1,0 +1,23 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/page/standalone",
+  "_name": "page.standalone",
+  "title": "Standalone",
+  "description": "Pages which are not part of any flow",
+  "type": "object",
+  "properties": {
+    "_type": {
+      "const": "page.standalone"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "definition.page.content"
+    }
+  ],
+  "uiCategory": {
+    "main": [
+      "lede",
+      "body"
+    ]
+  }
+}

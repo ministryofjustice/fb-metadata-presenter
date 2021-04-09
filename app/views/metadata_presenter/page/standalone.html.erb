@@ -1,0 +1,17 @@
+<div class="fb-main-grid-wrapper" data-fb-pagetype="<%= @page.type %>">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <% if @page.heading %>
+        <h1 class="fb-editable govuk-heading-xl"
+            data-fb-content-id="page[heading]"
+            data-fb-content-type="element">
+          <%= @page.heading %>
+        </h1>
+      <% end %>
+
+      <%= render 'metadata_presenter/attribute/body' %>
+
+    </div>
+  </div>
+</div>
