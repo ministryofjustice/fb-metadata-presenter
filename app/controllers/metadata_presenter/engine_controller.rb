@@ -8,7 +8,10 @@ module MetadataPresenter
     def back_link
       return if @page.blank?
 
-      previous_page = service.previous_page(current_page: @page)&.url
+      previous_page = service.previous_page(
+        current_page: @page,
+        referrer: request.referrer
+      )&.url
 
       @back_link ||= File.join(request.script_name, previous_page) if previous_page
     end
