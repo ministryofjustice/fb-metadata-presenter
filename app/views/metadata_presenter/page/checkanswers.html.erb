@@ -3,13 +3,11 @@
 
     <%= render partial: 'metadata_presenter/attribute/section_heading' %>
 
-    <% if @page.heading.present? %>
-      <h1 class="fb-editable govuk-heading-xl"
-          data-fb-content-type="element"
-          data-fb-content-id="page[heading]">
-        <%= @page.heading %>
-      </h1>
-    <% end %>
+    <h1 class="fb-editable govuk-heading-xl"
+        data-fb-content-type="element"
+        data-fb-content-id="page[heading]">
+      <%= @page.heading %>
+    </h1>
 
     <%= form_for @page, url: reserved_submissions_path do |f| %>
 
