@@ -39,11 +39,12 @@ RSpec.describe MetadataPresenter::Service do
   end
 
   describe '#find_page_by_url' do
+    subject(:page) { service.find_page_by_url(path) }
+
     context 'when passing without slash in the beginning' do
       let(:path) { 'name' }
 
       it 'finds the correct page' do
-        page = service.find_page_by_url(path)
         expect(page.id).to eq(service_metadata['pages'][1]['_id'])
       end
     end
@@ -52,7 +53,6 @@ RSpec.describe MetadataPresenter::Service do
       let(:path) { '/name' }
 
       it 'finds the correct page' do
-        page = service.find_page_by_url(path)
         expect(page.id).to eq(service_metadata['pages'][1]['_id'])
       end
     end
@@ -62,9 +62,16 @@ RSpec.describe MetadataPresenter::Service do
         '/darth-vader-nooooooooo'
       end
 
-      it 'finds the correct page' do
-        page = service.find_page_by_url(path)
+      it 'returns nil' do
         expect(page).to be_nil
+      end
+    end
+
+    context 'standalone pages' do
+      let(:path) { '/cookies' }
+
+      it 'finds the correct page' do
+        expect(page.id).to eq('page.cookies')
       end
     end
   end
@@ -85,6 +92,14 @@ RSpec.describe MetadataPresenter::Service do
 
       it 'returns nil' do
         expect(page).to be_nil
+      end
+    end
+
+    context 'when standalone pages' do
+      let(:uuid) { '67c91f95-805e-4731-969e-648c7d3d172f' }
+
+      it 'finds the correct page' do
+        expect(page.id).to eq('page.accessibility')
       end
     end
   end
@@ -124,16 +139,53 @@ RSpec.describe MetadataPresenter::Service do
     context 'when previous page exists' do
       it 'returns the previous page' do
         current_page = service.find_page_by_url(service_metadata['pages'][1]['url'])
-        previous_page = service.previous_page(current_page: current_page)
+        previous_page = service.previous_page(
+          current_page: current_page,
+          referrer: 'https://example.com'
+        )
         expect(previous_page.id).to eq(service_metadata['pages'][0]['_id'])
       end
     end
 
     context 'when previous page does not exists' do
       it 'returns nil' do
-        current_page = service.find_page_by_url(service_metadata['pages'][0]['url'])
-        previous_page = service.previous_page(current_page: current_page)
+        current_page = service.find_page_by_url(service_metadata['pages'][0]['url']) # start page
+        previous_page = service.previous_page(
+          current_page: current_page, referrer: nil
+        )
         expect(previous_page).to be(nil)
+      end
+    end
+
+    context 'when current page is not part of the standard page flow' do
+      it 'finds the previous page by referrer' do
+        current_page = service.find_page_by_url('/cookies')
+        previous_page = service.previous_page(
+          current_page: current_page,
+          referrer: service.start_page.url
+        )
+        expect(previous_page.id).to eq(service.start_page.id)
+      end
+    end
+
+    context 'when there is no referrer page' do
+      it 'returns nil' do
+        previous_page = service.previous_page(current_page: nil, referrer: nil)
+        expect(previous_page).to be_nil
+      end
+    end
+
+    context 'when current page is confirmation page' do
+      it 'returns nil' do
+        confirmation_page = service.pages.find { |page| page.type == 'page.confirmation' }
+        # just in case the confirmation page gets removed from the fixture accidentally
+        expect(confirmation_page).to be_truthy
+
+        previous_page = service.previous_page(
+          current_page: confirmation_page,
+          referrer: nil
+        )
+        expect(previous_page).to be_nil
       end
     end
   end
@@ -141,6 +193,12 @@ RSpec.describe MetadataPresenter::Service do
   describe '#confirmation_page' do
     it 'returns the confirmation page for the service' do
       expect(service.confirmation_page.type).to eq('page.confirmation')
+    end
+  end
+
+  describe '#meta' do
+    it 'returns a meta object' do
+      expect(service.meta).to be_kind_of(MetadataPresenter::Meta)
     end
   end
 end

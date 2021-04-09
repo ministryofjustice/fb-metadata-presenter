@@ -56,6 +56,16 @@
           }
         ]
       }
+    },
+    "standalone_pages": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "page.standalone"
+          }
+        ]
+      }
     }
   },
   "required": [
@@ -65,7 +75,8 @@
     "created_by",
     "locale",
     "configuration",
-    "pages"
+    "pages",
+    "standalone_pages"
   ],
   "additionalProperties": false
 }

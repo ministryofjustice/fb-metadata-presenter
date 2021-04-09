@@ -1,0 +1,8 @@
+{
+  "_id": "page.standalone",
+  "_type": "page.standalone",
+  "heading": "Title",
+  "body": "[Optional content]",
+  "components": [],
+  "url": ""
+}
