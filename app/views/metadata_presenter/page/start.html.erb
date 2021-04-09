@@ -20,7 +20,7 @@
         <div class="fb-editable"
              data-fb-content-id="page[before_you_start]"
              data-fb-content-type="content">
-          <%= @page.before_you_start %>
+          <%= to_html(@page.before_you_start) %>
         </div>
       <%- end %>
     </div>

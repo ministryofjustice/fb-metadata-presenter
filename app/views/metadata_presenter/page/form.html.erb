@@ -3,7 +3,7 @@
     <div class="govuk-grid-column-two-thirds">
       <% if @page.body %>
         <p class="govuk-body-l" data-block-id="<%= @page.id %>" data-block-property="body">
-        <%= to_markdown(@page.body) %>
+        <%= to_html(@page.body) %>
         </p>
       <%- end %>
        <%= form_tag(reserved_answers_path, method: :post) do  %>

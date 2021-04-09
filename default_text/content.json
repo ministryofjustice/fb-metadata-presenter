@@ -2,6 +2,8 @@
   "section_heading": "[Optional section heading]",
   "lede": "[Optional lede paragraph]",
   "body": "[Optional content]",
-  "html": "[Optional content]",
-  "hint": "[Optional hint text]"
+  "content": "[Optional content]",
+  "hint": "[Optional hint text]",
+  "option": "[Required option text]",
+  "option_hint": "[Optional hint text]"
 }

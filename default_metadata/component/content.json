@@ -1,5 +1,5 @@
 {
   "_id": "component.content",
   "_type": "content",
-  "html": "[Optional content]"
+  "content": "[Optional content]"
 }
