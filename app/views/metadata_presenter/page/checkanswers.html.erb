@@ -10,7 +10,7 @@
         <%= @page.heading %>
       </h1>
 
-      <%= form_for @page, url: reserved_submissions_path do |f| %>
+      <%= form_for @page, url: reserved_submissions_path, html: { id: 'answers-form' } do |f| %>
 
         <%= render partial: 'metadata_presenter/component/components',
                    locals: {
