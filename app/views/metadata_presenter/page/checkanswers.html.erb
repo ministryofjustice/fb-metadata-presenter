@@ -1,80 +1,80 @@
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+<div class="fb-main-grid-wrapper" data-fb-pagetype="<%= @page.type %>">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    <%= render partial: 'metadata_presenter/attribute/section_heading' %>
+      <%= render partial: 'metadata_presenter/attribute/section_heading' %>
 
-    <h1 class="fb-editable govuk-heading-xl"
-        data-fb-content-type="element"
-        data-fb-content-id="page[heading]">
-      <%= @page.heading %>
-    </h1>
+      <h1 class="fb-editable govuk-heading-xl"
+          data-fb-content-type="element"
+          data-fb-content-id="page[heading]">
+        <%= @page.heading %>
+      </h1>
 
-    <%= form_for @page, url: reserved_submissions_path do |f| %>
+      <%= form_for @page, url: reserved_submissions_path do |f| %>
 
-    <%= render partial: 'metadata_presenter/component/components',
-                locals: {
-                  f: f,
-                  components: @page.extra_components,
-                  tag: nil,
-                  classes: nil,
-                  input_components: @page.input_components,
-                  content_components: @page.content_components
-                } %>
+        <%= render partial: 'metadata_presenter/component/components',
+                   locals: {
+                   f: f,
+                   components: @page.extra_components,
+                   tag: nil,
+                   classes: nil,
+                   input_components: @page.input_components,
+                   content_components: @page.content_components
+                 } %>
 
-      <div data-block-id="page.checkanswers.answers" data-block-type="answers">
-        <dl class="fb-block fb-block-answers govuk-summary-list">
-          <% pages_presenters.each do |page_answers_presenters| %>
-            <% page_answers_presenters.each_with_index do |page_answers_presenter, index| %>
+        <div data-block-id="page.checkanswers.answers" data-block-type="answers">
+          <dl class="fb-block fb-block-answers govuk-summary-list">
+            <% pages_presenters.each do |page_answers_presenters| %>
+              <% page_answers_presenters.each_with_index do |page_answers_presenter, index| %>
 
-              <% if page_answers_presenter.display_heading?(index) %>
-                </dl>
+                <% if page_answers_presenter.display_heading?(index) %>
+                  </dl>
 
-                <h3 class="govuk-heading-m"><%= page_answers_presenter.page.heading %></h3>
+                  <h3 class="govuk-heading-m"><%= page_answers_presenter.page.heading %></h3>
 
-                <dl class="fb-block fb-block-answers govuk-summary-list">
+                  <dl class="fb-block fb-block-answers govuk-summary-list">
+                <% end %>
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <%= page_answers_presenter.humanised_title %>
+                  </dt>
+
+                  <dd class="govuk-summary-list__value">
+                    <%= page_answers_presenter.answer %>
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <%= link_to(
+                          change_answer_path(url: page_answers_presenter.url),
+                          class: 'govuk-link'
+                        ) do %>
+                        Change<span class="govuk-visually-hidden"> Your answer for <%= page_answers_presenter.humanised_title %></span>
+                    <% end %>
+                  </dd>
+                </div>
               <% end %>
-
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  <%= page_answers_presenter.humanised_title %>
-                </dt>
-
-                <dd class="govuk-summary-list__value">
-                  <%= page_answers_presenter.answer %>
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                <%= link_to(
-                      change_answer_path(url: page_answers_presenter.url),
-                      class: 'govuk-link'
-                    ) do %>
-                      Change<span class="govuk-visually-hidden"> Your answer for <%= page_answers_presenter.humanised_title %></span>
-                  <% end %>
-                  </a>
-                </dd>
-              </div>
             <% end %>
-          <% end %>
-        </dl>
-      </div>
-
-      <% if @page.send_heading.present? %>
-        <h2 class="fb-send-heading fb-editable govuk-heading-m"
-            data-fb-content-type="element"
-            data-fb-content-id="page[send_heading]">
-          <%= @page.send_heading %>
-        </h2>
-      <% end %>
-
-      <% if @page.send_body.present? %>
-        <div class="fb-send-body fb-editable"
-             data-fb-content-type="content"
-             data-fb-content-id="page[send_body]">
-          <%= @page.send_body %>
+          </dl>
         </div>
-      <% end %>
 
-      <%= render partial: 'metadata_presenter/component/components',
-                 locals: {
+        <% if @page.send_heading.present? %>
+          <h2 class="fb-send-heading fb-editable govuk-heading-m"
+              data-fb-content-type="element"
+              data-fb-content-id="page[send_heading]">
+            <%= @page.send_heading %>
+          </h2>
+        <% end %>
+
+        <% if @page.send_body.present? %>
+          <div class="fb-send-body fb-editable"
+               data-fb-content-type="content"
+               data-fb-content-id="page[send_body]">
+            <%= @page.send_body %>
+          </div>
+        <% end %>
+
+        <%= render partial: 'metadata_presenter/component/components',
+                   locals: {
                    f: f,
                    components: @page.components,
                    tag: nil,
@@ -83,9 +83,11 @@
                    content_components: @page.content_components
                  } %>
 
-      <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
+        <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
         Accept and send application
-      </button>
-    <% end %>
+        </button>
+      <% end %>
+
+    </div>
   </div>
 </div>
