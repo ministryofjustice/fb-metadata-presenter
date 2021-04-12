@@ -6,7 +6,15 @@
       <%= @page.heading %>
     </h1>
 
-    <%= render 'metadata_presenter/attribute/lede' %>
+    <%# Do not replace with app/views/metadata_presenter/attribute _lede.html.erb because that is different %>
+    <% if @page.lede %>
+      <div class="fb-editable govuk-panel__body"
+           data-fb-content-id="page[lede]"
+           data-fb-content-type="element"
+           data-fb-default-text="<%= default_text('lede') %>">
+        <%= @page.lede %>
+      </div>
+    <%- end %>
   </div>
 
   <div class="govuk-grid-row">
