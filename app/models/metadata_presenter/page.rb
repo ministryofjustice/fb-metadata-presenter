@@ -18,9 +18,11 @@ module MetadataPresenter
     end
 
     def components
-      metadata.components&.map do |component|
-        MetadataPresenter::Component.new(component, editor: editor?)
-      end
+      to_components(metadata.components, collection: :components)
+    end
+
+    def extra_components
+      to_components(metadata.extra_components, collection: :extra_components)
     end
 
     def to_partial_path
@@ -40,6 +42,15 @@ module MetadataPresenter
     end
 
     private
+
+    def to_components(node_components, collection:)
+      node_components&.map do |component|
+        MetadataPresenter::Component.new(
+          component.merge(collection: collection),
+          editor: editor?
+        )
+      end
+    end
 
     def page_components(page_type)
       values = Rails.application.config.page_components[page_type]

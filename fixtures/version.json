@@ -351,7 +351,13 @@
           "content": "Check yourself before you wreck yourself."
         }
       ],
-      "extra_components": []
+      "extra_components": [
+        {
+          "_id": "check-answers_content_1",
+          "_type": "content",
+          "content": "Take the cannoli."
+        }
+      ]
     },
     {
       "_uuid": "b238a22f-c180-48d0-a7d9-8aad2036f1f2",
