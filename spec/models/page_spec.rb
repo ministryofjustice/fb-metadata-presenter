@@ -27,11 +27,25 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
-  context 'when creating a new service object' do
-    it '#components should return an array of Component objects' do
+  describe '#components' do
+    it 'returns an array of Component objects' do
       components = service.pages.map(&:components).flatten.compact
       components.each do |component|
         expect(component).to be_kind_of(MetadataPresenter::Component)
+        expect(component.collection).to eq(:components)
+      end
+    end
+  end
+
+  describe '#extra_components' do
+    it 'returns an array of Component objects' do
+      components = service.pages.map(&:extra_components).flatten.compact
+
+      expect(components.size).to eq(1)
+
+      components.each do |component|
+        expect(component).to be_kind_of(MetadataPresenter::Component)
+        expect(component.collection).to eq(:extra_components)
       end
     end
   end

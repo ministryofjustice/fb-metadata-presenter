@@ -44,7 +44,7 @@
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <%= link_to(
-                    change_answer_path(url: page_answers_presenter.url),
+                    editable? ? '#' : change_answer_path(url: page_answers_presenter.url),
                     class: 'govuk-link'
                   ) do %>
                     Change<span class="govuk-visually-hidden"> Your answer for <%= page_answers_presenter.humanised_title %></span>
