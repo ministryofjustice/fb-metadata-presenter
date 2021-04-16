@@ -346,6 +346,7 @@
       "url": "/check-answers",
       "components": [
         {
+          "_uuid": "256291c2-8ffa-4bda-8282-88e0724ccd10",
           "_id": "check-answers_content_1",
           "_type": "content",
           "content": "Check yourself before you wreck yourself."
@@ -353,6 +354,7 @@
       ],
       "extra_components": [
         {
+          "_uuid": "09961c6a-29f8-4d4f-a6d2-af00cff15536",
           "_id": "check-answers_content_1",
           "_type": "content",
           "content": "Take the cannoli."

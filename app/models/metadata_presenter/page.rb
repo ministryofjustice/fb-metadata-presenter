@@ -14,10 +14,6 @@ module MetadataPresenter
       add_extra_component
     ].freeze
 
-    def uuid
-      _uuid
-    end
-
     def ==(other)
       id == other.id if other.respond_to? :id
     end
