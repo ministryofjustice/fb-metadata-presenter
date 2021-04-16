@@ -18,6 +18,7 @@ RSpec.describe MetadataPresenter::Component do
 
     it 'returns an array of openstruct component item objects' do
       expect(component.items).to be_an(Array)
+      expect(component.items.size).to eq(2)
     end
 
     it 'contains objects that respond to the necessary properties' do
@@ -47,6 +48,22 @@ RSpec.describe MetadataPresenter::Component do
 
       it 'returns the legend value' do
         expect(component.humanised_title).to eq('Do you like Star Wars?')
+      end
+    end
+  end
+
+  describe '#content?' do
+    context 'when type is content' do
+      it 'returns true' do
+        component = described_class.new(_type: 'content')
+        expect(component.content?).to be_truthy
+      end
+    end
+
+    context 'when type is not content' do
+      it 'returns false' do
+        component = described_class.new({})
+        expect(component.content?).to be_falsey
       end
     end
   end

@@ -48,6 +48,14 @@ RSpec.describe MetadataPresenter::Metadata do
       end
     end
 
+    context 'when there is a uuid' do
+      let(:meta) { { '_uuid' => 'some awesome uuid' } }
+
+      it 'should present back the text' do
+        expect(metadata.uuid).to eq('some awesome uuid')
+      end
+    end
+
     context 'when there is no default text for an empty property' do
       let(:meta) { { 'nope' => '' } }
 

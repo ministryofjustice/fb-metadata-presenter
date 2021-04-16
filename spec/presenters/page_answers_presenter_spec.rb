@@ -111,4 +111,41 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
       end
     end
   end
+
+  describe '#display_heading?' do
+    let(:answers) { {} }
+
+    context 'when multiple question page' do
+      let(:page) do
+        service.find_page_by_url('/star-wars-knowledge')
+      end
+
+      context 'when first answer' do
+        let(:index) { 0 }
+
+        it 'returns true' do
+          expect(subject.display_heading?(index)).to be_truthy
+        end
+      end
+
+      context 'when not first answer' do
+        let(:index) { 1 }
+
+        it 'returns false' do
+          expect(subject.display_heading?(index)).to be_falsey
+        end
+      end
+    end
+
+    context 'when any other page' do
+      let(:page) do
+        service.find_page_by_url('/burgers')
+      end
+      let(:index) { 0 }
+
+      it 'returns false' do
+        expect(subject.display_heading?(index)).to be_falsey
+      end
+    end
+  end
 end
