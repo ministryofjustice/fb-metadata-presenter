@@ -8,11 +8,6 @@
     "_type": {
       "const": "page.checkanswers"
     },
-    "section_heading": {
-      "title": "Section heading",
-      "type": "string",
-      "description": "Section to display before the heading"
-    },
     "heading": {
       "type": "string",
       "default": "Check your answers"
