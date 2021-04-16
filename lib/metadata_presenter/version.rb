@@ -1,3 +1,3 @@
 module MetadataPresenter
-  VERSION = '0.28.5'.freeze
+  VERSION = '0.28.6'.freeze
 end
