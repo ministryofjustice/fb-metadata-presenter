@@ -5,6 +5,15 @@ module MetadataPresenter
   class Page < MetadataPresenter::Metadata
     include ActiveModel::Validations
 
+    NOT_EDITABLE = %i[
+      _uuid
+      _id
+      _type
+      steps
+      add_component
+      add_extra_component
+    ].freeze
+
     def uuid
       _uuid
     end
@@ -14,7 +23,7 @@ module MetadataPresenter
     end
 
     def editable_attributes
-      to_h.reject { |k, _| k.in?(%i[_id _type steps]) }
+      to_h.reject { |k, _| k.in?(NOT_EDITABLE) }
     end
 
     def components
