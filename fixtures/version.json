@@ -340,7 +340,6 @@
       "_id": "page._check-answers",
       "_type": "page.checkanswers",
       "heading": "Review your answer",
-      "section_heading": "This section is optional",
       "send_body": "By submitting this answer you confirm all your answers",
       "send_heading": "Send your answer",
       "url": "/check-answers",
