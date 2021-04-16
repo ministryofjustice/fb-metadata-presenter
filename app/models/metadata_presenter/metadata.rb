@@ -13,6 +13,10 @@ class MetadataPresenter::Metadata
     to_h.to_json
   end
 
+  def uuid
+    metadata._uuid
+  end
+
   def id
     metadata._id
   end

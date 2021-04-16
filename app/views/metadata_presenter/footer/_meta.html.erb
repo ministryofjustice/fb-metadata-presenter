@@ -1,6 +1,6 @@
 <h2 class="govuk-visually-hidden">Support links</h2>
 <ul class="govuk-footer__inline-list">
-<% meta_items.each do |item| %>
+<% service.meta.items.each do |item| %>
   <li class="govuk-footer__inline-list-item">
     <a class="govuk-footer__link" href=<%= File.join(request.script_name, item.href) %>><%= item.text %></a>
   </li>
