@@ -22,12 +22,24 @@ module MetadataPresenter
       to_h.reject { |k, _| k.in?(NOT_EDITABLE) }
     end
 
+    def all_components
+      [components, extra_components].flatten.compact
+    end
+
     def components
       to_components(metadata.components, collection: :components)
     end
 
     def extra_components
       to_components(metadata.extra_components, collection: :extra_components)
+    end
+
+    def components_by_type(type)
+      supported_components = page_components(raw_type)[type]
+
+      all_components.select do |component|
+        supported_components.include?(component.type)
+      end
     end
 
     def to_partial_path
@@ -39,11 +51,11 @@ module MetadataPresenter
     end
 
     def input_components
-      page_components(raw_type)[:input_components]
+      page_components(raw_type)[:input]
     end
 
     def content_components
-      page_components(raw_type)[:content_components]
+      page_components(raw_type)[:content]
     end
 
     private

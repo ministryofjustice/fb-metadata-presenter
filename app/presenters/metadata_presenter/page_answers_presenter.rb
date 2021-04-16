@@ -1,11 +1,16 @@
 module MetadataPresenter
   class PageAnswersPresenter
     FIRST_ANSWER = 0
-    NO_USER_INPUT = %w[page.checkanswers page.confirmation page.content].freeze
+    NO_USER_INPUT = %w[
+      page.checkanswers
+      page.confirmation
+      page.content
+      page.start
+    ].freeze
 
     def self.map(view:, pages:, answers:)
       user_input_pages(pages).map { |page|
-        Array(page.components).map do |component|
+        Array(page.components_by_type(:input)).map do |component|
           new(
             view: view,
             component: component,
@@ -47,10 +52,18 @@ module MetadataPresenter
     end
 
     def display_heading?(index)
-      page.type == 'page.multiplequestions' && index == FIRST_ANSWER
+      multiplequestions_page? && index == FIRST_ANSWER
+    end
+
+    def last_multiple_question?(index, presenters_count_for_page)
+      multiplequestions_page? && index == presenters_count_for_page - 1
     end
 
     private
+
+    def multiplequestions_page?
+      page.type == 'page.multiplequestions'
+    end
 
     def date(value)
       I18n.l(

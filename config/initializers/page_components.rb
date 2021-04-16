@@ -1,19 +1,23 @@
 Rails.application.config.page_components =
   ActiveSupport::HashWithIndifferentAccess.new({
     checkanswers: {
-      input_components: %w(),
-      content_components: %w(content)
+      input: %w(),
+      content: %w(content)
     },
     confirmation: {
-      input_components: %w(),
-      content_components: %w(content)
+      input: %w(),
+      content: %w(content)
     },
     content: {
-      input_components: %w(),
-      content_components: %w(content)
+      input: %w(),
+      content: %w(content)
     },
     multiplequestions: {
-      input_components: %w(text textarea number date radios checkboxes),
-      content_components: %w(content)
-    }
+      input: %w(text textarea number date radios checkboxes),
+      content: %w(content)
+    },
+    singlequestion: {
+      input: %w(text textarea number date radios checkboxes),
+      content: %w()
+     }
   })

@@ -49,6 +49,11 @@
                   <% end %>
                 </dd>
               </div>
+
+              <% if page_answers_presenter.last_multiple_question?(index, page_answers_presenters.size) %>
+        </dl>
+        <dl class="fb-block fb-block-answers govuk-summary-list">
+              <% end %>
             <% end %>
           <% end %>
         </dl>
