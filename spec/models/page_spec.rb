@@ -51,13 +51,21 @@ RSpec.describe MetadataPresenter::Page do
   end
 
   describe '#editable_attributes' do
-    it 'rejects non editable attributes' do
+    it 'does not reject editable attributes' do
       expect(service.pages.first.editable_attributes.keys).to include(
         :heading,
         :body,
         :lede,
         :url
       )
+    end
+
+    it 'rejects all not editable attributes' do
+      not_editable = MetadataPresenter::Page::NOT_EDITABLE
+      attributes = not_editable.index_with { |_k| SecureRandom.uuid }
+      page = MetadataPresenter::Page.new(attributes)
+
+      expect(page.editable_attributes.keys).to_not include(not_editable)
     end
   end
 
