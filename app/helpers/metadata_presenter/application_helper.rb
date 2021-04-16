@@ -18,9 +18,5 @@ module MetadataPresenter
     def default_text(property)
       MetadataPresenter::DefaultText[property]
     end
-
-    def meta_items
-      service.meta.items
-    end
   end
 end
