@@ -281,6 +281,11 @@
           }
         },
         {
+          "_id": "star-wars-knowledge_content_1",
+          "_type": "content",
+          "content": "Stay on target"
+        },
+        {
           "_id": "star-wars-knowledge_radios_1",
           "_type": "radios",
           "errors": {},
