@@ -148,4 +148,55 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
       end
     end
   end
+
+  describe '#last_multiple_question?' do
+    let(:answers) { {} }
+
+    context 'when multiple question page' do
+      let(:page) do
+        service.find_page_by_url('/star-wars-knowledge')
+      end
+      let(:page_answers_count) do
+        page.components_by_type(:input).size
+      end
+
+      context 'when last question' do
+        let(:index) { page_answers_count - 1 }
+
+        it 'returns true' do
+          expect(subject.last_multiple_question?(index, page_answers_count)).to be_truthy
+        end
+      end
+
+      context 'when only one question on the page' do
+        let(:index) { 0 }
+
+        it 'returns true' do
+          expect(subject.last_multiple_question?(index, 1)).to be_truthy
+        end
+      end
+
+      context 'when not the last question' do
+        let(:index) { 0 }
+
+        it 'returns false' do
+          expect(subject.last_multiple_question?(index, page_answers_count)).to be_falsey
+        end
+      end
+    end
+
+    context 'when not multiple question page' do
+      let(:page) do
+        service.find_page_by_url('/burgers')
+      end
+      let(:page_answers_count) do
+        page.components_by_type(:input).size
+      end
+      let(:index) { 0 }
+
+      it 'returns false' do
+        expect(subject.last_multiple_question?(index, page_answers_count)).to be_falsey
+      end
+    end
+  end
 end
