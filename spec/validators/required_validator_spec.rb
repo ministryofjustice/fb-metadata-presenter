@@ -29,7 +29,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
       context 'when there is custom error message' do
         context 'when there is "any"' do
           let(:page) { service.find_page_by_url('/email-address') }
-          let(:answers) { { 'email-address_email_1' => '' } }
+          let(:answers) { { 'email-address_text_1' => '' } }
 
           it 'be invalid' do
             expect(validator).to_not be_valid

@@ -25,7 +25,7 @@ RSpec.describe MetadataPresenter::Service do
   describe '#to_json' do
     it 'returns json object' do
       expect(JSON.parse(service.to_json)).to include(
-        'service_name' => 'Service name'
+        'service_name' => 'Version Fixture'
       )
     end
   end
@@ -80,7 +80,7 @@ RSpec.describe MetadataPresenter::Service do
     subject(:page) { service.find_page_by_uuid(uuid) }
 
     context 'when uuid exists' do
-      let(:uuid) { 'fa391697-ae82-4416-adc3-3433e54ce535' }
+      let(:uuid) { 'cf6dc32f-502c-4215-8c27-1151a45735bb' }
 
       it 'finds the correct page' do
         expect(page.id).to eq(service_metadata['pages'][0]['_id'])
@@ -96,7 +96,7 @@ RSpec.describe MetadataPresenter::Service do
     end
 
     context 'when standalone pages' do
-      let(:uuid) { '67c91f95-805e-4731-969e-648c7d3d172f' }
+      let(:uuid) { 'c439c7fd-f411-4e11-8598-4023934bac93' }
 
       it 'finds the correct page' do
         expect(page.id).to eq('page.accessibility')

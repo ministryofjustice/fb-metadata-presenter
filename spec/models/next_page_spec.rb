@@ -15,7 +15,7 @@ RSpec.describe MetadataPresenter::NextPage do
 
       it 'returns check your answer page' do
         expect(result).to eq(
-          MetadataPresenter::Page.new(_id: 'page._check-answers')
+          MetadataPresenter::Page.new(_id: 'page.check-answers')
         )
       end
 
