@@ -184,7 +184,7 @@
           "items": [
             {
               "_id": "do-you-like-star-wars_radios_1_item_1",
-              "hint": "[Optional hint text]",
+              "hint": "",
               "name": "do-you-like-star-wars_radios_1",
               "_type": "radio",
               "_uuid": "ac41be35-914e-4b22-8683-f5477716b7d4",
@@ -199,7 +199,7 @@
             },
             {
               "_id": "do-you-like-star-wars_radios_1_item_2",
-              "hint": "[Optional hint text]",
+              "hint": "",
               "name": "do-you-like-star-wars_radios_1",
               "_type": "radio",
               "_uuid": "ac41be35-914e-4b22-8683-f5477716b7d4",
@@ -266,7 +266,7 @@
           "items": [
             {
               "_id": "burgers_checkboxes_1_item_1",
-              "hint": "[Optional hint text]",
+              "hint": "",
               "name": "burgers_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "4c409737-80bb-48c7-afa7-6e9360b65004",
@@ -281,7 +281,7 @@
             },
             {
               "_id": "burgers_checkboxes_1_item_2",
-              "hint": "[Optional hint text]",
+              "hint": "",
               "name": "burgers_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "4c409737-80bb-48c7-afa7-6e9360b65004",
@@ -296,7 +296,7 @@
             },
             {
               "_id": "burgers_checkboxes_1_item_3",
-              "hint": "[Optional hint text]",
+              "hint": "",
               "name": "burgers_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "4c409737-80bb-48c7-afa7-6e9360b65004",
@@ -356,7 +356,7 @@
           "items": [
             {
               "_id": "star-wars-knowledge_radios_1_item_1",
-              "hint": "[Optional hint text]",
+              "hint": "",
               "name": "star-wars-knowledge_radios_1",
               "_type": "radio",
               "_uuid": "51efe2ca-fc47-4584-8129-e91589a46b9e",
@@ -371,7 +371,7 @@
             },
             {
               "_id": "star-wars-knowledge_radios_1_item_2",
-              "hint": "[Optional hint text]",
+              "hint": "",
               "name": "star-wars-knowledge_radios_1",
               "_type": "radio",
               "_uuid": "51efe2ca-fc47-4584-8129-e91589a46b9e",
@@ -386,7 +386,7 @@
             },
             {
               "_id": "star-wars-knowledge_radios_1_item_3",
-              "hint": "[Optional hint text]",
+              "hint": "",
               "name": "star-wars-knowledge_radios_1",
               "_type": "radio",
               "_uuid": "51efe2ca-fc47-4584-8129-e91589a46b9e",
