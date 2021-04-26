@@ -15,19 +15,19 @@
         {
           "_id": "config.meta--link",
           "_type": "link",
-          "href": "/cookies",
+          "href": "cookies",
           "text": "Cookies"
         },
         {
           "_id": "config.meta--link--2",
           "_type": "link",
-          "href": "/privacy",
+          "href": "privacy",
           "text": "Privacy"
         },
         {
           "_id": "config.meta--link--3",
           "_type": "link",
-          "href": "/accessibility",
+          "href": "accessibility",
           "text": "Accessibility"
         }
       ]
