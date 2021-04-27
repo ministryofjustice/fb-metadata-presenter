@@ -4,6 +4,6 @@
   "body": "[Optional content]",
   "content": "[Optional content]",
   "hint": "[Optional hint text]",
-  "option": "[Required option text]",
+  "option": "Option",
   "option_hint": "[Optional hint text]"
 }
