@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+## [1.0.3] - 2021-04-27
+
+### Changed
+
+- Default content text for collection component changed to be just "Option"
+
 ## [1.0.2] - 2021-04-26
 
 ### Fixed
