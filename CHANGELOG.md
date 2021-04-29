@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+## [1.0.4] - 2021-04-29
+
+### Added
+
+- Single question pages can also have optional section headings
+
 ## [1.0.3] - 2021-04-27
 
 ### Changed
