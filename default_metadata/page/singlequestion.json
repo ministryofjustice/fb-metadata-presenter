@@ -1,6 +1,7 @@
 {
   "_id": "page.singlequestion",
   "_type": "page.singlequestion",
+  "section_heading": "",
   "heading": "Question",
   "lede": "",
   "body": "Body section",
