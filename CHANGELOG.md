@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+## [1.0.5] - 2021-04-30
+
+### Fixed
+
+- UUIDs in fixture version should be unique so
+
 ## [1.0.4] - 2021-04-29
 
 ### Added
