@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+## [1.0.6] - 2021-04-30
+
+### Changed
+
+- Remove section heading from start pages
+
 ## [1.0.5] - 2021-04-30
 
 ### Fixed
