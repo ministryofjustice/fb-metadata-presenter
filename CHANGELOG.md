@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+## [1.0.7] - 2021-05-04
+
+### Changed
+
+- Remove section break from footer
+
 ## [1.0.6] - 2021-04-30
 
 ### Changed
