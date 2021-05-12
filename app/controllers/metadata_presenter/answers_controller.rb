@@ -7,6 +7,7 @@ module MetadataPresenter
 
       if @page_answers.validate_answers
         save_user_data # method signature
+        upload_file if upload?
         redirect_to_next_page
       else
         render_validation_error
@@ -50,6 +51,14 @@ module MetadataPresenter
 
     def check_page_exists
       not_found if page.blank?
+    end
+
+    def upload_file
+      super if defined?(super)
+    end
+
+    def upload?
+      Array(page.components).any?(&:upload?)
     end
   end
 end

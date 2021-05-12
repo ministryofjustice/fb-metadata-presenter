@@ -17,7 +17,7 @@ module MetadataPresenter
       # So in the Runner we defined the #create_submission in the parent
       # controller and in the Editor we don't.
       #
-      if defined? super
+      if defined?(super)
         super
       end
     end

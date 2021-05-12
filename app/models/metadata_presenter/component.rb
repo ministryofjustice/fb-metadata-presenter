@@ -16,4 +16,8 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
   def content?
     type == 'content'
   end
+
+  def upload?
+    type == 'upload'
+  end
 end

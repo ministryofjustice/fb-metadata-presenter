@@ -14,10 +14,6 @@ module MetadataPresenter
       add_extra_component
     ].freeze
 
-    def ==(other)
-      id == other.id if other.respond_to? :id
-    end
-
     def editable_attributes
       to_h.reject { |k, _| k.in?(NOT_EDITABLE) }
     end
@@ -56,6 +52,10 @@ module MetadataPresenter
 
     def content_components
       page_components(raw_type)[:content]
+    end
+
+    def upload_components
+      components.select(&:upload?)
     end
 
     private

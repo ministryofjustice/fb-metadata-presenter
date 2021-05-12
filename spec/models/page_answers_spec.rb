@@ -47,8 +47,70 @@ RSpec.describe MetadataPresenter::PageAnswers do
       end
     end
 
+    context 'when there are upload answers' do
+      let(:page) { service.find_page_by_url('dog-picture') }
+
+      context 'when uploading a file' do
+        let(:upload_file) do
+          Rack::Test::UploadedFile.new(
+            "./spec/fixtures/computer_says_no.gif", "image/gif"
+          )
+        end
+        let(:answers) do
+          { 'dog-picture_upload_1' => upload_file }
+        end
+        let(:expected_answer) do
+          {
+            "original_filename" => "computer_says_no.gif",
+            "content_type" => "image/gif",
+            "tempfile" => upload_file.path
+          }
+        end
+
+        it 'returns file details hash' do
+          expect(
+            page_answers.send('dog-picture_upload_1')
+          ).to include(expected_answer)
+        end
+      end
+
+      context 'when check your answers page' do
+        let(:upload) do
+          {
+            "original_filename" => "computer_says_no.gif",
+            "content_type" => "image/gif",
+          }
+        end
+        let(:answers) do
+          {
+            'dog-picture_upload_1' => upload
+          }
+        end
+
+        it 'returns empty hash' do
+          expect(
+            page_answers.send('dog-picture_upload_1')
+          ).to include(upload)
+        end
+      end
+
+      context 'when not uploading a file' do
+        let(:answers) do
+          { 'dog-picture_upload_1' => nil }
+        end
+
+        it 'returns empty hash' do
+          expect(
+            page_answers.send('dog-picture_upload_1')
+          ).to include({})
+        end
+      end
+    end
+
     context 'when the components do not exist' do
       # This will be tested when we add multiple questions pages
+      #
+      # DO THIS
     end
   end
 

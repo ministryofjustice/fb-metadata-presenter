@@ -34,6 +34,10 @@ class MetadataPresenter::Metadata
     value.blank? && editor? ? MetadataPresenter::DefaultText[method_name] : value
   end
 
+  def ==(other)
+    id == other.id if other.respond_to? :id
+  end
+
   def editor?
     @editor.present?
   end

@@ -132,4 +132,22 @@ RSpec.describe MetadataPresenter::Page do
       end
     end
   end
+
+  describe '#upload_components' do
+    context 'when page has upload components' do
+      subject(:page) { service.find_page_by_url('dog-picture') }
+
+      it 'returns empty' do
+        expect(page.upload_components).to match_array([page.components.first])
+      end
+    end
+
+    context 'when page does not have upload components' do
+      subject(:page) { service.find_page_by_url('name') }
+
+      it 'returns empty' do
+        expect(page.upload_components).to eq([])
+      end
+    end
+  end
 end

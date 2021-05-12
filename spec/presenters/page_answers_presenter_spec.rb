@@ -93,6 +93,27 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
       end
     end
 
+    context 'when component is upload' do
+      let(:page) { service.find_page_by_url('dog-picture') }
+
+      context 'when there is an answer' do
+        let(:answers) do
+          {
+            component.id => {
+              'tempfile' => '#<File:0x00007fea860712c8>',
+              'original_filename' => 'computer_says_no.gif',
+              'content_type' => 'image/gif',
+              'headers' => 'Content-Type: image/gif'
+            }
+          }
+        end
+
+        it 'returns the original file name' do
+          expect(presenter.answer).to eq('computer_says_no.gif')
+        end
+      end
+    end
+
     context 'when component is normal formatting' do
       let(:page) { service.find_page_by_url('/name') }
       let(:answers) { { component.id => 'Mando' } }
