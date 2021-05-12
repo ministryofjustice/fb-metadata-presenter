@@ -439,13 +439,14 @@
       "body": "We need a photograph of your dog",
       "_type": "page.singlequestion",
       "_uuid": "2ef7d11e-0307-49e9-9fe2-345dc528dd66",
-      "heading": "Upload your best dog photo",
+      "heading": "Question",
       "components": [
         {
           "_id":  "dog-picture_upload_1",
           "name": "dog-picture_upload_1",
           "_type": "upload",
           "_uuid": "f056a76e-ec3f-47ae-b625-1bba92220ad1",
+          "legend": "Upload your best dog photo",
           "max_files": 1,
           "validation": {
             "required": true,
