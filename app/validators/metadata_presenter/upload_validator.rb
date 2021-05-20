@@ -9,5 +9,12 @@ module MetadataPresenter
         component.id == uploaded_file.component.id
       end
     end
+
+    def error_message_hash
+      {
+        control: page_answers.send(component.id)['original_filename'],
+        schema_key.to_sym => component.validation[schema_key]
+      }
+    end
   end
 end

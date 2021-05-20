@@ -32,6 +32,9 @@
     },
     {
       "$ref": "validations#/definition/errors_max_size"
+    },
+    {
+      "$ref": "validations#/definition/errors_virus_scan"
     }
   ]
 }
