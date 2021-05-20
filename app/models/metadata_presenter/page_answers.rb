@@ -2,11 +2,12 @@ module MetadataPresenter
   class PageAnswers
     include ActiveModel::Model
     include ActiveModel::Validations
-    attr_reader :page, :answers
+    attr_reader :page, :answers, :uploaded_files
 
     def initialize(page, answers)
       @page = page
       @answers = answers
+      @uploaded_files = []
     end
 
     def validate_answers

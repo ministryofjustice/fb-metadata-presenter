@@ -5,9 +5,10 @@ module MetadataPresenter
     def create
       @page_answers = PageAnswers.new(page, answers_params)
 
+      upload_file if upload?
+
       if @page_answers.validate_answers
         save_user_data # method signature
-        upload_file if upload?
         redirect_to_next_page
       else
         render_validation_error

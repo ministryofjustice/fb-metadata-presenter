@@ -150,4 +150,12 @@ RSpec.describe MetadataPresenter::PageAnswers do
       end
     end
   end
+
+  describe '#uploaded_files' do
+    let(:answers) { {} }
+
+    it 'returns empty array as default' do
+      expect(page_answers.uploaded_files).to eq([])
+    end
+  end
 end
