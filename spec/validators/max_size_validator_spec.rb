@@ -35,6 +35,13 @@ RSpec.describe MetadataPresenter::MaxSizeValidator do
       it 'returns false' do
         expect(validator).to_not be_valid
       end
+
+      it 'returns a custom error message' do
+        validator.valid?
+        expect(page_answers.errors.full_messages).to eq(
+          ["The selected file must be smaller than 7MB."]
+        )
+      end
     end
 
     context 'when another error but not file too large' do
