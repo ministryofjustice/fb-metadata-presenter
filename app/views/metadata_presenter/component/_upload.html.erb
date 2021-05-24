@@ -4,5 +4,6 @@
       data: { "fb-default-text" => default_text('upload_hint') },
       text: component.hint.present? ? component.hint : default_text('upload_hint')
     },
-  accept: component.validation['accept']
+  accept: component.validation['accept'],
+  disabled: editable?
 %>
