@@ -53,7 +53,7 @@ RSpec.describe MetadataPresenter::PageAnswers do
       context 'when uploading a file' do
         let(:upload_file) do
           Rack::Test::UploadedFile.new(
-            "./spec/fixtures/computer_says_no.gif", "image/gif"
+            './spec/fixtures/computer_says_no.gif', 'image/gif'
           )
         end
         let(:answers) do
@@ -61,9 +61,9 @@ RSpec.describe MetadataPresenter::PageAnswers do
         end
         let(:expected_answer) do
           {
-            "original_filename" => "computer_says_no.gif",
-            "content_type" => "image/gif",
-            "tempfile" => upload_file.path
+            'original_filename' => 'computer_says_no.gif',
+            'content_type' => 'image/gif',
+            'tempfile' => upload_file.path
           }
         end
 
@@ -77,8 +77,8 @@ RSpec.describe MetadataPresenter::PageAnswers do
       context 'when check your answers page' do
         let(:upload) do
           {
-            "original_filename" => "computer_says_no.gif",
-            "content_type" => "image/gif",
+            'original_filename' => 'computer_says_no.gif',
+            'content_type' => 'image/gif'
           }
         end
         let(:answers) do

@@ -41,9 +41,9 @@ module MetadataPresenter
         file_details
       else
         {
-          "original_filename" => file_details.original_filename,
-          "content_type" => file_details.content_type,
-          "tempfile" => file_details.tempfile.path.to_s
+          'original_filename' => file_details.original_filename,
+          'content_type' => file_details.content_type,
+          'tempfile' => file_details.tempfile.path.to_s
         }
       end
     end
