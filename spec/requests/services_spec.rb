@@ -50,6 +50,16 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
   end
 
   describe 'POST to page URL' do
+    context 'when start page' do
+      before do
+        post '/'
+      end
+
+      it 'redirects to the first page' do
+        expect(response).to redirect_to('/name')
+      end
+    end
+
     context 'when valid' do
       before do
         post '/name',
@@ -58,6 +68,35 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
 
       it 'redirects to next page' do
         expect(response).to redirect_to('/email-address')
+      end
+
+      it 'does not upload any file' do
+        expect_any_instance_of(
+          MetadataPresenter::AnswersController
+        ).to_not receive(:upload_file)
+        post '/name', params: { answers: { name_text_1: 'Gandalf' } }
+      end
+    end
+
+    context 'when upload' do
+      let(:answers) do
+        {
+          'dog-picture_upload_1' => {
+            'original_filename' => 'we_are_awesome.png'
+          }
+        }
+      end
+
+      it 'redirect to the check your answers' do
+        post '/dog-picture', params: { answers: answers }
+        expect(response).to redirect_to('/check-answers')
+      end
+
+      it 'uploads the file' do
+        expect_any_instance_of(
+          MetadataPresenter::AnswersController
+        ).to receive(:upload_file)
+        post '/dog-picture', params: { answers: answers }
       end
     end
 

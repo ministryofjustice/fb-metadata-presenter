@@ -465,7 +465,7 @@
               "image/*",
               "application/x-iwork-pages-sffpages",
               "image/jpeg",
-              "applicattion/pdf",
+              "application/pdf",
               "text/plain",
               "image/png",
               "application/vnd.ms-powerpoint",
@@ -492,7 +492,8 @@
               "application/vnd.ms-word.document.macroEnabled.12",
               "application/vnd.ms-word.template.macroEnabled.12"
             ],
-            "max_size": "7340032"
+            "max_size": 7340032,
+            "virus_scan": true
           }
         }
       ]

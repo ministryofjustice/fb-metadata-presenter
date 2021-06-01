@@ -1,0 +1,13 @@
+{
+  "_id": "component.upload",
+  "_type": "upload",
+  "errors": {},
+  "label": "Question",
+  "hint": "Maximum file size is 7MB",
+  "name": "component-name",
+  "validation": {
+    "required": true,
+    "max_size": "7340032",
+    "virus_scan": true
+  }
+}

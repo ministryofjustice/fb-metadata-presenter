@@ -28,10 +28,13 @@
       "$ref": "definition.width_class.input"
     },
     {
-      "$ref": "validations#/defintion/errors_accept"
+      "$ref": "validations#/definitions/errors_accept"
     },
     {
-      "$ref": "validations#/definition/errors_max_size"
+      "$ref": "validations#/definitions/errors_max_size"
+    },
+    {
+      "$ref": "validations#/definitions/errors_virus_scan"
     }
   ]
 }

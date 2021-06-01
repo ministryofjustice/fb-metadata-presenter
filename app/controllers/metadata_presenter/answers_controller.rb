@@ -5,6 +5,8 @@ module MetadataPresenter
     def create
       @page_answers = PageAnswers.new(page, answers_params)
 
+      upload_file if upload?
+
       if @page_answers.validate_answers
         save_user_data # method signature
         redirect_to_next_page
@@ -50,6 +52,14 @@ module MetadataPresenter
 
     def check_page_exists
       not_found if page.blank?
+    end
+
+    def upload_file
+      super if defined?(super)
+    end
+
+    def upload?
+      Array(page.components).any?(&:upload?)
     end
   end
 end

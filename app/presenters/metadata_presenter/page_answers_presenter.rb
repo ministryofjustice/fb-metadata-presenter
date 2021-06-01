@@ -79,5 +79,9 @@ module MetadataPresenter
     def checkboxes(value)
       value.join('<br>').html_safe
     end
+
+    def upload(file_hash)
+      file_hash['original_filename']
+    end
   end
 end

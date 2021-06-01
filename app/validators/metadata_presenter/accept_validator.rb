@@ -1,5 +1,7 @@
 module MetadataPresenter
-  class AcceptValidator < BaseValidator
-    def invalid_answer?; end
+  class AcceptValidator < UploadValidator
+    def error_name
+      'accept'
+    end
   end
 end

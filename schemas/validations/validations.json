@@ -58,6 +58,14 @@
         }
       ]
     },
+    "errors_virus_scan": {
+      "title": "Error messages for 'Virus Scan'",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
     "min_length": {
       "title": "Minimum length",
       "description": "The minimum characters users must enter",
@@ -324,6 +332,11 @@
       "title": "Maximum size",
       "description": "Maximum file size as human readable string or bytes",
       "type": "string"
+    },
+    "virus_scan": {
+      "title": "Virus scan",
+      "description": "Scanning of files for viruses",
+      "type": "boolean"
     },
     "required_bundle": {
       "properties": {
