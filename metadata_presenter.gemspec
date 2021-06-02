@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'brakeman'
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'rspec-rails'
-  spec.add_development_dependency 'rubocop', '~> 1.10.0'
+  spec.add_development_dependency 'rubocop', '~> 1.15.0'
   spec.add_development_dependency 'rubocop-govuk'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'simplecov-console'
