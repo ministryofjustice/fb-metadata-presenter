@@ -5,8 +5,8 @@ module MetadataPresenter
       redirect_back(fallback_location: root_path)
     end
 
-    def remove_user_data
-      super if defined?(super)
+    def remove_user_data(component_id)
+      super(component_id) if defined?(super)
     end
   end
 end
