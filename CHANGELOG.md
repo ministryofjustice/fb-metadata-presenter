@@ -10,6 +10,24 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+## [1.2.0] - 2021-06-03
+
+### Added
+
+- Add ability to remove a previously uploaded file from user answers
+
+## [1.1.1] - 2021-06-02
+
+### Added
+
+- Add the allowed file types to the upload component default metadata
+
+## [1.1.0] - 2021-06-01
+
+### Added
+
+- Added file upload compononent and templates
+
 ## [1.0.8] - 2021-05-04
 
 ### Changed
