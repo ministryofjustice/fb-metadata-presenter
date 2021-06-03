@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+## [1.2.1] - 2021-06-03
+
+### Fixed
+
+- Pass component id to remove user data
+
 ## [1.2.0] - 2021-06-03
 
 ### Added
