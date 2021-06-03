@@ -17,6 +17,11 @@ module MetadataPresenter
     end
     helper_method :back_link
 
+    def answered?(component_id)
+      @page_answers.send(component_id).present?
+    end
+    helper_method :answered?
+
     private
 
     def not_found
