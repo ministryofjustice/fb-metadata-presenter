@@ -7,7 +7,7 @@
   <p><%= @page_answers.send(component.id)['original_filename'] %></p>
 
   <p>
-    <%= link_to 'Remove file', remove_file_path(component.id), method: :delete, class: 'govuk-link' %>
+    <%= link_to 'Remove file', remove_file_path(component.id), class: 'govuk-link' %>
   </p>
 <% else %>
   <%= f.govuk_file_field component.id.to_sym,

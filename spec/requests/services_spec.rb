@@ -73,7 +73,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       it 'does not upload any file' do
         expect_any_instance_of(
           MetadataPresenter::AnswersController
-        ).to_not receive(:upload_file)
+        ).to_not receive(:upload_files)
         post '/name', params: { answers: { name_text_1: 'Gandalf' } }
       end
     end
@@ -86,6 +86,12 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
           }
         }
       end
+      before do
+        allow_any_instance_of(
+          MetadataPresenter::AnswersController
+        ).to receive(:upload_adapter)
+          .and_return(MetadataPresenter::OfflineUploadAdapter)
+      end
 
       it 'redirect to the check your answers' do
         post '/dog-picture', params: { answers: answers }
@@ -95,7 +101,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       it 'uploads the file' do
         expect_any_instance_of(
           MetadataPresenter::AnswersController
-        ).to receive(:upload_file)
+        ).to receive(:upload_files)
         post '/dog-picture', params: { answers: answers }
       end
     end
