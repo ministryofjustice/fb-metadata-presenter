@@ -3,7 +3,10 @@ MetadataPresenter::Engine.routes.draw do
 
   post '/reserved/submissions', to: 'submissions#create', as: :reserved_submissions
   get '/reserved/change-answer', to: 'change_answer#create', as: :change_answer
-  delete '/reserved/file/:component_id', to: 'file#destroy', as: :remove_file
+
+  # We are not adding rails ujs to the editor app so we need to make it
+  # as get verb.
+  get '/reserved/file/:component_id', to: 'file#destroy', as: :remove_file
 
   post '/', to: 'answers#create'
   match '*path', to: 'answers#create', via: :post

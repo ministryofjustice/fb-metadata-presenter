@@ -5,7 +5,7 @@ module MetadataPresenter
     def create
       @page_answers = PageAnswers.new(page, answers_params)
 
-      upload_file if upload?
+      upload_files if upload?
 
       if @page_answers.validate_answers
         save_user_data # method signature
@@ -54,7 +54,33 @@ module MetadataPresenter
       not_found if page.blank?
     end
 
-    def upload_file
+    def upload_files
+      user_data = load_user_data
+      @page_answers.page.upload_components.each do |component|
+        answer = user_data[component.id]
+
+        @page_answers.uploaded_files.push(uploaded_file(answer, component))
+      end
+    end
+
+    def uploaded_file(answer, component)
+      if answer.present?
+        @page_answers.answers[component.id] = answer
+        MetadataPresenter::UploadedFile.new(
+          file: @page_answers.send(component.id),
+          component: component
+        )
+      else
+        FileUploader.new(
+          session: session,
+          page_answers: @page_answers,
+          component: component,
+          adapter: upload_adapter
+        ).upload
+      end
+    end
+
+    def upload_adapter
       super if defined?(super)
     end
 

@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+## [1.3.0] - 2021-06-04
+
+### Changed
+
+- Now the gem contains the upload behaviour logic in answers controller.
+
 ## [1.2.1] - 2021-06-03
 
 ### Fixed
