@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+## [1.3.1] - 2021-06-04
+
+### Fixed
+
+- Return and empty file object when there is no file to be uploaded
+
 ## [1.3.0] - 2021-06-04
 
 ### Changed
