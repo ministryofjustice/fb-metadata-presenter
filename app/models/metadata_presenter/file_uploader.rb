@@ -8,11 +8,17 @@ module MetadataPresenter
     end
 
     def upload_file
+      return {} if file_details.blank?
+
       adapter.new(
         session: session,
-        file_details: page_answers.send(component.id),
+        file_details: file_details,
         allowed_file_types: component.validation['accept']
       ).call
+    end
+
+    def file_details
+      page_answers.send(component.id)
     end
   end
 end
