@@ -67,4 +67,28 @@ RSpec.describe MetadataPresenter::Component do
       end
     end
   end
+
+  describe '#find_item_by_uuid' do
+    context 'when there are items' do
+      let(:attributes) do
+        {
+          items: [MetadataPresenter::Item.new('_uuid': '123')]
+        }
+      end
+
+      it 'returns the found item' do
+        expect(component.find_item_by_uuid('123')).to eq(attributes[:items].first)
+      end
+    end
+
+    context 'when there are no items' do
+      let(:attributes) do
+        {}
+      end
+
+      it 'returns nil' do
+        expect(component.find_item_by_uuid('123')).to be_nil
+      end
+    end
+  end
 end

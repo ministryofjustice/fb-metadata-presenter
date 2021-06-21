@@ -150,4 +150,14 @@ RSpec.describe MetadataPresenter::Page do
       end
     end
   end
+
+  describe '#find_component_by_uuid' do
+    subject(:page) { service.find_page_by_url('name') }
+
+    it 'returns component' do
+      expect(
+        page.find_component_by_uuid('27d377a2-6828-44ca-87d1-b83ddac98284')
+      ).to eq(page.components.first)
+    end
+  end
 end

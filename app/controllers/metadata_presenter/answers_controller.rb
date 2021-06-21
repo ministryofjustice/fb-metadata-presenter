@@ -25,10 +25,11 @@ module MetadataPresenter
     end
 
     def redirect_to_next_page
-      next_page = NextPage.new(service).find(
+      next_page = NextPage.new(
+        service: service,
         session: session,
         current_page_url: page_url
-      )
+      ).find
 
       if next_page.present?
         redirect_to_page next_page.url

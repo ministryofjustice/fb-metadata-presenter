@@ -8,7 +8,7 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
   end
 
   def items
-    metadata.items.map do |item|
+    Array(metadata.items).map do |item|
       MetadataPresenter::Item.new(item, editor: editor?)
     end
   end
@@ -19,5 +19,9 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
 
   def upload?
     type == 'upload'
+  end
+
+  def find_item_by_uuid(uuid)
+    items.find { |item| item.uuid == uuid }
   end
 end
