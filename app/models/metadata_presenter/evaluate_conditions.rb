@@ -6,18 +6,19 @@ module MetadataPresenter
     def page
       results = conditions.map do |condition|
         condition.criterias.map do |criteria|
-          page = service.find_page_by_uuid(criteria.page)
-          component = page.find_component_by_uuid(criteria.component)
-          field = component.find_item_by_uuid(criteria.field)
+          criteria.service = service
 
-          Operator.new(
+          if Operator.new(
             criteria.operator
-          ).evaluate(field['label'], user_data[component.id])
+          ).evaluate(criteria.field_label, user_data[criteria.criteria_component.id])
+            condition.next
+          end
         end
       end
 
-      if results.flatten.all?
-        service.find_page_by_uuid(flow.conditions.first.next)
+      page_uuid = results.flatten.uniq.compact
+      if page_uuid.present?
+        service.find_page_by_uuid(page_uuid.first)
       else
         service.find_page_by_uuid(flow.default_next)
       end

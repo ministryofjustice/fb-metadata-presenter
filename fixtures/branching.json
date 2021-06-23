@@ -23,7 +23,7 @@
     "09e91fd9-7a46-4840-adbc-244d545cfef7": {
       "_type": "branch",
       "next": {
-        "default": "e337070b-f636-49a3-a65c-f506675265f0",
+        "default": "0b297048-aa4d-49b6-ac74-18e069118185",
         "conditions": [
           {
             "condition_type": "if",
@@ -38,6 +38,68 @@
             ]
           }
         ]
+      }
+    },
+    "e8708909-922e-4eaf-87a5-096f7a713fcb": {
+      "_type": "page",
+      "next": {
+        "default": "0b297048-aa4d-49b6-ac74-18e069118185"
+      }
+    },
+    "0b297048-aa4d-49b6-ac74-18e069118185": {
+      "_type": "page",
+      "next": {
+        "default": "ffadeb22-063b-4e4f-9502-bd753c706b1d"
+      }
+    },
+    "ffadeb22-063b-4e4f-9502-bd753c706b1d": {
+      "_type": "branch",
+      "next": {
+        "default": "05c3306c-0a39-42d2-9e0f-93fd49248f4e",
+        "conditions": [
+          {
+            "condition_type": "if",
+            "next": "d4342dfd-0d09-4a91-a0ea-d7fd67e706cc",
+            "criterias": [
+              {
+                "operator": "is",
+                "page": "0b297048-aa4d-49b6-ac74-18e069118185",
+                "component": "43ef37a0-8a9d-4dcd-9f76-42b145a50261",
+                "field": "0de360a9-f0f3-44dd-a9b9-8bc4ff694aa3"
+              }
+            ]
+          },
+          {
+            "condition_type": "if",
+            "next": "91e9f7c6-2f75-4b7d-9eb5-0cf352f7be66",
+            "criterias": [
+              {
+                "operator": "is",
+                "page": "0b297048-aa4d-49b6-ac74-18e069118185",
+                "component": "43ef37a0-8a9d-4dcd-9f76-42b145a50261",
+                "field": "f5ee4c8f-be21-4f1e-9bd1-6519e964c126"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "d4342dfd-0d09-4a91-a0ea-d7fd67e706cc": {
+      "_type": "page",
+      "next": {
+        "default": "05c3306c-0a39-42d2-9e0f-93fd49248f4e"
+      }
+    },
+    "91e9f7c6-2f75-4b7d-9eb5-0cf352f7be66": {
+      "_type": "page",
+      "next": {
+        "default": "05c3306c-0a39-42d2-9e0f-93fd49248f4e"
+      }
+    },
+    "05c3306c-0a39-42d2-9e0f-93fd49248f4e": {
+      "_type": "page",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0"
       }
     },
     "e337070b-f636-49a3-a65c-f506675265f0": {
@@ -244,6 +306,157 @@
       ],
       "add_component": "radios",
       "section_heading": "That's no moon"
+    },
+    {
+      "_id": "page.favourite-fruit",
+      "url": "favourite-fruit",
+      "_type": "page.singlequestion",
+      "_uuid": "0b297048-aa4d-49b6-ac74-18e069118185",
+      "components": [
+        {
+          "_id": "favourite-fruit_radios_1",
+          "hint": "",
+          "name": "favourite-fruit_radios_1",
+          "_type": "radios",
+          "_uuid": "43ef37a0-8a9d-4dcd-9f76-42b145a50261",
+          "items": [
+            {
+              "_id": "favourite-fruit_radios_1_item_1",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "0de360a9-f0f3-44dd-a9b9-8bc4ff694aa3",
+              "label": "Apples"
+            },
+            {
+              "_id": "favourite-fruit_radios_1_item_2",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "f5ee4c8f-be21-4f1e-9bd1-6519e964c126",
+              "label": "Oranges"
+            },
+            {
+              "_id": "favourite-fruit_radios_1_item_3",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "8060028a-d8af-497a-83ab-22850fada6fb",
+              "label": "Pears"
+            }
+          ],
+          "errors": {},
+          "legend": "What is your favourite fruit?",
+          "validation": {
+            "required": false
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.apple-juice",
+      "url": "apple-juice",
+      "_type": "page.singlequestion",
+      "_uuid": "d4342dfd-0d09-4a91-a0ea-d7fd67e706cc",
+      "components": [
+        {
+          "_id": "apple-juice_radios_1",
+          "hint": "",
+          "name": "apple-juice_radios_1",
+          "_type": "radios",
+          "_uuid": "05ca2a98-6259-426a-adb4-ad9eb5c33501",
+          "items": [
+            {
+              "_id": "apple-juice_radios_1_item_1",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "8c4a9988-f5ca-4478-888c-9edd48b0cb03",
+              "label": "Yes"
+            },
+            {
+              "_id": "apple-juice_radios_1_item_2",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "6c0c6ab8-cbc2-475e-9f5f-38df4b5a53e8",
+              "label": "No"
+            }
+          ],
+          "errors": {},
+          "legend": "Do you like apple juice?",
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.orange-juice",
+      "url": "orange-juice",
+      "_type": "page.singlequestion",
+      "_uuid": "91e9f7c6-2f75-4b7d-9eb5-0cf352f7be66",
+      "components": [
+        {
+          "_id": "orange-juice_radios_1",
+          "hint": "",
+          "name": "orange-juice_radios_1",
+          "_type": "radios",
+          "_uuid": "ce623afd-4a3b-4e5d-a668-819821780107",
+          "items": [
+            {
+              "_id": "orange-juice_radios_1_item_1",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "5e147348-1bed-4f92-9312-dc95e174f7cf",
+              "label": "Yes"
+            },
+            {
+              "_id": "orange-juice_radios_1_item_2",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "2b23b405-60df-4e71-bee8-bf3f9216ee0c",
+              "label": "No"
+            }
+          ],
+          "errors": {},
+          "legend": "Do you like orange juice?",
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.favourite-band",
+      "url": "favourite-band",
+      "_type": "page.singlequestion",
+      "_uuid": "05c3306c-0a39-42d2-9e0f-93fd49248f4e",
+      "components": [
+        {
+          "_id": "favourite-band_radios_1",
+          "hint": "",
+          "name": "favourite-band_radios_1",
+          "_type": "radios",
+          "_uuid": "c0cc9cba-b53f-4ab5-80a2-bfa6311882ae",
+          "items": [
+            {
+              "_id": "favourite-band_radios_1_item_1",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "aa1e5688-e062-4cd6-8088-018fddd6eb10",
+              "label": "Beatles"
+            },
+            {
+              "_id": "favourite-band_radios_1_item_2",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "78541e4b-abaa-48d7-a48f-5648cf2165d6",
+              "label": "Rolling Stones"
+            }
+          ],
+          "errors": {},
+          "legend": "What is your favourite band?",
+          "validation": {
+            "required": true
+          }
+        }
+      ]
     },
     {
       "_id": "page.check-answers",
