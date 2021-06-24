@@ -19,7 +19,7 @@ module MetadataPresenter
     end
 
     def field_label
-      criteria_field['label']
+      criteria_field['label'] if criteria_field
     end
   end
 end
