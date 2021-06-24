@@ -40,7 +40,7 @@ RSpec.shared_context 'branching flow' do
 
       it 'returns next page in main flow sequence' do
         expect(result).to eq(
-          MetadataPresenter::Page.new(_id: 'page.check-answers')
+          MetadataPresenter::Page.new(_id: 'page.favourite-fruit')
         )
       end
     end

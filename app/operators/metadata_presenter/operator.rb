@@ -20,7 +20,7 @@ module MetadataPresenter
     end
 
     def klass
-      "MetadataPresenter::#{@operator.capitalize}Operator"
+      "MetadataPresenter::#{@operator.capitalize.classify}Operator"
     end
   end
 end

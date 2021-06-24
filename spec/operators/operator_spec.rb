@@ -6,11 +6,22 @@ RSpec.describe MetadataPresenter::Operator do
     let(:expected) { double }
 
     context 'when operator exists' do
-      let(:operator) { 'is' }
+      context 'when simple operator' do
+        let(:operator) { 'is' }
 
-      it 'expects to evaluate the operator' do
-        expect_any_instance_of(MetadataPresenter::IsOperator).to receive(:evaluate?)
-        subject.evaluate(actual, expected)
+        it 'expects to evaluate the operator' do
+          expect_any_instance_of(MetadataPresenter::IsOperator).to receive(:evaluate?)
+          subject.evaluate(actual, expected)
+        end
+      end
+
+      context 'when operator name has two words' do
+        let(:operator) { 'is_answered' }
+
+        it 'expects to evaluate the operator' do
+          expect_any_instance_of(MetadataPresenter::IsAnsweredOperator).to receive(:evaluate?)
+          subject.evaluate(actual, expected)
+        end
       end
     end
 
