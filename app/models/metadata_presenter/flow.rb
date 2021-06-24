@@ -1,5 +1,9 @@
 module MetadataPresenter
   class Flow < MetadataPresenter::Metadata
+    def branch?
+      type == 'branch'
+    end
+
     def default_next
       metadata['next']['default']
     end

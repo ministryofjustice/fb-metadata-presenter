@@ -8,11 +8,11 @@ module MetadataPresenter
         condition.criterias.map do |criteria|
           criteria.service = service
 
-          if Operator.new(
+          next unless Operator.new(
             criteria.operator
           ).evaluate(criteria.field_label, user_data[criteria.criteria_component.id])
-            condition.next
-          end
+
+          condition.next
         end
       end
 
@@ -24,8 +24,6 @@ module MetadataPresenter
       end
     end
 
-    def conditions
-      flow.conditions
-    end
+    delegate :conditions, to: :flow
   end
 end

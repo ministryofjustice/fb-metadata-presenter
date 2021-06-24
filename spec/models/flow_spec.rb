@@ -6,6 +6,28 @@ RSpec.describe MetadataPresenter::Flow do
     service.flow('cf6dc32f-502c-4215-8c27-1151a45735bb')
   end
 
+  describe '#branch?' do
+    context 'when the type is branch' do
+      subject(:flow) do
+        service.flow('09e91fd9-7a46-4840-adbc-244d545cfef7')
+      end
+
+      it 'returns true' do
+        expect(flow).to be_branch
+      end
+    end
+
+    context 'when the type is not a branch' do
+      subject(:flow) do
+        service.flow('cf6dc32f-502c-4215-8c27-1151a45735bb')
+      end
+
+      it 'returns false' do
+        expect(flow).to_not be_branch
+      end
+    end
+  end
+
   describe '#default_next' do
     context 'when there is a next default' do
       it 'returns the next default page' do

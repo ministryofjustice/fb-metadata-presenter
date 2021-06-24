@@ -9,7 +9,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
   let(:service_metadata) { metadata_fixture(:branching) }
 
   describe '#page' do
-    subject(:page) { evaluate_conditions.page  }
+    subject(:page) { evaluate_conditions.page }
 
     context 'when simple if condition' do
       let(:flow) { service.flow('09e91fd9-7a46-4840-adbc-244d545cfef7') }

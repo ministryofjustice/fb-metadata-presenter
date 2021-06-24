@@ -8,13 +8,10 @@ module MetadataPresenter
 
       if conditions?
         evaluate_conditions
+      elsif current_page_flow.present?
+        service.find_page_by_uuid(current_page_flow.default_next)
       else
-        # flow['default']
-        if current_page_flow.present?
-          service.find_page_by_uuid(current_page_flow.default_next)
-        else
-          service.next_page(from: current_page_url)
-        end
+        service.next_page(from: current_page_url)
       end
     end
 
@@ -30,10 +27,9 @@ module MetadataPresenter
     end
 
     def conditions?
-      # change this to if the next page is a branch object
       current_page_flow.present? &&
         next_flow.present? &&
-        next_flow_conditions.present?
+        next_flow_branch_object?
     end
 
     def evaluate_conditions
@@ -60,8 +56,8 @@ module MetadataPresenter
       service.flow(current_page_flow.default_next)
     end
 
-    def next_flow_conditions
-      next_flow.conditions
+    def next_flow_branch_object?
+      next_flow.branch?
     end
   end
 end

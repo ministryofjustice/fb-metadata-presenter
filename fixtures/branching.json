@@ -131,7 +131,27 @@
     "ef2cafe3-37e2-4533-9b0c-09a970cd38d4": {
       "_type": "page",
       "next": {
-        "default": "e337070b-f636-49a3-a65c-f506675265f0"
+        "default": "cf8b3e18-dacf-4e91-92e1-018035961003"
+      }
+    },
+    "cf8b3e18-dacf-4e91-92e1-018035961003": {
+      "_type": "branch",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0",
+        "conditions": [
+          {
+            "condition_type": "if",
+            "next": "b5efc09c-ece7-45ae-b0b3-8a7905e25040",
+            "criterias": [
+              {
+                "operator": "is_not",
+                "page": "ef2cafe3-37e2-4533-9b0c-09a970cd38d4",
+                "component": "4477bbd6-ce23-4c38-8f17-bd5b75386557",
+                "field": "7c795f17-288b-430a-86f8-05d5ae63a3a1"
+              }
+            ]
+          }
+        ]
       }
     },
     "e337070b-f636-49a3-a65c-f506675265f0": {
@@ -557,7 +577,33 @@
           "errors": {},
           "legend": "What is the best form builder?",
           "validation": {
-            "required": true
+            "required": false
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.which-formbuilder",
+      "url": "which-formbuilder",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "b5efc09c-ece7-45ae-b0b3-8a7905e25040",
+      "heading": "Question",
+      "components": [
+        {
+          "_id": "which-formbuilder_text_1",
+          "hint": "",
+          "name": "which-formbuilder_text_1",
+          "_type": "text",
+          "_uuid": "dd2ae259-dd91-4689-b7d5-d6efd91bf58a",
+          "label": "Which Formbuilder is the best?",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
           }
         }
       ]

@@ -14,6 +14,23 @@ RSpec.shared_context 'branching flow' do
     end
   end
 
+  context 'when last page inside the branch' do
+    let(:current_page_url) { 'apple-juice' }
+    let(:session) do
+      {
+        user_data: {
+          'apple-juice_radios_1' => 'Yes'
+        }
+      }
+    end
+
+    it 'returns to the main flow' do
+      expect(result).to eq(
+        MetadataPresenter::Page.new(_id: 'page.favourite-band')
+      )
+    end
+  end
+
   context 'when radio is selected' do
     let(:current_page_url) { 'do-you-like-star-wars' }
     let(:session) do
