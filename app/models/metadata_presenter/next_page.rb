@@ -10,7 +10,11 @@ module MetadataPresenter
         evaluate_conditions
       else
         # flow['default']
-        service.next_page(from: current_page_url)
+        if current_page_flow.present?
+          service.find_page_by_uuid(current_page_flow.default_next)
+        else
+          service.next_page(from: current_page_url)
+        end
       end
     end
 

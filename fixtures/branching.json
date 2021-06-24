@@ -99,6 +99,32 @@
     "05c3306c-0a39-42d2-9e0f-93fd49248f4e": {
       "_type": "page",
       "next": {
+        "default": "1d02e508-5953-4eca-af2f-9d67511c8648"
+      }
+    },
+    "1d02e508-5953-4eca-af2f-9d67511c8648": {
+      "_type": "branch",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0",
+        "conditions": [
+          {
+            "condition_type": "if",
+            "next": "8002df6e-29ab-4cdf-b520-1d7bb931a28f",
+            "criterias": [
+              {
+                "operator": "is_answered",
+                "page": "05c3306c-0a39-42d2-9e0f-93fd49248f4e",
+                "component": "c0cc9cba-b53f-4ab5-80a2-bfa6311882ae",
+                "field": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "8002df6e-29ab-4cdf-b520-1d7bb931a28f": {
+      "_type": "page",
+      "next": {
         "default": "e337070b-f636-49a3-a65c-f506675265f0"
       }
     },
@@ -153,7 +179,7 @@
           "collection": "components",
           "validation": {
             "required": true,
-            "max_length": 10,
+            "max_length": 20,
             "min_length": 2
           }
         }
@@ -452,6 +478,42 @@
           ],
           "errors": {},
           "legend": "What is your favourite band?",
+          "validation": {
+            "required": false
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.music-app",
+      "url": "music-app",
+      "_type": "page.singlequestion",
+      "_uuid": "8002df6e-29ab-4cdf-b520-1d7bb931a28f",
+      "components": [
+        {
+          "_id": "music-app_radios_1",
+          "hint": "",
+          "name": "music-app_radios_1",
+          "_type": "radios",
+          "_uuid": "79822f1a-42bd-4f02-b3f2-270e8aee487f",
+          "items": [
+            {
+              "_id": "music-app_radios_1_item_1",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "881dcc5f-845f-480a-b813-1b66e3ffe759",
+              "label": "iTunes"
+            },
+            {
+              "_id": "music-app_radios_1_item_2",
+              "hint": "",
+              "_type": "radio",
+              "_uuid": "90b8863c-a247-4d28-bd8f-b6c1cbd27d37",
+              "label": "Spotify"
+            }
+          ],
+          "errors": {},
+          "legend": "Which app do you use to listen music?",
           "validation": {
             "required": true
           }
