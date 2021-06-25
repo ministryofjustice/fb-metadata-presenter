@@ -20,4 +20,44 @@ RSpec.describe MetadataPresenter::IsOperator do
       end
     end
   end
+
+  describe '#evaluate_collection?' do
+    context 'when is included' do
+      let(:actual) { 'Apples' }
+      let(:expected) { %w[Apples] }
+
+      it 'returns true' do
+        expect(operator.evaluate_collection?).to be_truthy
+      end
+    end
+
+    context 'when is not included' do
+      context 'when other choices are selected' do
+        let(:actual) { 'Apples' }
+        let(:expected) { %w[Pears] }
+
+        it 'returns false' do
+          expect(operator.evaluate_collection?).to be_falsey
+        end
+      end
+
+      context 'when is not answered' do
+        let(:actual) { 'Apples' }
+        let(:expected) { [] }
+
+        it 'returns false' do
+          expect(operator.evaluate_collection?).to be_falsey
+        end
+      end
+
+      context 'when is nil' do
+        let(:actual) { 'Apples' }
+        let(:expected) { nil }
+
+        it 'returns false' do
+          expect(operator.evaluate_collection?).to be_falsey
+        end
+      end
+    end
+  end
 end

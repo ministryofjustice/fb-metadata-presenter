@@ -137,7 +137,7 @@
     "cf8b3e18-dacf-4e91-92e1-018035961003": {
       "_type": "branch",
       "next": {
-        "default": "e337070b-f636-49a3-a65c-f506675265f0",
+        "default": "0c022e95-0748-4dda-8ba5-12fd1d2f596b",
         "conditions": [
           {
             "condition_type": "if",
@@ -152,6 +152,62 @@
             ]
           }
         ]
+      }
+    },
+    "b5efc09c-ece7-45ae-b0b3-8a7905e25040": {
+      "_type": "page",
+      "next": {
+        "default": "0c022e95-0748-4dda-8ba5-12fd1d2f596b"
+      }
+    },
+    "0c022e95-0748-4dda-8ba5-12fd1d2f596b": {
+      "_type": "page",
+      "next": {
+        "default": "618b7537-b42b-4551-ae7d-053afa4d9ca9"
+      }
+    },
+    "618b7537-b42b-4551-ae7d-053afa4d9ca9": {
+      "_type": "branch",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0",
+        "conditions": [
+          {
+            "condition_type": "if",
+            "next": "bc666714-c0a2-4674-afe5-faff2e20d847",
+            "criterias": [
+              {
+                "operator": "is",
+                "page": "0c022e95-0748-4dda-8ba5-12fd1d2f596b",
+                "component": "4c409737-80bb-48c7-afa7-6e9360b65004",
+                "field": "3251098f-c8e0-4ac5-a637-95fd2e1c4dc4"
+              }
+            ]
+          },
+          {
+            "condition_type": "if",
+            "next": "e2887f44-5e8d-4dc0-b1de-496ab6039430",
+            "criterias": [
+              {
+                "operator": "is_not",
+                "page": "0c022e95-0748-4dda-8ba5-12fd1d2f596b",
+                "component": "4c409737-80bb-48c7-afa7-6e9360b65004",
+                "field": "3251098f-c8e0-4ac5-a637-95fd2e1c4dc4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "bc666714-c0a2-4674-afe5-faff2e20d847": {
+      "_type": "page",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0"
+      }
+    },
+    "e2887f44-5e8d-4dc0-b1de-496ab6039430": {
+      "_type": "page",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0"
       }
     },
     "e337070b-f636-49a3-a65c-f506675265f0": {
@@ -607,6 +663,115 @@
           }
         }
       ]
+    },
+    {
+      "_id": "page.burgers",
+      "url": "burgers",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "0c022e95-0748-4dda-8ba5-12fd1d2f596b",
+      "heading": "Question",
+      "components": [
+        {
+          "_id": "burgers_checkboxes_1",
+          "hint": "",
+          "name": "burgers_checkboxes_1",
+          "_type": "checkboxes",
+          "_uuid": "4c409737-80bb-48c7-afa7-6e9360b65004",
+          "items": [
+            {
+              "_id": "burgers_checkboxes_1_item_1",
+              "hint": "",
+              "name": "burgers_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "3251098f-c8e0-4ac5-a637-95fd2e1c4dc4",
+              "label": "Beef, cheese, tomato",
+              "value": "value-1",
+              "errors": {},
+              "legend": "Question",
+              "collection": "components",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "_id": "burgers_checkboxes_1_item_2",
+              "hint": "",
+              "name": "burgers_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "a0717bbd-0b9f-47a0-bf2b-2a9d208e1168",
+              "label": "Chicken, cheese, tomato",
+              "value": "value-2",
+              "errors": {},
+              "legend": "Question",
+              "collection": "components",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "_id": "burgers_checkboxes_1_item_3",
+              "hint": "",
+              "name": "burgers_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "4c409737-80bb-48c7-afa7-6e9360b65004",
+              "label": "Mozzarella, cheddar, feta",
+              "value": "value-3",
+              "errors": {},
+              "legend": "Question",
+              "collection": "components",
+              "validation": {
+                "required": true
+              }
+            }
+          ],
+          "errors": {},
+          "legend": "What would you like on your burger?",
+          "collection": "components",
+          "validation": {
+            "required": false
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.global-warming",
+      "url": "global-warming",
+      "body": "What about the trees?",
+      "lede": "",
+      "_type": "page.content",
+      "_uuid": "bc666714-c0a2-4674-afe5-faff2e20d847",
+      "heading": "Global warming",
+      "components": [
+        {
+          "_id": "global-warming_content_1",
+          "name": "global-warming_content_1",
+          "_type": "content",
+          "_uuid": "957917c3-7473-4c30-b713-5aae77a1c22f",
+          "content": "They will come for you"
+        }
+      ],
+      "section_heading": ""
+    },
+    {
+      "_id": "page.we-love-chickens",
+      "url": "we-love-chickens",
+      "body": "Cluck cluck",
+      "lede": "",
+      "_type": "page.content",
+      "_uuid": "e2887f44-5e8d-4dc0-b1de-496ab6039430",
+      "heading": "We love chickens",
+      "components": [
+        {
+          "_id": "global-warming_content_1",
+          "name": "global-warming_content_1",
+          "_type": "content",
+          "_uuid": "49ff5c79-2e63-45fe-bbf7-de0bd061b909",
+          "content": "Cruella ain't got nothing on Cluckeralla"
+        }
+      ],
+      "section_heading": ""
     },
     {
       "_id": "page.check-answers",

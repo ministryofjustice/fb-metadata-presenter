@@ -107,10 +107,18 @@ RSpec.describe MetadataPresenter::PageAnswers do
       end
     end
 
-    context 'when the components do not exist' do
-      # This will be tested when we add multiple questions pages
-      #
-      # DO THIS
+    context 'when the components are optional' do
+      let(:page) { service.find_page_by_url('burgers') }
+
+      context 'checkboxes component' do
+        let(:answers) { {} }
+
+        it 'returns empty array' do
+          expect(
+            page_answers.send('burgers_checkboxes_1')
+          ).to eq([])
+        end
+      end
     end
   end
 

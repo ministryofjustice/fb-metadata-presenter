@@ -76,14 +76,53 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
           end
         end
       end
+
+      context 'when the question is a checkbox component' do
+        let(:flow) { service.flow('618b7537-b42b-4551-ae7d-053afa4d9ca9') }
+
+        context 'when beef cheese and tomato condition "is" met' do
+          let(:user_data) do
+            {
+              'burgers_checkboxes_1' => ['Beef, cheese, tomato']
+            }
+          end
+
+          it 'returns the page uuid for the default page' do
+            expect(page).to eq(service.find_page_by_url('global-warming'))
+          end
+        end
+
+        context 'when beef cheese and tomator "is not" met' do
+          let(:user_data) do
+            {
+              'burgers_checkboxes_1' => ['Chicken, cheese, tomato']
+            }
+          end
+
+          it 'returns the page uuid for the default page' do
+            expect(page).to eq(service.find_page_by_url('we-love-chickens'))
+          end
+        end
+      end
     end
 
     context 'when the question is optional' do
-      let(:flow) { service.flow('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
-      let(:user_data) { { 'favourite-fruit_radios_1' => '' } }
+      context 'for single answer questions' do
+        let(:flow) { service.flow('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
+        let(:user_data) { { 'favourite-fruit_radios_1' => '' } }
 
-      it 'returns the page uuid for the default page' do
-        expect(page).to eq(service.find_page_by_url('favourite-band'))
+        it 'returns the page uuid for the default page' do
+          expect(page).to eq(service.find_page_by_url('favourite-band'))
+        end
+      end
+
+      context 'for multiple answer (checkboxes) questions' do
+        let(:flow) { service.flow('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
+        let(:user_data) { { 'burgers_checkboxes_1' => [] } }
+
+        it 'returns the page uuid for the default page' do
+          expect(page).to eq(service.find_page_by_url('favourite-band'))
+        end
       end
     end
   end

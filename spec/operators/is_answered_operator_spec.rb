@@ -27,4 +27,30 @@ RSpec.describe MetadataPresenter::IsAnsweredOperator do
       end
     end
   end
+
+  describe '#evaluate_collection?' do
+    context 'when is answered' do
+      let(:expected) { %w[foo] }
+
+      it 'returns true' do
+        expect(operator.evaluate_collection?).to be_truthy
+      end
+    end
+
+    context 'when is not answered' do
+      let(:expected) { [] }
+
+      it 'returns false' do
+        expect(operator.evaluate_collection?).to be_falsey
+      end
+    end
+
+    context 'when is nil' do
+      let(:expected) { nil }
+
+      it 'returns false' do
+        expect(operator.evaluate_collection?).to be_falsey
+      end
+    end
+  end
 end
