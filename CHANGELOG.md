@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.4.0] - 2021-06-24
+
+### Added
+
+- Simple branching (single conditions) with radio buttons
+
 ## [1.3.2] - 2021-06-11
 
 - Add open office spreadsheet to upload component default metadata

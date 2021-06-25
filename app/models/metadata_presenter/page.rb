@@ -18,6 +18,10 @@ module MetadataPresenter
       to_h.reject { |k, _| k.in?(NOT_EDITABLE) }
     end
 
+    def find_component_by_uuid(uuid)
+      all_components.find { |component| component.uuid == uuid }
+    end
+
     def all_components
       [components, extra_components].flatten.compact
     end

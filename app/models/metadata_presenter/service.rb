@@ -5,6 +5,12 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     end
   end
 
+  def flow(page_uuid)
+    MetadataPresenter::Flow.new(metadata.flow[page_uuid])
+  rescue StandardError
+    nil
+  end
+
   def standalone_pages
     @standalone_pages ||= metadata.standalone_pages.map do |page|
       MetadataPresenter::Page.new(page, editor: editor?)
