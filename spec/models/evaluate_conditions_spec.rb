@@ -80,7 +80,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
 
     context 'when the question is optional' do
       let(:flow) { service.flow('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
-      let(:user_data) { {} }
+      let(:user_data) { { 'favourite-fruit_radios_1' => '' } }
 
       it 'returns the page uuid for the default page' do
         expect(page).to eq(service.find_page_by_url('favourite-band'))
