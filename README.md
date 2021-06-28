@@ -83,3 +83,15 @@ service.
 ## Generate documentation
 
 Run `rake doc` and open the doc/index.html
+
+## Flow diagrams
+
+You can generate flow diagrams calling a rake task:
+
+```
+  brew install graphviz
+  SERVICE_METADATA="some-form-metadata" rails metadata:flow
+```
+
+This will generate an image with the flow for that metadata. Open that image
+and profit!

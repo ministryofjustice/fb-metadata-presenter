@@ -13,5 +13,9 @@ module MetadataPresenter
         Condition.new(condition_metadata)
       end
     end
+
+    def group_by_page
+      conditions.group_by(&:next)
+    end
   end
 end
