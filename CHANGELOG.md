@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.5.0] - 2021-06-28
+
+### Added
+
+- Simple branching (single conditions) with checkboxes
+
 ## [1.4.0] - 2021-06-24
 
 ### Added
