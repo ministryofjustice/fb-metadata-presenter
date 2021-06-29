@@ -27,6 +27,8 @@ module MetadataPresenter
         date_answer(component.id)
       elsif component && component.type == 'upload'
         upload_answer(component.id)
+      elsif component && component.type == 'checkboxes'
+        answers[method_name.to_s].to_a
       else
         answers[method_name.to_s]
       end

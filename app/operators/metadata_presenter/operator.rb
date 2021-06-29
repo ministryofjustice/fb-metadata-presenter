@@ -10,10 +10,13 @@ module MetadataPresenter
     end
 
     def evaluate(actual, expected)
-      klass
-        .constantize
-        .new(actual, expected)
-        .evaluate?
+      operator = klass.constantize.new(actual, expected)
+
+      if expected.is_a?(Array)
+        operator.evaluate_collection?
+      else
+        operator.evaluate?
+      end
     rescue NameError
       raise NoOperator,
             "Operator '#{operator}' is not implemented. You need to create the class #{klass}"

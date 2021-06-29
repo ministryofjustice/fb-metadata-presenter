@@ -23,6 +23,16 @@ RSpec.describe MetadataPresenter::Operator do
           subject.evaluate(actual, expected)
         end
       end
+
+      context 'when expected answer is an array' do
+        let(:operator) { 'is' }
+        let(:expected) { [] }
+
+        it 'should call evaluate_collection?' do
+          expect_any_instance_of(MetadataPresenter::IsOperator).to receive(:evaluate_collection?)
+          subject.evaluate(actual, expected)
+        end
+      end
     end
 
     context 'when operator does not exist' do
