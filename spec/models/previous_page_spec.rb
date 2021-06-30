@@ -59,8 +59,8 @@ RSpec.describe MetadataPresenter::PreviousPage do
           end
         end
 
-        context 'when there is not a referer' do
-          let(:referer) { }
+        context 'when there is not a referrer' do
+          let(:referrer) {}
 
           it 'returns nil' do
             expect(previous_page.page).to be_nil
@@ -141,6 +141,15 @@ RSpec.describe MetadataPresenter::PreviousPage do
           end
         end
 
+        context 'when the referer is a standalone page' do
+          let(:current_page) { service.find_page_by_url('name') }
+          let(:referer) { 'http://localhost:3000/cookies' }
+
+          it 'returns the standalone page' do
+            expect(previous_page.page.url).to eq('cookies')
+          end
+        end
+
         context 'when it is the standalone page' do
           let(:current_page) { service.find_page_by_url('cookies') }
 
@@ -162,8 +171,8 @@ RSpec.describe MetadataPresenter::PreviousPage do
             end
           end
 
-          context 'when there is not a referer' do
-            let(:referer) { }
+          context 'when there is not a referrer' do
+            let(:referrer) {}
 
             it 'returns nil' do
               expect(previous_page.page).to be_nil

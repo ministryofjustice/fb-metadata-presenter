@@ -38,9 +38,12 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     pages[pages.index(current_page) + 1] if current_page.present?
   end
 
-  def previous_page(current_page:)
+  def previous_page(current_page:, referer:)
+    return if current_page.nil? || referer.nil?
+
     unless no_back_link?(current_page)
-      flow_page(current_page)
+      flow_page(current_page) ||
+        find_page_by_url(URI(referer).path)
     end
   end
 
@@ -67,6 +70,10 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   def flow_page(current_page)
     page_index = pages.index(current_page)
     pages[page_index - 1] if page_index.present?
+  end
+
+  def referrer_page(referrer)
+    find_page_by_url(URI(referrer).path) if referrer
   end
 
   def strip_slash(url)

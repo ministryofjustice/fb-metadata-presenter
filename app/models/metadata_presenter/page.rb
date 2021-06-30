@@ -62,6 +62,10 @@ module MetadataPresenter
       components.select(&:upload?)
     end
 
+    def standalone?
+      type == 'page.standalone'
+    end
+
     private
 
     def to_components(node_components, collection:)
