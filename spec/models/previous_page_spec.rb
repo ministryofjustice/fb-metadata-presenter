@@ -12,9 +12,7 @@ RSpec.describe MetadataPresenter::PreviousPage do
 
   describe '#page' do
     context 'when using the old flow' do
-      let(:service_metadata) do
-        metadata_fixture(:version)
-      end
+      let(:service_metadata) { metadata_fixture(:version) }
 
       context 'when is a start page' do
         let(:current_page) { service.find_page_by_url('/') }
@@ -39,12 +37,48 @@ RSpec.describe MetadataPresenter::PreviousPage do
           expect(previous_page.page.url).to eq('name')
         end
       end
+
+      context 'when it is the standalone page' do
+        let(:current_page) { service.find_page_by_url('cookies') }
+
+        context 'when there is a referer' do
+          context 'when is an existing page on metadata' do
+            let(:referer) { 'http://localhost:3000/name' }
+
+            it 'returns page' do
+              expect(previous_page.page).to eq(service.find_page_by_url('name'))
+            end
+          end
+
+          context 'when is not an existing page on metadata' do
+            let(:referer) { 'owned-site.co.uk' }
+
+            it 'returns nil' do
+              expect(previous_page.page).to be_nil
+            end
+          end
+        end
+
+        context 'when there is not a referer' do
+          let(:referer) { }
+
+          it 'returns nil' do
+            expect(previous_page.page).to be_nil
+          end
+        end
+      end
+
+      context 'when is a confirmation page' do
+        let(:current_page) { service.find_page_by_url('/confirmation') }
+
+        it 'returns nil' do
+          expect(previous_page.page).to be_nil
+        end
+      end
     end
 
     context 'when using the new branching flow' do
-      let(:service_metadata) do
-        metadata_fixture(:branching)
-      end
+      let(:service_metadata) { metadata_fixture(:branching) }
 
       context 'when navigating the branch' do
         let(:user_data) do
@@ -96,6 +130,44 @@ RSpec.describe MetadataPresenter::PreviousPage do
 
           it 'returns to page inside the branch' do
             expect(previous_page.page.url).to eq('apple-juice')
+          end
+        end
+
+        context 'when is a confirmation page' do
+          let(:current_page) { service.find_page_by_url('confirmation') }
+
+          it 'returns nil' do
+            expect(previous_page.page).to be_nil
+          end
+        end
+
+        context 'when it is the standalone page' do
+          let(:current_page) { service.find_page_by_url('cookies') }
+
+          context 'when there is a referer' do
+            context 'when is an existing page on metadata' do
+              let(:referer) { 'http://localhost:3000/name' }
+
+              it 'returns page' do
+                expect(previous_page.page).to eq(service.find_page_by_url('name'))
+              end
+            end
+
+            context 'when is not an existing page on metadata' do
+              let(:referer) { 'owned-site.co.uk' }
+
+              it 'returns nil' do
+                expect(previous_page.page).to be_nil
+              end
+            end
+          end
+
+          context 'when there is not a referer' do
+            let(:referer) { }
+
+            it 'returns nil' do
+              expect(previous_page.page).to be_nil
+            end
           end
         end
       end
