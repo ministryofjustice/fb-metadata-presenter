@@ -1,7 +1,7 @@
 module MetadataPresenter
   class NextPage
     include ActiveModel::Model
-    attr_accessor :service, :session, :current_page_url
+    attr_accessor :service, :session, :user_data, :current_page_url
 
     def find
       return check_answers_page if return_to_check_you_answer?
@@ -36,7 +36,7 @@ module MetadataPresenter
       EvaluateConditions.new(
         service: service,
         flow: next_flow,
-        user_data: session[:user_data]
+        user_data: user_data
       ).page
     end
 

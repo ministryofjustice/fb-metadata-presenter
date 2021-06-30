@@ -2,10 +2,10 @@ RSpec.shared_context 'branching flow' do
   let(:service_metadata) do
     metadata_fixture(:branching)
   end
+  let(:session) { {} }
 
   context 'when first page' do
     let(:current_page_url) { '/' }
-    let(:session) { {} }
 
     it 'returns first page' do
       expect(result).to eq(
@@ -16,11 +16,9 @@ RSpec.shared_context 'branching flow' do
 
   context 'when last page inside the branch' do
     let(:current_page_url) { 'apple-juice' }
-    let(:session) do
+    let(:user_data) do
       {
-        user_data: {
-          'apple-juice_radios_1' => 'Yes'
-        }
+        'apple-juice_radios_1' => 'Yes'
       }
     end
 
@@ -33,12 +31,10 @@ RSpec.shared_context 'branching flow' do
 
   context 'when radio is selected' do
     let(:current_page_url) { 'do-you-like-star-wars' }
-    let(:session) do
+    let(:user_data) do
       {
-        user_data: {
-          'name_text_1' => 'Din Djarin',
-          'do-you-like-star-wars_radios_1' => branching_answer
-        }
+        'name_text_1' => 'Din Djarin',
+        'do-you-like-star-wars_radios_1' => branching_answer
       }
     end
 
@@ -69,9 +65,11 @@ RSpec.describe MetadataPresenter::NextPage do
     described_class.new(
       service: service,
       session: session,
+      user_data: user_data,
       current_page_url: current_page_url
     )
   end
+  let(:user_data) { {} }
 
   describe '#find' do
     subject(:result) do
