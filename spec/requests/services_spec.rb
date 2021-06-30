@@ -188,7 +188,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     end
 
     it 'sets the session to return to check your answer page' do
-      expect(session[:return_to_check_you_answer]).to be_truthy
+      expect(session[:return_to_check_your_answer]).to be_truthy
     end
 
     it 'redirect to the url' do

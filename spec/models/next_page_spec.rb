@@ -79,7 +79,7 @@ RSpec.describe MetadataPresenter::NextPage do
     include_context 'branching flow'
 
     context 'when user should return to check your answer' do
-      let(:session) { { return_to_check_you_answer: true } }
+      let(:session) { { return_to_check_your_answer: true } }
       let(:current_page_url) { '' }
 
       it 'returns check your answer page' do
@@ -90,13 +90,13 @@ RSpec.describe MetadataPresenter::NextPage do
 
       it 'set the session as nil' do
         result
-        expect(session).to eq({ return_to_check_you_answer: nil })
+        expect(session).to eq({ return_to_check_your_answer: nil })
       end
     end
 
     context 'when there is a next page' do
       let(:service_metadata) { metadata_fixture(:version) }
-      let(:session) { { return_to_check_you_answer: nil } }
+      let(:session) { { return_to_check_your_answer: nil } }
       let(:current_page_url) { '/name' }
 
       it 'returns next page in sequence' do

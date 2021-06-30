@@ -4,7 +4,7 @@ module MetadataPresenter
     attr_accessor :service, :session, :user_data, :current_page_url
 
     def find
-      return check_answers_page if return_to_check_you_answer?
+      return check_answers_page if return_to_check_your_answer?
 
       if conditions?
         evaluate_conditions
@@ -18,12 +18,12 @@ module MetadataPresenter
     private
 
     def check_answers_page
-      session[:return_to_check_you_answer] = nil
+      session[:return_to_check_your_answer] = nil
       service.pages.find { |page| page.type == 'page.checkanswers' }
     end
 
-    def return_to_check_you_answer?
-      session[:return_to_check_you_answer].present?
+    def return_to_check_your_answer?
+      session[:return_to_check_your_answer].present?
     end
 
     def conditions?
