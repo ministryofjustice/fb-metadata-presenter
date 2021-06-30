@@ -38,3 +38,6 @@ Rails/FilePath:
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: indent
+
+Rails/RequestReferer:
+  EnforcedStyle: referrer

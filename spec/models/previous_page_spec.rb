@@ -4,11 +4,11 @@ RSpec.describe MetadataPresenter::PreviousPage do
       service: service,
       user_data: user_data,
       current_page: current_page,
-      referer: referer
+      referrer: referrer
     )
   end
   let(:user_data) { {} }
-  let(:referer) { '' }
+  let(:referrer) { '' }
 
   describe '#page' do
     context 'when using the old flow' do
@@ -41,9 +41,9 @@ RSpec.describe MetadataPresenter::PreviousPage do
       context 'when it is the standalone page' do
         let(:current_page) { service.find_page_by_url('cookies') }
 
-        context 'when there is a referer' do
+        context 'when there is a referrer' do
           context 'when is an existing page on metadata' do
-            let(:referer) { 'http://localhost:3000/name' }
+            let(:referrer) { 'http://localhost:3000/name' }
 
             it 'returns page' do
               expect(previous_page.page).to eq(service.find_page_by_url('name'))
@@ -51,7 +51,7 @@ RSpec.describe MetadataPresenter::PreviousPage do
           end
 
           context 'when is not an existing page on metadata' do
-            let(:referer) { 'owned-site.co.uk' }
+            let(:referrer) { 'owned-site.co.uk' }
 
             it 'returns nil' do
               expect(previous_page.page).to be_nil
@@ -141,9 +141,9 @@ RSpec.describe MetadataPresenter::PreviousPage do
           end
         end
 
-        context 'when the referer is a standalone page' do
+        context 'when the referrer is a standalone page' do
           let(:current_page) { service.find_page_by_url('name') }
-          let(:referer) { 'http://localhost:3000/cookies' }
+          let(:referrer) { 'http://localhost:3000/cookies' }
 
           it 'returns the standalone page' do
             expect(previous_page.page.url).to eq('cookies')
@@ -153,9 +153,9 @@ RSpec.describe MetadataPresenter::PreviousPage do
         context 'when it is the standalone page' do
           let(:current_page) { service.find_page_by_url('cookies') }
 
-          context 'when there is a referer' do
+          context 'when there is a referrer' do
             context 'when is an existing page on metadata' do
-              let(:referer) { 'http://localhost:3000/name' }
+              let(:referrer) { 'http://localhost:3000/name' }
 
               it 'returns page' do
                 expect(previous_page.page).to eq(service.find_page_by_url('name'))
@@ -163,7 +163,7 @@ RSpec.describe MetadataPresenter::PreviousPage do
             end
 
             context 'when is not an existing page on metadata' do
-              let(:referer) { 'owned-site.co.uk' }
+              let(:referrer) { 'owned-site.co.uk' }
 
               it 'returns nil' do
                 expect(previous_page.page).to be_nil

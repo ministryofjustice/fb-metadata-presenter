@@ -10,7 +10,7 @@ module MetadataPresenter
         service: service,
         user_data: load_user_data,
         current_page: @page,
-        referer: request.referer
+        referrer: request.referrer
       ).page
 
       if previous_page
