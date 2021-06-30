@@ -9,15 +9,15 @@ module MetadataPresenter
       @current_page = current_page
     end
 
-    def last
-      all.last
-    end
+    delegate :last, to: :all
 
     def all
-      next_page_uuid = service.start_page.uuid
+      page_uuid = service.start_page.uuid
 
-      until next_page_uuid == current_page.uuid do
-        flow_object = service.flow(next_page_uuid)
+      service.metadata['flow'].size.times do
+        break if page_uuid == current_page.uuid
+
+        flow_object = service.flow(page_uuid)
 
         if flow_object.branch?
           page = EvaluateConditions.new(
@@ -25,14 +25,10 @@ module MetadataPresenter
             flow: flow_object,
             user_data: user_data
           ).page
-          # check if user answer exists
-          # check if it is a content page
-          # check for optional questions
-          # check for multiple questions with content components only
-          next_page_uuid = page.uuid
+          page_uuid = page.uuid
         else
-          next_page_uuid = flow_object.default_next
-          page = service.find_page_by_uuid(next_page_uuid)
+          page_uuid = flow_object.default_next
+          page = service.find_page_by_uuid(page_uuid)
         end
 
         @pages.push(page) if page && page.uuid != current_page.uuid

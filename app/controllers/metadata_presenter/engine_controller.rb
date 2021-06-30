@@ -13,10 +13,12 @@ module MetadataPresenter
         referer: request.referer
       ).page
 
-      @back_link ||= File.join(
-        request.script_name,
-        previous_page.url
-      ) if previous_page
+      if previous_page
+        @back_link ||= File.join(
+          request.script_name,
+          previous_page.url
+        )
+      end
     end
     helper_method :back_link
 

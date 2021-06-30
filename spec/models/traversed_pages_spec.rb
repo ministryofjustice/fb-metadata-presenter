@@ -17,7 +17,7 @@ RSpec.describe MetadataPresenter::TraversedPages do
       let(:user_data) do
         {
           'name_text_1' => 'Rocket',
-          'do-you-like-star-wars_radios_1' => 'Hell no!',
+          'do-you-like-star-wars_radios_1' => 'Hell no!'
         }
       end
 
