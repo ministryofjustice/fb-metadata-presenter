@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'binding_of_caller'
   spec.add_development_dependency 'brakeman'
   spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'ruby-graphviz'
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop', '~> 1.15.0'
   spec.add_development_dependency 'rubocop-govuk'
