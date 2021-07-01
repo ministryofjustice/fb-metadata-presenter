@@ -6,14 +6,19 @@ module MetadataPresenter
     default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
     def back_link
-      return if @page.blank?
-
-      previous_page = service.previous_page(
+      previous_page = PreviousPage.new(
+        service: service,
+        user_data: load_user_data,
         current_page: @page,
-        referrer: request.referer
-      )&.url
+        referrer: request.referrer
+      ).page
 
-      @back_link ||= File.join(request.script_name, previous_page) if previous_page
+      if previous_page
+        @back_link ||= File.join(
+          request.script_name,
+          previous_page.url
+        )
+      end
     end
     helper_method :back_link
 

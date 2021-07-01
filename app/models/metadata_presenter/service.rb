@@ -39,6 +39,8 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   def previous_page(current_page:, referrer:)
+    return if current_page.nil? || referrer.nil?
+
     unless no_back_link?(current_page)
       flow_page(current_page) || referrer_page(referrer)
     end
@@ -54,14 +56,14 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     MetadataPresenter::Meta.new(configuration['meta'])
   end
 
+  def no_back_link?(current_page)
+    current_page == start_page || current_page == confirmation_page
+  end
+
   private
 
   def all_pages
     @all_pages ||= pages + standalone_pages
-  end
-
-  def no_back_link?(current_page)
-    current_page == start_page || current_page == confirmation_page
   end
 
   def flow_page(current_page)

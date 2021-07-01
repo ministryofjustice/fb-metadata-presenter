@@ -2,10 +2,10 @@ RSpec.shared_context 'branching flow' do
   let(:service_metadata) do
     metadata_fixture(:branching)
   end
+  let(:session) { {} }
 
   context 'when first page' do
     let(:current_page_url) { '/' }
-    let(:session) { {} }
 
     it 'returns first page' do
       expect(result).to eq(
@@ -16,11 +16,9 @@ RSpec.shared_context 'branching flow' do
 
   context 'when last page inside the branch' do
     let(:current_page_url) { 'apple-juice' }
-    let(:session) do
+    let(:user_data) do
       {
-        user_data: {
-          'apple-juice_radios_1' => 'Yes'
-        }
+        'apple-juice_radios_1' => 'Yes'
       }
     end
 
@@ -33,12 +31,10 @@ RSpec.shared_context 'branching flow' do
 
   context 'when radio is selected' do
     let(:current_page_url) { 'do-you-like-star-wars' }
-    let(:session) do
+    let(:user_data) do
       {
-        user_data: {
-          'name_text_1' => 'Din Djarin',
-          'do-you-like-star-wars_radios_1' => branching_answer
-        }
+        'name_text_1' => 'Din Djarin',
+        'do-you-like-star-wars_radios_1' => branching_answer
       }
     end
 
@@ -69,9 +65,11 @@ RSpec.describe MetadataPresenter::NextPage do
     described_class.new(
       service: service,
       session: session,
+      user_data: user_data,
       current_page_url: current_page_url
     )
   end
+  let(:user_data) { {} }
 
   describe '#find' do
     subject(:result) do
@@ -81,7 +79,7 @@ RSpec.describe MetadataPresenter::NextPage do
     include_context 'branching flow'
 
     context 'when user should return to check your answer' do
-      let(:session) { { return_to_check_you_answer: true } }
+      let(:session) { { return_to_check_your_answer: true } }
       let(:current_page_url) { '' }
 
       it 'returns check your answer page' do
@@ -92,13 +90,13 @@ RSpec.describe MetadataPresenter::NextPage do
 
       it 'set the session as nil' do
         result
-        expect(session).to eq({ return_to_check_you_answer: nil })
+        expect(session).to eq({ return_to_check_your_answer: nil })
       end
     end
 
     context 'when there is a next page' do
       let(:service_metadata) { metadata_fixture(:version) }
-      let(:session) { { return_to_check_you_answer: nil } }
+      let(:session) { { return_to_check_your_answer: nil } }
       let(:current_page_url) { '/name' }
 
       it 'returns next page in sequence' do

@@ -28,6 +28,7 @@ module MetadataPresenter
       next_page = NextPage.new(
         service: service,
         session: session,
+        user_data: load_user_data,
         current_page_url: page_url
       ).find
 
