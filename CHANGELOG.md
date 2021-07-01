@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.6.0] - 2021-07-01
+
+### Added
+
+- Simple branching back links
+
 ## [1.5.0] - 2021-06-28
 
 ### Added
