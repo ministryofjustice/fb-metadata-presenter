@@ -5,6 +5,7 @@ namespace :metadata do
 
   desc 'Represent the flow objects in human readable form'
   task flow: :environment do
+    require 'ruby-graphviz'
     metadata = ENV['SERVICE_METADATA'] || metadata_fixture('branching')
     service = MetadataPresenter::Service.new(metadata)
 
@@ -15,8 +16,6 @@ namespace :metadata do
     system("open #{graph.filename}")
   end
 end
-
-require 'ruby-graphviz'
 
 module MetadataPresenter
   class Graph
