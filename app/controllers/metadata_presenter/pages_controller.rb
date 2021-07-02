@@ -15,10 +15,14 @@ module MetadataPresenter
     def pages_presenters
       PageAnswersPresenter.map(
         view: view_context,
-        pages: service.pages,
+        pages: answered_pages,
         answers: @user_data
       )
     end
     helper_method :pages_presenters
+
+    def answered_pages
+      TraversedPages.new(service, load_user_data, @page).all
+    end
   end
 end
