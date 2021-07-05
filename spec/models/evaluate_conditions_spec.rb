@@ -125,5 +125,70 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
         end
       end
     end
+
+    context 'when multiple conditions' do
+      let(:flow) { service.flow('84a347fc-8d4b-486a-9996-6a86fa9544c5') }
+
+      context 'when multiple criterias with "OR" statement' do
+        context 'when the conditions are met' do
+          context 'when choosing one option' do
+            let(:user_data) do
+              { 'marvel-series_radios_1' => 'Loki' }
+            end
+
+            it 'returns the page that evaluates the condition' do
+              expect(page).to eq(service.find_page_by_url('marvel-quotes'))
+            end
+          end
+
+          context 'when choosing another option from the condition' do
+            let(:user_data) do
+              { 'marvel-series_radios_1' => 'The Falcon and the Winter Soldier' }
+            end
+
+            it 'returns the page that evaluates the condition' do
+              expect(page).to eq(service.find_page_by_url('marvel-quotes'))
+            end
+          end
+        end
+
+        context 'when the conditions are not met' do
+          let(:user_data) do
+            { 'marvel-series_radios_1' => 'Other' }
+          end
+
+          it 'returns the page that evaluates the condition' do
+            expect(page).to eq(service.find_page_by_url('check-answers'))
+          end
+        end
+      end
+
+      context 'when multiple criterias with "AND" statement' do
+        context 'when the conditions are met' do
+          let(:user_data) do
+            {
+              'do-you-like-star-wars_radios_1' => 'Only on weekends',
+              'marvel-series_radios_1' => 'WandaVision'
+            }
+          end
+
+          it 'returns the page that evaluates the condition' do
+            expect(page).to eq(service.find_page_by_url('other-quotes'))
+          end
+        end
+
+        context 'when the conditions are not met' do
+          context 'when one criteria is met but not the other' do
+            let(:user_data) do
+              { 'marvel-series_radios_1' => 'WandaVision' }
+            end
+
+            it 'returns the page default' do
+              expect(page).to eq(service.find_page_by_url('check-answers'))
+            end
+          end
+        end
+      end
+    end
   end
 end
