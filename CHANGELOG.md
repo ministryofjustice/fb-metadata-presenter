@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.7.0] - 2021-07-05
+
+### Added
+
+- Add multiple conditions (OR / AND) on multiple criterias for same condition
+
 ## [1.6.1] - 2021-07-01
 
 ### Fix
