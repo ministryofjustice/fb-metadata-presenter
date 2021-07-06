@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 ### Changed
+## [1.7.1] - 2021-07-06
+
+### Added
+
+- Add sanitise JavaScript so malicious code is not saved in the database
 
 ## [1.7.0] - 2021-07-05
 
