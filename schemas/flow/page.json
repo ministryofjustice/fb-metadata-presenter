@@ -1,0 +1,22 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/flow/page",
+  "_name": "flow.page",
+  "title": "Flow page object",
+  "description": "Flow object that represents a page",
+  "type": "object",
+  "properties": {
+    "_type": {
+      "type": "string",
+      "const": "flow.page"
+    },
+    "next": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
