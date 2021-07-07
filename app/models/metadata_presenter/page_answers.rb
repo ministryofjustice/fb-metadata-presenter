@@ -2,6 +2,7 @@ module MetadataPresenter
   class PageAnswers
     include ActiveModel::Model
     include ActiveModel::Validations
+    include ActionView::Helpers
     attr_reader :page, :answers, :uploaded_files
 
     def initialize(page, answers)
@@ -30,7 +31,7 @@ module MetadataPresenter
       elsif component && component.type == 'checkboxes'
         answers[method_name.to_s].to_a
       else
-        answers[method_name.to_s]
+        sanitize(answers[method_name.to_s])
       end
     end
 
@@ -40,10 +41,10 @@ module MetadataPresenter
       return {} unless file_details
 
       if file_details.is_a?(Hash) || file_details.is_a?(ActionController::Parameters)
-        file_details
+        file_details.merge('original_filename' => sanitize(file_details['original_filename']))
       else
         {
-          'original_filename' => file_details.original_filename,
+          'original_filename' => sanitize(file_details.original_filename),
           'content_type' => file_details.content_type,
           'tempfile' => file_details.tempfile.path.to_s
         }
@@ -62,7 +63,7 @@ module MetadataPresenter
         GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:month],
         GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:year]
       ].map do |segment|
-        answers["#{component_id}(#{segment})"]
+        sanitize(answers["#{component_id}(#{segment})"])
       end
     end
   end
