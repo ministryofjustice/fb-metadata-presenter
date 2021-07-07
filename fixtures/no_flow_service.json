@@ -1,0 +1,189 @@
+{
+  "_id": "service.base",
+  "_type": "service.base",
+  "pages": [
+    {
+      "_id": "page.start",
+      "url": "/",
+      "body": "Use this service to:\r\n\r\n* do something\r\n* update your name, address or other details\r\n* do something else\r\n\r\nRegistering takes around 5 minutes.",
+      "lede": "",
+      "_type": "page.start",
+      "_uuid": "cf6dc32f-502c-4215-8c27-1151a45735bb",
+      "steps": [
+        "page.name",
+        "page.email-address",
+        "page.parent-name",
+        "page.check-answers",
+        "page.confirmation"
+      ],
+      "heading": "Service name goes here",
+      "before_you_start": "###Before you start\r\nYou can also register by post.\r\n\r\nThe online service is also available in Welsh (Cymraeg).\r\n\r\nYou cannot register for this service if you’re in the UK illegally."
+    },
+    {
+      "_id": "page.name",
+      "url": "name",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "9e1ba77f-f1e5-42f4-b090-437aa9af7f73",
+      "heading": "Question",
+      "components": [
+        {
+          "_id": "name_text_1",
+          "hint": "",
+          "name": "name_text_1",
+          "_type": "text",
+          "_uuid": "27d377a2-6828-44ca-87d1-b83ddac98284",
+          "label": "Full name",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 10,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.email-address",
+      "url": "email-address",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "df1ba645-f748-46d0-ad75-f34112653e37",
+      "heading": "Question",
+      "components": [
+        {
+          "_id": "email-address_text_1",
+          "hint": "",
+          "name": "email-address_text_1",
+          "_type": "text",
+          "_uuid": "f27e5788-e784-4bfd-8b21-2fab8ce95abb",
+          "label": "Email address",
+          "errors": {
+            "format": {},
+            "required": {
+              "any": "Enter an email address"
+            },
+            "max_length": {
+              "any": "%{control} is too long."
+            },
+            "min_length": {
+              "any": "%{control} is too short."
+            }
+          },
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 30,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.parent-name",
+      "url": "parent-name",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "4b8c6bf3-878a-4446-9198-48351b3e2185",
+      "heading": "Question",
+      "components": [
+        {
+          "_id": "parent-name_text_1",
+          "hint": "",
+          "name": "parent-name_text_1",
+          "_type": "text",
+          "_uuid": "5ad372fa-ed35-477f-b471-4d444f991210",
+          "label": "Parent name",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": false,
+            "max_length": 10,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.check-answers",
+      "url": "check-answers",
+      "_type": "page.checkanswers",
+      "_uuid": "e337070b-f636-49a3-a65c-f506675265f0",
+      "heading": "Check your answers",
+      "send_body": "By submitting this application you confirm that, to the best of your knowledge, the details you are providing are correct.",
+      "components": [
+        {
+          "_id": "check-answers_content_2",
+          "name": "check-answers_content_2",
+          "_type": "content",
+          "_uuid": "b065ff4f-90c5-4ba2-b4ac-c984a9dd2470",
+          "content": "Take the cannoli.",
+          "collection": "components"
+        }
+      ],
+      "send_heading": "Now send your application",
+      "add_component": "content",
+      "extra_components": [
+        {
+          "_id": "check-answers_content_1",
+          "name": "check-answers_content_1",
+          "_type": "content",
+          "_uuid": "3e6ef27e-91a6-402f-8291-b7ce669e824e",
+          "content": "Check yourself before you wreck yourself.",
+          "collection": "extra_components"
+        }
+      ],
+      "add_extra_component": "content"
+    },
+    {
+      "_id": "page.confirmation",
+      "url": "confirmation",
+      "body": "Some day I will be the most powerful Jedi ever!",
+      "lede": "",
+      "_type": "page.confirmation",
+      "_uuid": "778e364b-9a7f-4829-8eb2-510e08f156a3",
+      "heading": "Complaint sent",
+      "components": []
+    }
+  ],
+  "locale": "en",
+  "created_at": "2021-04-21T13:10:19Z",
+  "created_by": "099d5bf5-5f7b-444c-86ee-9e189cc1a369",
+  "service_id": "488edccd-8411-4ffb-a38b-6a96c6ac28d6",
+  "version_id": "27dc30c9-f7b8-4dec-973a-bd153f6797df",
+  "service_name": "Version Fixture",
+  "configuration": {
+    "meta": {
+      "_id": "config.meta",
+      "_type": "config.meta",
+      "items": [
+        {
+          "_id": "config.meta--link",
+          "href": "cookies",
+          "text": "Cookies",
+          "_type": "link"
+        },
+        {
+          "_id": "config.meta--link--2",
+          "href": "privacy",
+          "text": "Privacy",
+          "_type": "link"
+        },
+        {
+          "_id": "config.meta--link--3",
+          "href": "accessibility",
+          "text": "Accessibility",
+          "_type": "link"
+        }
+      ]
+    },
+    "service": {
+      "_id": "config.service",
+      "_type": "config.service"
+    }
+  }
+}
