@@ -7,17 +7,13 @@ module MetadataPresenter
       # what happens when a user enters in the middle of the flow
       return if no_current_or_referrer_pages? || service.no_back_link?(current_page)
 
-      if flow.present?
+      if service.flow.present?
         return referrer_page if return_to_referrer?
 
         TraversedPages.new(service, user_data, current_page).last
       else
         service.previous_page(current_page: current_page, referrer: referrer)
       end
-    end
-
-    def flow
-      service.metadata['flow']
     end
 
     private

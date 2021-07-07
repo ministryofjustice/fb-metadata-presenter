@@ -49,11 +49,11 @@ module MetadataPresenter
     end
 
     def current_page_flow
-      service.flow(current_page_uuid)
+      service.flow_object(current_page_uuid)
     end
 
     def next_flow
-      service.flow(current_page_flow.default_next)
+      service.flow_object(current_page_flow.default_next)
     end
 
     def next_flow_branch_object?

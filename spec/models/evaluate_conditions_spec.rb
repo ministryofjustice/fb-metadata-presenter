@@ -12,7 +12,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
     subject(:page) { evaluate_conditions.page }
 
     context 'when simple if condition' do
-      let(:flow) { service.flow('09e91fd9-7a46-4840-adbc-244d545cfef7') }
+      let(:flow) { service.flow_object('09e91fd9-7a46-4840-adbc-244d545cfef7') }
 
       context 'when criterias are met' do
         let(:user_data) do
@@ -40,7 +40,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
     end
 
     context 'when simple if/else' do
-      let(:flow) { service.flow('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
+      let(:flow) { service.flow_object('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
       context 'when apple criteria is met' do
         let(:user_data) do
           {
@@ -78,7 +78,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
       end
 
       context 'when the question is a checkbox component' do
-        let(:flow) { service.flow('618b7537-b42b-4551-ae7d-053afa4d9ca9') }
+        let(:flow) { service.flow_object('618b7537-b42b-4551-ae7d-053afa4d9ca9') }
 
         context 'when beef cheese and tomato condition "is" met' do
           let(:user_data) do
@@ -108,7 +108,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
 
     context 'when the question is optional' do
       context 'for single answer questions' do
-        let(:flow) { service.flow('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
+        let(:flow) { service.flow_object('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
         let(:user_data) { { 'favourite-fruit_radios_1' => '' } }
 
         it 'returns the page uuid for the default page' do
@@ -117,7 +117,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
       end
 
       context 'for multiple answer (checkboxes) questions' do
-        let(:flow) { service.flow('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
+        let(:flow) { service.flow_object('ffadeb22-063b-4e4f-9502-bd753c706b1d') }
         let(:user_data) { { 'burgers_checkboxes_1' => [] } }
 
         it 'returns the page uuid for the default page' do
@@ -127,7 +127,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
     end
 
     context 'when multiple conditions' do
-      let(:flow) { service.flow('84a347fc-8d4b-486a-9996-6a86fa9544c5') }
+      let(:flow) { service.flow_object('84a347fc-8d4b-486a-9996-6a86fa9544c5') }
 
       context 'when multiple criterias with "OR" statement' do
         context 'when the conditions are met' do

@@ -45,7 +45,7 @@ module MetadataPresenter
 
     def draw_nodes
       flow.each do |id, _value|
-        flow_object = service.flow(id)
+        flow_object = service.flow_object(id)
 
         if flow_object.branch?
           full_description = flow_object.conditions.map.each_with_index do |condition, _index|
@@ -65,7 +65,7 @@ module MetadataPresenter
 
     def draw_edges
       flow.each do |id, _value|
-        flow_object = service.flow(id)
+        flow_object = service.flow_object(id)
         current_node = nodes[id]
         node_next = nodes[flow_object.default_next]
 
@@ -83,7 +83,7 @@ module MetadataPresenter
     end
 
     def flow
-      metadata['flow']
+      service.flow
     end
   end
 end

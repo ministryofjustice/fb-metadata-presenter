@@ -5,8 +5,8 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     end
   end
 
-  def flow(page_uuid)
-    MetadataPresenter::Flow.new(metadata.flow[page_uuid])
+  def flow_object(uuid)
+    MetadataPresenter::Flow.new(metadata.flow[uuid])
   rescue StandardError
     nil
   end
