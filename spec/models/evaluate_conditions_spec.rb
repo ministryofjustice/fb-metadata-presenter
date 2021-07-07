@@ -158,7 +158,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
           end
 
           it 'returns the page that evaluates the condition' do
-            expect(page).to eq(service.find_page_by_url('check-answers'))
+            expect(page).to eq(service.find_page_by_url('best-arnold-quote'))
           end
         end
       end
@@ -184,7 +184,7 @@ RSpec.describe MetadataPresenter::EvaluateConditions do
             end
 
             it 'returns the page default' do
-              expect(page).to eq(service.find_page_by_url('check-answers'))
+              expect(page).to eq(service.find_page_by_url('best-arnold-quote'))
             end
           end
         end

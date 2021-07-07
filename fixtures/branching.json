@@ -219,7 +219,7 @@
     "84a347fc-8d4b-486a-9996-6a86fa9544c5": {
       "_type": "branch",
       "next": {
-        "default": "e337070b-f636-49a3-a65c-f506675265f0",
+        "default": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
         "conditions": [
           {
             "condition_type": "or",
@@ -263,10 +263,84 @@
     "2cc66e51-2c14-4023-86bf-ded49887cdb2": {
       "_type": "page",
       "next": {
-        "default": "e337070b-f636-49a3-a65c-f506675265f0"
+        "default": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb"
       }
     },
     "f6c51f88-7be8-4cb7-bbfc-6c905727a051": {
+      "_type": "page",
+      "next": {
+        "default": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb"
+      }
+    },
+    "48357db5-7c06-4e85-94b1-5e1c9d8f39eb": {
+      "_type": "page",
+      "next": {
+        "default": "1079b5b8-abd0-4bf6-aaac-1f01e69e3b39"
+      }
+    },
+    "1079b5b8-abd0-4bf6-aaac-1f01e69e3b39": {
+      "_type": "branch",
+      "next": {
+        "default": "941137d7-a1da-43fd-994a-98a4f9ea6d46",
+        "conditions": [
+          {
+            "condition_type": "and",
+            "next": "56e80942-d0a4-405a-85cd-bd1b100013d6",
+            "criterias": [
+              {
+                "operator": "is",
+                "page": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
+                "component": "3a430712-a75f-4412-836d-4ec7b2cb1ac9",
+                "field": "30258b55-ec04-4278-86b7-8382cbd34bea"
+              },
+              {
+                "operator": "is",
+                "page": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
+                "component": "3a430712-a75f-4412-836d-4ec7b2cb1ac9",
+                "field": "9339d86e-b53c-42c0-ab6e-1ab3e2340873"
+              },
+              {
+                "operator": "is",
+                "page": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
+                "component": "3a430712-a75f-4412-836d-4ec7b2cb1ac9",
+                "field": "5d650e5d-57ac-42a1-9348-c1b93248753a"
+              }
+            ]
+          },
+          {
+            "condition_type": "or",
+            "next": "6324cca4-7770-4765-89b9-1cdc41f49c8b",
+            "criterias": [
+              {
+                "operator": "is",
+                "page": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
+                "component": "3a430712-a75f-4412-836d-4ec7b2cb1ac9",
+                "field": "6b82b4e4-6dfd-4b3c-b6ed-2d71be0980bf"
+              },
+              {
+                "operator": "is",
+                "page": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
+                "component": "3a430712-a75f-4412-836d-4ec7b2cb1ac9",
+                "field": "8c2c6161-7309-4e4f-9f3c-9fa629bcb459"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "941137d7-a1da-43fd-994a-98a4f9ea6d46": {
+      "_type": "page",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0"
+      }
+    },
+    "56e80942-d0a4-405a-85cd-bd1b100013d6": {
+      "_type": "page",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0"
+      }
+    },
+    "6324cca4-7770-4765-89b9-1cdc41f49c8b": {
       "_type": "page",
       "next": {
         "default": "e337070b-f636-49a3-a65c-f506675265f0"
@@ -940,6 +1014,127 @@
           "_type": "content",
           "_uuid": "816b6afd-4649-455a-b10d-62cb5acb4584",
           "content": "Are you using your night vision, Vision?"
+        }
+      ],
+      "section_heading": ""
+    },
+    {
+      "_id": "page.best-arnold-quote",
+      "url": "best-arnold-quote",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
+      "heading": "Question",
+      "components": [
+        {
+          "_id": "best-arnold-quote_checkboxes_1",
+          "hint": "",
+          "name": "best-arnold-quote_checkboxes_1",
+          "_type": "checkboxes",
+          "_uuid": "3a430712-a75f-4412-836d-4ec7b2cb1ac9",
+          "items": [
+            {
+              "_id": "best-arnold-quote_checkboxes_1_item_1",
+              "hint": "",
+              "name": "best-arnold-quote_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "30258b55-ec04-4278-86b7-8382cbd34bea",
+              "label": "You are not you. You are me"
+            },
+            {
+              "_id": "best-arnold-quote_checkboxes_1_item_2",
+              "hint": "",
+              "name": "best-arnold-quote_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "9339d86e-b53c-42c0-ab6e-1ab3e2340873",
+              "label": "Get to the chopper"
+            },
+            {
+              "_id": "best-arnold-quote_checkboxes_1_item_3",
+              "hint": "",
+              "name": "best-arnold-quote_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "5d650e5d-57ac-42a1-9348-c1b93248753a",
+              "label": "You have been terminated"
+            },
+            {
+              "_id": "best-arnold-quote_checkboxes_1_item_4",
+              "hint": "",
+              "name": "best-arnold-quote_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "6b82b4e4-6dfd-4b3c-b6ed-2d71be0980bf",
+              "label": "I am GROOT"
+            },
+            {
+              "_id": "best-arnold-quote_checkboxes_1_item_5",
+              "hint": "",
+              "name": "best-arnold-quote_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "8c2c6161-7309-4e4f-9f3c-9fa629bcb459",
+              "label": "Dance Off, Bro."
+            }
+          ],
+          "legend": "Select all Arnold Schwarzenegger quotes",
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.arnold-right-answers",
+      "url": "arnold-right-answers",
+      "body": "You are right! Now, talk to the hand!",
+      "lede": "",
+      "_type": "page.content",
+      "_uuid": "56e80942-d0a4-405a-85cd-bd1b100013d6",
+      "heading": "You are right",
+      "components": [
+        {
+          "_id": "arnold-right-answers_content_1",
+          "name": "arnold-right-answers_content_1",
+          "_type": "content",
+          "_uuid": "9a7948f1-9e9a-4273-b52e-e2917c79f37c",
+          "content": "You are right! Now, talk to the hand!"
+        }
+      ],
+      "section_heading": ""
+    },
+    {
+      "_id": "page.arnold-wrong-answers",
+      "url": "arnold-wrong-answers",
+      "body": "You are wrong! These are from the Guardians of the Galaxy!",
+      "lede": "",
+      "_type": "page.content",
+      "_uuid": "6324cca4-7770-4765-89b9-1cdc41f49c8b",
+      "heading": "You are wrong",
+      "components": [
+        {
+          "_id": "arnold-wrong-answers_content_1",
+          "name": "arnold-wrong-answers_content_1",
+          "_type": "content",
+          "_uuid": "3bd3ca1d-fed7-43b0-ab90-b4425b634203",
+          "content": "You need to master the ability of standing so incredibly still, that you become invisible to the eye."
+        }
+      ],
+      "section_heading": ""
+    },
+    {
+      "_id": "page.arnold-incomplete-answers",
+      "url": "arnold-incomplete-answers",
+      "body": "You are wrong! The answers are incomplete.",
+      "lede": "",
+      "_type": "page.content",
+      "_uuid": "941137d7-a1da-43fd-994a-98a4f9ea6d46",
+      "heading": "You are wrong",
+      "components": [
+        {
+          "_id": "arnold-incomplete-answers_content_1",
+          "name": "arnold-incomplete-answers_content_1",
+          "_type": "content",
+          "_uuid": "16252a29-8e00-4247-b47f-3e94c863a540",
+          "content": "The answers are incomplete. You need to remember Arnold saying 'I will be back'. So go back to answer correctly."
         }
       ],
       "section_heading": ""
