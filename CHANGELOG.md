@@ -7,6 +7,18 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 ### Changed
+
+## [1.7.2] - 2021-07-07
+
+### Added
+
+- Added more pages to the branching fixture for checkboxes multiple conditions
+using "AND" / "OR".
+
+### Changed
+
+- Change the generates the flow diagrams for multiple conditions.
+
 ## [1.7.1] - 2021-07-06
 
 ### Added
