@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.7.3] - 2021-07-07
+
+### Changed
+
+- Calling flow on a service should now return all of the flow objects
+
 ## [1.7.2] - 2021-07-07
 
 ### Added
