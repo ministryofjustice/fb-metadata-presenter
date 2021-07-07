@@ -48,14 +48,14 @@ module MetadataPresenter
         flow_object = service.flow(id)
 
         if flow_object.branch?
-          full_description = flow_object.conditions.map do |condition|
-            condition.criterias.map do |criteria|
+          full_description = flow_object.conditions.map.each_with_index do |condition, _index|
+            condition.criterias.map { |criteria|
               criteria.service = service
 
-              "if #{criteria.criteria_component.humanised_title} #{criteria.operator} #{criteria.field_label}"
-            end
+              "#{criteria.criteria_component.humanised_title} #{criteria.operator} #{criteria.field_label}"
+            }.join(" #{condition.condition_type} ")
           end
-          nodes[id] = @graphviz.add_nodes(full_description.flatten.join(' - '))
+          nodes[id] = @graphviz.add_nodes(full_description.flatten.join(' / '))
         else
           current_page = find_page_by_uuid(id)
           nodes[id] = @graphviz.add_nodes(current_page.url)
