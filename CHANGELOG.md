@@ -8,6 +8,17 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.7.5] - 2021-07-08
+
+### Added
+
+- Base flow object schema to cater for dynamic UUID properties
+
+### Changed
+
+- Remove '_id' property from flow objects default metadata
+- Fallback to using '_type' as the key for default metadata that does not have a '_id' property
+
 ## [1.7.4] - 2021-07-08
 
 ### Added
