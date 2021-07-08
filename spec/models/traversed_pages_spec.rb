@@ -11,6 +11,31 @@ RSpec.describe MetadataPresenter::TraversedPages do
       traversed_pages.all
     end
 
+    context 'when using the old flow metadata' do
+      let(:user_data) { {} }
+      let(:service_metadata) { metadata_fixture(:version) }
+      let(:current_page) { service.find_page_by_url('check-answers') }
+
+      it 'returns all pages until current page' do
+        expect(all.map(&:url)).to match_array(
+          [
+            '/',
+            'name',
+            'email-address',
+            'parent-name',
+            'your-age',
+            'family-hobbies',
+            'do-you-like-star-wars',
+            'holiday',
+            'burgers',
+            'star-wars-knowledge',
+            'how-many-lights',
+            'dog-picture'
+          ]
+        )
+      end
+    end
+
     context 'when navigating only on main branch' do
       let(:current_page) { service.find_page_by_url('favourite-fruit') }
 

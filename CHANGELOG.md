@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.8.0] - 2021-07-08
+
+### Added
+
+- Display answers on the check your answers page based on branching.
+
 ## [1.7.5] - 2021-07-08
 
 ### Added
