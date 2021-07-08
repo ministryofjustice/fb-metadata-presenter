@@ -3,13 +3,13 @@ RSpec.describe MetadataPresenter::Flow do
     metadata_fixture(:branching)
   end
   subject(:flow) do
-    service.flow('cf6dc32f-502c-4215-8c27-1151a45735bb')
+    service.flow_object('cf6dc32f-502c-4215-8c27-1151a45735bb')
   end
 
   describe '#branch?' do
     context 'when the type is branch' do
       subject(:flow) do
-        service.flow('09e91fd9-7a46-4840-adbc-244d545cfef7')
+        service.flow_object('09e91fd9-7a46-4840-adbc-244d545cfef7')
       end
 
       it 'returns true' do
@@ -19,7 +19,7 @@ RSpec.describe MetadataPresenter::Flow do
 
     context 'when the type is not a branch' do
       subject(:flow) do
-        service.flow('cf6dc32f-502c-4215-8c27-1151a45735bb')
+        service.flow_object('cf6dc32f-502c-4215-8c27-1151a45735bb')
       end
 
       it 'returns false' do
@@ -38,7 +38,7 @@ RSpec.describe MetadataPresenter::Flow do
     end
 
     context 'when there is no next flow' do
-      subject(:flow) { service.flow('778e364b-9a7f-4829-8eb2-510e08f156a3') }
+      subject(:flow) { service.flow_object('778e364b-9a7f-4829-8eb2-510e08f156a3') }
 
       it 'returns nothing' do
         expect(flow.default_next).to eq('')
@@ -48,7 +48,7 @@ RSpec.describe MetadataPresenter::Flow do
 
   describe '#conditions' do
     context 'when there are conditions' do
-      subject(:flow) { service.flow('09e91fd9-7a46-4840-adbc-244d545cfef7') }
+      subject(:flow) { service.flow_object('09e91fd9-7a46-4840-adbc-244d545cfef7') }
 
       it 'returns conditions' do
         expect(flow.conditions).to eq(

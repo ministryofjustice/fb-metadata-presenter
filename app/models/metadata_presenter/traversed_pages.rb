@@ -14,10 +14,10 @@ module MetadataPresenter
     def all
       page_uuid = service.start_page.uuid
 
-      service.metadata['flow'].size.times do
+      service.flow.size.times do
         break if page_uuid == current_page.uuid
 
-        flow_object = service.flow(page_uuid)
+        flow_object = service.flow_object(page_uuid)
 
         if flow_object.branch?
           page = EvaluateConditions.new(
