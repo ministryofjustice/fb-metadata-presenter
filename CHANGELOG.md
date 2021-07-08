@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.7.4] - 2021-07-08
+
+### Added
+
+- Schemas and default metadata for all flow objects
+
 ## [1.7.3] - 2021-07-07
 
 ### Changed
