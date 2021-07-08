@@ -1,5 +1,4 @@
 {
-  "_id": "flow.branch",
   "_type": "flow.branch",
   "next": {
     "default": "",

@@ -33,17 +33,7 @@
       "$ref": "configuration"
     },
     "flow": {
-      "type": "object",
-      "items": {
-        "anyOf": [
-          {
-            "$ref": "flow.page"
-          },
-          {
-            "$ref": "flow.branch"
-          }
-        ]
-      }
+      "$ref": "flow.base"
     },
     "pages": {
       "type": "array",
