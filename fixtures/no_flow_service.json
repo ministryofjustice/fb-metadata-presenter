@@ -185,5 +185,6 @@
       "_id": "config.service",
       "_type": "config.service"
     }
-  }
+  },
+  "standalone_pages": []
 }
