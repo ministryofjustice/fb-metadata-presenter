@@ -32,6 +32,19 @@
     "configuration": {
       "$ref": "configuration"
     },
+    "flow": {
+      "type": "object",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "flow.page"
+          },
+          {
+            "$ref": "flow.branch"
+          }
+        ]
+      }
+    },
     "pages": {
       "type": "array",
       "items": {
@@ -77,6 +90,5 @@
     "configuration",
     "pages",
     "standalone_pages"
-  ],
-  "additionalProperties": false
+  ]
 }

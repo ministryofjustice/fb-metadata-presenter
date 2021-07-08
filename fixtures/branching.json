@@ -3,25 +3,25 @@
   "_type": "service.base",
   "flow": {
     "cf6dc32f-502c-4215-8c27-1151a45735bb": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "9e1ba77f-f1e5-42f4-b090-437aa9af7f73"
       }
     },
     "9e1ba77f-f1e5-42f4-b090-437aa9af7f73": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "68fbb180-9a2a-48f6-9da6-545e28b8d35a"
       }
     },
     "68fbb180-9a2a-48f6-9da6-545e28b8d35a": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "09e91fd9-7a46-4840-adbc-244d545cfef7"
       }
     },
     "09e91fd9-7a46-4840-adbc-244d545cfef7": {
-      "_type": "branch",
+      "_type": "flow.branch",
       "next": {
         "default": "0b297048-aa4d-49b6-ac74-18e069118185",
         "conditions": [
@@ -41,19 +41,19 @@
       }
     },
     "e8708909-922e-4eaf-87a5-096f7a713fcb": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "0b297048-aa4d-49b6-ac74-18e069118185"
       }
     },
     "0b297048-aa4d-49b6-ac74-18e069118185": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "ffadeb22-063b-4e4f-9502-bd753c706b1d"
       }
     },
     "ffadeb22-063b-4e4f-9502-bd753c706b1d": {
-      "_type": "branch",
+      "_type": "flow.branch",
       "next": {
         "default": "05c3306c-0a39-42d2-9e0f-93fd49248f4e",
         "conditions": [
@@ -85,25 +85,25 @@
       }
     },
     "d4342dfd-0d09-4a91-a0ea-d7fd67e706cc": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "05c3306c-0a39-42d2-9e0f-93fd49248f4e"
       }
     },
     "91e9f7c6-2f75-4b7d-9eb5-0cf352f7be66": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "05c3306c-0a39-42d2-9e0f-93fd49248f4e"
       }
     },
     "05c3306c-0a39-42d2-9e0f-93fd49248f4e": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "1d02e508-5953-4eca-af2f-9d67511c8648"
       }
     },
     "1d02e508-5953-4eca-af2f-9d67511c8648": {
-      "_type": "branch",
+      "_type": "flow.branch",
       "next": {
         "default": "ef2cafe3-37e2-4533-9b0c-09a970cd38d4",
         "conditions": [
@@ -123,19 +123,19 @@
       }
     },
     "8002df6e-29ab-4cdf-b520-1d7bb931a28f": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "ef2cafe3-37e2-4533-9b0c-09a970cd38d4"
       }
     },
     "ef2cafe3-37e2-4533-9b0c-09a970cd38d4": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "cf8b3e18-dacf-4e91-92e1-018035961003"
       }
     },
     "cf8b3e18-dacf-4e91-92e1-018035961003": {
-      "_type": "branch",
+      "_type": "flow.branch",
       "next": {
         "default": "0c022e95-0748-4dda-8ba5-12fd1d2f596b",
         "conditions": [
@@ -155,19 +155,19 @@
       }
     },
     "b5efc09c-ece7-45ae-b0b3-8a7905e25040": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "0c022e95-0748-4dda-8ba5-12fd1d2f596b"
       }
     },
     "0c022e95-0748-4dda-8ba5-12fd1d2f596b": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "618b7537-b42b-4551-ae7d-053afa4d9ca9"
       }
     },
     "618b7537-b42b-4551-ae7d-053afa4d9ca9": {
-      "_type": "branch",
+      "_type": "flow.branch",
       "next": {
         "default": "dc7454f9-4186-48d7-b055-684d57bbcdc7",
         "conditions": [
@@ -199,25 +199,25 @@
       }
     },
     "bc666714-c0a2-4674-afe5-faff2e20d847": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "dc7454f9-4186-48d7-b055-684d57bbcdc7"
       }
     },
     "e2887f44-5e8d-4dc0-b1de-496ab6039430": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "dc7454f9-4186-48d7-b055-684d57bbcdc7"
       }
     },
     "dc7454f9-4186-48d7-b055-684d57bbcdc7": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "84a347fc-8d4b-486a-9996-6a86fa9544c5"
       }
     },
     "84a347fc-8d4b-486a-9996-6a86fa9544c5": {
-      "_type": "branch",
+      "_type": "flow.branch",
       "next": {
         "default": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
         "conditions": [
@@ -261,25 +261,25 @@
       }
     },
     "2cc66e51-2c14-4023-86bf-ded49887cdb2": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb"
       }
     },
     "f6c51f88-7be8-4cb7-bbfc-6c905727a051": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb"
       }
     },
     "48357db5-7c06-4e85-94b1-5e1c9d8f39eb": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "1079b5b8-abd0-4bf6-aaac-1f01e69e3b39"
       }
     },
     "1079b5b8-abd0-4bf6-aaac-1f01e69e3b39": {
-      "_type": "branch",
+      "_type": "flow.branch",
       "next": {
         "default": "941137d7-a1da-43fd-994a-98a4f9ea6d46",
         "conditions": [
@@ -329,31 +329,31 @@
       }
     },
     "941137d7-a1da-43fd-994a-98a4f9ea6d46": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "e337070b-f636-49a3-a65c-f506675265f0"
       }
     },
     "56e80942-d0a4-405a-85cd-bd1b100013d6": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "e337070b-f636-49a3-a65c-f506675265f0"
       }
     },
     "6324cca4-7770-4765-89b9-1cdc41f49c8b": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "e337070b-f636-49a3-a65c-f506675265f0"
       }
     },
     "e337070b-f636-49a3-a65c-f506675265f0": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": "778e364b-9a7f-4829-8eb2-510e08f156a3"
       }
     },
     "778e364b-9a7f-4829-8eb2-510e08f156a3": {
-      "_type": "page",
+      "_type": "flow.page",
       "next": {
         "default": ""
       }
