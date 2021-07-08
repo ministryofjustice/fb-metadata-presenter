@@ -1,5 +1,4 @@
 {
-  "_id": "flow.page",
   "_type": "flow.page",
   "next": {
     "default": ""
