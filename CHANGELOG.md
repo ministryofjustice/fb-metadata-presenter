@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.8.1] - 2021-07-09
+
+### Added
+
+- Added service and version fixtures for additional testing
+
 ## [1.8.0] - 2021-07-08
 
 ### Added
