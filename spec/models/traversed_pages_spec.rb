@@ -11,6 +11,31 @@ RSpec.describe MetadataPresenter::TraversedPages do
       traversed_pages.all
     end
 
+    context 'when current page is blank' do
+      subject(:traversed_pages) { described_class.new(service, user_data) }
+      let(:user_data) { {} }
+
+      it 'returns all pages until last page based on user answers' do
+        expect(all.map(&:url)).to match_array(
+          [
+            '/',
+            'name',
+            'do-you-like-star-wars',
+            'favourite-fruit',
+            'favourite-band',
+            'best-formbuilder',
+            'which-formbuilder',
+            'burgers',
+            'we-love-chickens',
+            'marvel-series',
+            'best-arnold-quote',
+            'arnold-incomplete-answers',
+            'check-answers'
+          ]
+        )
+      end
+    end
+
     context 'when using the old flow metadata' do
       let(:user_data) { {} }
       let(:service_metadata) { metadata_fixture(:version) }
