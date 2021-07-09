@@ -44,40 +44,6 @@
         "content"
       ]
     },
-    "steps_heading": {
-      "title": "Steps heading",
-      "description": "Name of section to use on step pages (if any)",
-      "type": "string",
-      "category": [
-        "content"
-      ]
-    },
-    "steps": {
-      "title": "Steps",
-      "description": "The ‘child’ pages that follow from this ‘parent’ page",
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "enable_steps": {
-      "title": "Enable steps",
-      "description": "Allow current page to have steps",
-      "type": "boolean"
-    },
-    "show_steps": {
-      "title": "Steps visibility",
-      "category": [
-        "logic"
-      ],
-      "description": "Whether to show or hide the page’s steps",
-      "oneOf": [
-        {
-          "$ref": "definition.conditional.boolean"
-        }
-      ],
-      "default": true
-    },
     "nextPage": {
       "$ref": "definition.next_page"
     }

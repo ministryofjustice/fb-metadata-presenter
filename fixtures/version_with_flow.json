@@ -95,21 +95,6 @@
       "lede": "",
       "_type": "page.start",
       "_uuid": "cf6dc32f-502c-4215-8c27-1151a45735bb",
-      "steps": [
-        "page.name",
-        "page.email-address",
-        "page.parent-name",
-        "page.your-age",
-        "page.family-hobbies",
-        "page.do-you-like-star-wars",
-        "page.holiday",
-        "page.burgers",
-        "page.star-wars-knowledge",
-        "page.how-many-lights",
-        "page.dog-picture",
-        "page.check-answers",
-        "page.confirmation"
-      ],
       "heading": "Service name goes here",
       "before_you_start": "###Before you start\r\nYou can also register by post.\r\n\r\nThe online service is also available in Welsh (Cymraeg).\r\n\r\nYou cannot register for this service if you’re in the UK illegally."
     },
