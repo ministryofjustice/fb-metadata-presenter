@@ -1,0 +1,86 @@
+{
+  "_id": "service.base",
+  "_type": "service.base",
+  "flow": {
+    "86ed04ac-1727-4172-8dd2-608009f1a656": {
+      "_type": "flow.page",
+      "next": {
+        "default": ""
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "page.start",
+      "url": "/",
+      "body": "Use this service to:\r\n\r\n* do something\r\n* update your name, address or other details\r\n* do something else\r\n\r\nRegistering takes around 5 minutes.",
+      "lede": "",
+      "_type": "page.start",
+      "_uuid": "86ed04ac-1727-4172-8dd2-608009f1a656",
+      "heading": "Service name goes here",
+      "before_you_start": "###Before you start\r\nYou can also register by post.\r\n\r\nThe online service is also available in Welsh (Cymraeg).\r\n\r\nYou cannot register for this service if you’re in the UK illegally."
+    }
+  ],
+  "locale": "en",
+  "created_by": "099d5bf5-5f7b-444c-86ee-9e189cc1a369",
+  "service_name": "Service With Flow Fixture",
+  "configuration": {
+    "meta": {
+      "_id": "config.meta",
+      "_type": "config.meta",
+      "items": [
+        {
+          "_id": "config.meta--link",
+          "href": "cookies",
+          "text": "Cookies",
+          "_type": "link"
+        },
+        {
+          "_id": "config.meta--link--2",
+          "href": "privacy",
+          "text": "Privacy",
+          "_type": "link"
+        },
+        {
+          "_id": "config.meta--link--3",
+          "href": "accessibility",
+          "text": "Accessibility",
+          "_type": "link"
+        }
+      ]
+    },
+    "service": {
+      "_id": "config.service",
+      "_type": "config.service"
+    }
+  },
+  "standalone_pages": [
+    {
+      "_id": "page.cookies",
+      "url": "cookies",
+      "body": "This online form puts a small file (known as ‘cookies’) onto your computer to collect information about how you browse the site.\r\n\r\nCookies are used to:\r\n\r\n- remember your progress\r\n- measure how you use the website so it can be updated and improved based on your needs\r\n\r\nThis online form's cookie isn't used to identify you personally.\r\n\r\nYou'll normally see a message on the site before we store a cookie on your computer.\r\n\r\nFind out more about [how to manage cookies](https://www.aboutcookies.org/).\r\n\r\n##How cookies are used on this online form\r\n\r\nWe will store a cookie to remember your progress on this computer and to expire your session after 30 minutes of inactivity or when you close your browser.\r\n\r\n| Name | Purpose | Expires |\r\n|---|---|---|\r\n| _fb_runner_session | Saves your current progress in this computer and tracks inactivity periods | After 30 minutes of inactivity or when you close your browser |",
+      "_type": "page.standalone",
+      "_uuid": "4cfdb39e-75ef-4f46-a143-e2db99bf0bf3",
+      "heading": "Cookies",
+      "components": []
+    },
+    {
+      "_id": "page.privacy",
+      "url": "privacy",
+      "body": "This privacy notice explains what [insert your organisation name] means when we talk about personal data, why we ask for this information about you and what we do with it when you use this form.\r\n\r\nIt also explains how we store your data, how you can get a copy of the information we’ve collected about you and how you can complain if you think we’ve done something wrong.\r\n\r\n###Who manages this service\r\n\r\nThis form is managed by [your organisation].\r\n\r\nThe information you submit will be processed by [insert who will be processing the information and, if it’s a separate organisation, what their relationship is to you].\r\n\r\n[Insert name of organisation that acts as data controller for your form] is the data controller for the personal data collected by this form.\r\n\r\n###When we ask for personal data\r\n\r\nWhenever we ask for information about you, we promise to:\r\n\r\n- always let you know why we need it\r\n- ask for relevant personal information only\r\n- make sure we do not keep it longer than needed\r\n- keep your information safe and make sure nobody can access it unless authorised to do so\r\n- only share your data with other organisations for legitimate purposes\r\n- consider any request you make to correct or delete your personal data\r\n\r\nWe also promise to make it easy for you to:\r\n\r\n- tell us at any time if you want us to stop storing your personal data\r\n- make a complaint to the supervisory authority\r\n\r\n###The personal data we collect\r\n\r\nWe only collect personal data that you directly provide with your application.\r\n\r\nWe only collect the information we need to deliver this service to you. The personal data collected includes:\r\n\r\n- [summarise the types of personal information requested by your form]\r\n\r\nWe [use cookies](http://www.aboutcookies.org.uk/managing-cookies) to collect data that tells us about how the service is used, including:\r\n\r\n- your computer, phone or tablet’s IP address\r\n\r\n- the region or town where you are using your computer, phone or tablet\r\n\r\n- the operating system and web browser you use\r\n\r\nThis information is not used to identify you personally.\r\n\r\n###Why we collect your personal data\r\n\r\nWe collect data to [describe why you are collecting personal information]. The processing of your personal data is necessary for [explain why you require the personal information].\r\n\r\nThe legal basis for collecting and processing your personal data is [enter and explain your legal basis here, for example, that it is necessary to perform a task in the public interest or\nin the exercise of your functions as a government department].\r\n\r\nUse of the online form is voluntary. If you do not provide all the information we ask for, we may not be able to process your [insert the purpose of your form, such as claim, application or request].\r\n\r\nPlease note that transmitting information over the internet is generally not completely secure, and [your organisation] can’t guarantee the security of your data. Any data you transmit is at your own risk. [your organisation, and any other organisations involved in processing the data] have procedures and security features in place to keep your data secure once we receive it.\r\n\r\n###Sharing your personal data\r\n\r\nThe information you provide will be shared with… [name any organisations that you might share the data with and provide an explanation of why the information may be shared and what it will be used for]\r\n\r\nWe may also use your contact information to ask for feedback on using the service, but only when you have given your consent for us to do so. [delete this paragraph if not applicable]\r\n\r\nWe’ll never share your information with other organisations for marketing, market research or commercial purposes.\r\n\r\n###Keeping your personal data\r\n\r\nTo protect your personal information, any data you enter as you progress through the online form is held temporarily and securely until you submit your application, after which your application cannot be viewed or modified further online.\r\n\r\n[your organisation, and any other organisations involved in processing the data] will keep your data for [specify how long you will keep the information for and why].\r\n\r\nAll deleted data will be destroyed securely and confidentially.\r\n\r\n###How we use your personal data\r\n\r\nYour online submission will be sent from the online form to [your organisation or whichever other organisation will receive the information for processing] via encrypted email. The system does not retain a copy of your information.\r\n\r\n[select one of the following 3 paragraphs which most closely fits your circumstances and delete the other 2]\r\n\r\nYour personal data is not used in any automated decision making (a decision made solely by automated means without any human involvement) or profiling (automated processing of personal data to evaluate certain conditions about an individual).\r\n\r\nAutomated decision making (a decision made solely by automated means without any human involvement) is used for the purpose of [insert why ADM is used] and is carried out [include when in the process this is carried out]. The personal data used for this purpose includes [insert personal data types].\r\n\r\nProfiling (automated processing of personal data to evaluate certain conditions about an individual) is carried out for the purpose of [insert reason why profiling exists]. The personal data used for this purpose includes [insert personal data types].\r\n\r\n###How we store your personal data\r\n\r\n[your organisation or whichever other organisation will receive the information for processing] take data security very seriously and take every step to ensure that your data remains private and secure. All data collected by this service is stored in a secure database [kept entirely within the UK/kept outside of the UK but within the European Economic Area (EEA). - delete as appropriate]\r\n\r\nIt may sometimes be necessary to transfer personal information overseas, outside of the UK and the European Economic Area (EEA). When this is needed information may be transferred to [insert names of countries]. Any transfers made will be in full compliance with all aspects of the data protection law. [delete this paragraph if not applicable or contact your data protection team for guidance on required safeguards] \r\n\r\nYour application will only be accessible to [your organisation, and any other organisations involved in processing the data] staff who require access to process applications.\r\n\r\n###Your rights\r\n\r\nYou have a number of rights, depending on the reason for processing your information. These include:\r\n\r\n- the right to request a copy of your personal data and information about how your personal data is processed (this is known as a subject access request)\r\n- the right to have inaccuracies in your personal data corrected\r\n- the right to fill in any gaps in your personal data, including by means of a supplementary statement\r\n- the right to ask for the processing of your personal data to be restricted\r\n- the right to ask for your personal data to be deleted if there is no longer a justification for it\r\n- the right to object to automated decision making, including profiling, that has a legal or significant effect on you as an individual\r\n\r\nIf you want to see the personal data that we hold on you, you can make a subject access request. Send your request by post to:\r\n\r\nDisclosure Team  \r\nPost point 10.25  \r\n102 Petty France  \r\nLondon  \r\nSW1H 9AJ\r\n\r\nor email: data.access@justice.gov.uk\r\n\r\nFor all other rights, please write to us at:\r\n\r\n[insert your postal and email addresses]\r\n\r\n###Getting more information\r\n\r\nYou can get more details on:\r\n\r\n- agreements we have with other organisations for sharing information\r\n- when we can pass on personal information without telling you, for example, to help with the prevention or detection of crime or to produce anonymised statistics\r\n- instructions we give to staff on how to collect, use or delete your personal information\r\n- how we check that the information we have is accurate and up-to-date\r\n- how to make a complaint\r\n\r\nFor more information, please contact the [your organisation] data protection officer at:\r\n\r\n[insert the postal and email addresses of your data protection officer - for the MoJ, this is:\r\n\r\nThe Data Protection Officer  \r\nMinistry of Justice  \r\n10 South Colonnade\nCanary Wharf  \r\nLondon  \r\nE14 4PU\r\n\r\nEmail: DPO@justice.gov.uk]\r\n\r\n###Making a complaint\r\n\r\nWhen we ask you for information, we will keep to the law. If you think that your information has not been handled correctly, you can contact the [Information Commissioner](https://ico.org.uk/) for independent advice about data protection on the address below:\r\n\r\nInformation Commissioner's Office  \r\nWycliffe House  \r\nWater Lane  \r\nWilmslow  \r\nCheshire  \r\nSK9 5AF\r\n\r\nTelephone: 0303 123 1113",
+      "_type": "page.standalone",
+      "_uuid": "9fe1f0ba-de2a-4dc5-b36e-0afc5562a6f4",
+      "heading": "Privacy notice",
+      "components": []
+    },
+    {
+      "_id": "page.accessibility",
+      "url": "accessibility",
+      "body": "This accessibility statement applies to [describe your form here - for example, the general enquiries form for the CICA]. There is a separate [accessibility statement for the main GOV.UK website](https://www.gov.uk/help/accessibility-statement).\r\n\r\n###Using this online form\r\n\r\nThis form was built using MoJ Forms, a tool developed by the Ministry of Justice, and uses components from the [GOV.UK Design System](https://design-system.service.gov.uk/).\r\n\r\n[insert your organisation here] is responsible for the content of this online form. The Ministry of Justice is responsible for its technical aspects.\r\n\r\nWe want as many people as possible to be able to use this online form. For example, that means you should be able to:\r\n\r\n- change colours, contrast levels and fonts\r\n- zoom in up to 300% without the text spilling off the screen\r\n- navigate the form using just a keyboard\r\n- navigate the form using speech recognition software\r\n- listen to the form using a screen reader (including recent versions of JAWS, NVDA and VoiceOver)\r\n\r\nWe’ve also made the text as simple as possible to understand.\r\n\r\n[AbilityNet](https://mcmw.abilitynet.org.uk/) has advice on making your device easier to use if you have a disability.\r\n\r\n###How accessible this form is\r\n\r\nWe know some parts of this form are not fully accessible:\r\n\r\n- pages have no skip links\r\n- the language attribute of the page has not been set in the HTML\r\n- some pages may contain empty headings\r\n- some content may be cut off or appear truncated when zooming in\r\n\r\n###Feedback and contact information\r\n\r\nIf you need information on this website in a different format:\r\n\r\n[insert your contact details for user requests here - add other channels, such as text phones or Relay UK, as required]\r\n\r\n- email: [your email address]\r\n- call: [your telephone number]\r\n- [Hours - e.g. Monday to Friday, 9am to 5pm]\r\n\r\n###Enforcement procedure\r\n\r\nThe Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint, contact the [Equality Advisory and Support Service (EASS)](https://www.equalityadvisoryservice.com/).\r\n\r\n###Technical information about this online form’s accessibility\r\n\r\nWe are committed to making our online forms and services accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.\r\n\r\n####Compliance status\r\n\r\nThis online form is partially compliant with the [Web Content Accessibility Guidelines version 2.1 AA standard](https://www.w3.org/TR/WCAG21/), due to the non-compliances listed below.\r\n\r\n###Non-accessible content\r\n\r\nThe content listed below is non-accessible for the following reasons.\r\n\r\n####Non compliance with the accessibility regulations\r\n\r\n1. Pages have no skip links. This issue may affect screen reader and keyboard users who use skip links to bypass repeated content such as headers and navigation menus to skip directly to the main page content.\r\n2. The language attribute of the page has not been set in the HTML. This may cause confusion to screen reader users who may not be able to identify the primary language of the page in their journey.\r\n3. Some pages may contain empty headings, including on the check answers page. As a result, screen reader users may have difficulty navigating these pages.\n4. Some content may be cut off or appear truncated when zooming in. This issue may affect low-vision users navigating the form who use reflow settings to view web pages.\r\n\r\nWe plan to fix these issues by July 2021.\r\n\r\n###Preparation of this accessibility statement\r\n\r\nThis statement was prepared on [date when it was first published]. It was last reviewed on [date when it was last reviewed].\r\n\r\nThis form was last tested on [date when you performed your basic accessibility check].\r\n\r\nIn order to test the compliance of all forms built using the MoJ Forms tool, the Ministry of Justice commissioned The Digital Accessibility Centre (DAC) to carry out a WCAG 2.1 AA level audit of a sample form. This included extensive testing by users with a wide range of disabilities. The audit was performed on 8 April 2021.\r\n\r\nIn addition, this form was tested by [insert team or organisation here]. It was tested using the [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) following guidance from the Ministry of Justice and Government Digital Service (GDS).\r\n\r\n###What we’re doing to improve accessibility\r\n\r\nWe will monitor the accessibility of this website on an ongoing basis and fix any accessibility issues reported to us.",
+      "_type": "page.standalone",
+      "_uuid": "31c4e4f7-2790-41ad-935a-50f7061fb1f1",
+      "heading": "Accessibility statement",
+      "components": []
+    }
+  ]
+}

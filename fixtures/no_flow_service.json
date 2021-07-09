@@ -155,7 +155,7 @@
   "created_by": "099d5bf5-5f7b-444c-86ee-9e189cc1a369",
   "service_id": "488edccd-8411-4ffb-a38b-6a96c6ac28d6",
   "version_id": "27dc30c9-f7b8-4dec-973a-bd153f6797df",
-  "service_name": "Version Fixture",
+  "service_name": "No Flow Service Fixture",
   "configuration": {
     "meta": {
       "_id": "config.meta",

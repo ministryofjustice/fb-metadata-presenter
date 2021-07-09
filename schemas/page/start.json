@@ -15,9 +15,6 @@
       "title": "Before you start",
       "description": "A body of text that goes after the Start button"
     },
-    "enable_steps": {
-      "const": true
-    },
     "components": {
       "accepts": [
         "content"
@@ -37,7 +34,6 @@
     ]
   },
   "required": [
-    "heading",
-    "steps"
+    "heading"
   ]
 }

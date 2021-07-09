@@ -9,7 +9,6 @@ module MetadataPresenter
       _uuid
       _id
       _type
-      steps
       add_component
       add_extra_component
     ].freeze

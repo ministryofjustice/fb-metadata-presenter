@@ -3,6 +3,7 @@
   "_type": "service.base",
   "service_name": "Service name",
   "configuration": {},
+  "flow": {},
   "pages": [],
   "standalone_pages": [],
   "locale": "en"
