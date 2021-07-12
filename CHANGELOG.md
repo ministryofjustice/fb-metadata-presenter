@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [1.9.0] - 2021-07-09
+
+### Added
+
+- Make sure traversed pages can be used in the submissions
+
 ## [1.8.1] - 2021-07-09
 
 ### Added

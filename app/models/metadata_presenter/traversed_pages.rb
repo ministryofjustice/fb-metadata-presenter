@@ -2,11 +2,11 @@ module MetadataPresenter
   class TraversedPages
     attr_reader :service, :user_data, :current_page
 
-    def initialize(service, user_data, current_page)
+    def initialize(service, user_data, current_page = nil)
       @service = service
       @user_data = user_data
       @pages = [service.start_page]
-      @current_page = current_page
+      @current_page = current_page || service.pages[-1]
     end
 
     delegate :last, to: :all
