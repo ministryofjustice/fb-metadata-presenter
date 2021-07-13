@@ -8,6 +8,13 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [2.0.0] - 2021-07-13
+
+### Changed
+
+- Breaking change
+- Use conditionals and expressions as the properties for branching objects and logic
+
 ## [1.9.0] - 2021-07-09
 
 ### Added
