@@ -15,20 +15,20 @@
         "default": {
           "type": "string"
         },
-        "conditions": {
-          "$ref": "#/definitions/conditions"
+        "conditionals": {
+          "$ref": "#/definitions/conditionals"
         }
       }
     }
   },
   "additionalProperties": false,
   "definitions": {
-    "conditions": {
+    "conditionals": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "condition_type": {
+          "_type": {
             "type": "string",
             "enum": [
               "if",
@@ -39,13 +39,13 @@
           "next": {
             "type": "string"
           },
-          "criterias": {
-            "$ref": "#/definitions/criterias"
+          "expressions": {
+            "$ref": "#/definitions/expressions"
           }
         }
       }
     },
-    "criterias": {
+    "expressions": {
       "type": "array",
       "items": {
         "type": "object",

@@ -24,11 +24,11 @@
       "_type": "flow.branch",
       "next": {
         "default": "0b297048-aa4d-49b6-ac74-18e069118185",
-        "conditions": [
+        "conditionals": [
           {
-            "condition_type": "if",
+            "_type": "if",
             "next": "e8708909-922e-4eaf-87a5-096f7a713fcb",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is",
                 "page": "68fbb180-9a2a-48f6-9da6-545e28b8d35a",
@@ -56,11 +56,11 @@
       "_type": "flow.branch",
       "next": {
         "default": "05c3306c-0a39-42d2-9e0f-93fd49248f4e",
-        "conditions": [
+        "conditionals": [
           {
-            "condition_type": "if",
+            "_type": "if",
             "next": "d4342dfd-0d09-4a91-a0ea-d7fd67e706cc",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is",
                 "page": "0b297048-aa4d-49b6-ac74-18e069118185",
@@ -70,9 +70,9 @@
             ]
           },
           {
-            "condition_type": "if",
+            "_type": "if",
             "next": "91e9f7c6-2f75-4b7d-9eb5-0cf352f7be66",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is",
                 "page": "0b297048-aa4d-49b6-ac74-18e069118185",
@@ -106,11 +106,11 @@
       "_type": "flow.branch",
       "next": {
         "default": "ef2cafe3-37e2-4533-9b0c-09a970cd38d4",
-        "conditions": [
+        "conditionals": [
           {
-            "condition_type": "if",
+            "_type": "if",
             "next": "8002df6e-29ab-4cdf-b520-1d7bb931a28f",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is_answered",
                 "page": "05c3306c-0a39-42d2-9e0f-93fd49248f4e",
@@ -138,11 +138,11 @@
       "_type": "flow.branch",
       "next": {
         "default": "0c022e95-0748-4dda-8ba5-12fd1d2f596b",
-        "conditions": [
+        "conditionals": [
           {
-            "condition_type": "if",
+            "_type": "if",
             "next": "b5efc09c-ece7-45ae-b0b3-8a7905e25040",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is_not",
                 "page": "ef2cafe3-37e2-4533-9b0c-09a970cd38d4",
@@ -170,11 +170,11 @@
       "_type": "flow.branch",
       "next": {
         "default": "dc7454f9-4186-48d7-b055-684d57bbcdc7",
-        "conditions": [
+        "conditionals": [
           {
-            "condition_type": "if",
+            "_type": "if",
             "next": "bc666714-c0a2-4674-afe5-faff2e20d847",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is",
                 "page": "0c022e95-0748-4dda-8ba5-12fd1d2f596b",
@@ -184,9 +184,9 @@
             ]
           },
           {
-            "condition_type": "if",
+            "_type": "if",
             "next": "e2887f44-5e8d-4dc0-b1de-496ab6039430",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is_not",
                 "page": "0c022e95-0748-4dda-8ba5-12fd1d2f596b",
@@ -220,11 +220,11 @@
       "_type": "flow.branch",
       "next": {
         "default": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
-        "conditions": [
+        "conditionals": [
           {
-            "condition_type": "or",
+            "_type": "or",
             "next": "2cc66e51-2c14-4023-86bf-ded49887cdb2",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is",
                 "page": "dc7454f9-4186-48d7-b055-684d57bbcdc7",
@@ -240,9 +240,9 @@
             ]
           },
           {
-            "condition_type": "and",
+            "_type": "and",
             "next": "f6c51f88-7be8-4cb7-bbfc-6c905727a051",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is",
                 "page": "68fbb180-9a2a-48f6-9da6-545e28b8d35a",
@@ -282,11 +282,11 @@
       "_type": "flow.branch",
       "next": {
         "default": "941137d7-a1da-43fd-994a-98a4f9ea6d46",
-        "conditions": [
+        "conditionals": [
           {
-            "condition_type": "and",
+            "_type": "and",
             "next": "56e80942-d0a4-405a-85cd-bd1b100013d6",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is",
                 "page": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
@@ -308,9 +308,9 @@
             ]
           },
           {
-            "condition_type": "or",
+            "_type": "or",
             "next": "6324cca4-7770-4765-89b9-1cdc41f49c8b",
-            "criterias": [
+            "expressions": [
               {
                 "operator": "is",
                 "page": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",

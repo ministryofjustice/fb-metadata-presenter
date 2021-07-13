@@ -2,6 +2,6 @@
   "_type": "flow.branch",
   "next": {
     "default": "",
-    "conditions": []
+    "conditionals": []
   }
 }

@@ -22,7 +22,7 @@ module MetadataPresenter
         flow_object = service.flow_object(page_uuid)
 
         if flow_object.branch?
-          page = EvaluateConditions.new(
+          page = EvaluateConditionals.new(
             service: service,
             flow: flow_object,
             user_data: user_data
