@@ -8,14 +8,14 @@ module MetadataPresenter
       metadata['next']['default']
     end
 
-    def conditions
-      Array(metadata['next']['conditions']).map do |condition_metadata|
-        Condition.new(condition_metadata)
+    def conditionals
+      Array(metadata['next']['conditionals']).map do |conditional_metadata|
+        Conditional.new(conditional_metadata)
       end
     end
 
     def group_by_page
-      conditions.group_by(&:next)
+      conditionals.group_by(&:next)
     end
   end
 end

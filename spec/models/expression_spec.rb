@@ -1,10 +1,10 @@
-RSpec.describe MetadataPresenter::Criteria do
-  subject(:criteria) do
+RSpec.describe MetadataPresenter::Expression do
+  subject(:expression) do
     described_class.new(attributes)
   end
 
   before do
-    criteria.service = service
+    expression.service = service
   end
 
   describe '#field_label' do
@@ -18,7 +18,7 @@ RSpec.describe MetadataPresenter::Criteria do
       end
 
       it 'returns field label' do
-        expect(criteria.field_label).to eq('Only on weekends')
+        expect(expression.field_label).to eq('Only on weekends')
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe MetadataPresenter::Criteria do
       end
 
       it 'returns nil' do
-        expect(criteria.field_label).to be_nil
+        expect(expression.field_label).to be_nil
       end
     end
   end

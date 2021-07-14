@@ -6,8 +6,8 @@ module MetadataPresenter
     def find
       return check_answers_page if return_to_check_your_answer?
 
-      if conditions?
-        evaluate_conditions
+      if conditionals?
+        evaluate_conditionals
       elsif current_page_flow.present?
         service.find_page_by_uuid(current_page_flow.default_next)
       else
@@ -26,14 +26,14 @@ module MetadataPresenter
       session[:return_to_check_your_answer].present?
     end
 
-    def conditions?
+    def conditionals?
       current_page_flow.present? &&
         next_flow.present? &&
         next_flow_branch_object?
     end
 
-    def evaluate_conditions
-      EvaluateConditions.new(
+    def evaluate_conditionals
+      EvaluateConditionals.new(
         service: service,
         flow: next_flow,
         user_data: user_data

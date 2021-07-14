@@ -48,12 +48,12 @@ module MetadataPresenter
         flow_object = service.flow_object(id)
 
         if flow_object.branch?
-          full_description = flow_object.conditions.map.each_with_index do |condition, _index|
-            condition.criterias.map { |criteria|
-              criteria.service = service
+          full_description = flow_object.conditionals.map.each_with_index do |conditional, _index|
+            conditional.expressions.map { |expression|
+              expression.service = service
 
-              "#{criteria.criteria_component.humanised_title} #{criteria.operator} #{criteria.field_label}"
-            }.join(" #{condition.condition_type} ")
+              "#{expression.expression_component.humanised_title} #{expression.operator} #{expression.field_label}"
+            }.join(" #{conditional.type} ")
           end
           nodes[id] = @graphviz.add_nodes(full_description.flatten.join(' / '))
         else
@@ -72,9 +72,9 @@ module MetadataPresenter
         if flow_object.branch?
           @graphviz.add_edges(current_node, node_next, label: 'Conditions are not met', labelfontsize: 8) if node_next
 
-          flow_object.group_by_page.each do |page_uuid, _conditions|
-            conditions_node = nodes[page_uuid]
-            @graphviz.add_edges(current_node, conditions_node, label: 'Conditions are met', labelfontsize: 8) if conditions_node
+          flow_object.group_by_page.each do |page_uuid, _conditionals|
+            conditionals_node = nodes[page_uuid]
+            @graphviz.add_edges(current_node, conditionals_node, label: 'Conditions are met', labelfontsize: 8) if conditionals_node
           end
         elsif node_next
           @graphviz.add_edges(current_node, node_next)

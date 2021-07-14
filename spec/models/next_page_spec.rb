@@ -38,7 +38,7 @@ RSpec.shared_context 'branching flow' do
       }
     end
 
-    context 'when condition is met' do
+    context 'when conditional is met' do
       let(:branching_answer) { 'Only on weekends' }
 
       it 'returns next page in the branch' do
@@ -48,7 +48,7 @@ RSpec.shared_context 'branching flow' do
       end
     end
 
-    context 'when condition is not met' do
+    context 'when conditional is not met' do
       let(:branching_answer) { 'Hell no!' }
 
       it 'returns next page in main flow sequence' do

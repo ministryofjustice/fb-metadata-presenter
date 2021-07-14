@@ -46,18 +46,18 @@ RSpec.describe MetadataPresenter::Flow do
     end
   end
 
-  describe '#conditions' do
-    context 'when there are conditions' do
+  describe '#conditionals' do
+    context 'when there are conditionals' do
       subject(:flow) { service.flow_object('09e91fd9-7a46-4840-adbc-244d545cfef7') }
 
-      it 'returns conditions' do
-        expect(flow.conditions).to eq(
+      it 'returns conditionals' do
+        expect(flow.conditionals).to eq(
           [
-            MetadataPresenter::Condition.new(
+            MetadataPresenter::Conditional.new(
               {
-                "condition_type": 'if',
+                "_type": 'if',
                 "next": 'e8708909-922e-4eaf-87a5-096f7a713fcb',
-                "criterias": [
+                "expressions": [
                   {
                     "operator": 'is',
                     "page": '68fbb180-9a2a-48f6-9da6-545e28b8d35a',
@@ -72,9 +72,9 @@ RSpec.describe MetadataPresenter::Flow do
       end
     end
 
-    context 'when there are no conditions' do
+    context 'when there are no conditionals' do
       it 'returns empty' do
-        expect(flow.conditions).to eq([])
+        expect(flow.conditionals).to eq([])
       end
     end
   end
