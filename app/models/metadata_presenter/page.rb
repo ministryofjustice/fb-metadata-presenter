@@ -65,7 +65,18 @@ module MetadataPresenter
       type == 'page.standalone'
     end
 
+    def title
+      return heading if heading?
+
+      components.first.humanised_title
+    end
+
     private
+
+    def heading?
+      Array(components).size != 1 ||
+        type.in?(['page.content', 'page.checkanswers', 'page.confirmation'])
+    end
 
     def to_components(node_components, collection:)
       node_components&.map do |component|
