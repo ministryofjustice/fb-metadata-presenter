@@ -13,6 +13,12 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     end
   end
 
+  SUPPORTS_BRANCHING = %w[radios checkboxes].freeze
+
+  def supports_branching?
+    type.in?(SUPPORTS_BRANCHING)
+  end
+
   def content?
     type == 'content'
   end

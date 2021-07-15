@@ -163,7 +163,7 @@ RSpec.describe MetadataPresenter::Page do
 
   describe '#title' do
     context 'when there is one component' do
-      let(:page){ service.find_page_by_url('name') }
+      let(:page) { service.find_page_by_url('name') }
 
       it 'returns the correct title' do
         expect(page.title).to eq('Full name')
