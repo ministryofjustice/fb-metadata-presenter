@@ -91,4 +91,30 @@ RSpec.describe MetadataPresenter::Component do
       end
     end
   end
+
+  describe '#supports_branching?' do
+    context 'when is radio' do
+      let(:attributes) { { '_type' => 'radios' } }
+
+      it 'returns true' do
+        expect(component.supports_branching?).to be_truthy
+      end
+    end
+
+    context 'when is checkbox' do
+      let(:attributes) { { '_type' => 'checkboxes' } }
+
+      it 'returns true' do
+        expect(component.supports_branching?).to be_truthy
+      end
+    end
+
+    context 'when is file upload' do
+      let(:attributes) { { '_type' => 'upload' } }
+
+      it 'returns false' do
+        expect(component.supports_branching?).to be_falsey
+      end
+    end
+  end
 end

@@ -160,4 +160,46 @@ RSpec.describe MetadataPresenter::Page do
       ).to eq(page.components.first)
     end
   end
+
+  describe '#title' do
+    context 'when there is one component' do
+      let(:page) { service.find_page_by_url('name') }
+
+      it 'returns the correct title' do
+        expect(page.title).to eq('Full name')
+      end
+    end
+
+    context 'when there is more than one component' do
+      let(:page) { service.find_page_by_url('star-wars-knowledge') }
+
+      it 'returns the correct title' do
+        expect(page.title).to eq('How well do you know Star Wars?')
+      end
+    end
+
+    context 'when the page is a content page' do
+      let(:page) { service.find_page_by_url('how-many-lights') }
+
+      it 'returns the correct title' do
+        expect(page.title).to eq('Tell me how many lights you see')
+      end
+    end
+
+    context 'when is check your answers' do
+      let(:page) { service.find_page_by_url('check-answers') }
+
+      it 'returns the correct title' do
+        expect(page.title).to eq('Check your answers')
+      end
+    end
+
+    context 'when there are no components' do
+      let(:page) { service.find_page_by_url('/') }
+
+      it 'returns the correct title' do
+        expect(page.title).to eq('Service name goes here')
+      end
+    end
+  end
 end

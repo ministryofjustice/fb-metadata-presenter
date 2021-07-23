@@ -8,6 +8,13 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [2.0.1] - 2021-07-23
+
+### Added
+
+- Add title method to page to return the question, heading or component legend or label
+- Begin to support branching with radio and checkbox components
+
 ## [2.0.0] - 2021-07-13
 
 ### Changed
