@@ -141,12 +141,12 @@ RSpec.describe MetadataPresenter::PreviousPage do
           end
         end
 
-        context 'when the referrer is a standalone page' do
+        context 'moving from standalone page back to flow page' do
           let(:current_page) { service.find_page_by_url('name') }
           let(:referrer) { 'http://localhost:3000/cookies' }
 
-          it 'returns the standalone page' do
-            expect(previous_page.page.url).to eq('cookies')
+          it 'defaults to the previous flow page when current page is also in the flow' do
+            expect(previous_page.page.url).to eq('/')
           end
         end
 

@@ -12,8 +12,6 @@ module MetadataPresenter
     delegate :last, to: :all
 
     def all
-      return latest_pages if service.flow.blank?
-
       page_uuid = service.start_page.uuid
 
       service.flow.size.times do
