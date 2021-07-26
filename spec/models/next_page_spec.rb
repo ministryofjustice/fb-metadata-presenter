@@ -94,18 +94,6 @@ RSpec.describe MetadataPresenter::NextPage do
       end
     end
 
-    context 'when there is a next page' do
-      let(:service_metadata) { metadata_fixture(:version) }
-      let(:session) { { return_to_check_your_answer: nil } }
-      let(:current_page_url) { '/name' }
-
-      it 'returns next page in sequence' do
-        expect(result).to eq(
-          MetadataPresenter::Page.new(_id: 'page.email-address')
-        )
-      end
-    end
-
     context 'when there is no next page' do
       let(:service_metadata) do
         metadata_fixture(:non_finished_service)

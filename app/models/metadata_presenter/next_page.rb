@@ -8,10 +8,8 @@ module MetadataPresenter
 
       if conditionals?
         evaluate_conditionals
-      elsif current_page_flow.present?
-        service.find_page_by_uuid(current_page_flow.default_next)
       else
-        service.next_page(from: current_page_url)
+        service.find_page_by_uuid(current_page_flow.default_next)
       end
     end
 
