@@ -38,36 +38,6 @@ RSpec.describe MetadataPresenter::PreviousPage do
         end
       end
 
-      context 'when it is the standalone page' do
-        let(:current_page) { service.find_page_by_url('cookies') }
-
-        context 'when there is a referrer' do
-          context 'when is an existing page on metadata' do
-            let(:referrer) { 'http://localhost:3000/name' }
-
-            it 'returns page' do
-              expect(previous_page.page).to eq(service.find_page_by_url('name'))
-            end
-          end
-
-          context 'when is not an existing page on metadata' do
-            let(:referrer) { 'owned-site.co.uk' }
-
-            it 'returns nil' do
-              expect(previous_page.page).to be_nil
-            end
-          end
-        end
-
-        context 'when there is not a referrer' do
-          let(:referrer) {}
-
-          it 'returns nil' do
-            expect(previous_page.page).to be_nil
-          end
-        end
-      end
-
       context 'when is a confirmation page' do
         let(:current_page) { service.find_page_by_url('/confirmation') }
 
@@ -138,45 +108,6 @@ RSpec.describe MetadataPresenter::PreviousPage do
 
           it 'returns nil' do
             expect(previous_page.page).to be_nil
-          end
-        end
-
-        context 'moving from standalone page back to flow page' do
-          let(:current_page) { service.find_page_by_url('name') }
-          let(:referrer) { 'http://localhost:3000/cookies' }
-
-          it 'defaults to the previous flow page when current page is also in the flow' do
-            expect(previous_page.page.url).to eq('/')
-          end
-        end
-
-        context 'when it is the standalone page' do
-          let(:current_page) { service.find_page_by_url('cookies') }
-
-          context 'when there is a referrer' do
-            context 'when is an existing page on metadata' do
-              let(:referrer) { 'http://localhost:3000/name' }
-
-              it 'returns page' do
-                expect(previous_page.page).to eq(service.find_page_by_url('name'))
-              end
-            end
-
-            context 'when is not an existing page on metadata' do
-              let(:referrer) { 'owned-site.co.uk' }
-
-              it 'returns nil' do
-                expect(previous_page.page).to be_nil
-              end
-            end
-          end
-
-          context 'when there is not a referrer' do
-            let(:referrer) {}
-
-            it 'returns nil' do
-              expect(previous_page.page).to be_nil
-            end
           end
         end
       end

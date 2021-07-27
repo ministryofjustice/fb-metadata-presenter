@@ -38,14 +38,6 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     pages[pages.index(current_page) + 1] if current_page.present?
   end
 
-  def previous_page(current_page:, referrer:)
-    return if current_page.nil? || referrer.nil?
-
-    unless no_back_link?(current_page)
-      flow_page(current_page) || referrer_page(referrer)
-    end
-  end
-
   def confirmation_page
     @confirmation_page ||= pages.find do |page|
       page.type == 'page.confirmation'
@@ -57,7 +49,9 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   def no_back_link?(current_page)
-    current_page == start_page || current_page == confirmation_page
+    current_page == start_page ||
+      current_page == confirmation_page ||
+      current_page.standalone?
   end
 
   private
