@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [2.1.0] - 2021-07-27
+
+### Changed
+
+- Remove back links from standalone pages
+
 ## [2.0.2] - 2021-07-26
 
 ### Changed
