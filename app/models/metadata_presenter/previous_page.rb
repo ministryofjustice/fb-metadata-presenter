@@ -4,16 +4,11 @@ module MetadataPresenter
     attr_accessor :service, :user_data, :current_page, :referrer
 
     def page
-      # what happens when a user enters in the middle of the flow
       return if no_current_or_referrer_pages? || service.no_back_link?(current_page)
 
-      if service.flow.present?
-        return referrer_page if return_to_referrer?
+      return referrer_page if return_to_referrer?
 
-        TraversedPages.new(service, user_data, current_page).last
-      else
-        service.previous_page(current_page: current_page, referrer: referrer)
-      end
+      TraversedPages.new(service, user_data, current_page).last
     end
 
     private
@@ -23,6 +18,8 @@ module MetadataPresenter
     end
 
     def return_to_referrer?
+      return false unless current_page.standalone?
+
       current_page.standalone? ||
         (referrer_page && referrer_page.standalone?)
     end

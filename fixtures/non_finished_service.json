@@ -34,23 +34,46 @@
       ]
     }
   },
+  "flow": {
+    "cf6dc32f-502c-4215-8c27-1151a45735bb": {
+      "_type": "flow.page",
+      "next": {
+        "default": "9e1ba77f-f1e5-42f4-b090-437aa9af7f73"
+      }
+    },
+    "9e1ba77f-f1e5-42f4-b090-437aa9af7f73": {
+      "_type": "flow.page",
+      "next": {
+        "default": "68fbb180-9a2a-48f6-9da6-545e28b8d35a"
+      }
+    },
+    "68fbb180-9a2a-48f6-9da6-545e28b8d35a": {
+      "_type": "flow.page",
+      "next": {
+        "default": "09e91fd9-7a46-4840-adbc-244d545cfef7"
+      }
+    },
+    "09e91fd9-7a46-4840-adbc-244d545cfef7": {
+      "_type": "flow.page",
+      "next": {
+        "default": ""
+      }
+    }
+  },
   "pages": [
     {
       "_id": "page.start",
       "_type": "page.start",
+      "_uuid": "cf6dc32f-502c-4215-8c27-1151a45735bb",
       "heading": "Service name goes here",
       "lede": "This is your start page first paragraph. You can only have one paragraph here.",
       "body": "Use this service to:\r\n\r\n* do something\r\n* update your name, address or other details\r\n* do something else\r\n\r\nRegistering takes around 5 minutes.",
-      "steps": [
-        "page.name",
-        "page.email-address",
-        "page.parent_name"
-      ],
       "url": "/"
     },
     {
       "_id": "page.name",
       "_type": "page.singlequestion",
+      "_uuid": "9e1ba77f-f1e5-42f4-b090-437aa9af7f73",
       "components": [
         {
           "_id": "page.name--text.auto_name__1",
@@ -70,6 +93,7 @@
     {
       "_id": "page.email-address",
       "_type": "page.singlequestion",
+      "_uuid": "68fbb180-9a2a-48f6-9da6-545e28b8d35a",
       "heading": "Email address",
       "components": [
         {
@@ -101,6 +125,7 @@
     {
       "_id": "page.parent_name",
       "_type": "page.singlequestion",
+      "_uuid": "09e91fd9-7a46-4840-adbc-244d545cfef7",
       "components": [
         {
           "_id": "page.parent-name--text.auto_name__3",

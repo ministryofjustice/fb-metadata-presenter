@@ -33,6 +33,20 @@
       ]
     }
   },
+  "flow": {
+    "9626b2e9-5ef0-4070-8331-ac55151b22c4": {
+      "_type": "flow.page",
+      "next": {
+        "default": "1ed3e4ad-5098-41c9-b4b6-426e89f7804e"
+      }
+    },
+    "b238a22f-c180-48d0-a7d9-8aad2036f1f2": {
+      "_type": "flow.page",
+      "next": {
+        "default": ""
+      }
+    }
+  },
   "pages": [
     {
       "_uuid": "9626b2e9-5ef0-4070-8331-ac55151b22c4",
@@ -42,7 +56,6 @@
       "lede": "Use this service to:",
       "body": "Use this service to:\r\n\r\n* do something\r\n* update your name, address or other details\r\n* do something else\r\n\r\nRegistering takes around 5 minutes.",
       "before_you_start": "###Before you start\r\nYou can also register by post.\r\n\r\nThe online service is also available in Welsh (Cymraeg).\r\n\r\nYou cannot register for this service if you’re in the UK illegally.",
-      "steps": [],
       "url": "/"
     },
     {

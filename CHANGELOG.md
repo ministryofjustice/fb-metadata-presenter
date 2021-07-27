@@ -8,6 +8,13 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [2.0.2] - 2021-07-26
+
+### Changed
+
+- Use service flow objects exclusively
+- Update all fixtures to use service flow
+
 ## [2.0.1] - 2021-07-23
 
 ### Added
