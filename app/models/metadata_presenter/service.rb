@@ -54,6 +54,12 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
       current_page.standalone?
   end
 
+  def page_with_component(uuid)
+    pages.find do |page|
+      Array(page.components).any? { |component| component.uuid == uuid }
+    end
+  end
+
   private
 
   def all_pages
