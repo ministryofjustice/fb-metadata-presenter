@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ## [2.1.0] - 2021-07-27
 
+### Added
+
+- Added method to the service which returns a page object containing a given component uuid
+
+## [2.1.0] - 2021-07-27
+
 ### Changed
 
 - Remove back links from standalone pages

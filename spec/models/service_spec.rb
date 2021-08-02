@@ -146,4 +146,13 @@ RSpec.describe MetadataPresenter::Service do
       expect(service.meta).to be_kind_of(MetadataPresenter::Meta)
     end
   end
+
+  describe '#page_with_component' do
+    let(:page) { service.find_page_by_url('do-you-like-star-wars') }
+    let(:component_uuid) { page.components.first.uuid }
+
+    it 'returns the correct page containing the component' do
+      expect(service.page_with_component(component_uuid)).to eq(page)
+    end
+  end
 end
