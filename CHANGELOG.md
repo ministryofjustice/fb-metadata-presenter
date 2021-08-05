@@ -8,6 +8,18 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [2.2.0] - 2021-08-05
+
+### Changed
+
+- The methods in the page model relating to input and content components were not actually returning those objects.
+  They actually relate to supported components for a given page. Change the method names to better describe that
+- Add input_components and content_components methods which actually return objects of those types
+
+### Added
+
+- Add question_page? method on the page model. Should only be true for single question and multiple questions pages
+
 ## [2.1.0] - 2021-07-27
 
 ### Added
