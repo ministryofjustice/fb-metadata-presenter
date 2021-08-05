@@ -34,6 +34,14 @@ module MetadataPresenter
       to_components(metadata.extra_components, collection: :extra_components)
     end
 
+    def input_components
+      all_components.reject(&:content?)
+    end
+
+    def content_components
+      all_components.select(&:content?)
+    end
+
     def supported_components_by_type(type)
       supported = supported_components(raw_type)[type]
 

@@ -50,6 +50,29 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
+  describe '#input_components' do
+    let(:page) { service.find_page_by_url('star-wars-knowledge') }
+    let(:expected_component_ids) { %w[star-wars-knowledge_text_1 star-wars-knowledge_radios_1] }
+
+    it 'returns an array of only components that take user input' do
+      component_ids = page.input_components.map(&:id)
+      expect(component_ids).to eq(expected_component_ids)
+      expect(component_ids).not_to include('star-wars-knowledge_content_1')
+    end
+  end
+
+  describe '#content_components' do
+    let(:page) { service.find_page_by_url('star-wars-knowledge') }
+
+    it 'returns an array of only content components' do
+      component_ids = page.content_components.map(&:id)
+      expect(component_ids).to eq(%w[star-wars-knowledge_content_1])
+      %w[star-wars-knowledge_text_1 star-wars-knowledge_radios_1].each do |id|
+        expect(component_ids).not_to include(id)
+      end
+    end
+  end
+
   describe '#editable_attributes' do
     it 'does not reject editable attributes' do
       expect(service.pages.first.editable_attributes.keys).to include(
