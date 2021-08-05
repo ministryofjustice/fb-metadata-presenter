@@ -1,4 +1,4 @@
-Rails.application.config.page_components =
+Rails.application.config.supported_components =
   ActiveSupport::HashWithIndifferentAccess.new({
     checkanswers: {
       input: %w(),

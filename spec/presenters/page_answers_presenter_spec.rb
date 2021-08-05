@@ -178,7 +178,7 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
         service.find_page_by_url('/star-wars-knowledge')
       end
       let(:page_answers_count) do
-        page.components_by_type(:input).size
+        page.supported_components_by_type(:input).size
       end
 
       context 'when last question' do
@@ -211,7 +211,7 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
         service.find_page_by_url('/burgers')
       end
       let(:page_answers_count) do
-        page.components_by_type(:input).size
+        page.supported_components_by_type(:input).size
       end
       let(:index) { 0 }
 

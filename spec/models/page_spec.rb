@@ -85,12 +85,12 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
-  describe '#input_components' do
+  describe '#supported_input_components' do
     context 'when page has input components' do
       subject(:page) { described_class.new(_type: 'page.multiplequestions') }
 
       it 'returns the correct input components' do
-        expect(page.input_components).to match_array(%w[text textarea number date radios checkboxes])
+        expect(page.supported_input_components).to match_array(%w[text textarea number date radios checkboxes])
       end
     end
 
@@ -98,7 +98,7 @@ RSpec.describe MetadataPresenter::Page do
       subject(:page) { described_class.new(_type: 'page.checkanswers') }
 
       it 'returns an empty array' do
-        expect(page.input_components).to be_empty
+        expect(page.supported_input_components).to be_empty
       end
     end
 
@@ -107,18 +107,18 @@ RSpec.describe MetadataPresenter::Page do
 
       it 'raises a PageComponentsNotDefinedError' do
         expect {
-          page.input_components
+          page.supported_input_components
         }.to raise_error(MetadataPresenter::PageComponentsNotDefinedError)
       end
     end
   end
 
-  describe '#content_components' do
+  describe '#supported_content_components' do
     context 'when page has content components' do
       subject(:page) { described_class.new(_type: 'page.multiplequestions') }
 
       it 'returns the correct content components' do
-        expect(page.content_components).to match_array(%w[content])
+        expect(page.supported_content_components).to match_array(%w[content])
       end
     end
 
@@ -127,7 +127,7 @@ RSpec.describe MetadataPresenter::Page do
 
       it 'raises a PageComponentsNotDefinedError' do
         expect {
-          page.content_components
+          page.supported_content_components
         }.to raise_error(MetadataPresenter::PageComponentsNotDefinedError)
       end
     end
