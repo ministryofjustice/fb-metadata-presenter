@@ -12,6 +12,7 @@ module MetadataPresenter
       add_component
       add_extra_component
     ].freeze
+    QUESTION_PAGES = %w[page.singlequestion page.multiplequestions].freeze
 
     def editable_attributes
       to_h.reject { |k, _| k.in?(NOT_EDITABLE) }
@@ -63,6 +64,10 @@ module MetadataPresenter
 
     def standalone?
       type == 'page.standalone'
+    end
+
+    def question_page?
+      type.in?(QUESTION_PAGES)
     end
 
     def title

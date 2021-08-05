@@ -161,6 +161,42 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
+  describe '#standalone?' do
+    context 'when page is a standalone page' do
+      subject(:page) { service.find_page_by_url('cookies') }
+
+      it 'returns truthy' do
+        expect(page.standalone?).to be_truthy
+      end
+    end
+
+    context 'when page is not a standalone page' do
+      subject(:page) { service.find_page_by_url('name') }
+
+      it 'returns falsey' do
+        expect(page.standalone?).to be_falsey
+      end
+    end
+  end
+
+  describe '#question_page?' do
+    context 'when page has a question' do
+      subject(:page) { service.find_page_by_url('name') }
+
+      it 'returns truthy' do
+        expect(page.question_page?).to be_truthy
+      end
+    end
+
+    context 'when page does not have any questions' do
+      subject(:page) { service.find_page_by_url('confirmation') }
+
+      it 'returns falsey' do
+        expect(page.question_page?).to be_falsey
+      end
+    end
+  end
+
   describe '#title' do
     context 'when there is one component' do
       let(:page) { service.find_page_by_url('name') }
