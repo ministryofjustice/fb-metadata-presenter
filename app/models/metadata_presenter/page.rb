@@ -12,6 +12,7 @@ module MetadataPresenter
       add_component
       add_extra_component
     ].freeze
+    QUESTION_PAGES = %w[page.singlequestion page.multiplequestions].freeze
 
     def editable_attributes
       to_h.reject { |k, _| k.in?(NOT_EDITABLE) }
@@ -33,11 +34,19 @@ module MetadataPresenter
       to_components(metadata.extra_components, collection: :extra_components)
     end
 
-    def components_by_type(type)
-      supported_components = page_components(raw_type)[type]
+    def input_components
+      all_components.reject(&:content?)
+    end
+
+    def content_components
+      all_components.select(&:content?)
+    end
+
+    def supported_components_by_type(type)
+      supported = supported_components(raw_type)[type]
 
       all_components.select do |component|
-        supported_components.include?(component.type)
+        supported.include?(component.type)
       end
     end
 
@@ -49,12 +58,12 @@ module MetadataPresenter
       "metadata_presenter/#{type.gsub('.', '/')}"
     end
 
-    def input_components
-      page_components(raw_type)[:input]
+    def supported_input_components
+      supported_components(raw_type)[:input]
     end
 
-    def content_components
-      page_components(raw_type)[:content]
+    def supported_content_components
+      supported_components(raw_type)[:content]
     end
 
     def upload_components
@@ -63,6 +72,10 @@ module MetadataPresenter
 
     def standalone?
       type == 'page.standalone'
+    end
+
+    def question_page?
+      type.in?(QUESTION_PAGES)
     end
 
     def title
@@ -87,10 +100,10 @@ module MetadataPresenter
       end
     end
 
-    def page_components(page_type)
-      values = Rails.application.config.page_components[page_type]
+    def supported_components(page_type)
+      values = Rails.application.config.supported_components[page_type]
       if values.blank?
-        raise PageComponentsNotDefinedError, "No page components defined for #{page_type} in config initialiser"
+        raise PageComponentsNotDefinedError, "No supported components defined for #{page_type} in config initialiser"
       end
 
       values

@@ -10,7 +10,7 @@ module MetadataPresenter
 
     def self.map(view:, pages:, answers:)
       user_input_pages(pages).map { |page|
-        Array(page.components_by_type(:input)).map do |component|
+        Array(page.supported_components_by_type(:input)).map do |component|
           new(
             view: view,
             component: component,

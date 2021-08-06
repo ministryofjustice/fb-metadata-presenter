@@ -50,6 +50,29 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
+  describe '#input_components' do
+    let(:page) { service.find_page_by_url('star-wars-knowledge') }
+    let(:expected_component_ids) { %w[star-wars-knowledge_text_1 star-wars-knowledge_radios_1] }
+
+    it 'returns an array of only components that take user input' do
+      component_ids = page.input_components.map(&:id)
+      expect(component_ids).to eq(expected_component_ids)
+      expect(component_ids).not_to include('star-wars-knowledge_content_1')
+    end
+  end
+
+  describe '#content_components' do
+    let(:page) { service.find_page_by_url('star-wars-knowledge') }
+
+    it 'returns an array of only content components' do
+      component_ids = page.content_components.map(&:id)
+      expect(component_ids).to eq(%w[star-wars-knowledge_content_1])
+      %w[star-wars-knowledge_text_1 star-wars-knowledge_radios_1].each do |id|
+        expect(component_ids).not_to include(id)
+      end
+    end
+  end
+
   describe '#editable_attributes' do
     it 'does not reject editable attributes' do
       expect(service.pages.first.editable_attributes.keys).to include(
@@ -85,12 +108,12 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
-  describe '#input_components' do
+  describe '#supported_input_components' do
     context 'when page has input components' do
       subject(:page) { described_class.new(_type: 'page.multiplequestions') }
 
       it 'returns the correct input components' do
-        expect(page.input_components).to match_array(%w[text textarea number date radios checkboxes])
+        expect(page.supported_input_components).to match_array(%w[text textarea number date radios checkboxes])
       end
     end
 
@@ -98,7 +121,7 @@ RSpec.describe MetadataPresenter::Page do
       subject(:page) { described_class.new(_type: 'page.checkanswers') }
 
       it 'returns an empty array' do
-        expect(page.input_components).to be_empty
+        expect(page.supported_input_components).to be_empty
       end
     end
 
@@ -107,18 +130,18 @@ RSpec.describe MetadataPresenter::Page do
 
       it 'raises a PageComponentsNotDefinedError' do
         expect {
-          page.input_components
+          page.supported_input_components
         }.to raise_error(MetadataPresenter::PageComponentsNotDefinedError)
       end
     end
   end
 
-  describe '#content_components' do
+  describe '#supported_content_components' do
     context 'when page has content components' do
       subject(:page) { described_class.new(_type: 'page.multiplequestions') }
 
       it 'returns the correct content components' do
-        expect(page.content_components).to match_array(%w[content])
+        expect(page.supported_content_components).to match_array(%w[content])
       end
     end
 
@@ -127,7 +150,7 @@ RSpec.describe MetadataPresenter::Page do
 
       it 'raises a PageComponentsNotDefinedError' do
         expect {
-          page.content_components
+          page.supported_content_components
         }.to raise_error(MetadataPresenter::PageComponentsNotDefinedError)
       end
     end
@@ -158,6 +181,42 @@ RSpec.describe MetadataPresenter::Page do
       expect(
         page.find_component_by_uuid('27d377a2-6828-44ca-87d1-b83ddac98284')
       ).to eq(page.components.first)
+    end
+  end
+
+  describe '#standalone?' do
+    context 'when page is a standalone page' do
+      subject(:page) { service.find_page_by_url('cookies') }
+
+      it 'returns truthy' do
+        expect(page.standalone?).to be_truthy
+      end
+    end
+
+    context 'when page is not a standalone page' do
+      subject(:page) { service.find_page_by_url('name') }
+
+      it 'returns falsey' do
+        expect(page.standalone?).to be_falsey
+      end
+    end
+  end
+
+  describe '#question_page?' do
+    context 'when page has a question' do
+      subject(:page) { service.find_page_by_url('name') }
+
+      it 'returns truthy' do
+        expect(page.question_page?).to be_truthy
+      end
+    end
+
+    context 'when page does not have any questions' do
+      subject(:page) { service.find_page_by_url('confirmation') }
+
+      it 'returns falsey' do
+        expect(page.question_page?).to be_falsey
+      end
     end
   end
 
