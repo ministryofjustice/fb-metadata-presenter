@@ -5,11 +5,11 @@ require 'metadata_presenter/version'
 Gem::Specification.new do |spec|
   spec.name        = 'metadata_presenter'
   spec.version     = MetadataPresenter::VERSION
-  spec.authors     = ['MoJ Online']
-  spec.email       = ['moj-online@digital.justice.gov.uk']
-  spec.homepage    = 'https://moj-online.service.justice.gov.uk'
+  spec.authors     = ['MoJ Forms']
+  spec.email       = ['moj-forms@digital.justice.gov.uk']
+  spec.homepage    = 'https://moj-forms.service.justice.gov.uk/'
   spec.summary     = 'Service Metadata Presenter'
-  spec.description = 'Service Metadata Presenter for the Form Builder product'
+  spec.description = 'Service Metadata Presenter for the MoJ Forms product'
   spec.license     = 'MIT'
 
   spec.files = Dir[
