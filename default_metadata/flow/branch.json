@@ -1,5 +1,6 @@
 {
   "_type": "flow.branch",
+  "title": "",
   "next": {
     "default": "",
     "conditionals": []

@@ -9,6 +9,9 @@
       "type": "string",
       "const": "flow.branch"
     },
+    "title": {
+      "type": "string"
+    },
     "next": {
       "type": "object",
       "properties": {
