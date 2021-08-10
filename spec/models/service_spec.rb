@@ -38,6 +38,20 @@ RSpec.describe MetadataPresenter::Service do
     end
   end
 
+  describe '#branches' do
+    let(:service) do
+      MetadataPresenter::Service.new(metadata_fixture(:branching))
+    end
+
+    it 'returns an array of Flow objects' do
+      expect(service.branches.size).to be > 1
+      service.branches.each do |flow|
+        expect(flow).to be_kind_of(MetadataPresenter::Flow)
+        expect(flow.type).to eq('flow.branch')
+      end
+    end
+  end
+
   describe '#find_page_by_url' do
     subject(:page) { service.find_page_by_url(path) }
 

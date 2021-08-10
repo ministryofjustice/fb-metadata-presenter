@@ -10,6 +10,12 @@ All notable changes to this project will be documented in this file.
 
 ## [2.2.0] - 2021-08-05
 
+### Added
+
+- Return all branches from a service
+
+## [2.2.0] - 2021-08-05
+
 ### Changed
 
 - The methods in the page model relating to input and content components were not actually returning those objects.
