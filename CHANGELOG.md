@@ -8,7 +8,17 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-## [2.2.0] - 2021-08-05
+## [2.3.1] - 2021-08-16
+
+### Added
+
+- Add flow_objects method to the service which returns all the service flow as MetadataPresenter::Flow objects
+
+### Changed
+
+- Surface the page uuid for the related flow object
+
+## [2.3.0] - 2021-08-09
 
 ### Added
 
