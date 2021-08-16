@@ -1,5 +1,13 @@
 module MetadataPresenter
   class Flow < MetadataPresenter::Metadata
+    attr_reader :uuid
+
+    def initialize(uuid, flow)
+      @uuid = uuid
+
+      super(flow)
+    end
+
     def branch?
       type == 'flow.branch'
     end

@@ -2,8 +2,13 @@ RSpec.describe MetadataPresenter::Flow do
   let(:service_metadata) do
     metadata_fixture(:branching)
   end
-  subject(:flow) do
-    service.flow_object('cf6dc32f-502c-4215-8c27-1151a45735bb')
+  let(:uuid) { 'cf6dc32f-502c-4215-8c27-1151a45735bb' }
+  subject(:flow) { service.flow_object(uuid) }
+
+  describe '#uuid' do
+    it 'should return the uuid for a flow object' do
+      expect(flow.uuid).to eq(uuid)
+    end
   end
 
   describe '#branch?' do
