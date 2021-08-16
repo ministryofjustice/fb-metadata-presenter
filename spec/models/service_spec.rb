@@ -46,8 +46,15 @@ RSpec.describe MetadataPresenter::Service do
     it 'returns an array of Flow objects' do
       expect(service.branches.size).to be > 1
       service.branches.each do |flow|
-        expect(flow).to be_kind_of(MetadataPresenter::Flow)
         expect(flow.type).to eq('flow.branch')
+      end
+    end
+  end
+
+  describe '#flow_objects' do
+    it 'returns the service flow as Flow objects' do
+      service.branches.each do |flow|
+        expect(flow).to be_kind_of(MetadataPresenter::Flow)
       end
     end
   end
