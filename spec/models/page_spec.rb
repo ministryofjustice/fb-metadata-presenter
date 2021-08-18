@@ -78,7 +78,6 @@ RSpec.describe MetadataPresenter::Page do
       expect(service.pages.first.editable_attributes.keys).to include(
         :heading,
         :body,
-        :lede,
         :url
       )
     end
