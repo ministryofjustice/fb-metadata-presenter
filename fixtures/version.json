@@ -92,7 +92,6 @@
       "_id": "page.start",
       "url": "/",
       "body": "Use this service to:\r\n\r\n* do something\r\n* update your name, address or other details\r\n* do something else\r\n\r\nRegistering takes around 5 minutes.",
-      "lede": "",
       "_type": "page.start",
       "_uuid": "cf6dc32f-502c-4215-8c27-1151a45735bb",
       "heading": "Service name goes here",
