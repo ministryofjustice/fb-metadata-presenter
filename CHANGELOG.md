@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [2.3.2] - 2021-08-20
+
+### Added
+
+- Added titles to the branch objects in the fixtures
+
 ## [2.3.2] - 2021-08-18
 
 ### Changed
