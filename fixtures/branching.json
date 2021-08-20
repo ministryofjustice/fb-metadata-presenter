@@ -22,6 +22,7 @@
     },
     "09e91fd9-7a46-4840-adbc-244d545cfef7": {
       "_type": "flow.branch",
+      "title": "Branching point 1",
       "next": {
         "default": "0b297048-aa4d-49b6-ac74-18e069118185",
         "conditionals": [
@@ -54,6 +55,7 @@
     },
     "ffadeb22-063b-4e4f-9502-bd753c706b1d": {
       "_type": "flow.branch",
+      "title": "Branching point 2",
       "next": {
         "default": "05c3306c-0a39-42d2-9e0f-93fd49248f4e",
         "conditionals": [
@@ -104,6 +106,7 @@
     },
     "1d02e508-5953-4eca-af2f-9d67511c8648": {
       "_type": "flow.branch",
+      "title": "Branching point 3",
       "next": {
         "default": "ef2cafe3-37e2-4533-9b0c-09a970cd38d4",
         "conditionals": [
@@ -136,6 +139,7 @@
     },
     "cf8b3e18-dacf-4e91-92e1-018035961003": {
       "_type": "flow.branch",
+      "title": "Branching point 4",
       "next": {
         "default": "0c022e95-0748-4dda-8ba5-12fd1d2f596b",
         "conditionals": [
@@ -168,6 +172,7 @@
     },
     "618b7537-b42b-4551-ae7d-053afa4d9ca9": {
       "_type": "flow.branch",
+      "title": "Branching point 5",
       "next": {
         "default": "dc7454f9-4186-48d7-b055-684d57bbcdc7",
         "conditionals": [
@@ -218,6 +223,7 @@
     },
     "84a347fc-8d4b-486a-9996-6a86fa9544c5": {
       "_type": "flow.branch",
+      "title": "Branching point 6",
       "next": {
         "default": "48357db5-7c06-4e85-94b1-5e1c9d8f39eb",
         "conditionals": [
@@ -280,6 +286,7 @@
     },
     "1079b5b8-abd0-4bf6-aaac-1f01e69e3b39": {
       "_type": "flow.branch",
+      "title": "Branching point 7",
       "next": {
         "default": "941137d7-a1da-43fd-994a-98a4f9ea6d46",
         "conditionals": [
