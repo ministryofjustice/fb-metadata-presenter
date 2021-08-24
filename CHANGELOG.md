@@ -8,7 +8,13 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-## [2.3.2] - 2021-08-20
+## [2.3.4] - 2021-08-24
+
+### Changed
+
+- Memoize the Page and Component inside Expression objects
+
+## [2.3.3] - 2021-08-20
 
 ### Added
 
