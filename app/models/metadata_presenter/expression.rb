@@ -7,11 +7,11 @@ module MetadataPresenter
     end
 
     def expression_page
-      service.find_page_by_uuid(page)
+      @expression_page ||= service.find_page_by_uuid(page)
     end
 
     def expression_component
-      expression_page.find_component_by_uuid(component)
+      @expression_component ||= expression_page.find_component_by_uuid(component)
     end
 
     def expression_field
