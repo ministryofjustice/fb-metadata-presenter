@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [2.3.5] - 2021-08-31
+
+### Changed
+
+- Fix spacing on 'Check your answers' page
+
 ## [2.3.4] - 2021-08-24
 
 ### Changed
