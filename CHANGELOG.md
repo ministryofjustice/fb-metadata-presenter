@@ -8,6 +8,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+## [2.3.6] - 2021-09-01
+
+### Changed
+
+- Fix 'Before you start' section on Start page so the content is editable and retrievable.
+
 ## [2.3.5] - 2021-08-31
 
 ### Changed

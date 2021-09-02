@@ -6,5 +6,6 @@
   "hint": "[Optional hint text]",
   "option": "Option",
   "option_hint": "[Optional hint text]",
-  "upload_hint": "Maximum file size is 7MB"
+  "upload_hint": "Maximum file size is 7MB",
+  "before_you_start": "[Optional content]"
 }
