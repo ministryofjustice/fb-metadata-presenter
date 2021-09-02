@@ -3,6 +3,7 @@ module MetadataPresenter
     before_action :check_page_exists
 
     def create
+      @previous_answers = reload_user_data.deep_dup
       @page_answers = PageAnswers.new(page, answers_params)
 
       upload_files if upload?
@@ -28,8 +29,9 @@ module MetadataPresenter
       next_page = NextPage.new(
         service: service,
         session: session,
-        user_data: load_user_data,
-        current_page_url: page_url
+        user_data: reload_user_data,
+        current_page_url: page_url,
+        previous_answers: @previous_answers
       ).find
 
       if next_page.present?

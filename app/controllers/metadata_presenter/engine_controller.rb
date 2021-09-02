@@ -5,6 +5,14 @@ module MetadataPresenter
     helper MetadataPresenter::ApplicationHelper
     default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
+    def reload_user_data
+      if defined? super
+        super
+      else
+        load_user_data
+      end
+    end
+
     def back_link
       previous_page = PreviousPage.new(
         service: service,
