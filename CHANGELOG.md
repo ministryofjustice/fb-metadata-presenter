@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+## [2.4.0] - 2021-09-07
+
+### Added
+
+- Add change your answers feature
+
 ### Changed
 
 ## [2.3.6] - 2021-09-01
