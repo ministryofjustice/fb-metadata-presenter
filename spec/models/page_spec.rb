@@ -236,6 +236,18 @@ RSpec.describe MetadataPresenter::Page do
       end
     end
 
+    context 'when multiplequestions page with single component' do
+      let(:page) do
+        page_metadata = service_metadata['pages'].find { |page| page['url'] == 'star-wars-knowledge' }
+        page_metadata['components'] = [page_metadata['components'].shift]
+        MetadataPresenter::Page.new(page_metadata)
+      end
+
+      it 'returns the page title not the component title' do
+        expect(page.title).to eq('How well do you know Star Wars?')
+      end
+    end
+
     context 'when the page is a content page' do
       let(:page) { service.find_page_by_url('how-many-lights') }
 

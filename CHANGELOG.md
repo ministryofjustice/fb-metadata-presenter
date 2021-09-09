@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+## [2.4.1] - 2021-09-09
+
+### Changed
+
+- Use multiplequestions page title even when there is only one component
+
 ## [2.4.0] - 2021-09-07
 
 ### Added

@@ -13,6 +13,12 @@ module MetadataPresenter
       add_extra_component
     ].freeze
     QUESTION_PAGES = %w[page.singlequestion page.multiplequestions].freeze
+    USES_HEADING = %w[
+      page.content
+      page.checkanswers
+      page.confirmation
+      page.multiplequestions
+    ].freeze
 
     def editable_attributes
       to_h.reject { |k, _| k.in?(NOT_EDITABLE) }
@@ -87,8 +93,7 @@ module MetadataPresenter
     private
 
     def heading?
-      Array(components).size != 1 ||
-        type.in?(['page.content', 'page.checkanswers', 'page.confirmation'])
+      type.in?(USES_HEADING) || Array(components).size != 1
     end
 
     def to_components(node_components, collection:)
