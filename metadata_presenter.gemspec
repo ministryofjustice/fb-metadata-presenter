@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'ruby-graphviz'
   spec.add_development_dependency 'rspec-rails'
-  spec.add_development_dependency 'rubocop', '~> 1.15.0'
+  spec.add_development_dependency 'rubocop', '~> 1.21.0'
   spec.add_development_dependency 'rubocop-govuk'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'simplecov-console'
