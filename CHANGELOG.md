@@ -3,8 +3,20 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+### Changed
+### Fixed
+
+## [2.4.2] - 2021-09-27
 
 ### Added
+
+- Added all_destination_uuids method to Flow object
+- Added an additional 7 branching fixtures of varying flows
+
+### Changed
+
+- Stop pinning rubocop
 
 ## [2.4.1] - 2021-09-09
 
