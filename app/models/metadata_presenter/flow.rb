@@ -16,6 +16,10 @@ module MetadataPresenter
       metadata['next']['default']
     end
 
+    def all_destination_uuids
+      conditionals.map(&:next).append(default_next)
+    end
+
     def conditionals
       Array(metadata['next']['conditionals']).map do |conditional_metadata|
         Conditional.new(conditional_metadata)
