@@ -83,4 +83,26 @@ RSpec.describe MetadataPresenter::Flow do
       end
     end
   end
+
+  describe '#all_destination_uuids' do
+    context 'when a flow branch' do
+      let(:uuid) { '09e91fd9-7a46-4840-adbc-244d545cfef7' }
+      let(:expected_uuids) do
+        %w[e8708909-922e-4eaf-87a5-096f7a713fcb 0b297048-aa4d-49b6-ac74-18e069118185]
+      end
+
+      it 'returns all the destination uuids' do
+        expect(flow.all_destination_uuids).to eq(expected_uuids)
+      end
+    end
+
+    context 'when a flow page' do
+      let(:uuid) { service.start_page.uuid }
+      let(:expected_uuids) { %w[9e1ba77f-f1e5-42f4-b090-437aa9af7f73] }
+
+      it 'returns just the default next' do
+        expect(flow.all_destination_uuids).to eq(expected_uuids)
+      end
+    end
+  end
 end

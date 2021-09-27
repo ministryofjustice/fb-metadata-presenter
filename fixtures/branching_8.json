@@ -1,0 +1,560 @@
+{
+  "_id": "service.base",
+  "_type": "service.base",
+  "flow": {
+    "cf6dc32f-502c-4215-8c27-1151a45735bb": {
+      "_type": "flow.page",
+      "next": {
+        "default": "68fbb180-9a2a-48f6-9da6-545e28b8d35a"
+      }
+    },
+    "68fbb180-9a2a-48f6-9da6-545e28b8d35a": {
+      "_type": "flow.page",
+      "next": {
+        "default": "e8708909-922e-4eaf-87a5-096f7a713fcb"
+      }
+    },
+    "e8708909-922e-4eaf-87a5-096f7a713fcb": {
+      "_type": "flow.page",
+      "next": {
+        "default": "65a2e01a-57dc-4702-8e41-ed8f9921ac7d"
+      }
+    },
+    "65a2e01a-57dc-4702-8e41-ed8f9921ac7d": {
+      "_type": "flow.page",
+      "next": {
+        "default": "09e91fd9-7a46-4840-adbc-244d545cfef7"
+      }
+    },
+    "09e91fd9-7a46-4840-adbc-244d545cfef7": {
+      "_type": "flow.branch",
+      "title": "Branching point 1",
+      "next": {
+        "default": "520fde26-8124-4c67-a550-cd38d2ef304d",
+        "conditionals": [
+          {
+            "_type": "if",
+            "next": "37a94466-97fa-427f-88b2-09b369435d0d",
+            "expressions": [
+              {
+                "operator": "is",
+                "page": "65a2e01a-57dc-4702-8e41-ed8f9921ac7d",
+                "component": "ac41be35-914e-4b22-8683-f5477716b7d4",
+                "field": "c5571937-9388-4411-b5fa-34ddf9bc4ca0"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "37a94466-97fa-427f-88b2-09b369435d0d": {
+      "_type": "flow.page",
+      "next": {
+        "default": "13ecf9bd-5064-4cad-baf8-3dfa091928cb"
+      }
+    },
+    "13ecf9bd-5064-4cad-baf8-3dfa091928cb": {
+      "_type": "flow.page",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0"
+      }
+    },
+    "520fde26-8124-4c67-a550-cd38d2ef304d": {
+      "_type": "flow.page",
+      "next": {
+        "default": "ffadeb22-063b-4e4f-9502-bd753c706b1d"
+      }
+    },
+    "3a584d15-6805-4a21-bc05-b61c3be47857": {
+      "_type": "flow.page",
+      "next": {
+        "default": "2c7deb33-19eb-4569-86d6-462e3d828d87"
+      }
+    },
+    "be130ac1-f33d-4845-807d-89b23b90d205": {
+      "_type": "flow.page",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0"
+      }
+    },
+    "ffadeb22-063b-4e4f-9502-bd753c706b1d": {
+      "_type": "flow.branch",
+      "title": "Branching point 2",
+      "next": {
+        "default": "3a584d15-6805-4a21-bc05-b61c3be47857",
+        "conditionals": [
+          {
+            "_type": "if",
+            "next": "13ecf9bd-5064-4cad-baf8-3dfa091928cb",
+            "expressions": [
+              {
+                "operator": "is",
+                "page": "65a2e01a-57dc-4702-8e41-ed8f9921ac7d",
+                "component": "ac41be35-914e-4b22-8683-f5477716b7d4",
+                "field": "c5571937-9388-4411-b5fa-34ddf9bc4ca0"
+              }
+            ]
+          },
+          {
+            "_type": "if",
+            "next": "be130ac1-f33d-4845-807d-89b23b90d205",
+            "expressions": [
+              {
+                "operator": "is",
+                "page": "65a2e01a-57dc-4702-8e41-ed8f9921ac7d",
+                "component": "ac41be35-914e-4b22-8683-f5477716b7d4",
+                "field": "67160ff1-6f7c-43a8-8bf6-49b3d5f450f6"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "2c7deb33-19eb-4569-86d6-462e3d828d87": {
+      "_type": "flow.page",
+      "next": {
+        "default": "d80a2225-63c3-4944-873f-504b61311a15"
+      }
+    },
+    "d80a2225-63c3-4944-873f-504b61311a15": {
+      "_type": "flow.page",
+      "next": {
+        "default": "e337070b-f636-49a3-a65c-f506675265f0"
+      }
+    },
+    "e337070b-f636-49a3-a65c-f506675265f0": {
+      "_type": "flow.page",
+      "next": {
+        "default": "778e364b-9a7f-4829-8eb2-510e08f156a3"
+      }
+    },
+    "778e364b-9a7f-4829-8eb2-510e08f156a3": {
+      "_type": "flow.page",
+      "next": {
+        "default": ""
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "page.start",
+      "url": "/",
+      "body": "Start page body",
+      "_type": "page.start",
+      "_uuid": "cf6dc32f-502c-4215-8c27-1151a45735bb",
+      "heading": "Branching Fixture 4",
+      "before_you_start": "Start page before you start"
+    },
+    {
+      "_id": "page.b",
+      "url": "page-b",
+      "body": "Page B body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "68fbb180-9a2a-48f6-9da6-545e28b8d35a",
+      "heading": "Page B",
+      "components": [
+        {
+          "_id": "page-b_text_1",
+          "hint": "",
+          "name": "page-b_text_1",
+          "_type": "text",
+          "_uuid": "509f0dc1-3066-4af3-8bd7-9aef99fdf22e",
+          "label": "Page B",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.c",
+      "url": "page-c",
+      "body": "Page C body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "e8708909-922e-4eaf-87a5-096f7a713fcb",
+      "heading": "Page C",
+      "components": [
+        {
+          "_id": "page-c_text_1",
+          "hint": "",
+          "name": "page-c_text_1",
+          "_type": "text",
+          "_uuid": "fda1e5a1-ed5f-49c9-a943-dc930a520984",
+          "label": "Page C",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.d",
+      "url": "page-d",
+      "body": "Page D body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "65a2e01a-57dc-4702-8e41-ed8f9921ac7d",
+      "heading": "Page D",
+      "components": [
+        {
+          "_id": "page-d_radios_1",
+          "hint": "",
+          "name": "page-d_radios_1",
+          "_type": "radios",
+          "_uuid": "ac41be35-914e-4b22-8683-f5477716b7d4",
+          "items": [
+            {
+              "_id": "page-d_radios_1_item_1",
+              "hint": "",
+              "name": "page-d_radios_1",
+              "_type": "radio",
+              "_uuid": "c5571937-9388-4411-b5fa-34ddf9bc4ca0",
+              "label": "Item 1",
+              "value": "value-1",
+              "errors": {},
+              "legend": "Item 1",
+              "collection": "components",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "_id": "page-d_radios_1_item_2",
+              "hint": "",
+              "name": "page-d_radios_1",
+              "_type": "radio",
+              "_uuid": "67160ff1-6f7c-43a8-8bf6-49b3d5f450f6",
+              "label": "Item 2",
+              "value": "value-2",
+              "errors": {},
+              "legend": "Item 2",
+              "collection": "components",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "_id": "page-d_radios_1_item_3",
+              "hint": "",
+              "name": "page-d_radios_1",
+              "_type": "radio",
+              "_uuid": "ea223fa3-06d0-4111-a7e9-c6b9012d7928",
+              "label": "Item 3",
+              "value": "value-3",
+              "errors": {},
+              "legend": "Item 3",
+              "collection": "components",
+              "validation": {
+                "required": true
+              }
+            }
+          ],
+          "errors": {},
+          "legend": "Page D",
+          "collection": "components",
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.e",
+      "url": "page-e",
+      "body": "Page E body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "37a94466-97fa-427f-88b2-09b369435d0d",
+      "heading": "Page E",
+      "components": [
+        {
+          "_id": "page-e_text_1",
+          "hint": "",
+          "name": "page-e_text_1",
+          "_type": "text",
+          "_uuid": "d4295f66-7882-4673-bf0e-c9c9b627cb10",
+          "label": "Page E",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.f",
+      "url": "page-f",
+      "body": "Page F body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "13ecf9bd-5064-4cad-baf8-3dfa091928cb",
+      "heading": "Page F",
+      "components": [
+        {
+          "_id": "page-f_text_1",
+          "hint": "",
+          "name": "page-f_text_1",
+          "_type": "text",
+          "_uuid": "f837fabd-044a-441c-b204-fcec79648b41",
+          "label": "Page F",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.g",
+      "url": "page-g",
+      "body": "Page G body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "3a584d15-6805-4a21-bc05-b61c3be47857",
+      "heading": "Page G",
+      "components": [
+        {
+          "_id": "page-g_text_1",
+          "hint": "",
+          "name": "page-g_text_1",
+          "_type": "text",
+          "_uuid": "fa91e9cd-d935-4c15-bd92-5b6fafd81a91",
+          "label": "Page G",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.i",
+      "url": "page-i",
+      "body": "Page I body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "520fde26-8124-4c67-a550-cd38d2ef304d",
+      "heading": "Page I",
+      "components": [
+        {
+          "_id": "page-i_text_1",
+          "hint": "",
+          "name": "page-i_text_1",
+          "_type": "text",
+          "_uuid": "ebd99204-0f15-4e6e-a937-c6da30b140f8",
+          "label": "Page I",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.k",
+      "url": "page-k",
+      "body": "Page K body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "be130ac1-f33d-4845-807d-89b23b90d205",
+      "heading": "Page K",
+      "components": [
+        {
+          "_id": "page-k_text_1",
+          "hint": "",
+          "name": "page-k_text_1",
+          "_type": "text",
+          "_uuid": "ebd99204-0f15-4e6e-a937-c6da30b140f8",
+          "label": "Page K",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.l",
+      "url": "page-l",
+      "body": "Page L body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "2c7deb33-19eb-4569-86d6-462e3d828d87",
+      "heading": "Page L",
+      "components": [
+        {
+          "_id": "page-l_text_1",
+          "hint": "",
+          "name": "page-l_text_1",
+          "_type": "text",
+          "_uuid": "ae38d9b2-e0d9-4f5c-8e38-c8c96b66cad9",
+          "label": "Page L",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.m",
+      "url": "page-m",
+      "body": "Page M body",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "d80a2225-63c3-4944-873f-504b61311a15",
+      "heading": "Page M",
+      "components": [
+        {
+          "_id": "page-m_text_1",
+          "hint": "",
+          "name": "page-m_text_1",
+          "_type": "text",
+          "_uuid": "147bb557-b2cf-4ba3-bbb3-7dc757cbb7e6",
+          "label": "Page M",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "max_length": 20,
+            "min_length": 2
+          }
+        }
+      ]
+    },
+    {
+      "_id": "page.check-answers",
+      "url": "check-answers",
+      "_type": "page.checkanswers",
+      "_uuid": "e337070b-f636-49a3-a65c-f506675265f0",
+      "heading": "Check your answers",
+      "send_body": "By submitting this application you confirm that, to the best of your knowledge, the details you are providing are correct.",
+      "components": [
+        {
+          "_id": "check-answers_content_2",
+          "name": "check-answers_content_2",
+          "_type": "content",
+          "_uuid": "b065ff4f-90c5-4ba2-b4ac-c984a9dd2470",
+          "content": "Take the cannoli.",
+          "collection": "components"
+        }
+      ],
+      "send_heading": "Now send your application",
+      "add_component": "content",
+      "extra_components": [
+        {
+          "_id": "check-answers_content_1",
+          "name": "check-answers_content_1",
+          "_type": "content",
+          "_uuid": "3e6ef27e-91a6-402f-8291-b7ce669e824e",
+          "content": "Check yourself before you wreck yourself.",
+          "collection": "extra_components"
+        }
+      ],
+      "add_extra_component": "content"
+    },
+    {
+      "_id": "page.confirmation",
+      "url": "confirmation",
+      "body": "Some day I will be the most powerful Jedi ever!",
+      "lede": "",
+      "_type": "page.confirmation",
+      "_uuid": "778e364b-9a7f-4829-8eb2-510e08f156a3",
+      "heading": "Complaint sent",
+      "components": []
+    }
+  ],
+  "locale": "en",
+  "created_at": "2021-04-21T13:10:19Z",
+  "created_by": "099d5bf5-5f7b-444c-86ee-9e189cc1a369",
+  "service_id": "ea3bfb09-fc6d-4464-b025-9d6aadafc593",
+  "version_id": "429a8039-75b3-42b8-84dc-230fb371c71d",
+  "service_name": "Branching Fixture 4",
+  "configuration": {
+    "meta": {
+      "_id": "config.meta",
+      "_type": "config.meta",
+      "items": [
+        {
+          "_id": "config.meta--link",
+          "href": "cookies",
+          "text": "Cookies",
+          "_type": "link"
+        },
+        {
+          "_id": "config.meta--link--2",
+          "href": "privacy",
+          "text": "Privacy",
+          "_type": "link"
+        },
+        {
+          "_id": "config.meta--link--3",
+          "href": "accessibility",
+          "text": "Accessibility",
+          "_type": "link"
+        }
+      ]
+    },
+    "service": {
+      "_id": "config.service",
+      "_type": "config.service"
+    }
+  },
+  "standalone_pages": [
+    {
+      "_id": "page.cookies",
+      "url": "cookies",
+      "body": "Cookies body",
+      "_type": "page.standalone",
+      "_uuid": "fd52e7c0-03f7-4001-ae7e-f2e4142b0ccc",
+      "heading": "Cookies",
+      "components": []
+    },
+    {
+      "_id": "page.privacy",
+      "url": "privacy",
+      "body": "Privacy body",
+      "_type": "page.standalone",
+      "_uuid": "4b86fe8c-7723-4cce-9378-7b2510279e04",
+      "heading": "Privacy notice",
+      "components": []
+    },
+    {
+      "_id": "page.accessibility",
+      "url": "accessibility",
+      "body": "Accessibility body",
+      "_type": "page.standalone",
+      "_uuid": "c439c7fd-f411-4e11-8598-4023934bac93",
+      "heading": "Accessibility statement",
+      "components": []
+    }
+  ]
+}
