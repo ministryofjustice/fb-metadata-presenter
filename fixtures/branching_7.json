@@ -148,7 +148,7 @@
       "body": "Start page body",
       "_type": "page.start",
       "_uuid": "cf6dc32f-502c-4215-8c27-1151a45735bb",
-      "heading": "Branching Fixture 4",
+      "heading": "Branching Fixture 7",
       "before_you_start": "Start page before you start"
     },
     {
@@ -559,7 +559,7 @@
   "created_by": "099d5bf5-5f7b-444c-86ee-9e189cc1a369",
   "service_id": "ea3bfb09-fc6d-4464-b025-9d6aadafc593",
   "version_id": "429a8039-75b3-42b8-84dc-230fb371c71d",
-  "service_name": "Branching Fixture 4",
+  "service_name": "Branching Fixture 7",
   "configuration": {
     "meta": {
       "_id": "config.meta",
