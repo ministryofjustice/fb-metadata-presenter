@@ -14,21 +14,21 @@ module MetadataPresenter
     ROW_ZERO = 0
 
     def build
+      return @ordered unless @ordered.empty?
+
       @ordered = make_grid
       add_columns
       add_rows
       add_by_coordinates
-      trim_spacers
       insert_expression_spacers
+      trim_spacers
 
       @ordered
     end
 
     def ordered_flow
-      @ordered_flow ||= begin
-        flow = @ordered.empty? ? build.flatten : @ordered.flatten
-        flow.reject { |obj| obj.is_a?(MetadataPresenter::Spacer) }
-      end
+      @ordered_flow ||=
+        build.flatten.reject { |obj| obj.is_a?(MetadataPresenter::Spacer) }
     end
 
     def ordered_pages
