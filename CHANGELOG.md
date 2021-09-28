@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.5.0] - 2021-09-28
+
+### Added
+
+- Added the Route and Grid models to figure out the row and column layout for a service flow
+
 ## [2.4.2] - 2021-09-27
 
 ### Added
