@@ -7,6 +7,16 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.5.1] - 2021-09-28
+
+### Changed
+
+- Do not build the ordered flow twice
+
+### Fixed
+
+-  Update the Branching fixture names for 7 and 8
+
 ## [2.5.0] - 2021-09-28
 
 ### Added
