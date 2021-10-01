@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.6.0] - 2021-10-01
+
+### Added
+
+- Exit page schemas and default metadata
+
 ## [2.5.1] - 2021-09-28
 
 ### Changed
