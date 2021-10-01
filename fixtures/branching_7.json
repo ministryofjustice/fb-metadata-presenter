@@ -329,28 +329,20 @@
     {
       "_id": "page.g",
       "url": "page-g",
-      "body": "Page G body",
-      "lede": "",
-      "_type": "page.singlequestion",
+      "lede": "lede",
+      "_type": "page.exit",
       "_uuid": "3a584d15-6805-4a21-bc05-b61c3be47857",
       "heading": "Page G",
       "components": [
         {
-          "_id": "page-g_text_1",
-          "hint": "",
-          "name": "page-g_text_1",
-          "_type": "text",
-          "_uuid": "fa91e9cd-d935-4c15-bd92-5b6fafd81a91",
-          "label": "Page G",
-          "errors": {},
-          "collection": "components",
-          "validation": {
-            "required": true,
-            "max_length": 20,
-            "min_length": 2
-          }
+          "_id": "exit_content_1",
+          "name": "exit_content_1",
+          "_type": "content",
+          "_uuid": "9774d986-135a-4b7f-924d-7527b790e1a0",
+          "content": "This is an exit page"
         }
-      ]
+      ],
+      "section_heading": "Section heading"
     },
     {
       "_id": "page.h",
