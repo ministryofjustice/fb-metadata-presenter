@@ -12,6 +12,10 @@ Rails.application.config.supported_components =
       input: %w(),
       content: %w(content)
     },
+    exit: {
+      input: %w(),
+      content: %w(content)
+    },
     multiplequestions: {
       input: %w(text textarea number date radios checkboxes),
       content: %w(content)

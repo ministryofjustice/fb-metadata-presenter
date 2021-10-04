@@ -1,0 +1,29 @@
+<div class="fb-main-grid-wrapper" data-fb-pagetype="<%= @page.type %>">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <%= render 'metadata_presenter/attribute/section_heading' %>
+
+      <h1 class="fb-editable govuk-heading-xl"
+          data-fb-content-id="page[heading]"
+          data-fb-content-type="element">
+        <%= @page.heading %>
+      </h1>
+
+      <%= render 'metadata_presenter/attribute/lede' %>
+
+      <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
+
+        <%= render partial: 'metadata_presenter/component/components',
+                   locals: {
+                     f: f,
+                     components: @page.components,
+                     tag: nil,
+                     classes: nil,
+                     input_components: @page.supported_input_components,
+                     content_components: @page.supported_content_components
+                   } %>
+      <% end %>
+    </div>
+  </div>
+</div>
