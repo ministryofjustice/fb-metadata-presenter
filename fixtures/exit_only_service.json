@@ -1,0 +1,134 @@
+{
+  "_id": "service.base",
+  "_type": "service.base",
+  "service_id": "bf0d28cc-d3cf-4511-9589-b360ae34a908",
+  "service_name": "Exit only",
+  "created_by": "81de07c7-461a-4425-9a0f-9ba30294ddfb",
+  "configuration": {
+    "service": {
+      "_id": "config.service",
+      "_type": "config.service"
+    },
+    "meta": {
+      "_id": "config.meta",
+      "_type": "config.meta",
+      "items": [
+        {
+          "_id": "config.meta--link",
+          "_type": "link",
+          "href": "cookies",
+          "text": "Cookies"
+        },
+        {
+          "_id": "config.meta--link--2",
+          "_type": "link",
+          "href": "privacy",
+          "text": "Privacy"
+        },
+        {
+          "_id": "config.meta--link--3",
+          "_type": "link",
+          "href": "accessibility",
+          "text": "Accessibility"
+        }
+      ]
+    }
+  },
+  "flow": {
+    "82f5c5bb-a71c-425c-b29b-3fbac4ad0b87": {
+      "_type": "flow.page",
+      "next": {
+        "default": "db86a329-fa2d-4e36-8343-83bdf559cde0"
+      }
+    },
+    "db86a329-fa2d-4e36-8343-83bdf559cde0": {
+      "_type": "flow.page",
+      "next": {
+        "default": "ea36b7ab-9c05-4a19-8336-30936a681614"
+      }
+    },
+    "ea36b7ab-9c05-4a19-8336-30936a681614": {
+      "_type": "flow.page",
+      "next": {
+        "default": "905c3988-b803-4b01-bc38-e1d27cc6027c"
+      }
+    },
+    "905c3988-b803-4b01-bc38-e1d27cc6027c": {
+      "_type": "flow.page",
+      "next": {
+        "default": ""
+      }
+    }
+  },
+  "pages": [
+    {
+      "_id": "page.start",
+      "_type": "page.start",
+      "_uuid": "82f5c5bb-a71c-425c-b29b-3fbac4ad0b87",
+      "heading": "Service name goes here",
+      "lede": "This is your start page first paragraph. You can only have one paragraph here.",
+      "body": "Use this service to:\r\n\r\n* do something\r\n* update your name, address or other details\r\n* do something else\r\n\r\nRegistering takes around 5 minutes.",
+      "url": "/"
+    },
+    {
+      "_id": "page.knowhere",
+      "_type": "page.singlequestion",
+      "_uuid": "db86a329-fa2d-4e36-8343-83bdf559cde0",
+      "components": [
+        {
+          "_id": "page.knowhere--text.auto_knowhere__1",
+          "_type": "text",
+          "label": "Road to knowhere",
+          "name": "knowhere",
+          "validation": {
+            "required": true,
+            "max_length": 10,
+            "min_length": 2
+          }
+        }
+      ],
+      "heading": "Road to knowhere",
+      "url": "knowhere"
+    },
+    {
+      "_id": "page.ghost",
+      "_type": "page.singlequestion",
+      "_uuid": "ea36b7ab-9c05-4a19-8336-30936a681614",
+      "components": [
+        {
+          "_id": "page.ghost--text.auto_ghost__1",
+          "_type": "text",
+          "label": "Ghost town",
+          "name": "ghost",
+          "validation": {
+            "required": true,
+            "max_length": 100,
+            "min_length": 2
+          }
+        }
+      ],
+      "heading": "Ghost town",
+      "url": "ghost"
+    },
+    {
+      "_id": "page.goodbye",
+      "url": "page-goodbye",
+      "lede": "So long and thanks for all the fish",
+      "_type": "page.exit",
+      "_uuid": "905c3988-b803-4b01-bc38-e1d27cc6027c",
+      "heading": "Goodbye",
+      "components": [
+        {
+          "_id": "exit_content_1",
+          "name": "exit_content_1",
+          "_type": "content",
+          "_uuid": "3b9d2140-888c-4673-907d-5d885ea02143",
+          "content": "Goodbye!"
+        }
+      ],
+      "section_heading": "au revoir, auf wiedersehen"
+    }
+  ],
+  "standalone_pages": [],
+  "locale": "en"
+}

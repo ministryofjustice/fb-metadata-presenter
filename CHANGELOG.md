@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+
+## [2.6.2] - 2021-10-05
+
+### Added
+
+- Add exit only fixture
+
 ## [2.6.1] - 2021-10-05
 
 ### Fixed
