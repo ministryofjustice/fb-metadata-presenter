@@ -271,5 +271,15 @@ RSpec.describe MetadataPresenter::Page do
         expect(page.title).to eq('Service name goes here')
       end
     end
+
+    context 'when page is an exit page' do
+      let(:latest_metadata) { metadata_fixture(:branching_7) }
+      let(:service) { MetadataPresenter::Service.new(latest_metadata) }
+      let(:page) { service.find_page_by_url('page-g') }
+
+      it 'returns the correct title' do
+        expect(page.title).to eq('Page G')
+      end
+    end
   end
 end

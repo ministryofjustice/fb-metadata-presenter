@@ -18,6 +18,7 @@ module MetadataPresenter
       page.checkanswers
       page.confirmation
       page.multiplequestions
+      page.exit
     ].freeze
 
     def editable_attributes
