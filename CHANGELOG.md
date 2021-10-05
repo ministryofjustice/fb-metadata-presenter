@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.6.1] - 2021-10-05
+
+### Fixed
+
+- Ensure the correct titles are used for exit pages
 ## [2.6.0] - 2021-10-01
 
 ### Added
