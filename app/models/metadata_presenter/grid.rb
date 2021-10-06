@@ -3,8 +3,9 @@ module MetadataPresenter
   end
 
   class Grid
-    def initialize(service)
+    def initialize(service, start_from: nil)
       @service = service
+      @start_from = start_from
       @ordered = []
       @routes = []
       @traversed = []
@@ -37,7 +38,7 @@ module MetadataPresenter
 
     private
 
-    attr_reader :service
+    attr_reader :service, :start_from
     attr_accessor :ordered, :traversed, :routes, :coordinates
 
     def setup_coordinates
@@ -48,7 +49,7 @@ module MetadataPresenter
       @route_from_start ||=
         MetadataPresenter::Route.new(
           service: service,
-          traverse_from: service.start_page.uuid
+          traverse_from: start_from || service.start_page.uuid
         )
     end
 
@@ -61,8 +62,9 @@ module MetadataPresenter
     end
 
     def traverse_all_routes
-      # Always traverse the route that begins from the start page first and get
-      # the potential routes from any branching points that exist.
+      # Always traverse the route from the start_from uuid. Defaulting to the
+      # start page of the form unless otherwise specified.
+      # Get all the potential routes from any branching points that exist.
       route_from_start.traverse
       @routes.append(route_from_start)
       traversed_routes = route_from_start.routes
@@ -132,12 +134,15 @@ module MetadataPresenter
 
     def add_by_coordinates
       @coordinates.each do |uuid, position|
-        # If row and column are nil then the object is detached
-        next if position[:row].nil? || position[:column].nil?
+        next if detached?(position)
 
         flow_object = service.flow_object(uuid)
         @ordered[position[:column]][position[:row]] = flow_object
       end
+    end
+
+    def detached?(position)
+      position[:row].nil? || position[:column].nil?
     end
 
     # Find the very last MetadataPresenter::Flow object in every column and

@@ -4,6 +4,21 @@ RSpec.describe MetadataPresenter::Grid do
   let(:service) { MetadataPresenter::Service.new(latest_metadata) }
 
   describe '#build' do
+    context 'when there is no starting uuid' do
+      it 'should start at the start page' do
+        expect(grid.build[0][0].uuid).to eq(service.start_page.uuid)
+      end
+    end
+
+    context 'when there is a starting uuid' do
+      subject(:grid) { described_class.new(service, start_from: page_d) }
+      let(:page_d) { '65a2e01a-57dc-4702-8e41-ed8f9921ac7d' }
+
+      it 'should start at the supplied uuid' do
+        expect(grid.build[0][0].uuid).to eq(page_d)
+      end
+    end
+
     context 'when building the grid' do
       it 'does not allow duplicate objects' do
         # ignoring the Spacer objects
