@@ -13,6 +13,14 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     flow_objects.select { |flow| flow.type == 'flow.branch' }
   end
 
+  def expressions
+    conditionals.map(&:expressions).flatten
+  end
+
+  def conditionals
+    branches.map(&:conditionals).flatten
+  end
+
   def flow_object(uuid)
     MetadataPresenter::Flow.new(uuid, metadata.flow[uuid])
   rescue StandardError
