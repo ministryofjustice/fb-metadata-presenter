@@ -59,6 +59,30 @@ RSpec.describe MetadataPresenter::Service do
     end
   end
 
+  describe '#expressions' do
+    let(:service_metadata) { metadata_fixture(:branching_2) }
+
+    it 'returns all expressions in the flow' do
+      expect(service.expressions.size).to be(3)
+
+      service.expressions.each do |expression|
+        expect(expression).to be_kind_of(MetadataPresenter::Expression)
+      end
+    end
+  end
+
+  describe '#conditionals' do
+    let(:service_metadata) { metadata_fixture(:branching_3) }
+
+    it 'returns all conditionals in the flow' do
+      expect(service.conditionals.size).to be(2)
+
+      service.conditionals.each do |conditional|
+        expect(conditional).to be_kind_of(MetadataPresenter::Conditional)
+      end
+    end
+  end
+
   describe '#find_page_by_url' do
     subject(:page) { service.find_page_by_url(path) }
 

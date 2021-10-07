@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.7.0] - 2021-10-07
+
+- Add MetadataPresenter::Service#conditionals that returns *all* conditionals
+in the metadata
+- Add MetadataPresenter::Service#expressions that returns *all* expressions
 
 ## [2.6.2] - 2021-10-05
 
