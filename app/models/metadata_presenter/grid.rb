@@ -56,9 +56,17 @@ module MetadataPresenter
     def make_grid
       traverse_all_routes
 
-      rows = @routes.map(&:row).max
-      columns = @routes.map { |r| r.column + r.flow_uuids.count }.max
-      columns.times.map { rows.times.map { MetadataPresenter::Spacer.new } }
+      max_potential_columns.times.map do
+        max_potential_rows.times.map { MetadataPresenter::Spacer.new }
+      end
+    end
+
+    def max_potential_rows
+      @max_potential_rows ||= @routes.map(&:row).max + 1
+    end
+
+    def max_potential_columns
+      @routes.map { |r| r.column + r.flow_uuids.count }.max + 1
     end
 
     def traverse_all_routes
