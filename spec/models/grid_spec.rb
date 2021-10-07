@@ -118,6 +118,78 @@ RSpec.describe MetadataPresenter::Grid do
           end
         end
       end
+
+      context 'inserting pointers' do
+        let(:main_flow) { grid.ordered_flow.map(&:uuid) }
+        let(:detached_grid) do
+          described_class.new(service, start_from: start_from, main_flow: main_flow)
+        end
+        let(:cya_pointer) do
+          MetadataPresenter::Pointer.new(uuid: 'e337070b-f636-49a3-a65c-f506675265f0')
+        end
+
+        context 'branching fixture 8' do
+          let(:start_from) { 'be130ac1-f33d-4845-807d-89b23b90d205' } # Page K
+          let(:latest_metadata) do
+            metadata = metadata_fixture(:branching_8)
+            flow = metadata['flow']['ffadeb22-063b-4e4f-9502-bd753c706b1d']
+            # remove conditional pointing to Page K
+            flow['next']['conditionals'] = [flow['next']['conditionals'].shift]
+            metadata['flow']['ffadeb22-063b-4e4f-9502-bd753c706b1d'] = flow
+            metadata
+          end
+          let(:expected_detached_flow) do
+            [
+              [service.flow_object(start_from)], # Page K
+              [cya_pointer]
+            ]
+          end
+
+          it 'places Pointer objects if UUID already exists in the main flow' do
+            expect(detached_grid.build).to eq(expected_detached_flow)
+          end
+        end
+
+        context 'branching fixture 6 - detaching a branching point' do
+          let(:start_from) { '09e91fd9-7a46-4840-adbc-244d545cfef7' } # Branching Point 1
+          let(:latest_metadata) do
+            metadata = metadata_fixture(:branching_6)
+            # point Page D to check answers page
+            metadata['flow']['65a2e01a-57dc-4702-8e41-ed8f9921ac7d']['next']['default'] = 'e337070b-f636-49a3-a65c-f506675265f0'
+            metadata
+          end
+          let(:expected_detached_flow) do
+            [
+              [
+                service.flow_object(start_from) # Branching point 1
+              ],
+              [
+                service.flow_object('37a94466-97fa-427f-88b2-09b369435d0d'), # Page E
+                service.flow_object('520fde26-8124-4c67-a550-cd38d2ef304d') # Page I
+              ],
+              [
+                MetadataPresenter::Spacer.new,
+                service.flow_object('f475d6fd-0ea4-45d5-985e-e1a7c7a5b992') # Page J
+              ],
+              [
+                MetadataPresenter::Spacer.new,
+                service.flow_object('be130ac1-f33d-4845-807d-89b23b90d205') # Page K
+              ],
+              [
+                MetadataPresenter::Spacer.new,
+                service.flow_object('2c7deb33-19eb-4569-86d6-462e3d828d87') # Page L
+              ],
+              [
+                cya_pointer
+              ]
+            ]
+          end
+
+          it 'inserts pointers as well as maintaining spacer object positions' do
+            expect(detached_grid.build).to eq(expected_detached_flow)
+          end
+        end
+      end
     end
   end
 
