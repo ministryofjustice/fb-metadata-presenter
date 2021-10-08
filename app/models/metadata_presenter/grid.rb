@@ -12,6 +12,8 @@ module MetadataPresenter
   end
 
   class Grid
+    attr_reader :start_from
+
     def initialize(service, start_from: nil, main_flow: [])
       @service = service
       @start_from = start_from
@@ -49,7 +51,7 @@ module MetadataPresenter
 
     private
 
-    attr_reader :service, :start_from, :main_flow
+    attr_reader :service, :main_flow
     attr_accessor :ordered, :traversed, :routes, :coordinates
 
     def setup_coordinates
