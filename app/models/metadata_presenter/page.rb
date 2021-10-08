@@ -20,6 +20,11 @@ module MetadataPresenter
       page.multiplequestions
       page.exit
     ].freeze
+    END_OF_ROUTE_PAGES = %w[
+      page.checkanswers
+      page.confirmation
+      page.exit
+    ].freeze
 
     def editable_attributes
       to_h.reject { |k, _| k.in?(NOT_EDITABLE) }
@@ -89,6 +94,10 @@ module MetadataPresenter
       return heading if heading?
 
       components.first.humanised_title
+    end
+
+    def end_of_route?
+      type.in?(END_OF_ROUTE_PAGES)
     end
 
     private

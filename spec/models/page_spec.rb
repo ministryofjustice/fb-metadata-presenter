@@ -282,4 +282,22 @@ RSpec.describe MetadataPresenter::Page do
       end
     end
   end
+
+  describe '#end_of_route?' do
+    context 'when the page is not the end of the route' do
+      let(:page) { service.find_page_by_url('how-many-lights') }
+
+      it 'returns falsey' do
+        expect(page.end_of_route?).to be_falsey
+      end
+    end
+
+    context 'when the page is the end of the route' do
+      let(:page) { service.find_page_by_url('confirmation') }
+
+      it 'returns truthy' do
+        expect(page.end_of_route?).to be_truthy
+      end
+    end
+  end
 end

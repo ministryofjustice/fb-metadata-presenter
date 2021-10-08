@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+### Added
+## [2.7.1] - 2021-10-08
+
+- Add methods to check if the page is the last page in a route.
+- This helps determine whether we allow adding of pages or branches,
+or changes of destination from these pages.
+
+### Added
 ## [2.7.0] - 2021-10-07
 
 - Add MetadataPresenter::Service#conditionals that returns *all* conditionals
