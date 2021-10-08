@@ -46,7 +46,15 @@ module MetadataPresenter
     end
 
     def ordered_pages
-      ordered_flow.reject(&:branch?)
+      @ordered_pages ||= ordered_flow.reject(&:branch?)
+    end
+
+    def flow_uuids
+      ordered_flow.map(&:uuid)
+    end
+
+    def page_uuids
+      ordered_pages.map(&:uuid)
     end
 
     private

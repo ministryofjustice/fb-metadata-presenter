@@ -244,4 +244,20 @@ RSpec.describe MetadataPresenter::Grid do
       end
     end
   end
+
+  describe '#flow_uuids' do
+    let(:expected_uuids) { service.flow.keys }
+
+    it 'returns an array of all the flow uuids' do
+      expect(grid.flow_uuids).to match_array(expected_uuids)
+    end
+  end
+
+  describe '#page_uuids' do
+    let(:expected_uuids) { service.pages.map(&:uuid) }
+
+    it 'returns an array of only page uuids' do
+      expect(grid.page_uuids).to match_array(expected_uuids)
+    end
+  end
 end
