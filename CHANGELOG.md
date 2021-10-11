@@ -7,15 +7,33 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.7.2] - 2021-10-08
+
+### Fixed
+
+- Make sure the grid for a service flow is at least a 1 x 1
+- Remove any columns that only contain Spacer objects
+
+### Changed
+
+- Grid model can now start creating flows from any object but defaults to the start page
+
 ### Added
+
+- Use Pointer objects to reference any object that exists in the main service flow
+- Surface flow UUIDs and page UUIDs that any grid object has interacted with
+
 ## [2.7.1] - 2021-10-08
+
+### Added
 
 - Add methods to check if the page is the last page in a route.
 - This helps determine whether we allow adding of pages or branches,
 or changes of destination from these pages.
 
-### Added
 ## [2.7.0] - 2021-10-07
+
+### Added
 
 - Add MetadataPresenter::Service#conditionals that returns *all* conditionals
 in the metadata
@@ -32,6 +50,7 @@ in the metadata
 ### Fixed
 
 - Ensure the correct titles are used for exit pages
+
 ## [2.6.0] - 2021-10-01
 
 ### Added

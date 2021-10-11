@@ -1,10 +1,23 @@
 module MetadataPresenter
   class Spacer < OpenStruct
+    def type
+      'flow.spacer'
+    end
+  end
+
+  class Pointer < OpenStruct
+    def type
+      'flow.pointer'
+    end
   end
 
   class Grid
-    def initialize(service)
+    attr_reader :start_from
+
+    def initialize(service, start_from: nil, main_flow: [])
       @service = service
+      @start_from = start_from
+      @main_flow = main_flow
       @ordered = []
       @routes = []
       @traversed = []
@@ -21,9 +34,10 @@ module MetadataPresenter
       add_rows
       add_by_coordinates
       insert_expression_spacers
+      trim_pointers unless main_flow.empty?
       trim_spacers
 
-      @ordered
+      @ordered = @ordered.reject(&:empty?)
     end
 
     def ordered_flow
@@ -32,12 +46,20 @@ module MetadataPresenter
     end
 
     def ordered_pages
-      ordered_flow.reject(&:branch?)
+      @ordered_pages ||= ordered_flow.reject(&:branch?)
+    end
+
+    def flow_uuids
+      ordered_flow.map(&:uuid)
+    end
+
+    def page_uuids
+      ordered_pages.map(&:uuid)
     end
 
     private
 
-    attr_reader :service
+    attr_reader :service, :main_flow
     attr_accessor :ordered, :traversed, :routes, :coordinates
 
     def setup_coordinates
@@ -48,21 +70,30 @@ module MetadataPresenter
       @route_from_start ||=
         MetadataPresenter::Route.new(
           service: service,
-          traverse_from: service.start_page.uuid
+          traverse_from: start_from || service.start_page.uuid
         )
     end
 
     def make_grid
       traverse_all_routes
 
-      rows = @routes.map(&:row).max
-      columns = @routes.map { |r| r.column + r.flow_uuids.count }.max
-      columns.times.map { rows.times.map { MetadataPresenter::Spacer.new } }
+      max_potential_columns.times.map do
+        max_potential_rows.times.map { MetadataPresenter::Spacer.new }
+      end
+    end
+
+    def max_potential_rows
+      @max_potential_rows ||= @routes.map(&:row).max + 1
+    end
+
+    def max_potential_columns
+      @routes.map { |r| r.column + r.flow_uuids.count }.max + 1
     end
 
     def traverse_all_routes
-      # Always traverse the route that begins from the start page first and get
-      # the potential routes from any branching points that exist.
+      # Always traverse the route from the start_from uuid. Defaulting to the
+      # start page of the form unless otherwise specified.
+      # Get all the potential routes from any branching points that exist.
       route_from_start.traverse
       @routes.append(route_from_start)
       traversed_routes = route_from_start.routes
@@ -132,21 +163,56 @@ module MetadataPresenter
 
     def add_by_coordinates
       @coordinates.each do |uuid, position|
-        # If row and column are nil then the object is detached
-        next if position[:row].nil? || position[:column].nil?
+        next if detached?(position)
 
-        flow_object = service.flow_object(uuid)
-        @ordered[position[:column]][position[:row]] = flow_object
+        @ordered[position[:column]][position[:row]] = get_flow_object(uuid)
       end
+    end
+
+    def detached?(position)
+      position[:row].nil? || position[:column].nil?
+    end
+
+    def get_flow_object(uuid)
+      # main_flow is always empty if the Grid is _actually_ building the main flow
+      return MetadataPresenter::Pointer.new(uuid: uuid) if main_flow.include?(uuid)
+
+      service.flow_object(uuid)
+    end
+
+    # A row should end at the first Pointer object it finds.
+    # Therefore replace any Pointers after the first one with Spacers.
+    def trim_pointers
+      max_potential_rows.times do |row|
+        first_index_of = first_pointer(row)
+        next unless first_index_of
+
+        next_column = first_index_of + 1
+        @ordered.drop(next_column).each do |column|
+          column[row] = MetadataPresenter::Spacer.new
+        end
+      end
+    end
+
+    def first_pointer(row)
+      row_objects = @ordered.map { |column| column[row] }
+      row_objects.find_index { |obj| obj.is_a?(MetadataPresenter::Pointer) }
     end
 
     # Find the very last MetadataPresenter::Flow object in every column and
     # remove any Spacer objects after that.
     def trim_spacers
       @ordered.each_with_index do |column, index|
-        last_index_of = column.rindex { |item| item.is_a?(MetadataPresenter::Flow) }
-        @ordered[index] = @ordered[index][0..last_index_of]
+        last_index_of = column.rindex { |item| !item.is_a?(MetadataPresenter::Spacer) }
+        trimmed_column = @ordered[index][0..last_index_of]
+
+        # We do not need any columns that only contain Spacer objects
+        @ordered[index] = only_spacers?(trimmed_column) ? [] : trimmed_column
       end
+    end
+
+    def only_spacers?(trimmed_column)
+      trimmed_column.all? { |item| item.is_a?(MetadataPresenter::Spacer) }
     end
 
     # Each branch has a certain number of exits that require their own line
