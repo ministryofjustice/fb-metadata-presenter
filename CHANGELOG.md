@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.8.0] - 2021-10-20
+
+### Changed
+
+- Add UUID to conditional objects in a branch
+
 ## [2.7.2] - 2021-10-08
 
 ### Fixed
