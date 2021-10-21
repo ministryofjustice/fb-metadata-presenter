@@ -60,6 +60,7 @@ RSpec.describe MetadataPresenter::Flow do
           [
             MetadataPresenter::Conditional.new(
               {
+                "_uuid": 'ecd60ac9-c3ea-47b1-8f79-c4e42df9a9dd',
                 "_type": 'if',
                 "next": 'e8708909-922e-4eaf-87a5-096f7a713fcb',
                 "expressions": [

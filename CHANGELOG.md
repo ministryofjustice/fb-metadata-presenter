@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.9.0] - 2021-10-21
+
+### Changed
+
+- Updated all fixtures to reflect the conditionals uuids
+
 ## [2.8.0] - 2021-10-20
 
 ### Changed
