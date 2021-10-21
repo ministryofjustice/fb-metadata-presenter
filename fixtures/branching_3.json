@@ -21,6 +21,7 @@
         "default": "be130ac1-f33d-4845-807d-89b23b90d205",
         "conditionals": [
           {
+            "_uuid": "39bab61b-93d5-486c-8e02-cea0aeb48215",
             "_type": "if",
             "next": "e8708909-922e-4eaf-87a5-096f7a713fcb",
             "expressions": [
@@ -33,6 +34,7 @@
             ]
           },
           {
+            "_uuid": "96810acb-b5e6-45c1-bacb-6b7a10c0d3a0",
             "_type": "if",
             "next": "3a584d15-6805-4a21-bc05-b61c3be47857",
             "expressions": [
