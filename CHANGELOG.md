@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.10.0] - 2021-12-02
+
+### Changed
+
+- Change grid model to only skip traversing a route if it has already done so
+
 ## [2.9.0] - 2021-10-21
 
 ### Changed
