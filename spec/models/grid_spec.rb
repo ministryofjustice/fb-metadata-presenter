@@ -27,6 +27,31 @@ RSpec.describe MetadataPresenter::Grid do
       end
 
       context 'inserting spacers' do
+        context 'branching fixture' do
+          let(:latest_metadata) { metadata_fixture(:branching) }
+          let(:expected_column_19) do
+            [
+              service.flow_object('2cc66e51-2c14-4023-86bf-ded49887cdb2'), # Loki
+              MetadataPresenter::Spacer.new,
+              service.flow_object('f6c51f88-7be8-4cb7-bbfc-6c905727a051') # Other Quotes
+            ]
+          end
+          let(:expected_column_22) do
+            [
+              service.flow_object('56e80942-d0a4-405a-85cd-bd1b100013d6'), # You are right
+              service.flow_object('6324cca4-7770-4765-89b9-1cdc41f49c8b'), # You are wrong
+              MetadataPresenter::Spacer.new,
+              service.flow_object('941137d7-a1da-43fd-994a-98a4f9ea6d46') # You are wrong (incomplete answers)
+            ]
+          end
+
+          it 'inserts spacers in the correct rows' do
+            flow_grid = grid.build
+            expect(flow_grid[19]).to eq(expected_column_19)
+            expect(flow_grid[22]).to eq(expected_column_22)
+          end
+        end
+
         context 'branching fixture 5' do
           let(:expected_column_4) do
             [
@@ -100,10 +125,36 @@ RSpec.describe MetadataPresenter::Grid do
             ]
           end
 
-          it 'does something' do
+          it 'inserts enough spacers above in order to maintain row consistency' do
             flow_grid = grid.build
             expect(flow_grid[8]).to eq(expected_column_8)
             expect(flow_grid[9]).to eq(expected_column_9)
+          end
+        end
+
+        context 'branching fixture 9' do
+          let(:latest_metadata) { metadata_fixture(:branching_9) }
+          let(:expected_column_11) do
+            [
+              service.flow_object('ced77b4d-efb5-4d07-b38b-2be9e09a73df'), # Page G
+              service.flow_object('46693db1-8995-4af0-a2d1-316140a5fb32'), # Page L
+              service.flow_object('c01ae632-1533-4ee3-8828-a0c547200129'), # Page M
+              service.flow_object('ad011e6b-5926-42f8-8b7c-668558850c52')  # Page N
+            ]
+          end
+          let(:expected_column_12) do
+            [
+              service.flow_object('81510f97-b4c0-43f1-bdde-1cd5159093a9'), # Page H
+              MetadataPresenter::Spacer.new,
+              MetadataPresenter::Spacer.new,
+              service.flow_object('957f9475-6341-418d-a554-d00c5700e031') # Page O
+            ]
+          end
+
+          it 'puts the pages in the correct columns with spacers' do
+            flow_grid = grid.build
+            expect(flow_grid[11]).to eq(expected_column_11)
+            expect(flow_grid[12]).to eq(expected_column_12)
           end
         end
 

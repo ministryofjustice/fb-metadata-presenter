@@ -134,13 +134,12 @@ module MetadataPresenter
 
     def add_rows
       @routes.each do |route|
+        next if @traversed.include?(route.traverse_from)
+
         route.flow_uuids.each do |uuid|
-          next if @traversed.include?(uuid)
-
           @coordinates[uuid][:row] = route.row if @coordinates[uuid][:row].nil?
-
           update_route_rows(route, uuid)
-          @traversed.push(uuid)
+          @traversed.push(uuid) unless @traversed.include?(uuid)
         end
       end
     end
