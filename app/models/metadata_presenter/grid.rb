@@ -134,13 +134,12 @@ module MetadataPresenter
 
     def add_rows
       @routes.each do |route|
+        next if @traversed.include?(route.traverse_from)
+
         route.flow_uuids.each do |uuid|
-          next if @traversed.include?(uuid)
-
           @coordinates[uuid][:row] = route.row if @coordinates[uuid][:row].nil?
-
           update_route_rows(route, uuid)
-          @traversed.push(uuid)
+          @traversed.push(uuid) unless @traversed.include?(uuid)
         end
       end
     end
@@ -202,12 +201,12 @@ module MetadataPresenter
     # Find the very last MetadataPresenter::Flow object in every column and
     # remove any Spacer objects after that.
     def trim_spacers
-      @ordered.each_with_index do |column, index|
+      @ordered.each_with_index do |column, column_number|
         last_index_of = column.rindex { |item| !item.is_a?(MetadataPresenter::Spacer) }
-        trimmed_column = @ordered[index][0..last_index_of]
+        trimmed_column = @ordered[column_number][0..last_index_of]
 
         # We do not need any columns that only contain Spacer objects
-        @ordered[index] = only_spacers?(trimmed_column) ? [] : trimmed_column
+        @ordered[column_number] = only_spacers?(trimmed_column) ? [] : trimmed_column
       end
     end
 
