@@ -30,8 +30,8 @@ module MetadataPresenter
       return @ordered unless @ordered.empty?
 
       @ordered = make_grid
-      add_columns
-      add_rows
+      set_column_numbers
+      set_row_numbers
       add_by_coordinates
       insert_expression_spacers
       trim_pointers unless main_flow.empty?
@@ -121,18 +121,18 @@ module MetadataPresenter
       end
     end
 
-    def add_columns
+    def set_column_numbers
       @routes.each do |route|
-        route.flow_uuids.each.with_index(route.column) do |uuid, column|
-          column_number = @coordinates[uuid][:column]
-          if column_number.nil? || column > column_number
-            @coordinates[uuid][:column] = column
+        route.flow_uuids.each.with_index(route.column) do |uuid, new_column|
+          existing_column = @coordinates[uuid][:column]
+          if existing_column.nil? || new_column > existing_column
+            @coordinates[uuid][:column] = new_column
           end
         end
       end
     end
 
-    def add_rows
+    def set_row_numbers
       @routes.each do |route|
         next if @traversed.include?(route.traverse_from)
 
@@ -220,7 +220,7 @@ module MetadataPresenter
     def insert_expression_spacers
       service.branches.each do |branch|
         position = @coordinates[branch.uuid]
-        next if position[:row].nil? || position[:column].nil? # detached branch
+        next if detached?(position) # detached branch
 
         next_column = position[:column] + 1
         uuids = []
