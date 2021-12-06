@@ -79,7 +79,12 @@ module MetadataPresenter
     end
 
     def max_potential_rows
-      @max_potential_rows ||= @routes.map(&:row).max + 1
+      @max_potential_rows ||= begin
+        destinations_count = service.branches.map do |branch|
+          exiting_destinations_from_branch(branch).count
+        end
+        destinations_count.sum
+      end
     end
 
     def max_potential_columns
