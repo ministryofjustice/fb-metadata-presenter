@@ -20,7 +20,7 @@ module MetadataPresenter
     attr_reader :uuid, :route, :coordinates, :service
 
     def existing_row
-      @existing_row ||= coordinates[uuid][:row] || route.row
+      @existing_row ||= coordinates.uuid_row(uuid) || route.row
     end
 
     def first_row?
@@ -28,7 +28,8 @@ module MetadataPresenter
     end
 
     def object_above
-      @object_above ||= service.flow_object(uuid_by_position)
+      @object_above ||=
+        service.flow_object(coordinates.uuid_at_position(uuid_column, row_above))
     end
 
     def number_of_destinations
@@ -47,7 +48,7 @@ module MetadataPresenter
     end
 
     def uuid_column
-      @uuid_column ||= coordinates[uuid][:column]
+      @uuid_column ||= coordinates.uuid_column(uuid)
     end
 
     def row_above

@@ -21,7 +21,7 @@ module MetadataPresenter
       @ordered = []
       @routes = []
       @traversed = []
-      @coordinates = setup_coordinates
+      @coordinates = MetadataPresenter::Coordinates.new(service)
     end
 
     ROW_ZERO = 0
@@ -61,10 +61,6 @@ module MetadataPresenter
 
     attr_reader :service, :main_flow
     attr_accessor :ordered, :traversed, :routes, :coordinates
-
-    def setup_coordinates
-      service.flow.keys.index_with { |_uuid| { row: nil, column: nil } }
-    end
 
     def route_from_start
       @route_from_start ||=
@@ -124,9 +120,9 @@ module MetadataPresenter
     def set_column_numbers
       @routes.each do |route|
         route.flow_uuids.each.with_index(route.column) do |uuid, new_column|
-          existing_column = @coordinates[uuid][:column]
+          existing_column = @coordinates.uuid_column(uuid)
           if existing_column.nil? || new_column > existing_column
-            @coordinates[uuid][:column] = new_column
+            @coordinates.set_column(uuid, new_column)
           end
         end
       end
@@ -143,7 +139,7 @@ module MetadataPresenter
             coordinates: @coordinates,
             service: service
           ).number
-          @coordinates[uuid][:row] = row_number
+          @coordinates.set_row(uuid, row_number)
 
           update_route_rows(route, uuid)
           @traversed.push(uuid) unless @traversed.include?(uuid)
@@ -168,7 +164,8 @@ module MetadataPresenter
     end
 
     def add_by_coordinates
-      @coordinates.each do |uuid, position|
+      service.flow.keys.each do |uuid|
+        position = coordinates.position(uuid)
         next if detached?(position)
 
         @ordered[position[:column]][position[:row]] = get_flow_object(uuid)
@@ -226,7 +223,7 @@ module MetadataPresenter
     # the one the branch is located in.
     def insert_expression_spacers
       service.branches.each do |branch|
-        position = @coordinates[branch.uuid]
+        position = @coordinates.position(branch.uuid)
         next if detached?(position) # detached branch
 
         next_column = position[:column] + 1
