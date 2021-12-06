@@ -8,7 +8,11 @@ module MetadataPresenter
     end
 
     def number
-      existing_row || route.row
+      return route.row if first_row? && existing_row.nil?
+
+      return existing_row + number_of_destinations if object_above.branch?
+
+      existing_row
     end
 
     private
@@ -16,7 +20,38 @@ module MetadataPresenter
     attr_reader :uuid, :route, :coordinates, :service
 
     def existing_row
-      coordinates[uuid][:row]
+      @existing_row ||= coordinates[uuid][:row] || route.row
+    end
+
+    def first_row?
+      @first_row ||= route.row.zero?
+    end
+
+    def object_above
+      @object_above ||= service.flow_object(uuid_by_position)
+    end
+
+    def number_of_destinations
+      # The first destination already exists in the same row as the branching
+      # object so we therefore want a number one below the total number of
+      # destinations
+      object_above.all_destination_uuids.count - 1
+    end
+
+    def uuid_by_position
+      coordinates.reject { |k, _| k == uuid }.find do |coordinate_uuid, position|
+        if position[:column] == uuid_column && position[:row] == row_above
+          return coordinate_uuid
+        end
+      end
+    end
+
+    def uuid_column
+      @uuid_column ||= coordinates[uuid][:column]
+    end
+
+    def row_above
+      @row_above ||= route.row - 1
     end
   end
 end

@@ -158,6 +158,23 @@ RSpec.describe MetadataPresenter::Grid do
           end
         end
 
+        context 'branching fixture 10 - visually stacking branch objects' do
+          let(:latest_metadata) { metadata_fixture(:branching_10) }
+          let(:expected_column_6) do
+            [
+              service.flow_object('19e4204d-672b-467e-9b8d-3a5cf22d9765'), # Branching Point 5
+              MetadataPresenter::Spacer.new,
+              MetadataPresenter::Spacer.new,
+              service.flow_object('a02f7073-ba5a-459d-b6b9-abe548c933a6')  # Brancing Point 2
+            ]
+          end
+
+          it 'inserts spacers in between branch objects in the same column as each other' do
+            flow_grid = grid.build
+            expect(flow_grid[6]).to eq(expected_column_6)
+          end
+        end
+
         context 'when looping exceeds the total potential routes' do
           it 'raises a ExceededPotentialRoutesError' do
             allow(grid).to receive(:total_potential_routes).and_return(1)
