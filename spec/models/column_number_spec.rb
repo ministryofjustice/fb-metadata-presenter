@@ -43,7 +43,7 @@ RSpec.describe MetadataPresenter::ColumnNumber do
             }
           }
         end
-      let(:new_column) { 10 }
+        let(:new_column) { 10 }
 
         it 'returns the new column number' do
           expect(column_number.number).to eq(new_column)

@@ -1,26 +1,35 @@
 module MetadataPresenter
   class RowNumber
-    def initialize(uuid:, route:, coordinates:, service:)
+    include BranchDestinations
+
+    def initialize(uuid:, route:, current_row:, coordinates:, service:)
       @uuid = uuid
       @route = route
+      @current_row = current_row
       @coordinates = coordinates
       @service = service
     end
 
+    ROW_ZERO = 0
+
     def number
       return route.row if first_row? && existing_row.nil?
 
-      return existing_row + number_of_destinations if object_above.branch?
+      return ROW_ZERO if place_on_row_zero?
 
-      existing_row
+      if object_above.branch? && uuid != object_above.uuid
+        coordinates.uuid_row(object_above.uuid) + number_of_destinations
+      else
+        existing_row.nil? ? current_row : [current_row, existing_row].max
+      end
     end
 
     private
 
-    attr_reader :uuid, :route, :coordinates, :service
+    attr_reader :uuid, :route, :current_row, :coordinates, :service
 
     def existing_row
-      @existing_row ||= coordinates.uuid_row(uuid) || route.row
+      @existing_row ||= coordinates.uuid_row(uuid)
     end
 
     def first_row?
@@ -32,19 +41,10 @@ module MetadataPresenter
         service.flow_object(coordinates.uuid_at_position(uuid_column, row_above))
     end
 
+    # Takes into account the 'or' type of conditionals which requires an
+    # additional spacer
     def number_of_destinations
-      # The first destination already exists in the same row as the branching
-      # object so we therefore want a number one below the total number of
-      # destinations
-      object_above.all_destination_uuids.count - 1
-    end
-
-    def uuid_by_position
-      coordinates.reject { |k, _| k == uuid }.find do |coordinate_uuid, position|
-        if position[:column] == uuid_column && position[:row] == row_above
-          return coordinate_uuid
-        end
-      end
+      exiting_destinations_from_branch(object_above).count
     end
 
     def uuid_column
@@ -53,6 +53,19 @@ module MetadataPresenter
 
     def row_above
       @row_above ||= route.row - 1
+    end
+
+    # If an object has already been positioned on row 0 then leave it there.
+    # If the object is a checkanswers or confirmation type then always place it
+    # on row 0.
+    def place_on_row_zero?
+      cya_or_confirmation_page? || coordinates.uuid_row(uuid) == ROW_ZERO
+    end
+
+    def cya_or_confirmation_page?
+      %w[page.checkanswers page.confirmation].include?(
+        service.find_page_by_uuid(uuid)&.type
+      )
     end
   end
 end

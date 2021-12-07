@@ -1,7 +1,7 @@
 module MetadataPresenter
   class Coordinates
-    def initialize(service)
-      @service = service
+    def initialize(flow)
+      @flow = flow
       @positions = setup_positions
     end
 
@@ -35,13 +35,25 @@ module MetadataPresenter
       positions[uuid]
     end
 
+    def occupied?(column, row, new_object_uuid)
+      positions.any? do |uuid, position|
+        position[:column] == column &&
+          position[:row] == row &&
+          new_object_uuid != uuid
+      end
+    end
+
+    def positions_in_column(column_number)
+      positions.select { |_, position| position[:column] == column_number }
+    end
+
     private
 
-    attr_reader :service
+    attr_reader :flow
     attr_writer :positions
 
     def setup_positions
-      service.flow.keys.index_with { |_uuid| { row: nil, column: nil } }
+      flow.keys.index_with { |_uuid| { row: nil, column: nil } }
     end
   end
 end

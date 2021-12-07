@@ -12,6 +12,7 @@ module MetadataPresenter
   end
 
   class Grid
+    include BranchDestinations
     attr_reader :start_from
 
     def initialize(service, start_from: nil, main_flow: [])
@@ -21,7 +22,7 @@ module MetadataPresenter
       @ordered = []
       @routes = []
       @traversed = []
-      @coordinates = MetadataPresenter::Coordinates.new(service)
+      @coordinates = MetadataPresenter::Coordinates.new(service.flow)
     end
 
     ROW_ZERO = 0
@@ -137,12 +138,14 @@ module MetadataPresenter
 
     def set_row_numbers
       @routes.each do |route|
-        next if @traversed.include?(route.traverse_from)
+        next if @traversed.include?(route.traverse_from) && appears_later_in_flow?(route)
 
+        current_row = route.row
         route.flow_uuids.each do |uuid|
           row_number = MetadataPresenter::RowNumber.new(
             uuid: uuid,
             route: route,
+            current_row: current_row,
             coordinates: @coordinates,
             service: service
           ).number
@@ -150,8 +153,15 @@ module MetadataPresenter
 
           update_route_rows(route, uuid)
           @traversed.push(uuid) unless @traversed.include?(uuid)
+          current_row = row_number
         end
       end
+    end
+
+    # New routes can be linked to later. We need to also traverse these to see
+    # if anything should be moved to a different row.
+    def appears_later_in_flow?(route)
+      @coordinates.uuid_column(route.traverse_from) > route.column
     end
 
     # Each Route object has a starting row. Each Route object has no knowledge
@@ -171,7 +181,7 @@ module MetadataPresenter
     end
 
     def add_by_coordinates
-      service.flow.keys.each do |uuid|
+      service.flow.each_key do |uuid|
         position = coordinates.position(uuid)
         next if detached?(position)
 
@@ -230,37 +240,23 @@ module MetadataPresenter
     # the one the branch is located in.
     def insert_expression_spacers
       service.branches.each do |branch|
-        position = @coordinates.position(branch.uuid)
-        next if detached?(position) # detached branch
+        next if coordinates.uuid_column(branch.uuid).nil?
 
-        next_column = position[:column] + 1
-        uuids = []
-        exiting_destinations_from_branch(branch).each.with_index(position[:row]) do |uuid, row|
-          if uuids.include?(uuid)
+        previous_uuid = ''
+        next_column = coordinates.uuid_column(branch.uuid) + 1
+        exiting_destinations_from_branch(branch).each_with_index do |uuid, row|
+          if uuid == previous_uuid
             @ordered[next_column].insert(row, MetadataPresenter::Spacer.new)
           end
-
-          uuids.push(uuid) unless uuids.include?(uuid)
+          previous_uuid = uuid
         end
       end
-    end
-
-    # The frontend requires that expressions of type 'or' get there own line and
-    # arrow. 'and' expression types continue to be grouped together.
-    # Return the UUIDs of the destinations exiting a branch and allow duplicates
-    # if the expression type is an 'or'.
-    def exiting_destinations_from_branch(branch)
-      destination_uuids = branch.conditionals.map do |conditional|
-        if conditional.type == 'or'
-          conditional.expressions.map(&:next)
-        else
-          conditional.next
-        end
-      end
-      destination_uuids.flatten
     end
 
     # Any destinations exiting the branch that have not already been traversed.
+    # This removes any branch destinations that already exist on other rows. If
+    # that is the case then the arrow will flow towards whatever row that object
+    # is located.
     def routes_exiting_branch(branch)
       branch.all_destination_uuids.reject { |uuid| @traversed.include?(uuid) }
     end
