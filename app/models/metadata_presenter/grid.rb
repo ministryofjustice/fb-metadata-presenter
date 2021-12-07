@@ -125,10 +125,12 @@ module MetadataPresenter
     def set_column_numbers
       @routes.each do |route|
         route.flow_uuids.each.with_index(route.column) do |uuid, new_column|
-          existing_column = @coordinates.uuid_column(uuid)
-          if existing_column.nil? || new_column > existing_column
-            @coordinates.set_column(uuid, new_column)
-          end
+          column_number = MetadataPresenter::ColumnNumber.new(
+            uuid: uuid,
+            new_column: new_column,
+            coordinates: @coordinates
+          ).number
+          @coordinates.set_column(uuid, column_number)
         end
       end
     end
