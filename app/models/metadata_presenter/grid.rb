@@ -12,6 +12,7 @@ module MetadataPresenter
   end
 
   class Grid
+    include BranchDestinations
     attr_reader :start_from
 
     def initialize(service, start_from: nil, main_flow: [])
@@ -21,7 +22,7 @@ module MetadataPresenter
       @ordered = []
       @routes = []
       @traversed = []
-      @coordinates = setup_coordinates
+      @coordinates = MetadataPresenter::Coordinates.new(service.flow)
     end
 
     ROW_ZERO = 0
@@ -30,8 +31,8 @@ module MetadataPresenter
       return @ordered unless @ordered.empty?
 
       @ordered = make_grid
-      add_columns
-      add_rows
+      set_column_numbers
+      set_row_numbers
       add_by_coordinates
       insert_expression_spacers
       trim_pointers unless main_flow.empty?
@@ -62,10 +63,6 @@ module MetadataPresenter
     attr_reader :service, :main_flow
     attr_accessor :ordered, :traversed, :routes, :coordinates
 
-    def setup_coordinates
-      service.flow.keys.index_with { |_uuid| { row: nil, column: nil } }
-    end
-
     def route_from_start
       @route_from_start ||=
         MetadataPresenter::Route.new(
@@ -83,7 +80,12 @@ module MetadataPresenter
     end
 
     def max_potential_rows
-      @max_potential_rows ||= @routes.map(&:row).max + 1
+      @max_potential_rows ||= begin
+        destinations_count = service.branches.map do |branch|
+          exiting_destinations_from_branch(branch).count
+        end
+        destinations_count.sum
+      end
     end
 
     def max_potential_columns
@@ -121,27 +123,45 @@ module MetadataPresenter
       end
     end
 
-    def add_columns
+    def set_column_numbers
       @routes.each do |route|
-        route.flow_uuids.each.with_index(route.column) do |uuid, column|
-          column_number = @coordinates[uuid][:column]
-          if column_number.nil? || column > column_number
-            @coordinates[uuid][:column] = column
-          end
+        route.flow_uuids.each.with_index(route.column) do |uuid, new_column|
+          column_number = MetadataPresenter::ColumnNumber.new(
+            uuid: uuid,
+            new_column: new_column,
+            coordinates: @coordinates
+          ).number
+          @coordinates.set_column(uuid, column_number)
         end
       end
     end
 
-    def add_rows
+    def set_row_numbers
       @routes.each do |route|
-        next if @traversed.include?(route.traverse_from)
+        next if @traversed.include?(route.traverse_from) && appears_later_in_flow?(route)
 
+        current_row = route.row
         route.flow_uuids.each do |uuid|
-          @coordinates[uuid][:row] = route.row if @coordinates[uuid][:row].nil?
+          row_number = MetadataPresenter::RowNumber.new(
+            uuid: uuid,
+            route: route,
+            current_row: current_row,
+            coordinates: @coordinates,
+            service: service
+          ).number
+          @coordinates.set_row(uuid, row_number)
+
           update_route_rows(route, uuid)
           @traversed.push(uuid) unless @traversed.include?(uuid)
+          current_row = row_number
         end
       end
+    end
+
+    # New routes can be linked to later. We need to also traverse these to see
+    # if anything should be moved to a different row.
+    def appears_later_in_flow?(route)
+      @coordinates.uuid_column(route.traverse_from) > route.column
     end
 
     # Each Route object has a starting row. Each Route object has no knowledge
@@ -161,7 +181,8 @@ module MetadataPresenter
     end
 
     def add_by_coordinates
-      @coordinates.each do |uuid, position|
+      service.flow.each_key do |uuid|
+        position = coordinates.position(uuid)
         next if detached?(position)
 
         @ordered[position[:column]][position[:row]] = get_flow_object(uuid)
@@ -219,37 +240,23 @@ module MetadataPresenter
     # the one the branch is located in.
     def insert_expression_spacers
       service.branches.each do |branch|
-        position = @coordinates[branch.uuid]
-        next if position[:row].nil? || position[:column].nil? # detached branch
+        next if coordinates.uuid_column(branch.uuid).nil?
 
-        next_column = position[:column] + 1
-        uuids = []
-        exiting_destinations_from_branch(branch).each.with_index(position[:row]) do |uuid, row|
-          if uuids.include?(uuid)
+        previous_uuid = ''
+        next_column = coordinates.uuid_column(branch.uuid) + 1
+        exiting_destinations_from_branch(branch).each_with_index do |uuid, row|
+          if uuid == previous_uuid
             @ordered[next_column].insert(row, MetadataPresenter::Spacer.new)
           end
-
-          uuids.push(uuid) unless uuids.include?(uuid)
+          previous_uuid = uuid
         end
       end
-    end
-
-    # The frontend requires that expressions of type 'or' get there own line and
-    # arrow. 'and' expression types continue to be grouped together.
-    # Return the UUIDs of the destinations exiting a branch and allow duplicates
-    # if the expression type is an 'or'.
-    def exiting_destinations_from_branch(branch)
-      destination_uuids = branch.conditionals.map do |conditional|
-        if conditional.type == 'or'
-          conditional.expressions.map(&:next)
-        else
-          conditional.next
-        end
-      end
-      destination_uuids.flatten
     end
 
     # Any destinations exiting the branch that have not already been traversed.
+    # This removes any branch destinations that already exist on other rows. If
+    # that is the case then the arrow will flow towards whatever row that object
+    # is located.
     def routes_exiting_branch(branch)
       branch.all_destination_uuids.reject { |uuid| @traversed.include?(uuid) }
     end
