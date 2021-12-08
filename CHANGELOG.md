@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.11.0] - 2021-12-08
+
+### Changed
+
+- Make space for branch expressions if more than one branch occupy the same column
+
 ## [2.10.0] - 2021-12-02
 
 ### Changed
