@@ -357,6 +357,97 @@ RSpec.describe MetadataPresenter::Grid do
           end
         end
       end
+
+      context 'inserting warnings' do
+        let(:warning) { [MetadataPresenter::Warning.new] }
+
+        context 'when cya and confirmation do not exist' do
+          let(:latest_metadata) { metadata_fixture(:exit_only_service) }
+
+          it 'inserts warning at the end of the flow' do
+            flow_grid = grid.build
+            expect(flow_grid.last).to eq(warning)
+          end
+        end
+
+        context 'when cya does not exist in the service' do
+          let(:latest_metadata) do
+            metadata = metadata_fixture(:branching_6)
+            metadata['flow'].delete('e337070b-f636-49a3-a65c-f506675265f0') # delete CYA page
+            metadata['flow']['37a94466-97fa-427f-88b2-09b369435d0d']['next']['default'] = '778e364b-9a7f-4829-8eb2-510e08f156a3' # Page E
+            metadata['flow']['2c7deb33-19eb-4569-86d6-462e3d828d87']['next']['default'] = '778e364b-9a7f-4829-8eb2-510e08f156a3' # Page L
+            metadata['pages'] = metadata['pages'].reject do |page|
+              page['_uuid'] == 'e337070b-f636-49a3-a65c-f506675265f0'
+            end
+            metadata
+          end
+
+          it 'inserts warning at the end of the flow' do
+            flow_grid = grid.build
+            expect(flow_grid.last).to eq(warning)
+          end
+        end
+
+        context 'when confirmation does not exist in the service' do
+          let(:latest_metadata) do
+            metadata = metadata_fixture(:branching_6)
+            metadata['flow'].delete('778e364b-9a7f-4829-8eb2-510e08f156a3') # delete Confirmation page
+            metadata['flow']['e337070b-f636-49a3-a65c-f506675265f0']['next']['default'] = '' # Change CYA default
+            metadata['pages'] = metadata['pages'].reject do |page|
+              page['_uuid'] == '778e364b-9a7f-4829-8eb2-510e08f156a3'
+            end
+            metadata
+          end
+
+          it 'inserts warning at the end of the flow' do
+            flow_grid = grid.build
+            expect(flow_grid.last).to eq(warning)
+          end
+        end
+
+        context 'disconnected cya page' do
+          let(:latest_metadata) do
+            metadata = metadata_fixture(:branching_6)
+            # Have Page E and Page L default to Confirmation
+            metadata['flow']['37a94466-97fa-427f-88b2-09b369435d0d']['next']['default'] = '778e364b-9a7f-4829-8eb2-510e08f156a3' # Page E
+            metadata['flow']['2c7deb33-19eb-4569-86d6-462e3d828d87']['next']['default'] = '778e364b-9a7f-4829-8eb2-510e08f156a3' # Page L
+            metadata
+          end
+
+          it 'inserts warning at the end of the flow' do
+            flow_grid = grid.build
+            expect(flow_grid.last).to eq(warning)
+          end
+        end
+
+        context 'disconnected confirmation page' do
+          let(:latest_metadata) do
+            metadata = metadata_fixture(:branching_6)
+            metadata['flow']['e337070b-f636-49a3-a65c-f506675265f0']['next']['default'] = '' # Change CYA default
+            metadata
+          end
+
+          it 'inserts warning at the end of the flow' do
+            flow_grid = grid.build
+            expect(flow_grid.last).to eq(warning)
+          end
+        end
+
+        context 'disconnected cya and confirmation pages' do
+          let(:latest_metadata) do
+            metadata = metadata_fixture(:branching_6)
+            # Have Page E and Page L defaults
+            metadata['flow']['37a94466-97fa-427f-88b2-09b369435d0d']['next']['default'] = '' # Page E
+            metadata['flow']['2c7deb33-19eb-4569-86d6-462e3d828d87']['next']['default'] = '' # Page L
+            metadata
+          end
+
+          it 'inserts warning at the end of the flow' do
+            flow_grid = grid.build
+            expect(flow_grid.last).to eq(warning)
+          end
+        end
+      end
     end
   end
 

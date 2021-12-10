@@ -11,6 +11,12 @@ module MetadataPresenter
     end
   end
 
+  class Warning < OpenStruct
+    def type
+      'flow.warning'
+    end
+  end
+
   class Grid
     include BranchDestinations
     attr_reader :start_from
@@ -37,13 +43,14 @@ module MetadataPresenter
       insert_expression_spacers
       trim_pointers unless main_flow.empty?
       trim_spacers
+      insert_warning if main_flow.empty?
 
       @ordered = @ordered.reject(&:empty?)
     end
 
     def ordered_flow
       @ordered_flow ||=
-        build.flatten.reject { |obj| obj.is_a?(MetadataPresenter::Spacer) }
+        build.flatten.reject { |obj| obj.is_a?(MetadataPresenter::Spacer) || obj.is_a?(MetadataPresenter::Warning) }
     end
 
     def ordered_pages
@@ -261,6 +268,51 @@ module MetadataPresenter
 
     def insert_spacer(column, row)
       @ordered[column].insert(row, MetadataPresenter::Spacer.new)
+    end
+
+    # Include a warning if a service does not have a CYA or Confirmation page in the
+    # main flow. The warning should always be in the first row, last column.
+    def insert_warning
+      if cya_and_confirmation_pages_not_in_service? ||
+          cya_and_confirmation_pages_detached?
+        @ordered.append([MetadataPresenter::Warning.new])
+      end
+    end
+
+    def cya_and_confirmation_pages_not_in_service?
+      (checkanswers_not_in_service? && confirmation_not_in_service?) ||
+        checkanswers_not_in_service? ||
+        confirmation_not_in_service?
+    end
+
+    def checkanswers_not_in_service?
+      service.checkanswers_page.blank?
+    end
+
+    def confirmation_not_in_service?
+      service.confirmation_page.blank?
+    end
+
+    def cya_and_confirmation_pages_detached?
+      (checkanswers_detached? && confirmation_detached?) ||
+        checkanswers_detached? ||
+        confirmation_detached?
+    end
+
+    def checkanswers_detached?
+      if service.checkanswers_page.present?
+        uuid = service.checkanswers_page.uuid
+        position = coordinates.position(uuid)
+        detached?(position)
+      end
+    end
+
+    def confirmation_detached?
+      if service.confirmation_page.present?
+        uuid = service.confirmation_page.uuid
+        position = coordinates.position(uuid)
+        detached?(position)
+      end
     end
 
     # Any destinations exiting the branch that have not already been traversed.
