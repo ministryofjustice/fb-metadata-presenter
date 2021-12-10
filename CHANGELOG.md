@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.13.0] - 2021-12-15
+
+### Changed
+
+- Add Warning object to Grid model. To be used if the CYA or Confirmation pages are not in the main flow.
+
 ## [2.12.1] - 2021-12-14
 
 ### Changed
