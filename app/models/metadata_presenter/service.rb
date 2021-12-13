@@ -38,7 +38,7 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   def service_slug
-    service_name.parameterize
+    service_name.gsub(/['’]/, '').parameterize
   end
 
   def find_page_by_url(url)
