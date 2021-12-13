@@ -140,6 +140,7 @@ RSpec.describe MetadataPresenter::Grid do
 
           it 'inserts enough spacers above in order to maintain row consistency' do
             flow_grid = grid.build
+            expect(flow_grid[6]).to eq(expected_column_6)
             expect(flow_grid[7]).to eq(expected_column_7)
             expect(flow_grid[8]).to eq(expected_column_8)
             expect(flow_grid[9]).to eq(expected_column_9)
