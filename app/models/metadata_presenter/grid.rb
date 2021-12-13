@@ -185,12 +185,20 @@ module MetadataPresenter
         position = coordinates.position(uuid)
         next if detached?(position)
 
-        @ordered[position[:column]][position[:row]] = get_flow_object(uuid)
+        column = position[:column]
+        row = position[:row]
+        insert_spacer(column, row) if occupied?(column, row, uuid)
+        @ordered[column][row] = get_flow_object(uuid)
       end
     end
 
     def detached?(position)
       position[:row].nil? || position[:column].nil?
+    end
+
+    def occupied?(column, row, uuid)
+      object = @ordered[column][row]
+      object.is_a?(MetadataPresenter::Flow) && object.uuid != uuid
     end
 
     def get_flow_object(uuid)
@@ -245,12 +253,14 @@ module MetadataPresenter
         previous_uuid = ''
         next_column = coordinates.uuid_column(branch.uuid) + 1
         exiting_destinations_from_branch(branch).each_with_index do |uuid, row|
-          if uuid == previous_uuid
-            @ordered[next_column].insert(row, MetadataPresenter::Spacer.new)
-          end
+          insert_spacer(next_column, row) if uuid == previous_uuid
           previous_uuid = uuid
         end
       end
+    end
+
+    def insert_spacer(column, row)
+      @ordered[column].insert(row, MetadataPresenter::Spacer.new)
     end
 
     # Any destinations exiting the branch that have not already been traversed.

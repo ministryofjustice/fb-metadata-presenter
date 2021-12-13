@@ -413,10 +413,28 @@ RSpec.describe MetadataPresenter::Grid do
   end
 
   describe '#flow_uuids' do
-    let(:expected_uuids) { service.flow.keys }
+    branching_fixtures = %i[
+      branching
+      branching_2
+      branching_3
+      branching_4
+      branching_5
+      branching_6
+      branching_7
+      branching_8
+      branching_9
+      branching_10
+    ]
 
-    it 'returns an array of all the flow uuids' do
-      expect(grid.flow_uuids).to match_array(expected_uuids)
+    branching_fixtures.each do |fixture|
+      context "with #{fixture} fixture" do
+        let(:latest_metadata) { metadata_fixture(fixture) }
+        let(:expected_uuids) { service.flow.keys }
+
+        it 'returns an array of all the flow uuids - nothing has been overwritten' do
+          expect(grid.flow_uuids).to match_array(expected_uuids)
+        end
+      end
     end
   end
 
