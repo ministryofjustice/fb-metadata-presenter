@@ -1,7 +1,5 @@
 module MetadataPresenter
   class RowNumber
-    include BranchDestinations
-
     def initialize(uuid:, route:, current_row:, coordinates:, service:)
       @uuid = uuid
       @route = route
@@ -13,53 +11,50 @@ module MetadataPresenter
     ROW_ZERO = 0
 
     def number
-      return route.row if first_row? && existing_row.nil?
+      if service.flow_object(uuid).branch?
+        coordinates.set_branch_spacers_row(uuid, calculated_row)
+      end
 
-      return ROW_ZERO if place_on_row_zero?
-
-      [current_row, existing_row, potential_row].compact.max
+      calculated_row
     end
 
     private
 
     attr_reader :uuid, :route, :current_row, :coordinates, :service
 
+    def calculated_row
+      @calculated_row ||= begin
+        return route.row if first_row? && existing_row.nil?
+
+        return ROW_ZERO if place_on_row_zero?
+
+        existing_row || [current_row, potential_row].compact.max
+      end
+    end
+
     def existing_row
       @existing_row ||= coordinates.uuid_row(uuid)
     end
 
     def potential_row
-      return unless object_above.branch? && uuid != object_above.uuid
+      return if branches_in_column.empty?
 
-      coordinates.uuid_row(object_above.uuid) + number_of_destinations
+      row_numbers = branches_in_column.map do |uuid, _|
+        coordinates.branch_spacers[uuid].map { |position| position[:row] }
+      end
+      row_numbers.flatten.max + 1
     end
 
     def first_row?
       @first_row ||= route.row.zero?
     end
 
-    def object_above
-      @object_above ||=
-        service.flow_object(
-          coordinates.uuid_at_position(uuid_column, row_number_for_object_above)
-        )
-    end
+    def branches_in_column
+      @branches_in_column ||= coordinates.positions_in_column(uuid_column).select do |key, position|
+        next if uuid == key || position[:row].blank?
 
-    def row_number_for_object_above
-      column_objects.map { |_, p| p[:row] if p[:row] < current_row }.compact.max.to_i
-    end
-
-    def column_objects
-      objects_in_column = coordinates.positions_in_column(uuid_column).reject do |u, p|
-        u == uuid || p[:row].nil?
+        service.flow_object(key).branch?
       end
-      objects_in_column.sort_by { |_, p| p[:row] }
-    end
-
-    # Takes into account the 'or' type of conditionals which requires an
-    # additional spacer
-    def number_of_destinations
-      exiting_destinations_from_branch(object_above).count
     end
 
     def uuid_column

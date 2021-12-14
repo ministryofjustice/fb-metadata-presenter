@@ -54,12 +54,6 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     pages[pages.index(current_page) + 1] if current_page.present?
   end
 
-  def checkanswers_page
-    @checkanswers_page ||= pages.find do |page|
-      page.type == 'page.checkanswers'
-    end
-  end
-
   def confirmation_page
     @confirmation_page ||= pages.find do |page|
       page.type == 'page.confirmation'

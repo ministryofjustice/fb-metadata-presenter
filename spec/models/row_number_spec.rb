@@ -10,10 +10,11 @@ RSpec.describe MetadataPresenter::RowNumber do
       service: service
     }
   end
-  let(:coordinates) { MetadataPresenter::Coordinates.new(service.flow) }
+  let(:coordinates) { MetadataPresenter::Coordinates.new(service) }
   let(:latest_metadata) { metadata_fixture(:branching_10) }
   let(:uuid) { SecureRandom.uuid }
   let(:route) { double(row: 2) }
+  let(:branch_spacers) { {} }
 
   describe '#number' do
     before do
@@ -22,6 +23,9 @@ RSpec.describe MetadataPresenter::RowNumber do
       ).and_return(
         service.flow.keys.index_with { |_uuid| { row: nil, column: nil } }.merge(positions)
       )
+      allow_any_instance_of(MetadataPresenter::Coordinates).to receive(
+        :branch_spacers
+      ).and_return(branch_spacers)
     end
 
     context 'when no row has been set before' do
@@ -56,11 +60,12 @@ RSpec.describe MetadataPresenter::RowNumber do
     context 'when the object above the one being placed is a branch' do
       context 'current object is a branch' do
         let(:uuid) { 'a02f7073-ba5a-459d-b6b9-abe548c933a6' } # Branching Point 2
+        let(:branching_point_5) { '19e4204d-672b-467e-9b8d-3a5cf22d9765' }
         let(:route) { double(row: 1) }
         let(:current_row) { 1 }
         let(:positions) do
           {
-            '19e4204d-672b-467e-9b8d-3a5cf22d9765' => { # Branching Point 5
+            branching_point_5 => {
               column: 6,
               row: 0
             },
@@ -68,6 +73,20 @@ RSpec.describe MetadataPresenter::RowNumber do
               column: 6,
               row: nil
             }
+          }
+        end
+        let(:branch_spacers) do
+          {
+            branching_point_5 => [
+              { row: 0, column: 6 },
+              { row: 1, column: 6 },
+              { row: 2, column: 6 }
+            ],
+            uuid => [
+              { row: nil, column: 6 },
+              { row: nil, column: 6 },
+              { row: nil, column: 6 }
+            ]
           }
         end
 
@@ -78,9 +97,10 @@ RSpec.describe MetadataPresenter::RowNumber do
 
       context 'current object is a page and branch is in the same column but more than one row above' do
         let(:uuid) { '64c0a3ef-53cb-47f4-b771-0c4b65496030' } # Page R
+        let(:branching_point_4) { '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1' }
         let(:positions) do
           {
-            '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1' => { # Branching Point 4
+            branching_point_4 => {
               column: 9,
               row: 0
             },
@@ -88,6 +108,17 @@ RSpec.describe MetadataPresenter::RowNumber do
               column: 9,
               row: nil
             }
+          }
+        end
+        let(:branch_spacers) do
+          {
+            branching_point_4 => [
+              { row: 0, column: 9 },
+              { row: 1, column: 9 },
+              { row: 2, column: 9 },
+              { row: 3, column: 9 },
+              { row: 4, column: 9 }
+            ]
           }
         end
 
@@ -122,8 +153,54 @@ RSpec.describe MetadataPresenter::RowNumber do
         }
       end
 
-      it 'returns the higher row number' do
-        expect(row_number.number).to eq(3)
+      it 'returns the existing row number' do
+        expect(row_number.number).to eq(2)
+      end
+    end
+
+    context 'with more than one branch in a column' do
+      let(:uuid) { '4cad5db1-bf68-4f7f-baf6-b2d48b342705' } # Branching Point 3
+      let(:branching_point_5) { '19e4204d-672b-467e-9b8d-3a5cf22d9765' }
+      let(:branching_point_2) { 'a02f7073-ba5a-459d-b6b9-abe548c933a6' }
+      let(:route) { double(row: 2) }
+      let(:current_row) { 2 }
+      let(:positions) do
+        {
+          branching_point_5 => {
+            column: 6,
+            row: 0
+          },
+          branching_point_2 => {
+            column: 6,
+            row: 3
+          },
+          uuid => {
+            column: 6,
+            row: nil
+          }
+        }
+      end
+      let(:branch_spacers) do
+        {
+          branching_point_5 => [
+            { row: 0, column: 6 },
+            { row: 1, column: 6 },
+            { row: 2, column: 6 }
+          ],
+          branching_point_2 => [
+            { row: 3, column: 6 },
+            { row: 4, column: 6 },
+            { row: 5, column: 6 }
+          ],
+          uuid => [
+            { row: nil, column: 6 },
+            { row: nil, column: 6 }
+          ]
+        }
+      end
+
+      it 'finds the next available row leaving space for branch destinations above' do
+        expect(row_number.number).to eq(6)
       end
     end
 

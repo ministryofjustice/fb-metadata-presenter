@@ -8,23 +8,31 @@ module MetadataPresenter
     end
 
     def number
-      if use_latest_column?
-        [existing_column, new_column].compact.max
-      else
-        existing_column || new_column
+      if service.flow_object(uuid).branch?
+        coordinates.set_branch_spacers_column(uuid, column_number)
       end
+
+      column_number
     end
 
     private
 
     attr_reader :uuid, :coordinates, :new_column, :service
 
-    def use_latest_column?
-      cya_or_confirmation_page?
+    def column_number
+      @column_number ||= begin
+        return latest_column if cya_or_confirmation_page?
+
+        existing_column || new_column
+      end
+    end
+
+    def latest_column
+      [existing_column, new_column].compact.max
     end
 
     def cya_or_confirmation_page?
-      [service.checkanswers_page.uuid, service.confirmation_page.uuid].include?(uuid)
+      [service.checkanswers_page&.uuid, service.confirmation_page&.uuid].include?(uuid)
     end
 
     def existing_column
