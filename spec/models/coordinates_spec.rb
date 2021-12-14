@@ -98,26 +98,6 @@ RSpec.describe MetadataPresenter::Coordinates do
     end
   end
 
-  describe '#occupied?' do
-    let(:positions) do
-      {
-        SecureRandom.uuid => {
-          column: 10,
-          row: 2
-        }
-      }
-    end
-    before do
-      allow_any_instance_of(MetadataPresenter::Coordinates).to receive(
-        :setup_positions
-      ).and_return(positions)
-    end
-
-    it 'returns true if position is occupied by another uuid' do
-      expect(coordinates.occupied?(10, 2, uuid)).to be_truthy
-    end
-  end
-
   describe '#positions_in_column' do
     let(:expected_column) do
       {

@@ -17,11 +17,7 @@ module MetadataPresenter
 
       return ROW_ZERO if place_on_row_zero?
 
-      if object_above.branch? && uuid != object_above.uuid
-        coordinates.uuid_row(object_above.uuid) + number_of_destinations
-      else
-        existing_row.nil? ? current_row : [current_row, existing_row].max
-      end
+      [current_row, existing_row, potential_row].compact.max
     end
 
     private
@@ -32,13 +28,32 @@ module MetadataPresenter
       @existing_row ||= coordinates.uuid_row(uuid)
     end
 
+    def potential_row
+      return unless object_above.branch? && uuid != object_above.uuid
+
+      coordinates.uuid_row(object_above.uuid) + number_of_destinations
+    end
+
     def first_row?
       @first_row ||= route.row.zero?
     end
 
     def object_above
       @object_above ||=
-        service.flow_object(coordinates.uuid_at_position(uuid_column, row_above))
+        service.flow_object(
+          coordinates.uuid_at_position(uuid_column, row_number_for_object_above)
+        )
+    end
+
+    def row_number_for_object_above
+      column_objects.map { |_, p| p[:row] if p[:row] < current_row }.compact.max.to_i
+    end
+
+    def column_objects
+      objects_in_column = coordinates.positions_in_column(uuid_column).reject do |u, p|
+        u == uuid || p[:row].nil?
+      end
+      objects_in_column.sort_by { |_, p| p[:row] }
     end
 
     # Takes into account the 'or' type of conditionals which requires an
@@ -49,10 +64,6 @@ module MetadataPresenter
 
     def uuid_column
       @uuid_column ||= coordinates.uuid_column(uuid)
-    end
-
-    def row_above
-      @row_above ||= route.row - 1
     end
 
     # If an object has already been positioned on row 0 then leave it there.

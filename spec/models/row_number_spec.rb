@@ -19,7 +19,9 @@ RSpec.describe MetadataPresenter::RowNumber do
     before do
       allow_any_instance_of(MetadataPresenter::Coordinates).to receive(
         :setup_positions
-      ).and_return(positions)
+      ).and_return(
+        service.flow.keys.index_with { |_uuid| { row: nil, column: nil } }.merge(positions)
+      )
     end
 
     context 'when no row has been set before' do
@@ -54,11 +56,11 @@ RSpec.describe MetadataPresenter::RowNumber do
     context 'when the object above the one being placed is a branch' do
       context 'current object is a branch' do
         let(:uuid) { 'a02f7073-ba5a-459d-b6b9-abe548c933a6' } # Branching Point 2
+        let(:route) { double(row: 1) }
         let(:current_row) { 1 }
-        let(:branching_point_5) { service.flow_object('19e4204d-672b-467e-9b8d-3a5cf22d9765') }
         let(:positions) do
           {
-            branching_point_5.uuid => {
+            '19e4204d-672b-467e-9b8d-3a5cf22d9765' => { # Branching Point 5
               column: 6,
               row: 0
             },
@@ -67,14 +69,6 @@ RSpec.describe MetadataPresenter::RowNumber do
               row: nil
             }
           }
-        end
-
-        before do
-          allow(row_number).to receive(:object_above).and_return(branching_point_5)
-          allow_any_instance_of(MetadataPresenter::Coordinates).to receive(:uuid_row)
-          allow_any_instance_of(MetadataPresenter::Coordinates).to receive(
-            :uuid_row
-          ).with(branching_point_5.uuid).and_return(0)
         end
 
         it 'returns a row number leaving space for all the branch destinations above it' do
@@ -82,13 +76,11 @@ RSpec.describe MetadataPresenter::RowNumber do
         end
       end
 
-      context 'current object is a page' do
+      context 'current object is a page and branch is in the same column but more than one row above' do
         let(:uuid) { '64c0a3ef-53cb-47f4-b771-0c4b65496030' } # Page R
-        let(:current_row) { 3 }
-        let(:branching_point_4) { service.flow_object('7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1') }
         let(:positions) do
           {
-            branching_point_4.uuid => {
+            '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1' => { # Branching Point 4
               column: 9,
               row: 0
             },
@@ -99,16 +91,22 @@ RSpec.describe MetadataPresenter::RowNumber do
           }
         end
 
-        before do
-          allow(row_number).to receive(:object_above).and_return(branching_point_4)
-          allow_any_instance_of(MetadataPresenter::Coordinates).to receive(:uuid_row)
-          allow_any_instance_of(MetadataPresenter::Coordinates).to receive(
-            :uuid_row
-          ).with(branching_point_4.uuid).and_return(0)
+        context 'when current_row is less than the required space for expressions' do
+          let(:route) { double(row: 3) }
+          let(:current_row) { 3 }
+
+          it 'returns a row number leaving space for all the branch destinations above it' do
+            expect(row_number.number).to eq(5)
+          end
         end
 
-        it 'returns a row number leaving space for all the branch destinations above it' do
-          expect(row_number.number).to eq(5)
+        context 'when current_row is already greater than the required space for expressions' do
+          let(:route) { double(row: 6) }
+          let(:current_row) { 6 }
+
+          it 'returns a row number leaving space for all the branch destinations above it' do
+            expect(row_number.number).to eq(6)
+          end
         end
       end
     end
