@@ -35,14 +35,6 @@ module MetadataPresenter
       positions[uuid]
     end
 
-    def occupied?(column, row, new_object_uuid)
-      positions.any? do |uuid, position|
-        position[:column] == column &&
-          position[:row] == row &&
-          new_object_uuid != uuid
-      end
-    end
-
     def positions_in_column(column_number)
       positions.select { |_, position| position[:column] == column_number }
     end
