@@ -7,7 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [2.12.0] - 2021-12-08
+## [2.12.1] - 2021-12-14
+
+### Changed
+
+- Do not allow the overwriting of previously placed Flow objects in the Grid model
+
+## [2.12.0] - 2021-12-14
 
 ### Changed
 
