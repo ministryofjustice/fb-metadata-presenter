@@ -7,7 +7,9 @@ RSpec.describe MetadataPresenter::Service do
         'grogu' => 'grogu',
         'Darth Vader' => 'darth-vader',
         'emperor-palpatine' => 'emperor-palpatine',
-        'princess Leia' => 'princess-leia'
+        'princess Leia' => 'princess-leia',
+        "Darth Vader Children's" => 'darth-vader-childrens',
+        'Darth Vader Children’s' => 'darth-vader-childrens'
       }
     end
 
