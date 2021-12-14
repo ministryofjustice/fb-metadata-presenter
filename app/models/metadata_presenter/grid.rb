@@ -136,7 +136,8 @@ module MetadataPresenter
           column_number = MetadataPresenter::ColumnNumber.new(
             uuid: uuid,
             new_column: new_column,
-            coordinates: @coordinates
+            coordinates: @coordinates,
+            service: service
           ).number
           @coordinates.set_column(uuid, column_number)
         end
