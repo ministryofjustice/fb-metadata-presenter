@@ -78,12 +78,6 @@
         "default": ""
       }
     },
-    "f475d6fd-0ea4-45d5-985e-e1a7c7a5b992": {
-      "_type": "flow.page",
-      "next": {
-        "default": "be130ac1-f33d-4845-807d-89b23b90d205"
-      }
-    },
     "be130ac1-f33d-4845-807d-89b23b90d205": {
       "_type": "flow.page",
       "next": {
@@ -395,62 +389,6 @@
             "required": true,
             "max_length": 20,
             "min_length": 2
-          }
-        }
-      ]
-    },
-    {
-      "_id": "page.j",
-      "url": "page-j",
-      "body": "Page J body",
-      "lede": "",
-      "_type": "page.singlequestion",
-      "_uuid": "f475d6fd-0ea4-45d5-985e-e1a7c7a5b992",
-      "heading": "Page J",
-      "components": [
-        {
-          "_id": "page-j_radios_1",
-          "hint": "",
-          "name": "page-j_radios_1",
-          "_type": "radios",
-          "_uuid": "c2f4ad91-d7ad-4aa9-b7e9-be287a7248d3",
-          "items": [
-            {
-              "_id": "page-j_radios_1_item_1",
-              "hint": "",
-              "name": "page-j_radios_1",
-              "_type": "radio",
-              "_uuid": "2e7e602d-e1af-4757-a126-75363fad80f3",
-              "label": "Item 1",
-              "value": "value-1",
-              "errors": {},
-              "legend": "Item 1",
-              "collection": "components",
-              "validation": {
-                "required": true
-              }
-            },
-            {
-              "_id": "page-j_radios_1_item_2",
-              "hint": "",
-              "name": "page-j_radios_1",
-              "_type": "radio",
-              "_uuid": "4548747d-81c0-49a5-b4f1-32291b7c3415",
-              "label": "Item 2",
-              "value": "value-2",
-              "errors": {},
-              "legend": "Item 2",
-              "collection": "components",
-              "validation": {
-                "required": true
-              }
-            }
-          ],
-          "errors": {},
-          "legend": "Page J",
-          "collection": "components",
-          "validation": {
-            "required": true
           }
         }
       ]
