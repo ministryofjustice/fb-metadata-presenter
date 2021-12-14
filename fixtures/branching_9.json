@@ -943,7 +943,7 @@
   "created_by": "30b04817-8997-43ac-8f34-2ad817a966ea",
   "service_id": "fa972d54-d7d8-4131-b0b6-976fe24a2c3b",
   "version_id": "74812b86-ecef-4b97-b083-4f03e9270f5e",
-  "service_name": "Branching 9",
+  "service_name": "Branching Fixture 9",
   "configuration": {
     "meta": {
       "_id": "config.meta",
