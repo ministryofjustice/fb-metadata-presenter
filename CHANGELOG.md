@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.12.0] - 2021-12-08
+
+### Changed
+
+- Add possibility to accept apostrophe in service names
+
 ## [2.11.0] - 2021-12-08
 
 ### Changed
