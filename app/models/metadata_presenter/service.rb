@@ -60,6 +60,12 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     end
   end
 
+  def checkanswers_page
+    @checkanswers_page ||= pages.find do |page|
+      page.type == 'page.checkanswers'
+    end
+  end
+
   def meta
     MetadataPresenter::Meta.new(configuration['meta'])
   end
