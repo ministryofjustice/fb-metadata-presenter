@@ -17,11 +17,11 @@ Rails.application.config.supported_components =
       content: %w(content)
     },
     multiplequestions: {
-      input: %w(text textarea number date radios checkboxes),
+      input: %w(text textarea number date radios checkboxes email),
       content: %w(content)
     },
     singlequestion: {
-      input: %w(text textarea number date radios checkboxes upload),
+      input: %w(text textarea number date radios checkboxes email upload),
       content: %w()
      }
   })

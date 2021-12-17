@@ -65,6 +65,12 @@
     "80420693-d6f2-4fce-a860-777ca774a6f5": {
       "_type": "flow.page",
       "next": {
+        "default": "adcb61c3-52b1-479b-be51-1bb610876d54"
+      }
+    },
+    "adcb61c3-52b1-479b-be51-1bb610876d54" : {
+      "_type": "flow.page",
+      "next": {
         "default": "2ef7d11e-0307-49e9-9fe2-345dc528dd66"
       }
     },
@@ -502,6 +508,31 @@
       ],
       "add_component": "content",
       "section_heading": "Chain of Command"
+    },
+    {
+      "_id": "page.email",
+      "url": "email",
+      "body": "Body section",
+      "_type": "page.singlequestion",
+      "_uuid": "adcb61c3-52b1-479b-be51-1bb610876d54",
+      "heading": "Email",
+      "components": [
+        {
+          "_id": "email-address_email_1",
+          "hint": "",
+          "name": "email-address_email_1",
+          "_type": "email",
+          "_uuid": "482cb2d0-fda7-4e5c-9591-96dcb546e181",
+          "label": "Email address",
+          "errors": {},
+          "collection": "components",
+          "validation": {
+            "required": true,
+            "email": true,
+            "max_length": 256
+          }
+        }
+      ]
     },
     {
       "_id": "page.dog-picture",
