@@ -2,5 +2,5 @@
   "_id": "error.email",
   "_type": "string.error",
   "description": "Input (email) is not a valid email",
-  "value": "Enter a valid email for %{control}"
+  "value": "Enter an email address in the correct format, like name@example.com"
 }
