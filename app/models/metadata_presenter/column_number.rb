@@ -9,6 +9,10 @@ module MetadataPresenter
 
     def number
       if service.flow_object(uuid).branch?
+        # Even though we are associating the column number to a specific flow object
+        # in the Coordinates model we do not use column_number + 1 as we are
+        # updating the position for the Spacers that exist for a branch which
+        # are always in the same column as the branch object itself.
         coordinates.set_branch_spacers_column(uuid, column_number)
       end
 

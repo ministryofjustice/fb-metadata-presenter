@@ -39,7 +39,7 @@ module MetadataPresenter
     end
 
     def set_branch_spacers_column(branch_uuid, column)
-      branch_spacers[branch_uuid].each do |position|
+      branch_spacers[branch_uuid].each do |_, position|
         position[:column] = column
       end
     end
@@ -50,7 +50,7 @@ module MetadataPresenter
     # to draw an arrow therefore we increment the row number from the branches
     # calculated starting row
     def set_branch_spacers_row(branch_uuid, starting_row)
-      branch_spacers[branch_uuid].each.with_index(starting_row) do |position, row|
+      branch_spacers[branch_uuid].each.with_index(starting_row) do |(_, position), row|
         position[:row] = row
       end
     end
@@ -64,12 +64,14 @@ module MetadataPresenter
       service.flow.keys.index_with { |_uuid| { row: nil, column: nil } }
     end
 
-    # This also takes into account the 'or' expressions which
+    # This also takes into account the 'OR' expressions which
     # need an additional line for an arrow.
     def setup_branch_spacers
       service.branches.each.with_object({}) do |branch, hash|
         destinations = exiting_destinations_from_branch(branch)
-        hash[branch.uuid] = destinations.map { { row: nil, column: nil } }
+        hash[branch.uuid] = destinations.index_with do |_uuid|
+          { row: nil, column: nil }
+        end
       end
     end
   end

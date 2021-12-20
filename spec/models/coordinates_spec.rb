@@ -113,20 +113,11 @@ RSpec.describe MetadataPresenter::Coordinates do
     let(:uuid) { 'a02f7073-ba5a-459d-b6b9-abe548c933a6' } # Branching Point 2
     let(:positions) { { uuid => { row: nil, column: 10 } } }
     let(:expected_branch_spacers) do
-      [
-        {
-          row: nil,
-          column: 10
-        },
-        {
-          row: nil,
-          column: 10
-        },
-        {
-          row: nil,
-          column: 10
-        }
-      ]
+      {
+        '1314e473-9096-4434-8526-03a7b4b7b132' => { row: nil, column: 10 },
+        'da2576f9-7ddd-4316-b24b-103708139214' => { row: nil, column: 10 },
+        '7742dfcc-db2e-480b-9071-294fbe1769a2' => { row: nil, column: 10 }
+      }
     end
     before do
       allow_any_instance_of(MetadataPresenter::Coordinates).to receive(
@@ -144,28 +135,13 @@ RSpec.describe MetadataPresenter::Coordinates do
     let(:uuid) { '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1' } # Branching Point 4
     let(:positions) { { uuid => { row: 0, column: 10 } } }
     let(:expected_branch_spacers) do
-      [
-        {
-          row: 0,
-          column: nil
-        },
-        {
-          row: 1,
-          column: nil
-        },
-        {
-          row: 2,
-          column: nil
-        },
-        {
-          row: 3,
-          column: nil
-        },
-        {
-          row: 4,
-          column: nil
-        }
-      ]
+      {
+        'ced77b4d-efb5-4d07-b38b-2be9e09a73df' => { row: 0, column: nil },
+        '46693db1-8995-4af0-a2d1-316140a5fb32' => { row: 1, column: nil },
+        'c01ae632-1533-4ee3-8828-a0c547200129' => { row: 2, column: nil },
+        'ad011e6b-5926-42f8-8b7c-668558850c52' => { row: 3, column: nil },
+        'da2576f9-7ddd-4316-b24b-103708139214' => { row: 4, column: nil }
+      }
     end
 
     it 'increments the row number for each consecutive branch spacer' do

@@ -77,16 +77,16 @@ RSpec.describe MetadataPresenter::RowNumber do
         end
         let(:branch_spacers) do
           {
-            branching_point_5 => [
-              { row: 0, column: 6 },
-              { row: 1, column: 6 },
-              { row: 2, column: 6 }
-            ],
-            uuid => [
-              { row: nil, column: 6 },
-              { row: nil, column: 6 },
-              { row: nil, column: 6 }
-            ]
+            branching_point_5 => {
+              '007f4f35-8236-40cc-866c-cc2c27c33949' => { row: 0, column: 6 },
+              '7742dfcc-db2e-480b-9071-294fbe1769a2' => { row: 1, column: 6 },
+              'da2576f9-7ddd-4316-b24b-103708139214' => { row: 2, column: 6 }
+            },
+            uuid => {
+              '1314e473-9096-4434-8526-03a7b4b7b132' => { row: nil, column: 6 },
+              'da2576f9-7ddd-4316-b24b-103708139214' => { row: nil, column: 6 },
+              '7742dfcc-db2e-480b-9071-294fbe1769a2' => { row: nil, column: 6 }
+            }
           }
         end
 
@@ -112,13 +112,13 @@ RSpec.describe MetadataPresenter::RowNumber do
         end
         let(:branch_spacers) do
           {
-            branching_point_4 => [
-              { row: 0, column: 9 },
-              { row: 1, column: 9 },
-              { row: 2, column: 9 },
-              { row: 3, column: 9 },
-              { row: 4, column: 9 }
-            ]
+            branching_point_4 => {
+              'ced77b4d-efb5-4d07-b38b-2be9e09a73df' => { row: 0, column: 9 },
+              '46693db1-8995-4af0-a2d1-316140a5fb32' => { row: 1, column: 9 },
+              'c01ae632-1533-4ee3-8828-a0c547200129' => { row: 2, column: 9 },
+              'ad011e6b-5926-42f8-8b7c-668558850c52' => { row: 3, column: 9 },
+              'da2576f9-7ddd-4316-b24b-103708139214' => { row: 4, column: 9 }
+            }
           }
         end
 
@@ -182,25 +182,54 @@ RSpec.describe MetadataPresenter::RowNumber do
       end
       let(:branch_spacers) do
         {
-          branching_point_5 => [
-            { row: 0, column: 6 },
-            { row: 1, column: 6 },
-            { row: 2, column: 6 }
-          ],
-          branching_point_2 => [
-            { row: 3, column: 6 },
-            { row: 4, column: 6 },
-            { row: 5, column: 6 }
-          ],
-          uuid => [
-            { row: nil, column: 6 },
-            { row: nil, column: 6 }
-          ]
+          branching_point_5 => {
+            '007f4f35-8236-40cc-866c-cc2c27c33949' => { row: 0, column: 6 },
+            '7742dfcc-db2e-480b-9071-294fbe1769a2' => { row: 1, column: 6 },
+            'da2576f9-7ddd-4316-b24b-103708139214' => { row: 2, column: 6 }
+          },
+          branching_point_2 => {
+            '1314e473-9096-4434-8526-03a7b4b7b132' => { row: 3, column: 6 },
+            'da2576f9-7ddd-4316-b24b-103708139214' => { row: 4, column: 6 },
+            '7742dfcc-db2e-480b-9071-294fbe1769a2' => { row: 5, column: 6 }
+          },
+          uuid => {
+            '79c18654-7ecb-43f9-bd7f-0b09eb9c075e' => { row: nil, column: 6 },
+            'da2576f9-7ddd-4316-b24b-103708139214' => { row: nil, column: 6 }
+          }
         }
       end
 
       it 'finds the next available row leaving space for branch destinations above' do
         expect(row_number.number).to eq(6)
+      end
+    end
+
+    context 'when the object is linked to in the previous column by a branch' do
+      let(:latest_metadata) { metadata_fixture(:branching_8) }
+      let(:uuid) { 'be130ac1-f33d-4845-807d-89b23b90d205' } # Page K
+      let(:branching_point_2) { 'ffadeb22-063b-4e4f-9502-bd753c706b1d' }
+      let(:page_f) { '957e523e-663f-4cc9-9e8a-36b15bcbcaec' }
+      let(:route) { double(row: 1) }
+      let(:current_row) { 1 }
+      let(:positions) do
+        {
+          page_f => { row: 0, column: 6 }, # Page F
+          branching_point_2 => { column: 6, row: 1 },
+          uuid => { column: 7, row: nil }
+        }
+      end
+      let(:branch_spacers) do
+        {
+          branching_point_2 => {
+            page_f => { row: 0, column: 6 },
+            uuid => { row: 2, column: 7 },
+            '3a584d15-6805-4a21-bc05-b61c3be47857' => { row: 3, column: 7 }
+          }
+        }
+      end
+
+      it 'returns the row that was previously calculated for object' do
+        expect(row_number.number).to eq(2)
       end
     end
 

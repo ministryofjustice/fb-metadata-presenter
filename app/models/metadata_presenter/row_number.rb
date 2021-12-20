@@ -28,7 +28,7 @@ module MetadataPresenter
 
         return ROW_ZERO if place_on_row_zero?
 
-        existing_row || [current_row, potential_row].compact.max
+        existing_row || [current_row, potential_row, branch_spacer_row].compact.max
       end
     end
 
@@ -36,13 +36,25 @@ module MetadataPresenter
       @existing_row ||= coordinates.uuid_row(uuid)
     end
 
+    # This looks for any branches in the current column and checks that there is
+    # enough space for the any branch conditionals before returning a row number.
     def potential_row
       return if branches_in_column.empty?
 
-      row_numbers = branches_in_column.map do |uuid, _|
-        coordinates.branch_spacers[uuid].map { |position| position[:row] }
+      row_numbers = branches_in_column.map do |branch_uuid, _|
+        coordinates.branch_spacers[branch_uuid].map { |_, position| position[:row] }
       end
       row_numbers.flatten.max + 1
+    end
+
+    # This looks at the previous column and finds any branches that link to the
+    # current object. If any are found it checks for rows numbers that relate
+    # to the current objects UUID in the branch spacers hash and defaults to
+    # returning the highest row number.
+    def branch_spacer_row
+      return if spacers_for_current_object.empty?
+
+      spacers_for_current_object.map { |position| position[:row] }.max
     end
 
     def first_row?
@@ -50,10 +62,31 @@ module MetadataPresenter
     end
 
     def branches_in_column
-      @branches_in_column ||= coordinates.positions_in_column(uuid_column).select do |key, position|
+      @branches_in_column ||= branches(uuid_column)
+    end
+
+    def branches_in_previous_column
+      @branches_in_previous_column ||= branches(uuid_column - 1)
+    end
+
+    def branches(column_number)
+      coordinates.positions_in_column(column_number).select do |key, position|
         next if uuid == key || position[:row].blank?
 
         service.flow_object(key).branch?
+      end
+    end
+
+    def spacers_for_current_object
+      @spacers_for_current_object ||= begin
+        spacer_positions = branches_in_previous_column.select do |key, _|
+          coordinates.branch_spacers[key]
+        end
+
+        current_object_spacers = spacer_positions.map do |branch_uuid, _|
+          coordinates.branch_spacers[branch_uuid][uuid]
+        end
+        current_object_spacers.compact
       end
     end
 

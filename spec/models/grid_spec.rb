@@ -119,6 +119,7 @@ RSpec.describe MetadataPresenter::Grid do
           let(:expected_column_7) do
             [
               MetadataPresenter::Spacer.new,
+              MetadataPresenter::Spacer.new,
               service.flow_object('be130ac1-f33d-4845-807d-89b23b90d205'), # Page K
               service.flow_object('3a584d15-6805-4a21-bc05-b61c3be47857') # Page G
             ]
@@ -127,11 +128,13 @@ RSpec.describe MetadataPresenter::Grid do
             [
               MetadataPresenter::Spacer.new,
               MetadataPresenter::Spacer.new,
+              MetadataPresenter::Spacer.new,
               service.flow_object('2c7deb33-19eb-4569-86d6-462e3d828d87') # Page L
             ]
           end
           let(:expected_column_9) do
             [
+              MetadataPresenter::Spacer.new,
               MetadataPresenter::Spacer.new,
               MetadataPresenter::Spacer.new,
               service.flow_object('d80a2225-63c3-4944-873f-504b61311a15') # Page M
