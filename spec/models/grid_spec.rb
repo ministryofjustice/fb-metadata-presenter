@@ -90,8 +90,8 @@ RSpec.describe MetadataPresenter::Grid do
           let(:latest_metadata) { metadata_fixture(:branching_7) }
           let(:expected_column_6) do
             [
-              MetadataPresenter::Spacer.new,
-              service.flow_object('ffadeb22-063b-4e4f-9502-bd753c706b1d') # Branching point 2
+              service.flow_object('13ecf9bd-5064-4cad-baf8-3dfa091928cb'), # Page F
+              service.flow_object('ffadeb22-063b-4e4f-9502-bd753c706b1d')  # Branching point 2
             ]
           end
 
@@ -112,13 +112,13 @@ RSpec.describe MetadataPresenter::Grid do
           let(:latest_metadata) { metadata_fixture(:branching_8) }
           let(:expected_column_6) do
             [
-              MetadataPresenter::Spacer.new,
-              service.flow_object('ffadeb22-063b-4e4f-9502-bd753c706b1d') # Branching Point 2
+              service.flow_object('13ecf9bd-5064-4cad-baf8-3dfa091928cb'), # Page F
+              service.flow_object('ffadeb22-063b-4e4f-9502-bd753c706b1d')  # Branching Point 2
             ]
           end
           let(:expected_column_7) do
             [
-              service.flow_object('13ecf9bd-5064-4cad-baf8-3dfa091928cb'), # Page F
+              MetadataPresenter::Spacer.new,
               service.flow_object('be130ac1-f33d-4845-807d-89b23b90d205'), # Page K
               service.flow_object('3a584d15-6805-4a21-bc05-b61c3be47857') # Page G
             ]
@@ -149,54 +149,38 @@ RSpec.describe MetadataPresenter::Grid do
 
         context 'branching fixture 9' do
           let(:latest_metadata) { metadata_fixture(:branching_9) }
-          let(:expected_column_11) do
+          let(:expected_column_9) do
             [
               service.flow_object('ced77b4d-efb5-4d07-b38b-2be9e09a73df'), # Page G
               service.flow_object('46693db1-8995-4af0-a2d1-316140a5fb32'), # Page L
-              service.flow_object('c01ae632-1533-4ee3-8828-a0c547200129'), # Page M
-              service.flow_object('ad011e6b-5926-42f8-8b7c-668558850c52')  # Page N
-            ]
-          end
-          let(:expected_column_12) do
-            [
-              service.flow_object('81510f97-b4c0-43f1-bdde-1cd5159093a9'), # Page H
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              service.flow_object('957f9475-6341-418d-a554-d00c5700e031') # Page O
+              service.flow_object('c01ae632-1533-4ee3-8828-a0c547200129') # Page M
             ]
           end
 
           it 'puts the pages in the correct columns with spacers' do
             flow_grid = grid.build
-            expect(flow_grid[11]).to eq(expected_column_11)
-            expect(flow_grid[12]).to eq(expected_column_12)
+            expect(flow_grid[9]).to eq(expected_column_9)
           end
         end
 
         context 'branching fixture 10 - visually stacking branch objects' do
           let(:latest_metadata) { metadata_fixture(:branching_10) }
+          let(:expected_column_4) do
+            [
+              service.flow_object('66c9e581-942e-4a9e-93ec-343208a2f510'), # Page C
+              service.flow_object('0dc31709-24de-4b2d-bd9d-490e9fec0366'), # Page I
+              service.flow_object('ad011e6b-5926-42f8-8b7c-668558850c52')  # Page N
+            ]
+          end
           let(:expected_column_6) do
             [
               service.flow_object('19e4204d-672b-467e-9b8d-3a5cf22d9765'), # Branching Point 5
               MetadataPresenter::Spacer.new,
               MetadataPresenter::Spacer.new,
-              service.flow_object('a02f7073-ba5a-459d-b6b9-abe548c933a6')  # Brancing Point 2
-            ]
-          end
-          let(:expected_column_7) do
-            [
-              service.flow_object('007f4f35-8236-40cc-866c-cc2c27c33949'), # Page E
+              service.flow_object('a02f7073-ba5a-459d-b6b9-abe548c933a6'), # Branching Point 2
               MetadataPresenter::Spacer.new,
               MetadataPresenter::Spacer.new,
-              service.flow_object('1314e473-9096-4434-8526-03a7b4b7b132') # Page K
-            ]
-          end
-          let(:expected_column_8) do
-            [
-              service.flow_object('7742dfcc-db2e-480b-9071-294fbe1769a2'), # Page F
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              service.flow_object('97533725-14d7-4838-9335-58ceaed9aa13') # Page Q
+              service.flow_object('4cad5db1-bf68-4f7f-baf6-b2d48b342705') # Branching Point3
             ]
           end
           let(:expected_column_9) do
@@ -214,63 +198,22 @@ RSpec.describe MetadataPresenter::Grid do
               service.flow_object('ced77b4d-efb5-4d07-b38b-2be9e09a73df'), # Page G
               service.flow_object('46693db1-8995-4af0-a2d1-316140a5fb32'), # Page L
               service.flow_object('c01ae632-1533-4ee3-8828-a0c547200129'), # Page M
-              service.flow_object('ad011e6b-5926-42f8-8b7c-668558850c52'), # Page N
+              MetadataPresenter::Spacer.new,
               MetadataPresenter::Spacer.new,
               service.flow_object('e047c5c8-457e-4f10-a4d8-1d927cd6b669') # Page S
             ]
           end
-          let(:expected_column_11) do
-            [
-              service.flow_object('81510f97-b4c0-43f1-bdde-1cd5159093a9'), # Page H
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              service.flow_object('957f9475-6341-418d-a554-d00c5700e031'), # Page O
-              MetadataPresenter::Spacer.new,
-              service.flow_object('c2fdf7fd-3dac-49b1-b2ba-316e0c1ae34a') # Page T
-            ]
-          end
-          let(:expected_column_12) do
-            [
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              service.flow_object('4cad5db1-bf68-4f7f-baf6-b2d48b342705'), # Branching Point3
-              MetadataPresenter::Spacer.new,
-              service.flow_object('d66b417a-7e86-4dfa-92d0-eb6fcf05cd74') # Page U
-            ]
-          end
-          let(:expected_column_13) do
-            [
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              service.flow_object('79c18654-7ecb-43f9-bd7f-0b09eb9c075e'), # Page P
-              MetadataPresenter::Spacer.new,
-              service.flow_object('8a7658f3-0d04-4261-9a67-7238006f0604') # Page V
-            ]
-          end
-          let(:expected_column_14) do
-            [
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
-              service.flow_object('86e5e281-1a31-459c-9e83-0e4de7f28afe') # Page W
-            ]
+          let(:expected_column_15) do
+            [service.flow_object('da2576f9-7ddd-4316-b24b-103708139214')] # Checkanswers
           end
 
           it 'inserts spacers in between branch objects in the same column as each other' do
             flow_grid = grid.build
+            expect(flow_grid[4]).to eq(expected_column_4)
             expect(flow_grid[6]).to eq(expected_column_6)
-            expect(flow_grid[7]).to eq(expected_column_7)
-            expect(flow_grid[8]).to eq(expected_column_8)
             expect(flow_grid[9]).to eq(expected_column_9)
             expect(flow_grid[10]).to eq(expected_column_10)
-            expect(flow_grid[11]).to eq(expected_column_11)
-            expect(flow_grid[12]).to eq(expected_column_12)
-            expect(flow_grid[13]).to eq(expected_column_13)
-            expect(flow_grid[14]).to eq(expected_column_14)
+            expect(flow_grid[15]).to eq(expected_column_15)
           end
         end
 
@@ -354,6 +297,92 @@ RSpec.describe MetadataPresenter::Grid do
 
           it 'inserts pointers as well as maintaining spacer object positions' do
             expect(detached_grid.build).to eq(expected_detached_flow)
+          end
+        end
+      end
+
+      context 'branching fixture 11 - pages linking backwards in the flow' do
+        let(:latest_metadata) { metadata_fixture(:branching_11) }
+
+        context 'main flow' do
+          let(:expected_grid) do
+            [
+              [service.flow_object('c73dcd99-ade5-4bc9-b5b6-56325fcb5a02')], # Start
+              [service.flow_object('1d60bef0-100a-4f3b-9e6f-1711e8adda7e')], # Page A
+              [service.flow_object('2ffc17b7-b14a-417f-baff-07adebd4f259')], # Page B
+              [service.flow_object('f55d002d-b2c1-4dcc-87b7-0da7cbc5c87c')], # Branching Point 1
+              [
+                service.flow_object('66c9e581-942e-4a9e-93ec-343208a2f510'), # Page C
+                service.flow_object('0dc31709-24de-4b2d-bd9d-490e9fec0366')  # Page I
+              ],
+              [
+                service.flow_object('e31718ad-0ba7-4b45-81aa-d3081f423022'), # Page D
+                service.flow_object('4e54ed97-d0df-462e-9a88-fd0f23ea62f5')  # Page J
+              ],
+              [
+                service.flow_object('007f4f35-8236-40cc-866c-cc2c27c33949'), # Page E
+                service.flow_object('a02f7073-ba5a-459d-b6b9-abe548c933a6')  # Branching Point 2
+              ],
+              [
+                service.flow_object('7742dfcc-db2e-480b-9071-294fbe1769a2'), # Page F
+                service.flow_object('1314e473-9096-4434-8526-03a7b4b7b132')  # Page K
+              ],
+              [service.flow_object('7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1')], # Branching Point 4
+              [
+                service.flow_object('ced77b4d-efb5-4d07-b38b-2be9e09a73df'), # Page G
+                service.flow_object('46693db1-8995-4af0-a2d1-316140a5fb32'), # Page L
+                service.flow_object('c01ae632-1533-4ee3-8828-a0c547200129'), # Page M
+                service.flow_object('ad011e6b-5926-42f8-8b7c-668558850c52')  # Page N
+              ],
+              [
+                service.flow_object('81510f97-b4c0-43f1-bdde-1cd5159093a9'), # Page H
+                MetadataPresenter::Spacer.new,
+                MetadataPresenter::Spacer.new,
+                service.flow_object('957f9475-6341-418d-a554-d00c5700e031')  # Page O
+              ],
+              [
+                MetadataPresenter::Spacer.new,
+                MetadataPresenter::Spacer.new,
+                MetadataPresenter::Spacer.new,
+                service.flow_object('4cad5db1-bf68-4f7f-baf6-b2d48b342705')  # Branching Point 3
+              ],
+              [
+                MetadataPresenter::Spacer.new,
+                MetadataPresenter::Spacer.new,
+                MetadataPresenter::Spacer.new,
+                service.flow_object('79c18654-7ecb-43f9-bd7f-0b09eb9c075e')  # Page P
+              ],
+              [service.flow_object('da2576f9-7ddd-4316-b24b-103708139214')], # Checkanswers
+              [service.flow_object('a88694da-8ded-44e7-bc89-e652c1a7f46d')]  # Confirmation
+            ]
+          end
+
+          it 'builds the correct main flow' do
+            expect(grid.build).to eq(expected_grid)
+          end
+        end
+
+        context 'with detached objects' do
+          subject(:grid) do
+            described_class.new(
+              service,
+              start_from: 'b89d0b03-a709-4cd6-84dd-bc441118b4b8', # Page Q
+              main_flow: main_flow
+            )
+          end
+          let(:main_flow) { described_class.new(service).flow_uuids }
+          let(:expected_grid) do
+            [
+              [service.flow_object('b89d0b03-a709-4cd6-84dd-bc441118b4b8')], # Page Q
+              [service.flow_object('645e3bb4-523b-448f-8734-7d7726d27529')], # Page R
+              [service.flow_object('a7fe1073-cc11-4aef-a533-d3060117534d')], # Page S
+              [MetadataPresenter::Pointer.new(uuid: '957f9475-6341-418d-a554-d00c5700e031')] # Page O
+              # a88694da-8ded-44e7-bc89-e652c1a7f46d confirmation
+            ]
+          end
+
+          it 'builds the correct detached flow ending in a pointer' do
+            expect(grid.build).to eq(expected_grid)
           end
         end
       end
@@ -504,26 +533,46 @@ RSpec.describe MetadataPresenter::Grid do
   end
 
   describe '#flow_uuids' do
-    branching_fixtures = %i[
-      branching
-      branching_2
-      branching_3
-      branching_4
-      branching_5
-      branching_6
-      branching_7
-      branching_8
-      branching_9
-      branching_10
-    ]
+    context 'fixtures with no detached objects' do
+      branching_fixtures = %i[
+        branching
+        branching_2
+        branching_3
+        branching_4
+        branching_5
+        branching_6
+        branching_7
+        branching_8
+        branching_9
+        branching_10
+      ]
 
-    branching_fixtures.each do |fixture|
-      context "with #{fixture} fixture" do
-        let(:latest_metadata) { metadata_fixture(fixture) }
-        let(:expected_uuids) { service.flow.keys }
+      branching_fixtures.each do |fixture|
+        context "with #{fixture} fixture" do
+          let(:latest_metadata) { metadata_fixture(fixture) }
+          let(:expected_uuids) { service.flow.keys }
 
-        it 'returns an array of all the flow uuids - nothing has been overwritten' do
-          expect(grid.flow_uuids).to match_array(expected_uuids)
+          it 'returns an array of all the flow uuids - nothing has been overwritten' do
+            expect(grid.flow_uuids).to match_array(expected_uuids)
+          end
+        end
+      end
+    end
+
+    context 'fixtures with detached objects' do
+      context 'branching fixture 11' do
+        let(:latest_metadata) { metadata_fixture(:branching_11) }
+        let(:expected_detached_uuids) do
+          [
+            'b89d0b03-a709-4cd6-84dd-bc441118b4b8', # Page Q
+            '645e3bb4-523b-448f-8734-7d7726d27529', # Page R
+            'a7fe1073-cc11-4aef-a533-d3060117534d'  # Page S
+          ]
+        end
+
+        it 'does not include the detached uuids' do
+          difference = service.flow.keys - grid.flow_uuids
+          expect(difference).to match_array(expected_detached_uuids)
         end
       end
     end

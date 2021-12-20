@@ -28,7 +28,7 @@ module MetadataPresenter
       @ordered = []
       @routes = []
       @traversed = []
-      @coordinates = MetadataPresenter::Coordinates.new(service.flow)
+      @coordinates = MetadataPresenter::Coordinates.new(service)
     end
 
     ROW_ZERO = 0
@@ -50,7 +50,9 @@ module MetadataPresenter
 
     def ordered_flow
       @ordered_flow ||=
-        build.flatten.reject { |obj| obj.is_a?(MetadataPresenter::Spacer) || obj.is_a?(MetadataPresenter::Warning) }
+        build.flatten.reject do |obj|
+          obj.is_a?(MetadataPresenter::Spacer) || obj.is_a?(MetadataPresenter::Warning)
+        end
     end
 
     def ordered_pages
@@ -136,7 +138,8 @@ module MetadataPresenter
           column_number = MetadataPresenter::ColumnNumber.new(
             uuid: uuid,
             new_column: new_column,
-            coordinates: @coordinates
+            coordinates: @coordinates,
+            service: service
           ).number
           @coordinates.set_column(uuid, column_number)
         end
@@ -189,7 +192,7 @@ module MetadataPresenter
 
     def add_by_coordinates
       service.flow.each_key do |uuid|
-        position = coordinates.position(uuid)
+        position = coordinates.positions[uuid]
         next if detached?(position)
 
         column = position[:column]
@@ -251,8 +254,9 @@ module MetadataPresenter
     end
 
     # Each branch has a certain number of exits that require their own line
-    # and arrow. Insert any spacers into the necessary row in the column after
-    # the one the branch is located in.
+    # and arrow. When there are 'OR' conditions we need to insert additional
+    # spacers into the necessary row in the column after the one the branch is
+    # located in.
     def insert_expression_spacers
       service.branches.each do |branch|
         next if coordinates.uuid_column(branch.uuid).nil?
@@ -302,7 +306,7 @@ module MetadataPresenter
     def checkanswers_detached?
       if service.checkanswers_page.present?
         uuid = service.checkanswers_page.uuid
-        position = coordinates.position(uuid)
+        position = coordinates.positions[uuid]
         detached?(position)
       end
     end
@@ -310,7 +314,7 @@ module MetadataPresenter
     def confirmation_detached?
       if service.confirmation_page.present?
         uuid = service.confirmation_page.uuid
-        position = coordinates.position(uuid)
+        position = coordinates.positions[uuid]
         detached?(position)
       end
     end

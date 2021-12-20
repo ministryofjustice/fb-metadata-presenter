@@ -1,4 +1,4 @@
-          {
+{
   "_id": "service.base",
   "flow": {
     "007f4f35-8236-40cc-866c-cc2c27c33949": {
@@ -39,18 +39,18 @@
     },
     "4cad5db1-bf68-4f7f-baf6-b2d48b342705": {
       "next": {
-        "default": "da2576f9-7ddd-4316-b24b-103708139214",
+        "default": "957f9475-6341-418d-a554-d00c5700e031",
         "conditionals": [
           {
             "next": "79c18654-7ecb-43f9-bd7f-0b09eb9c075e",
             "_type": "if",
-            "_uuid": "fb7ecfea-05a6-4d52-a2a7-f04a2de75f56",
+            "_uuid": "7b69e2fb-a18b-405e-b47e-75970e6f5e4b",
             "expressions": [
               {
-                "page": "2ffc17b7-b14a-417f-baff-07adebd4f259",
-                "field": "4132af6c-bd4d-4734-956b-05ec414c6dcc",
+                "page": "b89d0b03-a709-4cd6-84dd-bc441118b4b8",
+                "field": "683ce808-ae62-428f-bc09-ea6881ac0cad",
                 "operator": "is",
-                "component": "a5de16d3-5611-4fe9-ab89-d2c50858d7db"
+                "component": "3b927c64-6708-4c76-b8f6-4bc0d61224c3"
               }
             ]
           }
@@ -62,6 +62,12 @@
     "4e54ed97-d0df-462e-9a88-fd0f23ea62f5": {
       "next": {
         "default": "a02f7073-ba5a-459d-b6b9-abe548c933a6"
+      },
+      "_type": "flow.page"
+    },
+    "645e3bb4-523b-448f-8734-7d7726d27529": {
+      "next": {
+        "default": "a7fe1073-cc11-4aef-a533-d3060117534d"
       },
       "_type": "flow.page"
     },
@@ -85,12 +91,12 @@
     },
     "7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1": {
       "next": {
-        "default": "da2576f9-7ddd-4316-b24b-103708139214",
+        "default": "1d60bef0-100a-4f3b-9e6f-1711e8adda7e",
         "conditionals": [
           {
             "next": "ced77b4d-efb5-4d07-b38b-2be9e09a73df",
             "_type": "if",
-            "_uuid": "1892ef92-ad4f-4a81-a3ad-ed7fa50c9267",
+            "_uuid": "db2676e0-3cef-4943-af00-3ddbece930d2",
             "expressions": [
               {
                 "page": "7742dfcc-db2e-480b-9071-294fbe1769a2",
@@ -103,7 +109,7 @@
           {
             "next": "46693db1-8995-4af0-a2d1-316140a5fb32",
             "_type": "if",
-            "_uuid": "ba60fb61-9258-461e-964c-a9dfe9722f46",
+            "_uuid": "0b99ff9b-e9db-47ff-acf9-c15b00113a13",
             "expressions": [
               {
                 "page": "7742dfcc-db2e-480b-9071-294fbe1769a2",
@@ -116,7 +122,7 @@
           {
             "next": "c01ae632-1533-4ee3-8828-a0c547200129",
             "_type": "if",
-            "_uuid": "5057d39b-99e8-4252-9637-b88a2d8a8d01",
+            "_uuid": "e3f94a86-a371-47fb-b866-1909b055316d",
             "expressions": [
               {
                 "page": "7742dfcc-db2e-480b-9071-294fbe1769a2",
@@ -129,7 +135,7 @@
           {
             "next": "ad011e6b-5926-42f8-8b7c-668558850c52",
             "_type": "if",
-            "_uuid": "9df31c8c-dbbc-40b6-bf78-c282f8ab0375",
+            "_uuid": "7c013bb4-abc7-4270-a0c2-fd70715839b6",
             "expressions": [
               {
                 "page": "7742dfcc-db2e-480b-9071-294fbe1769a2",
@@ -191,6 +197,12 @@
       "_type": "flow.branch",
       "title": "Branching point 2"
     },
+    "a7fe1073-cc11-4aef-a533-d3060117534d": {
+      "next": {
+        "default": "957f9475-6341-418d-a554-d00c5700e031"
+      },
+      "_type": "flow.page"
+    },
     "a88694da-8ded-44e7-bc89-e652c1a7f46d": {
       "next": {
         "default": ""
@@ -200,6 +212,12 @@
     "ad011e6b-5926-42f8-8b7c-668558850c52": {
       "next": {
         "default": "957f9475-6341-418d-a554-d00c5700e031"
+      },
+      "_type": "flow.page"
+    },
+    "b89d0b03-a709-4cd6-84dd-bc441118b4b8": {
+      "next": {
+        "default": "645e3bb4-523b-448f-8734-7d7726d27529"
       },
       "_type": "flow.page"
     },
@@ -235,12 +253,12 @@
     },
     "f55d002d-b2c1-4dcc-87b7-0da7cbc5c87c": {
       "next": {
-        "default": "ad011e6b-5926-42f8-8b7c-668558850c52",
+        "default": "e31718ad-0ba7-4b45-81aa-d3081f423022",
         "conditionals": [
           {
             "next": "66c9e581-942e-4a9e-93ec-343208a2f510",
             "_type": "if",
-            "_uuid": "28731efd-a866-49d7-8526-7c0138ceaead",
+            "_uuid": "9149bc4c-9773-454f-b9b6-5524b91102ca",
             "expressions": [
               {
                 "page": "2ffc17b7-b14a-417f-baff-07adebd4f259",
@@ -253,7 +271,7 @@
           {
             "next": "0dc31709-24de-4b2d-bd9d-490e9fec0366",
             "_type": "if",
-            "_uuid": "86938295-7326-47b8-ab03-da3940aae43c",
+            "_uuid": "6c4dd853-671d-4f62-845e-6471bd102e36",
             "expressions": [
               {
                 "page": "2ffc17b7-b14a-417f-baff-07adebd4f259",
@@ -281,8 +299,8 @@
       "before_you_start": "###Before you start\r\nYou can also register by post.\r\n\r\nThe online service is also available in Welsh (Cymraeg).\r\n\r\nYou cannot register for this service if you’re in the UK illegally."
     },
     {
-      "_id": "page.thisisareallylongnamethatshouldcauseavisualissue",
-      "url": "thisisareallylongnamethatshouldcauseavisualissue",
+      "_id": "page.page-a",
+      "url": "page-a",
       "body": "Body section",
       "lede": "",
       "_type": "page.singlequestion",
@@ -290,9 +308,9 @@
       "heading": "",
       "components": [
         {
-          "_id": "thisisareallylongnamethatshouldcauseavisualissue_text_1",
+          "_id": "page-a_text_1",
           "hint": "",
-          "name": "thisisareallylongnamethatshouldcauseavisualissue_text_1",
+          "name": "page-a_text_1",
           "_type": "text",
           "_uuid": "bcedde64-8996-4911-9426-fafaf91008e0",
           "label": "Page A",
@@ -325,7 +343,7 @@
             {
               "_id": "page-b_checkboxes_1_item_1",
               "hint": "",
-              "name": "page-b_checkboxes_1",
+              "name": "checkboxab_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "4fb4f5ac-8337-48f6-87ee-2062f4ce1b4d",
               "label": "Option 1",
@@ -410,7 +428,7 @@
     },
     {
       "_id": "page.page-d",
-      "url": "patha",
+      "url": "page-d",
       "body": "Body section",
       "lede": "",
       "_type": "page.singlequestion",
@@ -642,7 +660,7 @@
         {
           "_id": "page-m_text_1",
           "hint": "",
-          "name": "page-m_text_1",
+          "name": "dpage-m_text_1",
           "_type": "text",
           "_uuid": "2ea3d2ac-5cca-41ad-b520-da10465f6fac",
           "label": "Page M",
@@ -692,9 +710,9 @@
       "heading": "",
       "components": [
         {
-          "_id": "destinationb_checkboxes_1",
+          "_id": "page-i_checkboxes_1",
           "hint": "",
-          "name": "destinationb_checkboxes_1",
+          "name": "page-i_checkboxes_1",
           "_type": "checkboxes",
           "_uuid": "8922af0c-2c37-43dd-a142-9f3386300324",
           "items": [
@@ -861,6 +879,118 @@
       "section_heading": ""
     },
     {
+      "_id": "page.page-q",
+      "url": "page-q",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "b89d0b03-a709-4cd6-84dd-bc441118b4b8",
+      "heading": "",
+      "components": [
+        {
+          "_id": "page-q_checkboxes_1",
+          "hint": "",
+          "name": "page-q_checkboxes_1",
+          "_type": "checkboxes",
+          "_uuid": "3b927c64-6708-4c76-b8f6-4bc0d61224c3",
+          "items": [
+            {
+              "_id": "page-q_checkboxes_1_item_1",
+              "hint": "",
+              "name": "page-q_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "683ce808-ae62-428f-bc09-ea6881ac0cad",
+              "label": "Option A",
+              "value": "value-1",
+              "errors": {
+              },
+              "legend": "Question",
+              "collection": "components",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "_id": "page-q_checkboxes_1_item_2",
+              "hint": "",
+              "name": "page-q_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "79e6bf61-ff86-47ca-ac3a-54e01108a5a4",
+              "label": "Option B",
+              "value": "value-2",
+              "errors": {
+              },
+              "legend": "Question",
+              "collection": "components",
+              "validation": {
+                "required": true
+              }
+            }
+          ],
+          "errors": {
+          },
+          "legend": "Page Q",
+          "collection": "components",
+          "validation": {
+            "required": true
+          }
+        }
+      ],
+      "section_heading": ""
+    },
+    {
+      "_id": "page.page-r",
+      "url": "page-r",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "645e3bb4-523b-448f-8734-7d7726d27529",
+      "heading": "",
+      "components": [
+        {
+          "_id": "page-r_text_1",
+          "hint": "",
+          "name": "page-r_text_1",
+          "_type": "text",
+          "_uuid": "5e1a859d-5919-40e7-8250-02987df2594f",
+          "label": "Page R",
+          "errors": {
+          },
+          "collection": "components",
+          "validation": {
+            "required": true
+          }
+        }
+      ],
+      "section_heading": ""
+    },
+    {
+      "_id": "page.page-s",
+      "url": "page-s",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "a7fe1073-cc11-4aef-a533-d3060117534d",
+      "heading": "",
+      "components": [
+        {
+          "_id": "page-s_text_1",
+          "hint": "",
+          "name": "page-s_text_1",
+          "_type": "text",
+          "_uuid": "68a9b123-23e3-42ff-a6d3-991d6719353d",
+          "label": "Page S",
+          "errors": {
+          },
+          "collection": "components",
+          "validation": {
+            "required": true
+          }
+        }
+      ],
+      "section_heading": ""
+    },
+    {
       "_id": "page.page-o",
       "url": "page-o",
       "body": "Body section",
@@ -939,11 +1069,11 @@
     }
   ],
   "locale": "en",
-  "created_at": "2021-12-01T21:31:15Z",
+  "created_at": "2021-12-14T16:01:54Z",
   "created_by": "30b04817-8997-43ac-8f34-2ad817a966ea",
-  "service_id": "fa972d54-d7d8-4131-b0b6-976fe24a2c3b",
-  "version_id": "74812b86-ecef-4b97-b083-4f03e9270f5e",
-  "service_name": "Branching Fixture 9",
+  "service_id": "d613f790-c260-4a35-aa12-fa4d68795030",
+  "version_id": "b151e936-a190-4bc6-bcb0-cf49cf72d98b",
+  "service_name": "Branching Fixture 11",
   "configuration": {
     "meta": {
       "_id": "config.meta",

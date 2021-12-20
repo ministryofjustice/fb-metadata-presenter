@@ -1,11 +1,14 @@
 module MetadataPresenter
   class Coordinates
-    def initialize(flow)
-      @flow = flow
+    include BranchDestinations
+
+    def initialize(service)
+      @service = service
       @positions = setup_positions
+      @branch_spacers = setup_branch_spacers
     end
 
-    attr_reader :positions
+    attr_reader :positions, :branch_spacers
 
     def set_column(uuid, number)
       positions[uuid][:column] = number
@@ -31,21 +34,43 @@ module MetadataPresenter
       end
     end
 
-    def position(uuid)
-      positions[uuid]
-    end
-
     def positions_in_column(column_number)
       positions.select { |_, position| position[:column] == column_number }
     end
 
+    def set_branch_spacers_column(branch_uuid, column)
+      branch_spacers[branch_uuid].each do |position|
+        position[:column] = column
+      end
+    end
+
+    # The first conditional will always attempt to draw an arrow on the same row
+    # as the branch object.
+    # Each following conditional needs to have a spacers in order for the frontend
+    # to draw an arrow therefore we increment the row number from the branches
+    # calculated starting row
+    def set_branch_spacers_row(branch_uuid, starting_row)
+      branch_spacers[branch_uuid].each.with_index(starting_row) do |position, row|
+        position[:row] = row
+      end
+    end
+
     private
 
-    attr_reader :flow
-    attr_writer :positions
+    attr_reader :service
+    attr_writer :positions, :branch_spacers
 
     def setup_positions
-      flow.keys.index_with { |_uuid| { row: nil, column: nil } }
+      service.flow.keys.index_with { |_uuid| { row: nil, column: nil } }
+    end
+
+    # This also takes into account the 'or' expressions which
+    # need an additional line for an arrow.
+    def setup_branch_spacers
+      service.branches.each.with_object({}) do |branch, hash|
+        destinations = exiting_destinations_from_branch(branch)
+        hash[branch.uuid] = destinations.map { { row: nil, column: nil } }
+      end
     end
   end
 end

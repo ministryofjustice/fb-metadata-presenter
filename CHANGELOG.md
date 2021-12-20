@@ -7,6 +7,20 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.14.0] - 2021-12-20
+
+### Added
+
+- Hold the position information for all branch object conditionals
+
+### Changed
+
+- Do not force objects to always use the latest column number
+
+### Fixed
+
+- Allow the linking to objects behind in the flow without breaking it visually
+
 ## [2.13.0] - 2021-12-15
 
 ### Changed
