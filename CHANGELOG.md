@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.14.1] - 2021-12-20
+
+### Added
+
+- Adjust row numbers for objects to match their corresponding Spacer row from the directly previous column
+
 ## [2.14.0] - 2021-12-20
 
 ### Added
