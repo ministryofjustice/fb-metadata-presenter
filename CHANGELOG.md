@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.0] - 2021-12-30
+
+### Changed
+
+- Use Ruby 2.7.5
+
 ## [2.14.1] - 2021-12-20
 
 ### Added
