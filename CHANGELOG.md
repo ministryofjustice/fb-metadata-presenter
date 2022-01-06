@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.1] - 2021-01-07
+
+### Added
+
+- Added a page warning model to check whether the submitting pages will detached from the main flow
+
 ## [2.15.0] - 2021-12-30
 
 ### Changed
