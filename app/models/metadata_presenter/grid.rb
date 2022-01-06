@@ -67,6 +67,10 @@ module MetadataPresenter
       ordered_pages.map(&:uuid)
     end
 
+    def show_warning?
+      checkanswers_warning.show_warning? || confirmation_warning.show_warning?
+    end
+
     private
 
     attr_reader :service, :main_flow
@@ -277,46 +281,21 @@ module MetadataPresenter
     # Include a warning if a service does not have a CYA or Confirmation page in the
     # main flow. The warning should always be in the first row, last column.
     def insert_warning
-      if cya_and_confirmation_pages_not_in_service? ||
-          cya_and_confirmation_pages_detached?
-        @ordered.append([MetadataPresenter::Warning.new])
-      end
+      @ordered.append([MetadataPresenter::Warning.new]) if show_warning?
     end
 
-    def cya_and_confirmation_pages_not_in_service?
-      (checkanswers_not_in_service? && confirmation_not_in_service?) ||
-        checkanswers_not_in_service? ||
-        confirmation_not_in_service?
+    def checkanswers_warning
+      MetadataPresenter::PageWarning.new(
+        page: service.checkanswers_page,
+        main_flow_uuids: flow_uuids
+      )
     end
 
-    def checkanswers_not_in_service?
-      service.checkanswers_page.blank?
-    end
-
-    def confirmation_not_in_service?
-      service.confirmation_page.blank?
-    end
-
-    def cya_and_confirmation_pages_detached?
-      (checkanswers_detached? && confirmation_detached?) ||
-        checkanswers_detached? ||
-        confirmation_detached?
-    end
-
-    def checkanswers_detached?
-      if service.checkanswers_page.present?
-        uuid = service.checkanswers_page.uuid
-        position = coordinates.positions[uuid]
-        detached?(position)
-      end
-    end
-
-    def confirmation_detached?
-      if service.confirmation_page.present?
-        uuid = service.confirmation_page.uuid
-        position = coordinates.positions[uuid]
-        detached?(position)
-      end
+    def confirmation_warning
+      MetadataPresenter::PageWarning.new(
+        page: service.confirmation_page,
+        main_flow_uuids: flow_uuids
+      )
     end
 
     # Any destinations exiting the branch that have not already been traversed.
