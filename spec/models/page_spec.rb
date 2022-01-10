@@ -112,7 +112,7 @@ RSpec.describe MetadataPresenter::Page do
       subject(:page) { described_class.new(_type: 'page.multiplequestions') }
 
       it 'returns the correct input components' do
-        expect(page.supported_input_components).to match_array(%w[text textarea number date radios checkboxes])
+        expect(page.supported_input_components).to match_array(%w[text textarea number date radios checkboxes email])
       end
     end
 
