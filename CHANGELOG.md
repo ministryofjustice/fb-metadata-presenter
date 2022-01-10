@@ -7,7 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [2.15.1] - 2021-01-07
+## [2.15.2] - 2022-01-10
+
+### Added
+
+- Added email component
+
+## [2.15.1] - 2022-01-07
 
 ### Added
 
