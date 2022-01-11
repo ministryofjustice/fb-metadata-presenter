@@ -46,9 +46,6 @@
       "$ref": "definition.field"
     },
     {
-      "$ref": "validations#/definitions/string_bundle"
-    },
-    {
       "$ref": "definition.width_class.input"
     }
   ]

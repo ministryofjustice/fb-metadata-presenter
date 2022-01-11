@@ -1,0 +1,12 @@
+{
+  "_id": "component.email",
+  "_type": "email",
+  "errors": {},
+  "label": "Question",
+  "hint": "",
+  "name": "component-name",
+  "validation": {
+    "email": true,
+    "required": true
+  }
+}
