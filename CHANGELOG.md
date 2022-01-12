@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.3] - 2022-01-12
+
+### Added
+
+- Add length validation to email component
+
 ## [2.15.2] - 2022-01-10
 
 ### Added
