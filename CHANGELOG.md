@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.4] - 2022-01-13
+
+### Changed
+
+- Change order of components on multiple question page
+- Change default heading for email component
+
 ## [2.15.3] - 2022-01-12
 
 ### Added
