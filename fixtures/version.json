@@ -11,10 +11,10 @@
     "9e1ba77f-f1e5-42f4-b090-437aa9af7f73": {
       "_type": "flow.page",
       "next": {
-        "default": "df1ba645-f748-46d0-ad75-f34112653e37"
+        "default": "adcb61c3-52b1-479b-be51-1bb610876d54"
       }
     },
-    "df1ba645-f748-46d0-ad75-f34112653e37": {
+    "adcb61c3-52b1-479b-be51-1bb610876d54": {
       "_type": "flow.page",
       "next": {
         "default": "4b8c6bf3-878a-4446-9198-48351b3e2185"
@@ -63,12 +63,6 @@
       }
     },
     "80420693-d6f2-4fce-a860-777ca774a6f5": {
-      "_type": "flow.page",
-      "next": {
-        "default": "adcb61c3-52b1-479b-be51-1bb610876d54"
-      }
-    },
-    "adcb61c3-52b1-479b-be51-1bb610876d54" : {
       "_type": "flow.page",
       "next": {
         "default": "2ef7d11e-0307-49e9-9fe2-345dc528dd66"
@@ -133,35 +127,23 @@
       "_id": "page.email-address",
       "url": "email-address",
       "body": "Body section",
-      "lede": "",
       "_type": "page.singlequestion",
-      "_uuid": "df1ba645-f748-46d0-ad75-f34112653e37",
+      "_uuid": "adcb61c3-52b1-479b-be51-1bb610876d54",
       "heading": "Question",
       "components": [
         {
-          "_id": "email-address_text_1",
+          "_id": "email-address_email_1",
           "hint": "",
-          "name": "email-address_text_1",
-          "_type": "text",
-          "_uuid": "f27e5788-e784-4bfd-8b21-2fab8ce95abb",
+          "name": "email-address_email_1",
+          "_type": "email",
+          "_uuid": "482cb2d0-fda7-4e5c-9591-96dcb546e181",
           "label": "Email address",
-          "errors": {
-            "format": {},
-            "required": {
-              "any": "Enter an email address"
-            },
-            "max_length": {
-              "any": "%{control} is too long."
-            },
-            "min_length": {
-              "any": "%{control} is too short."
-            }
-          },
+          "errors": {},
           "collection": "components",
           "validation": {
             "required": true,
-            "max_length": 30,
-            "min_length": 2
+            "email": true,
+            "max_length": 256
           }
         }
       ]
@@ -182,7 +164,18 @@
           "_type": "text",
           "_uuid": "5ad372fa-ed35-477f-b471-4d444f991210",
           "label": "Parent name",
-          "errors": {},
+          "errors": {
+            "format": {},
+            "required": {
+              "any": "Enter a parent name"
+            },
+            "max_length": {
+              "any": "%{control} is too long."
+            },
+            "min_length": {
+              "any": "%{control} is too short."
+            }
+          },
           "collection": "components",
           "validation": {
             "required": false,
@@ -508,31 +501,6 @@
       ],
       "add_component": "content",
       "section_heading": "Chain of Command"
-    },
-    {
-      "_id": "page.email",
-      "url": "email",
-      "body": "Body section",
-      "_type": "page.singlequestion",
-      "_uuid": "adcb61c3-52b1-479b-be51-1bb610876d54",
-      "heading": "Email",
-      "components": [
-        {
-          "_id": "email-address_email_1",
-          "hint": "",
-          "name": "email-address_email_1",
-          "_type": "email",
-          "_uuid": "482cb2d0-fda7-4e5c-9591-96dcb546e181",
-          "label": "Email address",
-          "errors": {},
-          "collection": "components",
-          "validation": {
-            "required": true,
-            "email": true,
-            "max_length": 256
-          }
-        }
-      ]
     },
     {
       "_id": "page.dog-picture",

@@ -6,7 +6,7 @@ RSpec.describe MetadataPresenter::EmailValidator do
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
 
   describe '#valid?' do
-    let(:page) { service.find_page_by_url('/email') }
+    let(:page) { service.find_page_by_url('/email-address') }
 
     before do
       validator.valid?
@@ -58,7 +58,7 @@ RSpec.describe MetadataPresenter::EmailValidator do
         'empress wu@outlook.com'
       ].each do |invalid_answer|
         let(:answers) { { 'email-address_email_1' => invalid_answer } }
-        let(:page) { service.find_page_by_url('/email') }
+        let(:page) { service.find_page_by_url('/email-address') }
 
         it "returns invalid for '#{invalid_answer}'" do
           expect(validator).to_not be_valid

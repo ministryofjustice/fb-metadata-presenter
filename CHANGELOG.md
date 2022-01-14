@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.6] - 2022-01-14
+
+### Changed
+
+- Replace text component with email component in version fixture.
+
 ## [2.15.5] - 2022-01-14
 
 ### Fixed
