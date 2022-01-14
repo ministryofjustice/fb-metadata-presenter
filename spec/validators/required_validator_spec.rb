@@ -28,8 +28,8 @@ RSpec.describe MetadataPresenter::RequiredValidator do
 
       context 'when there is custom error message' do
         context 'when there is "any"' do
-          let(:page) { service.find_page_by_url('/email-address') }
-          let(:answers) { { 'email-address_text_1' => '' } }
+          let(:page) { service.find_page_by_url('/parent-name') }
+          let(:answers) { { 'parent-name_text_1' => '' } }
 
           it 'be invalid' do
             expect(validator).to_not be_valid
@@ -37,7 +37,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
 
           it 'set default error message on page' do
             expect(page_answers.errors.full_messages).to eq(
-              ['Enter an email address']
+              ['Enter a parent name']
             )
           end
         end

@@ -37,14 +37,14 @@ RSpec.describe MetadataPresenter::MaxLengthValidator do
       end
 
       context 'when there is a custom error message' do
-        let(:page) { service.find_page_by_url('/email-address') }
+        let(:page) { service.find_page_by_url('/parent-name') }
         let(:answers) do
-          { 'email-address_text_1' => 'gandalf.mithrandir1239@middleearth.gov.uk' }
+          { 'parent-name_text_1' => 'Albus Percival Wulfric Brian Dumbledore' }
         end
 
         it 'uses the custom error message' do
           expect(page_answers.errors.full_messages).to eq(
-            ['Email address is too long.']
+            ['Parent name is too long.']
           )
         end
       end

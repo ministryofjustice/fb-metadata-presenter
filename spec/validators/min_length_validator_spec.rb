@@ -37,14 +37,14 @@ RSpec.describe MetadataPresenter::MinLengthValidator do
       end
 
       context 'when there is a custom error message' do
-        let(:page) { service.find_page_by_url('/email-address') }
+        let(:page) { service.find_page_by_url('/parent-name') }
         let(:answers) do
-          { 'email-address_text_1' => 'g' }
+          { 'parent-name_text_1' => 'g' }
         end
 
         it 'uses the custom error message' do
           expect(page_answers.errors.full_messages).to eq(
-            ['Email address is too short.']
+            ['Parent name is too short.']
           )
         end
       end

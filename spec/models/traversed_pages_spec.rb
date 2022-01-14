@@ -55,7 +55,6 @@ RSpec.describe MetadataPresenter::TraversedPages do
             'burgers',
             'star-wars-knowledge',
             'how-many-lights',
-            'email',
             'dog-picture'
           ]
         )
