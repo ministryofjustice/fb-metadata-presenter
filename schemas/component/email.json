@@ -11,13 +11,10 @@
   },
   "allOf": [
     {
-      "$ref": "http://gov.uk/schema/v1.0.0/definition/field"
+      "$ref":  "definition.field"
     },
     {
-      "$ref": "http://gov.uk/schema/v1.0.0/definition/widthclass/input"
+      "$ref": "definition.width_class.input"
     }
-  ],
-  "validation": {
-    "format": "email"
-  }
+  ]
 }
