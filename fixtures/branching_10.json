@@ -358,8 +358,8 @@
       "before_you_start": "###Before you start\r\nYou can also register by post.\r\n\r\nThe online service is also available in Welsh (Cymraeg).\r\n\r\nYou cannot register for this service if you’re in the UK illegally."
     },
     {
-      "_id": "page.thisisareallylongnamethatshouldcauseavisualissue",
-      "url": "thisisareallylongnamethatshouldcauseavisualissue",
+      "_id": "page.page-a",
+      "url": "page-a",
       "body": "Body section",
       "lede": "",
       "_type": "page.singlequestion",
@@ -367,9 +367,9 @@
       "heading": "",
       "components": [
         {
-          "_id": "thisisareallylongnamethatshouldcauseavisualissue_text_1",
+          "_id": "page-a_text_1",
           "hint": "",
-          "name": "thisisareallylongnamethatshouldcauseavisualissue_text_1",
+          "name": "page-a_text_1",
           "_type": "text",
           "_uuid": "bcedde64-8996-4911-9426-fafaf91008e0",
           "label": "Page A",

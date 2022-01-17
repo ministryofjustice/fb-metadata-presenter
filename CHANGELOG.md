@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.7] - 2022-01-17
+
+### Fixed
+
+- Fix page IDs and URLs in one of the branching fixtures
+
 ## [2.15.6] - 2022-01-14
 
 ### Changed
