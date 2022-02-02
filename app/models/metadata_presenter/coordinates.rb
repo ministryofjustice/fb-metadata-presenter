@@ -39,9 +39,11 @@ module MetadataPresenter
     end
 
     def set_branch_spacers_column(branch_uuid, column)
-      branch_spacers[branch_uuid].each do |_, position|
+      branch_spacers[branch_uuid].each do |position|
         position[:column] = column
       end
+    rescue StandardError
+      byebug
     end
 
     # The first conditional will always attempt to draw an arrow on the same row
@@ -50,7 +52,7 @@ module MetadataPresenter
     # to draw an arrow therefore we increment the row number from the branches
     # calculated starting row
     def set_branch_spacers_row(branch_uuid, starting_row)
-      branch_spacers[branch_uuid].each.with_index(starting_row) do |(_, position), row|
+      branch_spacers[branch_uuid].each.with_index(starting_row) do |position, row|
         position[:row] = row
       end
     end
@@ -69,9 +71,8 @@ module MetadataPresenter
     def setup_branch_spacers
       service.branches.each.with_object({}) do |branch, hash|
         destinations = exiting_destinations_from_branch(branch)
-        hash[branch.uuid] = destinations.index_with do |_uuid|
-          { row: nil, column: nil }
-        end
+        # byebug if branch.uuid == '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1'
+        hash[branch.uuid] = destinations.map { |uuid| { uuid: uuid, row: nil, column: nil } }
       end
     end
   end
