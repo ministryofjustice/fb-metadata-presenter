@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.8] - 2022-02-02
+
+### Added
+
+- Update Branching 10 fixture to include 'is answered' branch.
+
 ## [2.15.7] - 2022-01-17
 
 ### Fixed
