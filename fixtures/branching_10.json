@@ -120,7 +120,7 @@
     },
     "79c18654-7ecb-43f9-bd7f-0b09eb9c075e": {
       "next": {
-        "default": "da2576f9-7ddd-4316-b24b-103708139214"
+        "default": "1314e473-9096-4434-8526-03a7b4b7b132"
       },
       "_type": "flow.page"
     },
@@ -220,27 +220,14 @@
         "default": "7742dfcc-db2e-480b-9071-294fbe1769a2",
         "conditionals": [
           {
-            "next": "1314e473-9096-4434-8526-03a7b4b7b132",
+            "next": "da2576f9-7ddd-4316-b24b-103708139214",
             "_type": "if",
-            "_uuid": "0bdc8fde-be62-4945-8496-854e867a665d",
+            "_uuid": "cd28e391-bdc6-47ce-8a07-24a4642432dc",
             "expressions": [
               {
                 "page": "4e54ed97-d0df-462e-9a88-fd0f23ea62f5",
                 "field": "3b56e4a0-a850-4e50-a394-95a895465e26",
-                "operator": "is",
-                "component": "3c2c14a4-75db-459a-b11e-34e1972a45f2"
-              }
-            ]
-          },
-          {
-            "next": "da2576f9-7ddd-4316-b24b-103708139214",
-            "_type": "if",
-            "_uuid": "4ad9f7e9-5444-41d8-b7f8-17d2108ed27a",
-            "expressions": [
-              {
-                "page": "4e54ed97-d0df-462e-9a88-fd0f23ea62f5",
-                "field": "951ca999-8616-4626-adb2-d604f27262a5",
-                "operator": "is",
+                "operator": "is_answered",
                 "component": "3c2c14a4-75db-459a-b11e-34e1972a45f2"
               }
             ]
@@ -405,7 +392,7 @@
               "name": "page-b_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "4fb4f5ac-8337-48f6-87ee-2062f4ce1b4d",
-              "label": "Option 1",
+              "label": "Page B Option 1",
               "value": "value-1",
               "errors": {
               },
@@ -421,7 +408,7 @@
               "name": "page-b_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "c074548d-22a7-4339-9bfe-383741b04c79",
-              "label": "Option 2",
+              "label": "Page B Option 2",
               "value": "value-2",
               "errors": {
               },
@@ -437,7 +424,7 @@
               "name": "page-b_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "4132af6c-bd4d-4734-956b-05ec414c6dcc",
-              "label": "Option 3",
+              "label": "Page B Option 3",
               "value": "value-3",
               "errors": {
               },
@@ -559,7 +546,7 @@
               "name": "page-f_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "56febb54-3b06-417a-98b7-51c19e10631b",
-              "label": "Option A",
+              "label": "Page F Option A",
               "value": "value-1",
               "errors": {
               },
@@ -575,7 +562,7 @@
               "name": "page-f_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "e495f6b3-a7e6-405e-85a3-cba4119f0507",
-              "label": "Option B",
+              "label": "Page F Option B",
               "value": "value-2",
               "errors": {
               },
@@ -591,7 +578,7 @@
               "name": "page-f_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "b5e9d16c-0699-4f16-9c75-906b22599e20",
-              "label": "Option C",
+              "label": "Page F Option C",
               "value": "value-3",
               "errors": {
               },
@@ -607,7 +594,7 @@
               "name": "page-f_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "89856dbf-7412-45c7-b5e1-dcaf8e810cdd",
-              "label": "Option D",
+              "label": "Page F Option D",
               "value": "value-4",
               "errors": {
               },
@@ -781,7 +768,7 @@
               "name": "page-i_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "98f181fb-530e-4002-8204-3b89b37fefad",
-              "label": "Option 1",
+              "label": "Page I Option 1",
               "value": "value-1",
               "errors": {
               },
@@ -797,7 +784,7 @@
               "name": "page-i_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "99249f5e-c238-46b9-b447-03272c284a40",
-              "label": "Option 2",
+              "label": "Page I Option 2",
               "value": "value-2",
               "errors": {
               },
@@ -813,7 +800,7 @@
               "name": "page-i_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "66823323-7df7-4a44-9d3b-0397af465dce",
-              "label": "Option 3",
+              "label": "Page I Option 3",
               "value": "value-3",
               "errors": {
               },
@@ -857,7 +844,7 @@
               "name": "page-j_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "3b56e4a0-a850-4e50-a394-95a895465e26",
-              "label": "Option 1",
+              "label": "Page J Option 1",
               "value": "value-1",
               "errors": {
               },
@@ -873,7 +860,7 @@
               "name": "page-j_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "951ca999-8616-4626-adb2-d604f27262a5",
-              "label": "Option 2",
+              "label": "Page J Option 2",
               "value": "value-2",
               "errors": {
               },
@@ -889,7 +876,7 @@
               "name": "page-j_checkboxes_1",
               "_type": "checkbox",
               "_uuid": "478152c5-73d1-4359-bc15-01e069fe2490",
-              "label": "Option 3",
+              "label": "Page J Option 3",
               "value": "value-3",
               "errors": {
               },
@@ -902,10 +889,10 @@
           ],
           "errors": {
           },
-          "legend": "Page J",
+          "legend": "Page J (Optional)",
           "collection": "components",
           "validation": {
-            "required": true
+            "required": false
           }
         }
       ],
@@ -1198,10 +1185,10 @@
     }
   ],
   "locale": "en",
-  "created_at": "2021-12-03T11:57:21Z",
-  "created_by": "30b04817-8997-43ac-8f34-2ad817a966ea",
-  "service_id": "14959589-1731-404d-a4c4-c3e8d85ed22c",
-  "version_id": "7279554f-2d0a-4eec-b168-a0156d980bd2",
+  "created_at": "2022-02-02T12:32:13Z",
+  "created_by": "b7eff904-9fec-4c48-b6ac-4572b490a040",
+  "service_id": "e68dca75-20b8-468e-9436-e97791a914c5",
+  "version_id": "195ea111-9d4c-4176-837d-0d751c37bbcd",
   "service_name": "Branching Fixture 10 ",
   "configuration": {
     "meta": {

@@ -182,7 +182,6 @@ RSpec.describe MetadataPresenter::Grid do
               MetadataPresenter::Spacer.new,
               service.flow_object('a02f7073-ba5a-459d-b6b9-abe548c933a6'), # Branching Point 2
               MetadataPresenter::Spacer.new,
-              MetadataPresenter::Spacer.new,
               service.flow_object('4cad5db1-bf68-4f7f-baf6-b2d48b342705') # Branching Point3
             ]
           end
@@ -206,7 +205,7 @@ RSpec.describe MetadataPresenter::Grid do
               service.flow_object('e047c5c8-457e-4f10-a4d8-1d927cd6b669') # Page S
             ]
           end
-          let(:expected_column_15) do
+          let(:expected_column_16) do
             [service.flow_object('da2576f9-7ddd-4316-b24b-103708139214')] # Checkanswers
           end
 
@@ -216,7 +215,7 @@ RSpec.describe MetadataPresenter::Grid do
             expect(flow_grid[6]).to eq(expected_column_6)
             expect(flow_grid[9]).to eq(expected_column_9)
             expect(flow_grid[10]).to eq(expected_column_10)
-            expect(flow_grid[15]).to eq(expected_column_15)
+            expect(flow_grid[16]).to eq(expected_column_16)
           end
         end
 

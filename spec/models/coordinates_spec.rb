@@ -114,7 +114,6 @@ RSpec.describe MetadataPresenter::Coordinates do
     let(:positions) { { uuid => { row: nil, column: 10 } } }
     let(:expected_branch_spacers) do
       {
-        '1314e473-9096-4434-8526-03a7b4b7b132' => { row: nil, column: 10 },
         'da2576f9-7ddd-4316-b24b-103708139214' => { row: nil, column: 10 },
         '7742dfcc-db2e-480b-9071-294fbe1769a2' => { row: nil, column: 10 }
       }
