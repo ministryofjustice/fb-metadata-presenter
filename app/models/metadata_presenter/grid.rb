@@ -41,7 +41,7 @@ module MetadataPresenter
       set_row_numbers
       add_by_coordinates
       insert_expression_spacers
-      trim_pointers unless main_flow.empty?
+      trim_pointers unless main_flow.empty? # only used by detached grids
       trim_spacers
       insert_warning if main_flow.empty?
 
@@ -222,9 +222,42 @@ module MetadataPresenter
       service.flow_object(uuid)
     end
 
+    def trim_pointers
+      update_branch_destination_pointers
+      trim_to_first_pointer
+      update_coordinates
+      replace_pointers
+    end
+
+    # Since a detached grid is built in the same way as the main flow grid, objects
+    # that appear later in the flow are left in their latest position. However
+    # for detached grids we want to show a Pointer to that object. This only
+    # happens for branch destinations so in those instances we need to replace
+    # the Spacers with Pointers.
+    def update_branch_destination_pointers
+      @ordered.each_with_index do |column, column_number|
+        next_column = column_number + 1
+
+        column.each do |flow_object|
+          next unless flow_object.branch?
+
+          coordinates.branch_spacers[flow_object.uuid].each do |destination_uuid, position|
+            if replace_with_pointer?(next_column, position[:row], destination_uuid)
+              @ordered[next_column][position[:row]] = MetadataPresenter::Pointer.new(uuid: destination_uuid)
+            end
+          end
+        end
+      end
+    end
+
+    def replace_with_pointer?(column_number, row_number, destination_uuid)
+      @ordered[column_number][row_number].is_a?(MetadataPresenter::Spacer) &&
+        main_flow.include?(destination_uuid)
+    end
+
     # A row should end at the first Pointer object it finds.
     # Therefore replace any Pointers after the first one with Spacers.
-    def trim_pointers
+    def trim_to_first_pointer
       max_potential_rows.times do |row|
         first_index_of = first_pointer(row)
         next unless first_index_of
@@ -237,8 +270,70 @@ module MetadataPresenter
     end
 
     def first_pointer(row)
-      row_objects = @ordered.map { |column| column[row] }
-      row_objects.find_index { |obj| obj.is_a?(MetadataPresenter::Pointer) }
+      row_objects(row).find_index { |obj| obj.is_a?(MetadataPresenter::Pointer) }
+    end
+
+    def row_objects(row)
+      @ordered.map { |column| column[row] }
+    end
+
+    # It's a shame to have to do this.
+    # Once the Pointers have been trimmed back the original positions for each
+    # object will no longer be correct so we need to update them.
+    # We only really need to do this because we replace Pointers with Spacers
+    # later on.
+    def update_coordinates
+      @ordered.each_with_index do |column, column_number|
+        column.each_with_index do |flow_object, row_number|
+          next if flow_object.is_a?(MetadataPresenter::Spacer)
+
+          @coordinates.set_column(flow_object.uuid, column_number)
+          @coordinates.set_row(flow_object.uuid, row_number)
+        end
+      end
+    end
+
+    def replace_pointers
+      @ordered.each_with_index do |column, column_number|
+        next if column_number.zero?
+
+        column.each_with_index do |flow_object, row_number|
+          next if flow_object.is_a?(MetadataPresenter::Spacer)
+
+          previous_column = column_number - 1
+          if replace_with_spacer?(previous_column, column_number, row_number, flow_object.uuid)
+            @ordered[column_number][row_number] = MetadataPresenter::Spacer.new
+          end
+        end
+      end
+    end
+
+    def replace_with_spacer?(previous_column, current_column, row_number, uuid)
+      no_flow_objects?(previous_column, row_number, uuid) ||
+        at_different_position?(current_column, row_number, uuid)
+    end
+
+    # Unless the destination is the Pointer for a branch in the directly preceeding
+    # column, we want to swap Pointers for Spacers if there are no Flow objects
+    # in that row.
+    def no_flow_objects?(previous_column, row_number, uuid)
+      !branch_destination?(uuid, previous_column) &&
+        row_objects(row_number).none?(MetadataPresenter::Flow)
+    end
+
+    # The object already exists elsewhere in the flow so we can replace the Pointer
+    # and let the frontend draw an arrow to that position.
+    def at_different_position?(column_number, row_number, uuid)
+      @coordinates.uuid_column(uuid) != column_number &&
+        @coordinates.uuid_row(uuid) != row_number
+    end
+
+    def branch_destination?(uuid, column_number)
+      @ordered[column_number].any? do |flow_object|
+        next unless flow_object.branch?
+
+        flow_object.all_destination_uuids.include?(uuid)
+      end
     end
 
     # Find the very last MetadataPresenter::Flow object in every column and
@@ -254,7 +349,7 @@ module MetadataPresenter
     end
 
     def only_spacers?(trimmed_column)
-      trimmed_column.all? { |item| item.is_a?(MetadataPresenter::Spacer) }
+      trimmed_column.all?(MetadataPresenter::Spacer)
     end
 
     # Each branch has a certain number of exits that require their own line
