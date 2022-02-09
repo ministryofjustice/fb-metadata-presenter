@@ -7,6 +7,16 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.9] - 2022-02-09
+
+### Changed
+
+- Check Confirmation and CYA pages are in the correct column during grid placement.
+
+### Fixed
+
+- Remove excess Pointer objects in the detached grid.
+
 ## [2.15.8] - 2022-02-02
 
 ### Added
