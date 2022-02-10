@@ -72,15 +72,113 @@ RSpec.describe MetadataPresenter::ColumnNumber do
         end
       end
 
-      context 'when checkanswers or confirmation page' do
-        let(:new_column) { 10 }
+      context 'when checkanswers page' do
+        # branching fixture 10 CYA page
+        let(:uuid) { 'da2576f9-7ddd-4316-b24b-103708139214' }
+        let(:positions) do
+          {
+            uuid => {
+              column: 8,
+              row: 1
+            }
+          }
+        end
 
-        # branching fixture 10 CYA and Confirmation pages
-        %w[da2576f9-7ddd-4316-b24b-103708139214 a88694da-8ded-44e7-bc89-e652c1a7f46d].each do |page_uuid|
-          let(:uuid) { page_uuid }
+        context 'when existing column is less than new column' do
+          let(:new_column) { 10 }
 
-          it 'returns the greater column number' do
+          it 'returns the new column' do
             expect(column_number.number).to eq(new_column)
+          end
+        end
+
+        context 'when existing column is more than new column' do
+          let(:new_column) { 6 }
+
+          it 'returns the existing column' do
+            expect(column_number.number).to eq(8)
+          end
+        end
+
+        context 'when existing column is not present' do
+          let(:positions) do
+            {
+              uuid => {
+                column: nil,
+                row: 1
+              }
+            }
+          end
+          let(:new_column) { 8 }
+
+          it 'returns the new column' do
+            expect(column_number.number).to eq(8)
+          end
+        end
+      end
+
+      context 'when confirmation page' do
+        # branching fixture 10 Confirmation page
+        let(:uuid) { 'a88694da-8ded-44e7-bc89-e652c1a7f46d' }
+        context 'when checkanswers page is present' do
+          let(:positions) do
+            {
+              # branching fixture 10 CYA page
+              'da2576f9-7ddd-4316-b24b-103708139214' => {
+                column: 10,
+                row: 1
+              }
+            }
+          end
+          let(:new_column) { 10 }
+
+          it 'returns the last column' do
+            expect(column_number.number).to eq(11)
+          end
+        end
+
+        context 'when checkanswers page is not present' do
+          let(:positions) do
+            {
+              # branching fixture 10 Confirmation page
+              uuid => {
+                column: 8,
+                row: 1
+              }
+            }
+          end
+
+          context 'when existing column is less than new column' do
+            let(:new_column) { 10 }
+
+            it 'returns the new column' do
+              expect(column_number.number).to eq(new_column)
+            end
+          end
+
+          context 'when existing column is more than new column' do
+            let(:new_column) { 7 }
+
+            it 'returns the existing column' do
+              expect(column_number.number).to eq(8)
+            end
+          end
+
+          context 'when there is no existing column' do
+            let(:positions) do
+              {
+                # branching fixture 10 Confirmation page
+                uuid => {
+                  column: nil,
+                  row: 1
+                }
+              }
+            end
+            let(:new_column) { 6 }
+
+            it 'returns the new column' do
+              expect(column_number.number).to eq(new_column)
+            end
           end
         end
       end
