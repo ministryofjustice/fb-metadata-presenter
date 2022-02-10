@@ -232,7 +232,7 @@ RSpec.describe MetadataPresenter::Grid do
       end
 
       context 'inserting pointers' do
-        let(:main_flow) { grid.ordered_flow.map(&:uuid) }
+        let(:main_flow) { grid.flow_uuids }
         let(:detached_grid) do
           described_class.new(service, start_from: start_from, main_flow: main_flow)
         end
@@ -299,6 +299,95 @@ RSpec.describe MetadataPresenter::Grid do
 
           it 'inserts pointers as well as maintaining spacer object positions' do
             expect(detached_grid.build).to eq(expected_detached_flow)
+          end
+        end
+
+        context 'branching fixture 11 - detached grids' do
+          context 'removing excess pointers from detached grids' do
+            let(:main_flow) { grid.flow_uuids }
+            let(:start_from) { 'a02f7073-ba5a-459d-b6b9-abe548c933a6' } # branching point 2
+            let(:latest_metadata) do
+              metadata = metadata_fixture(:branching_11)
+              # point page j to checkanswers, detaches branching point 2
+              metadata['flow']['4e54ed97-d0df-462e-9a88-fd0f23ea62f5']['next']['default'] = 'da2576f9-7ddd-4316-b24b-103708139214'
+              metadata
+            end
+            let(:detached_grid) do
+              MetadataPresenter::Grid.new(service, start_from: start_from, main_flow: main_flow)
+            end
+            let(:expected_grid) do
+              [
+                [
+                  service.flow_object(start_from) # Branching point 2
+                ],
+                [
+                  service.flow_object('1314e473-9096-4434-8526-03a7b4b7b132'), # page k
+                  MetadataPresenter::Pointer.new(uuid: 'da2576f9-7ddd-4316-b24b-103708139214'), # checkanswers
+                  MetadataPresenter::Pointer.new(uuid: '7742dfcc-db2e-480b-9071-294fbe1769a2') # page f
+                ],
+                [
+                  MetadataPresenter::Pointer.new(uuid: '007f4f35-8236-40cc-866c-cc2c27c33949') # page e
+                ]
+              ]
+            end
+
+            it 'shows last pointer for row and removes rows with only pointers unless branch destination' do
+              expect(detached_grid.build).to eq(expected_grid)
+            end
+          end
+
+          context 'with several pages pointing to the same Pointer object' do
+            let(:main_flow) { grid.flow_uuids }
+            let(:start_from) { '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1' } # branching point 4
+            let(:latest_metadata) do
+              metadata = metadata_fixture(:branching_11)
+              # point branching point 4 otherwise to check answers
+              metadata['flow']['7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1']['next']['default'] = 'da2576f9-7ddd-4316-b24b-103708139214'
+              # point page f to checkanswers, detaches branching point 4
+              metadata['flow']['7742dfcc-db2e-480b-9071-294fbe1769a2']['next']['default'] = 'da2576f9-7ddd-4316-b24b-103708139214'
+              metadata
+            end
+            let(:detached_grid) do
+              MetadataPresenter::Grid.new(service, start_from: start_from, main_flow: main_flow)
+            end
+            let(:expected_grid) do
+              [
+                [
+                  service.flow_object(start_from) # Branching point 4
+                ],
+                [
+                  service.flow_object('ced77b4d-efb5-4d07-b38b-2be9e09a73df'), # page g
+                  service.flow_object('46693db1-8995-4af0-a2d1-316140a5fb32'), # page l
+                  service.flow_object('c01ae632-1533-4ee3-8828-a0c547200129'), # page m
+                  service.flow_object('ad011e6b-5926-42f8-8b7c-668558850c52') # page n
+                ],
+                [
+                  service.flow_object('81510f97-b4c0-43f1-bdde-1cd5159093a9'), # page h
+                  MetadataPresenter::Spacer.new,
+                  MetadataPresenter::Spacer.new,
+                  service.flow_object('957f9475-6341-418d-a554-d00c5700e031') # page o
+                ],
+                [
+                  MetadataPresenter::Spacer.new,
+                  MetadataPresenter::Spacer.new,
+                  MetadataPresenter::Spacer.new,
+                  service.flow_object('4cad5db1-bf68-4f7f-baf6-b2d48b342705') # branching point 3
+                ],
+                [
+                  MetadataPresenter::Spacer.new,
+                  MetadataPresenter::Spacer.new,
+                  MetadataPresenter::Spacer.new,
+                  service.flow_object('79c18654-7ecb-43f9-bd7f-0b09eb9c075e') # page p
+                ],
+                [
+                  MetadataPresenter::Pointer.new(uuid: 'da2576f9-7ddd-4316-b24b-103708139214') # checkanswers
+                ]
+              ]
+            end
+
+            it 'should only show one Pointer' do
+              expect(detached_grid.build).to eq(expected_grid)
+            end
           end
         end
       end
@@ -379,7 +468,6 @@ RSpec.describe MetadataPresenter::Grid do
               [service.flow_object('645e3bb4-523b-448f-8734-7d7726d27529')], # Page R
               [service.flow_object('a7fe1073-cc11-4aef-a533-d3060117534d')], # Page S
               [MetadataPresenter::Pointer.new(uuid: '957f9475-6341-418d-a554-d00c5700e031')] # Page O
-              # a88694da-8ded-44e7-bc89-e652c1a7f46d confirmation
             ]
           end
 
