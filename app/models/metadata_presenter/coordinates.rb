@@ -42,8 +42,6 @@ module MetadataPresenter
       branch_spacers[branch_uuid].each do |position|
         position[:column] = column
       end
-    rescue StandardError
-      byebug
     end
 
     # The first conditional will always attempt to draw an arrow on the same row
@@ -70,10 +68,19 @@ module MetadataPresenter
     # need an additional line for an arrow.
     def setup_branch_spacers
       service.branches.each.with_object({}) do |branch, hash|
-        destinations = exiting_destinations_from_branch(branch)
-        # byebug if branch.uuid == '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1'
-        hash[branch.uuid] = destinations.map { |uuid| { uuid: uuid, row: nil, column: nil } }
+        hash[branch.uuid] = initial_spacer(branch)
       end
+    end
+
+    def initial_spacer(branch)
+      destinations = exiting_destinations_from_branch(branch).map do |uuid|
+        { uuid: uuid, row: nil, column: nil }
+      end
+      has_or_conditions?(branch) ? destinations.uniq : destinations
+    end
+
+    def has_or_conditions?(branch)
+      branch.conditionals.any? { |c| c.type == 'or' }
     end
   end
 end

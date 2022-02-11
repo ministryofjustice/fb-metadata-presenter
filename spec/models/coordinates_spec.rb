@@ -10,8 +10,19 @@ RSpec.describe MetadataPresenter::Coordinates do
       let(:branch_uuid) { '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1' } # branching point 4
       let(:branch_spacers) { coordinates.branch_spacers }
 
-    it 'should set the correct number of branch spacers' do
-      expect(branch_spacers[branch_uuid].count).to eq(5)
+      it 'should set the correct number of branch spacers' do
+        expect(branch_spacers[branch_uuid].count).to eq(5)
+      end
+    end
+
+    context 'when branching point has OR conditions' do
+      let(:latest_metadata) { metadata_fixture(:branching) }
+      let(:branch_uuid) { '1079b5b8-abd0-4bf6-aaac-1f01e69e3b39' } # branching point 7
+      let(:branch_spacers) { coordinates.branch_spacers }
+
+      it 'should set the correct number of branch spacers' do
+        expect(branch_spacers[branch_uuid].count).to eq(3)
+      end
     end
   end
 
