@@ -6,22 +6,58 @@ RSpec.describe MetadataPresenter::Coordinates do
 
   describe 'initialising the branch spacers' do
     context 'when branching point does not have OR conditions' do
-      let(:latest_metadata) { metadata_fixture(:branching_10) }
       let(:branch_uuid) { '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1' } # branching point 4
       let(:branch_spacers) { coordinates.branch_spacers }
 
-      it 'should set the correct number of branch spacers' do
-        expect(branch_spacers[branch_uuid].count).to eq(5)
+      context 'when all different destinations' do
+        let(:latest_metadata) { metadata_fixture(:branching_10) }
+
+        it 'should set the correct number of branch spacers' do
+          expect(branch_spacers[branch_uuid].count).to eq(5)
+        end
+      end
+
+      context 'when two conditionals point to the same destination' do
+        let(:metadata) { metadata_fixture(:branching_10) }
+        let(:page_n) { 'ad011e6b-5926-42f8-8b7c-668558850c52' }
+        let(:page_m) { 'c01ae632-1533-4ee3-8828-a0c547200129' }
+        let(:latest_metadata) do
+          hash = metadata['flow'][branch_uuid]['next']['conditionals'].find { |page| page['next'] == page_n }
+          hash['next'] = page_m
+          metadata
+        end
+
+        it 'should set the correct number of branch spacers' do
+          expect(branch_spacers[branch_uuid].count).to eq(5)
+        end
       end
     end
 
     context 'when branching point has OR conditions' do
-      let(:latest_metadata) { metadata_fixture(:branching) }
-      let(:branch_uuid) { '1079b5b8-abd0-4bf6-aaac-1f01e69e3b39' } # branching point 7
       let(:branch_spacers) { coordinates.branch_spacers }
+      let(:branch_uuid) { '1079b5b8-abd0-4bf6-aaac-1f01e69e3b39' } # branching point 7
 
-      it 'should set the correct number of branch spacers' do
-        expect(branch_spacers[branch_uuid].count).to eq(3)
+      context 'when all different destinations' do
+        let(:latest_metadata) { metadata_fixture(:branching) }
+
+        it 'should set the correct number of branch spacers' do
+          expect(branch_spacers[branch_uuid].count).to eq(3)
+        end
+      end
+
+      context 'when two conditionals point to the same destination' do
+        let(:metadata) { metadata_fixture(:branching) }
+        let(:you_are_wrong) { '6324cca4-7770-4765-89b9-1cdc41f49c8b' }
+        let(:you_are_right) { '56e80942-d0a4-405a-85cd-bd1b100013d6' }
+        let(:latest_metadata) do
+          hash = metadata['flow'][branch_uuid]['next']['conditionals'].find { |page| page['next'] == you_are_wrong }
+          hash['next'] = you_are_right
+          metadata
+        end
+
+        it 'should set the correct number of branch spacers' do
+          expect(branch_spacers[branch_uuid].count).to eq(2)
+        end
       end
     end
   end

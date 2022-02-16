@@ -361,6 +361,8 @@ module MetadataPresenter
       service.branches.each do |branch|
         next if coordinates.uuid_column(branch.uuid).nil?
 
+        next unless has_or_conditionals?(branch)
+
         previous_uuid = ''
         next_column = coordinates.uuid_column(branch.uuid) + 1
         exiting_destinations_from_branch(branch).each_with_index do |uuid, row|

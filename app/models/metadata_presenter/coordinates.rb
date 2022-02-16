@@ -76,11 +76,7 @@ module MetadataPresenter
       destinations = exiting_destinations_from_branch(branch).map do |uuid|
         { uuid: uuid, row: nil, column: nil }
       end
-      has_or_conditions?(branch) ? destinations.uniq : destinations
-    end
-
-    def has_or_conditions?(branch)
-      branch.conditionals.any? { |c| c.type == 'or' }
+      has_or_conditionals?(branch) ? destinations.uniq : destinations
     end
   end
 end
