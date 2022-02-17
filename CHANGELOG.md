@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.10] - 2022-02-14
+
+### Fixed
+
+- Ensure the correct number of branch spacers are calculated when conditionals point to the same page, or when there are 'OR' conditionals in the branching point.
+
 ## [2.15.9] - 2022-02-09
 
 ### Changed

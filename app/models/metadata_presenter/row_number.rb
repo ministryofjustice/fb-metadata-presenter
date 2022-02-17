@@ -42,7 +42,7 @@ module MetadataPresenter
       return if branches_in_column.empty?
 
       row_numbers = branches_in_column.map do |branch_uuid, _|
-        coordinates.branch_spacers[branch_uuid].map { |_, position| position[:row] }
+        coordinates.branch_spacers[branch_uuid].map { |position| position[:row] }
       end
       row_numbers.flatten.max + 1
     end
@@ -54,7 +54,7 @@ module MetadataPresenter
     def branch_spacer_row
       return if spacers_for_current_object.empty?
 
-      spacers_for_current_object.map { |position| position[:row] }.max
+      spacers_for_current_object.flatten.map { |position| position[:row] }.max
     end
 
     def first_row?
@@ -84,7 +84,7 @@ module MetadataPresenter
         end
 
         current_object_spacers = spacer_positions.map do |branch_uuid, _|
-          coordinates.branch_spacers[branch_uuid][uuid]
+          coordinates.branch_spacers[branch_uuid].select { |branch_spacer| branch_spacer[:uuid] == uuid }
         end
         current_object_spacers.compact
       end

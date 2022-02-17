@@ -241,9 +241,9 @@ module MetadataPresenter
         column.each do |flow_object|
           next unless flow_object.branch?
 
-          coordinates.branch_spacers[flow_object.uuid].each do |destination_uuid, position|
-            if replace_with_pointer?(next_column, position[:row], destination_uuid)
-              @ordered[next_column][position[:row]] = MetadataPresenter::Pointer.new(uuid: destination_uuid)
+          coordinates.branch_spacers[flow_object.uuid].map do |destination|
+            if replace_with_pointer?(next_column, destination[:row], destination[:uuid])
+              @ordered[next_column][destination[:row]] = MetadataPresenter::Pointer.new(uuid: destination[:uuid])
             end
           end
         end
@@ -356,9 +356,12 @@ module MetadataPresenter
     # and arrow. When there are 'OR' conditions we need to insert additional
     # spacers into the necessary row in the column after the one the branch is
     # located in.
+    # This is done for the column directly after a branching point
     def insert_expression_spacers
       service.branches.each do |branch|
         next if coordinates.uuid_column(branch.uuid).nil?
+
+        next unless has_or_conditionals?(branch)
 
         previous_uuid = ''
         next_column = coordinates.uuid_column(branch.uuid) + 1

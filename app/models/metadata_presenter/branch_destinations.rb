@@ -14,5 +14,9 @@ module MetadataPresenter
       end
       destination_uuids.flatten.push(branch.default_next)
     end
+
+    def has_or_conditionals?(branch)
+      branch.conditionals.any? { |c| c.type == 'or' }
+    end
   end
 end
