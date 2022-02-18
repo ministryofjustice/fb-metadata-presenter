@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.11] - 2022-02-18
+
+### Added
+
+- Add `contains` and `does_not_contain` operators.
+
 ## [2.15.10] - 2022-02-14
 
 ### Fixed
