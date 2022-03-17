@@ -100,6 +100,10 @@ module MetadataPresenter
       type.in?(END_OF_ROUTE_PAGES)
     end
 
+    def multiple_questions?
+      type == 'page.multiplequestions'
+    end
+
     private
 
     def heading?

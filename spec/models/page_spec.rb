@@ -300,4 +300,22 @@ RSpec.describe MetadataPresenter::Page do
       end
     end
   end
+
+  describe '#multiple_questions?' do
+    context 'when page is a multiple question page' do
+      subject(:page) { service.find_page_by_url('star-wars-knowledge') }
+
+      it 'returns truthy' do
+        expect(page.multiple_questions?).to be_truthy
+      end
+    end
+
+    context 'when page is not a multiple questions page' do
+      subject(:page) { service.find_page_by_url('name') }
+
+      it 'returns falsey' do
+        expect(page.multiple_questions?).to be_falsey
+      end
+    end
+  end
 end
