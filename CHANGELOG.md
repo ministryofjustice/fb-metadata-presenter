@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.12] - 2022-03-17
+
+### Added
+
+- Add ability to check if page is a multiple question page.
+
 ## [2.15.11] - 2022-02-18
 
 ### Added
