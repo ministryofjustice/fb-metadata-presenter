@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.15.13] - 2022-03-22
+
+### Changed
+
+- Changed weight of radio buttons component labels.
+
 ## [2.15.12] - 2022-03-17
 
 ### Added
