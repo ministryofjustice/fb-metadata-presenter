@@ -4,6 +4,38 @@ RSpec.describe MetadataPresenter::Coordinates do
   let(:service) { MetadataPresenter::Service.new(latest_metadata) }
   let(:uuid) { 'ad011e6b-5926-42f8-8b7c-668558850c52' } # Page N
 
+  describe 'initialising the positions' do
+    let(:latest_metadata) do
+      {
+        "_id": "service.base",
+        "flow": {
+          "some-uuid": {},
+          "another-uuid": {}
+        }
+      }
+    end
+    let(:expected_positions) do
+      {
+        'some-uuid': {
+          row: nil,
+          column: nil,
+          previous_flow_uuid: nil,
+          conditional_uuid: nil
+        },
+        'another-uuid': {
+          row: nil,
+          column: nil,
+          previous_flow_uuid: nil,
+          conditional_uuid: nil
+        }
+      }
+    end
+
+    it 'sets up the positions object' do
+      expect(coordinates.positions).to eq(expected_positions)
+    end
+  end
+
   describe 'initialising the branch spacers' do
     context 'when branching point does not have OR conditions' do
       let(:branch_uuid) { '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1' } # branching point 4
@@ -160,10 +192,10 @@ RSpec.describe MetadataPresenter::Coordinates do
       allow_any_instance_of(MetadataPresenter::Coordinates).to receive(
         :setup_positions
       ).and_return(positions)
+    end
 
-      it 'returns all the positions objects for a given column' do
-        expect(coordinates.positions_in_column(10)).to eq(expected_column)
-      end
+    it 'returns all the positions objects for a given column' do
+      expect(coordinates.positions_in_column(10)).to eq(expected_column)
     end
   end
 
