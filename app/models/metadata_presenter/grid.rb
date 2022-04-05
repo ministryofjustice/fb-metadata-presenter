@@ -19,7 +19,7 @@ module MetadataPresenter
 
   class Grid
     include BranchDestinations
-    attr_reader :service, :start_from
+    attr_reader :service, :start_from, :previous_uuids
 
     def initialize(service, start_from: nil, main_flow: [])
       @service = service
@@ -29,6 +29,7 @@ module MetadataPresenter
       @routes = []
       @traversed = []
       @coordinates = MetadataPresenter::Coordinates.new(service)
+      @previous_uuids = {}
     end
 
     ROW_ZERO = 0
@@ -39,6 +40,7 @@ module MetadataPresenter
       @ordered = make_grid
       set_column_numbers
       set_row_numbers
+      set_previous_uuids
       add_by_coordinates
       insert_expression_spacers
       trim_pointers unless main_flow.empty? # only used by detached grids
@@ -71,10 +73,23 @@ module MetadataPresenter
       checkanswers_warning.show_warning? || confirmation_warning.show_warning?
     end
 
+    def previous_uuid_for_object(uuid)
+      return unless previous_uuids.key?(uuid)
+
+      previous_uuids[uuid][:previous_flow_uuid]
+    end
+
+    def conditional_uuid_for_object(uuid)
+      return unless previous_uuids.key?(uuid)
+
+      previous_uuids[uuid][:conditional_uuid]
+    end
+
     private
 
     attr_reader :main_flow
     attr_accessor :ordered, :traversed, :routes, :coordinates
+    attr_writer :previous_uuids
 
     def route_from_start
       @route_from_start ||=
@@ -350,6 +365,16 @@ module MetadataPresenter
 
     def only_spacers?(trimmed_column)
       trimmed_column.all?(MetadataPresenter::Spacer)
+    end
+
+    def set_previous_uuids
+      @routes.each do |route|
+        route.flow_uuids.each do |uuid|
+          if previous_uuids[uuid].blank?
+            previous_uuids[uuid] = route.previous_uuids[uuid]
+          end
+        end
+      end
     end
 
     # Each branch has a certain number of exits that require their own line

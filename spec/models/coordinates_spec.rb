@@ -7,7 +7,7 @@ RSpec.describe MetadataPresenter::Coordinates do
   describe 'initialising the positions' do
     let(:latest_metadata) do
       {
-        "_id": "service.base",
+        "_id": 'service.base',
         "flow": {
           "some-uuid": {},
           "another-uuid": {}
