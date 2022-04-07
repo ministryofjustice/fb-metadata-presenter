@@ -1,8 +1,7 @@
 RSpec.describe MetadataPresenter::Route do
   subject(:route) do
-    described_class.new(service: service, traverse_from: traverse_from, column: column)
+    described_class.new(service: service, traverse_from: traverse_from)
   end
-  let(:column) { 0 }
 
   describe '#traverse' do
     let(:metadata) { metadata_fixture(:branching) }
@@ -77,7 +76,6 @@ RSpec.describe MetadataPresenter::Route do
       end
 
       let(:traverse_from) { service.find_page_by_url('arnold-incomplete-answers').uuid }
-      let(:column) { 22 }
       let(:expected_uuids) do
         [
           '941137d7-a1da-43fd-994a-98a4f9ea6d46', # You are wrong - incomplete
@@ -95,15 +93,174 @@ RSpec.describe MetadataPresenter::Route do
       end
     end
 
-    context 'when looping more times than the size of the service flow' do
-      let(:column) { 10_000_000 }
-
-      it 'raises a ExceededTotalFlowObjectsError' do
-        expect(ActiveSupport::Notifications).to receive(:instrument).with(
-          'exceeded_total_flow_objects',
-          message: 'Exceeded total number of flow objects'
+    context 'when initialising with column and row' do
+      subject(:route) do
+        described_class.new(
+          service: service,
+          traverse_from: traverse_from,
+          column: column,
+          row: row
         )
+      end
+
+      before do
         route.traverse
+      end
+
+      context 'when looping more times than the size of the service flow' do
+        let(:column) { 10_000_000 }
+        let(:row) { 0 }
+
+        it 'raises a ExceededTotalFlowObjectsError' do
+          expect(ActiveSupport::Notifications).to receive(:instrument).with(
+            'exceeded_total_flow_objects',
+            message: 'Exceeded total number of flow objects'
+          )
+          route.traverse
+        end
+      end
+
+      context 'when creating new routes' do
+        let(:traverse_from) { 'ffadeb22-063b-4e4f-9502-bd753c706b1d' } # Branching point 2
+        let(:destination_1) { '91e9f7c6-2f75-4b7d-9eb5-0cf352f7be66' }
+        let(:default_next) { '05c3306c-0a39-42d2-9e0f-93fd49248f4e' }
+        let(:destination_1_route) do
+          route.routes.find { |r| r.traverse_from == destination_1 }
+        end
+        let(:default_next_route) do
+          route.routes.find { |r| r.traverse_from == default_next }
+        end
+        let(:column) { 4 }
+        let(:row) { 5 }
+
+        it 'correctly iterates the column number' do
+          expect(destination_1_route.column).to eq(5)
+          expect(default_next_route.column).to eq(5)
+        end
+
+        it 'correctly iterates the row number' do
+          expect(destination_1_route.row).to eq(6)
+          expect(default_next_route.row).to eq(7)
+        end
+      end
+    end
+
+    context 'previous uuids for traversed route objects' do
+      context 'before traversing' do
+        context 'route without previous flow uuid and conditional uuid' do
+          it 'sets up the previous uuids object' do
+            expect(route.previous_uuids).to eq(
+              { traverse_from => { previous_flow_uuid: nil, conditional_uuid: nil } }
+            )
+          end
+        end
+
+        context 'route with previous flow uuid and conditional uuid' do
+          subject(:route) do
+            described_class.new(
+              service: service,
+              traverse_from: traverse_from,
+              previous_flow_uuid: previous_uuid,
+              conditional_uuid: conditional_uuid
+            )
+          end
+          let(:previous_uuid) { 'some-previous-uuid' }
+          let(:conditional_uuid) { 'some-conditional-uuid' }
+          let(:expected_previous_uuid) do
+            {
+              traverse_from => {
+                previous_flow_uuid: previous_uuid,
+                conditional_uuid: conditional_uuid
+              }
+            }
+          end
+
+          it 'sets up the previous uuids object' do
+            expect(route.previous_uuids).to eq(expected_previous_uuid)
+          end
+        end
+      end
+
+      context 'after traversing' do
+        before do
+          route.traverse
+        end
+
+        context 'first object in flow' do
+          let(:expected_first_object_previous_uuid) do
+            { previous_flow_uuid: nil, conditional_uuid: nil }
+          end
+
+          it 'does not set any previous uuid for the first page' do
+            expect(route.previous_uuids[traverse_from]).to eq(expected_first_object_previous_uuid)
+          end
+        end
+
+        context 'page in middle of the flow' do
+          let(:page_uuid) { '05c3306c-0a39-42d2-9e0f-93fd49248f4e' } # What is your favourite band?
+          let(:expected_page_previous_uuid) do
+            {
+              previous_flow_uuid: 'd4342dfd-0d09-4a91-a0ea-d7fd67e706cc', # Do you like apple juice?
+              conditional_uuid: nil
+            }
+          end
+
+          it 'sets the previous uuids for each flow object traversed' do
+            expect(route.previous_uuids[page_uuid]).to eq(expected_page_previous_uuid)
+          end
+        end
+
+        context 'branch destinations' do
+          let(:first_conditional_destination) do
+            'd4342dfd-0d09-4a91-a0ea-d7fd67e706cc' # Do you like apple juice?
+          end
+          let(:second_conditional_destination) do
+            '91e9f7c6-2f75-4b7d-9eb5-0cf352f7be66' # Do you like orange juice?
+          end
+          let(:branch_default_next) do
+            '05c3306c-0a39-42d2-9e0f-93fd49248f4e' # What is your favourite band?
+          end
+
+          context 'for first conditional' do
+            let(:destination_uuid) { first_conditional_destination }
+            let(:expected_previous_uuid) do
+              {
+                previous_flow_uuid: 'ffadeb22-063b-4e4f-9502-bd753c706b1d', # Branching Point 2
+                conditional_uuid: '51b4eda2-a08d-4ab3-a8cb-565091f39424'
+              }
+            end
+            let(:previous_uuid) { route.previous_uuids[destination_uuid] }
+
+            it 'sets the previous uuids and the conditional uuids' do
+              expect(previous_uuid).to eq(expected_previous_uuid)
+            end
+          end
+
+          context 'for other conditional destinations' do
+            let(:previous_flow_uuid) { 'ffadeb22-063b-4e4f-9502-bd753c706b1d' } # Branching Point 2
+            let(:conditional_uuid) { '0a799cea-f5a4-4b89-9ffe-78515b5cb1d7' }
+            let(:additional_route) do
+              route.routes.find { |r| r.traverse_from == second_conditional_destination }
+            end
+
+            it 'initialises previous uuid and conditional uuid on a new route' do
+              expect(additional_route.previous_flow_uuid).to eq(previous_flow_uuid)
+              expect(additional_route.conditional_uuid).to eq(conditional_uuid)
+            end
+          end
+
+          context 'when branch default next destination' do
+            let(:previous_flow_uuid) { 'ffadeb22-063b-4e4f-9502-bd753c706b1d' } # Branching Point 2
+            let(:additional_route) do
+              route.routes.find { |r| r.traverse_from == branch_default_next }
+            end
+
+            it 'does not set a conditional uuid' do
+              expect(additional_route.previous_flow_uuid).to eq(previous_flow_uuid)
+              expect(additional_route.conditional_uuid).to be_nil
+            end
+          end
+        end
       end
     end
   end

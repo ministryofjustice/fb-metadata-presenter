@@ -61,7 +61,9 @@ module MetadataPresenter
     attr_writer :positions, :branch_spacers
 
     def setup_positions
-      service.flow.keys.index_with { |_uuid| { row: nil, column: nil } }
+      service.flow.keys.index_with do |_uuid|
+        { row: nil, column: nil, previous_flow_uuid: nil, conditional_uuid: nil }
+      end
     end
 
     # This also takes into account the 'OR' expressions which

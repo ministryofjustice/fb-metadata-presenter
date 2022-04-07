@@ -675,4 +675,150 @@ RSpec.describe MetadataPresenter::Grid do
       expect(grid.page_uuids).to match_array(expected_uuids)
     end
   end
+
+  context 'previous flow uuids and conditional uuids' do
+    let(:latest_metadata) { metadata_fixture(:branching_10) }
+    let(:previous_uuids) { grid.previous_uuids }
+    let(:previous_uuid_details) { grid.previous_uuids[uuid] }
+
+    before do
+      grid.build
+    end
+
+    context 'first object in grid' do
+      let(:uuid) { service.start_page.uuid }
+      let(:expected_previous_uuid_details) do
+        { previous_flow_uuid: nil, conditional_uuid: nil }
+      end
+
+      it 'does not set the previous uuid or conditional uuid' do
+        expect(previous_uuid_details).to eq(expected_previous_uuid_details)
+      end
+    end
+
+    context 'page object in flow' do
+      let(:uuid) { 'e31718ad-0ba7-4b45-81aa-d3081f423022' } # Page D
+      let(:expected_previous_uuid_details) do
+        {
+          previous_flow_uuid: '66c9e581-942e-4a9e-93ec-343208a2f510', # Page C
+          conditional_uuid: nil
+        }
+      end
+
+      it 'sets the previous flow uuid and conditional uuid' do
+        expect(previous_uuid_details).to eq(expected_previous_uuid_details)
+      end
+    end
+
+    context 'branch object in flow' do
+      let(:uuid) { 'a02f7073-ba5a-459d-b6b9-abe548c933a6' } # Branching Point 2
+      let(:expected_previous_uuid_details) do
+        {
+          previous_flow_uuid: '4e54ed97-d0df-462e-9a88-fd0f23ea62f5', # Page J
+          conditional_uuid: nil
+        }
+      end
+
+      it 'sets the previous flow uuid and conditional uuid' do
+        expect(previous_uuid_details).to eq(expected_previous_uuid_details)
+      end
+    end
+
+    context 'branch destination in flow' do
+      let(:uuid) { 'c01ae632-1533-4ee3-8828-a0c547200129' } # Page M
+      let(:expected_previous_uuid_details) do
+        {
+          previous_flow_uuid: '7fe9a893-384c-4e8a-bb94-b1ec4f6a24d1', # Branching Point 4
+          conditional_uuid: '5057d39b-99e8-4252-9637-b88a2d8a8d01'
+        }
+      end
+
+      it 'sets the previous flow uuid and conditional uuid' do
+        expect(previous_uuid_details).to eq(expected_previous_uuid_details)
+      end
+    end
+
+    context 'page pointed to multiple times in flow' do
+      let(:uuid) { 'da2576f9-7ddd-4316-b24b-103708139214' } # Check Answers
+      let(:expected_previous_uuid_details) do
+        {
+          previous_flow_uuid: '81510f97-b4c0-43f1-bdde-1cd5159093a9', # Page H
+          conditional_uuid: nil
+        }
+      end
+
+      # flow objects are placed in a specific order; left to right and then
+      # branch destinations in order of the conditionals saved on the branch
+      # branching point. The checks answers page is pointed to multiple times
+      # but it will only ever share the same row visually as Page H
+      it 'uses the first previous uuid and conditional uuid that is set for the object' do
+        expect(previous_uuid_details).to eq(expected_previous_uuid_details)
+      end
+    end
+
+    context 'when branch default next' do
+      let(:uuid) { 'ad011e6b-5926-42f8-8b7c-668558850c52' } # Page N
+      let(:expected_previous_uuid_details) do
+        {
+          previous_flow_uuid: 'f55d002d-b2c1-4dcc-87b7-0da7cbc5c87c', # Branching Point 1
+          conditional_uuid: nil
+        }
+      end
+
+      # Page N is pointed to by Branching Points 1 and 4. Branching Point 1 will
+      # be traversed first so it will be used as the previous uuid
+      it 'uses the first previous uuid and sets nil for conditional uuid' do
+        expect(previous_uuid_details).to eq(expected_previous_uuid_details)
+      end
+    end
+
+    context 'when multiple branch destinations point to the same page' do
+      let(:latest_metadata) { metadata_fixture(:branching) }
+      let(:uuid) { '2cc66e51-2c14-4023-86bf-ded49887cdb2' } # Loki
+      let(:expected_previous_uuid_details) do
+        {
+          previous_flow_uuid: '84a347fc-8d4b-486a-9996-6a86fa9544c5', # Branching Point 6
+          conditional_uuid: '15e8076f-75ac-4310-89b3-d2b5962babd4' # First conditional uuid
+        }
+      end
+
+      it 'uses the first conditional uuid it comes to' do
+        expect(previous_uuid_details).to eq(expected_previous_uuid_details)
+      end
+    end
+
+    describe '#previous_uuid_for_object' do
+      let(:uuid) { '97533725-14d7-4838-9335-58ceaed9aa13' } # Page Q
+      let(:expected_previous_flow_uuid) { '1314e473-9096-4434-8526-03a7b4b7b132' } # Page K
+
+      before do
+        grid.build
+      end
+
+      it 'returns the previous flow uuid for a given flow object' do
+        expect(grid.previous_uuid_for_object(uuid)).to eq(expected_previous_flow_uuid)
+      end
+
+      it 'returns nil for uuid that does not exist in previous_uuids' do
+        expect(grid.previous_uuid_for_object('foo')).to be_nil
+      end
+    end
+
+    describe '#conditional_uuid_for_object' do
+      let(:uuid) { '46693db1-8995-4af0-a2d1-316140a5fb32' } # Page L
+      let(:expected_conditional_uuid) { 'ba60fb61-9258-461e-964c-a9dfe9722f46' } # Conditional destination of Branching Point 4
+
+      before do
+        grid.build
+      end
+
+      it 'returns the conditional uuid for a given flow object' do
+        expect(grid.conditional_uuid_for_object(uuid)).to eq(expected_conditional_uuid)
+      end
+
+      it 'returns nil for uuid that does not exist in previous_uuids' do
+        expect(grid.conditional_uuid_for_object('bar')).to be_nil
+      end
+    end
+  end
 end
