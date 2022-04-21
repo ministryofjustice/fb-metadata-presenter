@@ -214,7 +214,13 @@ module MetadataPresenter
         position = coordinates.positions[uuid]
         next if detached?(position)
 
-        column = position[:column]
+        # Update confirmation page column co-ordinate
+        column = if confirmation_and_cya_pages_present? && service.confirmation_page.uuid == uuid
+                   coordinates.positions[service.checkanswers_page.uuid][:column] + 1
+                 else
+                   position[:column]
+                 end
+
         row = position[:row]
         insert_spacer(column, row) if occupied?(column, row, uuid)
         @ordered[column][row] = get_flow_object(uuid)
@@ -223,6 +229,12 @@ module MetadataPresenter
 
     def detached?(position)
       position[:row].nil? || position[:column].nil?
+    end
+
+    def confirmation_and_cya_pages_present?
+      service.confirmation_page.present? &&
+        service.checkanswers_page.present? &&
+        coordinates.positions[service.checkanswers_page.uuid][:column].present?
     end
 
     def occupied?(column, row, uuid)
