@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.2] - 2022-04-21
+
+### Changed
+
+- Change method to ensure the confirmation page column coordinate is larger than the CYA page coordinate.
+
 ## [2.15.13] - 2022-03-22
 
 ### Changed
