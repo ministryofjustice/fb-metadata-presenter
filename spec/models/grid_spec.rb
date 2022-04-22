@@ -567,6 +567,16 @@ RSpec.describe MetadataPresenter::Grid do
           end
         end
       end
+
+      context 'inserting confirmation page' do
+        let(:latest_metadata) { metadata_fixture(:branching_12) }
+        let(:confirmation_uuid) { '48b0bcd1-7ab1-424f-8250-9a1f0beed2f7' }
+
+        it 'builds the correct main flow' do
+          # The confirmation page will always be in the last column, first row
+          expect(grid.build.last.first.uuid).to eq(confirmation_uuid)
+        end
+      end
     end
   end
 
