@@ -13,6 +13,18 @@ All notable changes to this project will be documented in this file.
 
 - Change method to ensure the confirmation page column coordinate is larger than the CYA page coordinate.
 
+## [2.16.1] - 2022-04-08
+
+### Added
+
+-  Added the correct viewport meta tag from the design system so that the interface displays correctly on devices.
+
+## [2.16.0] - 2022-04-07
+
+### Added
+
+-  Expose previous destination uuids for objects in the flow.
+
 ## [2.15.13] - 2022-03-22
 
 ### Changed
