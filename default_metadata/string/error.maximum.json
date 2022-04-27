@@ -1,0 +1,6 @@
+{
+  "_id": "error.maximum",
+  "_type": "string.error",
+  "description": "Input (number) is larger than the maximum allowed",
+  "value": "Enter a lower number for %{control}"
+}
