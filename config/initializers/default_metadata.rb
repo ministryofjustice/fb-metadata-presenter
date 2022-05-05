@@ -7,7 +7,7 @@ default_metadata = Dir.glob("#{Rails.application.config.default_metadata_directo
 default_metadata.each do |metadata_file|
   metadata = JSON.parse(File.read(metadata_file))
 
-  key = metadata['_id'] || metadata['_type']
+  key = metadata['_id'] || metadata['_type'] || "#{metadata_file.split('/')[-2]}.#{File.basename(metadata_file, '.*')}"
   Rails.logger.info(key)
 
   Rails.application.config.default_metadata[key] = metadata
