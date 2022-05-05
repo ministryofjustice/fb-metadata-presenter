@@ -7,6 +7,19 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.3] - 2022-05-05
+
+### Added
+
+- Added Minimum validation for the number component
+- Added default metadata for minimum validation
+
+### Changed
+
+- Use file path as fallback for naming default metadata keys
+- Add schema sub definitions as their own schemas to the JSON validator
+- Lock json-schema to version 2.8.1
+
 ## [2.16.2] - 2022-04-21
 
 ### Changed
