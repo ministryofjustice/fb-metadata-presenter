@@ -117,4 +117,31 @@ RSpec.describe MetadataPresenter::Component do
       end
     end
   end
+
+  describe '#supported_validations' do
+    context 'when validation bundle exists for component type' do
+      let(:attributes) { { '_type' => 'number' } }
+      let(:expected_validations) do
+        %w[
+          exclusive_maximum
+          exclusive_minimum
+          maximum
+          minimum
+          multiple_of
+        ]
+      end
+
+      it 'returns the supported validations for that component type' do
+        expect(component.supported_validations).to match_array(expected_validations)
+      end
+    end
+
+    context 'when validation bundle does not exist for component type' do
+      let(:attributes) { { '_type' => 'no-validation-component' } }
+
+      it 'returns an empty array' do
+        expect(component.supported_validations).to eq([])
+      end
+    end
+  end
 end
