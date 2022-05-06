@@ -1,0 +1,6 @@
+{
+  "_id": "error.max_word",
+  "_type": "string.error",
+  "description": "Input (number) is higher than the maximum number of words allowed",
+  "value": "Enter a lower number of words for %{control}"
+}

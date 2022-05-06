@@ -108,6 +108,20 @@
         }
       ]
     },
+    "max_word": {
+      "title": "Maximum words",
+      "description": "The maximum number of words users may enter",
+      "type": "number",
+      "minimum": 0
+    },
+    "errors_max_word": {
+      "title": "Error messages for 'Maximum words'",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
     "pattern": {
       "title": "Pattern to match string against",
       "description": "A regular expression for validating users’ answers",
