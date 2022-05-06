@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.4] - 2022-05-06
+
+### Added
+
+- Surface supported validations for each component
+
 ## [2.16.3] - 2022-05-05
 
 ### Added
