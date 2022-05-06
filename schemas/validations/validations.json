@@ -94,6 +94,20 @@
         }
       ]
     },
+    "min_word": {
+      "title": "Minimum words",
+      "description": "The minimum number of words users must enter",
+      "type": "number",
+      "minimum": 0
+    },
+    "errors_min_word": {
+      "title": "Error messages for 'Minimum words'",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
     "pattern": {
       "title": "Pattern to match string against",
       "description": "A regular expression for validating users’ answers",
