@@ -157,6 +157,22 @@ RSpec.describe MetadataPresenter::Component do
           end
         end
       end
+
+      context 'date bundle' do
+        let(:attributes) { { '_type' => 'date' } }
+        let(:expected_validations) do
+          %w[
+            date_after
+            date_before
+            date_within_last
+            date_within_next
+          ]
+        end
+
+        it 'returns the supported validations for date component type' do
+          expect(component.supported_validations).to match_array(expected_validations)
+        end
+      end
     end
 
     context 'when validation bundle does not exist for component type' do
