@@ -400,6 +400,12 @@
             "max_length": {
               "$ref": "#/definitions/max_length"
             },
+            "min_word": {
+              "$ref": "#/definitions/min_word"
+            },
+            "max_word": {
+              "$ref": "#/definitions/max_word"
+            },
             "pattern": {
               "$ref": "#/definitions/pattern"
             },
@@ -415,6 +421,12 @@
             },
             "max_length": {
               "$ref": "#/definitions/errors_max_length"
+            },
+            "min_word": {
+              "$ref": "#/definitions/errors_min_word"
+            },
+            "max_word": {
+              "$ref": "#/definitions/errors_max_word"
             },
             "pattern": {
               "$ref": "#/definitions/errors_pattern"
