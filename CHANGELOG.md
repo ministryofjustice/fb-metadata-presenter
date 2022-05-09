@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.5] - 2022-05-09
+
+### Changed
+
+- Small design bug fix to Confirmation page
+
 ## [2.16.4] - 2022-05-06
 
 ### Added
