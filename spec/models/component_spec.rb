@@ -120,19 +120,42 @@ RSpec.describe MetadataPresenter::Component do
 
   describe '#supported_validations' do
     context 'when validation bundle exists for component type' do
-      let(:attributes) { { '_type' => 'number' } }
-      let(:expected_validations) do
-        %w[
-          exclusive_maximum
-          exclusive_minimum
-          maximum
-          minimum
-          multiple_of
-        ]
+      context 'number bundle' do
+        let(:attributes) { { '_type' => 'number' } }
+        let(:expected_validations) do
+          %w[
+            exclusive_maximum
+            exclusive_minimum
+            maximum
+            minimum
+            multiple_of
+          ]
+        end
+
+        it 'returns the supported validations for number component type' do
+          expect(component.supported_validations).to match_array(expected_validations)
+        end
       end
 
-      it 'returns the supported validations for that component type' do
-        expect(component.supported_validations).to match_array(expected_validations)
+      context 'string bundle' do
+        let(:expected_validations) do
+          %w[
+            min_length
+            max_length
+            min_word
+            max_word
+            pattern
+            format
+          ]
+        end
+
+        %w[text textarea].each do |component_type|
+          let(:attributes) { { '_type' => component_type } }
+
+          it "returns the supported validations for #{component_type} component type" do
+            expect(component.supported_validations).to match_array(expected_validations)
+          end
+        end
       end
     end
 
