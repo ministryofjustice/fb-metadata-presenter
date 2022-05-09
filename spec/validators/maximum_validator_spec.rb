@@ -3,9 +3,9 @@ RSpec.describe MetadataPresenter::MaximumValidator do
     described_class.new(page_answers: page_answers, component: component)
   end
   let(:page) do
-    page = service.find_page_by_url('/your-age')
-    page['components'][0]['validation'] = maximum_validation
-    page
+    meta = service.find_page_by_url('/your-age')
+    meta['components'][0]['validation'] = maximum_validation
+    meta
   end
   let(:component) { page.components.first }
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }

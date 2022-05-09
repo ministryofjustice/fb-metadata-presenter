@@ -1,5 +1,9 @@
 class MetadataPresenter::Component < MetadataPresenter::Metadata
-  VALIDATION_BUNDLES = { 'number' => 'number' }.freeze
+  VALIDATION_BUNDLES = {
+    'number' => 'number',
+    'text' => 'string',
+    'textarea' => 'string'
+  }.freeze
 
   def to_partial_path
     "metadata_presenter/component/#{type}"
