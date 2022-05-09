@@ -1,5 +1,6 @@
 class MetadataPresenter::Component < MetadataPresenter::Metadata
   VALIDATION_BUNDLES = {
+    'date' => 'date',
     'number' => 'number',
     'text' => 'string',
     'textarea' => 'string'
