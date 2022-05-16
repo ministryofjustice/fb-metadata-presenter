@@ -69,8 +69,7 @@
     "min_length": {
       "title": "Minimum length",
       "description": "The minimum characters users must enter",
-      "type": "number",
-      "minimum": 0
+      "type": "string"
     },
     "errors_min_length": {
       "title": "Error messages for ‘Minimum length’",
@@ -83,8 +82,7 @@
     "max_length": {
       "title": "Maximum length",
       "description": "The maximum characters users can enter",
-      "type": "number",
-      "minimum": 0
+      "type": "string"
     },
     "errors_max_length": {
       "title": "Error messages for ‘Maximum length’",
@@ -97,8 +95,7 @@
     "min_word": {
       "title": "Minimum words",
       "description": "The minimum number of words users must enter",
-      "type": "number",
-      "minimum": 0
+      "type": "string"
     },
     "errors_min_word": {
       "title": "Error messages for 'Minimum words'",
@@ -111,8 +108,7 @@
     "max_word": {
       "title": "Maximum words",
       "description": "The maximum number of words users may enter",
-      "type": "number",
-      "minimum": 0
+      "type": "string"
     },
     "errors_max_word": {
       "title": "Error messages for 'Maximum words'",
@@ -151,8 +147,7 @@
     "multiple_of": {
       "title": "Multiple of",
       "description": "Whether users must enter a multiple of another number",
-      "type": "number",
-      "minimum": 0
+      "type": "string"
     },
     "errors_multiple_of": {
       "title": "Error messages for ‘Multiple of’",
@@ -165,8 +160,7 @@
     "maximum": {
       "title": "Maximum value",
       "description": "The largest number that users can enter",
-      "type": "number",
-      "minimum": 0
+      "type": "string"
     },
     "errors_maximum": {
       "title": "Error messages for ‘Maximum value’",
@@ -192,8 +186,7 @@
     "minimum": {
       "title": "Minimum value",
       "description": "The smallest number that users can enter",
-      "type": "number",
-      "minimum": 0
+      "type": "string"
     },
     "errors_minimum": {
       "title": "Error messages for for ‘Minimum value’",
