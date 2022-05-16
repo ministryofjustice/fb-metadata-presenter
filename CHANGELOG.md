@@ -7,6 +7,17 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.6] - 2022-05-16
+
+### Added
+
+- date_before and date_after validations
+- min_length and max_length default metadata
+
+### Changed
+
+- Change number validation schema types to be strings
+
 ## [2.16.5] - 2022-05-09
 
 ### Changed
