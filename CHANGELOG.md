@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.7] - 2022-05-17
+
+### Fixed
+
+- Revert the removal of the application JS pack
+- Fix incorrect error messages for the date before and date after validations
+
 ## [2.16.6] - 2022-05-16
 
 ### Added
