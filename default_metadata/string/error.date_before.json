@@ -1,6 +1,6 @@
 {
   "_id": "error.date_before",
   "_type": "string.error",
-  "description": "Input (date) is earlier than allowed",
-  "value": "Enter a later date for %{control}"
+  "description": "Input (date) is later than allowed",
+  "value": "Enter an earlier date for %{control}"
 }

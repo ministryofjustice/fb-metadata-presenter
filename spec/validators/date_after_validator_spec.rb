@@ -16,7 +16,7 @@ RSpec.describe MetadataPresenter::DateAfterValidator do
       validator.valid?
     end
 
-    context 'when date is after the latest date' do
+    context 'when date is after the earliest date' do
       let(:answers) do
         {
           'holiday_date_1(3i)' => '1',
@@ -26,20 +26,20 @@ RSpec.describe MetadataPresenter::DateAfterValidator do
       end
 
       it 'returns invalid' do
-        expect(validator).to_not be_valid
+        expect(validator).to be_valid
       end
     end
 
-    context 'when date is before the latest date' do
+    context 'when date is before the earliest date' do
       let(:answers) do
         {
           'holiday_date_1(3i)' => '1',
           'holiday_date_1(2i)' => '1',
-          'holiday_date_1(1i)' => '1997'
+          'holiday_date_1(1i)' => '1990'
         }
       end
       it 'returns valid' do
-        expect(validator).to be_valid
+        expect(validator).to_not be_valid
       end
     end
   end
