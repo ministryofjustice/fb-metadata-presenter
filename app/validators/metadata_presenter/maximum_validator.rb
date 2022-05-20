@@ -1,6 +1,8 @@
 module MetadataPresenter
-  class MaximumValidator < BaseValidator
+  class MaximumValidator < NumberValidator
     def invalid_answer?
+      return if super
+
       Float(user_answer, exception: false) > Float(component.validation[schema_key], exception: false)
     end
   end

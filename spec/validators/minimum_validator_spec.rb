@@ -35,5 +35,13 @@ RSpec.describe MetadataPresenter::MinimumValidator do
         end
       end
     end
+
+    context 'when not a number' do
+      let(:answers) { { 'your-age_number_1' => 'i am not a number' } }
+
+      it 'returns valid' do
+        expect(validator).to be_valid
+      end
+    end
   end
 end
