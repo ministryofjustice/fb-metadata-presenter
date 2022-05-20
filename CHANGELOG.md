@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.10] - 2022-05-20
+
+### Fixed
+
+- Check whether answer is a number before validating minimum and maximum
+
 ## [2.16.9] - 2022-05-20
 
 ### Fixed
