@@ -25,7 +25,7 @@ RSpec.describe MetadataPresenter::DateBeforeValidator do
         }
       end
 
-      it 'returns invalid' do
+      it 'returns valid' do
         expect(validator).to be_valid
       end
     end
@@ -38,8 +38,23 @@ RSpec.describe MetadataPresenter::DateBeforeValidator do
           'holiday_date_1(1i)' => '2055'
         }
       end
-      it 'returns valid' do
+
+      it 'returns invalid' do
         expect(validator).to_not be_valid
+      end
+    end
+
+    context 'when not a valid date' do
+      let(:answers) do
+        {
+          'holiday_date_1(3i)' => '1',
+          'holiday_date_1(2i)' => '1',
+          'holiday_date_1(1i)' => 'not a year'
+        }
+      end
+
+      it 'returns valid' do
+        expect(validator).to be_valid
       end
     end
   end

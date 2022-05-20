@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.9] - 2022-05-20
+
+### Fixed
+
+- Check whether date is valid before validating after and before
+- Coerce string length validators to integer before comparing user answers
+
 ## [2.16.8] - 2022-05-19
 
 - Fix date valdiators which were reversed
