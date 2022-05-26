@@ -7,7 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [Unreleased]
+## [2.16.11] - 2022-05-27
+
+### Added
+
+- Add autocomplete schemas and default metadata
 
 ### Changed
 
