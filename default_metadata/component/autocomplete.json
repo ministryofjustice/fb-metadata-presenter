@@ -1,0 +1,12 @@
+{
+  "_id": "component.autocomplete",
+  "_type": "autocomplete",
+  "errors": {},
+  "hint": "",
+  "options": [],
+  "name": "component-name",
+  "legend": "Question",
+  "validation": {
+    "required": true
+  }
+}
