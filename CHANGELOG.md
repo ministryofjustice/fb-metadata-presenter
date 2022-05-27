@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [Unreleased]
+
+### Changed
+
+- Format date validation configuration string to a human readable form of DD MM YYYY
+- Update validation error message content
+
 ## [2.16.10] - 2022-05-20
 
 ### Fixed
