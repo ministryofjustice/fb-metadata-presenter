@@ -31,7 +31,7 @@ RSpec.describe MetadataPresenter::MaxLengthValidator do
 
         it 'uses the default error message' do
           expect(page_answers.errors.full_messages).to eq(
-            ["Your answer for 'Full name' is too long (10 characters at most)"]
+            ['Your answer for "Full name" must be 10 characters or fewer']
           )
         end
       end

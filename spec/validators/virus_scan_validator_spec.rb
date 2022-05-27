@@ -45,7 +45,7 @@ RSpec.describe MetadataPresenter::VirusScanValidator do
       it 'returns a custom error message' do
         validator.valid?
         expect(page_answers.errors.full_messages).to eq(
-          ['scooby_do.txt was not uploaded successfully because it contains a virus']
+          ['"scooby_do.txt" was not uploaded successfully because it contains a virus']
         )
       end
     end

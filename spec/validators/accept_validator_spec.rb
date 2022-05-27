@@ -45,7 +45,7 @@ RSpec.describe MetadataPresenter::AcceptValidator do
       it 'returns a custom error message' do
         validator.valid?
         expect(page_answers.errors.full_messages).to eq(
-          ['beethoven.txt was not uploaded successfully as it is the wrong type']
+          ['"beethoven.txt" was not uploaded successfully as it is the wrong type']
         )
       end
     end
