@@ -21,7 +21,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
 
         it 'set default error message on page' do
           expect(page_answers.errors.full_messages).to eq(
-            ['Enter an answer for Full name']
+            ['Enter an answer for "Full name"']
           )
         end
       end
@@ -83,7 +83,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
           it 'returns errors' do
             validator.valid?
             expect(page_answers.errors[:holiday_date_1]).to include(
-              'Enter an answer for What is the day that you like to take holidays?'
+              'Enter an answer for "What is the day that you like to take holidays?"'
             )
           end
         end

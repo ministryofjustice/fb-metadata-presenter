@@ -2,5 +2,5 @@
   "_id": "error.accept",
   "_type": "string.error",
   "description": "File uploaded is wrong type",
-  "value": "%{control} was not uploaded successfully as it is the wrong type"
+  "value": "\"%{control}\" was not uploaded successfully as it is the wrong type"
 }

@@ -2,5 +2,5 @@
   "_id": "error.min_word",
   "_type": "string.error",
   "description": "Input (number) is lower than the minimum number of words allowed",
-  "value": "Enter a higher number of words for %{control}"
+  "value": "Your answer for \"%{control}\" must be %{min_word} words or more"
 }

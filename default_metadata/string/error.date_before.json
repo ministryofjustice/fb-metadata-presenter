@@ -2,5 +2,5 @@
   "_id": "error.date_before",
   "_type": "string.error",
   "description": "Input (date) is later than allowed",
-  "value": "Enter an earlier date for %{control}"
+  "value": "Your answer for \"%{control}\" must be %{date_before} or earlier"
 }
