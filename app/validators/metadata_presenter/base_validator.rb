@@ -75,10 +75,9 @@ module MetadataPresenter
     # is not present
     def default_error_message
       default_error_message_key = "error.#{schema_key}"
-      default_message = Rails
-                          .application
-                          .config
-                          .default_metadata[default_error_message_key]
+      default_message = Rails.application
+                             .config
+                             .default_metadata[default_error_message_key]
 
       if default_message.present?
         default_message['value'] % error_message_hash
@@ -116,8 +115,14 @@ module MetadataPresenter
     def error_message_hash
       {
         control: component.humanised_title,
-        schema_key.to_sym => component.validation[schema_key]
+        schema_key.to_sym => validation_value
       }
+    end
+
+    # The validation configuration value
+    # Override if additional formatting of the value is required
+    def validation_value
+      component.validation[schema_key]
     end
 
     # Method signature to be overwrite in the subclass if you do not want to allow

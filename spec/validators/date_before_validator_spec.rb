@@ -58,4 +58,19 @@ RSpec.describe MetadataPresenter::DateBeforeValidator do
       end
     end
   end
+
+  describe '#validation_value' do
+    let(:answers) do
+      {
+        'holiday_date_1(3i)' => '1',
+        'holiday_date_1(2i)' => '1',
+        'holiday_date_1(1i)' => '1950'
+      }
+    end
+    let(:expected_formatted_date) { '05 11 1955' }
+
+    it 'correctly formats the date validation configuration value' do
+      expect(validator.validation_value).to eq(expected_formatted_date)
+    end
+  end
 end
