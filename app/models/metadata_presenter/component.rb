@@ -6,6 +6,10 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     'textarea' => 'string'
   }.freeze
 
+  # Used for max_length and max_word validations.
+  # Threshold percentage at which the remaining count is shown
+  VALIDATION_STRING_LENGTH_THRESHOLD = 75
+
   def to_partial_path
     "metadata_presenter/component/#{type}"
   end
@@ -44,6 +48,10 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     JSON::Validator.schema_for_uri(validation_bundle_key)
                    .schema['properties']['validation']['properties']
                    .keys
+  end
+
+  def validation_threshold
+    VALIDATION_STRING_LENGTH_THRESHOLD
   end
 
   private

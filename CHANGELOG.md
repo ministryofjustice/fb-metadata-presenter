@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.12] - 2022-06-01
+
+### Changed
+
+ - Updates to ensure character/word remaining count displays for textarea component
+
 ## [2.16.11] - 2022-05-27
 
 ### Added

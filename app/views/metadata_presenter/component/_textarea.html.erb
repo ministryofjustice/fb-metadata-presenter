@@ -6,8 +6,8 @@
       text: component.hint
     },
     name: "answers[#{component.name}]",
-    max_chars: component.maxchars,
-    max_words: component.maxwords,
-    threshold: component.threshold,
+    max_chars: component.validation['max_length'],
+    max_words: component.validation['max_word'],
+    threshold: component.validation_threshold,
     rows: component.rows
 %>
