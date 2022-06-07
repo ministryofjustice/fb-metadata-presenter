@@ -1,0 +1,3 @@
+<% Rails.application.config.supported_analytics.each do |provider, analytics| %>
+  <%= render partial: "metadata_presenter/analytics/#{provider}", locals: { analytics: analytics } %>
+<% end %>

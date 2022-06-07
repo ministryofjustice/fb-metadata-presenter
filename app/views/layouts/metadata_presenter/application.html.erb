@@ -4,7 +4,7 @@
     <title><%= service.service_name %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="<%= asset_pack_url('media/images/favicon.ico') %>" type="image/x-icon" />
   <link rel="mask-icon" href="<%= asset_pack_url('media/images/govuk-mask-icon.svg') %>" color="blue">
@@ -15,9 +15,14 @@
 
     <%= stylesheet_pack_tag 'govuk' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+
+    <%= render template: 'metadata_presenter/analytics/analytics' %>
   </head>
 
   <body class="govuk-template__body">
+    <% if ENV['GTM'].present? %>
+      <%= render partial: 'metadata_presenter/analytics/gtm_body', locals: { analytic_tag: ENV['GTM'] } %>
+    <% end %>
     <%= render template: 'metadata_presenter/header/show' %>
     <div class="govuk-width-container govuk-body-m">
       <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
