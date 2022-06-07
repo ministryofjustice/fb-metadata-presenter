@@ -1,0 +1,63 @@
+<div class="govuk-cookie-banner" id="govuk-cookie-banner" data-nosnippet role="region" aria-label="<%= t('analytics.heading', service_name: service.service_name) %>">
+  <div class="govuk-cookie-banner__message govuk-width-container" id="govuk-cookie-banner-message">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">
+          <%= t('analytics.heading', service_name: service.service_name) %>
+        </h2>
+
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body"><%= t('analytics.body_1') %></p>
+          <p class="govuk-body"><%= t('analytics.body_2') %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <button type="button" class="govuk-button" data-module="govuk-button" onclick='analytics.accept("<%= analytics_cookie_name %>")'>
+        <%= t('analytics.accept') %>
+      </button>
+      <button type="button" class="govuk-button" data-module="govuk-button" onclick='analytics.reject("<%= analytics_cookie_name %>")'>
+        <%= t('analytics.reject') %>
+      </button>
+      <a class="govuk-link" href="/cookies"><%= t('analytics.view_cookies') %></a>
+    </div>
+  </div>
+
+  <div class="govuk-cookie-banner__message govuk-width-container" id="govuk-cookie-banner-message-accepted" role="alert" style="display: none;">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">
+            <%= t('analytics.confirmation', action: t('analytics.accepted')) %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <button class="govuk-button" data-module="govuk-button" onclick="analytics.hideCookieBanner()">
+        <%= t('analytics.hide') %>
+      </button>
+    </div>
+  </div>
+
+  <div class="govuk-cookie-banner__message govuk-width-container" id="govuk-cookie-banner-message-rejected" role="alert" style="display: none;">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">
+            <%= t('analytics.confirmation', action: t('analytics.rejected')) %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-button-group">
+      <button class="govuk-button" data-module="govuk-button" onclick="analytics.hideCookieBanner()">
+        <%= t('analytics.hide') %>
+      </button>
+    </div>
+  </div>
+</div>

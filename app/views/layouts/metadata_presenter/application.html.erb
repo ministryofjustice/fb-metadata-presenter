@@ -16,7 +16,9 @@
     <%= stylesheet_pack_tag 'govuk' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
-    <%= render template: 'metadata_presenter/analytics/analytics' %>
+    <% if allow_analytics? %>
+      <%= render template: 'metadata_presenter/analytics/analytics' %>
+    <% end %>
   </head>
 
   <body class="govuk-template__body">
