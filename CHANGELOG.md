@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [Unreleased]
+
+- Add google analytics tags to the application layout
+
 ## [2.16.12] - 2022-06-01
 
 ### Changed
