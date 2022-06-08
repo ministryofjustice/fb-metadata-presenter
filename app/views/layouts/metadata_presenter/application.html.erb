@@ -16,13 +16,16 @@
     <%= stylesheet_pack_tag 'govuk' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
 
-    <%= render template: 'metadata_presenter/analytics/analytics' %>
+    <% if allow_analytics? %>
+      <%= render template: 'metadata_presenter/analytics/analytics' %>
+    <% end %>
   </head>
 
   <body class="govuk-template__body">
-    <% if ENV['GTM'].present? %>
-      <%= render partial: 'metadata_presenter/analytics/gtm_body', locals: { analytic_tag: ENV['GTM'] } %>
+    <% if show_cookie_banner? %>
+      <%= render partial: 'metadata_presenter/analytics/cookie_banner' %>
     <% end %>
+
     <%= render template: 'metadata_presenter/header/show' %>
     <div class="govuk-width-container govuk-body-m">
       <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
