@@ -7,9 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [Unreleased]
+## [2.16.13] - 2022-06-08
+
+### Added
 
 - Add google analytics tags to the application layout
+- Add cookie banner to the application layout
 
 ## [2.16.12] - 2022-06-01
 
