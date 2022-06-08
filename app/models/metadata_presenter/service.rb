@@ -34,7 +34,7 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   def start_page
-    pages.first
+    pages.find { |page| page.type == 'page.start' }
   end
 
   def service_slug
