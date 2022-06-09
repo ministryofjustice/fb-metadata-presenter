@@ -2,7 +2,7 @@
   f.govuk_text_area component.id.to_sym,
     label: { text: input_title },
     hint: {
-      data: { "fb-default-text" => default_text('hint') },
+      data: { "fb-default-text" => default_text('hint'), "fb-node" => "hint" },
       text: component.hint
     },
     name: "answers[#{component.name}]",
