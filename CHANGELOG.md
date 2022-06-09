@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.0] - 2022-06-09
+
+### Fixed
+
+- Fixed issue where pages traversed based on user answers were incomplete and therefore
+  missing from submission payloads and generated PDF files
+
 ## [2.16.14] - 2022-06-09
 
 ### Fixed

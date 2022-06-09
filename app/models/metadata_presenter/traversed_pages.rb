@@ -6,41 +6,42 @@ module MetadataPresenter
       @service = service
       @user_data = user_data
       @pages = [service.start_page]
-      @current_page = current_page || service.pages[-1]
+      @current_page = current_page
     end
 
     delegate :last, to: :all
 
     def all
-      page_uuid = service.start_page.uuid
+      next_object = service.start_page
 
       service.flow.size.times do
-        break if page_uuid == current_page.uuid
+        break if next_object.blank? || next_object.uuid == current_page&.uuid
 
-        flow_object = service.flow_object(page_uuid)
-
-        if flow_object.branch?
-          page = EvaluateConditionals.new(
-            service: service,
-            flow: flow_object,
-            user_data: user_data
-          ).page
-          page_uuid = page.uuid
-        else
-          page_uuid = flow_object.default_next
-          page = service.find_page_by_uuid(page_uuid)
-        end
-
-        @pages.push(page) if page && page.uuid != current_page.uuid
+        flow_object = service.flow_object(next_object.uuid)
+        next_object = flow_object.branch? ? evaluated_page(flow_object) : next_flow_object(flow_object.default_next)
+        @pages.push(next_object) if page_in_flow?(next_object)
       end
 
       @pages
     end
 
-    def latest_pages
-      index = service.pages.index(current_page).to_i - 1
+    private
 
-      service.pages[0..index]
+    def evaluated_page(flow_object)
+      EvaluateConditionals.new(
+        service: service,
+        flow: flow_object,
+        user_data: user_data
+      ).page
+    end
+
+    def next_flow_object(uuid)
+      obj = service.flow_object(uuid)
+      obj.branch? ? obj : service.find_page_by_uuid(uuid)
+    end
+
+    def page_in_flow?(obj)
+      obj.is_a?(MetadataPresenter::Page) && obj.uuid != current_page&.uuid
     end
   end
 end

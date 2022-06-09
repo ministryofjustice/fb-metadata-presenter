@@ -152,8 +152,15 @@ RSpec.describe MetadataPresenter::Service do
   end
 
   describe '#start_page' do
+    let(:service) do
+      meta = metadata_fixture(:branching)
+      meta['pages'] = meta['pages'].shuffle
+      MetadataPresenter::Service.new(meta)
+    end
+
     it 'returns the correct start page' do
-      expect(service.start_page.id).to eq(service_metadata['pages'][0]['_id'])
+      expect(service.start_page.type).to eq('page.start')
+      expect(service.start_page.url).to eq('/')
     end
   end
 
