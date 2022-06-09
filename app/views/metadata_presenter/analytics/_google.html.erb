@@ -1,5 +1,5 @@
 <% analytics.each do |analytic| %>
   <% if ENV[analytic].present? %>
-    <%= render partial: "metadata_presenter/analytics/#{analytic.downcase}", locals: { analytic_tag: ENV[analytic] } %>
+    <%= render partial: "metadata_presenter/analytics/#{analytic.downcase}", locals: { measurement_id: ENV[analytic] } %>
   <% end %>
 <% end %>
