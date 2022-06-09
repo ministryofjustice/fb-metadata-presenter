@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.16.14] - 2022-06-09
+
+### Fixed
+
+- Pass analytics IDs as string literals in JS scripts
+
 ## [2.16.13] - 2022-06-08
 
 ### Added
