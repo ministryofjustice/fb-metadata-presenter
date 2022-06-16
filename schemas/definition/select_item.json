@@ -1,0 +1,31 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/definition/select_item",
+  "_name": "definition.select_item",
+  "title": "Select item",
+  "description": "Component that provides a select item",
+  "type": "object",
+  "properties": {
+    "text": {
+      "title": "Item text",
+      "description": "Text displayed to users for that item",
+      "type": "string",
+      "content": true
+    },
+    "value": {
+      "title": "Item value",
+      "description": "Value assigned when users select item",
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "definition.component"
+    }
+  ],
+  "required": [
+    "value"
+  ],
+  "category": [
+    "select_item"
+  ]
+}
