@@ -12,11 +12,11 @@
   ],
   "properties": {
     "items": {
-      "title": "Options",
+      "title": "Items",
       "description": "Items that users can select",
       "type": "array",
       "items": {
-        "$ref": "definition.select_option"
+        "$ref": "definition.select_item"
       }
     }
   },
