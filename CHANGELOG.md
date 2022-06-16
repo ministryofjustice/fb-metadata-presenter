@@ -7,12 +7,18 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.2] - 2022-06-16
+
+### Changed
+
+- Rename autocomplete options to items.
+
 ## [2.17.1] - 2022-06-09
 
 ### Fixed
 
 - Allow for more specific lookup by JS
-	
+
 ## [2.17.0] - 2022-06-09
 
 ### Fixed
