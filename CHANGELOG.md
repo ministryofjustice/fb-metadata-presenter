@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.3] - 2022-06-24
+
+### Changed
+
+- Move definitions to component level rather than definition level, this is in
+  line with the existing component schemas.
+
 ## [2.17.2] - 2022-06-16
 
 ### Changed
