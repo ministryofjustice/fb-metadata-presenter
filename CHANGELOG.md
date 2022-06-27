@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [Unreleased]
+
+### Changed
+
+ - Update button label for check answers page to 'Submit'
+ - Move button labels into locales file
+
 ## [2.17.3] - 2022-06-24
 
 ### Changed
