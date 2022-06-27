@@ -1,4 +1,8 @@
 en:
+  actions:
+    start: Start Now
+    continue: Continue
+    submit: Submit
   analytics:
     heading: Cookies on %{service_name}
     body_1: We use some essential cookies to make this service work.
