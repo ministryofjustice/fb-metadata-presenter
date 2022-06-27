@@ -7,7 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [2.17.4]
+## [2.17.5] - 2022-06-28
+
+### Fixed
+
+- Check whether the global_ga4 has actually been set on the Rails config object
+
+## [2.17.4] - - 2022-06-27
 
 ### Changed
 
