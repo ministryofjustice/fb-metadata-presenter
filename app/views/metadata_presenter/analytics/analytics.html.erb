@@ -1,4 +1,4 @@
-<% if Rails.application.config.global_ga4.present? %>
+<% if Rails.application.config.respond_to?(:global_ga4) %>
   <%= render partial: 'metadata_presenter/analytics/global_analytics', locals: { measurement_id: Rails.application.config.global_ga4 } %>
 <% end %>
 
