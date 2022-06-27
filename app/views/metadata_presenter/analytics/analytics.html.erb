@@ -1,3 +1,7 @@
+<% if Rails.application.config.global_ga4.present? %>
+  <%= render partial: 'metadata_presenter/analytics/global_analytics', locals: { measurement_id: Rails.application.config.global_ga4 } %>
+<% end %>
+
 <% Rails.application.config.supported_analytics.each do |provider, analytics| %>
   <%= render partial: "metadata_presenter/analytics/#{provider}", locals: { analytics: analytics } %>
 <% end %>

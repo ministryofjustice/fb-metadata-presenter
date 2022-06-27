@@ -7,12 +7,17 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [Unreleased]
+## [2.17.4]
 
 ### Changed
 
  - Update button label for check answers page to 'Submit'
  - Move button labels into locales file
+ - Changed analytics_tag to measurement_id
+
+### Added
+
+- Added MoJ Forms GA4 global analytics partials
 
 ## [2.17.3] - 2022-06-24
 
