@@ -8,7 +8,15 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 ## [2.17.6] - 2022-06-29
- - Update the start now button label to correct casing
+
+### Added
+
+- Autocomplete view template
+
+### Changed
+
+- Update autocomplete schema
+- Update the start now button label to correct casing
 
 ## [2.17.5] - 2022-06-28
 
