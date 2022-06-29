@@ -1,0 +1,14 @@
+<%=
+  f.govuk_collection_select component.id.to_sym,
+  component.items,
+  :id,
+  :name,
+  label: { text: input_title },
+  hint:  {
+      data: { "fb-default-text" => default_text('hint') },
+      text: component.hint
+    },
+  class: "govuk-!-width-two-thirds"
+%>
+
+<button type="button" class="fb-govuk-button fb-govuk-button-inverted"><%=t('actions.upload_options')%></button>

@@ -3,6 +3,7 @@ en:
     start: Start now
     continue: Continue
     submit: Submit
+    upload_options: Upload options
   analytics:
     heading: Cookies on %{service_name}
     body_1: We use some essential cookies to make this service work.
