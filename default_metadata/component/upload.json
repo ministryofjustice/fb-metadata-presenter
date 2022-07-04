@@ -18,9 +18,11 @@
       "application/vnd.oasis.opendocument.text",
       "application/pdf",
       "application/rtf",
+      "application/csv",
       "image/jpeg",
       "image/png",
-      "application/vnd.ms-excel"
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     ]
   }
 }
