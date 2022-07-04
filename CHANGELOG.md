@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.7] - 2022-07-04
+
+### Added
+
+- Added 2 new mime types
+- Added meta tag to exclude from indexing
+
 ## [2.17.6] - 2022-06-29
 
 ### Added
