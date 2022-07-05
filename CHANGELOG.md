@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [Unreleased]
+
+### Changed
+
+- Removed graphviz dependency and rake task which used it to build flows
+
 ## [2.17.7] - 2022-07-04
 
 ### Added
