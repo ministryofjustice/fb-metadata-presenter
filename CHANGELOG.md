@@ -7,11 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [Unreleased]
+## [2.17.8] - 2022-07-12
 
 ### Changed
 
 - Removed graphviz dependency and rake task which used it to build flows
+- Moved the editable functionalties of the autocomplete component to the Editor app
 
 ## [2.17.7] - 2022-07-04
 
