@@ -11,4 +11,6 @@
   class: "govuk-!-width-two-thirds"
 %>
 
-<button type="button" class="fb-govuk-button fb-govuk-button-inverted"><%=t('actions.upload_options')%></button>
+<% if editable? %>
+  <%= render partial: '/partials/editable_autocomplete', locals: { component: component } %>
+<% end %>
