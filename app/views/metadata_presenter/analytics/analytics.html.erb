@@ -1,5 +1,6 @@
+<%# MoJ Forms Google Analytic Reporting %>
 <% if Rails.application.config.respond_to?(:global_ga4) %>
-  <%= render partial: 'metadata_presenter/analytics/global_analytics', locals: { measurement_id: Rails.application.config.global_ga4 } %>
+  <%= render partial: 'metadata_presenter/analytics/global_analytics', locals: { global_measurement_id: Rails.application.config.global_ga4 } %>
 <% end %>
 
 <% Rails.application.config.supported_analytics.each do |provider, analytics| %>
