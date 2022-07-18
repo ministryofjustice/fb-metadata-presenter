@@ -50,6 +50,13 @@ module MetadataPresenter
     end
     helper_method :show_cookie_banner?
 
+    def analytics_tags_present?
+      Rails.application.config.supported_analytics.values.flatten.any? do |analytic|
+        ENV[analytic].present?
+      end
+    end
+    helper_method :analytics_tags_present?
+
     private
 
     def not_found
@@ -58,12 +65,6 @@ module MetadataPresenter
 
     def redirect_to_page(url)
       redirect_to File.join(request.script_name, url)
-    end
-
-    def analytics_tags_present?
-      Rails.application.config.supported_analytics.values.flatten.any? do |analytic|
-        ENV[analytic].present?
-      end
     end
 
     def no_analytics_cookie?
