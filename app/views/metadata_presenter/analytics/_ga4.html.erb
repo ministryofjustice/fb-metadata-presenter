@@ -1,16 +1,8 @@
-<!-- Google Analytics 4 -->
+<!-- Form Owner Google Analytics 4 -->
 <% if Rails.application.config.respond_to?(:global_ga4) %>
-<script>
-  gtag('config', '<%= measurement_id %>');
-</script>
-<% else %>
-<script async src="https://www.googletagmanager.com/gtag/js?id=<%= measurement_id %>"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '<%= measurement_id %>');
-</script>
+  <%# Global Google Analytics (GA4) should be included before this point so we only need a config setting %>
+  <script>
+    gtag('config', '<%= measurement_id %>');
+  </script>
 <% end %>
-<!-- End Google Analytics 4 -->
+<!-- End Form Owner Google Analytics 4 -->
