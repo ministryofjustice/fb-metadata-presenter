@@ -318,4 +318,45 @@ RSpec.describe MetadataPresenter::Page do
       end
     end
   end
+
+  describe '#autocomplete_component_present?' do
+    context 'when there is an autocomplete component' do
+      subject(:page) { service.find_page_by_url('countries') }
+
+      it 'returns true' do
+        expect(page.autocomplete_component_present?).to be_truthy
+      end
+    end
+
+    context 'when there is no autocomplete component' do
+      subject(:page) do
+        service.find_page_by_url('dog-picture')
+      end
+
+      it 'returns false' do
+        expect(page.autocomplete_component_present?).to be_falsey
+      end
+    end
+  end
+
+  describe '#assign_autocomplete_items' do
+    subject(:page) { service.find_page_by_url('countries') }
+    let(:component_id) { page.components.first.uuid }
+    let(:items) do
+      {
+        component_id => [{ 'text' => 'abc', 'value' => '123' }]
+      }
+    end
+
+    before do
+      page.assign_autocomplete_items(items)
+    end
+
+    it 'sets the autocomplete items' do
+      expected_items = page.components.first.items
+      expect(expected_items).to all(be_an(MetadataPresenter::AutocompleteItem))
+      expect(expected_items.first.text).to eq('abc')
+      expect(expected_items.first.value).to eq('123')
+    end
+  end
 end

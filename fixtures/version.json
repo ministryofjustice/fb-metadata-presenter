@@ -71,6 +71,12 @@
     "2ef7d11e-0307-49e9-9fe2-345dc528dd66": {
       "_type": "flow.page",
       "next": {
+        "default": "c7755991-436b-4495-afa6-803db58cefbc"
+      }
+    },
+    "c7755991-436b-4495-afa6-803db58cefbc": {
+      "_type": "flow.page",
+      "next": {
         "default": "e337070b-f636-49a3-a65c-f506675265f0"
       }
     },
@@ -567,6 +573,33 @@
           }
         }
       ]
+    },
+    {
+      "_id": "page.countries",
+      "url": "countries",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "c7755991-436b-4495-afa6-803db58cefbc",
+      "heading": "",
+      "components": [
+        {
+          "_id": "countries_autocomplete_1",
+          "hint": "",
+          "name": "countries_autocomplete_1",
+          "_type": "autocomplete",
+          "_uuid": "4dc23b9c-9757-4526-813d-b43efbe07dad",
+          "items": [
+          ],
+          "errors": {
+          },
+          "legend": "Countries",
+          "validation": {
+            "required": true
+          }
+        }
+      ],
+      "section_heading": ""
     },
     {
       "_id": "page.check-answers",
