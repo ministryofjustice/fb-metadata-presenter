@@ -41,12 +41,12 @@ module MetadataPresenter
     helper_method :analytics_cookie_name
 
     def allow_analytics?
-      no_analytics_cookie? || cookies[analytics_cookie_name] == 'accepted'
+      cookies[analytics_cookie_name] == 'accepted'
     end
     helper_method :allow_analytics?
 
     def show_cookie_banner?
-      no_analytics_cookie? && analytics_tags_present?
+      no_analytics_cookie?
     end
     helper_method :show_cookie_banner?
 
