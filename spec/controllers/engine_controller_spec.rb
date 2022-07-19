@@ -123,8 +123,8 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
     end
 
     context 'when no analytics cookie is present' do
-      it 'returns truthy' do
-        expect(controller.allow_analytics?).to be_truthy
+      it 'returns falsey' do
+        expect(controller.allow_analytics?).to be_falsey
       end
     end
 
