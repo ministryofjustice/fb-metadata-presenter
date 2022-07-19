@@ -41,14 +41,21 @@ module MetadataPresenter
     helper_method :analytics_cookie_name
 
     def allow_analytics?
-      no_analytics_cookie? || cookies[analytics_cookie_name] == 'accepted'
+      cookies[analytics_cookie_name] == 'accepted'
     end
     helper_method :allow_analytics?
 
     def show_cookie_banner?
-      no_analytics_cookie? && analytics_tags_present?
+      no_analytics_cookie?
     end
     helper_method :show_cookie_banner?
+
+    def analytics_tags_present?
+      Rails.application.config.supported_analytics.values.flatten.any? do |analytic|
+        ENV[analytic].present?
+      end
+    end
+    helper_method :analytics_tags_present?
 
     private
 
@@ -58,12 +65,6 @@ module MetadataPresenter
 
     def redirect_to_page(url)
       redirect_to File.join(request.script_name, url)
-    end
-
-    def analytics_tags_present?
-      Rails.application.config.supported_analytics.values.flatten.any? do |analytic|
-        ENV[analytic].present?
-      end
     end
 
     def no_analytics_cookie?
