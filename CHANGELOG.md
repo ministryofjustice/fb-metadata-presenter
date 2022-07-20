@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [Unreleased]
+
+### Fixed
+
+- Fixed issue where page components were `nil`
+
 ## [2.17.9] - 2022-07-18
 
 ### Changed
@@ -15,7 +21,7 @@ All notable changes to this project will be documented in this file.
 - Global (MoJ Forms) analytics always included, if analytics allowed
 - Global (MoJ Forms) analytics ID is different from Form Owner settings
 - Form Owner settings only shows if allowed and set
-	
+
 ## [2.17.8] - 2022-07-12
 
 ### Changed

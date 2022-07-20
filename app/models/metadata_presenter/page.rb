@@ -111,7 +111,7 @@ module MetadataPresenter
     end
 
     def to_components(node_components, collection:)
-      node_components&.map do |component|
+      Array(node_components).map do |component|
         MetadataPresenter::Component.new(
           component.merge(collection: collection),
           editor: editor?
