@@ -1,6 +1,6 @@
 class MetadataPresenter::AutocompleteItem < MetadataPresenter::Metadata
   def id
-    value
+    { text: text, value: value }.to_json
   end
 
   def name
