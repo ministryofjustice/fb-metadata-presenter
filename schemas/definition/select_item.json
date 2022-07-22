@@ -17,12 +17,8 @@
       "type": "string"
     }
   },
-  "allOf": [
-    {
-      "$ref": "definition.component"
-    }
-  ],
   "required": [
+    "text",
     "value"
   ],
   "category": [

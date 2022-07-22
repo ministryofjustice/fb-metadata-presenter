@@ -4,14 +4,12 @@
   "title": "Autocomplete",
   "description": "Let users select one option from an auto-completing list",
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "definition.select"
-    }
-  ],
   "properties": {
     "_type": {
       "const": "autocomplete"
+    },
+    "items": {
+      "$ref": "definition.select"
     }
   }
 }
