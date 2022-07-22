@@ -93,9 +93,9 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
           .and_return(MetadataPresenter::OfflineUploadAdapter)
       end
 
-      it 'redirect to the check your answers' do
+      it 'redirect to the next page' do
         post '/dog-picture', params: { answers: answers }
-        expect(response).to redirect_to('/check-answers')
+        expect(response).to redirect_to('/countries')
       end
 
       it 'uploads the file' do

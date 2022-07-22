@@ -20,8 +20,12 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
 
   def items
     Array(metadata.items).map do |item|
-      MetadataPresenter::Item.new(item, editor: editor?)
+      item_klass.new(item, editor: editor?)
     end
+  end
+
+  def item_klass
+    type == 'autocomplete' ? MetadataPresenter::AutocompleteItem : MetadataPresenter::Item
   end
 
   SUPPORTS_BRANCHING = %w[radios checkboxes].freeze

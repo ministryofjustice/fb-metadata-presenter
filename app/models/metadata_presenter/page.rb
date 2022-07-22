@@ -39,7 +39,8 @@ module MetadataPresenter
     end
 
     def components
-      to_components(metadata.components, collection: :components)
+      @components ||=
+        to_components(metadata.components, collection: :components)
     end
 
     def extra_components
@@ -102,6 +103,17 @@ module MetadataPresenter
 
     def multiple_questions?
       type == 'page.multiplequestions'
+    end
+
+    def autocomplete_component_present?
+      components.any? { |component| component.type == 'autocomplete' }
+    end
+
+    def assign_autocomplete_items(items)
+      component_uuids = items.keys
+      components.each do |component|
+        component.items = items[component.uuid] if component.uuid.in?(component_uuids)
+      end
     end
 
     private

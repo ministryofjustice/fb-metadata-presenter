@@ -49,6 +49,7 @@ that you need to write the following methods in your controller:
 2. load_user_data
 3. editable?
 4. create_submission
+5. assign_autocomplete_items
 
 The user answers can be accessed via `params[:answers]`.
 
@@ -79,6 +80,8 @@ mountable app:
 
 The `create_submission` is related to process the submission in a backend
 service.
+
+The `autocomplete_items` takes the components on a page and retrieves any items for them that may exist. For the Editor it will make an API call, for the Runner it will look it up via an environment variable.
 
 ## Generate documentation
 

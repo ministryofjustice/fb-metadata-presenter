@@ -7,7 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [Unreleased]
+## [2.17.10] - 2022-07-20
+
+### Added
+
+- Add `AutocompleteItem` model, this maps the metadata structure of an autocomplete item
+- Instantiate AutocompleteItem object when the component is of type autocomplete
+- Assign the autocomplete items for the preview functionality, using the `autocomplete_items` method
 
 ### Fixed
 

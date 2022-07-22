@@ -28,6 +28,27 @@ RSpec.describe MetadataPresenter::Component do
         expect(item).to respond_to(:description)
       end
     end
+
+    it 'returns an array of Item classes' do
+      expect(component.items).to all(be_an(MetadataPresenter::Item))
+    end
+
+    context 'when component is an autocomplete type' do
+      before do
+        allow(component).to receive(:type).and_return('autocomplete')
+      end
+
+      it 'contains objects that respond to the necessary properties' do
+        component.items.each do |item|
+          expect(item).to respond_to(:id)
+          expect(item).to respond_to(:name)
+        end
+      end
+
+      it 'returns an array of AutocompleteItem classes' do
+        expect(component.items).to all(be_an(MetadataPresenter::AutocompleteItem))
+      end
+    end
   end
 
   describe '#humanised_title' do

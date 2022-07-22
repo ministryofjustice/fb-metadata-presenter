@@ -5,6 +5,11 @@ module MetadataPresenter
       @page ||= service.find_page_by_url(request.env['PATH_INFO'])
 
       if @page
+        if @page.autocomplete_component_present?
+          items = autocomplete_items(@page.components)
+          @page.assign_autocomplete_items(items)
+        end
+
         @page_answers = PageAnswers.new(@page, @user_data)
         render template: @page.template
       else
