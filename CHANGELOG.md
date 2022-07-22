@@ -7,12 +7,26 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.12] - 2022-07-28
+
+### Added
+
+- Add autocomplete countries fixture
+- Add ability to extract the text from an autocomplete answer when used on a checkanswers page
+- Add 'autocomplete?' method to the component model
+
+### Changed
+
+- Update autocomplete page schema to include an items property
+- Remove items property from the select schema
+- Change the AutocompleteItem model id method to return both the text and value as a JSON string
+- Override to_json method on the component model to remove 'items' from the return JSON string
+
 ## [2.17.11] - 2022-07-22
 
 ### Fixed
 
 - Cookie banner should only show if MoJ analytics on or form owner has set
-
 
 ## [2.17.10] - 2022-07-20
 
