@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.11] - 2022-07-22
+
+### Fixed
+
+- Cookie banner should only show if MoJ analytics on or form owner has set
+
+
 ## [2.17.10] - 2022-07-20
 
 ### Added

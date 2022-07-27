@@ -46,7 +46,7 @@ module MetadataPresenter
     helper_method :allow_analytics?
 
     def show_cookie_banner?
-      no_analytics_cookie?
+      (Rails.application.config.respond_to?(:global_ga4) || analytics_tags_present?) && no_analytics_cookie?
     end
     helper_method :show_cookie_banner?
 
