@@ -14,8 +14,8 @@
   <link rel="apple-touch-icon" sizes="152x152" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon-152x152.png') %>">
   <link rel="apple-touch-icon" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon.png') %>">
 
-    <%= stylesheet_pack_tag 'govuk' %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'runner_application', 'govuk', defer: true %> 
+    <%= stylesheet_pack_tag 'govuk', 'runner_application', media: 'all' %>
 
     <% if allow_analytics? %>
       <%= render template: 'metadata_presenter/analytics/analytics' %>
@@ -30,15 +30,12 @@
     <%= render template: 'metadata_presenter/header/show' %>
     <div class="govuk-width-container govuk-body-m">
       <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
-      <% if back_link.present? %>
-        <a class="govuk-back-link" href="<%= back_link %>">Back</a>
-      <% end %>
-
+        <% if back_link.present? %>
+          <a class="govuk-back-link" href="<%= back_link %>">Back</a>
+        <% end %>
         <%= yield %>
       </main>
     </div>
     <%= render template: 'metadata_presenter/footer/footer' %>
-    <%= javascript_pack_tag 'runner_application' %>
-    <%= javascript_pack_tag 'govuk' %>
   </body>
 </html>

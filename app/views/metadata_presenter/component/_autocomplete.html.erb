@@ -3,14 +3,19 @@
   component.items,
   :id,
   :name,
+  selected: component.value,
   label: { text: input_title },
   hint:  {
       data: { "fb-default-text" => default_text('hint') },
       text: component.hint
     },
-  class: "govuk-!-width-two-thirds"
+  class: "govuk-!-width-two-thirds fb-autocomplete",
+  options: {
+    include_blank: true
+  }
 %>
 
 <% if editable? %>
   <%= render partial: '/partials/editable_autocomplete', locals: { component: component } %>
 <% end %>
+
