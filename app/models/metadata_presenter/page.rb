@@ -106,7 +106,7 @@ module MetadataPresenter
     end
 
     def autocomplete_component_present?
-      components.any? { |component| component.type == 'autocomplete' }
+      components.any?(&:autocomplete?)
     end
 
     def assign_autocomplete_items(items)

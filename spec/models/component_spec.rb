@@ -89,6 +89,22 @@ RSpec.describe MetadataPresenter::Component do
     end
   end
 
+  describe '#autocommplete?' do
+    context 'when type is autocomplete' do
+      it 'returns true' do
+        component = described_class.new(_type: 'autocomplete')
+        expect(component.autocomplete?).to be_truthy
+      end
+    end
+
+    context 'when type is not autocomplete' do
+      it 'returns false' do
+        component = described_class.new({})
+        expect(component.content?).to be_falsey
+      end
+    end
+  end
+
   describe '#find_item_by_uuid' do
     context 'when there are items' do
       let(:attributes) do

@@ -25,13 +25,17 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
   end
 
   def item_klass
-    type == 'autocomplete' ? MetadataPresenter::AutocompleteItem : MetadataPresenter::Item
+    autocomplete? ? MetadataPresenter::AutocompleteItem : MetadataPresenter::Item
   end
 
   SUPPORTS_BRANCHING = %w[radios checkboxes].freeze
 
   def supports_branching?
     type.in?(SUPPORTS_BRANCHING)
+  end
+
+  def autocomplete?
+    type == 'autocomplete'
   end
 
   def content?
