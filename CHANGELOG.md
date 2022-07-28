@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file.
 
  - Add govuk 'accessible-autocomplete' component 
 
-### changed
+### Changed
 
  - Reorganize scripts and styles
 
