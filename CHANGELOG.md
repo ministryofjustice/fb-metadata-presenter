@@ -7,6 +7,16 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.13] - 2022-07-27
+
+### Added
+
+ - Add govuk 'accessible-autocomplete' component 
+
+### Changed
+
+ - Reorganize scripts and styles
+
 ## [2.17.12] - 2022-07-28
 
 ### Added
