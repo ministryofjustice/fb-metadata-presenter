@@ -83,5 +83,9 @@ module MetadataPresenter
     def upload(file_hash)
       file_hash['original_filename']
     end
+
+    def autocomplete(value)
+      JSON.parse(value)['text']
+    end
   end
 end

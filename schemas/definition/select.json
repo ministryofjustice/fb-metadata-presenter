@@ -2,15 +2,9 @@
   "$id": "http://gov.uk/schema/v1.0.0/definition/select",
   "_name": "definition.select",
   "title": "Select component definition",
-  "properties": {
-    "items": {
-      "title": "Items",
-      "description": "Items that users can select",
-      "type": "array",
-      "items": {
-        "$ref": "definition.select_item"
-      }
-    }
+  "type": "array",
+  "items": {
+    "$ref": "definition.select_item"
   },
   "required": [
     "items"

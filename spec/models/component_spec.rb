@@ -1,6 +1,28 @@
 RSpec.describe MetadataPresenter::Component do
   subject(:component) { described_class.new(attributes) }
 
+  describe '#to_json' do
+    context 'when autocomplete component' do
+      let(:component) do
+        service.find_page_by_url('countries').components.first
+      end
+
+      it 'removes the items property from the returned json' do
+        expect(JSON.parse(component.to_json).keys).to_not include('items')
+      end
+    end
+
+    context 'when not an autocomplete component' do
+      let(:component) do
+        service.find_page_by_url('do-you-like-star-wars').components.first
+      end
+
+      it 'does not remove the items property from the returned json' do
+        expect(JSON.parse(component.to_json).keys).to include('items')
+      end
+    end
+  end
+
   describe '#to_partial_path' do
     let(:attributes) { { '_type' => 'email' } }
 
@@ -82,6 +104,22 @@ RSpec.describe MetadataPresenter::Component do
     end
 
     context 'when type is not content' do
+      it 'returns false' do
+        component = described_class.new({})
+        expect(component.content?).to be_falsey
+      end
+    end
+  end
+
+  describe '#autocommplete?' do
+    context 'when type is autocomplete' do
+      it 'returns true' do
+        component = described_class.new(_type: 'autocomplete')
+        expect(component.autocomplete?).to be_truthy
+      end
+    end
+
+    context 'when type is not autocomplete' do
       it 'returns false' do
         component = described_class.new({})
         expect(component.content?).to be_falsey

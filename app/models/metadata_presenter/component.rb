@@ -10,6 +10,17 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
   # Threshold percentage at which the remaining count is shown
   VALIDATION_STRING_LENGTH_THRESHOLD = 75
 
+  # Overriding here because autocomplete component's items property is non interactable
+  # in the Editor therefore it does not need to exist in the data-fb-content-data
+  # attribute on the page. The data-fb-content-data attribute is what is used to
+  # update user interactable elements such as the component question or page section
+  # heading etc.
+  def to_json(*_args)
+    return super unless autocomplete?
+
+    JSON.parse(super).to_json(except: 'items')
+  end
+
   def to_partial_path
     "metadata_presenter/component/#{type}"
   end
@@ -25,13 +36,17 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
   end
 
   def item_klass
-    type == 'autocomplete' ? MetadataPresenter::AutocompleteItem : MetadataPresenter::Item
+    autocomplete? ? MetadataPresenter::AutocompleteItem : MetadataPresenter::Item
   end
 
   SUPPORTS_BRANCHING = %w[radios checkboxes].freeze
 
   def supports_branching?
     type.in?(SUPPORTS_BRANCHING)
+  end
+
+  def autocomplete?
+    type == 'autocomplete'
   end
 
   def content?
