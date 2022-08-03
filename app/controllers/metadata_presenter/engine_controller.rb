@@ -57,6 +57,13 @@ module MetadataPresenter
     end
     helper_method :analytics_tags_present?
 
+    def load_autocomplete_items
+      if @page.autocomplete_component_present?
+        items = autocomplete_items(@page.components)
+        @page.assign_autocomplete_items(items)
+      end
+    end
+
     private
 
     def not_found

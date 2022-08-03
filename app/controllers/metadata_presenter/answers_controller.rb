@@ -43,6 +43,8 @@ module MetadataPresenter
 
     def render_validation_error
       @user_data = answers_params
+      load_autocomplete_items
+
       render template: page.template, status: :unprocessable_entity
     end
 
