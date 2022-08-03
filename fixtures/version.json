@@ -595,7 +595,8 @@
           },
           "legend": "Countries",
           "validation": {
-            "required": true
+            "required": true,
+            "autocomplete": true
           }
         }
       ],
