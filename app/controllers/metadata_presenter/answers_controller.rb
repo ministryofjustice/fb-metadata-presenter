@@ -4,7 +4,7 @@ module MetadataPresenter
 
     def create
       @previous_answers = reload_user_data.deep_dup
-      @page_answers = PageAnswers.new(page, answers_params)
+      @page_answers = PageAnswers.new(page, answers_params, autocomplete_items(page.components))
 
       upload_files if upload?
 
