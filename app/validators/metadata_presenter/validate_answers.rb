@@ -38,7 +38,7 @@ module MetadataPresenter
     end
 
     def autocomplete_param(key)
-      key == 'autocomplete_item' ? { autocomplete_items: autocomplete_items } : {}
+      key == 'autocomplete' ? { autocomplete_items: autocomplete_items } : {}
     end
   end
 end
