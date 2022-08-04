@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.15] - 2022-08-04
+
+### Fixed
+
+ - Autocomplete validator key is `autocomplete`
+
 ## [2.17.14] - 2022-08-03
 
 ### Added
