@@ -7,6 +7,7 @@
   "name": "component-name",
   "legend": "Question",
   "validation": {
-    "required": true
+    "required": true,
+    "autocomplete": true
   }
 }

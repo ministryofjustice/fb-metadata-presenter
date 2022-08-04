@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
 
   def create_submission; end
 
+  def autocomplete_items(component); end
+
   def default_metadata
     Rails.application.config.default_metadata
   end

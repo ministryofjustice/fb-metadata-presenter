@@ -3,16 +3,17 @@ module MetadataPresenter
     include ActiveModel::Model
     include ActiveModel::Validations
     include ActionView::Helpers
-    attr_reader :page, :answers, :uploaded_files
+    attr_reader :page, :answers, :uploaded_files, :autocomplete_items
 
-    def initialize(page, answers)
+    def initialize(page, answers, autocomplete_items = nil)
       @page = page
       @answers = answers
+      @autocomplete_items = autocomplete_items
       @uploaded_files = []
     end
 
     def validate_answers
-      ValidateAnswers.new(self, components: components).valid?
+      ValidateAnswers.new(self, components: components, autocomplete_items: autocomplete_items).valid?
     end
 
     delegate :components, to: :page

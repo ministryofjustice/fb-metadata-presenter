@@ -7,11 +7,17 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.14] - 2022-08-03
+
+### Added
+
+ - Add autocomplete validator for when a user answer is not a valid select item
+
 ## [2.17.13] - 2022-07-27
 
 ### Added
 
- - Add govuk 'accessible-autocomplete' component 
+ - Add govuk 'accessible-autocomplete' component
 
 ### Changed
 
