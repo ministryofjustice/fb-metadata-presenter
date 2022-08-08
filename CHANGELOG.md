@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.16] - 2022-08-08
+
+### Added
+
+ - Ability to manually inject properties into Global Analytics
+
 ## [2.17.15] - 2022-08-04
 
 ### Fixed
