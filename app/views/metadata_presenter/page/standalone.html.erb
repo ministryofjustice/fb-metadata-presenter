@@ -2,15 +2,27 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <% if @page.heading %>
-        <h1 class="fb-editable govuk-heading-xl"
-            data-fb-content-id="page[heading]"
-            data-fb-content-type="element">
-          <%= @page.heading %>
-        </h1>
-      <% end %>
+     <% if @page.id='page.cookies' %>
 
-      <%= render 'metadata_presenter/attribute/body' %>
+       <%# TEMPORARY WORKAROUND: Centralise Cookie page content %>
+       <h1 class="govuk-heading-xl">
+         <%= t('standalone.cookies_heading') %>
+       </h1>
+       <%= to_html t('standalone.cookies_body') %>
+
+     <% else %>
+
+       <%# ORIGINAL TEMPLATE: Uses content from form metadata %>
+       <% if @page.heading %>
+         <h1 class="fb-editable govuk-heading-xl"
+             data-fb-content-id="page[heading]"
+             data-fb-content-type="element">
+           <%= @page.heading %>
+         </h1>
+       <% end %>
+       <%= render 'metadata_presenter/attribute/body' %>
+
+     <% end %>
 
     </div>
   </div>

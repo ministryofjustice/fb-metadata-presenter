@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.17] - 2022-08-17
+
+### Changed
+
+- Standalone template to pull Cookie statement content from locales file as a temporary solution to centralise this content.
+
 ## [2.17.16] - 2022-08-08
 
 ### Added
