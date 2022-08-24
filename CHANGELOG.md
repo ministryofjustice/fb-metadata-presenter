@@ -7,6 +7,19 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.19] - 2022-08-24
+
+### Changed
+
+ - Remove deprecated govuk-header__link--service-name class now govuk-frontend
+     update is live in editor.
+
+## [2.17.18] - 2022-08-23
+
+### Changed
+
+ - Changes required by upgrading to govuk-frontend 4.3.1
+
 ## [2.17.17] - 2022-08-17
 
 ### Changed
