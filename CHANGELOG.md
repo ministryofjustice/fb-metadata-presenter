@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.20] - 2022-08-25
+
+### Changed
+
+- Move locales into a presenter specific property scope
+- Add content for footer pages
+
 ## [2.17.19] - 2022-08-24
 
 ### Changed
