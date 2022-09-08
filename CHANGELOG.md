@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+
+## [2.17.21] - 2022-09-08
+
+### Added
+
+- Tweak to allow static Cookie content to be found in content searches
+
 ## [2.17.20] - 2022-08-25
 
 ### Changed

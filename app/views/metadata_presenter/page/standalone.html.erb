@@ -8,7 +8,10 @@
        <h1 class="govuk-heading-xl">
          <%= t('presenter.footer.cookies.heading') %>
        </h1>
-       <%= to_html t('presenter.footer.cookies.body') %>
+
+       <div data-fb-content-type="content">
+         <%= to_html t('presenter.footer.cookies.body') %>
+       </div>
 
      <% else %>
 
