@@ -8,6 +8,14 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 
+
+## [2.17.22] - 2022-09-09
+
+### Fixed
+
+- Updated previous commit to use a better value  after an issue was found (same intention for change applies)
+
+### Added
 ## [2.17.21] - 2022-09-08
 
 ### Added
