@@ -84,12 +84,19 @@ module MetadataPresenter
       cookies[analytics_cookie_name].blank?
     end
 
+    def maintenance_page_content
+      return t('presenter.maintenance.maintenance_page_content') unless ENV['MAINTENANCE_PAGE_CONTENT']
+
+      Base64.decode64(ENV['MAINTENANCE_PAGE_CONTENT'])
+    end
+
     def show_maintenance_page
       if maintenance_mode?
         @maintenance_page = {
           heading: ENV['MAINTENANCE_PAGE_HEADING'] || t('presenter.maintenance.maintenance_page_heading'),
-          content: ENV['MAINTENANCE_PAGE_CONTENT'] || t('presenter.maintenance.maintenance_page_content')
+          content: maintenance_page_content
         }
+
         render 'metadata_presenter/maintenance/show'
       end
     end
