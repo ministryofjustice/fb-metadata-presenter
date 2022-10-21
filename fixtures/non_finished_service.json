@@ -92,35 +92,30 @@
     },
     {
       "_id": "page.email-address",
+      "url": "email-address",
+      "body": "Body section",
+      "lede": "",
       "_type": "page.singlequestion",
       "_uuid": "68fbb180-9a2a-48f6-9da6-545e28b8d35a",
-      "heading": "Email address",
+      "heading": "",
       "components": [
         {
-          "_id": "page.email-address--email.auto_name__2",
-          "_type": "text",
-          "errors": {
-            "format": {},
-            "required": {
-              "any": "Enter an email address"
-            },
-            "max_length": {
-              "any": "%{control} is too long."
-            },
-            "min_length": {
-              "any": "%{control} is too short."
-            }
-          },
+          "_id": "email-address_email_1",
+          "hint": "",
+          "name": "email-address_email_1",
+          "_type": "email",
+          "_uuid": "357aae1a-98d9-4c3b-a606-b0bcdd9e1fbd",
           "label": "Your email address",
-          "name": "email_address",
+          "errors": {
+          },
           "validation": {
+            "email": true,
             "required": true,
-            "max_length": 30,
-            "min_length": 2
+            "max_length": 256
           }
         }
       ],
-      "url": "email-address"
+      "section_heading": ""
     },
     {
       "_id": "page.parent_name",
