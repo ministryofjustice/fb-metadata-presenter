@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 
+## [2.17.23] - 2022-10-21
+### Changed
+
+- Updated text components that expect an email address to an email component.
 
 ## [2.17.22] - 2022-09-09
 

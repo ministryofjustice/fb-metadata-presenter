@@ -97,7 +97,7 @@
       "lede": "",
       "_type": "page.singlequestion",
       "_uuid": "68fbb180-9a2a-48f6-9da6-545e28b8d35a",
-      "heading": "",
+      "heading": "Email address",
       "components": [
         {
           "_id": "email-address_email_1",
