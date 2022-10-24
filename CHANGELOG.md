@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Updated text components that expect an email address to an email component.
+- Add method to check if a component is an email component.
 
 ## [2.17.22] - 2022-09-09
 

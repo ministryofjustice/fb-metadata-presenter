@@ -57,6 +57,10 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     type == 'upload'
   end
 
+  def email?
+    type == 'email'
+  end
+
   def find_item_by_uuid(uuid)
     items.find { |item| item.uuid == uuid }
   end
