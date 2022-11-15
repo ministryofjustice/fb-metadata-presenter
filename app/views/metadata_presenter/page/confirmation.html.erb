@@ -7,6 +7,15 @@
       <%= @page.heading %>
     </h1>
 
+  <% if ENV['REFERENCE_NUMBER'] == 'enabled' %>
+    <div class="govuk-panel__body">Your reference number</div>
+    <div class="govuk-panel__body">
+      <strong>
+      <%= @page.reference_number %>
+      </strong>
+    </div>
+    <br>
+  <% end %>
     <%# Do not replace with app/views/metadata_presenter/attribute _lede.html.erb because that is different %>
     <% if @page.lede %>
       <div class="fb-editable govuk-panel__body"

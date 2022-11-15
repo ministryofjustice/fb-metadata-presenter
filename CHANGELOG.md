@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.24] - 2022-11-22
+### Added
+
+- Add reference number to confirmation page
+
 ## [2.17.23] - 2022-10-27
 
 ### Added
