@@ -18,6 +18,28 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     end
   end
 
+  context 'maintenance mode enabled' do
+    before do
+      allow(ENV).to receive(:[])
+      allow(ENV).to receive(:[]).with('MAINTENANCE_MODE').and_return('1')
+
+      get '/'
+    end
+
+    it 'returns an ok status' do
+      expect(response).to be_successful
+    end
+
+    it 'renders the view correctly' do
+      expect(response.body).to include 'Sorry, this form is unavailable'
+    end
+
+    it 'renders the maintenance page for any page' do
+      get '/name'
+      expect(response.body).to include 'Sorry, this form is unavailable'
+    end
+  end
+
   describe 'GET /name' do
     before do
       get '/name'

@@ -7,7 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.23] - 2022-10-27
 
+### Added
+
+- Added the ability to display a maintenance page for an individual form, based
+    on the presence of ENV config values.
 
 ## [2.17.22] - 2022-09-09
 

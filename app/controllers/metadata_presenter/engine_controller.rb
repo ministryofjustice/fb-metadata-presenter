@@ -5,6 +5,8 @@ module MetadataPresenter
     helper MetadataPresenter::ApplicationHelper
     default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
+    before_action :show_maintenance_page
+
     def reload_user_data
       if defined? super
         super
@@ -64,6 +66,10 @@ module MetadataPresenter
       end
     end
 
+    def maintenance_mode?
+      ENV['MAINTENANCE_MODE'].present? && ENV['MAINTENANCE_MODE'] == '1'
+    end
+
     private
 
     def not_found
@@ -76,6 +82,23 @@ module MetadataPresenter
 
     def no_analytics_cookie?
       cookies[analytics_cookie_name].blank?
+    end
+
+    def maintenance_page_content
+      return t('presenter.maintenance.maintenance_page_content') unless ENV['MAINTENANCE_PAGE_CONTENT']
+
+      Base64.decode64(ENV['MAINTENANCE_PAGE_CONTENT'])
+    end
+
+    def show_maintenance_page
+      if maintenance_mode?
+        @maintenance_page = {
+          heading: ENV['MAINTENANCE_PAGE_HEADING'] || t('presenter.maintenance.maintenance_page_heading'),
+          content: maintenance_page_content
+        }
+
+        render 'metadata_presenter/maintenance/show'
+      end
     end
   end
 end

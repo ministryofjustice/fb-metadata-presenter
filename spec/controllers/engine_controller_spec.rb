@@ -142,4 +142,31 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
       end
     end
   end
+
+  context 'maintenance mode' do
+    context 'when maintenance mode is enabled' do
+      before do
+        allow(ENV).to receive(:[])
+        allow(ENV).to receive(:[]).with('MAINTENANCE_MODE').and_return('1')
+      end
+
+      before :each do
+        subject { get '/' }
+      end
+
+      describe '#maintenance_mode' do
+        it 'returns true' do
+          expect(controller.maintenance_mode?).to be_truthy
+        end
+      end
+    end
+
+    context 'when maintenance mode is not enabled' do
+      describe '#maintenance_mode' do
+        it 'returns true' do
+          expect(controller.maintenance_mode?).to be_falsey
+        end
+      end
+    end
+  end
 end
