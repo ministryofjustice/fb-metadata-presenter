@@ -7,24 +7,23 @@
       <%= @page.heading %>
     </h1>
 
-  <% if ENV['REFERENCE_NUMBER'] == 'enabled' %>
-    <div class="govuk-panel__body">Your reference number</div>
     <div class="govuk-panel__body">
-      <strong>
-      <%= @page.reference_number %>
-      </strong>
+      <% if reference_number_enabled? %>
+        <p>Your reference number<br />
+          <strong><%= show_reference_number %></strong>
+        </p>
+      <% end %>
+
+      <%# Do not replace with app/views/metadata_presenter/attribute _lede.html.erb because that is different %>
+      <% if @page.lede %>
+        <div class="fb-editable"
+            data-fb-content-id="page[lede]"
+            data-fb-content-type="element"
+            data-fb-default-text="<%= default_text('lede') %>">
+          <%= @page.lede %>
+        </div>
+      <%- end %>
     </div>
-    <br>
-  <% end %>
-    <%# Do not replace with app/views/metadata_presenter/attribute _lede.html.erb because that is different %>
-    <% if @page.lede %>
-      <div class="fb-editable govuk-panel__body"
-           data-fb-content-id="page[lede]"
-           data-fb-content-type="element"
-           data-fb-default-text="<%= default_text('lede') %>">
-        <%= @page.lede %>
-      </div>
-    <%- end %>
   </div>
 
   <div class="govuk-grid-row">

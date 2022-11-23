@@ -7,10 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [2.17.24] - 2022-11-22
+## [2.17.24] - 2022-11-23
 ### Added
 
 - Add reference number to confirmation page
+- Provide methods to ensure reference number is correct when in the Editor and Runner apps
 
 ## [2.17.23] - 2022-10-27
 
