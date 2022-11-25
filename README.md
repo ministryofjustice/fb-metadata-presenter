@@ -50,6 +50,8 @@ that you need to write the following methods in your controller:
 3. editable?
 4. create_submission
 5. assign_autocomplete_items
+6. reference_number_enabled?
+7. show_reference_number
 
 The user answers can be accessed via `params[:answers]`.
 
@@ -82,6 +84,10 @@ The `create_submission` is related to process the submission in a backend
 service.
 
 The `autocomplete_items` takes the components on a page and retrieves any items for them that may exist. For the Editor it will make an API call, for the Runner it will look it up via an environment variable.
+
+`reference_number_enabled?` method checks whether reference number is enabled in the Runner or Editor app. For the Runner app reference number is enabled when the `ENV['REFERENCE_NUMBER']` variable is present. In the Editor, reference number enabled is checked by checking the `ServiceConfiguration` table.
+
+`show_reference_number` method will present the placeholder reference number if viewing in the Editor/Preview or will present a generated reference number if in the Runner.
 
 ## Generate documentation
 
