@@ -11,7 +11,7 @@ module MetadataPresenter
     end
 
     def human_max_size
-      (component.validation[schema_key] / (1024.0 * 1024.0)).round
+      (component.validation[schema_key].to_f / (1024.0 * 1024.0)).round
     end
   end
 end

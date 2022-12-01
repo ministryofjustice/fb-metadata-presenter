@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.25] - 2022-12-01
+### Fixed
+
+- Fixed error in MaxSizeValidator human_max_size when size was a string.
+
 ## [2.17.24] - 2022-11-23
 ### Added
 
