@@ -54,4 +54,24 @@ RSpec.describe MetadataPresenter::MaxSizeValidator do
       end
     end
   end
+
+  describe 'human_max_size' do
+    let(:answers) { {} }
+    let(:uploaded_file) do
+      double(
+        file: {}, error?: false, error_name: nil, component: component
+      )
+    end
+
+    context 'when max_size is a string' do
+      before do
+        allow(component.validation).to receive(:[])
+        allow(component.validation).to receive(:[]).with('max_size').and_return('7340032')
+      end
+
+      it 'returns the correct value' do
+        expect(validator.human_max_size).to eq 7
+      end
+    end
+  end
 end
