@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.26] - 2022-12-05
+### Changed
+
+ - Updated Check your answers page to use H2 tags for multiquestion page titles
+     to keep logical heading heirarchy correct for accessibility.
+
 ## [2.17.25] - 2022-12-01
 ### Fixed
 
