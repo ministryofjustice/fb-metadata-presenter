@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+
+## [2.17.27] - 2022-12-06
+### Changed
+
+- Updated reference number confirmation page content and move to using locales.
+
 ## [2.17.26] - 2022-12-05
 ### Changed
 

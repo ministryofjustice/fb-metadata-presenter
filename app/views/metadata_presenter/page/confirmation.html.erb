@@ -9,7 +9,7 @@
 
     <div class="govuk-panel__body">
       <% if reference_number_enabled? %>
-        <p>Your reference number<br />
+        <p><%= I18n.t('presenter.confirmation.reference_number') %><br />
           <strong><%= show_reference_number %></strong>
         </p>
       <% end %>
