@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.28] - 2022-12-12
+### Added
+
+- Add logic to change confirmation page style based on whether payment link is enabled.
 
 ## [2.17.27] - 2022-12-06
 ### Changed
