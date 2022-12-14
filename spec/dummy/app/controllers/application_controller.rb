@@ -31,6 +31,9 @@ class ApplicationController < ActionController::Base
   def reference_number_enabled?; end
   helper_method :reference_number_enabled?
 
+  def payment_link_enabled?; end
+  helper_method :payment_link_enabled?
+
   def default_metadata
     Rails.application.config.default_metadata
   end

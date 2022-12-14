@@ -1,10 +1,18 @@
 <% content_for :manual_global_analytics_properties do %>'page_title': 'Confirmation page'<% end %>
 <div class="fb-main-grid-wrapper" data-fb-pagetype="<%= @page.type %>">
+<% if payment_link_enabled? %>
+  <div class="govuk-panel govuk-panel--confirmation-payment govuk-grid-column-two-thirds">
+  <% else %>
   <div class="govuk-panel govuk-panel--confirmation govuk-grid-column-two-thirds">
+<% end %>
     <h1 class="fb-editable govuk-panel__title"
         data-fb-content-type="element"
         data-fb-content-id="page[heading]">
-      <%= @page.heading %>
+      <% if payment_link_enabled? %>
+        <p><%= I18n.t('presenter.confirmation.payment_enabled') %></p>
+      <% else %>
+        <%= @page.heading %>
+      <% end %>
     </h1>
 
     <div class="govuk-panel__body">
