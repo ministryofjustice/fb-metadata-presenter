@@ -48,5 +48,9 @@
              classes: nil,
              input_components: @page.supported_input_components,
              content_components: @page.supported_content_components
-           } %>
+             } %>
+
+  <% if payment_link_enabled? %>
+    <a href="<%= payment_link_url %>" class="govuk-button" data-module="govuk-button" data-component="pay-button"><%= t('presenter.confirmation.continue_to_pay_button') %></a>
+  <% end %>
 </div>

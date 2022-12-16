@@ -34,6 +34,9 @@ class ApplicationController < ActionController::Base
   def payment_link_enabled?; end
   helper_method :payment_link_enabled?
 
+  def payment_link_url; end
+  helper_method :payment_link_url
+
   def default_metadata
     Rails.application.config.default_metadata
   end

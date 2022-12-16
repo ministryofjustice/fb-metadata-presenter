@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.29] - 2022-12-16
+### Added
+ - Add continue to pay button to confirmation page if payment link is enabled
+
 ## [2.17.28] - 2022-12-12
 ### Added
 

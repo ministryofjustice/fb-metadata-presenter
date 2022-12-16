@@ -22,6 +22,7 @@ en:
     confirmation:
       reference_number: 'Your reference number is:'
       payment_enabled: You still need to pay
+      continue_to_pay_button: Continue to pay
     footer:
       cookies:
         heading: "Cookies"

@@ -52,6 +52,8 @@ that you need to write the following methods in your controller:
 5. assign_autocomplete_items
 6. reference_number_enabled?
 7. show_reference_number
+8. payment_link_enabled?
+9. payment_link_url
 
 The user answers can be accessed via `params[:answers]`.
 
@@ -88,6 +90,10 @@ The `autocomplete_items` takes the components on a page and retrieves any items 
 `reference_number_enabled?` method checks whether reference number is enabled in the Runner or Editor app. For the Runner app reference number is enabled when the `ENV['REFERENCE_NUMBER']` variable is present. In the Editor, reference number enabled is checked by checking the `ServiceConfiguration` table.
 
 `show_reference_number` method will present the placeholder reference number if viewing in the Editor/Preview or will present a generated reference number if in the Runner.
+
+`payment_link_enabled?` method checks whether payment link is enabled in the Runner or Editor app. For the Runner app payment link is enabled when the `ENV['PAYMENT_LINK']` variable is present. In the Editor, payment link enabled is checked by checking the `ServiceConfiguration` table.
+
+`payment_link_url` method will present the payment link url. For the Runner this is the value of the `ENV['PAYMENT_LINK']` variable. In the Editor the value comes from the `ServiceConfiguration` table.
 
 ## Generate documentation
 
