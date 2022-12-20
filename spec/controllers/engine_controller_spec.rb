@@ -169,4 +169,30 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
       end
     end
   end
+
+  describe '#external_or_relative_link' do
+    context 'when link is fully qualified' do
+      let(:link) { 'https://www.example.com' }
+
+      it 'returns the fully qualified link' do
+        expect(controller.external_or_relative_link(link)).to eq(link)
+      end
+    end
+
+    context 'when link does not have / at start' do
+      let(:link) { 'somelink' }
+
+      it 'prepends / at the beginning of the relative link' do
+        expect(controller.external_or_relative_link(link)).to eq('/somelink')
+      end
+    end
+
+    context 'when link does have / at the start' do
+      let(:link) { '/somelink' }
+
+      it 'returns the relative link' do
+        expect(controller.external_or_relative_link(link)).to eq(link)
+      end
+    end
+  end
 end

@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.30] - 2022-12-20
+### Changed
+
+- Allow the use of fully qualified or relative URLs for the footer links
+
 ## [2.17.29] - 2022-12-16
 ### Added
  - Add continue to pay button to confirmation page if payment link is enabled

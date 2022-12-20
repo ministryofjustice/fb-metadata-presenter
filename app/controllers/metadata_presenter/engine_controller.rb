@@ -70,6 +70,14 @@ module MetadataPresenter
       ENV['MAINTENANCE_MODE'].present? && ENV['MAINTENANCE_MODE'] == '1'
     end
 
+    def external_or_relative_link(link)
+      uri = URI.parse(link)
+      return link if uri.scheme.present? && uri.host.present?
+
+      link.starts_with?('/') ? link : link.prepend('/')
+    end
+    helper_method :external_or_relative_link
+
     private
 
     def not_found
