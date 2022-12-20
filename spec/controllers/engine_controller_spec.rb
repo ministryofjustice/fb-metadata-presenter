@@ -194,5 +194,20 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
         expect(controller.external_or_relative_link(link)).to eq(link)
       end
     end
+
+    context 'when in preview in the editor' do
+      let(:link) { '/somelink' }
+      let(:original_url) { "http://some-domain.com#{preview_path}" }
+      let(:preview_path) { '/services/some-service-id/preview' }
+
+      before do
+        allow_any_instance_of(ActionDispatch::Request).to receive(:original_url).and_return(original_url)
+        allow_any_instance_of(ActionDispatch::Request).to receive(:script_name).and_return(preview_path)
+      end
+
+      it 'uses the request script name to build the correct path' do
+        expect(controller.external_or_relative_link(link)).to eq('/services/some-service-id/preview/somelink')
+      end
+    end
   end
 end
