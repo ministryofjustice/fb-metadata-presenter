@@ -74,7 +74,11 @@ module MetadataPresenter
       uri = URI.parse(link)
       return link if uri.scheme.present? && uri.host.present?
 
-      link.starts_with?('/') ? link : link.prepend('/')
+      if editor_preview?
+        File.join(request.script_name, link)
+      else
+        link.starts_with?('/') ? link : link.prepend('/')
+      end
     end
     helper_method :external_or_relative_link
 
@@ -107,6 +111,10 @@ module MetadataPresenter
 
         render 'metadata_presenter/maintenance/show'
       end
+    end
+
+    def editor_preview?
+      URI(request.original_url).path.split('/').last == 'preview'
     end
   end
 end
