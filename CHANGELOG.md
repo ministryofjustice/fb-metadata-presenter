@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.31] - 2022-12-20
+### Fixed
+
+- Fix preview links when in the Editor
+
 ## [2.17.30] - 2022-12-20
 ### Changed
 
