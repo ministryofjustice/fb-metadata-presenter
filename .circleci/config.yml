@@ -24,7 +24,7 @@ jobs:
           name: Test
           command: bundle exec rspec
       - slack/status: &slack_status
-          fail_only: false
+          fail_only: true
           only_for_branches: main
           failure_message: ":facepalm:  Failed job $CIRCLE_JOB  :homer-disappear:"
           include_job_number_field: false
