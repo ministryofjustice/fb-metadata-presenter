@@ -65,8 +65,11 @@ workflows:
   version: 2
   test_and_build:
     jobs:
-      - test
+      - test:
+         context: &moj-forms-context
+            - moj-forms
       - publish:
+          context: *moj-forms-context
           requires:
             - test
           filters:
