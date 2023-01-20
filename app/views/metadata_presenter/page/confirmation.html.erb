@@ -8,7 +8,7 @@
     <h1 class="fb-editable govuk-panel__title"
         data-fb-content-type="element"
         data-fb-content-id="page[heading]">
-      <% if payment_link_enabled? %>
+      <% if payment_link_enabled? && @page.heading == 'Application complete' %>
         <p><%= I18n.t('presenter.confirmation.payment_enabled') %></p>
       <% else %>
         <%= @page.heading %>
