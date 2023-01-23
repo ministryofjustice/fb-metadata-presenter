@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.33] - 2023-01-20
+### Fixed
+
+- Heading for the confirmation page not being updated when payment links are enabled
+
 ## [2.17.32] - 2023-01-03
 ### Changed
 
