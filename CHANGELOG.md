@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.34] - 2023-01-27
+### Added
+
+ - Added in a session expiry route and template to inform uses when their
+     session has expired.
+
 ## [2.17.33] - 2023-01-20
 ### Fixed
 

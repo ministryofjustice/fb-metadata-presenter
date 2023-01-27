@@ -19,6 +19,10 @@ en:
     maintenance:
       maintenance_page_heading: 'Sorry, this form is unavailable'
       maintenance_page_content: "If you were in the middle of completing the form, your data has not been saved.\r\n\r\nThe form will be available again from 9am on Monday 19 November 2018.\r\n\r\n\r\n\r\n### Other ways to apply\r\n\r\nContact us if your application is urgent \r\n\r\nEmail:  \r\nTelephone:  \r\nMonday to Friday, 9am to 5pm  \r\n[Find out about call charges](https://www.gov.uk/call-charges)"
+    session_expired:
+      title: Your form has been reset
+      content: "The form has a time limit of 60 minutes. This is to protect your personal information.\r\n\r\nWe apologise for the inconvenience. Please try again."
+      restart_link: Start again
     confirmation:
       reference_number: 'Your reference number is:'
       payment_enabled: You still need to pay
