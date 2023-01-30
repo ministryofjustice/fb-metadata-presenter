@@ -8,6 +8,8 @@ MetadataPresenter::Engine.routes.draw do
   # as get verb.
   get '/reserved/file/:component_id', to: 'file#destroy', as: :remove_file
 
+  get 'session/expired', to: 'session#expired'
+
   post '/', to: 'answers#create'
   match '*path', to: 'answers#create', via: :post
   match '*path', to: 'pages#show',
