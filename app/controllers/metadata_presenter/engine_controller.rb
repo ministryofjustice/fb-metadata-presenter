@@ -17,7 +17,7 @@ module MetadataPresenter
 
     def back_link
       previous_page = PreviousPage.new(
-        service: service,
+        service:,
         user_data: load_user_data,
         current_page: @page,
         referrer: request.referrer

@@ -29,9 +29,9 @@ module MetadataPresenter
 
     def evaluated_page(flow_object)
       EvaluateConditionals.new(
-        service: service,
+        service:,
         flow: flow_object,
-        user_data: user_data
+        user_data:
       ).page
     end
 

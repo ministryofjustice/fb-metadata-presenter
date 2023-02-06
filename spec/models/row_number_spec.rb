@@ -3,11 +3,11 @@ RSpec.describe MetadataPresenter::RowNumber do
   let(:service) { MetadataPresenter::Service.new(latest_metadata) }
   let(:attributes) do
     {
-      uuid: uuid,
-      route: route,
-      current_row: current_row,
-      coordinates: coordinates,
-      service: service
+      uuid:,
+      route:,
+      current_row:,
+      coordinates:,
+      service:
     }
   end
   let(:coordinates) { MetadataPresenter::Coordinates.new(service) }
@@ -222,7 +222,7 @@ RSpec.describe MetadataPresenter::RowNumber do
         {
           branching_point_2 => [
             { uuid: page_f, row: 0, column: 6 },
-            { uuid: uuid, row: 2, column: 7 },
+            { uuid:, row: 2, column: 7 },
             { uuid: '3a584d15-6805-4a21-bc05-b61c3be47857', row: 3, column: 7 }
           ]
         }

@@ -3,7 +3,7 @@ module MetadataPresenter
     attr_reader :autocomplete_items
 
     def initialize(page_answers:, component:, autocomplete_items:)
-      super(page_answers: page_answers, component: component)
+      super(page_answers:, component:)
 
       @autocomplete_items = autocomplete_items
     end

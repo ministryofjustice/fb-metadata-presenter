@@ -1,6 +1,6 @@
 RSpec.describe MetadataPresenter::RequiredValidator do
   subject(:validator) do
-    described_class.new(page_answers: page_answers, component: component)
+    described_class.new(page_answers:, component:)
   end
   let(:component) { page.components.first }
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }

@@ -1,5 +1,5 @@
 RSpec.describe MetadataPresenter::Metadata do
-  subject(:metadata) { described_class.new(meta, editor: editor) }
+  subject(:metadata) { described_class.new(meta, editor:) }
 
   context 'when editor' do
     let(:editor) { true }

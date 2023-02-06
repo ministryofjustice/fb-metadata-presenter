@@ -13,7 +13,7 @@ module MetadataPresenter
     end
 
     def validate_answers
-      ValidateAnswers.new(self, components: components, autocomplete_items: autocomplete_items).valid?
+      ValidateAnswers.new(self, components:, autocomplete_items:).valid?
     end
 
     delegate :components, to: :page

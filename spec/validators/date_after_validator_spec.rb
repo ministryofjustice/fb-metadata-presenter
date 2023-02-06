@@ -1,6 +1,6 @@
 RSpec.describe MetadataPresenter::DateAfterValidator do
   subject(:validator) do
-    described_class.new(page_answers: page_answers, component: component)
+    described_class.new(page_answers:, component:)
   end
   let(:page) do
     meta = service.find_page_by_url('/holiday')

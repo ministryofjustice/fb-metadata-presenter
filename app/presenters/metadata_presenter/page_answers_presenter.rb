@@ -12,10 +12,10 @@ module MetadataPresenter
       user_input_pages(pages).map { |page|
         Array(page.supported_components_by_type(:input)).map do |component|
           new(
-            view: view,
-            component: component,
-            page: page,
-            answers: answers
+            view:,
+            component:,
+            page:,
+            answers:
           )
         end
       }.reject(&:empty?)

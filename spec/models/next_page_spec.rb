@@ -63,11 +63,11 @@ end
 RSpec.describe MetadataPresenter::NextPage do
   subject(:next_page) do
     described_class.new(
-      service: service,
-      session: session,
-      user_data: user_data,
-      current_page_url: current_page_url,
-      previous_answers: previous_answers
+      service:,
+      session:,
+      user_data:,
+      current_page_url:,
+      previous_answers:
     )
   end
   let(:user_data) { {} }

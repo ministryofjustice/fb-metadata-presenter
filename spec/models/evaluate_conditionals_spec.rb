@@ -1,9 +1,9 @@
 RSpec.describe MetadataPresenter::EvaluateConditionals do
   subject(:evaluate_conditionals) do
     described_class.new(
-      service: service,
-      flow: flow,
-      user_data: user_data
+      service:,
+      flow:,
+      user_data:
     )
   end
   let(:service_metadata) { metadata_fixture(:branching) }

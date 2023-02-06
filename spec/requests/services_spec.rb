@@ -116,7 +116,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       end
 
       it 'redirect to the next page' do
-        post '/dog-picture', params: { answers: answers }
+        post '/dog-picture', params: { answers: }
         expect(response).to redirect_to('/countries')
       end
 
@@ -124,7 +124,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
         expect_any_instance_of(
           MetadataPresenter::AnswersController
         ).to receive(:upload_files)
-        post '/dog-picture', params: { answers: answers }
+        post '/dog-picture', params: { answers: }
       end
     end
 

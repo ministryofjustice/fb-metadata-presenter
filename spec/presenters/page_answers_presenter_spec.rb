@@ -1,10 +1,10 @@
 RSpec.describe MetadataPresenter::PageAnswersPresenter do
   subject(:presenter) do
     described_class.new(
-      view: view,
-      page: page,
-      component: component,
-      answers: answers
+      view:,
+      page:,
+      component:,
+      answers:
     )
   end
   let(:view) { MetadataPresenter::PagesController.new.view_context }
@@ -14,7 +14,7 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
   describe '.map' do
     let(:answers) { {} }
     let(:page_answers) do
-      described_class.map(view: view, pages: pages, answers: answers)
+      described_class.map(view:, pages:, answers:)
     end
 
     it 'returns a collection of page answers presenters' do

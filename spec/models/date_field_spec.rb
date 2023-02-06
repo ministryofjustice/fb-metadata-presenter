@@ -1,6 +1,6 @@
 RSpec.describe MetadataPresenter::DateField do
   subject(:date_field) do
-    described_class.new(day: day, month: month, year: year)
+    described_class.new(day:, month:, year:)
   end
 
   describe '#present?' do

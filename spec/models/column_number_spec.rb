@@ -3,10 +3,10 @@ RSpec.describe MetadataPresenter::ColumnNumber do
   let(:service) { MetadataPresenter::Service.new(latest_metadata) }
   let(:attributes) do
     {
-      uuid: uuid,
-      coordinates: coordinates,
-      new_column: new_column,
-      service: service
+      uuid:,
+      coordinates:,
+      new_column:,
+      service:
     }
   end
   let(:uuid) { SecureRandom.uuid }

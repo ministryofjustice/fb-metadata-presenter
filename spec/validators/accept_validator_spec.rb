@@ -1,6 +1,6 @@
 RSpec.describe MetadataPresenter::AcceptValidator do
   subject(:validator) do
-    described_class.new(page_answers: page_answers, component: component)
+    described_class.new(page_answers:, component:)
   end
   let(:component) { page.components.first }
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
@@ -24,7 +24,7 @@ RSpec.describe MetadataPresenter::AcceptValidator do
     context 'when valid' do
       let(:uploaded_file) do
         double(
-          file: {}, error?: false, error_name: nil, component: component
+          file: {}, error?: false, error_name: nil, component:
         )
       end
 
@@ -35,7 +35,7 @@ RSpec.describe MetadataPresenter::AcceptValidator do
 
     context 'when invalid' do
       let(:uploaded_file) do
-        double(error?: true, error_name: 'accept', component: component)
+        double(error?: true, error_name: 'accept', component:)
       end
 
       it 'returns false' do
@@ -52,7 +52,7 @@ RSpec.describe MetadataPresenter::AcceptValidator do
 
     context 'when another error but not file format' do
       let(:uploaded_file) do
-        double(error?: true, error_name: 'invalid.virus', component: component)
+        double(error?: true, error_name: 'invalid.virus', component:)
       end
 
       it 'returns true' do
