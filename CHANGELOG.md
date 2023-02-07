@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+
+## [2.17.35] - 2023-02-07
+### Changed
+
+- Update cookie statement from 30 to 6o minutes
+
 ## [2.17.34] - 2023-01-27
 ### Added
 
