@@ -1,9 +1,9 @@
 RSpec.describe MetadataPresenter::Page do
   describe '#==' do
-    let(:page) { described_class.new({_id: 'foo'}) }
+    let(:page) { described_class.new({ _id: 'foo' }) }
 
     context 'when two pages are equal' do
-      let(:other_page) { described_class.new({_id: 'foo'}) }
+      let(:other_page) { described_class.new({ _id: 'foo' }) }
 
       it 'returns true' do
         expect(page == other_page).to be_truthy
@@ -11,7 +11,7 @@ RSpec.describe MetadataPresenter::Page do
     end
 
     context 'when two pages are different' do
-      let(:other_page) { described_class.new({_id: 'foobar'}) }
+      let(:other_page) { described_class.new({ _id: 'foobar' }) }
 
       it 'returns false' do
         expect(page == other_page).to be_falsey
@@ -94,13 +94,13 @@ RSpec.describe MetadataPresenter::Page do
   describe '#uuid' do
     it 'returns _uuid attribute' do
       expect(
-        described_class.new({_uuid: 'kylo-ren'}).uuid
+        described_class.new({ _uuid: 'kylo-ren' }).uuid
       ).to eq('kylo-ren')
     end
   end
 
   describe '#to_partial_path' do
-    subject(:page) { described_class.new({_type: 'page.singlequestion'}) }
+    subject(:page) { described_class.new({ _type: 'page.singlequestion' }) }
 
     it 'returns the type of the page' do
       expect(page.to_partial_path).to eq('page/singlequestion')
@@ -109,7 +109,7 @@ RSpec.describe MetadataPresenter::Page do
 
   describe '#supported_input_components' do
     context 'when page has input components' do
-      subject(:page) { described_class.new({_type: 'page.multiplequestions'}) }
+      subject(:page) { described_class.new({ _type: 'page.multiplequestions' }) }
 
       it 'returns the correct input components' do
         expect(page.supported_input_components).to match_array(%w[text textarea number date radios checkboxes email])
@@ -117,7 +117,7 @@ RSpec.describe MetadataPresenter::Page do
     end
 
     context 'when page does not have input components' do
-      subject(:page) { described_class.new({_type: 'page.checkanswers'}) }
+      subject(:page) { described_class.new({ _type: 'page.checkanswers' }) }
 
       it 'returns an empty array' do
         expect(page.supported_input_components).to be_empty
@@ -125,7 +125,7 @@ RSpec.describe MetadataPresenter::Page do
     end
 
     context 'when the page is not configured' do
-      subject(:page) { described_class.new({_type: 'page.boba-fett'}) }
+      subject(:page) { described_class.new({ _type: 'page.boba-fett' }) }
 
       it 'raises a PageComponentsNotDefinedError' do
         expect {
@@ -137,7 +137,7 @@ RSpec.describe MetadataPresenter::Page do
 
   describe '#supported_content_components' do
     context 'when page has content components' do
-      subject(:page) { described_class.new({_type: 'page.multiplequestions'}) }
+      subject(:page) { described_class.new({ _type: 'page.multiplequestions' }) }
 
       it 'returns the correct content components' do
         expect(page.supported_content_components).to match_array(%w[content])
@@ -145,7 +145,7 @@ RSpec.describe MetadataPresenter::Page do
     end
 
     context 'when the page is not configured' do
-      subject(:page) { described_class.new({_type: 'page.jar-jar-binks'}) }
+      subject(:page) { described_class.new({ _type: 'page.jar-jar-binks' }) }
 
       it 'raises a PageComponentsNotDefinedError' do
         expect {

@@ -9,7 +9,7 @@ RSpec.shared_context 'branching flow' do
 
     it 'returns first page' do
       expect(result).to eq(
-        MetadataPresenter::Page.new(_id: 'page.name')
+        MetadataPresenter::Page.new({ _id: 'page.name' })
       )
     end
   end
@@ -24,7 +24,7 @@ RSpec.shared_context 'branching flow' do
 
     it 'returns to the main flow' do
       expect(result).to eq(
-        MetadataPresenter::Page.new(_id: 'page.favourite-band')
+        MetadataPresenter::Page.new({ _id: 'page.favourite-band' })
       )
     end
   end
@@ -43,7 +43,7 @@ RSpec.shared_context 'branching flow' do
 
       it 'returns next page in the branch' do
         expect(result).to eq(
-          MetadataPresenter::Page.new(_id: 'page.star-wars-knowledge')
+          MetadataPresenter::Page.new({ _id: 'page.star-wars-knowledge' })
         )
       end
     end
@@ -53,7 +53,7 @@ RSpec.shared_context 'branching flow' do
 
       it 'returns next page in main flow sequence' do
         expect(result).to eq(
-          MetadataPresenter::Page.new(_id: 'page.favourite-fruit')
+          MetadataPresenter::Page.new({ _id: 'page.favourite-fruit' })
         )
       end
     end
@@ -90,7 +90,7 @@ RSpec.describe MetadataPresenter::NextPage do
 
         it 'returns check your answer page' do
           expect(result).to eq(
-            MetadataPresenter::Page.new(_id: 'page.check-answers')
+            MetadataPresenter::Page.new({ _id: 'page.check-answers' })
           )
         end
 
@@ -121,7 +121,7 @@ RSpec.describe MetadataPresenter::NextPage do
 
           it 'returns the next evaluated page (now branching has changed)' do
             expect(result).to eq(
-              MetadataPresenter::Page.new(_id: 'page.orange-juice')
+              MetadataPresenter::Page.new({ _id: 'page.orange-juice' })
             )
           end
         end
@@ -146,7 +146,7 @@ RSpec.describe MetadataPresenter::NextPage do
 
           it 'return to check your answers page' do
             expect(result).to eq(
-              MetadataPresenter::Page.new(_id: 'page.check-answers')
+              MetadataPresenter::Page.new({ _id: 'page.check-answers' })
             )
           end
         end
