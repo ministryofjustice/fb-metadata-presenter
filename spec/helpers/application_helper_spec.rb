@@ -2,7 +2,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
   describe '#main_title' do
     context 'when component has a legend' do
       let(:component) do
-        MetadataPresenter::Component.new(legend: 'Luke Skywalker')
+        MetadataPresenter::Component.new({ legend: 'Luke Skywalker' })
       end
 
       it 'returns h1 wrapped in a legend by default' do
@@ -14,7 +14,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
 
     context 'when component has a label' do
       let(:component) do
-        MetadataPresenter::Component.new(label: 'Luke Skywalker')
+        MetadataPresenter::Component.new({ label: 'Luke Skywalker' })
       end
 
       it 'returns h1 default' do
@@ -26,7 +26,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
 
     context 'when tag and classes supplied' do
       let(:component) do
-        MetadataPresenter::Component.new(label: 'Mace Windu')
+        MetadataPresenter::Component.new({ label: 'Mace Windu' })
       end
 
       it 'returns the element wrapped in the right tag with classes' do
