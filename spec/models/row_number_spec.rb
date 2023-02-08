@@ -1,5 +1,5 @@
 RSpec.describe MetadataPresenter::RowNumber do
-  subject(:row_number) { described_class.new(attributes) }
+  subject(:row_number) { described_class.new(**attributes) }
   let(:service) { MetadataPresenter::Service.new(latest_metadata) }
   let(:attributes) do
     {
