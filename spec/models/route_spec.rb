@@ -1,6 +1,6 @@
 RSpec.describe MetadataPresenter::Route do
   subject(:route) do
-    described_class.new(service: service, traverse_from: traverse_from)
+    described_class.new(service:, traverse_from:)
   end
 
   describe '#traverse' do
@@ -96,10 +96,10 @@ RSpec.describe MetadataPresenter::Route do
     context 'when initialising with column and row' do
       subject(:route) do
         described_class.new(
-          service: service,
-          traverse_from: traverse_from,
-          column: column,
-          row: row
+          service:,
+          traverse_from:,
+          column:,
+          row:
         )
       end
 
@@ -158,10 +158,10 @@ RSpec.describe MetadataPresenter::Route do
         context 'route with previous flow uuid and conditional uuid' do
           subject(:route) do
             described_class.new(
-              service: service,
-              traverse_from: traverse_from,
+              service:,
+              traverse_from:,
               previous_flow_uuid: previous_uuid,
-              conditional_uuid: conditional_uuid
+              conditional_uuid:
             )
           end
           let(:previous_uuid) { 'some-previous-uuid' }
@@ -170,7 +170,7 @@ RSpec.describe MetadataPresenter::Route do
             {
               traverse_from => {
                 previous_flow_uuid: previous_uuid,
-                conditional_uuid: conditional_uuid
+                conditional_uuid:
               }
             }
           end

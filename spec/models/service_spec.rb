@@ -17,7 +17,7 @@ RSpec.describe MetadataPresenter::Service do
       service_names.each do |service_name, expected|
         expect(
           described_class.new(
-            'service_name' => service_name
+            { 'service_name' => service_name }
           ).service_slug
         ).to eq(expected)
       end

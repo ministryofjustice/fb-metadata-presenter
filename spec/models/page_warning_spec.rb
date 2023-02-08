@@ -1,6 +1,6 @@
 RSpec.describe MetadataPresenter::PageWarning do
   subject(:page_warning) do
-    described_class.new(page: page, main_flow_uuids: main_flow_uuids)
+    described_class.new(page:, main_flow_uuids:)
   end
 
   describe '#show_warning?' do

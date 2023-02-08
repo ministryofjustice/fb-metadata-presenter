@@ -4,15 +4,15 @@ module MetadataPresenter
     attr_accessor :session, :page_answers, :component, :adapter
 
     def upload
-      UploadedFile.new(file: upload_file, component: component)
+      UploadedFile.new(file: upload_file, component:)
     end
 
     def upload_file
       return {} if file_details.blank?
 
       adapter.new(
-        session: session,
-        file_details: file_details,
+        session:,
+        file_details:,
         allowed_file_types: component.validation['accept']
       ).call
     end

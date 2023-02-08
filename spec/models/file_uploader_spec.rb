@@ -1,10 +1,10 @@
 RSpec.describe MetadataPresenter::FileUploader do
   subject(:file_uploader) do
     described_class.new(
-      session: session,
-      page_answers: page_answers,
-      component: component,
-      adapter: adapter
+      session:,
+      page_answers:,
+      component:,
+      adapter:
     )
   end
   let(:adapter) { double }
@@ -27,7 +27,7 @@ RSpec.describe MetadataPresenter::FileUploader do
         expect(file_uploader.upload).to eq(
           MetadataPresenter::UploadedFile.new(
             file: {},
-            component: component
+            component:
           )
         )
       end
@@ -49,14 +49,14 @@ RSpec.describe MetadataPresenter::FileUploader do
 
       it 'returns uploaded file' do
         expect(adapter).to receive(:new).with(
-          session: session,
-          file_details: file_details,
+          session:,
+          file_details:,
           allowed_file_types: accept
         ).and_return(double(call: { 'fingerprint' => '28d' }))
         expect(file_uploader.upload).to eq(
           MetadataPresenter::UploadedFile.new(
             file: { 'fingerprint' => '28d' },
-            component: component
+            component:
           )
         )
       end

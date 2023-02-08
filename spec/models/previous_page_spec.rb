@@ -1,10 +1,10 @@
 RSpec.describe MetadataPresenter::PreviousPage do
   subject(:previous_page) do
     described_class.new(
-      service: service,
-      user_data: user_data,
-      current_page: current_page,
-      referrer: referrer
+      service:,
+      user_data:,
+      current_page:,
+      referrer:
     )
   end
   let(:user_data) { {} }

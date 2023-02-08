@@ -94,7 +94,7 @@ module MetadataPresenter
     def route_from_start
       @route_from_start ||=
         MetadataPresenter::Route.new(
-          service: service,
+          service:,
           traverse_from: start_from || service.start_page.uuid
         )
     end
@@ -155,10 +155,10 @@ module MetadataPresenter
       @routes.each do |route|
         route.flow_uuids.each.with_index(route.column) do |uuid, new_column|
           column_number = MetadataPresenter::ColumnNumber.new(
-            uuid: uuid,
-            new_column: new_column,
+            uuid:,
+            new_column:,
             coordinates: @coordinates,
-            service: service
+            service:
           ).number
           @coordinates.set_column(uuid, column_number)
         end
@@ -172,11 +172,11 @@ module MetadataPresenter
         current_row = route.row
         route.flow_uuids.each do |uuid|
           row_number = MetadataPresenter::RowNumber.new(
-            uuid: uuid,
-            route: route,
-            current_row: current_row,
+            uuid:,
+            route:,
+            current_row:,
             coordinates: @coordinates,
-            service: service
+            service:
           ).number
           @coordinates.set_row(uuid, row_number)
 
@@ -244,7 +244,7 @@ module MetadataPresenter
 
     def get_flow_object(uuid)
       # main_flow is always empty if the Grid is _actually_ building the main flow
-      return MetadataPresenter::Pointer.new(uuid: uuid) if main_flow.include?(uuid)
+      return MetadataPresenter::Pointer.new(uuid:) if main_flow.include?(uuid)
 
       service.flow_object(uuid)
     end

@@ -76,7 +76,7 @@ module MetadataPresenter
 
     def initial_spacer(branch)
       destinations = exiting_destinations_from_branch(branch).map do |uuid|
-        { uuid: uuid, row: nil, column: nil }
+        { uuid:, row: nil, column: nil }
       end
       has_or_conditionals?(branch) ? destinations.uniq : destinations
     end

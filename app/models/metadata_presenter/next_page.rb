@@ -68,9 +68,9 @@ module MetadataPresenter
 
     def evaluate_conditionals
       EvaluateConditionals.new(
-        service: service,
+        service:,
         flow: next_flow,
-        user_data: user_data
+        user_data:
       ).page
     end
 

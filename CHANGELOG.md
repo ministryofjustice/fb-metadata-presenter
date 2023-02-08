@@ -7,11 +7,15 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.36] - 2023-02-06
+### Changed
+
+- Use Ruby 3.1.3
 
 ## [2.17.35] - 2023-02-07
 ### Changed
 
-- Update cookie statement from 30 to 6o minutes
+- Update cookie statement from 30 to 60 minutes
 
 ## [2.17.34] - 2023-01-27
 ### Added

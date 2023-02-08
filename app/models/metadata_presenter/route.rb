@@ -42,8 +42,8 @@ module MetadataPresenter
           set_first_conditional_previous_flow(flow_object.uuid, first_conditional)
           create_destination_routes(
             previous_flow_uuid: flow_object.uuid,
-            destinations: destinations,
-            row: row,
+            destinations:,
+            row:,
             column: index
           )
 
@@ -78,15 +78,15 @@ module MetadataPresenter
     def set_first_conditional_previous_flow(previous_flow_uuid, first_conditional)
       set_previous_flow(
         uuid: first_conditional[:next],
-        previous_flow_uuid: previous_flow_uuid,
+        previous_flow_uuid:,
         conditional_uuid: first_conditional[:conditional_uuid]
       )
     end
 
     def set_previous_flow(uuid:, previous_flow_uuid:, conditional_uuid: nil)
       previous_uuids[uuid] = {
-        previous_flow_uuid: previous_flow_uuid,
-        conditional_uuid: conditional_uuid
+        previous_flow_uuid:,
+        conditional_uuid:
       }
     end
 
@@ -104,9 +104,9 @@ module MetadataPresenter
       destinations.each do |destination|
         @routes.push(
           MetadataPresenter::Route.new(
-            service: service,
+            service:,
             traverse_from: destination[:next],
-            previous_flow_uuid: previous_flow_uuid,
+            previous_flow_uuid:,
             conditional_uuid: destination[:conditional_uuid],
             row: row_number,
             column: column_number
@@ -120,8 +120,8 @@ module MetadataPresenter
       Hash[
         traverse_from,
         {
-          previous_flow_uuid: previous_flow_uuid,
-          conditional_uuid: conditional_uuid
+          previous_flow_uuid:,
+          conditional_uuid:
         }
       ]
     end

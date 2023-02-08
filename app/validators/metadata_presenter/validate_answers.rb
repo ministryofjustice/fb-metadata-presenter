@@ -22,9 +22,9 @@ module MetadataPresenter
       components.map { |component|
         component_validations(component).map do |key|
           "MetadataPresenter::#{key.classify}Validator".constantize.new(
-            {
-              component: component,
-              page_answers: page_answers
+            **{
+              page_answers:,
+              component:
             }.merge(autocomplete_param(key))
           )
         end
@@ -38,7 +38,7 @@ module MetadataPresenter
     end
 
     def autocomplete_param(key)
-      key == 'autocomplete' ? { autocomplete_items: autocomplete_items } : {}
+      key == 'autocomplete' ? { autocomplete_items: } : {}
     end
   end
 end

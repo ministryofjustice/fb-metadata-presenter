@@ -234,7 +234,7 @@ RSpec.describe MetadataPresenter::Grid do
       context 'inserting pointers' do
         let(:main_flow) { grid.flow_uuids }
         let(:detached_grid) do
-          described_class.new(service, start_from: start_from, main_flow: main_flow)
+          described_class.new(service, start_from:, main_flow:)
         end
         let(:cya_pointer) do
           MetadataPresenter::Pointer.new(uuid: 'e337070b-f636-49a3-a65c-f506675265f0')
@@ -313,7 +313,7 @@ RSpec.describe MetadataPresenter::Grid do
               metadata
             end
             let(:detached_grid) do
-              MetadataPresenter::Grid.new(service, start_from: start_from, main_flow: main_flow)
+              MetadataPresenter::Grid.new(service, start_from:, main_flow:)
             end
             let(:expected_grid) do
               [
@@ -348,7 +348,7 @@ RSpec.describe MetadataPresenter::Grid do
               metadata
             end
             let(:detached_grid) do
-              MetadataPresenter::Grid.new(service, start_from: start_from, main_flow: main_flow)
+              MetadataPresenter::Grid.new(service, start_from:, main_flow:)
             end
             let(:expected_grid) do
               [
@@ -458,7 +458,7 @@ RSpec.describe MetadataPresenter::Grid do
             described_class.new(
               service,
               start_from: 'b89d0b03-a709-4cd6-84dd-bc441118b4b8', # Page Q
-              main_flow: main_flow
+              main_flow:
             )
           end
           let(:main_flow) { described_class.new(service).flow_uuids }

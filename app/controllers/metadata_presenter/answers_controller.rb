@@ -27,8 +27,8 @@ module MetadataPresenter
 
     def redirect_to_next_page
       next_page = NextPage.new(
-        service: service,
-        session: session,
+        service:,
+        session:,
         user_data: reload_user_data,
         current_page_url: page_url,
         previous_answers: @previous_answers
@@ -74,13 +74,13 @@ module MetadataPresenter
         @page_answers.answers[component.id] = answer
         MetadataPresenter::UploadedFile.new(
           file: @page_answers.send(component.id),
-          component: component
+          component:
         )
       else
         FileUploader.new(
-          session: session,
+          session:,
           page_answers: @page_answers,
-          component: component,
+          component:,
           adapter: upload_adapter
         ).upload
       end

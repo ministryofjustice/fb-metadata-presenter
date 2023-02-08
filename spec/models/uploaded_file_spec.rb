@@ -1,8 +1,8 @@
 RSpec.describe MetadataPresenter::UploadedFile do
   subject(:uploaded_file) do
     described_class.new(
-      file: file,
-      component: component
+      file:,
+      component:
     )
   end
   let(:file) { double }

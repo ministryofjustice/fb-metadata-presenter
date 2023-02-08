@@ -1,6 +1,6 @@
 RSpec.describe MetadataPresenter::ValidateAnswers do
   subject(:validate_answers) do
-    described_class.new(page_answers, components: page.components, autocomplete_items: autocomplete_items)
+    described_class.new(page_answers, components: page.components, autocomplete_items:)
   end
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
   let(:autocomplete_items) { {} }
