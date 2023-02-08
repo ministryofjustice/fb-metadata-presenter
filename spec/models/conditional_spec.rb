@@ -15,7 +15,7 @@ RSpec.describe MetadataPresenter::Conditional do
 
       it 'returns the expressions' do
         expect(conditional.expressions).to eq(
-          [MetadataPresenter::Expression.new(operator: 'is')]
+          [MetadataPresenter::Expression.new({ operator: 'is' })]
         )
       end
     end
