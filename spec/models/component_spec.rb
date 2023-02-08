@@ -98,7 +98,7 @@ RSpec.describe MetadataPresenter::Component do
   describe '#content?' do
     context 'when type is content' do
       it 'returns true' do
-        component = described_class.new(_type: 'content')
+        component = described_class.new({ _type: 'content' })
         expect(component.content?).to be_truthy
       end
     end
@@ -114,7 +114,7 @@ RSpec.describe MetadataPresenter::Component do
   describe '#autocommplete?' do
     context 'when type is autocomplete' do
       it 'returns true' do
-        component = described_class.new(_type: 'autocomplete')
+        component = described_class.new({ _type: 'autocomplete' })
         expect(component.autocomplete?).to be_truthy
       end
     end
@@ -131,7 +131,7 @@ RSpec.describe MetadataPresenter::Component do
     context 'when there are items' do
       let(:attributes) do
         {
-          items: [MetadataPresenter::Item.new('_uuid': '123')]
+          items: [MetadataPresenter::Item.new({ '_uuid': '123' })]
         }
       end
 
