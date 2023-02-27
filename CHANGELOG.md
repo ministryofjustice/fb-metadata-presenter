@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.37] - 2023-02-27
+### Fixed
+
+ - Update the output of the `@page.send_body` content in the template to use
+    the `to_html` helper like all other content components
+
 ## [2.17.36] - 2023-02-06
 ### Changed
 

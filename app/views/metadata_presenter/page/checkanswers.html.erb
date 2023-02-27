@@ -70,7 +70,7 @@
           <div class="fb-send-body fb-editable govuk-body"
                data-fb-content-type="content"
                data-fb-content-id="page[send_body]">
-            <%= @page.send_body %>
+            <%= to_html (@page.send_body) %>
           </div>
         <% end %>
 
