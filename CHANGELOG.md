@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.38] - 2023-03-14
+### Fixed
+
+ - Change the cookie statement and the session expired page to reflect updated session timeout length and behaviour.
+
 ## [2.17.37] - 2023-02-27
 ### Fixed
 
