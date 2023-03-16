@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.18.0] - 2023-03-14
+### Added
+
+- FIXME
+
 ## [2.17.39] - 2023-03-14
 ### Added
 
