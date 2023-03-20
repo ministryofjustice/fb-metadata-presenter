@@ -43,7 +43,7 @@
               <strong class="govuk-warning-text__text">
                 <span class="govuk-warning-text__assistive">Warning</span>
                 We will reset your progress if you do not complete the form and press 'Continue'
-                by <%= session_expiry_time.strftime('%l:%M %p') %>. We do this to keep your information secure.
+                by <%= session_expiry_time&.strftime('%l:%M %p') %>. We do this to keep your information secure.
               </strong>
             </div>
         <% end %>
