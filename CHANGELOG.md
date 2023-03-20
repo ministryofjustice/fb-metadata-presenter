@@ -7,10 +7,15 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.40] - 2023-03-20
+### Added
+
+ - Added session timeout warning modal.
+
 ## [2.17.39] - 2023-03-14
 ### Added
 
-- Adding test fixture corresponding to the fix of the bug that shows multiple cya and confirmation pages 
+- Adding test fixture corresponding to the fix of the bug that shows multiple cya and confirmation pages
 
 ## [2.17.38] - 2023-03-14
 ### Fixed
