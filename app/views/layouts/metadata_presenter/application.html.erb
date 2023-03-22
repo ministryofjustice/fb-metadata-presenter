@@ -26,7 +26,7 @@
     <script>
      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
-
+    <div class="govuk-modal-dialogue-inert-container">
     <% if show_cookie_banner? %>
       <%= render partial: 'metadata_presenter/analytics/cookie_banner' %>
     <% end %>
@@ -51,6 +51,7 @@
       </main>
     </div>
     <%= render template: 'metadata_presenter/footer/footer' %>
+    </div>
     <% if !in_progress? %>
       <div class="govuk-timeout-warning dialog" data-module="govuk-timeout-warning"
            id="js-timeout-warning"
@@ -58,8 +59,8 @@
            data-minutes-modal-visible="1.5"
            data-url-redirect="/session/reset">
 
-        <div id="timeout-warning-modal" class="govuk-modal-dialogue govuk-timeout-warning__dialog">
-          <div class="govuk-modal-dialogue__wrapper">
+        <div id="timeout-warning-modal" class="govuk-modal-dialogue govuk-timeout-warning__dialog" data-inert-container=".govuk-modal-dialogue-inert-container">
+          <div class="govuk-modal-dialogue__wrapper" >
             <dialog class="govuk-modal-dialogue__box " aria-labelledby="timeout-warning-modal-title" aria-describedby="at-timer" aria-modal="true" role="modal" tabindex="0">
               <div class="govuk-modal-dialogue__header">
                   <button type="button" class="govuk-button govuk-modal-dialogue__close" aria-label="Close" data-element="govuk-modal-dialogue-close">x</button>
