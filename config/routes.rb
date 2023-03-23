@@ -10,6 +10,9 @@ MetadataPresenter::Engine.routes.draw do
 
   get 'session/expired', to: 'session#expired'
 
+  get 'save', to: 'save_and_return#show'
+  post 'saved_forms', to: 'save_and_return#create'
+
   post '/', to: 'answers#create'
   match '*path', to: 'answers#create', via: :post
   match '*path', to: 'pages#show',
