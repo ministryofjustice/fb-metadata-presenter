@@ -10,7 +10,9 @@ All notable changes to this project will be documented in this file.
 ## [2.17.40] - 2023-03-20
 ### Added
 
- - Added session timeout warning modal.
+ - Added session timeout warning modal.  After 25 minutes of inactivity a
+     warning modal will be shown with a 5 minute countdown.  If no action is
+     taken the session will be reset and the user redirected.
 
 ## [2.17.39] - 2023-03-14
 ### Added
