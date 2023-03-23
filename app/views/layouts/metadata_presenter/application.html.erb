@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
     <title><%= service.service_name %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="robots" content="noindex">
-  <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="<%= asset_pack_url('media/images/favicon.ico') %>" type="image/x-icon" />
-  <link rel="mask-icon" href="<%= asset_pack_url('media/images/govuk-mask-icon.svg') %>" color="blue">
-  <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon-180x180.png') %>">
-  <link rel="apple-touch-icon" sizes="167x167" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon-167x167.png') %>">
-  <link rel="apple-touch-icon" sizes="152x152" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon-152x152.png') %>">
-  <link rel="apple-touch-icon" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon.png') %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="<%= asset_pack_url('media/images/favicon.ico') %>" type="image/x-icon" />
+    <link rel="mask-icon" href="<%= asset_pack_url('media/images/govuk-mask-icon.svg') %>" color="blue">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon-180x180.png') %>">
+    <link rel="apple-touch-icon" sizes="167x167" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon-167x167.png') %>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon-152x152.png') %>">
+    <link rel="apple-touch-icon" href="<%= asset_pack_url('media/images/govuk-apple-touch-icon.png') %>">
 
     <%= javascript_pack_tag 'runner_application', 'govuk', defer: true %>
     <%= stylesheet_pack_tag 'govuk', 'runner_application', media: 'all' %>
@@ -26,66 +27,31 @@
     <script>
      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
+
     <div class="govuk-modal-dialogue-inert-container">
-    <% if show_cookie_banner? %>
-      <%= render partial: 'metadata_presenter/analytics/cookie_banner' %>
-    <% end %>
+      <% if show_cookie_banner? %>
+        <%= render partial: 'metadata_presenter/analytics/cookie_banner' %>
+      <% end %>
 
-    <%= render template: 'metadata_presenter/header/show' %>
-    <div class="govuk-width-container govuk-body-m">
-      <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
-        <% if back_link.present? %>
-          <a class="govuk-back-link" href="<%= back_link %>">Back</a>
-        <% end %>
-        <% if !in_progress? %>
-            <div class="govuk-warning-text govuk-timeout-warning-fallback">
-              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-              <strong class="govuk-warning-text__text">
-                <span class="govuk-warning-text__assistive">Warning</span>
-                We will reset your progress if you do not complete the form and press 'Continue'
-                by <%= session_expiry_time&.strftime('%l:%M %p') %>. We do this to keep your information secure.
-              </strong>
-            </div>
-        <% end %>
-        <%= yield %>
-      </main>
-    </div>
-    <%= render template: 'metadata_presenter/footer/footer' %>
-    </div>
-    <% if !in_progress? %>
-      <div class="govuk-timeout-warning dialog" data-module="govuk-timeout-warning"
-           id="js-timeout-warning"
-           data-minutes-idle-timeout="0.5"
-           data-minutes-modal-visible="1.5"
-           data-url-redirect="/session/reset"
-           data-timer-text="<%= t('presenter.session_timeout_warning.timer') %>"
-           data-timer-extra-text="<%= t('presenter.session_timeout_warning.timer_extra') %>"
-           data-timer-redirect-text="<%= t('presenter.session_timeout_warning.redirect') %>">
+      <%= render template: 'metadata_presenter/header/show' %>
 
-        <div id="timeout-warning-modal"
-             class="govuk-modal-dialogue govuk-timeout-warning__dialog"
-             data-inert-container=".govuk-modal-dialogue-inert-container">
-          <div class="govuk-modal-dialogue__wrapper" >
-            <dialog class="govuk-modal-dialogue__box " aria-labelledby="timeout-warning-modal-title" aria-describedby="at-timer" aria-modal="true" role="modal" tabindex="0">
-              <div class="govuk-modal-dialogue__header">
-                <button type="button" class="govuk-button govuk-modal-dialogue__close" aria-label="<%= t('presenter.session_timeout_warning.close_button') %>" data-element="govuk-modal-dialogue-close">x</button>
-              </div>
-              <div class="govuk-modal-dialogue__content">
-                <h2 class="govuk-modal-dialogue__heading govuk-heading-l" id="timeout-warning-modal-title">
-                  <%= t('presenter.session_timeout_warning.heading') %>
-                </h2>
-                <div class="govuk-modal-dialogue__description govuk-body" id="timeout-warning-modal-description">
-                    <div class="timer" aria-hidden="true"></div>
-                    <div class="at-timer govuk-visually-hidden" role="status" id="at-timer"></div>
-                </div>
-                <button class="govuk-button dialog-button govuk" data-module="govuk-button" data-element="govuk-modal-dialogue-close"><%= t('presenter.session_timeout_warning.button') %></button>
-              </div>
-            </dialog>
-          </div>
-          <div class="govuk-modal-dialogue__backdrop"></div>
-        </div>
-
+      <div class="govuk-width-container govuk-body-m">
+        <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+          <% if back_link.present? %>
+            <a class="govuk-back-link" href="<%= back_link %>">Back</a>
+          <% end %>
+          <% if !in_progress? %>
+            <%= render partial: 'metadata_presenter/session/timeout_fallback' %>
+          <% end %>
+          <%= yield %>
+        </main>
       </div>
+
+      <%= render template: 'metadata_presenter/footer/footer' %>
+    </div>
+
+    <% if !in_progress? %>
+      <%= render partial: 'metadata_presenter/session/timeout_warning_modal' %>
     <% end %>
   </body>
 </html>

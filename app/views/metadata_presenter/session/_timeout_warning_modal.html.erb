@@ -1,0 +1,33 @@
+<div class="govuk-timeout-warning dialog"
+     data-module="govuk-timeout-warning"
+     id="js-timeout-warning"
+     data-minutes-idle-timeout="0.5"
+     data-minutes-modal-visible="1.6"
+     data-url-redirect="/session/reset"
+     data-timer-text="<%= t('presenter.session_timeout_warning.timer') %>"
+     data-timer-extra-text="<%= t('presenter.session_timeout_warning.timer_extra') %>"
+     data-timer-redirect-text="<%= t('presenter.session_timeout_warning.redirect') %>">
+
+     <div id="timeout-warning-modal"
+          class="govuk-modal-dialogue govuk-timeout-warning__dialog"
+          data-inert-container=".govuk-modal-dialogue-inert-container">
+       <div class="govuk-modal-dialogue__wrapper" >
+         <dialog class="govuk-modal-dialogue__box " aria-labelledby="timeout-warning-modal-title" aria-modal="true" role="modal" tabindex="-1">
+           <div class="govuk-modal-dialogue__header">
+             <button type="button" class="govuk-button govuk-modal-dialogue__close" aria-label="<%= t('presenter.session_timeout_warning.close_button') %>" data-element="govuk-modal-dialogue-close">x</button>
+           </div>
+           <div class="govuk-modal-dialogue__content">
+             <h2 class="govuk-modal-dialogue__heading govuk-heading-l" id="timeout-warning-modal-title">
+               <%= t('presenter.session_timeout_warning.heading') %>
+             </h2>
+             <div class="govuk-modal-dialogue__description govuk-body" id="timeout-warning-modal-description">
+               <div class="timer" aria-hidden="true"></div>
+               <div class="at-timer govuk-visually-hidden" role="status" id="at-timer"></div>
+             </div>
+             <button class="govuk-button dialog-button govuk" data-module="govuk-button" data-element="govuk-modal-dialogue-close"><%= t('presenter.session_timeout_warning.button') %></button>
+           </div>
+         </dialog>
+       </div>
+       <div class="govuk-modal-dialogue__backdrop"></div>
+     </div>
+</div>

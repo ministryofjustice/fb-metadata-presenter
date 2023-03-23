@@ -22,6 +22,7 @@ en:
     session_timeout_warning:
       heading: Your form will reset soon
       timer: We will reset your form if you do not continue in
+      timer_fallback: We will reset your form if you do not complete the page and press continue by
       timer_extra:  Any answers you have entered so far will be cleared to protect your information.
       redirect: You are about to be redirected
       close_button: Close
