@@ -29,7 +29,7 @@ en:
       button: Continue
     session_expired:
       title: Your form has been reset
-      content: "To protect your personal information, we have reset the form and cleared your answers.\r\n\r\nThis is because you were inactive for 20 minutes."
+      content: "To protect your personal information, we have reset the form and cleared your answers.\r\n\r\nThis is because you were inactive for 30 minutes."
       restart_link: Start again
     confirmation:
       reference_number: 'Your reference number is:'
