@@ -19,9 +19,17 @@ en:
     maintenance:
       maintenance_page_heading: 'Sorry, this form is unavailable'
       maintenance_page_content: "If you were in the middle of completing the form, your data has not been saved.\r\n\r\nThe form will be available again from 9am on Monday 19 November 2018.\r\n\r\n\r\n\r\n### Other ways to apply\r\n\r\nContact us if your application is urgent \r\n\r\nEmail:  \r\nTelephone:  \r\nMonday to Friday, 9am to 5pm  \r\n[Find out about call charges](https://www.gov.uk/call-charges)"
+    session_timeout_warning:
+      heading: Your form will reset soon
+      timer: We will reset your form if you do not continue in
+      timer_fallback: We will reset your form if you do not complete the page and press continue by
+      timer_extra:  Any answers you have entered so far will be cleared to protect your information.
+      redirect: You are about to be redirected
+      close_button: Close
+      button: Continue
     session_expired:
       title: Your form has been reset
-      content: "To protect your personal information, we have reset the form and cleared your answers.\r\n\r\nThis is because you were inactive for 20 minutes."
+      content: "To protect your personal information, we have reset the form and cleared your answers.\r\n\r\nThis is because you were inactive for 30 minutes."
       restart_link: Start again
     confirmation:
       reference_number: 'Your reference number is:'
