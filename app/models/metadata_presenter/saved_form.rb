@@ -6,16 +6,6 @@ module MetadataPresenter
                   :secret_question,
                   :secret_answer
 
-    def initialize
-    end
-
-    def email
-    end
-
-    def secret_question
-    end
-
-    def secret_answer
-    end
+    def initialize; end
   end
 end

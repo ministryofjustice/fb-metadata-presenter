@@ -7,8 +7,7 @@ module MetadataPresenter
       @saved_form = SavedForm.new
     end
 
-    def create
-    end
+    def create; end
 
     def secret_questions
       [
@@ -19,6 +18,7 @@ module MetadataPresenter
     end
 
     private
+
     def check_feature_flag
       redirect_to '/' and return if ENV['SAVE_AND_RETURN'] != 'enabled'
     end
