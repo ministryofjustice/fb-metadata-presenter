@@ -1,0 +1,43 @@
+<div class="fb-main-grid-wrapper">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    <h1 id="page-heading" class="govuk-heading-xl"><%= t('presenter.save_and_return.show.heading') %></h1>
+    <p class="mojf-settings-screen__description"><%= t('presenter.save_and_return.show.description') %></p>
+
+    <%= form_for @saved_form do |f| %>
+      <%= f.govuk_error_summary %>
+      <div class="govuk-form-group">
+        <%=
+        f.govuk_email_field :email,
+          label: { text: t('presenter.save_and_return.show.email') },
+          hint: {
+            data: { "fb-default-text" => default_text('hint') },
+            text: t('presenter.save_and_return.show.email_hint')
+          },
+          name: "email",
+          spellcheck: "false",
+          autocomplete: "email"
+        %>
+        <%=
+        f.govuk_collection_radio_buttons :secret_question,
+          secret_questions,
+          :id,
+          :name,
+          legend: { text: t('presenter.save_and_return.show.secret_question') },
+          hint: {
+            data: { "fb-default-text" => default_text('hint') },
+            text: t('presenter.save_and_return.show.secret_question_hint') 
+          },
+          bold_labels: false
+        %>
+        <%=
+        f.govuk_text_field :secret_answer,
+          label: { text: t('presenter.save_and_return.show.secret_answer') },
+          name: "secret_answer"
+        %>
+      </div>
+
+      <%= f.govuk_submit t('presenter.save_and_return.show.continue') %><% end %> <%= link_to t('presenter.save_and_return.show.cancel'), :back %>
+    </div>
+  </div>
+</div>

@@ -36,6 +36,22 @@ en:
       payment_enabled: You still need to pay
       continue_to_pay_button: Continue to pay
       application_complete: 'Application complete'
+    save_and_return:
+      save: 'Save for later'
+      show:
+        heading: 'Save for later'
+        description: 'We will send you a one-off link that you can use to resume this form within 28 days.'
+        email: 'Email address'
+        email_hint: 'Where we will send the link'
+        secret_question: 'Pick a security question'
+        secret_question_hint: 'We will use this to verify your identity when you return'
+        secret_answer: 'The answer to your security question'
+        continue: 'Continue with saving'
+        cancel: 'Cancel saving and resume form'
+      secret_questions:
+        one: "What is your mother's maiden name?"
+        two: 'What is the last name of your favourite teacher?'
+        three: 'What is the name of the hospital where you were born?'
     footer:
       cookies:
         heading: "Cookies"
