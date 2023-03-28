@@ -22,17 +22,26 @@ module MetadataPresenter
       @saved_form.secret_question = text_for(params['saved_form']['secret_question'])
       @saved_form.populate_service_values(service)
       @saved_form.populate_session_values(session)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 05fea3c (WIP)
       if @saved_form.valid?
         # put in session until we have confirmed email address
         session[:saved_form] = @saved_form
         redirect_to '/save/email_confirmation'
       else
+<<<<<<< HEAD
         render :show, params: { page_slug: params[:page_slug], status: :unprocessable_entity }
+=======
+        render :show, status: :unprocessable_entity
+>>>>>>> 05fea3c (WIP)
       end
     end
 
     def email_confirmation
       @saved_form = session[:saved_form]
+<<<<<<< HEAD
       @email_confirmation = EmailConfirmation.new
     end
 
@@ -63,6 +72,9 @@ module MetadataPresenter
       Rails.logger.info('session')
       redirect_to '/check-answers'
       # byebug
+=======
+      byebug
+>>>>>>> 05fea3c (WIP)
     end
 
     def secret_questions
@@ -74,8 +86,12 @@ module MetadataPresenter
     end
 
     def text_for(question)
+<<<<<<< HEAD
       return nil if question.blank?
       secret_questions.select { |s| s.id.to_s == question.to_s }.first.name
+=======
+      secret_questions.first { |s| s.id.to_s == question.to_s }.name
+>>>>>>> 05fea3c (WIP)
     end
 
     def saved_form_params
@@ -88,6 +104,7 @@ module MetadataPresenter
       )
     end
 
+<<<<<<< HEAD
     def confirmation_params
       params.permit(
         :email_confirmation,
@@ -95,6 +112,8 @@ module MetadataPresenter
       )
     end
 
+=======
+>>>>>>> 05fea3c (WIP)
     private
 
     def check_feature_flag
