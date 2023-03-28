@@ -7,7 +7,27 @@ module MetadataPresenter
       @saved_form = SavedForm.new
     end
 
-    def create; end
+    def create
+      byebug
+      @saved_form = SavedForm.new
+      @saved_form.populate_param_values(saved_form_params)
+      @saved_form.secret_question = text_for(params['saved_form']['secret_question'])
+      @saved_form.populate_service_values(service)
+      @saved_form.populate_session_values(session)
+
+      if @saved_form.valid?
+        # put in session until we have confirmed email address
+        session[:saved_form] = @saved_form
+        redirect_to '/save/email_confirmation'
+      else
+        render :show, status: :unprocessable_entity
+      end
+    end
+
+    def email_confirmation
+      @saved_form = session[:saved_form]
+      byebug
+    end
 
     def secret_questions
       [
@@ -15,6 +35,20 @@ module MetadataPresenter
         OpenStruct.new(id: 2, name: I18n.t('presenter.save_and_return.secret_questions.two')),
         OpenStruct.new(id: 3, name: I18n.t('presenter.save_and_return.secret_questions.three'))
       ]
+    end
+
+    def text_for(question)
+      secret_questions.first { |s| s.id.to_s == question.to_s }.name
+    end
+
+    def saved_form_params
+      params.permit(
+        :email,
+        :secret_answer,
+        {saved_form: [:page_slug, :secret_question]},
+        :authenticity_token,
+        :page_slug
+      )
     end
 
     private

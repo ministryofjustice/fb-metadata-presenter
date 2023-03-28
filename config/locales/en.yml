@@ -48,6 +48,8 @@ en:
         secret_answer: 'The answer to your security question'
         continue: 'Continue with saving'
         cancel: 'Cancel saving and resume form'
+      validation:
+        email: 'Enter an email address in the correct format, like name@example.com'
       secret_questions:
         one: "What is your mother's maiden name?"
         two: 'What is the last name of your favourite teacher?'

@@ -12,6 +12,7 @@ MetadataPresenter::Engine.routes.draw do
 
   get 'save', to: 'save_and_return#show'
   post 'saved_forms', to: 'save_and_return#create'
+  get 'save/email_confirmation', to: 'save_and_return#email_confirmation'
 
   post '/', to: 'answers#create'
   match '*path', to: 'answers#create', via: :post
