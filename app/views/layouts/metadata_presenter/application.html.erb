@@ -28,6 +28,7 @@
      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
 
+
     <div class="govuk-modal-dialogue-inert-container">
       <% if show_cookie_request? %>
         <%= render partial: 'metadata_presenter/analytics/cookie_banner_request' %>
@@ -43,7 +44,7 @@
           <% if back_link.present? %>
             <a class="govuk-back-link" href="<%= back_link %>">Back</a>
           <% end %>
-          <% if !in_progress? %>
+          <% if !allowed_page? %>
             <%= render partial: 'metadata_presenter/session/timeout_fallback' %>
           <% end %>
           <%= yield %>
@@ -53,7 +54,7 @@
       <%= render template: 'metadata_presenter/footer/footer' %>
     </div>
 
-    <% if !in_progress? %>
+    <% if !allowed_page? %>
       <%= render partial: 'metadata_presenter/session/timeout_warning_modal' %>
     <% end %>
   </body>
