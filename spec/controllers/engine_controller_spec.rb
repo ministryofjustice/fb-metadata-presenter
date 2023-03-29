@@ -65,7 +65,7 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
     end
   end
 
-  describe '#show_cookie_banner?' do
+  describe '#show_cookie_request?' do
     context 'when analytics cookie is present' do
       let(:cookies) do
         ActionDispatch::Cookies::CookieJar.build(request, { 'analytics-version-fixture' => 'accepted' })
@@ -82,13 +82,13 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
         end
 
         it 'returns falsey' do
-          expect(controller.show_cookie_banner?).to be_falsey
+          expect(controller.show_cookie_request?).to be_falsey
         end
       end
 
       context 'when analytics tag is not present' do
         it 'returns falsey' do
-          expect(controller.show_cookie_banner?).to be_falsey
+          expect(controller.show_cookie_request?).to be_falsey
         end
       end
     end
@@ -101,7 +101,97 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
         end
 
         it 'returns truthy' do
-          expect(controller.show_cookie_banner?).to be_truthy
+          expect(controller.show_cookie_request?).to be_truthy
+        end
+      end
+    end
+  end
+
+  describe '#show_cookie_confirmation?' do
+    context 'when analytics param is present' do
+      before do
+        controller.params[:analytics] = 'accepted'
+      end
+
+      context 'when analytics cookie is present' do
+        let(:cookies) do
+          ActionDispatch::Cookies::CookieJar.build(request, { 'analytics-version-fixture' => 'accepted' })
+        end
+
+        before do
+          allow_any_instance_of(MetadataPresenter::EngineController).to receive(:cookies).and_return(cookies)
+        end
+
+        context 'when analytics tags are present' do
+          before do
+            allow(ENV).to receive(:[])
+            allow(ENV).to receive(:[]).with('UA').and_return('some-analytics-tag')
+          end
+
+          it 'returns truthy' do
+            expect(controller.show_cookie_confirmation?).to be_truthy
+          end
+        end
+
+        context 'when analytics tag is not present' do
+          it 'returns falsey' do
+            expect(controller.show_cookie_confirmation?).to be_falsey
+          end
+        end
+      end
+
+      context 'when analytics cookie is not present' do
+        context 'when at least one analytics tag is present' do
+          before do
+            allow(ENV).to receive(:[])
+            allow(ENV).to receive(:[]).with('GA4').and_return('some-analytics-tag')
+          end
+
+          it 'returns falsey' do
+            expect(controller.show_cookie_confirmation?).to be_falsey
+          end
+        end
+      end
+    end
+
+    context 'when analytics param is not present' do
+      context 'when analytics cookie is present' do
+        let(:cookies) do
+          ActionDispatch::Cookies::CookieJar.build(request, { 'analytics-version-fixture' => 'accepted' })
+        end
+
+        before do
+          allow_any_instance_of(MetadataPresenter::EngineController).to receive(:cookies).and_return(cookies)
+        end
+
+        context 'when analytics tags are present' do
+          before do
+            allow(ENV).to receive(:[])
+            allow(ENV).to receive(:[]).with('UA').and_return('some-analytics-tag')
+          end
+
+          it 'returns falsey' do
+            expect(controller.show_cookie_confirmation?).to be_falsey
+          end
+        end
+
+        context 'when analytics tag is not present' do
+          it 'returns falsey' do
+            expect(controller.show_cookie_confirmation?).to be_falsey
+          end
+        end
+      end
+
+      context 'when analytics cookie is not present' do
+        context 'when at least one analytics tag is present' do
+          before do
+            allow(ENV).to receive(:[])
+            allow(ENV).to receive(:[]).with('GA4').and_return('some-analytics-tag')
+          end
+
+          it 'returns falsey' do
+            expect(controller.show_cookie_confirmation?).to be_falsey
+          end
         end
       end
     end
