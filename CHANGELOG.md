@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.42] - 2023-03-29
+### Changed
+
+- Changed cookies statement to reflect updated session timeout length.
+
 ## [2.17.41] - 2023-03-27
 ### Added
 
