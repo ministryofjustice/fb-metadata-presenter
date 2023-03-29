@@ -47,10 +47,17 @@ module MetadataPresenter
     end
     helper_method :allow_analytics?
 
-    def show_cookie_banner?
+    def show_cookie_request?
       (Rails.application.config.respond_to?(:global_ga4) || analytics_tags_present?) && no_analytics_cookie?
     end
-    helper_method :show_cookie_banner?
+    helper_method :show_cookie_request?
+
+    def show_cookie_confirmation?
+      unless no_analytics_cookie?
+        (Rails.application.config.respond_to?(:global_ga4) || analytics_tags_present?) && params[:analytics].present?
+      end
+    end
+    helper_method :show_cookie_confirmation?
 
     def analytics_tags_present?
       Rails.application.config.supported_analytics.values.flatten.any? do |analytic|
