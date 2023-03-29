@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.43] - 2023-03-29
+### Changed
+
+ - Changed the templates for the cookie warning banner.  We reload the
+     page between the request and the accept or reject banner, so they need to
+     be separated into separate partials with different conditions for being
+     shown.
+
 ## [2.17.42] - 2023-03-29
 ### Changed
 
