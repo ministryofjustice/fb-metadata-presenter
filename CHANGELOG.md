@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.45] - 2023-03-29
+### Changed
+
+ - update helper method from `in_progress?` to `allowed_page?` as it is a more
+     accurate and less confusing name.
+
 ## [2.17.44] - 2023-03-39
 ### Changed
 
