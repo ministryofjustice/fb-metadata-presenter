@@ -7,6 +7,30 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.17.45] - 2023-03-29
+### Changed
+
+ - update helper method from `in_progress?` to `allowed_page?` as it is a more
+     accurate and less confusing name.
+
+## [2.17.44] - 2023-03-39
+### Changed
+
+- Remove the save and return button temporarily
+
+## [2.17.43] - 2023-03-29
+### Changed
+
+ - Changed the templates for the cookie warning banner.  We reload the
+     page between the request and the accept or reject banner, so they need to
+     be separated into separate partials with different conditions for being
+     shown.
+
+## [2.17.42] - 2023-03-29
+### Changed
+
+- Changed cookies statement to reflect updated session timeout length.
+
 ## [2.17.41] - 2023-03-27
 ### Added
 
