@@ -8,13 +8,12 @@ module MetadataPresenter
     end
 
     def create
-      byebug
       @saved_form = SavedForm.new
       @saved_form.populate_param_values(saved_form_params)
       @saved_form.secret_question = text_for(params['saved_form']['secret_question'])
       @saved_form.populate_service_values(service)
       @saved_form.populate_session_values(session)
-
+      byebug
       if @saved_form.valid?
         # put in session until we have confirmed email address
         session[:saved_form] = @saved_form
@@ -26,7 +25,22 @@ module MetadataPresenter
 
     def email_confirmation
       @saved_form = session[:saved_form]
-      byebug
+      @email_confirmation = EmailConfirmation.new
+    end
+
+    def confirm_email
+      @email_confirmation = EmailConfirmation.new
+      @email_confirmation.assign_attributes(confirmation_params[:email_confirmation], session['saved_form']['email'])
+      if @email_confirmation.valid?
+        redirect_to '/save/progress_saved'
+      else
+        render :email_confirmation, status: :unprocessable_entity
+      end
+    end
+
+    def save_progress
+      # post saved session data to datastore
+      # scrub session[:saved_form] on success
     end
 
     def secret_questions
@@ -48,6 +62,13 @@ module MetadataPresenter
         {saved_form: [:page_slug, :secret_question]},
         :authenticity_token,
         :page_slug
+      )
+    end
+
+    def confirmation_params
+      params.permit(
+        :email_confirmation,
+        :authenticity_token,
       )
     end
 
