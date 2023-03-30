@@ -18,7 +18,7 @@
           }
         %>
 
-        <%= f.govuk_submit(disabled: editable?) %> <% if ENV['SAVE_AND_RETURN'] == 'enabled' %><a href="<%= save_path %>" class="govuk-button" data-module="govuk-button" data-component="save-button"><%= t('presenter.save_and_return.save') %></a><% end %>
+        <%= f.govuk_submit(disabled: editable?) %> 
       <% end %>
     </div>
   </div>
