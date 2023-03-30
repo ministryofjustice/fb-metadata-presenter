@@ -15,6 +15,14 @@ module MetadataPresenter
       end
     end
 
+    def save_form_progress
+      if defined? super
+        super
+      else
+        # throw
+      end
+    end
+
     def back_link
       previous_page = PreviousPage.new(
         service:,
