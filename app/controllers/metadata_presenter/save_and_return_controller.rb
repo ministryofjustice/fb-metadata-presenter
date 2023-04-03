@@ -32,8 +32,9 @@ module MetadataPresenter
       @email_confirmation.assign_attributes(confirmation_params[:email_confirmation], session['saved_form']['email'])
 
       if @email_confirmation.valid?
-        uuid = save_form_progress
-        # send_email(uuid)
+        uuid = save_form_progress.body["id"]
+        # todo rescue failed POST
+        # send_email(uuid, confirmation_params[:email_confirmation])
         redirect_to '/save/progress_saved'
       else
         render :email_confirmation, status: :unprocessable_entity
