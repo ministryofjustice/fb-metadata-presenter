@@ -45,9 +45,14 @@ module MetadataPresenter
       uuid = params[:uuid]
       service_slug = params[:service_slug]
 
-      puts get_saved_progress(uuid)
+      response = get_saved_progress(uuid)
       
+      session[:user_id] = response["user_id"]
+      session[:user_token] = response["user_token"]
 
+      Rails.logger.info('returning to form')
+      Rails.logger.info('session')
+      redirect_to '/check-answers'
       # byebug
     end
 
