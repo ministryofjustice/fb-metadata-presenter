@@ -11,7 +11,7 @@ module MetadataPresenter
                   :service_version,
                   :user_id,
                   :user_token,
-                  :user_data_payload,
+                  :payload,
                   :attemtps,
                   :active
                   
@@ -28,7 +28,7 @@ module MetadataPresenter
     def populate_session_values(session)
       self.user_id           = session[:user_id]
       self.user_token        = session[:user_token]
-      self.user_data_payload = session[:user_data]
+      self.payload = session[:user_data]
     end
     
     def populate_service_values(service)
