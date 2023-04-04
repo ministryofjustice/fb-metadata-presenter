@@ -45,8 +45,8 @@ module MetadataPresenter
       uuid = params[:uuid]
       service_slug = params[:service_slug]
 
-      get_saved_progress(service_slug, uuid)
-
+      puts get_saved_progress(uuid)
+      
 
       # byebug
     end
