@@ -41,6 +41,16 @@ module MetadataPresenter
       end
     end
 
+    def return
+      uuid = params[:uuid]
+      service_slug = params[:service_slug]
+
+      get_saved_progress(service_slug, uuid)
+
+
+      # byebug
+    end
+
     def secret_questions
       [
         OpenStruct.new(id: 1, name: I18n.t('presenter.save_and_return.secret_questions.one')),
