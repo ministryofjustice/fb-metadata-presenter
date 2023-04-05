@@ -13,7 +13,7 @@ module MetadataPresenter
 
     def confirmed_email
       session['saved_form']['email']
-      # todo: clear session data after submission is successful
+      # TODO: clear session data after submission is successful
     end
 
     def create
@@ -41,8 +41,10 @@ module MetadataPresenter
       @email_confirmation.assign_attributes(confirmation_params[:email_confirmation], session['saved_form']['email'])
 
       if @email_confirmation.valid?
-        uuid = save_form_progress.body["id"]
-        # todo rescue failed POST
+        # save_form_progress returns the uuid of the saved form as 'id'
+        # user to generate email link, for now not assigned because rubocop
+        save_form_progress.body['id']
+        # TODO: rescue failed POST
         # send_email(uuid, confirmation_params[:email_confirmation])
         redirect_to '/save/progress_saved'
       else
@@ -50,20 +52,17 @@ module MetadataPresenter
       end
     end
 
-    def return
-      uuid = params[:uuid]
-      service_slug = params[:service_slug]
+    # def return
+    #   uuid = params[:uuid]
+    #   response = get_saved_progress(uuid)
 
-      response = get_saved_progress(uuid)
-      
-      session[:user_id] = response["user_id"]
-      session[:user_token] = response["user_token"]
+    #   session[:user_id] = response['user_id']
+    #   session[:user_token] = response['user_token']
 
-      Rails.logger.info('returning to form')
-      Rails.logger.info('session')
-      redirect_to '/check-answers'
-      # byebug
-    end
+    #   Rails.logger.info('returning to form')
+    #   Rails.logger.info('session')
+    #   redirect_to '/check-answers'
+    # end
 
     def secret_questions
       [
@@ -75,6 +74,7 @@ module MetadataPresenter
 
     def text_for(question)
       return nil if question.blank?
+
       secret_questions.select { |s| s.id.to_s == question.to_s }.first.name
     end
 
@@ -82,7 +82,7 @@ module MetadataPresenter
       params.permit(
         :email,
         :secret_answer,
-        {saved_form: [:page_slug, :secret_question]},
+        { saved_form: %i[page_slug secret_question] },
         :authenticity_token,
         :page_slug
       )
@@ -91,7 +91,7 @@ module MetadataPresenter
     def confirmation_params
       params.permit(
         :email_confirmation,
-        :authenticity_token,
+        :authenticity_token
       )
     end
 

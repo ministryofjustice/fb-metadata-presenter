@@ -14,7 +14,7 @@ module MetadataPresenter
                   :user_data_payload,
                   :attemtps,
                   :active
-                  
+
     validates :secret_question, :secret_answer, :service_slug, :page_slug, :service_version, :user_id, :user_token, presence: true, allow_blank: false
     def initialize; end
 
@@ -30,7 +30,7 @@ module MetadataPresenter
       self.user_token        = session[:user_token]
       self.user_data_payload = session[:user_data]
     end
-    
+
     def populate_service_values(service)
       self.service_slug    = service.service_slug
       self.service_version = service.version_id

@@ -18,8 +18,6 @@ module MetadataPresenter
     def save_form_progress
       if defined? super
         super
-      else
-        # throw
       end
     end
 

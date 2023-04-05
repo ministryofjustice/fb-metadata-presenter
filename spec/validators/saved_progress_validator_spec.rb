@@ -1,6 +1,6 @@
 RSpec.describe SavedProgressValidator do
   describe '#valid?' do
-    let (:record) { MetadataPresenter::SavedForm.new }
+    let(:record) { MetadataPresenter::SavedForm.new }
 
     context 'when is a valid email' do
       %w[
