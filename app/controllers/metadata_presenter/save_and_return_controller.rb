@@ -1,7 +1,7 @@
 module MetadataPresenter
   class SaveAndReturnController < EngineController
     before_action :check_feature_flag
-    helper_method :secret_questions, :page_slug
+    helper_method :secret_questions, :page_slug, :confirmed_email
 
     def show
       @saved_form = SavedForm.new
@@ -9,6 +9,10 @@ module MetadataPresenter
 
     def page_slug
       params[:page_slug] || params[:saved_form][:page_slug]
+    end
+
+    def confirmed_email
+      session['saved_form']['email']
     end
 
     def create
