@@ -1,4 +1,4 @@
-RSpec.describe SavedProgressValidator do
+RSpec.describe EmailConfirmationValidator do
   describe '#valid?' do
     let(:record) { MetadataPresenter::EmailConfirmation.new }
 
