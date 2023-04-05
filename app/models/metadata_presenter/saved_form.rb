@@ -15,7 +15,7 @@ module MetadataPresenter
                   :attemtps,
                   :active
                   
-    validates :secret_question, :secret_answer, :service_slug, :page_slug, :service_version, :user_id, :user_token, presence: true
+    validates :secret_question, :secret_answer, :service_slug, :page_slug, :service_version, :user_id, :user_token, presence: true, allow_blank: false
     def initialize; end
 
     def populate_param_values(params)

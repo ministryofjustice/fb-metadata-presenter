@@ -1,10 +1,14 @@
 module MetadataPresenter
   class SaveAndReturnController < EngineController
     before_action :check_feature_flag
-    helper_method :secret_questions
+    helper_method :secret_questions, :page_slug
 
     def show
       @saved_form = SavedForm.new
+    end
+
+    def page_slug
+      params[:page_slug] || params[:saved_form][:page_slug]
     end
 
     def create
@@ -18,7 +22,7 @@ module MetadataPresenter
         session[:saved_form] = @saved_form
         redirect_to '/save/email_confirmation'
       else
-        render :show, status: :unprocessable_entity
+        render :show, params: { page_slug: params[:page_slug], status: :unprocessable_entity }
       end
     end
 
@@ -65,7 +69,8 @@ module MetadataPresenter
     end
 
     def text_for(question)
-      secret_questions.first { |s| s.id.to_s == question.to_s }.name
+      return nil if question.blank?
+      secret_questions.select { |s| s.id.to_s == question.to_s }.first.name
     end
 
     def saved_form_params
