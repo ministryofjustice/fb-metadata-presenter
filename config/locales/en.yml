@@ -53,8 +53,7 @@ en:
         description: 'Make sure this is correct before finishing'
       saved:
         heading: 'Your form has been saved'
-        success_1: 'We have sent a one-off link to '
-        success_2: ' which you can use to resume this form within 28 days. After that time, your saved information will be deleted.'
+        success: "We have sent a one-off link to %{email} which you can use to resume this form within 28 days. After that time, your saved information will be deleted."
         info_1: "If you haven't received the email after a few minutes, check your spam folder."
         info_2: 'This link will only work once. If you want to save your progress again after resuming the form, you will need to repeat the save process and generate another link'
         info_3: 'You are now free to close this window or navigate away from this page.'
