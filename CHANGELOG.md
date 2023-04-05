@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.18] - 2023-04-05
+### Changed
+
+ - Add save and return submit functionality
+
 ## [2.17.45] - 2023-03-29
 ### Changed
 
