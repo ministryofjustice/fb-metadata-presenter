@@ -1,6 +1,6 @@
 module MetadataPresenter
   class SaveAndReturnController < EngineController
-    before_action :check_feature_flag
+    # before_action :check_feature_flag
     helper_method :secret_questions, :page_slug, :confirmed_email
 
     def show
