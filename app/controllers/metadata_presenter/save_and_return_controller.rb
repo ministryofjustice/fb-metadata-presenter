@@ -13,6 +13,7 @@ module MetadataPresenter
 
     def confirmed_email
       session['saved_form']['email']
+      # todo: clear session data after submission is successful
     end
 
     def create
