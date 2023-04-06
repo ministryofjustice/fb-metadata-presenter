@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
 
   def create_submission; end
 
+  def create_save_and_return_submission(payload); end
+
   def autocomplete_items(component); end
 
   def show_reference_number; end

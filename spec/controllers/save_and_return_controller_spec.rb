@@ -11,15 +11,18 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
   describe '#confirm_email' do
     context 'Successful POST to datastore' do
       let(:email) { 'email@123.com' }
+      let(:id) { '12345' }
+      let(:status) { 200 }
 
-      it 'should redirect with status' do
+      before do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:save_form_progress)
-          .and_return(OpenStruct.new(status: 200))
+          .and_return(OpenStruct.new(status:, body: { id: }))
         session = { 'saved_form' => { 'email' => email } }
         allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
+      end
 
+      it 'should redirect with status' do
         post '/email_confirmations', params: { email_confirmation: email }
-
         expect(response).to redirect_to('/save/progress_saved')
       end
     end
