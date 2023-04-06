@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.18.1] - 2023-04-05
+### Changed
+
+ - Add save and return submit error handling
+
 ## [2.18] - 2023-04-05
 ### Changed
 
