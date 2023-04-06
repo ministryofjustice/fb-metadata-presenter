@@ -45,6 +45,7 @@ module MetadataPresenter
         if response.status != 200
           render :email_confirmation, status: :unprocessable_entity and return
         end
+
         # send_email(response.body['id'], confirmation_params[:email_confirmation])
         redirect_to '/save/progress_saved'
       else

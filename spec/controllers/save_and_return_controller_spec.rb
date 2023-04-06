@@ -15,7 +15,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       it 'should redirect with status' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:save_form_progress)
           .and_return(OpenStruct.new(status: 200))
-        session = { 'saved_form' => { 'email' => email }}
+        session = { 'saved_form' => { 'email' => email } }
         allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
 
         post '/email_confirmations', params: { email_confirmation: email }
@@ -30,7 +30,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       it 'should redirect with status' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:save_form_progress)
           .and_return(OpenStruct.new(status: 500))
-        session = { 'saved_form' => { 'email' => email }}
+        session = { 'saved_form' => { 'email' => email } }
         allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
 
         post '/email_confirmations', params: { email_confirmation: email }
@@ -44,7 +44,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       let(:email) { 'email@123.com' }
 
       it 'should redirect with status' do
-        session = { 'saved_form' => { 'email' => 'not-a-match@email.com' }}
+        session = { 'saved_form' => { 'email' => 'not-a-match@email.com' } }
         allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
 
         post '/email_confirmations', params: { email_confirmation: email }
