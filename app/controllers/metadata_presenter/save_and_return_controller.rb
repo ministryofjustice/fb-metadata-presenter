@@ -43,7 +43,7 @@ module MetadataPresenter
       if @email_confirmation.valid?
         response = save_form_progress
         if response.status != 200
-          render :email_confirmation, status: :unprocessable_entity and return
+          internal_server_error and return
         end
 
         # send_email(response.body['id'], confirmation_params[:email_confirmation])

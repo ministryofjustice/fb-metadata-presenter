@@ -35,8 +35,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
 
         post '/email_confirmations', params: { email_confirmation: email }
 
-        expect(response.status).to eq(422)
-        expect(response.request.path).to eq('/email_confirmations')
+        expect(response.status).to eq(500)
       end
     end
 
