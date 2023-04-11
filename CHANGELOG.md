@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.18.2] - 2023-04-05
+### Changed
+
+ - Fix back link in save and return flow
+
 ## [2.18.1] - 2023-04-05
 ### Changed
 
