@@ -8,7 +8,7 @@ module MetadataPresenter
     end
 
     def page_slug
-      params[:page_slug] || params[:saved_form][:page_slug]
+      session['saved_form']['page_slug'] || params[:page_slug]
     end
 
     def confirmed_email
