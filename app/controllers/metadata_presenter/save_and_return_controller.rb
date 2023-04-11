@@ -41,11 +41,12 @@ module MetadataPresenter
       @email_confirmation.assign_attributes(confirmation_params[:email_confirmation], session['saved_form']['email'])
 
       if @email_confirmation.valid?
-        # save_form_progress returns the uuid of the saved form as 'id'
-        # user to generate email link, for now not assigned because rubocop
-        # save_form_progress.body['id']
-        # TODO: rescue failed POST
-        # send_email(uuid, confirmation_params[:email_confirmation])
+        response = save_form_progress
+        if response.status != 200
+          internal_server_error and return
+        end
+
+        # send_email(response.body['id'], confirmation_params[:email_confirmation])
         redirect_to '/save/progress_saved'
       else
         render :email_confirmation, status: :unprocessable_entity

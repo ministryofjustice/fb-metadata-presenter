@@ -101,6 +101,10 @@ module MetadataPresenter
       render template: 'errors/404', status: :not_found
     end
 
+    def internal_server_error
+      render template: 'errors/500', status: :internal_server_error
+    end
+
     def redirect_to_page(url)
       redirect_to File.join(request.script_name, url)
     end
