@@ -8,12 +8,17 @@ module MetadataPresenter
     end
 
     def page_slug
-      session['saved_form']['page_slug'] || params[:page_slug]
+      if (session['saved_form'].present?)
+        session['saved_form']['page_slug']
+      end
+      params[:page_slug]
     end
 
     def confirmed_email
-      session['saved_form']['email']
-      # TODO: clear session data after submission is successful
+      email = session['saved_form']['email']
+      session[:saved_form] = nil
+
+      return email
     end
 
     def create
@@ -53,17 +58,49 @@ module MetadataPresenter
       end
     end
 
-    # def return
-    #   uuid = params[:uuid]
-    #   response = get_saved_progress(uuid)
+    def return
+      uuid = params[:uuid]
+      service_slug = params[:service_slug]
+      response = get_saved_progress(uuid)
 
-    #   session[:user_id] = response['user_id']
-    #   session[:user_token] = response['user_token']
+      if (response.status == :not_found)
+        redirect_to :record_error
+      end
 
-    #   Rails.logger.info('returning to form')
-    #   Rails.logger.info('session')
-    #   redirect_to '/check-answers'
-    # end
+      if (response.status == :unprocessable_entity)
+        redirect_to :record_link_used
+      end
+
+      @saved_form = SavedForm.new.from_json(response.body)
+      @resume_form = ResumeForm.new(@saved_form.secret_question)
+    end
+
+    def submit_secret_answer
+      uuid = params[:uuid]
+      service_slug = params[:service_slug]
+      response = get_saved_progress(uuid)
+      @saved_form = SavedForm.new.from_json(response.body)
+      @resume_form = ResumeForm.new(@saved_form.secret_question)
+      @resume_form.secret_answer = resume_form_params[:resume_form][:secret_answer]
+      @resume_form.recorded_answer = @saved_form.secret_answer
+      if @resume_form.valid?
+        # redirect back to right place in form
+        if (@saved_form.service_version == service.version_id)
+          session[:user_id] = @saved_form.user_id
+          session[:user_token] = @saved_form.user_token
+          Rails.logger.info('returning to form')
+          # add new check page
+          redirect_to '/check-answers'
+          # invalidate the record
+        else
+          # add new error page
+        end
+      else
+        # increment the attempts counter
+        increment_record_counter(@saved_form.id)
+        render :return, status: :unprocessable_entity
+      end
+    end
 
     def secret_questions
       [
@@ -92,6 +129,13 @@ module MetadataPresenter
     def confirmation_params
       params.permit(
         :email_confirmation,
+        :authenticity_token
+      )
+    end
+
+    def resume_form_params
+      params.permit(
+        { resume_form: %i[secret_answer] },
         :authenticity_token
       )
     end

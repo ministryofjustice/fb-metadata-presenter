@@ -60,10 +60,32 @@ en:
       validation:
         email: 'Enter an email address in the correct format, like name@example.com'
         email_not_matched: 'Does not match'
+        answer_not_matched: 'Does not match the answer we have on record'
       secret_questions:
         one: "What is your mother's maiden name?"
         two: 'What is the last name of your favourite teacher?'
         three: 'What is the name of the hospital where you were born?'
+      resume:
+        heading: "Continue with \"%{service_name}\""
+        continue: 'Continue'
+        information: 'This will use up your save link. To save your progress again, you will need to repeat the save process and generate another link.'
+        errors:
+          generic_problem:
+            heading: 'There is a problem with your link'
+            info_1: 'Please try again. If you copied and pasted the link into your browser, check you copied the entire link.'
+            info_2: 'If this problem persists, you will need to start the form again. Your saved answers will be securely deleted after 28 days.'
+          expired:
+            heading: 'Your link has expired'
+            info_1: 'It has been more than 28 days since you saved your progress on this form and the link is no longer valid.'
+            info_2: 'Your saved answers have been be securely deleted.'
+          link_used:
+            heading: 'That link has already been used'
+            info_1: 'Links to resume a form only work once. If you have saved your progress more than once, check for a more recent link.'
+            info_2: 'Otherwise, you will need to start the form again. Your saved answers will be securely deleted after 28 days.'
+          failure:
+            heading: 'Your information cannot be retrieved'
+            info_1: 'The answer to your security question was incorrect and you have run out of attempts to retrieve your information.'
+            info_2: 'You will need to start the form again. Your saved answers will be securely deleted.'
     footer:
       cookies:
         heading: "Cookies"

@@ -1,6 +1,8 @@
 module MetadataPresenter
   class SavedForm
     include ActiveModel::Model
+    include ActiveModel::Serializers::JSON
+
     validates_with SavedProgressValidator
 
     attr_accessor :email,
@@ -13,7 +15,11 @@ module MetadataPresenter
                   :user_token,
                   :user_data_payload,
                   :attempts,
-                  :active
+                  :active,
+                  :id,
+                  :created_at,
+                  :updated_at
+                
 
     validates :secret_question, :secret_answer, :service_slug, :page_slug, :service_version, :user_id, :user_token, presence: true, allow_blank: false
     def initialize; end
