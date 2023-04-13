@@ -86,6 +86,12 @@ en:
             heading: 'Your information cannot be retrieved'
             info_1: 'The answer to your security question was incorrect and you have run out of attempts to retrieve your information.'
             info_2: 'You will need to start the form again. Your saved answers will be securely deleted.'
+        from_start:
+          heading: "\"%{service_name}\" has been updated"
+          info_1: 'Your information has been successfully retrieved. However, the form has been updated since your last visit.'
+          info_2: 'Please check from the beginning in case anything has changed, such as new requirements or questions.'
+          continue: 'Continue'
+
     footer:
       cookies:
         heading: "Cookies"

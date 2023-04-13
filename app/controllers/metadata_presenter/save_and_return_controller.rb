@@ -63,12 +63,12 @@ module MetadataPresenter
       service_slug = params[:service_slug]
       response = get_saved_progress(uuid)
 
-      if (response.status == :not_found)
-        redirect_to :record_error
+      if (response.status == 404)
+        redirect_to '/record_error'
       end
 
-      if (response.status == :unprocessable_entity)
-        redirect_to :record_link_used
+      if (response.status == 422)
+        redirect_to '/already_used'
       end
 
       @saved_form = SavedForm.new.from_json(response.body)
@@ -76,8 +76,8 @@ module MetadataPresenter
     end
 
     def submit_secret_answer
-      uuid = params[:uuid]
-      service_slug = params[:service_slug]
+      uuid = params[:resume_form][:uuid]
+      # service_slug = params[:service_slug]
       response = get_saved_progress(uuid)
       @saved_form = SavedForm.new.from_json(response.body)
       @resume_form = ResumeForm.new(@saved_form.secret_question)
@@ -85,20 +85,35 @@ module MetadataPresenter
       @resume_form.recorded_answer = @saved_form.secret_answer
       if @resume_form.valid?
         # redirect back to right place in form
+        byebug
         if (@saved_form.service_version == service.version_id)
           session[:user_id] = @saved_form.user_id
           session[:user_token] = @saved_form.user_token
           Rails.logger.info('returning to form')
           # add new check page
-          redirect_to '/check-answers'
+          redirect_to '/resume'
           # invalidate the record
         else
-          # add new error page
+          redirect_to '/resume_from_start'
         end
       else
         # increment the attempts counter
         increment_record_counter(@saved_form.id)
         render :return, status: :unprocessable_entity
+      end
+    end
+
+    def resume
+      @user_data = load_user_data # method signature
+      @page ||= service.find_page_by_url(request.env['PATH_INFO'])
+
+      if @page
+        load_autocomplete_items
+
+        @page_answers = PageAnswers.new(@page, @user_data)
+        render template: @page.template
+      else
+        not_found
       end
     end
 
@@ -135,7 +150,7 @@ module MetadataPresenter
 
     def resume_form_params
       params.permit(
-        { resume_form: %i[secret_answer] },
+        { resume_form: %i[secret_answer uuid] },
         :authenticity_token
       )
     end

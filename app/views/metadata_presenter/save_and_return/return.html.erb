@@ -4,6 +4,7 @@
     <h1 id="page-heading" class="govuk-heading-xl"><%= t('presenter.save_and_return.resume.heading', service_name: service.service_name) %></h1>
     <%= form_for @resume_form do |f| %>
       <%= f.govuk_error_summary %>
+      <%= f.hidden_field(:uuid, value: params[:uuid]) %>
       <div class="govuk-form-group">
       <%=
         f.govuk_text_field :secret_answer,
