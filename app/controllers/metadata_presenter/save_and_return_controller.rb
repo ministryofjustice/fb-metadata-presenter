@@ -85,7 +85,6 @@ module MetadataPresenter
       @resume_form.recorded_answer = @saved_form.secret_answer
       if @resume_form.valid?
         # redirect back to right place in form
-        byebug
         if (@saved_form.service_version == service.version_id)
           session[:user_id] = @saved_form.user_id
           session[:user_token] = @saved_form.user_token
@@ -103,7 +102,8 @@ module MetadataPresenter
       end
     end
 
-    def resume
+    def resume_progress
+      # byebug
       @user_data = load_user_data # method signature
       @page ||= service.find_page_by_url(request.env['PATH_INFO'])
 

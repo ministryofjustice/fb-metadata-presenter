@@ -15,14 +15,14 @@ MetadataPresenter::Engine.routes.draw do
   get 'save/email_confirmation', to: 'save_and_return#email_confirmation'
   post 'email_confirmations', to: 'save_and_return#confirm_email'
   get 'save/progress_saved', to: 'save_and_return#save_progress'
-  get 'return/:service_slug/:uuid', to: 'save_and_return#return'
+  get '/return/:uuid', to: 'save_and_return#return'
   post 'resume_forms', to: 'save_and_return#submit_secret_answer'
   get 'record_error', to: 'save_and_return#record_error'
   get 'record_failure', to: 'save_and_return#record_failure'
   get 'expired', to: 'save_and_return#record_link_expired'
   get 'already_used', to: 'save_and_return#record_link_used'
   get 'resume_from_start', to: 'save_and_return#resume_from_start'
-  get 'resume_progress', to: 'save_and_return#resume'
+  get 'resume_progress', to: 'save_and_return#resume_progress'
 
   post '/', to: 'answers#create'
   match '*path', to: 'answers#create', via: :post
