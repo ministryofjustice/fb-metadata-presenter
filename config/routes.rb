@@ -22,7 +22,7 @@ MetadataPresenter::Engine.routes.draw do
   get 'expired', to: 'save_and_return#record_link_expired'
   get 'already_used', to: 'save_and_return#record_link_used'
   get 'resume_from_start', to: 'save_and_return#resume_from_start'
-  get 'resume', to: 'save_and_return#resume'
+  get 'resume_progress', to: 'save_and_return#resume'
 
   post '/', to: 'answers#create'
   match '*path', to: 'answers#create', via: :post

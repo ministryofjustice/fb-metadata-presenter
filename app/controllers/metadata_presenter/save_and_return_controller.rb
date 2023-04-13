@@ -91,7 +91,7 @@ module MetadataPresenter
           session[:user_token] = @saved_form.user_token
           Rails.logger.info('returning to form')
           # add new check page
-          redirect_to '/resume'
+          redirect_to '/resume_progress'
           # invalidate the record
         else
           redirect_to '/resume_from_start'
