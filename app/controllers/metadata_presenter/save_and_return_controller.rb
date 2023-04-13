@@ -7,7 +7,7 @@ module MetadataPresenter
     end
 
     def page_slug
-      if (session['saved_form'].present?)
+      if session['saved_form'].present?
         session['saved_form']['page_slug']
       end
       params[:page_slug]
