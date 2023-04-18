@@ -8,8 +8,11 @@ module MetadataPresenter
     end
 
     def page_slug
+      if (session['returning_slug'].present?)
+        return session['returning_slug']
+      end
       if (session['saved_form'].present?)
-        session['saved_form']['page_slug']
+        return session['saved_form']['page_slug']
       end
       params[:page_slug]
     end
@@ -88,6 +91,7 @@ module MetadataPresenter
         if (@saved_form.service_version == service.version_id)
           session[:user_id] = @saved_form.user_id
           session[:user_token] = @saved_form.user_token
+          session[:returning_slug] = @saved_form.page_slug
           Rails.logger.info('returning to form')
           # add new check page
           redirect_to '/resume_progress'
@@ -103,19 +107,33 @@ module MetadataPresenter
     end
 
     def resume_progress
-      # byebug
+
       @user_data = load_user_data # method signature
-      @page ||= service.find_page_by_url(request.env['PATH_INFO'])
-
+      # byebug
+      @page ||= service.find_page_by_url('check-answers')
       if @page
-        load_autocomplete_items
+        # load_autocomplete_items
 
-        @page_answers = PageAnswers.new(@page, @user_data)
-        render template: @page.template
+        @page_answers = PageAnswers.new(@page, @answered_pages)
+        # byebug
+        render template: 'metadata_presenter/save_and_return/resume_progress'
       else
         not_found
       end
     end
+
+    def answered_pages
+      TraversedPages.new(service, @user_data, @page).all
+    end
+
+    def pages_presenters
+      PageAnswersPresenter.map(
+        view: view_context,
+        pages: answered_pages,
+        answers: @user_data
+      )
+    end
+    helper_method :pages_presenters
 
     def secret_questions
       [

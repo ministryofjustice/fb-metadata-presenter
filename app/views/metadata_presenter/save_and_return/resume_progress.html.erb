@@ -1,36 +1,17 @@
-<div class="fb-main-grid-wrapper" data-fb-pagetype="<%= @page.type %>">
+<div class="fb-main-grid-wrapper" data-fb-pagetype="resume_progress">
+  <h1 class="fb-editable govuk-heading-xl"
+  data-fb-content-type="element">
+  <%= t('presenter.save_and_return.resume.progress.heading', service_name: service.service_name) %>
+  </h1>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="fb-editable govuk-heading-xl"
-          data-fb-content-type="element"
-          data-fb-content-id="page[heading]">
-        <%= @page.heading %>
-      </h1>
-
       <%= form_for @page, url: reserved_submissions_path, html: { id: 'answers-form' } do |f| %>
-
-        <%= render partial: 'metadata_presenter/component/components',
-                   locals: {
-                   f: f,
-                   components: @page.extra_components,
-                   tag: nil,
-                   classes: nil,
-                   input_components: @page.supported_input_components,
-                   content_components: @page.supported_content_components
-                 } %>
-
         <dl class="fb-block fb-block-answers govuk-summary-list">
           <% pages_presenters.each do |page_answers_presenters| %>
             <% page_answers_presenters.each_with_index do |page_answers_presenter, index| %>
 
-              <% if page_answers_presenter.display_heading?(index) %>
-        </dl>
-
-        <h2 class="govuk-heading-m"><%= page_answers_presenter.page.heading %></h2>
-
-        <dl class="fb-block fb-block-answers govuk-summary-list">
-              <% end %>
+              <% if !page_answers_presenter.answer.empty? %>
 
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
@@ -42,7 +23,7 @@
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <%= link_to(
-                    editable? ? '#' : change_answer_path(url: page_answers_presenter.url),
+                    editable? ? '#' : page_answers_presenter.url,
                     class: 'govuk-link'
                   ) do %>
                     Change<span class="govuk-visually-hidden"> Your answer for <%= page_answers_presenter.humanised_title %></span>
@@ -51,6 +32,7 @@
               </div>
 
               <% if page_answers_presenter.last_multiple_question?(index, page_answers_presenters.size) %>
+              <% end %>
         </dl>
         <dl class="fb-block fb-block-answers govuk-summary-list">
               <% end %>
@@ -58,37 +40,8 @@
           <% end %>
         </dl>
 
-        <% if @page.send_heading.present? %>
-          <h2 class="fb-send-heading fb-editable govuk-heading-m"
-              data-fb-content-type="element"
-              data-fb-content-id="page[send_heading]">
-            <%= @page.send_heading %>
-          </h2>
-        <% end %>
-
-        <% if @page.send_body.present? %>
-          <div class="fb-send-body fb-editable govuk-body"
-               data-fb-content-type="content"
-               data-fb-content-id="page[send_body]">
-            <%= to_html (@page.send_body) %>
-          </div>
-        <% end %>
-
-        <%= render partial: 'metadata_presenter/component/components',
-                   locals: {
-                   f: f,
-                   components: @page.components,
-                   tag: nil,
-                   classes: nil,
-                   input_components: @page.supported_input_components,
-                   content_components: @page.supported_content_components
-                 } %>
-
-        <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
-          <%= t('presenter.actions.submit') -%>
-        </button> 
+        <%= link_to t('presenter.save_and_return.resume.progress.continue'), page_slug, class: "govuk-button" %> <a href="<%= save_path(:page_slug=>page_slug) %>" class="govuk-button govuk-button--secondary" data-module="govuk-button" data-component="save-button"><%= t('presenter.save_and_return.save') %></a>
       <% end %>
-
     </div>
   </div>
 </div>
