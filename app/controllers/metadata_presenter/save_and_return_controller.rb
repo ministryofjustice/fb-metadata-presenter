@@ -80,42 +80,41 @@ module MetadataPresenter
 
     def submit_secret_answer
       uuid = params[:resume_form][:uuid]
-      # service_slug = params[:service_slug]
       response = get_saved_progress(uuid)
+
       @saved_form = SavedForm.new.from_json(response.body)
       @resume_form = ResumeForm.new(@saved_form.secret_question)
       @resume_form.secret_answer = resume_form_params[:resume_form][:secret_answer]
       @resume_form.recorded_answer = @saved_form.secret_answer
+
       if @resume_form.valid?
         # redirect back to right place in form
         if (@saved_form.service_version == service.version_id)
           session[:user_id] = @saved_form.user_id
           session[:user_token] = @saved_form.user_token
           session[:returning_slug] = @saved_form.page_slug
-          Rails.logger.info('returning to form')
-          # add new check page
+
           redirect_to '/resume_progress'
-          # invalidate the record
+          # TODO: invalidate the record
         else
           redirect_to '/resume_from_start'
         end
       else
         # increment the attempts counter
         increment_record_counter(@saved_form.id)
+        # TODO: invalidate record?
         render :return, status: :unprocessable_entity
       end
     end
 
     def resume_progress
+      @user_data = load_user_data
 
-      @user_data = load_user_data # method signature
-      # byebug
       @page ||= service.find_page_by_url('check-answers')
-      if @page
-        # load_autocomplete_items
 
+      if @page
         @page_answers = PageAnswers.new(@page, @answered_pages)
-        # byebug
+
         render template: 'metadata_presenter/save_and_return/resume_progress'
       else
         not_found
