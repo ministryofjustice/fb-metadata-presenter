@@ -21,6 +21,18 @@ module MetadataPresenter
       end
     end
 
+    def get_saved_progress(uuid)
+      if defined? super
+        super(uuid)
+      end
+    end
+
+    def increment_record_counter(uuid)
+      if defined? super
+        super(uuid)
+      end
+    end
+
     def back_link
       previous_page = PreviousPage.new(
         service:,

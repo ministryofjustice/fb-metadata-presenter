@@ -1,7 +1,7 @@
 module MetadataPresenter
   class SaveAndReturnController < EngineController
     # before_action :check_feature_flag
-    helper_method :secret_questions, :page_slug, :confirmed_email
+    helper_method :secret_questions, :page_slug, :confirmed_email, :get_service_name
 
     def show
       @saved_form = SavedForm.new
@@ -30,6 +30,7 @@ module MetadataPresenter
       @saved_form.secret_question = text_for(params['saved_form']['secret_question'])
       @saved_form.populate_service_values(service)
       @saved_form.populate_session_values(session)
+
       if @saved_form.valid?
         # put in session until we have confirmed email address
         session[:saved_form] = @saved_form
@@ -63,15 +64,14 @@ module MetadataPresenter
 
     def return
       uuid = params[:uuid]
-      service_slug = params[:service_slug]
       response = get_saved_progress(uuid)
 
       if (response.status == 404)
-        redirect_to '/record_error'
+        redirect_to '/record_error' and return
       end
 
       if (response.status == 422)
-        redirect_to '/already_used'
+        redirect_to '/already_used' and return
       end
 
       @saved_form = SavedForm.new.from_json(response.body)
@@ -94,10 +94,10 @@ module MetadataPresenter
           session[:user_token] = @saved_form.user_token
           session[:returning_slug] = @saved_form.page_slug
 
-          redirect_to '/resume_progress'
+          redirect_to '/resume_progress' and return
           # TODO: invalidate the record
         else
-          redirect_to '/resume_from_start'
+          redirect_to '/resume_from_start' and return
         end
       else
         # increment the attempts counter
@@ -170,6 +170,10 @@ module MetadataPresenter
         { resume_form: %i[secret_answer uuid] },
         :authenticity_token
       )
+    end
+
+    def get_service_name
+      service.service_name
     end
 
     private
