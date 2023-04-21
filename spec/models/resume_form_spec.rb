@@ -1,8 +1,8 @@
 RSpec.describe MetadataPresenter::ResumeForm, type: :model do
   describe 'ResumeForm' do
-    let (:secret_text) { 'Hello I am some text' }
-    let (:recorded_answer) { 'Answer' }
-    let (:record) { MetadataPresenter::ResumeForm.new(secret_text) }
+    let(:secret_text) { 'Hello I am some text' }
+    let(:recorded_answer) { 'Answer' }
+    let(:record) { MetadataPresenter::ResumeForm.new(secret_text) }
 
     before do
       record.recorded_answer = recorded_answer

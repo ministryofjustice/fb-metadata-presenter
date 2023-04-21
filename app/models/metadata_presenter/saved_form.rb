@@ -19,7 +19,6 @@ module MetadataPresenter
                   :id,
                   :created_at,
                   :updated_at
-                
 
     validates :secret_question, :secret_answer, :service_slug, :page_slug, :service_version, :user_id, :user_token, presence: true, allow_blank: false
     def initialize; end
@@ -40,6 +39,16 @@ module MetadataPresenter
     def populate_service_values(service)
       self.service_slug    = service.service_slug
       self.service_version = service.version_id
+    end
+
+    def attributes=(hash)
+      hash.each do |key, value|
+        send("#{key}=", value)
+      end
+    end
+
+    def attributes
+      instance_values
     end
   end
 end

@@ -8,12 +8,13 @@ module MetadataPresenter
     end
 
     def page_slug
-      if (session['returning_slug'].present?)
+      if session['returning_slug'].present?
         return session['returning_slug']
       end
-      if (session['saved_form'].present?)
+      if session['saved_form'].present?
         return session['saved_form']['page_slug']
       end
+
       params[:page_slug]
     end
 
@@ -21,7 +22,7 @@ module MetadataPresenter
       email = session['saved_form']['email']
       session[:saved_form] = nil
 
-      return email
+      email
     end
 
     def create
@@ -66,11 +67,11 @@ module MetadataPresenter
       uuid = params[:uuid]
       response = get_saved_progress(uuid)
 
-      if (response.status == 404)
+      if response.status == 404
         redirect_to '/record_error' and return
       end
 
-      if (response.status == 422)
+      if response.status == 422
         redirect_to '/already_used' and return
       end
 
@@ -89,7 +90,7 @@ module MetadataPresenter
 
       if @resume_form.valid?
         # redirect back to right place in form
-        if (@saved_form.service_version == service.version_id)
+        if @saved_form.service_version == service.version_id
           session[:user_id] = @saved_form.user_id
           session[:user_token] = @saved_form.user_token
           session[:returning_slug] = @saved_form.page_slug

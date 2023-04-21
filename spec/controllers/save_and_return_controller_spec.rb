@@ -10,10 +10,10 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
         service = OpenStruct.new(service_slug: 'service_slug', version_id: '4567')
         allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(service)
 
-        post '/saved_forms', params: params
+        post('/saved_forms', params:)
 
         expect(response).to redirect_to('/save/email_confirmation')
-        
+
         expect(session[:saved_form].email).to eq(params[:email])
         expect(session[:saved_form].page_slug).to eq(params[:saved_form][:page_slug])
         expect(session[:saved_form].secret_answer).to eq(params[:secret_answer])
@@ -26,10 +26,10 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
     end
 
     context 'invalid request' do
-      it 're-renders with errors' do  
+      it 're-renders with errors' do
         params = { email: 'not valid', secret_answer: 'secret stuff', saved_form: { page_slug: '/a-page', secret_question: 1 } }
 
-        post '/saved_forms', params: params
+        post('/saved_forms', params:)
 
         expect(response.request.path).to eq('/saved_forms')
         expect(session[:saved_form]).to eq(nil)
@@ -112,22 +112,22 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
     let(:secret_answer) { 'text answer' }
     let(:version_id) { '27dc30c9-f7b8-4dec-973a-bd153f6797df' }
     let(:saved_form) { OpenStruct.new(status: 200, body: "{\"id\":\"#{uuid}\",\"email\":\"email@email.com\",\"secret_question\":\"What was your mother's maiden name?\",\"secret_answer\":\"#{secret_answer}\",\"page_slug\":\"email-address\",\"service_slug\":\"some-slug\",\"service_version\":\"#{version_id}\",\"user_id\":\"8acfb3db90002a5fc5b43e71638fc709\",\"user_token\":\"b9cca34d4331399c5f461c0ba1c406aa\",\"user_data_payload\":\"{\\\"name_text_1\\\"=\\u003e\\\"Name\\\"}\",\"attempts\":\"0.0\",\"active\":true,\"created_at\":\"2023-04-12T10:28:48.370Z\",\"updated_at\":\"2023-04-12T10:28:48.370Z\"}") }
-    
-    context 'answer is valid' do
-      it 'redirects to resume progress if versions match' do 
-        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(saved_form)
-        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new( version_id: version_id ))
 
-        post '/resume_forms', params: { resume_form: { uuid: uuid, secret_answer: secret_answer }}
+    context 'answer is valid' do
+      it 'redirects to resume progress if versions match' do
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(saved_form)
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(version_id:))
+
+        post '/resume_forms', params: { resume_form: { uuid:, secret_answer: } }
 
         expect(response).to redirect_to('/resume_progress')
       end
 
       it 'redirects to resume from start if versions do not match' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(saved_form)
-        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new( version_id: 'something else' ))
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(version_id: 'something else'))
 
-        post '/resume_forms', params: { resume_form: { uuid: uuid, secret_answer: secret_answer }}
+        post '/resume_forms', params: { resume_form: { uuid:, secret_answer: } }
 
         expect(response).to redirect_to('/resume_from_start')
       end
@@ -140,9 +140,9 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       it 're-renders with validation error and unprocessable entity' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(saved_form)
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:increment_record_counter).with(uuid)
-        allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new( service_name: 'service' ))
+        allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(service_name: 'service'))
 
-        post '/resume_forms', params: { resume_form: { uuid: uuid, secret_answer: secret_answer }}
+        post '/resume_forms', params: { resume_form: { uuid:, secret_answer: } }
 
         expect(response.status).to eq(422)
         expect(response.request.path).to eq('/resume_forms')
@@ -151,7 +151,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
   end
 
   describe 'helper methods' do
-    let (:controller) { MetadataPresenter::SaveAndReturnController.new }
+    let(:controller) { MetadataPresenter::SaveAndReturnController.new }
 
     context 'secret questions' do
       it 'returns three questions' do
@@ -160,13 +160,13 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
     end
 
     context 'text for' do
-      [
-        'one',
-        'two',
-        'three'
+      %w[
+        one
+        two
+        three
       ].each_with_index do |option, index|
-        it "returns the text for the html value #{index+1}" do
-          expect(controller.text_for(index+1)).to eq(I18n.t("presenter.save_and_return.secret_questions.#{option}"))
+        it "returns the text for the html value #{index + 1}" do
+          expect(controller.text_for(index + 1)).to eq(I18n.t("presenter.save_and_return.secret_questions.#{option}"))
         end
       end
     end
@@ -175,19 +175,19 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       let(:correct_slug) { 'a-cool-page' }
 
       it 'returns session slug if set during return flow' do
-        allow(controller).to receive(:session).and_return({ 'returning_slug' => correct_slug})
+        allow(controller).to receive(:session).and_return({ 'returning_slug' => correct_slug })
 
         expect(controller.page_slug).to eq(correct_slug)
       end
 
       it 'returns session slug if set during save flow' do
-        allow(controller).to receive(:session).and_return({ 'returning_slug' => nil, 'saved_form' => { 'page_slug' => correct_slug }})
+        allow(controller).to receive(:session).and_return({ 'returning_slug' => nil, 'saved_form' => { 'page_slug' => correct_slug } })
 
         expect(controller.page_slug).to eq(correct_slug)
       end
 
       it 'returns params slug if no session is set' do
-        allow(controller).to receive(:session).and_return({ 'returning_slug' => nil, 'saved_form' => nil})
+        allow(controller).to receive(:session).and_return({ 'returning_slug' => nil, 'saved_form' => nil })
         allow(controller).to receive(:params).and_return({ page_slug: correct_slug })
 
         expect(controller.page_slug).to eq(correct_slug)
@@ -198,7 +198,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       let(:email) { 'email@example.com' }
 
       it 'returns the email from the session' do
-        allow(controller).to receive(:session).and_return({ 'saved_form' => { 'email' => email }})
+        allow(controller).to receive(:session).and_return({ 'saved_form' => { 'email' => email } })
 
         expect(controller.confirmed_email).to eq(email)
       end
