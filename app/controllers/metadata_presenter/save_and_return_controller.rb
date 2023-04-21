@@ -52,7 +52,7 @@ module MetadataPresenter
 
       if @email_confirmation.valid?
         response = save_form_progress
-        if response.status != 200
+        if response.status == 500
           internal_server_error and return
         end
 
