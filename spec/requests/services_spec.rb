@@ -66,7 +66,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
 
     it 'renders the view correctly' do
       expect(response.body).to include(
-        "The page you were looking for doesn't exist."
+        'Page not found'
       )
     end
   end
@@ -198,7 +198,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
 
       it 'returns not found' do
         expect(response.body).to include(
-          "The page you were looking for doesn't exist."
+          'Page not found'
         )
       end
     end
