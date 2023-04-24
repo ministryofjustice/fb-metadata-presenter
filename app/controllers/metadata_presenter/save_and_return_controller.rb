@@ -76,7 +76,7 @@ module MetadataPresenter
       end
       Rails.logger.info(response.status)
       Rails.logger.info(response.body)
-      @saved_form = SavedForm.new.from_json(response.body)
+      @saved_form = SavedForm.new.from_json(response.body.to_json)
       @resume_form = ResumeForm.new(@saved_form.secret_question)
     end
 
