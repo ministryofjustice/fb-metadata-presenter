@@ -84,7 +84,7 @@ module MetadataPresenter
       uuid = params[:resume_form][:uuid]
       response = get_saved_progress(uuid)
 
-      @saved_form = SavedForm.new.from_json(response.body)
+      @saved_form = SavedForm.new.from_json(response.body.to_json)
       @resume_form = ResumeForm.new(@saved_form.secret_question)
       @resume_form.secret_answer = resume_form_params[:resume_form][:secret_answer]
       @resume_form.recorded_answer = @saved_form.secret_answer
