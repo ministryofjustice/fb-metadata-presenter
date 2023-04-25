@@ -74,6 +74,7 @@ module MetadataPresenter
       if response.status == 422
         redirect_to '/already_used' and return
       end
+
       Rails.logger.info(response.status)
       Rails.logger.info(response.body)
       @saved_form = SavedForm.new.from_json(response.body.to_json)
