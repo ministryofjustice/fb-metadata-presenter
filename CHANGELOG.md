@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.18.5] - 2023-04-25
+
+ - Add resume progress flows
+
 ## [2.18.4] - 2023-04-14
 
  - Update start page template to new content
