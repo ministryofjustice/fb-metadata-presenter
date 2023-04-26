@@ -105,6 +105,10 @@ module MetadataPresenter
           redirect_to '/resume_progress' and return
           # TODO: invalidate the record
         else
+          session[:user_id] = @saved_form.user_id
+          session[:user_token] = @saved_form.user_token
+          session[:returning_slug] = @saved_form.page_slug
+
           redirect_to '/resume_from_start' and return
         end
       else
