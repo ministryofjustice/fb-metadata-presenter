@@ -57,6 +57,7 @@ module MetadataPresenter
         end
 
         payload = response.body.merge(email: @email_confirmation.email_confirmation).deep_symbolize_keys
+        Rails.logger.info(payload)        
         create_save_and_return_submission(payload)
 
         redirect_to '/save/progress_saved'
