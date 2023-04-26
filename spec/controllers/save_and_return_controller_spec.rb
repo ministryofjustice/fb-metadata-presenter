@@ -51,6 +51,8 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       end
 
       it 'should redirect with status' do
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:create_save_and_return_submission).with({ email:, id: })
+
         post '/email_confirmations', params: { email_confirmation: email }
         expect(response).to redirect_to('/save/progress_saved')
       end
