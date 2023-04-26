@@ -82,8 +82,6 @@ module MetadataPresenter
         redirect_to '/already_used' and return
       end
 
-      Rails.logger.info(response.status)
-      Rails.logger.info(response.body)
       @saved_form = SavedForm.new.from_json(response.body.to_json)
       @resume_form = ResumeForm.new(@saved_form.secret_question)
     end
@@ -113,7 +111,7 @@ module MetadataPresenter
         # increment the attempts counter
         increment_record_counter(@saved_form.id)
         # TODO: invalidate record?
-        render :return, status: :unprocessable_entity
+        render :return, status: :unprocessable_entity, params: { uuid: @saved_form.id }
       end
     end
 
