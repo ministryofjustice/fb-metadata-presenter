@@ -74,6 +74,10 @@ module MetadataPresenter
         redirect_to '/record_error' and return
       end
 
+      if response.status == 400
+        redirect_to '/record_failure' and return
+      end
+
       if response.status == 422
         redirect_to '/already_used' and return
       end

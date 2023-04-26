@@ -109,6 +109,15 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
 
         expect(response).to redirect_to('/already_used')
       end
+
+      it 'should redirect to too many attempts if the record has beed used/invalidated' do
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid)
+        .and_return(OpenStruct.new(status: 400))
+
+        get "/return/#{uuid}"
+
+        expect(response).to redirect_to('/record_failure')
+      end
     end
   end
 
