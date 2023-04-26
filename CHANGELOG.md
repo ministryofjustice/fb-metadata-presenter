@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [2.18.4] - 2023-04-14
+## [2.18.5] - 2023-04-26
 ### Fixed
 
  - Fixed spacing between titles and components on multiple question pages.
