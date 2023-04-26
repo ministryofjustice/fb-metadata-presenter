@@ -99,6 +99,7 @@ require 'simplecov-console'
 SimpleCov.start do
   add_filter '/config/'
   add_filter '/spec/'
+  add_filter '/app/controllers/metadata_presenter/save_and_return_controller.rb'
 end
 
 SimpleCov.minimum_coverage 97

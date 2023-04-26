@@ -21,5 +21,16 @@ module MetadataPresenter
         super
       end
     end
+
+    def create_save_and_return_submission(payload)
+      # The runner is the only app that sends the save and return submission.
+      # and it is not needed on the editor app (editing & previewing).
+      # So in the Runner we defined the #create_save_and_return_submission in the parent
+      # controller and in the Editor we don't.
+      #
+      if defined?(super)
+        super
+      end
+    end
   end
 end

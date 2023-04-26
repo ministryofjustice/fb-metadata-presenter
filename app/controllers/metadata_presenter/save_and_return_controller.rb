@@ -56,7 +56,9 @@ module MetadataPresenter
           internal_server_error and return
         end
 
-        # send_email(response.body['id'], confirmation_params[:email_confirmation])
+        payload = response.body.merge(email: @email_confirmation.email_confirmation).deep_symbolize_keys
+        create_save_and_return_submission(payload)
+
         redirect_to '/save/progress_saved'
       else
         render :email_confirmation, status: :unprocessable_entity
