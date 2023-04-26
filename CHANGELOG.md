@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+
+## [2.18.6] - 2023-04-27
+### Fixed
+
+ - Fix Editor preview footer links bug
+
 ## [2.18.5] - 2023-04-26
 ### Fixed
 
