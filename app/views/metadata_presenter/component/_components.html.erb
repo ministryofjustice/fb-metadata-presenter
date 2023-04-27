@@ -1,20 +1,20 @@
 <% components.each_with_index do |component, index| %>
-  <div class="fb-editable"
-        id="<%= component.id %>"
-        data-fb-content-type="<%= component.type %>"
-        data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
-        data-fb-content-data="<%= component.to_json %>">
+  <div class="fb-editable govuk-!-margin-top-8"
+       id="<%= component.id %>"
+       data-fb-content-type="<%= component.type %>"
+       data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
+       data-fb-content-data="<%= component.to_json %>">
 
-    <%= render partial: component, locals: {
-        f: f,
-        component: component,
-        component_id: "page[#{component.collection}[#{index}]]",
-        input_title: main_title(
-          component: component,
-          tag: :h2,
-          classes: classes
-        )
-      }
-    %>
+       <%= render partial: component, locals: {
+         f: f,
+         component: component,
+         component_id: "page[#{component.collection}[#{index}]]",
+         input_title: main_title(
+           component: component,
+           tag: :h2,
+           classes: classes
+         )
+       }
+     %>
   </div>
 <% end %>
