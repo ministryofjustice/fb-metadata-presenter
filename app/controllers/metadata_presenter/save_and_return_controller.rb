@@ -115,7 +115,7 @@ module MetadataPresenter
           redirect_to '/resume_from_start' and return
         end
       else
-        if @resume_form.attempts_remaining <= 1
+        if @resume_form.attempts_remaining <= 0
           begin
             increment_record_counter(@saved_form.id)
           rescue StandardError => e
