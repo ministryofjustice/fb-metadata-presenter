@@ -99,7 +99,7 @@ module MetadataPresenter
       @resume_form = ResumeForm.new(@saved_form.secret_question)
       @resume_form.secret_answer = resume_form_params[:resume_form][:secret_answer]
       @resume_form.recorded_answer = @saved_form.secret_answer
-      @resume_form.attempts_remaining = 2 - @saved_form.attempts.to_i
+      @resume_form.attempts_remaining = 3 - @saved_form.attempts.to_i
 
       if @resume_form.valid?
         # redirect back to right place in form
@@ -115,11 +115,11 @@ module MetadataPresenter
           redirect_to '/resume_from_start' and return
         end
       else
+        increment_record_counter(@saved_form.id)
+
         if @resume_form.attempts_remaining <= 0
           redirect_to '/record_failure' and return
         end
-
-        increment_record_counter(@saved_form.id)
         render :return, params: { uuid: @saved_form.id }
       end
     end
