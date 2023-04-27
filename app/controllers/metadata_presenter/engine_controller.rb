@@ -149,7 +149,7 @@ module MetadataPresenter
     end
 
     def editor_preview?
-      URI(request.original_url).path.split('/').last == 'preview'
+      URI(request.original_url).path.split('/').include?('preview')
     end
   end
 end
