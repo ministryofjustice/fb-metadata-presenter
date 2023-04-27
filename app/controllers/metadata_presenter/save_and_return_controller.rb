@@ -115,11 +115,16 @@ module MetadataPresenter
           redirect_to '/resume_from_start' and return
         end
       else
-        increment_record_counter(@saved_form.id)
-
-        if @resume_form.attempts_remaining <= 0
+        if @resume_form.attempts_remaining <= 1
+          begin
+            increment_record_counter(@saved_form.id)
+          rescue StandardError => e
+            Rails.logger.info(e)
+          end
           redirect_to '/record_failure' and return
         end
+
+        increment_record_counter(@saved_form.id)
 
         render :return, params: { uuid: @saved_form.id }
       end
