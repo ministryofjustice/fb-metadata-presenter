@@ -68,6 +68,7 @@ module MetadataPresenter
 
     def return
       response = get_saved_progress(get_uuid)
+      rescue Platform::ClientError
 
       if response.status == 404
         redirect_to '/record_error' and return
