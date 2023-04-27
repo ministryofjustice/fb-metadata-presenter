@@ -68,18 +68,17 @@ module MetadataPresenter
     def return
       begin
         response = get_saved_progress(get_uuid)
-      rescue Platform::ClientError => e
-        if e.response[:status] == 404
-          redirect_to '/record_error' and return
-        end
 
-        if re.response[:status] == 400
-          redirect_to '/record_failure' and return
-        end
+      if response.status == 404
+        redirect_to '/record_error' and return
+      end
 
-        if e.response[:status] == 422
-          redirect_to '/already_used' and return
-        end
+      if response.status == 400
+        redirect_to '/record_failure' and return
+      end
+
+      if response.status == 422
+        redirect_to '/already_used' and return
       end
 
       @saved_form = SavedForm.new.from_json(response.body.to_json)
