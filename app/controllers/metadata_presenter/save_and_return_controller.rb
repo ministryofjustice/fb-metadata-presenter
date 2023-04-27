@@ -1,7 +1,7 @@
 module MetadataPresenter
   class SaveAndReturnController < EngineController
     # before_action :check_feature_flag
-    helper_method :secret_questions, :page_slug, :confirmed_email, :get_service_name
+    helper_method :secret_questions, :page_slug, :confirmed_email, :get_service_name, :get_uuid
 
     def show
       @saved_form = SavedForm.new
@@ -67,8 +67,7 @@ module MetadataPresenter
     end
 
     def return
-      uuid = params[:uuid]
-      response = get_saved_progress(uuid)
+      response = get_saved_progress(get_uuid)
 
       if response.status == 404
         redirect_to '/record_error' and return
@@ -86,9 +85,17 @@ module MetadataPresenter
       @resume_form = ResumeForm.new(@saved_form.secret_question)
     end
 
+    def get_uuid
+      if (!params[:uuid].blank?)
+        return params[:uuid]
+      end
+      if (!params[:resume_form][:uuid].blank?)
+        return params[:resume_form][:uuid]
+      end
+    end
+
     def submit_secret_answer
-      uuid = params[:resume_form][:uuid]
-      response = get_saved_progress(uuid)
+      response = get_saved_progress(get_uuid)
 
       @saved_form = SavedForm.new.from_json(response.body.to_json)
       @resume_form = ResumeForm.new(@saved_form.secret_question)
@@ -116,7 +123,7 @@ module MetadataPresenter
         # increment the attempts counter
         increment_record_counter(@saved_form.id)
         # TODO: invalidate record?
-        render :return, status: :unprocessable_entity, params: { uuid: @saved_form.id }
+        render :return, params: { uuid: @saved_form.id }
       end
     end
 
