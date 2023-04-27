@@ -116,12 +116,6 @@ module MetadataPresenter
         end
       else
         if @resume_form.attempts_remaining <= 0
-          begin
-            increment_record_counter(@saved_form.id)
-          rescue StandardError => e
-            Rails.logger.info(e)
-            redirect_to '/record_failure' and return
-          end
           redirect_to '/record_failure' and return
         end
 
