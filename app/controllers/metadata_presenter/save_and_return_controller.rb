@@ -68,8 +68,7 @@ module MetadataPresenter
 
     def return
       response = get_saved_progress(get_uuid)
-      rescue Platform::ClientError
-
+    rescue Platform::ClientError
       if response.status == 404
         redirect_to '/record_error' and return
       end
@@ -87,12 +86,11 @@ module MetadataPresenter
     end
 
     def get_uuid
-      if (!params[:uuid].blank?)
+      if params[:uuid].present?
         return params[:uuid]
       end
-      if (!params[:resume_form][:uuid].blank?)
-        return params[:resume_form][:uuid]
-      end
+
+      params[:resume_form][:uuid].presence
     end
 
     def submit_secret_answer
@@ -106,17 +104,14 @@ module MetadataPresenter
 
       if @resume_form.valid?
         # redirect back to right place in form
+        session[:user_id] = @saved_form.user_id
+        session[:user_token] = @saved_form.user_token
+        session[:returning_slug] = @saved_form.page_slug
         if @saved_form.service_version == service.version_id
-          session[:user_id] = @saved_form.user_id
-          session[:user_token] = @saved_form.user_token
-          session[:returning_slug] = @saved_form.page_slug
 
           redirect_to '/resume_progress' and return
-          # TODO: invalidate the record
+        # TODO: invalidate the record
         else
-          session[:user_id] = @saved_form.user_id
-          session[:user_token] = @saved_form.user_token
-          session[:returning_slug] = @saved_form.page_slug
 
           redirect_to '/resume_from_start' and return
         end
