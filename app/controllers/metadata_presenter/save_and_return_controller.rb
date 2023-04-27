@@ -115,7 +115,7 @@ module MetadataPresenter
           redirect_to '/resume_from_start' and return
         end
       else
-        if @resume_form.attempts_remaining <= 0
+        if @resume_form.attempts_remaining <= 1
           redirect_to '/record_failure' and return
         end
 
