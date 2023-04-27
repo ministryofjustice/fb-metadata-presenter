@@ -60,7 +60,7 @@ en:
       validation:
         email: 'Enter an email address in the correct format, like name@example.com'
         email_not_matched: 'Does not match'
-        answer_not_matched: 'Does not match the answer we have on record'
+        answer_not_matched: 'Your answer is incorrect. You have %{attempts} attempts remaining.'
       secret_questions:
         one: "What is your mother's maiden name?"
         two: 'What is the last name of your favourite teacher?'

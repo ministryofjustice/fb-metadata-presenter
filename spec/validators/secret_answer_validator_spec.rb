@@ -16,6 +16,7 @@ RSpec.describe SecretAnswerValidator do
         it "returns valid for '#{valid_answer}'" do
           record.recorded_answer = recorded_answer
           record.secret_answer = valid_answer
+          record.attempts_remaining = 2
           subject.validate(record)
           expect(record.errors).to be_empty
         end
@@ -31,6 +32,7 @@ RSpec.describe SecretAnswerValidator do
         it "returns invalid for '#{invalid_answer}'" do
           record.recorded_answer = recorded_answer
           record.secret_answer = invalid_answer
+          record.attempts_remaining = 2
           subject.validate(record)
           expect(record.errors.count).to eq(1)
         end

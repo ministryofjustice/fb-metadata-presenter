@@ -4,7 +4,8 @@ module MetadataPresenter
 
     attr_accessor :secret_question,
                   :secret_answer,
-                  :recorded_answer
+                  :recorded_answer,
+                  :attempts_remaining
 
     validates_with SecretAnswerValidator
 
