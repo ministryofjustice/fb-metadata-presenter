@@ -33,6 +33,12 @@ module MetadataPresenter
       end
     end
 
+    def invalidate_record(uuid)
+      if defined? super
+        super(uuid)
+      end
+    end
+
     def back_link
       previous_page = PreviousPage.new(
         service:,

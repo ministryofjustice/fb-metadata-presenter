@@ -131,6 +131,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       it 'redirects to resume progress if versions match' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(saved_form)
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(version_id:))
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:invalidate_record).with(uuid)
 
         post '/resume_forms', params: { resume_form: { uuid:, secret_answer: } }
 
@@ -140,6 +141,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       it 'redirects to resume from start if versions do not match' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(saved_form)
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(version_id: 'something else'))
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:invalidate_record).with(uuid)
 
         post '/resume_forms', params: { resume_form: { uuid:, secret_answer: } }
 
@@ -150,6 +152,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
     context 'answer is not valid' do
       let(:secret_answer) { 'some other answer' }
       let(:saved_form) { OpenStruct.new(status: 200, body: JSON.parse("{\"id\":\"#{uuid}\",\"email\":\"email@email.com\",\"secret_question\":\"What was your mother's maiden name?\",\"secret_answer\":\"not a match\",\"page_slug\":\"email-address\",\"service_slug\":\"some-slug\",\"service_version\":\"#{version_id}\",\"user_id\":\"8acfb3db90002a5fc5b43e71638fc709\",\"user_token\":\"b9cca34d4331399c5f461c0ba1c406aa\",\"user_data_payload\":\"{\\\"name_text_1\\\"=\\u003e\\\"Name\\\"}\",\"attempts\":\"0.0\",\"active\":true,\"created_at\":\"2023-04-12T10:28:48.370Z\",\"updated_at\":\"2023-04-12T10:28:48.370Z\"}")) }
+      let(:attempted_saved_form) { OpenStruct.new(status: 200, body: JSON.parse("{\"id\":\"#{uuid}\",\"email\":\"email@email.com\",\"secret_question\":\"What was your mother's maiden name?\",\"secret_answer\":\"not a match\",\"page_slug\":\"email-address\",\"service_slug\":\"some-slug\",\"service_version\":\"#{version_id}\",\"user_id\":\"8acfb3db90002a5fc5b43e71638fc709\",\"user_token\":\"b9cca34d4331399c5f461c0ba1c406aa\",\"user_data_payload\":\"{\\\"name_text_1\\\"=\\u003e\\\"Name\\\"}\",\"attempts\":\"2\",\"active\":true,\"created_at\":\"2023-04-12T10:28:48.370Z\",\"updated_at\":\"2023-04-12T10:28:48.370Z\"}")) }
 
       it 're-renders with validation error' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(saved_form)
@@ -159,6 +162,15 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
         post '/resume_forms', params: { resume_form: { uuid:, secret_answer: } }
 
         expect(response.request.path).to eq('/resume_forms')
+      end
+
+      it 'redirects if too many attempts' do
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(attempted_saved_form)
+        allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(service_name: 'service'))
+
+        post '/resume_forms', params: { resume_form: { uuid:, secret_answer: } }
+
+        expect(response).to redirect_to('/record_failure')
       end
     end
   end

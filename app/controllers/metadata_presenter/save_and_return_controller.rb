@@ -106,18 +106,20 @@ module MetadataPresenter
         session[:user_id] = @saved_form.user_id
         session[:user_token] = @saved_form.user_token
         session[:returning_slug] = @saved_form.page_slug
+        
+        invalidate_record(@saved_form.id)
+
         if @saved_form.service_version == service.version_id
-
           redirect_to '/resume_progress' and return
-        # TODO: invalidate the record
         else
-
           redirect_to '/resume_from_start' and return
         end
       else
-        # increment the attempts counter
+        if @resume_form.attempts_remaining <= 0
+          redirect_to '/record_failure' and return
+        end
+
         increment_record_counter(@saved_form.id)
-        # TODO: invalidate record?
         render :return, params: { uuid: @saved_form.id }
       end
     end
