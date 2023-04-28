@@ -14,6 +14,9 @@ module MetadataPresenter
       if session['saved_form'].present?
         return session['saved_form']['page_slug']
       end
+      if params['saved_form'].present?
+        return params['saved_form']['page_slug']
+      end
 
       params[:page_slug]
     end
