@@ -92,6 +92,7 @@ module MetadataPresenter
       params[:resume_form][:uuid].presence
     end
 
+    # rubocop:disable Style/RescueStandardError
     def submit_secret_answer
       response = get_saved_progress(get_uuid)
 
@@ -118,10 +119,10 @@ module MetadataPresenter
         if @resume_form.attempts_remaining <= 0
           begin
             increment_record_counter(@saved_form.id)
-          rescue Platform::ClientError => e
+          rescue => e
             Rails.logger.info(e)
           ensure
-            redirect_to '/record_failure' and return
+            redirect_to '/record_failure'
           end
         end
 
@@ -130,6 +131,7 @@ module MetadataPresenter
         render :return, params: { uuid: @saved_form.id }
       end
     end
+    # rubocop:enable Style/RescueStandardError
 
     def resume_progress
       @user_data = load_user_data
