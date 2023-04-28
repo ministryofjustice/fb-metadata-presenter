@@ -96,6 +96,10 @@ module MetadataPresenter
     def submit_secret_answer
       response = get_saved_progress(get_uuid)
 
+      if response.status != 200
+        redirect_to '/record_error' and return
+      end
+
       @saved_form = SavedForm.new.from_json(response.body.to_json)
       @resume_form = ResumeForm.new(@saved_form.secret_question)
       @resume_form.secret_answer = resume_form_params[:resume_form][:secret_answer]
