@@ -7,10 +7,16 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [2.18.7] - 2023-04-27
-### Fixed
+## [2.18.8] - 2023-04-27
+### Changed
 
- - Resume progress flows
+ - Add resume saved progress flow
+
+## [2.18.7] - 2023-04-27
+### Changed
+
+ - Update copy on 404 error page. Remove head and body tags as this template
+     is always loaded within a layout.
 
 ## [2.18.6] - 2023-04-27
 ### Fixed
