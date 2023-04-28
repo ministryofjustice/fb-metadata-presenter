@@ -121,9 +121,9 @@ module MetadataPresenter
             increment_record_counter(@saved_form.id)
           rescue => e
             Rails.logger.info(e)
-          ensure
-            redirect_to '/record_failure'
+            redirect_to '/record_failure' and return
           end
+          redirect_to '/record_failure' and return
         end
 
         increment_record_counter(@saved_form.id)
