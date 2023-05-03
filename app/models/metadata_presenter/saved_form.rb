@@ -33,7 +33,6 @@ module MetadataPresenter
     def populate_session_values(session)
       self.user_id           = session[:user_id]
       self.user_token        = session[:user_token]
-      self.user_data_payload = session[:user_data]
     end
 
     def populate_service_values(service)

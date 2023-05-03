@@ -34,7 +34,6 @@ module MetadataPresenter
       @saved_form.secret_question = text_for(params['saved_form']['secret_question'])
       @saved_form.populate_service_values(service)
       @saved_form.populate_session_values(session)
-
       if @saved_form.valid?
         # put in session until we have confirmed email address
         session[:saved_form] = @saved_form

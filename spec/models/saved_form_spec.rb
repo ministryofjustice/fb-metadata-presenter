@@ -21,7 +21,6 @@ RSpec.describe MetadataPresenter::SavedForm, type: :model do
 
       expect(subject.user_id).to eq(session[:user_id])
       expect(subject.user_token).to eq(session[:user_token])
-      expect(subject.user_data_payload).to eq(session[:user_data])
 
       expect(subject.valid?).to eq(false)
     end
