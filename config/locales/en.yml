@@ -1,5 +1,6 @@
 en:
   presenter:
+    back: 'Back'
     actions:
       start: Start now
       continue: Continue
@@ -42,7 +43,7 @@ en:
         heading: 'Save for later'
         description: 'We will send you a one-off link that you can use to resume this form within 28 days.'
         email: 'Email address'
-        email_hint: 'Where we will send the link'
+        email_hint: 'We will only use this to send you a link to your form'
         secret_question: 'Pick a security question'
         secret_question_hint: 'We will use this to verify your identity when you return'
         secret_answer: 'The answer to your security question'

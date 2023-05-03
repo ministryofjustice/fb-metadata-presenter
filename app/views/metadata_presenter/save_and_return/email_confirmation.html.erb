@@ -1,6 +1,7 @@
 <div class="fb-main-grid-wrapper">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <a class="govuk-back-link" href="<%= :back %>"><%= t('presenter.back') %></a>
       <%= form_for @email_confirmation do |f| %>
         <%= f.govuk_error_summary %>
         <div class="govuk-form-group">
@@ -14,7 +15,7 @@
         </div>
         
         <p class="mojf-settings-screen__description"><%= t('presenter.save_and_return.confirm_email.description') %></p>
-        
+        <br/>
         <div class="govuk-button-group">
           <%= f.govuk_submit t('presenter.save_and_return.show.continue') %> <%= link_to t('presenter.save_and_return.show.cancel'), page_slug, class: "govuk-button govuk-button--secondary" %>
         <div class="govuk-button-group">
