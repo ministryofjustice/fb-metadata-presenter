@@ -7,6 +7,7 @@ module MetadataPresenter
 
     attr_accessor :email,
                   :secret_question,
+                  :secret_question_text,
                   :secret_answer,
                   :page_slug,
                   :service_slug,

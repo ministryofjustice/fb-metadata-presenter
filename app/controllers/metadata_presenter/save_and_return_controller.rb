@@ -31,11 +31,13 @@ module MetadataPresenter
     def create
       @saved_form = SavedForm.new
       @saved_form.populate_param_values(saved_form_params)
-      @saved_form.secret_question = text_for(params['saved_form']['secret_question'])
+      @saved_form.secret_question_text = text_for(params['saved_form']['secret_question'])
+      @saved_form.secret_question = params['saved_form']['secret_question']
       @saved_form.populate_service_values(service)
       @saved_form.populate_session_values(session)
       if @saved_form.valid?
         # put in session until we have confirmed email address
+        @saved_form.secret_question = @saved_form.secret_question_text
         session[:saved_form] = @saved_form
         redirect_to '/save/email_confirmation'
       else
@@ -45,7 +47,7 @@ module MetadataPresenter
 
     def email_confirmation
       @saved_form = session[:saved_form]
-      @email_confirmation = EmailConfirmation.new
+      @email_confirmation = EmailConfirmation.new(@saved_form['email'])
     end
 
     def confirm_email
