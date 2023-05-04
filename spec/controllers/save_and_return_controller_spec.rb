@@ -73,14 +73,18 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       end
     end
 
-    context 'failed to match email to session' do
+    context 'failed to validate email' do
       let(:email) { 'email@123.com' }
 
       it 'should redirect with status' do
-        session = { 'saved_form' => { 'email' => 'not-a-match@email.com' } }
-        allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
+        post '/email_confirmations', params: { email_confirmation: '' }
 
-        post '/email_confirmations', params: { email_confirmation: email }
+        expect(response.status).to eq(422)
+        expect(response.request.path).to eq('/email_confirmations')
+      end
+
+      it 'should redirect with status' do
+        post '/email_confirmations', params: { email_confirmation: 'not the right format' }
 
         expect(response.status).to eq(422)
         expect(response.request.path).to eq('/email_confirmations')

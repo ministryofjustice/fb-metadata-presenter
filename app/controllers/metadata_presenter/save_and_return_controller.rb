@@ -49,10 +49,10 @@ module MetadataPresenter
     end
 
     def confirm_email
-      @email_confirmation = EmailConfirmation.new
-      @email_confirmation.assign_attributes(confirmation_params[:email_confirmation], session['saved_form']['email'])
+      @email_confirmation = EmailConfirmation.new(confirmation_params[:email_confirmation])
 
       if @email_confirmation.valid?
+        session['saved_form']['email'] = @email_confirmation.email_confirmation
         response = save_form_progress
         if response.status == 500
           internal_server_error and return
