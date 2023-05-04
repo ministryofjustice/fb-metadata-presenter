@@ -69,6 +69,7 @@ en:
       resume:
         heading: "Continue with \"%{service_name}\""
         continue: 'Continue'
+        content: 'To retrieve your information, enter the answer to your security question that you set when saving your progress.'
         information: 'This will use up your save link. To save your progress again, you will need to repeat the save process and generate another link.'
         errors:
           generic_problem:

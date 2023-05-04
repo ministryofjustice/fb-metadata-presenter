@@ -20,7 +20,7 @@ module MetadataPresenter
                   :created_at,
                   :updated_at
 
-    validates :secret_question, :secret_answer, :service_slug, :page_slug, :service_version, :user_id, :user_token, presence: true, allow_blank: false
+    validates :secret_question, :secret_answer, :service_slug, :page_slug, :service_version, :user_id, :user_token, presence: { message: 'Enter an answer for "%{attribute}"' }, allow_blank: false
     def initialize; end
 
     def populate_param_values(params)
