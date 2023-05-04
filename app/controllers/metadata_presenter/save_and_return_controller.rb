@@ -102,6 +102,7 @@ module MetadataPresenter
         if response.status == 400
           redirect_to '/record_failure' and return
         end
+
         redirect_to '/record_error' and return
       end
 
