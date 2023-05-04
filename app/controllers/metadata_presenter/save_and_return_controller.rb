@@ -1,7 +1,7 @@
 module MetadataPresenter
   class SaveAndReturnController < EngineController
     # before_action :check_feature_flag
-    helper_method :secret_questions, :page_slug, :confirmed_email, :get_service_name, :get_uuid
+    helper_method :secret_questions, :page_slug, :confirmed_email, :get_service_name, :get_uuid, :label_text
 
     def show
       @saved_form = SavedForm.new
@@ -206,6 +206,10 @@ module MetadataPresenter
 
     def get_service_name
       service.service_name
+    end
+
+    def label_text(text)
+      "<h2 class='govuk-heading-m'>#{text}</h2>"
     end
 
     private

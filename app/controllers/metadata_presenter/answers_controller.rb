@@ -26,8 +26,8 @@ module MetadataPresenter
     end
 
     def redirect_to_next_page
-      if(params[:save_for_later].present?)
-        redirect_to save_path(:page_slug => params[:page_slug]) and return
+      if params[:save_for_later].present?
+        redirect_to save_path(page_slug: params[:page_slug]) and return
       end
 
       next_page = NextPage.new(
@@ -54,7 +54,7 @@ module MetadataPresenter
 
     def answers_params
       params.permit(:page_slug, :save_for_later)
-      answers = params[:answers] ? params[:answers].permit! : {}
+      params[:answers] ? params[:answers].permit! : {}
     end
 
     def page_url
