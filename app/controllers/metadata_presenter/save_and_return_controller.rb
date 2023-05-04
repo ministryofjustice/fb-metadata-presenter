@@ -99,6 +99,9 @@ module MetadataPresenter
       response = get_saved_progress(get_uuid)
 
       if response.status != 200
+        if response.status == 400
+          redirect_to '/record_failure' and return
+        end
         redirect_to '/record_error' and return
       end
 
