@@ -1,4 +1,11 @@
 RSpec.describe 'Save and Return Controller Requests', type: :request do
+  describe '#show' do
+    it 'shows the page' do
+      get '/save'
+      expect(response.status).to eq(200)
+    end
+  end
+
   describe '#create' do
     context 'valid request' do
       it 'posts the save progress form' do
@@ -34,6 +41,17 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
         expect(response.request.path).to eq('/saved_forms')
         expect(session[:saved_form]).to eq(nil)
       end
+    end
+  end
+
+  describe '#show email confirmation' do
+
+    it 'should populate from session' do
+      session = OpenStruct.new(saved_form: { 'email' => 'email@email.com' })
+      allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
+
+      get '/save/email_confirmation'
+      expect(response.status).to eq(200)
     end
   end
 
@@ -230,6 +248,24 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
         allow(controller).to receive(:session).and_return({ 'saved_form' => { 'email' => email } })
 
         expect(controller.confirmed_email).to eq(email)
+      end
+    end
+
+    context 'label text' do
+      let(:text) { 'hello' }
+
+      it 'adds a h2 to the text' do
+        expect(controller.label_text(text)).to eq("<h2 class='govuk-heading-m'>hello</h2>")
+      end
+    end
+
+    context 'service name' do
+      let(:service_name) { 'a-cool-service' }
+
+      it 'returns the service name' do
+        allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(service_name: service_name))
+
+        expect(controller.get_service_name).to eq(service_name)
       end
     end
   end
