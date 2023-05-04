@@ -45,7 +45,6 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
   end
 
   describe '#show email confirmation' do
-
     it 'should populate from session' do
       session = OpenStruct.new(saved_form: { 'email' => 'email@email.com' })
       allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
@@ -263,7 +262,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       let(:service_name) { 'a-cool-service' }
 
       it 'returns the service name' do
-        allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(service_name: service_name))
+        allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(service_name:))
 
         expect(controller.get_service_name).to eq(service_name)
       end
