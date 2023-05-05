@@ -112,7 +112,7 @@ module MetadataPresenter
       @resume_form = ResumeForm.new(@saved_form.secret_question)
       @resume_form.secret_answer = resume_form_params[:resume_form][:secret_answer]
       @resume_form.recorded_answer = @saved_form.secret_answer
-      @resume_form.attempts_remaining = 3 - @saved_form.attempts.to_i
+      @resume_form.attempts_remaining = 2 - @saved_form.attempts.to_i
 
       if @resume_form.valid?
         # redirect back to right place in form
@@ -157,6 +157,13 @@ module MetadataPresenter
       else
         not_found
       end
+    end
+
+    def save_progress
+      session['saved_form']['user_id'] = nil
+      session['saved_form']['user_token'] = nil
+      session['user_id'] = nil
+      session['user_token'] = nil
     end
 
     def answered_pages

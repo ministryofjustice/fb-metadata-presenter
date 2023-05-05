@@ -19,6 +19,7 @@ RSpec.describe SavedProgressValidator do
         firstname+lastname@example.com
       ].each do |valid_answer|
         it "returns valid for '#{valid_answer}'" do
+          record.secret_answer = '123'
           record.email = valid_answer
           subject.validate(record)
           expect(record.errors).to be_empty
@@ -46,11 +47,25 @@ RSpec.describe SavedProgressValidator do
         'empress wu@outlook.com'
       ].each do |invalid_answer|
         it "returns invalid for '#{invalid_answer}'" do
+          record.secret_answer = '123'
           record.email = invalid_answer
           subject.validate(record)
           expect(record.errors.count).to eq(1)
         end
       end
+    end
+  end
+
+  describe 'invalid secret answer' do
+    let(:record) { MetadataPresenter::SavedForm.new }
+    let(:invalid_answer) { SecureRandom.hex(101) }
+
+    it 'cannot be more than 100 characters' do
+      record.email = 'valid@email.com'
+      record.secret_answer = invalid_answer
+
+      subject.validate(record)
+      expect(record.errors.count).to eq(1)
     end
   end
 end

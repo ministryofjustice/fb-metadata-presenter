@@ -109,6 +109,20 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
     end
   end
 
+  describe 'progress saved' do
+    it 'clears the session' do
+      session = { 'user_id' => '1324', 'user_token' => 'token', 'saved_form' => { 'email' => 'email' } }
+      allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
+
+      get '/save/progress_saved'
+
+      expect(controller.session['user_id']).to eq(nil)
+      expect(controller.session['user_token']).to eq(nil)
+      expect(controller.session['saved_form']['user_id']).to eq(nil)
+      expect(controller.session['saved_form']['user_token']).to eq(nil)
+    end
+  end
+
   describe '#resume progress' do
     context 'return to service' do
       let(:uuid) { '1234-1234' }
