@@ -50,4 +50,7 @@ class ApplicationController < ActionController::Base
 
   def save_and_return_enabled?; end
   helper_method :save_and_return_enabled?
+
+  def editor_preview?; end
+  helper_method :editor_preview?
 end
