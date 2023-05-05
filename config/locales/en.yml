@@ -62,6 +62,7 @@ en:
         email: 'Enter an email address in the correct format, like name@example.com'
         email_not_matched: 'Does not match'
         answer_not_matched: 'Your answer is incorrect. You have %{attempts} attempts remaining.'
+        answer_too_long: 'Your answer for %{attribute} must be 100 characters or fewer.'
       secret_questions:
         one: "What is your mother's maiden name?"
         two: 'What is the last name of your favourite teacher?'
