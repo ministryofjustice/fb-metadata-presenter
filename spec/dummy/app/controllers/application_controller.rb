@@ -47,4 +47,7 @@ class ApplicationController < ActionController::Base
     false
   end
   helper_method :editable?
+
+  def save_and_return_enabled?; end
+  helper_method :save_and_return_enabled?
 end
