@@ -159,6 +159,13 @@ module MetadataPresenter
       end
     end
 
+    def save_progress
+      session['saved_form']['user_id'] = nil
+      session['saved_form']['user_token'] = nil
+      session['user_id'] = nil
+      session['user_token'] = nil
+    end
+
     def answered_pages
       TraversedPages.new(service, @user_data, @page).all
     end
