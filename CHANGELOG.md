@@ -7,10 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [2.18.8] - 2023-04-27
+## [2.19] - 2023-04-27
 ### Changed
 
- - Add resume saved progress flow
+ - Add resume saved progress flow - resume page, check secret answer, resume from start if newer version is published or return from resume point.
 
 ## [2.18.7] - 2023-04-27
 ### Changed
