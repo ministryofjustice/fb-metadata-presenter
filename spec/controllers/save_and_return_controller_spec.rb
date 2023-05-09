@@ -126,7 +126,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
   describe '#resume progress' do
     context 'return to service' do
       let(:uuid) { '1234-1234' }
-      let(:saved_form_body) { JSON.parse("{\"id\":\"2369f3f3-8bdd-4581-a367-90e34f3aef17\",\"email\":\"email@email.com\",\"secret_question\":\"What was your mother's maiden name?\",\"secret_answer\":\"some more text\",\"page_slug\":\"email-address\",\"service_slug\":\"some-slug\",\"service_version\":\"27dc30c9-f7b8-4dec-973a-bd153f6797df\",\"user_id\":\"8acfb3db90002a5fc5b43e71638fc709\",\"user_token\":\"b9cca34d4331399c5f461c0ba1c406aa\",\"user_data_payload\":\"{\\\"name_text_1\\\"=\\u003e\\\"Name\\\"}\",\"attempts\":\"0.0\",\"active\":true,\"created_at\":\"2023-04-12T10:28:48.370Z\",\"updated_at\":\"2023-04-12T10:28:48.370Z\"}")}
+      let(:saved_form_body) { JSON.parse("{\"id\":\"2369f3f3-8bdd-4581-a367-90e34f3aef17\",\"email\":\"email@email.com\",\"secret_question\":\"What was your mother's maiden name?\",\"secret_answer\":\"some more text\",\"page_slug\":\"email-address\",\"service_slug\":\"some-slug\",\"service_version\":\"27dc30c9-f7b8-4dec-973a-bd153f6797df\",\"user_id\":\"8acfb3db90002a5fc5b43e71638fc709\",\"user_token\":\"b9cca34d4331399c5f461c0ba1c406aa\",\"user_data_payload\":\"{\\\"name_text_1\\\"=\\u003e\\\"Name\\\"}\",\"attempts\":\"0.0\",\"active\":true,\"created_at\":\"2023-04-12T10:28:48.370Z\",\"updated_at\":\"2023-04-12T10:28:48.370Z\"}") }
 
       it 'should redirect to record error if the record is not found' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid)
@@ -157,7 +157,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
 
       it 'should populate objects on successful return' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid)
-        .and_return(OpenStruct.new(status: 200, body: saved_form_body ))
+        .and_return(OpenStruct.new(status: 200, body: saved_form_body))
 
         get "/return/#{uuid}"
 
