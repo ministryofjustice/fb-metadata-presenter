@@ -19,11 +19,13 @@ module MetadataPresenter
       page.confirmation
       page.multiplequestions
       page.exit
+      save_and_return.resume_progress
     ].freeze
     END_OF_ROUTE_PAGES = %w[
       page.checkanswers
       page.confirmation
       page.exit
+      save_and_return.resume_progress
     ].freeze
 
     def editable_attributes

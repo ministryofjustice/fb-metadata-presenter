@@ -6,6 +6,12 @@ module MetadataPresenter
       @previous_answers = reload_user_data.deep_dup
       @page_answers = PageAnswers.new(page, answers_params, autocomplete_items(page.components))
 
+      if params[:save_for_later].present?
+        save_user_data
+        # NOTE: if the user is on a file upload page, files will not be uploaded before redirection
+        redirect_to save_path(page_slug: params[:page_slug]) and return
+      end
+
       upload_files if upload?
 
       if @page_answers.validate_answers
@@ -49,6 +55,7 @@ module MetadataPresenter
     end
 
     def answers_params
+      params.permit(:page_slug, :save_for_later)
       params[:answers] ? params[:answers].permit! : {}
     end
 

@@ -1,5 +1,6 @@
 en:
   presenter:
+    back: 'Back'
     actions:
       start: Start now
       continue: Continue
@@ -42,7 +43,7 @@ en:
         heading: 'Save for later'
         description: 'We will send you a one-off link that you can use to resume this form within 28 days.'
         email: 'Email address'
-        email_hint: 'Where we will send the link'
+        email_hint: 'We will only use this to send you a link to your form'
         secret_question: 'Pick a security question'
         secret_question_hint: 'We will use this to verify your identity when you return'
         secret_answer: 'The answer to your security question'
@@ -60,10 +61,44 @@ en:
       validation:
         email: 'Enter an email address in the correct format, like name@example.com'
         email_not_matched: 'Does not match'
+        answer_not_matched: 'Your answer is incorrect. You have %{attempts} attempts remaining.'
+        answer_too_long: 'Your answer for %{attribute} must be 100 characters or fewer.'
       secret_questions:
         one: "What is your mother's maiden name?"
         two: 'What is the last name of your favourite teacher?'
         three: 'What is the name of the hospital where you were born?'
+      resume:
+        heading: "Continue with \"%{service_name}\""
+        continue: 'Continue'
+        content: 'To retrieve your information, enter the answer to your security question that you set when saving your progress.'
+        information: 'This will use up your save link. To save your progress again, you will need to repeat the save process and generate another link.'
+        errors:
+          generic_problem:
+            heading: 'There is a problem with your link'
+            info_1: 'Please try again. If you copied and pasted the link into your browser, check you copied the entire link.'
+            info_2: 'If this problem persists, you will need to start the form again. Your saved answers will be securely deleted after 28 days.'
+          expired:
+            heading: 'Your link has expired'
+            info_1: 'It has been more than 28 days since you saved your progress on this form and the link is no longer valid.'
+            info_2: 'Your saved answers have been be securely deleted.'
+          link_used:
+            heading: 'That link has already been used'
+            info_1: 'Links to resume a form only work once. If you have saved your progress more than once, check for a more recent link.'
+            info_2: 'Otherwise, you will need to start the form again. Your saved answers will be securely deleted after 28 days.'
+          failure:
+            heading: 'Your information cannot be retrieved'
+            info_1: 'The answer to your security question was incorrect and you have run out of attempts to retrieve your information.'
+            info_2: 'You will need to start the form again. Your saved answers will be securely deleted.'
+        from_start:
+          heading: "\"%{service_name}\" has been updated"
+          info_1: 'Your information has been successfully retrieved. However, the form has been updated since your last visit.'
+          info_2: 'Please check from the beginning in case anything has changed, such as new requirements or questions.'
+          continue: 'Continue'
+        progress:
+          heading: '%{service_name}'
+          content_1: 'You have sucessfuly retrieved your saved information.'
+          content_2: 'Here are the answers you have provided so far.'
+          continue: 'Continue'
     footer:
       cookies:
         heading: "Cookies"

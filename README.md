@@ -95,6 +95,8 @@ The `autocomplete_items` takes the components on a page and retrieves any items 
 
 `payment_link_url` method will present the payment link url. For the Runner this is the value of the `ENV['PAYMENT_LINK']` variable. In the Editor the value comes from the `ServiceConfiguration` table.
 
+`save_and_return_enabled?` method checks whether save and return is enabled in the Runner or Editor app. In the Runner save and return is enabled when the `ENV['SAVE_AND_RETURN']` environment variable is present. In the Editor, save and return enabled can be ascertained by checking the `ServiceConfiguration` table.
+
 ## Generate documentation
 
 Run `rake doc` and open the doc/index.html

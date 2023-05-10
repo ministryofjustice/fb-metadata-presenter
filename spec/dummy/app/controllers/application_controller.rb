@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
 
   def create_submission; end
 
+  def create_save_and_return_submission(payload); end
+
   def autocomplete_items(component); end
 
   def show_reference_number; end
@@ -45,4 +47,10 @@ class ApplicationController < ActionController::Base
     false
   end
   helper_method :editable?
+
+  def save_and_return_enabled?; end
+  helper_method :save_and_return_enabled?
+
+  def editor_preview?; end
+  helper_method :editor_preview?
 end
