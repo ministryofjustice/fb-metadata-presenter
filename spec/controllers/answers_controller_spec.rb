@@ -6,10 +6,12 @@ RSpec.describe 'Answers Controller Requests', type: :request do
       
       expect(response).to redirect_to('/save')
     end
+  end
 
-    it 'does not save from check your answers' do
-      expect_any_instance_of(MetadataPresenter::AnswersController).to_not receive(:save_user_data)
-      post '/', params: { save_for_later_check_answers: true }
+  describe 'reserved submissions path' do
+    it 'does not create a submission from check your answers' do
+      expect_any_instance_of(MetadataPresenter::SubmissionsController).to_not receive(:create_submission)
+      post '/reserved/submissions', params: { save_for_later_check_answers: true }
       
       expect(response).to redirect_to('/save')
     end

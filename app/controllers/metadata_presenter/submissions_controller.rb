@@ -4,6 +4,11 @@ module MetadataPresenter
       @page = service.confirmation_page
 
       if @page
+        if params[:save_for_later_check_answers].present?
+          # this flag is sent by the check answers page, and we don't want to submit & validate here
+          redirect_to save_path(page_slug: params[:page_slug]) and return
+        end
+
         create_submission
         redirect_to_page @page.url
       else
