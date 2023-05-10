@@ -6,6 +6,11 @@ module MetadataPresenter
       @previous_answers = reload_user_data.deep_dup
       @page_answers = PageAnswers.new(page, answers_params, autocomplete_items(page.components))
 
+      if params[:save_for_later_check_answers].present?
+        # this flag is sent by the check answers page, and we don't want to submit & validate here
+        redirect_to save_path(page_slug: params[:page_slug]) and return
+      end
+
       if params[:save_for_later].present?
         save_user_data
         # NOTE: if the user is on a file upload page, files will not be uploaded before redirection
