@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.19.2] - 2023-05-10
+### Changed
+
+- Prevent submission of form when clicking save for later on check answers page
+
 ## [2.19.1] - 2023-05-10
 ### Changed
 
