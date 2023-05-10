@@ -86,14 +86,15 @@
 
         <div class="govuk-button-group">
           <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
-            <%= t('presenter.actions.submit') -%>
+            <%= t('presenter.actions.submit') -%></button>
             <% if save_and_return_enabled? %>
             <% if editor_preview? || editable? %>
               <%= button_to t('presenter.save_and_return.save'), '/', params: { page_slug:request.env['PATH_INFO'] }, method: :post, class: "govuk-button govuk-button--secondary", name: 'save_for_later_check_answers', disabled: true %>
             <% else %>
               <%= button_to t('presenter.save_and_return.save'), '/', params: { page_slug:request.env['PATH_INFO'] }, method: :post, class: "govuk-button govuk-button--secondary", name: 'save_for_later_check_answers'%>
             <% end %>
-          <% end %>        </div>
+          <% end %>
+        </div>
       <% end %>
 
     </div>

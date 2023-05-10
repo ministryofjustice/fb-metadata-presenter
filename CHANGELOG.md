@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.19.1] - 2023-05-10
+### Changed
+
+- Fix button html on check answers page
+
 ## [2.19] - 2023-04-27
 ### Changed
 
