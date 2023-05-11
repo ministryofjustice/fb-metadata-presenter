@@ -22,8 +22,14 @@ module MetadataPresenter
 
     def confirmed_email
       email = session['saved_form']['email']
-      session[:saved_form] = nil
-
+      session['saved_form']['email'] = nil
+      session['saved_form']['user_id'] = nil
+      session['saved_form']['user_token'] = nil
+      session['saved_form']['secret_answer'] = nil
+      session['saved_form']['secret_question'] = nil
+      session['saved_form']['secret_question_text'] = nil
+      session['saved_form']['service_slug'] = nil
+      session['saved_form']['service_version'] = nil
       email
     end
 
