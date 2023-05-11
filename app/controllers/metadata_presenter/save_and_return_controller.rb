@@ -7,10 +7,8 @@ module MetadataPresenter
     end
 
     def page_slug
-      if params
-        if params[:page_slug].present?
-          return params[:page_slug]
-        end
+      if params && params[:page_slug].present?
+        return params[:page_slug]
       end
       if session['returning_slug'].present?
         return session['returning_slug']
@@ -18,8 +16,9 @@ module MetadataPresenter
       if session['saved_form'].present?
         return session['saved_form']['page_slug']
       end
+
       if params['saved_form'].present?
-        return params['saved_form']['page_slug']
+        params['saved_form']['page_slug']
       end
     end
 
