@@ -255,12 +255,14 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
 
       it 'returns session slug if set during return flow' do
         allow(controller).to receive(:session).and_return({ 'returning_slug' => correct_slug })
+        allow(controller).to receive(:params).and_return({ })
 
         expect(controller.page_slug).to eq(correct_slug)
       end
 
       it 'returns session slug if set during save flow' do
         allow(controller).to receive(:session).and_return({ 'returning_slug' => nil, 'saved_form' => { 'page_slug' => correct_slug } })
+        allow(controller).to receive(:params).and_return({ })
 
         expect(controller.page_slug).to eq(correct_slug)
       end
