@@ -7,23 +7,31 @@ module MetadataPresenter
     end
 
     def page_slug
+      if params && params[:page_slug].present?
+        return params[:page_slug]
+      end
       if session['returning_slug'].present?
         return session['returning_slug']
       end
       if session['saved_form'].present?
         return session['saved_form']['page_slug']
       end
-      if params['saved_form'].present?
-        return params['saved_form']['page_slug']
-      end
 
-      params[:page_slug]
+      if params['saved_form'].present?
+        params['saved_form']['page_slug']
+      end
     end
 
     def confirmed_email
       email = session['saved_form']['email']
-      session[:saved_form] = nil
-
+      session['saved_form']['email'] = nil
+      session['saved_form']['user_id'] = nil
+      session['saved_form']['user_token'] = nil
+      session['saved_form']['secret_answer'] = nil
+      session['saved_form']['secret_question'] = nil
+      session['saved_form']['secret_question_text'] = nil
+      session['saved_form']['service_slug'] = nil
+      session['saved_form']['service_version'] = nil
       email
     end
 

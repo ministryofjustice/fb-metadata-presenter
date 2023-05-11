@@ -110,8 +110,8 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
   end
 
   describe 'progress saved' do
-    it 'clears the session' do
-      session = { 'user_id' => '1324', 'user_token' => 'token', 'saved_form' => { 'email' => 'email' } }
+    it 'clears the session, but preserves the page slug to prevent errors' do
+      session = { 'user_id' => '1324', 'user_token' => 'token', 'saved_form' => { 'email' => 'email', 'page_slug' => 'a-cool-page' } }
       allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
 
       get '/save/progress_saved'
@@ -120,6 +120,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
       expect(controller.session['user_token']).to eq(nil)
       expect(controller.session['saved_form']['user_id']).to eq(nil)
       expect(controller.session['saved_form']['user_token']).to eq(nil)
+      expect(controller.session['saved_form']['page_slug']).to eq(session['saved_form']['page_slug'])
     end
   end
 
@@ -254,12 +255,14 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
 
       it 'returns session slug if set during return flow' do
         allow(controller).to receive(:session).and_return({ 'returning_slug' => correct_slug })
+        allow(controller).to receive(:params).and_return({})
 
         expect(controller.page_slug).to eq(correct_slug)
       end
 
       it 'returns session slug if set during save flow' do
         allow(controller).to receive(:session).and_return({ 'returning_slug' => nil, 'saved_form' => { 'page_slug' => correct_slug } })
+        allow(controller).to receive(:params).and_return({})
 
         expect(controller.page_slug).to eq(correct_slug)
       end
