@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.19.3] - 2023-05-10
+### Changed
+
+- Small fixes to session management and views
+
 ## [2.19.2] - 2023-05-10
 ### Changed
 
