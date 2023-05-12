@@ -42,10 +42,12 @@ module MetadataPresenter
       return {} unless file_details
 
       if file_details.is_a?(Hash) || file_details.is_a?(ActionController::Parameters)
-        file_details.merge('original_filename' => sanitize(file_details['original_filename']))
+
+        file_details.merge('original_filename' => sanitize(filename(file_details['original_filename'])))
+
       else
         {
-          'original_filename' => sanitize(file_details.original_filename),
+          'original_filename' => sanitize(filename(file_details.original_filename)),
           'content_type' => file_details.content_type,
           'tempfile' => file_details.tempfile.path.to_s
         }
@@ -66,6 +68,14 @@ module MetadataPresenter
       ].map do |segment|
         sanitize(answers["#{component_id}(#{segment})"])
       end
+    end
+
+    private
+
+    def filename(path)
+      return sanitize(path) if path.nil?
+
+      sanitize(path).gsub(/&gt;/, '').gsub(/&lt;/, '').delete('>"[]{}*?:|]/<').delete('\\')
     end
   end
 end

@@ -218,49 +218,75 @@ RSpec.describe MetadataPresenter::PageAnswers do
           it 'sanitizes file details hash' do
             expect(
               page_answers.send('dog-picture_upload_1')['original_filename']
-            ).to eq('<img src="a">.txt')
-          end
-        end
-
-        context 'when file details is a hash' do
-          let(:page) { service.find_page_by_url('dog-picture') }
-          let(:upload_file) do
-            {
-              'original_filename' => "<script>alert('upload')</script>.png",
-              'content_type' => 'image/png',
-              'tempfile' => '/var/folders/v1/qb4w33l97jz0zfpwhl7jd1k00000gn/T/RackMultipart20210706-23929-qfs5ct.png'
-            }
-          end
-          let(:answers) do
-            { 'dog-picture_upload_1' => upload_file }
+            ).to eq('img src=a.txt')
           end
 
-          it 'sanitizes file details hash' do
-            expect(
-              page_answers.send('dog-picture_upload_1')['original_filename']
-            ).to eq("alert('upload').png")
-          end
-        end
-
-        context 'when file details is an ActionController::Parameters object' do
-          let(:page) { service.find_page_by_url('dog-picture') }
-          let(:upload_file) do
-            ActionController::Parameters.new(
+          context 'when file details is a hash' do
+            let(:upload_file) do
               {
                 'original_filename' => "<script>alert('upload')</script>.png",
                 'content_type' => 'image/png',
                 'tempfile' => '/var/folders/v1/qb4w33l97jz0zfpwhl7jd1k00000gn/T/RackMultipart20210706-23929-qfs5ct.png'
               }
-            )
-          end
-          let(:answers) do
-            { 'dog-picture_upload_1' => upload_file }
+            end
+
+            it 'sanitizes file details hash' do
+              expect(
+                page_answers.send('dog-picture_upload_1')['original_filename']
+              ).to eq("alert('upload').png")
+            end
+
+            context 'when file contains forbidden characters' do
+              let(:upload_file) do
+                {
+                  'original_filename' => 'hell\o"<>[]{}?/:|*.png',
+                  'content_type' => 'image/png',
+                  'tempfile' => '/var/folders/v1/qb4w33l97jz0zfpwhl7jd1k00000gn/T/RackMultipart20210706-23929-qfs5ct.png'
+                }
+              end
+
+              it 'removes the forbidden characters' do
+                expect(
+                  page_answers.send('dog-picture_upload_1')['original_filename']
+                ).to eq('hello.png')
+              end
+            end
           end
 
-          it 'sanitizes file details hash' do
-            expect(
-              page_answers.send('dog-picture_upload_1')['original_filename']
-            ).to eq("alert('upload').png")
+          context 'when file details is an ActionController::Parameters object' do
+            let(:upload_file) do
+              ActionController::Parameters.new(
+                {
+                  'original_filename' => "<script>alert('upload')</script>.png",
+                  'content_type' => 'image/png',
+                  'tempfile' => '/var/folders/v1/qb4w33l97jz0zfpwhl7jd1k00000gn/T/RackMultipart20210706-23929-qfs5ct.png'
+                }
+              )
+            end
+
+            it 'sanitizes file details hash' do
+              expect(
+                page_answers.send('dog-picture_upload_1')['original_filename']
+              ).to eq("alert('upload').png")
+            end
+
+            context 'when file contains forbidden characters' do
+              let(:upload_file) do
+                ActionController::Parameters.new(
+                  {
+                    'original_filename' => 'hell\o"<>[]{}?/:|*.png',
+                    'content_type' => 'image/png',
+                    'tempfile' => '/var/folders/v1/qb4w33l97jz0zfpwhl7jd1k00000gn/T/RackMultipart20210706-23929-qfs5ct.png'
+                  }
+                )
+              end
+
+              it 'removes the forbidden characters' do
+                expect(
+                  page_answers.send('dog-picture_upload_1')['original_filename']
+                ).to eq('hello.png')
+              end
+            end
           end
         end
       end
