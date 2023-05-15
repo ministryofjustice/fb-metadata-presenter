@@ -76,7 +76,7 @@ module MetadataPresenter
           @page_answers.uploaded_files.push(uploaded_file(answer, component))
         else
           # file name already uploaded
-          @page_answers.send(component.id)["original_filename"] = append_file_suffix(@page_answers.send(component.id)["original_filename"], previous_matching_uploads.count)
+          answer["original_filename"] = append_file_suffix(answer["original_filename"], previous_matching_uploads.count)
           @page_answers.uploaded_files.push(uploaded_file(answer, component))
         end
       end
