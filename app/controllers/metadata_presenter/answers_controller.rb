@@ -71,9 +71,22 @@ module MetadataPresenter
       user_data = load_user_data
       @page_answers.page.upload_components.each do |component|
         answer = user_data[component.id]
-
-        @page_answers.uploaded_files.push(uploaded_file(answer, component))
+        previous_matching_uploads = user_data.select { |key, val| val == @page_answers.send(component.id)["original_filename"] }
+        if(previous_matching_uploads == {})
+          @page_answers.uploaded_files.push(uploaded_file(answer, component))
+        else
+          # file name already uploaded
+          @page_answers.send(component.id)["original_filename"] = append_file_suffix(@page_answers.send(component.id)["original_filename"], previous_matching_uploads.count)
+          @page_answers.uploaded_files.push(uploaded_file(answer, component))
+        end
       end
+    end
+
+    def append_file_suffix(filename, count)
+      extname = File.extname(filename)
+      basename = File.basename(filename, extname)
+
+      "#{basename}-(#{count})#{extname}"
     end
 
     def uploaded_file(answer, component)
