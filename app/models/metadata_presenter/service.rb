@@ -38,6 +38,8 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
   end
 
   def service_slug
+    return service_slug_config if service_slug_config.present?
+
     service_name.gsub(/['’]/, '').parameterize
   end
 

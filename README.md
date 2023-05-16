@@ -97,6 +97,9 @@ The `autocomplete_items` takes the components on a page and retrieves any items 
 
 `save_and_return_enabled?` method checks whether save and return is enabled in the Runner or Editor app. In the Runner save and return is enabled when the `ENV['SAVE_AND_RETURN']` environment variable is present. In the Editor, save and return enabled can be ascertained by checking the `ServiceConfiguration` table.
 
+`service_slug_config` method checks whether the user has configured their own service URL. In the Editor this will be a `SERVICE_SLUG` row in the `ServiceConfiguration` table. In the Runner, it will be the `ENV['SERVICE_SLUG']` config.
+If it does not exist, we use the current method of parameterizing the `service_name`.
+
 ## Generate documentation
 
 Run `rake doc` and open the doc/index.html
