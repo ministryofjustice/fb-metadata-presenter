@@ -50,11 +50,11 @@ module MetadataPresenter
           sanitized_filename = "#{basename}-(#{count})#{extname}"
         end
 
-        if filename.presence
-          filename = sanitized_filename.gsub(/["\[\]\/\\{}*?:|]/, '')
+        if sanitized_filename.presence
+          sanitized_filename = sanitized_filename.gsub(/["\[\]\/\\{}*?:|]/, '')
         end
 
-        file_details.merge('original_filename' => filename)
+        file_details.merge('original_filename' => sanitized_filename)
       else
         {
           'original_filename' => sanitize(file_details.original_filename),
