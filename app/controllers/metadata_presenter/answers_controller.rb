@@ -73,12 +73,8 @@ module MetadataPresenter
         answer = user_data[component.id]
 
         previous_matching_uploads = user_data.select { |k, v| v.class == Hash && v["original_filename"] == @page_answers.send(component.id)["original_filename"]}
-        if(previous_matching_uploads == {})
-          @page_answers.uploaded_files.push(uploaded_file(answer, component))
-        else
-          # file name already uploaded
-          @page_answers.uploaded_files.push(uploaded_file(answer, component, previous_matching_uploads.count))
-        end
+        @page_answers.count = previous_matching_uploads.count
+        @page_answers.uploaded_files.push(uploaded_file(answer, component))
       end
     end
 
@@ -90,15 +86,6 @@ module MetadataPresenter
           component:
         )
       else
-        if (count.presence)
-          FileUploader.new(
-            session:,
-            page_answers: @page_answers,
-            component:,
-            adapter: upload_adapter,
-            count:
-          ).upload
-        end
         FileUploader.new(
           session:,
           page_answers: @page_answers,
