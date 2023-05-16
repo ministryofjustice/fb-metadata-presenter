@@ -72,13 +72,13 @@ module MetadataPresenter
       @page_answers.page.upload_components.each do |component|
         answer = user_data[component.id]
 
-        previous_matching_uploads = user_data.select { |k, v| v.class == Hash && v["original_filename"] == @page_answers.send(component.id)["original_filename"]}
+        previous_matching_uploads = user_data.select { |_k, v| v.instance_of?(Hash) && v['original_filename'] == @page_answers.send(component.id)['original_filename'] }
         @page_answers.count = previous_matching_uploads.count
         @page_answers.uploaded_files.push(uploaded_file(answer, component))
       end
     end
 
-    def uploaded_file(answer, component, count = nil)
+    def uploaded_file(answer, component)
       if answer.present?
         @page_answers.answers[component.id] = answer
         MetadataPresenter::UploadedFile.new(

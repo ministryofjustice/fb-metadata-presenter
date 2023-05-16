@@ -3,7 +3,8 @@ module MetadataPresenter
     include ActiveModel::Model
     include ActiveModel::Validations
     include ActionView::Helpers
-    attr_reader :page, :answers, :uploaded_files, :autocomplete_items, :count
+    attr_reader :page, :answers, :uploaded_files, :autocomplete_items
+    attr_accessor :count
 
     def initialize(page, answers, autocomplete_items = nil)
       @page = page
@@ -36,28 +37,16 @@ module MetadataPresenter
       end
     end
 
-    def upload_answer(component_id, count)
+    def upload_answer(component_id, _count)
       file_details = answers[component_id.to_s]
 
       return {} unless file_details
 
       if file_details.is_a?(Hash) || file_details.is_a?(ActionController::Parameters)
-        sanitized_filename = sanitize(file_details['original_filename'])
-        if(count.presence && count > 0)
-          extname = File.extname(sanitized_filename)
-          basename = File.basename(sanitized_filename, extname)
-    
-          sanitized_filename = "#{basename}-(#{count})#{extname}"
-        end
-
-        if sanitized_filename.presence
-          sanitized_filename = sanitized_filename.gsub(/["\[\]\/\\{}*?:|]/, '')
-        end
-
-        file_details.merge('original_filename' => sanitized_filename)
+        file_details.merge('original_filename' => sanitize(filename(file_details['original_filename'])))
       else
         {
-          'original_filename' => sanitize(file_details.original_filename),
+          'original_filename' => sanitize(filename(file_details.original_filename)),
           'content_type' => file_details.content_type,
           'tempfile' => file_details.tempfile.path.to_s
         }
@@ -78,6 +67,21 @@ module MetadataPresenter
       ].map do |segment|
         sanitize(answers["#{component_id}(#{segment})"])
       end
+    end
+
+    private
+
+    def filename(path)
+      filename = path.nil? ? path : path.delete('>"[]{}*?:|]/<')
+
+      if count.presence && count.positive?
+        extname = File.extname(path)
+        basename = File.basename(path, extname)
+
+        filename = "#{basename}-(#{count})#{extname}"
+      end
+
+      filename
     end
   end
 end

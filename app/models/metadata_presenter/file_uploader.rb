@@ -13,7 +13,7 @@ module MetadataPresenter
       adapter.new(
         session:,
         file_details:,
-        allowed_file_types: component.validation['accept'],
+        allowed_file_types: component.validation['accept']
       ).call
     end
 
