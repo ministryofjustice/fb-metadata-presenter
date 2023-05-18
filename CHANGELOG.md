@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.19.4] - 2023-05-18
+### Changed
+
+- Remove unwanted characters from file uploads
+
 ## [2.19.3] - 2023-05-10
 ### Changed
 
