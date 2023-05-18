@@ -8,6 +8,11 @@ module MetadataPresenter
         load_autocomplete_items
 
         @page_answers = PageAnswers.new(@page, @user_data)
+
+        if(@page.template == 'metadata_presenter/page/checkanswers')
+          response.headers["Cache-Control"] = "private, no-store"
+        end
+
         render template: @page.template
       else
         not_found
