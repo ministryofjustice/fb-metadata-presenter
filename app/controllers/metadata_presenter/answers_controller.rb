@@ -73,10 +73,9 @@ module MetadataPresenter
         answer = user_data[component.id]
 
         if answer.presence
-          byebug
-          filename = answer.nil? ? path : path.delete('>"[]{}*?:|]/<')
-          extname = File.extname(answer)
-          basename = File.basename(answer, extname)
+          filename = answer.nil? ? "" : answer["original_filename"].delete('>"[]{}*?:|]/<')
+          extname = File.extname(filename)
+          basename = File.basename(filename, extname)
           filename_regex = Regexp.new("^#{Regexp.quote(basename)}(?>-\((\d)\))?.#{Regexp.quote(extname)}")
 
           previous_matching_uploads = user_data.select { |_k, v| v.instance_of?(Hash) && v['original_filename'] =~ filename_regex }
