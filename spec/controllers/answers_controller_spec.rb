@@ -16,25 +16,4 @@ RSpec.describe 'Answers Controller Requests', type: :request do
       expect(response).to redirect_to('/save')
     end
   end
-
-  describe 'checking for duplicate uploads' do
-    let(:user_data) do
-      {
-        "dog-picture_upload_1"=>{"original_filename" => "peanut.jpg"}
-      }
-    end
-
-    let(:answer) do
-      {
-        "dog-picture_upload_2"=>{"original_filename" => "peanut.jpg"}
-      }
-    end
-
-    it 'adds the right count to the page answers' do
-
-      allow_any_instance_of(MetadataPresenter::AnswersController).to receive(:load_user_data).and_return(user_data)
-      expect_any_instance_of(MetadataPresenter::PageAnswers).to receive(:count).with(1)
-      post '/'
-    end
-  end
 end

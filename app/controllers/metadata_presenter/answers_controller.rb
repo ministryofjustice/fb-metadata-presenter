@@ -72,12 +72,12 @@ module MetadataPresenter
       @page_answers.page.upload_components.each do |component|
         answer = user_data[component.id]
 
-        if answer.presence
-          filename = answer.nil? ? "" : answer["original_filename"].delete('>"[]{}*?:|]/<')
-          extname = File.extname(filename)
-          basename = File.basename(filename, extname)
-          filename_regex = Regexp.new("^#{Regexp.quote(basename)}(?>-\((\d)\))?.#{Regexp.quote(extname)}")
+        original_filename = answer.nil? ? @page_answers.send(component.id)["original_filename"] : answer["original_filename"]
 
+        if original_filename.presence
+          extname = File.extname(original_filename)
+          basename = File.basename(original_filename, extname)
+          filename_regex = /^#{Regexp.quote(basename)}(?>-\((\d)\))?#{Regexp.quote(extname)}/
           previous_matching_uploads = user_data.select { |_k, v| v.instance_of?(Hash) && v['original_filename'] =~ filename_regex }
           @page_answers.count = previous_matching_uploads.count
         end
