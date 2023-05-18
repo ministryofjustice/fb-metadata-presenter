@@ -72,22 +72,18 @@ module MetadataPresenter
     private
 
     def filename(path)
-<<<<<<< HEAD
-      filename = path.nil? ? path : path.delete('>"[]{}*?:|]/<')
+      return sanitize(path) if path.nil?
+
+      filename = sanitize(path).gsub(/&gt;/, '').gsub(/&lt;/, '').delete('>"[]{}*?:|]/<').delete('\\')
 
       if count.presence && count.positive?
-        extname = File.extname(path)
-        basename = File.basename(path, extname)
+        extname = File.extname(filename)
+        basename = File.basename(filename, extname)
 
         filename = "#{basename}-(#{count})#{extname}"
       end
 
       filename
-=======
-      return sanitize(path) if path.nil?
-
-      sanitize(path).gsub(/&gt;/, '').gsub(/&lt;/, '').delete('>"[]{}*?:|]/<').delete('\\')
->>>>>>> 089c325daf74dfdbe5b22f25368a2dd4d9785571
     end
   end
 end
