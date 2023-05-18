@@ -12,7 +12,8 @@ module MetadataPresenter
     #   <%=to_html '# Some markdown' %>
     #
     def to_html(text)
-      Kramdown::Document.new(text).to_html.html_safe
+      # Kramdown::Document.new(text).to_html.html_safe
+      Govspeak::Document.new(text).to_html.html_safe
     end
 
     def default_text(property)
