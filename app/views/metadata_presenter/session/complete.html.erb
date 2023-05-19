@@ -1,10 +1,9 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Submission completed</h1>
+    <h1 class="govuk-heading-l"><%= t('presenter.session_complete.title') %></h1>
     <div class="maintenance-content">
-      <p>This form has already been submitted.<p>  
-      <p>To protect your personal information, we have reset the form and cleared your answers.</p>
-      <p>If you wish to you can <%= link_to 'Start a new form', root_url %></p>
+      <%= to_html t('presenter.session_complete.content') %>
+      <p><%= link_to t('presenter.session_complete.restart_link'), root_url %></p>
     </div>
   </div>
 </div>
