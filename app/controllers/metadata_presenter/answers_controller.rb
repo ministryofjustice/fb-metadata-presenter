@@ -22,6 +22,14 @@ module MetadataPresenter
       end
     end
 
+    def update_count_matching_filenames(original_filename, user_data)
+      extname = File.extname(original_filename)
+      basename = File.basename(original_filename, extname)
+      filename_regex = /^#{Regexp.quote(basename)}(?>-\((\d)\))?#{Regexp.quote(extname)}/
+
+      user_data.select { |_k, v| v.instance_of?(Hash) && v['original_filename'] =~ filename_regex }.count
+    end
+
     private
 
     def page
@@ -71,6 +79,12 @@ module MetadataPresenter
       user_data = load_user_data
       @page_answers.page.upload_components.each do |component|
         answer = user_data[component.id]
+
+        original_filename = answer.nil? ? @page_answers.send(component.id)['original_filename'] : answer['original_filename']
+
+        if original_filename.present?
+          @page_answers.count = update_count_matching_filenames(original_filename, user_data)
+        end
 
         @page_answers.uploaded_files.push(uploaded_file(answer, component))
       end

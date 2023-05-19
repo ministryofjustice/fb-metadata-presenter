@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.19.5] - 2023-05-19
+### Changed
+
+- Append a suffix to file upload names if they are duplicates
+
 ## [2.19.4] - 2023-05-18
 ### Changed
 

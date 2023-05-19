@@ -4,6 +4,7 @@ module MetadataPresenter
     include ActiveModel::Validations
     include ActionView::Helpers
     attr_reader :page, :answers, :uploaded_files, :autocomplete_items
+    attr_accessor :count
 
     def initialize(page, answers, autocomplete_items = nil)
       @page = page
@@ -28,7 +29,7 @@ module MetadataPresenter
       if component && component.type == 'date'
         date_answer(component.id)
       elsif component && component.type == 'upload'
-        upload_answer(component.id)
+        upload_answer(component.id, count)
       elsif component && component.type == 'checkboxes'
         answers[method_name.to_s].to_a
       else
@@ -36,15 +37,13 @@ module MetadataPresenter
       end
     end
 
-    def upload_answer(component_id)
+    def upload_answer(component_id, _count)
       file_details = answers[component_id.to_s]
 
       return {} unless file_details
 
       if file_details.is_a?(Hash) || file_details.is_a?(ActionController::Parameters)
-
         file_details.merge('original_filename' => sanitize(filename(file_details['original_filename'])))
-
       else
         {
           'original_filename' => sanitize(filename(file_details.original_filename)),
@@ -75,7 +74,16 @@ module MetadataPresenter
     def filename(path)
       return sanitize(path) if path.nil?
 
-      sanitize(path).gsub(/&gt;/, '').gsub(/&lt;/, '').delete('>"[]{}*?:|]/<').delete('\\')
+      filename = sanitize(path).gsub(/&gt;/, '').gsub(/&lt;/, '').delete('>"[]{}*?:|]/<').delete('\\')
+
+      if count.present? && count.positive?
+        extname = File.extname(filename)
+        basename = File.basename(filename, extname)
+
+        filename = "#{basename}-(#{count})#{extname}"
+      end
+
+      filename
     end
   end
 end

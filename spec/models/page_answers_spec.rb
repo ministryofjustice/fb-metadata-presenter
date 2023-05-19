@@ -236,6 +236,20 @@ RSpec.describe MetadataPresenter::PageAnswers do
               ).to eq("alert('upload').png")
             end
 
+            it 'appends a suffix when there are previous uploads of the same filename' do
+              subject.count = 1
+              expect(
+                page_answers.send('dog-picture_upload_1')['original_filename']
+              ).to eq("alert('upload')-(1).png")
+            end
+
+            it 'appends a suffix based on previous matches' do
+              subject.count = 2
+              expect(
+                page_answers.send('dog-picture_upload_1')['original_filename']
+              ).to eq("alert('upload')-(2).png")
+            end
+
             context 'when file contains forbidden characters' do
               let(:upload_file) do
                 {
