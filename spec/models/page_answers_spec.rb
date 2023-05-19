@@ -242,7 +242,7 @@ RSpec.describe MetadataPresenter::PageAnswers do
                 page_answers.send('dog-picture_upload_1')['original_filename']
               ).to eq("alert('upload')-(1).png")
             end
-  
+
             it 'appends a suffix based on previous matches' do
               subject.count = 2
               expect(

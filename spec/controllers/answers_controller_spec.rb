@@ -16,4 +16,20 @@ RSpec.describe 'Answers Controller Requests', type: :request do
       expect(response).to redirect_to('/save')
     end
   end
+
+  describe 'count duplicate filenames' do
+    let(:user_data) do
+      {
+        'dog_picture_upload-1' => 'peanut.jpg',
+        'dog_picture_upload-2' => 'peanut.jpg',
+        'dog_picture_upload-3' => 'notpeanut.jpg'
+      }
+
+      it 'counts matches' do
+        expect(controller.update_count_matching_filenames(user_data, 'peanut.jpg')).to eq(2)
+        expect(controller.update_count_matching_filenames(user_data, 'peanut2.jpg')).to eq(0)
+        expect(controller.update_count_matching_filenames(user_data, 'peanut-(1).jpg')).to eq(0)
+      end
+    end
+  end
 end
