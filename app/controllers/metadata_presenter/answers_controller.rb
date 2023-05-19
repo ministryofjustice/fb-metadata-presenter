@@ -82,7 +82,7 @@ module MetadataPresenter
 
         original_filename = answer.nil? ? @page_answers.send(component.id)['original_filename'] : answer['original_filename']
 
-        if original_filename.presence
+        if original_filename.present?
           @page_answers.count = update_count_matching_filenames(original_filename, user_data)
         end
 
