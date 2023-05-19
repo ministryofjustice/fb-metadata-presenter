@@ -76,7 +76,7 @@ module MetadataPresenter
 
       filename = sanitize(path).gsub(/&gt;/, '').gsub(/&lt;/, '').delete('>"[]{}*?:|]/<').delete('\\')
 
-      if count.presence && count.positive?
+      if count.present? && count.positive?
         extname = File.extname(filename)
         basename = File.basename(filename, extname)
 
