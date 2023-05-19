@@ -9,6 +9,7 @@ MetadataPresenter::Engine.routes.draw do
   get '/reserved/file/:component_id', to: 'file#destroy', as: :remove_file
 
   get 'session/expired', to: 'session#expired'
+  get 'session/complete', to: 'session#complete'
 
   get 'save', to: 'save_and_return#show'
   post 'saved_forms', to: 'save_and_return#create'
