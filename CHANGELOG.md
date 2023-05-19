@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.20.0] - 2023-05-19
+### Changed
+
+- Change `service_name`method to allow for backwards compatibility
+- Add `service_slug_config` method to check for `SERVICE_SLUG` config in Runner and Editor
+
 ## [2.19.5] - 2023-05-19
 ### Changed
 

@@ -54,3 +54,5 @@ class ApplicationController < ActionController::Base
   def editor_preview?; end
   helper_method :editor_preview?
 end
+
+def service_slug_config; end
