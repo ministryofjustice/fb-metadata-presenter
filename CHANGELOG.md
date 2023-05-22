@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [2.20.1] - 2023-05-22
+### Fixed
+
+- Update confirmation page template, moving optional content components into the
+    width container.
+
 ## [2.20.0] - 2023-05-19
 ### Changed
 

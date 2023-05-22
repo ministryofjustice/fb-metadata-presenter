@@ -37,19 +37,19 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <%= render 'metadata_presenter/attribute/body' %>
+
+      <%= render partial: 'metadata_presenter/component/components',
+                 locals: {
+                 f: nil,
+                 components: @page.components,
+                 tag: nil,
+                 classes: nil,
+                 input_components: @page.supported_input_components,
+                 content_components: @page.supported_content_components
+                 } %>
+
     </div>
   </div>
-
-  <%= render partial: 'metadata_presenter/component/components',
-             locals: {
-             f: nil,
-             components: @page.components,
-             tag: nil,
-             classes: nil,
-             input_components: @page.supported_input_components,
-             content_components: @page.supported_content_components
-             } %>
-
   <% if payment_link_enabled? %>
     <a href="<%= payment_link_url %>" class="govuk-button" data-module="govuk-button" data-component="pay-button"><%= t('presenter.confirmation.continue_to_pay_button') %></a>
   <% end %>
