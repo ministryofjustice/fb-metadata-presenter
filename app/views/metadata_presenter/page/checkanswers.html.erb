@@ -91,7 +91,7 @@
             <% if editor_preview? || editable? %>
               <%= button_to t('presenter.save_and_return.save'), '/', params: { page_slug:request.env['PATH_INFO'] }, method: :post, class: "govuk-button govuk-button--secondary", name: 'save_for_later_check_answers', disabled: true %>
             <% else %>
-              <%= button_to t('presenter.save_and_return.save'), '/', params: { page_slug:request.env['PATH_INFO'] }, method: :post, class: "govuk-button govuk-button--secondary", name: 'save_for_later_check_answers'%>
+              <%= button_to t('presenter.save_and_return.save'), '/', params: { page_slug:request.env['PATH_INFO'] }, method: :post, class: "govuk-button govuk-button--secondary", name: 'save_for_later_check_answers', value: 'true' %>
             <% end %>
           <% end %>
         </div>

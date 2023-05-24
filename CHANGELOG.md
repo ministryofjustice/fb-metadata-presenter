@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0] - 2023-05-22
+### Changed
+
+- Update Rails dependency to >= 7.0
+
 ## [2.20.1] - 2023-05-22
 ### Fixed
 
