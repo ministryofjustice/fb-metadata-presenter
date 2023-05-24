@@ -1,5 +1,4 @@
 module MetadataPresenter
-
   class PagesController < EngineController
     before_action :set_caching_header
 
@@ -34,7 +33,7 @@ module MetadataPresenter
     private
 
     def set_caching_header
-      response.headers["Cache-Control"] = "no-store"
+      response.headers['Cache-Control'] = 'no-store'
     end
   end
 end
