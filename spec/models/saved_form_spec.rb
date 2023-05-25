@@ -2,7 +2,7 @@ RSpec.describe MetadataPresenter::SavedForm, type: :model do
   describe 'populating necessary attributes' do
     let(:params) { { 'email' => 'email@email.com', 'saved_form' => { 'page_slug' => 'slug', 'secret_question' => 'some text' }, 'secret_answer' => 'answer' } }
     let(:session) { { user_id: 'idval', user_token: 'token', user_data: { 'field1' => 'answer' } } }
-    let(:service) { OpenStruct.new(service_slug: 'service_slug', version_id: '123') }
+    let(:service) { OpenStruct.new(version_id: '123') }
 
     it 'should populate from params' do
       subject.populate_param_values(params)
@@ -29,7 +29,6 @@ RSpec.describe MetadataPresenter::SavedForm, type: :model do
       subject.populate_param_values(params)
       subject.populate_service_values(service)
 
-      expect(subject.service_slug).to eq(service.service_slug)
       expect(subject.service_version).to eq(service.version_id)
 
       expect(subject.valid?).to eq(false)
