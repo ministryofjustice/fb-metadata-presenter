@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.1] - 2023-05-24
+### Added 
+ - Add in submission complete template, to display on back navigation from
+     confirmation page
+
 ## [3.0] - 2023-05-22
 ### Changed
 
