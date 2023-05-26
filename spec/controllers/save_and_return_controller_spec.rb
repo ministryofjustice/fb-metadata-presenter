@@ -14,7 +14,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
 
         params = { email: 'valid@example.com', secret_answer: 'secret stuff', saved_form: { page_slug: '/a-page', secret_question: 1 } }
 
-        service = OpenStruct.new(service_slug: 'service_slug', version_id: '4567')
+        service = OpenStruct.new(version_id: '4567')
         allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(service)
 
         post('/saved_forms', params:)
@@ -25,7 +25,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
         expect(session[:saved_form].page_slug).to eq(params[:saved_form][:page_slug])
         expect(session[:saved_form].secret_answer).to eq(params[:secret_answer])
         expect(session[:saved_form].secret_question).to eq(controller.text_for(params[:saved_form][:secret_question]))
-        expect(session[:saved_form].service_slug).to eq(service.service_slug)
+        expect(session[:saved_form].service_slug).to eq(params[:service_slug])
         expect(session[:saved_form].service_version).to eq(service.version_id)
         expect(session[:saved_form].user_id).to eq(session[:user_id])
         expect(session[:saved_form].user_token).to eq(session[:user_token])

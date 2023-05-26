@@ -21,7 +21,7 @@ module MetadataPresenter
                   :created_at,
                   :updated_at
 
-    validates :secret_question, :secret_answer, :service_slug, :page_slug, :service_version, :user_id, :user_token, presence: { message: 'Enter an answer for "%{attribute}"' }, allow_blank: false
+    validates :secret_question, :secret_answer, :page_slug, :service_version, :user_id, :user_token, presence: { message: 'Enter an answer for "%{attribute}"' }, allow_blank: false
 
     def initialize; end
 
@@ -38,7 +38,6 @@ module MetadataPresenter
     end
 
     def populate_service_values(service)
-      self.service_slug    = service.service_slug
       self.service_version = service.version_id
     end
 

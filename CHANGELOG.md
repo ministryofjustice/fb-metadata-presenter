@@ -7,8 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.2] - 2023-05-25
+### Changed
+ - Implementation of retrieving the service slug has changed, we now call the `service_slug_config`
+    method in the application controller.
+
 ## [3.0.1] - 2023-05-24
-### Added 
+### Added
  - Add in submission complete template, to display on back navigation from
      confirmation page
 

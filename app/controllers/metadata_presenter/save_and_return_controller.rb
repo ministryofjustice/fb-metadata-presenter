@@ -42,6 +42,7 @@ module MetadataPresenter
       @saved_form.secret_question = params['saved_form']['secret_question']
       @saved_form.populate_service_values(service)
       @saved_form.populate_session_values(session)
+      @saved_form.service_slug = service_slug
       if @saved_form.valid?
         # put in session until we have confirmed email address
         @saved_form.secret_question = @saved_form.secret_question_text
@@ -230,6 +231,12 @@ module MetadataPresenter
 
     def label_text(text)
       "<h2 class='govuk-heading-m'>#{text}</h2>"
+    end
+
+    private
+
+    def service_slug
+      @service_slug ||= service_slug_config
     end
   end
 end
