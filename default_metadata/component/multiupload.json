@@ -1,0 +1,28 @@
+{
+  "_id": "component.multiupload",
+  "_type": "upload",
+  "errors": {},
+  "label": "Question",
+  "hint": "Maximum file size is 7MB",
+  "name": "component-name",
+  "validation": {
+    "required": true,
+    "max_size": "7340032",
+    "virus_scan": true,
+    "accept": [
+      "text/csv",
+      "text/plain",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/msword",
+      "application/vnd.oasis.opendocument.spreadsheet",
+      "application/vnd.oasis.opendocument.text",
+      "application/pdf",
+      "application/rtf",
+      "application/csv",
+      "image/jpeg",
+      "image/png",
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    ]
+  }
+}
