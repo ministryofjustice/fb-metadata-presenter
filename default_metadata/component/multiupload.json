@@ -1,9 +1,9 @@
 {
   "_id": "component.multiupload",
-  "_type": "upload",
+  "_type": "multiupload",
   "errors": {},
-  "label": "Question",
-  "hint": "Maximum file size is 7MB",
+  "label": "Multiple File Upload",
+  "hint": "",
   "name": "component-name",
   "validation": {
     "required": true,
