@@ -1,3 +1,5 @@
+require 'govspeak'
+
 module MetadataPresenter
   module ApplicationHelper
     def main_title(component:, tag: :h1, classes: 'govuk-heading-xl')

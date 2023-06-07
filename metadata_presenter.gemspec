@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'kramdown', '>= 2.3.0'
   spec.add_dependency 'govspeak', '~> 7.1'
   spec.add_dependency 'rails', '>=7.0.0'
+  spec.add_dependency 'sassc-rails', '2.1.2'
   spec.add_dependency 'sprockets-rails'
   spec.add_dependency 'sprockets'
 
