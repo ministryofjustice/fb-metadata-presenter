@@ -19,7 +19,8 @@
                           class="fb-editable"
                           type="content"
                           default-content="<%= default_text('before_you_start') %>"
-                          content="<%= @page.before_you_start %>">
+                          content="<%= @page.before_you_start %>"
+                          data-fb-content-id="<%= "page[before_you_start]" %>">
                           <%= to_html(@page.before_you_start) %>
         </editable-content>
       <%- end %>

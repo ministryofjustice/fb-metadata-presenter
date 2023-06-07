@@ -3,7 +3,9 @@
                           class="fb-editable"
                           type="content"
                           default-content="<%= default_text('body') %>"
-                          content="<%= @page.body %>">
+                          content="<%= @page.body %>"
+                          data-fb-content-id="<%= "page[body]" %>"
+>
                           <%= to_html(@page.body) %>
-        </editable-content>
+  </editable-content>
 <%- end %>

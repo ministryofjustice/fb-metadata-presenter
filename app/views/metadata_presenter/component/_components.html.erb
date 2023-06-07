@@ -5,7 +5,8 @@
                       type="<%= component.type %>"
                       default-content="<%= default_text('content') %>"
                       content="<%= component.content %>"
-                      data-json="<%= component.to_json %>">
+                      data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
+                      data-config="<%= component.to_json %>">
         <%= to_html(component.content) %>
     </editable-content>
   <% else %>
