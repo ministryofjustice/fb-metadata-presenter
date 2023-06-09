@@ -121,7 +121,6 @@ module MetadataPresenter
     end
 
     def traverse_all_routes
-      Rails.logger.info('traversing all routes')
       # Always traverse the route from the start_from uuid. Defaulting to the
       # start page of the form unless otherwise specified.
       # Get all the potential routes from any branching points that exist.
@@ -454,7 +453,6 @@ module MetadataPresenter
     # Not easy to calculate exactly, aiming for a number that is bigger than
     # total possible routes but not too much bigger.
     def total_potential_routes
-      # @total_potential_routes = service.branches.sum { |branch| branch.conditionals.size + 1 } + 1
       total_conditionals = service.branches.sum { |branch| branch.conditionals.size + 1 }
       @total_potential_routes ||= total_conditionals * total_conditionals
     end
