@@ -121,12 +121,14 @@ module MetadataPresenter
     end
 
     def traverse_all_routes
-      Rails.logger.info("traversing all routes")
+      Rails.logger.info('traversing all routes')
       # Always traverse the route from the start_from uuid. Defaulting to the
       # start page of the form unless otherwise specified.
       # Get all the potential routes from any branching points that exist.
+      traversed_uuids = []
       route_from_start.traverse
       @routes.append(route_from_start)
+      traversed_uuids.concat(route_from_start.flow_uuids)
       routes_to_traverse = route_from_start.routes
       index = 0
       Rails.logger.info("Total potential routes: #{total_potential_routes}")
@@ -143,14 +145,19 @@ module MetadataPresenter
         route = routes_to_traverse.shift
         @routes.append(route)
 
-        # Every route exiting a branching point needs to be traversed and any
-        # additional routes from other branching points collected and then also
-        # traversed.
-        route.traverse 
-        routes_to_traverse.concat(route.routes)
+        # Traverse the route and add any nested routes to the list of routes to
+        # traverse.
+        # If the first flow_uuid in the route has already been traversed, then
+        # this route is looping back, so we don't need to traverse the nested routes.
+        route.traverse
+        unless traversed_uuids.include?(route.flow_uuids.first)
+          routes_to_traverse.concat(route.routes)
+        end
+        traversed_uuids.concat(route.flow_uuids)
 
         index += 1
       end
+      Rails.logger.info("Total routes traversed: #{index}")
     end
 
     def set_column_numbers
@@ -445,9 +452,10 @@ module MetadataPresenter
 
     # Calculate an upper limit to prevent infinite traversal
     # Not easy to calculate exactly, aiming for a number that is bigger than
-    # total possible routes but not too much bigger. 
+    # total possible routes but not too much bigger.
     def total_potential_routes
-      total_conditionals = service.branches.sum { |branch| branch.conditionals.size + 1 } 
+      # @total_potential_routes = service.branches.sum { |branch| branch.conditionals.size + 1 } + 1
+      total_conditionals = service.branches.sum { |branch| branch.conditionals.size + 1 }
       @total_potential_routes ||= total_conditionals * total_conditionals
     end
   end
