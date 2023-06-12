@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.3] - 2023-06-09
+### Changed
+ - Updated grid traversal to ensure traversal of all routes to fix bugs where
+     pages were appearing disconnected when they shouldn't be.
+
 ## [3.0.2] - 2023-05-25
 ### Changed
  - Implementation of retrieving the service slug has changed, we now call the `service_slug_config`
