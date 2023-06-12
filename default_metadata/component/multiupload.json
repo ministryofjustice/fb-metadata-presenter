@@ -2,9 +2,10 @@
   "_id": "component.multiupload",
   "_type": "multiupload",
   "errors": {},
-  "label": "Multiple File Upload",
+  "label": "Question",
   "hint": "",
   "name": "component-name",
+  "max_files": "1",
   "validation": {
     "required": true,
     "max_size": "7340032",

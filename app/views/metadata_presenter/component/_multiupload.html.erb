@@ -1,7 +1,6 @@
 <% if answered?(component.id) %>
   <h1 class="govuk-heading-xl"><%= input_title %></h1>
   <span class="govuk-hint" id="answers-dog-picture-upload-1-hint" data-fb-default-text="<%= default_text('upload_hint') %>">
-    <%= component.hint.present? ? component.hint : default_text('upload_hint') %>
   </span>
   <p><%= @page_answers.send(component.id)['original_filename'] %></p>
 
@@ -11,12 +10,8 @@
 <% else %>
   <%= f.govuk_file_field component.id.to_sym,
     label: { text: input_title },
-    hint: {
-        data: { "fb-default-text" => default_text('upload_hint') },
-        text: component.hint.present? ? component.hint : default_text('upload_hint')
-      },
     accept: component.validation['accept'],
     disabled: editable?
   %>
 <% end %>
-<p>You can add up to 3 files (maximum 7MB per file)</p>
+<p><%= multiupload_files_remaining %></p>

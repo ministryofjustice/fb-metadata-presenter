@@ -73,6 +73,10 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     VALIDATION_STRING_LENGTH_THRESHOLD
   end
 
+  def max_files
+    metadata.max_files.presence || '0'
+  end
+
   private
 
   def validation_bundle_key

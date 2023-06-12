@@ -41,6 +41,13 @@ en:
       payment_enabled: You still need to pay
       continue_to_pay_button: Continue to pay
       application_complete: 'Application complete'
+    questions:
+      multiupload:
+        answered_singular: 'You can add 1 more file (maximum 7MB)'
+        answered_plural: 'You can add %{max} more files (maximum 7MB)'
+        singular: 'You can add 1 more file (maximum 7MB)'
+        plural: 'You can add up to %{max} files (maximum 7MB)'
+        none: "You can't add any more files. Remove a file if you need to add a different one."
     save_and_return:
       save: 'Save for later'
       show:

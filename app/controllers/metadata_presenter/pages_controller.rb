@@ -29,6 +29,26 @@ module MetadataPresenter
       TraversedPages.new(service, load_user_data, @page).all
     end
 
+    def multiupload_files_remaining
+      byebug
+      max_files = @page.components.select {|c| c.type == 'multiupload' }.first['max_files'].to_i
+      answered = true
+      if(max_files == 1)
+        if(answered)
+          I18n.t('presenter.questions.multiupload.answered_singular')
+        else
+          I18n.t('presenter.questions.multiupload.singular')
+        end
+      else
+        if(answered)
+          I18n.t('presenter.questions.multiupload.answered_plural', max: max_files)
+        else
+          I18n.t('presenter.questions.multiupload.plural', max: max_files)
+        end
+      end
+    end
+    helper_method :multiupload_files_remaining
+
     private
 
     def set_caching_header
