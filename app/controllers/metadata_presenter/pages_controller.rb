@@ -30,7 +30,7 @@ module MetadataPresenter
     end
 
     def multiupload_files_remaining
-      byebug
+      # byebug
       max_files = @page.components.select {|c| c.type == 'multiupload' }.first['max_files'].to_i
       answered = true
       if(max_files == 1)
