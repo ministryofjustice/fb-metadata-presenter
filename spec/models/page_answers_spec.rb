@@ -151,26 +151,65 @@ RSpec.describe MetadataPresenter::PageAnswers do
 
         context 'when component type is upload' do
           let(:page) { service.find_page_by_url('dog-picture') }
-          let(:upload_file) do
-            Rack::Test::UploadedFile.new(
-              './spec/fixtures/script.gif', 'image/gif'
-            )
-          end
           let(:answers) do
             { 'dog-picture_upload_1' => upload_file }
           end
           let(:expected_answer) do
             {
-              'original_filename' => 'script.gif',
-              'content_type' => 'image/gif',
+              'original_filename' => expected_filename,
+              'content_type' => expected_mimetype,
               'tempfile' => upload_file.path
             }
           end
 
-          it 'returns file details hash' do
-            expect(
-              page_answers.send('dog-picture_upload_1')
-            ).to include(expected_answer)
+          context 'when filename should not be renamed' do
+            let(:upload_file) do
+              Rack::Test::UploadedFile.new(
+                './spec/fixtures/script.gif', 'image/gif'
+              )
+            end
+            let(:expected_filename) { 'script.gif' }
+            let(:expected_mimetype) { 'image/gif' }
+
+            it 'returns file details hash' do
+              expect(
+                page_answers.send('dog-picture_upload_1')
+              ).to include(expected_answer)
+            end
+          end
+
+          context 'when file extension should be renamed' do
+            context 'when file extension is jfif' do
+              let(:upload_file) do
+                Rack::Test::UploadedFile.new(
+                  './spec/fixtures/sample.jfif', 'image/jpeg'
+                )
+              end
+              let(:expected_filename) { 'sample.jpeg' }
+              let(:expected_mimetype) { 'image/jpeg' }
+
+              it 'returns file details hash' do
+                expect(
+                  page_answers.send('dog-picture_upload_1')
+                ).to include(expected_answer)
+              end
+            end
+
+            context 'when file extension is jpg' do
+              let(:upload_file) do
+                Rack::Test::UploadedFile.new(
+                  './spec/fixtures/quokka.jpg', 'image/jpeg'
+                )
+              end
+              let(:expected_filename) { 'quokka.jpeg' }
+              let(:expected_mimetype) { 'image/jpeg' }
+
+              it 'returns file details hash' do
+                expect(
+                  page_answers.send('dog-picture_upload_1')
+                ).to include(expected_answer)
+              end
+            end
           end
         end
       end
