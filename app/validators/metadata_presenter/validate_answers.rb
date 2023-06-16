@@ -20,6 +20,7 @@ module MetadataPresenter
 
     def validators
       components.map { |component|
+      # byebug
         component_validations(component).map do |key|
           "MetadataPresenter::#{key.classify}Validator".constantize.new(
             **{

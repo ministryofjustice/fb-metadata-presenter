@@ -8,8 +8,9 @@ module MetadataPresenter
 
       if @page
         load_autocomplete_items
-
+        # byebug
         @page_answers = PageAnswers.new(@page, @user_data)
+        byebug
         render template: @page.template
       else
         not_found
