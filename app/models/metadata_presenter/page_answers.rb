@@ -87,20 +87,14 @@ module MetadataPresenter
     end
 
     def update_filename(answer)
-      if jfif_or_jpg_extension?(answer)
-        new_filename = answer.rpartition('.')
-        new_filename.last.replace('jpeg')
-        new_filename.join
-      else
-        answer
-      end
+      jfif_or_jpg_extension?(answer) ? "#{File.basename(answer, '.*')}.jpeg" : answer
     end
 
     def jfif_or_jpg_extension?(answer)
       return false if answer.nil?
 
-      file_extension = answer.rpartition('.').last
-      %w[jfif jpg].include?(file_extension)
+      file_extension = File.extname(answer)
+      %w[.jfif .jpg].include?(file_extension)
     end
   end
 end
