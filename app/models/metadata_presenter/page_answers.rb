@@ -43,10 +43,10 @@ module MetadataPresenter
       return {} unless file_details
 
       if file_details.is_a?(Hash) || file_details.is_a?(ActionController::Parameters)
-        file_details.merge('original_filename' => sanitize(filename(file_details['original_filename'])))
+        file_details.merge('original_filename' => sanitize(filename(update_filename(file_details['original_filename']))))
       else
         {
-          'original_filename' => sanitize(filename(file_details.original_filename)),
+          'original_filename' => sanitize(filename(update_filename(file_details.original_filename))),
           'content_type' => file_details.content_type,
           'tempfile' => file_details.tempfile.path.to_s
         }
@@ -84,6 +84,17 @@ module MetadataPresenter
       end
 
       filename
+    end
+
+    def update_filename(answer)
+      jfif_or_jpg_extension?(answer) ? "#{File.basename(answer, '.*')}.jpeg" : answer
+    end
+
+    def jfif_or_jpg_extension?(answer)
+      return false if answer.nil?
+
+      file_extension = File.extname(answer)
+      %w[.jfif .jpg].include?(file_extension)
     end
   end
 end
