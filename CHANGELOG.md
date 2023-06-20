@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.4] - 2023-06-20
+### Changed
+ - Ensure filenames with extension `jfif` or `jpg` use `jpeg` when uploaded. This is to match the file that is attached on submission/confirmation emails.
+
 ## [3.0.3] - 2023-06-09
 ### Changed
  - Updated grid traversal to ensure traversal of all routes to fix bugs where
