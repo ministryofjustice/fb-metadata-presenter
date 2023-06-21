@@ -251,7 +251,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
     end
 
     context 'page slug' do
-      let(:correct_slug) { 'a-cool-page' }
+      let(:correct_slug) { '/a-cool-page' }
 
       it 'returns session slug if set during return flow' do
         allow(controller).to receive(:session).and_return({ 'returning_slug' => correct_slug })
