@@ -1,17 +1,40 @@
+<h1 class="govuk-heading-xl"><%= input_title %></h1>
+
 <% if answered?(component.id) %>
-  <h1 class="govuk-heading-xl"><%= input_title %></h1>
+  <h1 class="govuk-heading-s"><%= uploads_count %></h1>
   <span class="govuk-hint" id="answers-dog-picture-upload-1-hint" data-fb-default-text="<%= default_text('upload_hint') %>">
   </span>
+  <dl class="fb-block fb-block-answers govuk-summary-list">
     <% @page_answers.send(component.id)[component.id].compact.each do |previous_file| %>
-      <p><%= previous_file['original_filename'] %> <%= link_to 'Remove file', remove_file_path(component.id), class: 'govuk-link' %></p>
+    
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__value">
+          <%= previous_file['original_filename'] %>
+        </dt>
+        <dd class="govuk-summary-list__actions">
+          <%= link_to 'Remove file', remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link' %>
+        </dd>
+      </div>
     <% end %>
-
-
+  <dl>
 <% end %>
+
+<% if uploads_remaining.positive? %>
   <%= f.govuk_file_field component.id.to_sym,
-    label: { text: input_title },
+    label: { hidden: true },
+    hint: {
+      data: { "fb-default-text" => default_text('upload_hint') },
+      text: component.hint.present? ? component.hint : default_text('upload_hint')
+    },
     accept: component.validation['accept'],
     disabled: editable?
   %>
+  <% if editor_preview? || editable? %>
+
+    <%= f.submit t('presenter.questions.multiupload.add_another'), method: :post, class: "govuk-button govuk-button--secondary", name: 'multifile', disabled: true %>
+  <% else %>
+    <%= f.submit t('presenter.questions.multiupload.add_another'), method: :post, class: "govuk-button govuk-button--secondary", name: 'multifile', value: t('presenter.questions.multiupload.add_another') %>
+  <% end %>
+<% end %>
 
 <p><%= multiupload_files_remaining %></p>

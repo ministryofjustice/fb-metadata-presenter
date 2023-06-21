@@ -84,6 +84,10 @@ module MetadataPresenter
       file_hash['original_filename']
     end
 
+    def multiupload(multifile_hash)
+      multifile_hash[component.id].map { |i| i['original_filename'] }.join(', ')
+    end
+
     def autocomplete(value)
       JSON.parse(value)['text']
     end

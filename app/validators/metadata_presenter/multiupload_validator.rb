@@ -2,8 +2,8 @@ module MetadataPresenter
   class MultiuploadValidator < BaseValidator
     def invalid_answer?
       # TODO: This should be checking if out of bounds of max files?
-      # user_answer.error_name == error_name
-      false
+      user_answer.error_name == error_name 
+      byebug
     end
 
     def user_answer

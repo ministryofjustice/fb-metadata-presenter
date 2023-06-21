@@ -641,7 +641,8 @@
               "application/csv"
             ],
             "max_size": 7340032,
-            "virus_scan": true
+            "virus_scan": true,
+            "multiupload": true
           }
         }
       ]

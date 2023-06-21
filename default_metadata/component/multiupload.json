@@ -10,6 +10,7 @@
     "required": true,
     "max_size": "7340032",
     "virus_scan": true,
+    "multiupload": true,
     "accept": [
       "text/csv",
       "text/plain",

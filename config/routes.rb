@@ -7,6 +7,7 @@ MetadataPresenter::Engine.routes.draw do
   # We are not adding rails ujs to the editor app so we need to make it
   # as get verb.
   get '/reserved/file/:component_id', to: 'file#destroy', as: :remove_file
+  get '/reserved/file/:component_id/:file_uuid', to: 'file#remove_multifile', as: :remove_multifile
 
   get 'session/expired', to: 'session#expired'
   get 'session/complete', to: 'session#complete'
