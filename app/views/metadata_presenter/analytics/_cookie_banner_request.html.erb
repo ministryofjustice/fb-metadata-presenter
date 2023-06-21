@@ -1,5 +1,5 @@
-<div class="govuk-cookie-banner" id="govuk-cookie-banner" data-nosnippet role="region" aria-label="<%= t('presenter.analytics.heading', service_name: service.service_name) %>">
-  <div class="govuk-cookie-banner__message govuk-width-container" id="govuk-cookie-banner-message">
+<div class="govuk-cookie-banner" id="govuk-cookie-banner" data-nosnippet role="region" aria-label="<%= t('presenter.analytics.heading', service_name: service.service_name) %>" data-module="cookie-banner">
+  <div class="govuk-cookie-banner__message govuk-width-container" id="govuk-cookie-banner-message" data-cookie-banner-element="message">
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
@@ -14,11 +14,11 @@
       </div>
     </div>
 
-    <div class="govuk-button-group">
-      <button type="button" class="govuk-button" data-module="govuk-button" onclick='analytics.accept("<%= analytics_cookie_name %>")'>
+    <div class="govuk-button-group" >
+      <button id="cookies-accept" type="button" class="govuk-button" data-module="govuk-button" data-cookie-banner-element="accept-button" data-cookie-name="<%= analytics_cookie_name %>">
         <%= t('presenter.analytics.accept') %>
       </button>
-      <button type="button" class="govuk-button" data-module="govuk-button" onclick='analytics.reject("<%= analytics_cookie_name %>")'>
+      <button id="cookies-reject" type="button" class="govuk-button" data-module="govuk-button" data-cookie-banner-element="reject-button" data-cookie-name="<%= analytics_cookie_name %>">
         <%= t('presenter.analytics.reject') %>
       </button>
       <a class="govuk-link" href="/cookies"><%= t('presenter.analytics.view_cookies') %></a>
