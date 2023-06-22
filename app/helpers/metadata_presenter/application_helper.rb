@@ -20,5 +20,16 @@ module MetadataPresenter
     def default_text(property)
       MetadataPresenter::DefaultText[property]
     end
+
+    def default_title(component_type)
+      MetadataPresenter::DefaultMetadata["component.#{component_type}"]&.[]('label') ||
+        MetadataPresenter::DefaultMetadata["component.#{component_type}"]&.[]('legend')
+    end
+
+    def default_item_title(component_type)
+      return unless %w[checkboxes radios].include?(component_type)
+
+      MetadataPresenter::DefaultMetadata["component.#{component_type}"]['items']&.first&.[]('label')
+    end
   end
 end

@@ -14,7 +14,9 @@
          id="<%= component.id %>"
          data-fb-content-type="<%= component.type %>"
          data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
-         data-fb-content-data="<%= component.to_json %>">
+         data-fb-content-data="<%= component.to_json %>"
+         data-fb-default-value="<%= default_title(component.type) %>"
+         data-fb-default-item-value="<%= default_item_title(component.type) %>">
 
          <%= render partial: component, locals: {
            f: f,
