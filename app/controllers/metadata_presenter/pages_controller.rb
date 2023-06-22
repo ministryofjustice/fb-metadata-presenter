@@ -5,7 +5,7 @@ module MetadataPresenter
     def show
       @user_data = load_user_data # method signature
       @page ||= service.find_page_by_url(request.env['PATH_INFO'])
-      # byebug
+
       if @page
         load_autocomplete_items
 
@@ -30,30 +30,27 @@ module MetadataPresenter
     end
 
     def multiupload_files_remaining
-      component = @page.components.select {|c| c.type == 'multiupload' }.first
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
       answers = @user_data.keys.include?(component.id) ? @user_data.find(component.id).first : []
-      max_files = component['max_files'].to_i
 
-      if(uploads_remaining == 0)
+      if uploads_remaining.zero?
         I18n.t('presenter.questions.multiupload.none')
-      elsif(uploads_remaining == 1)
-        if(answers.present?)
+      elsif uploads_remaining == 1
+        if answers.present?
           I18n.t('presenter.questions.multiupload.answered_singular')
         else
           I18n.t('presenter.questions.multiupload.singular')
         end
+      elsif answers.present?
+        I18n.t('presenter.questions.multiupload.answered_plural', num: uploads_remaining)
       else
-        if(answers.present?)
-          I18n.t('presenter.questions.multiupload.answered_plural', num: uploads_remaining)
-        else
-          I18n.t('presenter.questions.multiupload.plural', num: uploads_remaining)
-        end
+        I18n.t('presenter.questions.multiupload.plural', num: uploads_remaining)
       end
     end
     helper_method :multiupload_files_remaining
 
     def uploads_remaining
-      component = @page.components.select {|c| c.type == 'multiupload' }.first
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
       max_files = component['max_files'].to_i
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
       max_files - answers.count
@@ -61,7 +58,7 @@ module MetadataPresenter
     helper_method :uploads_remaining
 
     def uploads_count
-      component = @page.components.select {|c| c.type == 'multiupload' }.first
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
 
       answers.count == 1 ? I18n.t('presenter.questions.multiupload.answered_count_singular') : I18n.t('presenter.questions.multiupload.answered_count_plural', num: answers.count)

@@ -43,6 +43,7 @@ module MetadataPresenter
       file_details = answers[component_id.to_s]
 
       return {} unless file_details
+
       if file_details.is_a?(Hash) || file_details.is_a?(ActionController::Parameters)
         file_details.merge('original_filename' => sanitize(filename(file_details['original_filename'])))
       else
@@ -58,7 +59,7 @@ module MetadataPresenter
       file_details = answers[component_id.to_s] unless answers.is_a?(MetadataPresenter::MultiUploadAnswer)
       return nil if file_details.nil? && answers.nil?
 
-      if(file_details.is_a?(Hash))
+      if file_details.is_a?(Hash)
         presentable = MetadataPresenter::MultiUploadAnswer.new
         presentable.key = component_id.to_s
         presentable.previous_answers = [file_details]
@@ -66,7 +67,7 @@ module MetadataPresenter
       end
 
       if answers == {}
-        return 
+        return
       end
 
       if answers.is_a?(Hash)
@@ -83,14 +84,14 @@ module MetadataPresenter
 
       if answers.incoming_answer.present? && answers.incoming_answer[component_id].is_a?(ActionDispatch::Http::UploadedFile)
         answers.incoming_answer = {
-            'original_filename' => sanitize(filename(answers.incoming_answer[component_id].original_filename)),
-            'content_type' => answers.incoming_answer[component_id].content_type,
-            'tempfile' => answers.incoming_answer[component_id].tempfile.path.to_s,
-            'uuid' => SecureRandom.uuid
-          }
+          'original_filename' => sanitize(filename(answers.incoming_answer[component_id].original_filename)),
+          'content_type' => answers.incoming_answer[component_id].content_type,
+          'tempfile' => answers.incoming_answer[component_id].tempfile.path.to_s,
+          'uuid' => SecureRandom.uuid
+        }
       end
 
-      return answers
+      answers
     end
 
     def date_answer(component_id)

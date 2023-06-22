@@ -4,7 +4,7 @@ module MetadataPresenter
 
     def create
       @previous_answers = reload_user_data.deep_dup
-      # byebug
+
       @page_answers = PageAnswers.new(page, incoming_answer, autocomplete_items(page.components))
       if params[:save_for_later].present?
         save_user_data
@@ -16,21 +16,17 @@ module MetadataPresenter
 
       if @page_answers.validate_answers
         save_user_data # method signature
-        # byebug
+
         # if adding another file in multi upload, redirect back to referrer
-        if(params[:multifile])
-          if(@page.metadata.components.any?{ |e| e['_type'] == 'multiupload' })
-          # byebug
-            redirect_back(fallback_location: root_path) and return
-          end
+        if params[:multifile] && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
+          redirect_back(fallback_location: root_path) and return
         end
+
         redirect_to_next_page
       else
-        if(params[:multifile])
-          if(@page.metadata.components.any?{ |e| e['_type'] == 'multiupload' })
+        if params[:multifile] && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
           @user_data = @previous_answers
           render template: @page.template, status: :unprocessable_entity and return
-          end
         end
         render_validation_error
       end
@@ -45,30 +41,27 @@ module MetadataPresenter
     end
 
     def multiupload_files_remaining
-      component = @page.components.select {|c| c.type == 'multiupload' }.first
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
       answers = @user_data.keys.include?(component.id) ? @user_data.find(component.id).first : []
-      max_files = component['max_files'].to_i
 
-      if(uploads_remaining == 0)
+      if uploads_remaining.zero?
         I18n.t('presenter.questions.multiupload.none')
-      elsif(uploads_remaining == 1)
-        if(answers.present?)
+      elsif uploads_remaining == 1
+        if answers.present?
           I18n.t('presenter.questions.multiupload.answered_singular')
         else
           I18n.t('presenter.questions.multiupload.singular')
         end
+      elsif answers.present?
+        I18n.t('presenter.questions.multiupload.answered_plural', num: uploads_remaining)
       else
-        if(answers.present?)
-          I18n.t('presenter.questions.multiupload.answered_plural', num: uploads_remaining)
-        else
-          I18n.t('presenter.questions.multiupload.plural', num: uploads_remaining)
-        end
+        I18n.t('presenter.questions.multiupload.plural', num: uploads_remaining)
       end
     end
     helper_method :multiupload_files_remaining
 
     def uploads_remaining
-      component = @page.components.select {|c| c.type == 'multiupload' }.first
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
       max_files = component['max_files'].to_i
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
       max_files - answers.count
@@ -76,7 +69,7 @@ module MetadataPresenter
     helper_method :uploads_remaining
 
     def uploads_count
-      component = @page.components.select {|c| c.type == 'multiupload' }.first
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
 
       answers.count == 1 ? I18n.t('presenter.questions.multiupload.answered_count_singular') : I18n.t('presenter.questions.multiupload.answered_count_plural', num: answers.count)
@@ -116,7 +109,7 @@ module MetadataPresenter
     end
 
     def incoming_answer
-      if(multiupload?)
+      if multiupload?
         multiupload_answer = MultiUploadAnswer.new
         multiupload_answer.key = Array(page.components).first.id
         multiupload_answer.previous_answers = @previous_answers[Array(page.components).first.id]

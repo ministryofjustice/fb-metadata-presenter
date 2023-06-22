@@ -4,33 +4,34 @@ module MetadataPresenter
 
     def to_h
       {
-        self.key => previous_answers_value
+        key => previous_answers_value
       }
     end
 
     def previous_answers_value
-      if(self.previous_answers.nil?)
-        return nil if self.incoming_answer.nil?
-        return [self.incoming_answer]
-      else
-        if(self.previous_answers.is_a?(Array))
-          if(self.incoming_answer.nil?)
-            return self.previous_answers.reject(&:blank?)
-          end
-          return self.previous_answers if self.previous_answers.find { |answer| answer['original_filename'] == self.incoming_answer['original_filename'] }.present?
-          return self.previous_answers.push(self.incoming_answer)
-        else
-          if(self.incoming_answer.nil?)
-            return [self.previous_answers.reject(&:blank?)]
-          end
-          return [self.previous_answers, self.incoming_answer]
+      if previous_answers.nil?
+        return nil if incoming_answer.nil?
+
+        [incoming_answer]
+      elsif previous_answers.is_a?(Array)
+        if incoming_answer.nil?
+          return previous_answers.reject(&:blank?)
         end
+        return previous_answers if previous_answers.find { |answer| answer['original_filename'] == incoming_answer['original_filename'] }.present?
+
+        previous_answers.push(incoming_answer)
+      else
+        if incoming_answer.nil?
+          return [previous_answers.reject(&:blank?)]
+        end
+
+        [previous_answers, incoming_answer]
       end
     end
 
     def from_h(input)
       self.key = input.keys[0]
-      self.previous_answers = input[self.key]
+      self.previous_answers = input[key]
     end
   end
 end
