@@ -66,7 +66,7 @@ module MetadataPresenter
         return presentable
       end
 
-      if answers == {}
+      if answers.blank?
         return
       end
 
