@@ -4,7 +4,8 @@
 
       <h1 class="fb-editable govuk-heading-xl"
           data-fb-content-type="element"
-          data-fb-content-id="page[heading]">
+          data-fb-content-id="page[heading]"
+          data-fb-default-value="<%= default_page_title(@page.type) %>">
         <%= @page.heading %>
       </h1>
 

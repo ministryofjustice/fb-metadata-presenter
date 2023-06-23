@@ -31,5 +31,9 @@ module MetadataPresenter
 
       MetadataPresenter::DefaultMetadata["component.#{component_type}"]['items']&.first&.[]('label')
     end
+
+    def default_page_title(type)
+      MetadataPresenter::DefaultMetadata[type.to_s]&.[]('heading')
+    end
   end
 end
