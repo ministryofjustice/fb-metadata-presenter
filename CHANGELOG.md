@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.8] - 2023-06-27
+### Changed
+ - Replace inline event handlers with event listeners to meet CSP requirements
+
 ## [3.0.7] - 2023-06-26
 ### Changed
  - Update Editable components to use custom element for simpler progressive
