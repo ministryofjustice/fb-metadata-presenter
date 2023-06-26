@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.6] - 2023-06-22
+### Added
+ - Update Editable Content areas to use a custom element - a more declarative and
+     native solution. Works as an editor when JS is present, and a simple html
+     output when the custom element is not upgraded by JS.
+
 ## [3.0.5] - 2023-06-21
 ### Changed
  - Protect against XSS (reflected) attack.

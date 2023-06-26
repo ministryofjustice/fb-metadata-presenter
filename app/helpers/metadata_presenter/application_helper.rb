@@ -1,3 +1,5 @@
+require 'govspeak'
+
 module MetadataPresenter
   module ApplicationHelper
     def main_title(component:, tag: :h1, classes: 'govuk-heading-xl')
@@ -12,7 +14,7 @@ module MetadataPresenter
     #   <%=to_html '# Some markdown' %>
     #
     def to_html(text)
-      Kramdown::Document.new(text).to_html.html_safe
+      Govspeak::Document.new(text).to_html.html_safe
     end
 
     def default_text(property)

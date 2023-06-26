@@ -1,8 +1,10 @@
 <% if @page.body %>
-  <div class="fb-editable"
-        data-fb-content-id="page[body]"
-        data-fb-content-type="content"
-        data-fb-default-text="<%= default_text('body') %>">
+  <editable-content id="<%= "page[body]" %>"
+                          class="fb-editable"
+                          type="content"
+                          default-content="<%= default_text('body') %>"
+                          content="<%= @page.body %>"
+                          data-fb-content-id="<%= "page[body]" %>">
     <%= to_html(@page.body) %>
-  </div>
+  </editable-content>
 <%- end %>
