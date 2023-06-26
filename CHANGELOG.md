@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.8] - 2023-06-26
+### Changed
+ - Revert back to using `|=` in the grid route traversal calculations.
+    This was the original way we calculated the grid and produces the same result as the`concat` method.
+
 ## [3.0.7] - 2023-06-26
 ### Changed
  - Update Editable components to use custom element for simpler progressive
