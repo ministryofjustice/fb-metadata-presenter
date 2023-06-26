@@ -1,7 +1,7 @@
-<h1 class="govuk-heading-xl"><%= input_title %></h1>
+<label class="govuk-heading-xl"><%= input_title %></label>
 
 <% if answered?(component.id) %>
-  <h1 class="govuk-heading-s"><%= uploads_count %></h1>
+  <p class="govuk-heading-s"><%= uploads_count %></p>
   <span class="govuk-hint" id="answers-dog-picture-upload-1-hint" data-fb-default-text="<%= default_text('upload_hint') %>">
   </span>
   <dl class="fb-block fb-block-answers govuk-summary-list">
