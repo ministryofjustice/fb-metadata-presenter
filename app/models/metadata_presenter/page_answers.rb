@@ -60,20 +60,34 @@ module MetadataPresenter
       return nil if file_details.nil? && answers.nil?
 
       if file_details.is_a?(Hash)
+          # when referencing a single previous answer but no incoming new answer
         presentable = MetadataPresenter::MultiUploadAnswer.new
         presentable.key = component_id.to_s
         presentable.previous_answers = [file_details]
         return presentable
       end
 
+      if file_details.is_a?(Array)
+        # when referencing multiple previous answers but no incoming new answer
+        presentable = MetadataPresenter::MultiUploadAnswer.new
+        presentable.key = component_id.to_s
+        presentable.previous_answers = file_details
+        return presentable
+      end
+
       if answers.blank?
-        return
+        return nil
       end
 
       if answers.is_a?(Hash)
+        if answers[component_id].blank?
+          return {}
+        end
+
         if answers[component_id].is_a?(Array)
           answers[component_id].each { |answer| answer['original_filename'] = sanitize(filename(answer['original_filename'])) }
         end
+
         answers[component_id] = answers[component_id].reject { |a| a['original_filename'].blank? }
         return answers
       end
