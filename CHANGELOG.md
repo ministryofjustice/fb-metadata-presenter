@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.7] - 2023-06-26
+### Changed
+ - Update Editable components to use custom element for simpler progressive
+     enhancement and refactoring & improving in the editor.
+
 ## [3.0.6] - 2023-06-22
 ### Added
  - Update Editable Content areas to use a custom element - a more declarative and

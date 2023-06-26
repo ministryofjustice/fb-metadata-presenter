@@ -19,7 +19,8 @@
        <% if @page.heading %>
          <h1 class="fb-editable govuk-heading-xl"
              data-fb-content-id="page[heading]"
-             data-fb-content-type="element">
+             data-fb-content-type="element"
+             data-fb-default-value="<%= t("presenter.footer.#{@page.id.gsub!('page.','')}.heading") %>">
            <%= @page.heading %>
          </h1>
        <% end %>
