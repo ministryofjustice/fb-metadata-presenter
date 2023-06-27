@@ -179,7 +179,7 @@ module MetadataPresenter
       end
     end
 
-    def uploaded_file(answer, component)
+    def multiuploaded_file(answer, component)
       if answer.present?
         @page_answers.answers[component.id].last = answer
         MetadataPresenter::UploadedFile.new(
