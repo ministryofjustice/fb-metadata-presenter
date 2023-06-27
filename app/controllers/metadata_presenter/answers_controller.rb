@@ -13,7 +13,7 @@ module MetadataPresenter
       end
 
       upload_files if upload?
-      upload_files if multiupload?
+      upload_multiupload_new_files if multiupload?
 
       if @page_answers.validate_answers
         save_user_data # method signature
@@ -146,9 +146,42 @@ module MetadataPresenter
       end
     end
 
+    def upload_multiupload_new_files
+      user_data = load_user_data
+      @page_answers.page.multiupload_components.each do |component|
+        byebug
+        previous_answers = user_data[component.id]
+        # original_filename = answer.nil? ? @page_answers.send(component.id)['original_filename'] : answer['original_filename']
+
+        # if original_filename.present?
+        #   @page_answers.count = update_count_matching_filenames(original_filename, user_data)
+        # end
+
+
+        @page_answers.uploaded_files.push(multiuploaded_file(previous_answers, component))
+      end
+    end
+
     def uploaded_file(answer, component)
       if answer.present?
         @page_answers.answers[component.id] = answer
+        MetadataPresenter::UploadedFile.new(
+          file: @page_answers.send(component.id),
+          component:
+        )
+      else
+        FileUploader.new(
+          session:,
+          page_answers: @page_answers,
+          component:,
+          adapter: upload_adapter
+        ).upload
+      end
+    end
+
+    def uploaded_file(answer, component)
+      if answer.present?
+        @page_answers.answers[component.id].last = answer
         MetadataPresenter::UploadedFile.new(
           file: @page_answers.send(component.id),
           component:
