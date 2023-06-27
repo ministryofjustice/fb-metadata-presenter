@@ -149,7 +149,7 @@ module MetadataPresenter
     def upload_multiupload_new_files
       user_data = load_user_data
       @page_answers.page.multiupload_components.each do |component|
-        byebug
+        # byebug
         previous_answers = user_data[component.id]
         # original_filename = answer.nil? ? @page_answers.send(component.id)['original_filename'] : answer['original_filename']
 
