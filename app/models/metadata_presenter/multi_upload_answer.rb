@@ -17,9 +17,9 @@ module MetadataPresenter
         if incoming_answer.nil?
           return previous_answers.reject(&:blank?)
         end
-        return previous_answers if previous_answers.find { |answer| answer['original_filename'] == incoming_answer['original_filename'] }.present?
+        return previous_answers.reject(&:blank?) if previous_answers.find { |answer| answer['original_filename'] == incoming_answer['original_filename'] }.present?
 
-        previous_answers.push(incoming_answer)
+        previous_answers.reject(&:blank?).push(incoming_answer)
       else
         if incoming_answer.nil?
           return [previous_answers.reject(&:blank?)]

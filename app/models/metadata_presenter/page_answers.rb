@@ -71,7 +71,7 @@ module MetadataPresenter
         # when referencing multiple previous answers but no incoming new answer
         presentable = MetadataPresenter::MultiUploadAnswer.new
         presentable.key = component_id.to_s
-        presentable.previous_answers = file_details
+        presentable.previous_answers = file_details.reject { |f| f['original_filename'].blank? }
         return presentable
       end
 
@@ -81,7 +81,7 @@ module MetadataPresenter
 
       if answers.is_a?(Hash)
         if answers[component_id].blank?
-          return {}
+          return
         end
 
         if answers[component_id].is_a?(Array)

@@ -12,7 +12,8 @@ module MetadataPresenter
         redirect_to save_path(page_slug: params[:page_slug]) and return
       end
 
-      upload_files if upload? || multiupload?
+      upload_files if upload?
+      upload_files if multiupload?
 
       if @page_answers.validate_answers
         save_user_data # method signature
