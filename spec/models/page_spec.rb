@@ -359,4 +359,56 @@ RSpec.describe MetadataPresenter::Page do
       expect(expected_items.first.value).to eq('123')
     end
   end
+
+  describe '#contains_placeholders?' do
+    context 'when page has placeholders' do
+      subject(:page) { service.find_page_by_url('privacy') }
+
+      before do
+        allow(page).to receive(:placeholders).and_return(['[insert your organisation name]', '[your organisation]'])
+      end
+
+      it 'returns true' do
+        expect(page.contains_placeholders?).to be true
+      end
+    end
+
+    context 'when page has no placeholders' do
+      subject(:page) { service.find_page_by_url('countries') }
+
+      before do
+        allow(page).to receive(:placeholders).and_return([])
+      end
+
+      it 'returns false' do
+        expect(page.contains_placeholders?).to be false
+      end
+    end
+  end
+
+  describe '#placeholders' do
+    context 'when placeholders key exists' do
+      subject(:page) { service.find_page_by_url('privacy') }
+
+      before do
+        allow(I18n).to receive(:t).with('presenter.footer.privacy.placeholders', raise: true).and_return(['[insert your organization name]', '[your organisation]'])
+      end
+
+      it 'returns placeholders from translations' do
+        expect(page.placeholders).to eq ['[insert your organization name]', '[your organisation]']
+      end
+    end
+
+    context 'when placeholders key doesn\'t exist' do
+      subject(:page) { service.find_page_by_url('cookies') }
+
+      before do
+        allow(I18n).to receive(:t).with('presenter.footer.cookies.placeholders', raise: true).and_raise(I18n::MissingTranslationData.new('en', 'presenter.footer.privacy.placeholders'))
+      end
+
+      it 'returns placeholders from translations' do
+        expect(page.placeholders).to eq []
+      end
+    end
+  end
 end
