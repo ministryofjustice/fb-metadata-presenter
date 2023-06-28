@@ -1,7 +1,7 @@
 <!-- Form Owner Google Analytics 4 -->
 <% if Rails.application.config.respond_to?(:global_ga4) %>
   <%# Global Google Analytics (GA4) should be included before this point so we only need a config setting %>
-  <script>
+  <script nonce=<%= request.content_security_policy_nonce %>>
     gtag('config', '<%= measurement_id %>');
   </script>
 <% end %>
