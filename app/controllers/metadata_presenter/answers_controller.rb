@@ -180,12 +180,30 @@ module MetadataPresenter
     end
 
     def multiuploaded_file(answer, component)
-      if answer.present?
-        @page_answers.answers[component.id].last = answer
-        MetadataPresenter::UploadedFile.new(
-          file: @page_answers.send(component.id),
-          component:
-        )
+      # byebug
+      if answer.present? 
+        if @page_answers.answers.is_a?(MetadataPresenter::MultiUploadAnswer)
+          if @page_answers.answers.incoming_answer.present?
+            FileUploader.new(
+              session:,
+              page_answers: @page_answers,
+              component:,
+              adapter: upload_adapter
+            ).upload
+          else
+            MetadataPresenter::UploadedFile.new(
+              file: @page_answers.answers.previous_answers.last,
+              component:
+            )
+          end
+        else
+          FileUploader.new(
+            session:,
+            page_answers: @page_answers,
+            component:,
+            adapter: upload_adapter
+          ).upload
+        end
       else
         FileUploader.new(
           session:,
