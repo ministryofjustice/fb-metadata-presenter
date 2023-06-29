@@ -3,7 +3,8 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     'date' => 'date',
     'number' => 'number',
     'text' => 'string',
-    'textarea' => 'string'
+    'textarea' => 'string',
+    'multiupload' => 'file'
   }.freeze
 
   # Used for max_length and max_word validations.

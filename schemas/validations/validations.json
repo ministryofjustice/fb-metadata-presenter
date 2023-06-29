@@ -118,6 +118,20 @@
         }
       ]
     },
+    "max_files": {
+      "title": "Maximum files",
+      "description": "The maximum number of fiels a user can upload",
+      "type": "number",
+      "minimum": 0
+    },
+    "errors_max_files": {
+      "title": "Error messages for 'Maximum files'",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
     "pattern": {
       "title": "Pattern to match string against",
       "description": "A regular expression for validating users’ answers",
@@ -450,6 +464,9 @@
             },
             "exclusive_minimum": {
               "$ref": "#/definitions/exclusive_minimum"
+            },
+            "max_files": {
+              "$ref": "#/definitions/max_files"
             }
           }
         },
@@ -469,6 +486,9 @@
             },
             "exclusive_minimum": {
               "$ref": "#/definitions/errors_exclusive_minimum"
+            },
+            "max_files": {
+              "$ref": "#/definitions/max_files"
             }
           }
         }
@@ -505,6 +525,24 @@
             },
             "date_within_last": {
               "$ref": "#/definitions/errors_date_within_last"
+            }
+          }
+        }
+      }
+    },
+    "file_bundle": {
+      "properties": {
+        "validation": {
+          "properties": {
+            "max_files": {
+              "$ref": "#/definitions/max_files"
+            }
+          }
+        },
+        "errors": {
+          "properties": {
+            "max_files": {
+              "$ref": "#/definitions/max_files"
             }
           }
         }
