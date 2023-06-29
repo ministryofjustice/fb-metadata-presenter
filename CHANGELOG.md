@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.9] - 2023-06-28
+### Added
+ - Added a list of placeholders to the standalone pages, so wee can determine
+     when they have been replaced using the new contains_placeholders? method on
+     the page model.
+
 ## [3.0.8] - 2023-06-27
 ### Changed
  - Replace inline event handlers with event listeners to meet CSP requirements
