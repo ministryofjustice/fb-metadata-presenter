@@ -63,7 +63,7 @@ module MetadataPresenter
 
     def uploads_remaining
       component = @page.components.select { |c| c.type == 'multiupload' }.first
-      max_files = component['max_files'].to_i
+      max_files = component.validation['max_files'].to_i
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
       max_files - answers.count
     end

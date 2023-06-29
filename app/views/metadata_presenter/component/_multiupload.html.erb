@@ -39,4 +39,8 @@
   <% end %>
 <% end %>
 
-<p><%= multiupload_files_remaining %></p>
+<% if editable? %>
+  <p><%= t('presenter.questions.multiupload.plural', num: component.validation['max_files']) %></p>
+<% else %>
+  <p><%= multiupload_files_remaining %></p>
+<% end %>
