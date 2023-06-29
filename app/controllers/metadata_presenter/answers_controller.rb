@@ -13,13 +13,13 @@ module MetadataPresenter
       end
 
       upload_files if upload?
-      upload_multiupload_new_files if multiupload?
+      upload_multiupload_new_files if multiupload? && !answers_params.blank?
 
       if @page_answers.validate_answers
         save_user_data # method signature
 
         # if adding another file in multi upload, redirect back to referrer
-        if params[:multifile] && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
+        if !answers_params.blank? && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
           redirect_back(fallback_location: root_path) and return
         end
 

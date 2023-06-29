@@ -20,20 +20,22 @@
 <% end %>
 
 <% if uploads_remaining.positive? %>
-  <%= f.govuk_file_field component.id.to_sym,
-    label: { hidden: true },
-    hint: {
-      data: { "fb-default-text" => default_text('upload_hint') },
-      text: component.hint.present? ? component.hint : default_text('upload_hint')
-    },
-    accept: component.validation['accept'],
-    disabled: editable?
-  %>
-  <% if editor_preview? || editable? %>
+  <div data-multiupload-element="upload-another-file" hidden>
+    <%= f.govuk_file_field component.id.to_sym,
+      label: { hidden: true },
+      hint: {
+        data: { "fb-default-text" => default_text('upload_hint') },
+        text: component.hint.present? ? component.hint : default_text('upload_hint')
+      },
+      accept: component.validation['accept'],
+      disabled: editable?
+    %>
+  </div>
 
-    <%= f.submit t('presenter.questions.multiupload.add_another'), method: :post, class: "govuk-button govuk-button--secondary", name: 'multifile', disabled: true %>
+  <% if editor_preview? || editable? %>
+    <div class="govuk-button govuk-button--secondary" data-multiupload-element="add-another-file"><%= t('presenter.questions.multiupload.add_another') %></div>
   <% else %>
-    <%= f.submit t('presenter.questions.multiupload.add_another'), method: :post, class: "govuk-button govuk-button--secondary", name: 'multifile', value: t('presenter.questions.multiupload.add_another') %>
+    <div class="govuk-button govuk-button--secondary" data-multiupload-element="add-another-file"><%= t('presenter.questions.multiupload.add_another') %></div>
   <% end %>
 <% end %>
 
