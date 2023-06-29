@@ -1,3 +1,5 @@
+require 'govspeak'
+
 module MetadataPresenter
   module ApplicationHelper
     def main_title(component:, tag: :h1, classes: 'govuk-heading-xl')
@@ -12,11 +14,26 @@ module MetadataPresenter
     #   <%=to_html '# Some markdown' %>
     #
     def to_html(text)
-      Kramdown::Document.new(text).to_html.html_safe
+      Govspeak::Document.new(text).to_html.html_safe
     end
 
     def default_text(property)
       MetadataPresenter::DefaultText[property]
+    end
+
+    def default_title(component_type)
+      MetadataPresenter::DefaultMetadata["component.#{component_type}"]&.[]('label') ||
+        MetadataPresenter::DefaultMetadata["component.#{component_type}"]&.[]('legend')
+    end
+
+    def default_item_title(component_type)
+      return unless %w[checkboxes radios].include?(component_type)
+
+      MetadataPresenter::DefaultMetadata["component.#{component_type}"]['items']&.first&.[]('label')
+    end
+
+    def default_page_title(type)
+      MetadataPresenter::DefaultMetadata[type.to_s]&.[]('heading')
     end
   end
 end

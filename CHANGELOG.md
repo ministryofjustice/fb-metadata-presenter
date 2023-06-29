@@ -7,6 +7,34 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.8] - 2023-06-27
+### Changed
+ - Replace inline event handlers with event listeners to meet CSP requirements
+
+## [3.0.7] - 2023-06-26
+### Changed
+ - Update Editable components to use custom element for simpler progressive
+     enhancement and refactoring & improving in the editor.
+
+## [3.0.6] - 2023-06-22
+### Added
+ - Update Editable Content areas to use a custom element - a more declarative and
+     native solution. Works as an editor when JS is present, and a simple html
+     output when the custom element is not upgraded by JS.
+
+## [3.0.5] - 2023-06-21
+### Changed
+ - Protect against XSS (reflected) attack.
+
+## [3.0.4] - 2023-06-20
+### Changed
+ - Ensure filenames with extension `jfif` or `jpg` use `jpeg` when uploaded. This is to match the file that is attached on submission/confirmation emails.
+
+## [3.0.3] - 2023-06-09
+### Changed
+ - Updated grid traversal to ensure traversal of all routes to fix bugs where
+     pages were appearing disconnected when they shouldn't be.
+
 ## [3.0.2] - 2023-05-25
 ### Changed
  - Implementation of retrieving the service slug has changed, we now call the `service_slug_config`

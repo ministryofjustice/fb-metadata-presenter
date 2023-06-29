@@ -1,20 +1,34 @@
 <% components.each_with_index do |component, index| %>
-  <div class="fb-editable govuk-!-margin-top-8"
-       id="<%= component.id %>"
-       data-fb-content-type="<%= component.type %>"
-       data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
-       data-fb-content-data="<%= component.to_json %>">
+  <% if component.type == 'content' %>
+    <editable-content id="<%= "page[#{component.collection}[#{index}]]" %>"
+                      class="fb-editable govuk-!-margin-top-8"
+                      type="<%= component.type %>"
+                      default-content="<%= default_text('content') %>"
+                      content="<%= component.content %>"
+                      data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
+                      data-config="<%= component.to_json %>">
+        <%= to_html(component.content) %>
+    </editable-content>
+  <% else %>
+    <div class="fb-editable govuk-!-margin-top-8"
+         id="<%= component.id %>"
+         data-fb-content-type="<%= component.type %>"
+         data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
+         data-fb-content-data="<%= component.to_json %>"
+         data-fb-default-value="<%= default_title(component.type) %>"
+         data-fb-default-item-value="<%= default_item_title(component.type) %>">
 
-       <%= render partial: component, locals: {
-         f: f,
-         component: component,
-         component_id: "page[#{component.collection}[#{index}]]",
-         input_title: main_title(
+         <%= render partial: component, locals: {
+           f: f,
            component: component,
-           tag: :h2,
-           classes: classes
-         )
-       }
-     %>
-  </div>
+           component_id: "page[#{component.collection}[#{index}]]",
+           input_title: main_title(
+             component: component,
+             tag: :h2,
+             classes: classes
+           )
+         }
+       %>
+    </div>
+  <% end %>
 <% end %>
