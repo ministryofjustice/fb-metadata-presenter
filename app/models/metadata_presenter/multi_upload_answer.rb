@@ -4,7 +4,7 @@ module MetadataPresenter
 
     def to_h
       {
-        key => previous_answers_value
+        key => previous_answers_value.reject(&:blank?)
       }
     end
 
@@ -25,7 +25,7 @@ module MetadataPresenter
           return [previous_answers.reject(&:blank?)]
         end
 
-        [previous_answers, incoming_answer]
+        [previous_answers.reject(&:blank?), incoming_answer]
       end
     end
 
