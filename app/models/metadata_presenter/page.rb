@@ -122,6 +122,25 @@ module MetadataPresenter
       end
     end
 
+    def contains_placeholders?
+      return false if placeholders.empty?
+
+      regex = /#{placeholders.map { |p| Regexp.escape(p) }.join('|')}/
+      regex.match?(body)
+    end
+
+    def placeholders
+      return [] unless standalone?
+
+      key = id.gsub('page.', '')
+
+      begin
+        I18n.t("presenter.footer.#{key}.placeholders", raise: true)
+      rescue I18n::MissingTranslationData
+        []
+      end
+    end
+
     private
 
     def heading?
