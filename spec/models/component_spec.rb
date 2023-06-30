@@ -232,6 +232,17 @@ RSpec.describe MetadataPresenter::Component do
           expect(component.supported_validations).to match_array(expected_validations)
         end
       end
+
+      context 'file bundle' do
+        let(:attributes) { { '_type' => 'multiupload' } }
+        let(:expected_validations) do
+          %w[max_files]
+        end
+
+        it 'returns the supported validations for multiupload component type' do
+          expect(component.supported_validations).to match_array(expected_validations)
+        end
+      end
     end
 
     context 'when validation bundle does not exist for component type' do
