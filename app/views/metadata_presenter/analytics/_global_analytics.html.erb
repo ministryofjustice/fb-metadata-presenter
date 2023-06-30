@@ -1,6 +1,6 @@
 <!-- Global MoJ Forms site tag (gtag.js) - Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=#{global_measurement_id}"></script>
-<script>
+<script nonce=<%= request.content_security_policy_nonce %>>
   var manual_global_analytics_properties = {
     <%= yield :manual_global_analytics_properties %>
   }
