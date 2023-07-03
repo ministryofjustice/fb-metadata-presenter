@@ -21,6 +21,7 @@ module MetadataPresenter
       if component.multiupload?
         return page_answers.send(component.id)[component.id].last
       end
+
       page_answers.send(component.id)
     end
   end

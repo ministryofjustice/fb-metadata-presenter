@@ -6,7 +6,7 @@ module MetadataPresenter
       # user_answer.error_name == error_name
       # byebug
       # true
-      user_answer.errors.any? { |error| error.attribute.to_s == error_name } 
+      user_answer.errors.any? { |error| error.attribute.to_s == error_name }
     end
 
     def user_answer

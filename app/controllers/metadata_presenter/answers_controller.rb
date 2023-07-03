@@ -11,21 +11,21 @@ module MetadataPresenter
         # NOTE: if the user is on a file upload page, files will not be uploaded before redirection
         redirect_to save_path(page_slug: params[:page_slug]) and return
       end
-
+      # byebug
       upload_files if upload?
-      upload_multiupload_new_files if multiupload? && !answers_params.blank?
-
+      upload_multiupload_new_files if multiupload? && answers_params.present?
+      # byebug
       if @page_answers.validate_answers
         save_user_data # method signature
 
         # if adding another file in multi upload, redirect back to referrer
-        if !answers_params.blank? && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
+        if answers_params.present? && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
           redirect_back(fallback_location: root_path) and return
         end
 
         redirect_to_next_page
       else
-        if !answers_params.blank? && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
+        if answers_params.present? && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
           @user_data = @previous_answers
           render template: @page.template, status: :unprocessable_entity and return
         end
@@ -37,8 +37,8 @@ module MetadataPresenter
       extname = File.extname(original_filename)
       basename = File.basename(original_filename, extname)
       filename_regex = /^#{Regexp.quote(basename)}(?>-\((\d)\))?#{Regexp.quote(extname)}/
-      
-      user_data.select { |k, v| v.is_a?(Enumerable) ? v.any? { |e| e['original_filename'] =~ filename_regex } : v['original_filename'] =~ filename_regex }.count
+
+      user_data.select { |_k, v| v.is_a?(Enumerable) ? v.any? { |e| e['original_filename'] =~ filename_regex } : v['original_filename'] =~ filename_regex }.count
     end
 
     def multiupload_files_remaining
@@ -66,6 +66,7 @@ module MetadataPresenter
       max_files = component.validation['max_files'].to_i
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
       return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
+
       max_files - answers.count
     end
     helper_method :uploads_remaining
@@ -75,6 +76,7 @@ module MetadataPresenter
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
 
       return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
+
       answers.count == 1 ? I18n.t('presenter.questions.multiupload.answered_count_singular') : I18n.t('presenter.questions.multiupload.answered_count_plural', num: answers.count)
     end
     helper_method :uploads_count
@@ -155,22 +157,21 @@ module MetadataPresenter
         previous_answers = user_data[component.id]
         # byebug
         if previous_answers.present? && previous_answers.any? { |answer| answer['original_filename'] == incoming_answer.incoming_answer.values.first.original_filename }
-         # uploading a duplicate in the same component
-         # need to add an error
-        #  byebug
+          # uploading a duplicate in the same component
+          # need to add an error
+          #  byebug
           file = multiuploaded_file(previous_answers, component)
           file.errors.add('invalid.multiupload')
           @page_answers.uploaded_files.push(file)
-          return
+        else
+          # original_filename = answer.nil? ? @page_answers.send(component.id)['original_filename'] : answer['original_filename']
+
+          # if original_filename.present?
+          #   @page_answers.count = update_count_matching_filenames(original_filename, user_data)
+          # end
+
+          @page_answers.uploaded_files.push(multiuploaded_file(previous_answers, component))
         end
-        # original_filename = answer.nil? ? @page_answers.send(component.id)['original_filename'] : answer['original_filename']
-
-        # if original_filename.present?
-        #   @page_answers.count = update_count_matching_filenames(original_filename, user_data)
-        # end
-
-
-        @page_answers.uploaded_files.push(multiuploaded_file(previous_answers, component))
       end
     end
 
@@ -193,7 +194,7 @@ module MetadataPresenter
 
     def multiuploaded_file(answer, component)
       # byebug
-      if answer.present? 
+      if answer.present?
         if @page_answers.answers.is_a?(MetadataPresenter::MultiUploadAnswer)
           if @page_answers.answers.incoming_answer.present?
             FileUploader.new(

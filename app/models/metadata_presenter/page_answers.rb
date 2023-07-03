@@ -60,7 +60,7 @@ module MetadataPresenter
       return nil if file_details.nil? && answers.nil?
 
       if file_details.is_a?(Hash)
-          # when referencing a single previous answer but no incoming new answer
+        # when referencing a single previous answer but no incoming new answer
         presentable = MetadataPresenter::MultiUploadAnswer.new
         presentable.key = component_id.to_s
         presentable.previous_answers = [file_details]

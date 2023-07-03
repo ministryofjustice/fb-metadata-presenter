@@ -22,7 +22,7 @@ module MetadataPresenter
       components.map { |component|
         component_validations(component).map do |key|
           if key == 'max_files'
-            "MetadataPresenter::MaxFilesValidator".constantize.new(
+            'MetadataPresenter::MaxFilesValidator'.constantize.new(
               **{
                 page_answers:,
                 component:
