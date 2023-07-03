@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.11] - 2023-07-03
+### Added 
+ - Added notification banners to accessibility and privacy standalone pages.
+
 ## [3.0.10] - 2023-06-30
 ### Added
  - Added nonces to the GA scripts for CSP violations.
