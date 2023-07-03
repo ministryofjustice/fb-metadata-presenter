@@ -25,7 +25,7 @@ module MetadataPresenter
 
         redirect_to_next_page
       else
-        if params[:multifile] && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
+        if !answers_params.blank? && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
           @user_data = @previous_answers
           render template: @page.template, status: :unprocessable_entity and return
         end
@@ -65,6 +65,7 @@ module MetadataPresenter
       component = @page.components.select { |c| c.type == 'multiupload' }.first
       max_files = component.validation['max_files'].to_i
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
+      return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
       max_files - answers.count
     end
     helper_method :uploads_remaining
@@ -73,6 +74,7 @@ module MetadataPresenter
       component = @page.components.select { |c| c.type == 'multiupload' }.first
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
 
+      return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
       answers.count == 1 ? I18n.t('presenter.questions.multiupload.answered_count_singular') : I18n.t('presenter.questions.multiupload.answered_count_plural', num: answers.count)
     end
     helper_method :uploads_count
@@ -151,6 +153,16 @@ module MetadataPresenter
       @page_answers.page.multiupload_components.each do |component|
         # byebug
         previous_answers = user_data[component.id]
+        # byebug
+        if previous_answers.present? && previous_answers.any? { |answer| answer['original_filename'] == incoming_answer.incoming_answer.values.first.original_filename }
+         # uploading a duplicate in the same component
+         # need to add an error
+        #  byebug
+          file = multiuploaded_file(previous_answers, component)
+          file.errors.add('invalid.multiupload')
+          @page_answers.uploaded_files.push(file)
+          return
+        end
         # original_filename = answer.nil? ? @page_answers.send(component.id)['original_filename'] : answer['original_filename']
 
         # if original_filename.present?

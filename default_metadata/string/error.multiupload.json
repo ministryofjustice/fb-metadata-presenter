@@ -1,0 +1,6 @@
+{
+  "_id": "error.multiupload",
+  "_type": "string.error",
+  "description": "Cannot upload files with duplicate filenames",
+  "value": "Your uploaded file must have a unique filename"
+}
