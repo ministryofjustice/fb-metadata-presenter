@@ -38,7 +38,7 @@ module MetadataPresenter
       basename = File.basename(original_filename, extname)
       filename_regex = /^#{Regexp.quote(basename)}(?>-\((\d)\))?#{Regexp.quote(extname)}/
 
-      user_data.select { |_k, v| v.is_a?(Enumerable) ? v.any? { |e| e['original_filename'] =~ filename_regex } : v['original_filename'] =~ filename_regex }.count
+      user_data.select { |_k, v| v.is_a?(Array) ? v.any? { |e| e['original_filename'] =~ filename_regex } : v['original_filename'] =~ filename_regex }.count
     end
 
     def multiupload_files_remaining
