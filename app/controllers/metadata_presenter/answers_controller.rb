@@ -164,8 +164,11 @@ module MetadataPresenter
 
         if previous_answers.present? && previous_answers.any? { |answer| answer['original_filename'] == incoming_answer.incoming_answer.values.first.original_filename }
           @page_answers.count = nil # ensure we don't also try to suffix this filename as we will reject it anyway
-
-          file = multiuploaded_file(previous_answers, component)
+          file = MetadataPresenter::UploadedFile.new(
+            file: @page_answers.send(component.id)[component.id].last,
+            component:
+          )
+          # file = multiuploaded_file(previous_answers, component)
 
           file.errors.add('invalid.multiupload')
           @page_answers.uploaded_files.push(file)
