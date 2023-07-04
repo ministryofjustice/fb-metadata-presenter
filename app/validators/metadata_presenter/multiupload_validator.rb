@@ -1,11 +1,6 @@
 module MetadataPresenter
   class MultiuploadValidator < BaseValidator
     def invalid_answer?
-      # TODO: This should be checking if out of bounds of max files?
-      # byebug
-      # user_answer.error_name == error_name
-      # byebug
-      # true
       user_answer.errors.any? { |error| error.attribute.to_s == error_name }
     end
 
@@ -16,7 +11,6 @@ module MetadataPresenter
     end
 
     def error_message_hash
-      #  control: page_answers.send(component.id)[component.id].last['original_filename'],
       {
         control: page_answers.send(component.id)[component.id].last['original_filename'],
         schema_key.to_sym => component.validation[schema_key]

@@ -79,26 +79,31 @@ module MetadataPresenter
         return nil
       end
 
-      if answers.is_a?(Hash)
+      if answers.is_a?(Hash) # rendering only existing answers
         if answers[component_id].blank?
           return
         end
 
         if answers[component_id].is_a?(Array)
-          answers[component_id].each { |answer| answer['original_filename'] = sanitize(filename(answer['original_filename'])) }
+          answers[component_id].each { |answer| answer['original_filename'] = sanitize(filename(update_filename(answer['original_filename']))) }
         end
 
         answers[component_id] = answers[component_id].reject { |a| a['original_filename'].blank? }
         return answers
       end
 
+      # uploading a new answer, this method will be called during multiple render operations
       if answers.incoming_answer.present? && answers.incoming_answer.is_a?(ActionController::Parameters)
-        answers.incoming_answer[component_id].original_filename = sanitize(filename(answers.incoming_answer[component_id].original_filename))
+        answers.incoming_answer[component_id].original_filename = sanitize(filename(update_filename(answers.incoming_answer[component_id].original_filename)))
+      end
+
+      if answers.incoming_answer.present? && answers.incoming_answer.is_a?(Hash)
+        answers.incoming_answer['original_filename'] = sanitize(filename(update_filename(answers.incoming_answer['original_filename'])))
       end
 
       if answers.incoming_answer.present? && answers.incoming_answer[component_id].is_a?(ActionDispatch::Http::UploadedFile)
         answers.incoming_answer = {
-          'original_filename' => sanitize(filename(answers.incoming_answer[component_id].original_filename)),
+          'original_filename' => sanitize(filename(update_filename(answers.incoming_answer[component_id].original_filename))),
           'content_type' => answers.incoming_answer[component_id].content_type,
           'tempfile' => answers.incoming_answer[component_id].tempfile.path.to_s,
           'uuid' => SecureRandom.uuid
@@ -136,6 +141,7 @@ module MetadataPresenter
         basename = File.basename(filename, extname)
 
         filename = "#{basename}-(#{count})#{extname}"
+        @count = nil # this is called multiple times for multiupload components so ensure we apply suffix to filename only once
       end
 
       filename
