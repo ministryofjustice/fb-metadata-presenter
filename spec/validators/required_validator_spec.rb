@@ -11,6 +11,26 @@ RSpec.describe MetadataPresenter::RequiredValidator do
     end
 
     context 'when there is required validations on the metadata' do
+      context 'when component is multiupload' do
+        let(:page) { service.find_page_by_url('/dog-picture-2') }
+
+        context 'when any file is present' do
+          let(:answers) { { 'dog-picture_upload_2' => { 'original_filename' => 'cool-file.txt' } } }
+
+          it 'returns valid' do
+            expect(validator).to be_valid
+          end
+        end
+
+        context 'when no file is present' do
+          let(:answers) { { 'dog-picture_upload_2' => {} } }
+
+          it 'returns invalid' do
+            expect(validator).to_not be_valid
+          end
+        end
+      end
+
       context 'when there is no custom error message' do
         let(:page) { service.find_page_by_url('/name') }
         let(:answers) { {} }
