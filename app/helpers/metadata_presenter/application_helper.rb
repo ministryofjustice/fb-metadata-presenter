@@ -35,5 +35,42 @@ module MetadataPresenter
     def default_page_title(type)
       MetadataPresenter::DefaultMetadata[type.to_s]&.[]('heading')
     end
+
+    def multiupload_files_remaining
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
+      answers = @user_data.keys.include?(component.id) ? @user_data.find(component.id).first : []
+
+      if uploads_remaining.zero?
+        I18n.t('presenter.questions.multiupload.none')
+      elsif uploads_remaining == 1
+        if answers.present?
+          I18n.t('presenter.questions.multiupload.answered_singular')
+        else
+          I18n.t('presenter.questions.multiupload.singular')
+        end
+      elsif answers.present?
+        I18n.t('presenter.questions.multiupload.answered_plural', num: uploads_remaining)
+      else
+        I18n.t('presenter.questions.multiupload.plural', num: uploads_remaining)
+      end
+    end
+
+    def uploads_remaining
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
+      max_files = component.validation['max_files'].to_i
+      answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
+      return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
+
+      max_files - answers.count
+    end
+
+    def uploads_count
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
+      answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
+
+      return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
+
+      answers.count == 1 ? I18n.t('presenter.questions.multiupload.answered_count_singular') : I18n.t('presenter.questions.multiupload.answered_count_plural', num: answers.count)
+    end
   end
 end

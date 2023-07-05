@@ -12,7 +12,7 @@
           <%= previous_file['original_filename'] %>
         </dt>
         <dd class="govuk-summary-list__actions">
-          <%= link_to 'Remove file', remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link' %>
+          <%= link_to t('presenter.questions.multiupload.remove_file'), remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link' %>
         </dd>
       </div>
     <% end %>

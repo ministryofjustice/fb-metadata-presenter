@@ -46,4 +46,150 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
       )
     end
   end
+
+  describe '#uploads_remaining' do
+    let(:page) { OpenStruct.new(components: [component]) }
+    let(:component) do
+      OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: {'max_files' => '2'} })
+    end
+    let(:user_data) do
+      {
+        'cool-files' => [{ 'original_filename' => 'i-am-a-file.exif' }]
+      }
+    end
+
+    before do
+      @page = page
+      @user_data = user_data
+    end
+    
+    it 'gives the uploads remaining for the given component and user data' do
+      expect(helper.uploads_remaining).to eq(1)
+    end
+
+    it 'returns 0 if we are in the process of uploading' do
+      @user_data = {
+        'cool-files' => ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'))
+      }
+
+      expect(helper.uploads_remaining).to eq(0)
+    end
+  end
+
+  describe '#uploads_count' do
+  let(:page) { OpenStruct.new(components: [component]) }
+  let(:component) do
+    OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: {'max_files' => '2'} })
+  end
+  let(:user_data) do
+    {
+      'cool-files' => [{ 'original_filename' => 'i-am-a-file.exif' }]
+    }
+  end
+
+  before do
+    @page = page
+    @user_data = user_data
+  end
+  
+  it 'gives the uploads count in singular' do
+    expect(helper.uploads_count).to eq(I18n.t('presenter.questions.multiupload.answered_count_singular'))
+  end
+
+  it 'gives the uploads count pluralised' do
+    @user_data = {
+      'cool-files' => [{ 'original_filename' => 'i-am-a-file.exif' }, { 'original_filename' => 'i-am-also-a-file.exif' }]
+    }
+    expect(helper.uploads_count).to eq(I18n.t('presenter.questions.multiupload.answered_count_plural', num: 2))
+  end
+
+  it 'returns 0 if we are in the process of uploading' do
+    @user_data = {
+      'cool-files' => ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'))
+    }
+
+    expect(helper.uploads_count).to eq(0)
+  end
+end
+
+  describe 'multiupload_files_remaining' do
+    context 'no uploads remain' do
+      let(:page) { OpenStruct.new(components: [component]) }
+      let(:component) do
+        OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: {'max_files' => '1'} })
+      end
+      let(:user_data) do
+        {
+          'cool-files' => [{ 'original_filename' => 'i-am-a-file.exif' }]
+        }
+      end
+    
+      before do
+        @page = page
+        @user_data = user_data
+      end
+
+      it 'returns the right page text' do
+        expect(helper.multiupload_files_remaining).to eq(I18n.t('presenter.questions.multiupload.none'))
+      end
+    end
+
+    context 'singular upload remains' do
+      let(:page) { OpenStruct.new(components: [component]) }
+      let(:component) do
+        OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: {'max_files' => '2'} })
+      end
+      let(:user_data) do
+        {
+          'cool-files' => [{ 'original_filename' => 'i-am-a-file.exif' }]
+        }
+      end
+    
+      before do
+        @page = page
+        @user_data = user_data
+      end
+
+      it 'returns a singular answer' do
+        expect(helper.multiupload_files_remaining).to eq(I18n.t('presenter.questions.multiupload.answered_singular'))
+      end
+
+      it 'returns the right answer if no uploads present' do
+        @user_data = {}
+        component = OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: {'max_files' => '1'} })
+        @page = OpenStruct.new(components: [component])
+
+        expect(helper.multiupload_files_remaining).to eq(I18n.t('presenter.questions.multiupload.singular'))
+      end
+    end
+
+    context 'multiple uploads remain' do
+      let(:page) { OpenStruct.new(components: [component]) }
+      let(:component) do
+        OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: {'max_files' => '3'} })
+      end
+      let(:user_data) do
+        {
+          'cool-files' => [{ 'original_filename' => 'i-am-a-file.exif' }]
+        }
+      end
+    
+      before do
+        @page = page
+        @user_data = user_data
+      end
+
+      it 'returns a singular answer' do
+        expect(helper.multiupload_files_remaining).to eq(I18n.t('presenter.questions.multiupload.answered_plural', num: 2))
+      end
+
+      it 'returns the right answer if no uploads present' do
+        @user_data = {}
+        component = OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: {'max_files' => '3'} })
+        @page = OpenStruct.new(components: [component])
+
+        expect(helper.multiupload_files_remaining).to eq(I18n.t('presenter.questions.multiupload.plural', num: 3))
+      end
+    end
+  end 
 end

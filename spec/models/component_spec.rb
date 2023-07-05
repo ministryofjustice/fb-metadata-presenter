@@ -188,6 +188,7 @@ RSpec.describe MetadataPresenter::Component do
             maximum
             minimum
             multiple_of
+            max_files
           ]
         end
 

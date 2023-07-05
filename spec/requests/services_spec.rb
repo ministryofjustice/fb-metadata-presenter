@@ -108,6 +108,14 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
           }
         }
       end
+      let(:component) do
+        double(id: 'dog-picture-2', validation: { 'accept' => accept })
+      end
+      let(:accept) { %w[text/csv] }
+      let(:file) do
+        ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'), filename: 'thats-not-a-knife.txt', content_type: "text/plain")
+      end
+
       before do
         allow_any_instance_of(
           MetadataPresenter::AnswersController
@@ -117,7 +125,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
 
       it 'redirect to the next page' do
         post '/dog-picture', params: { answers: }
-        expect(response).to redirect_to('/countries')
+        expect(response).to redirect_to('/dog-picture-2')
       end
 
       it 'uploads the file' do
@@ -126,6 +134,16 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
         ).to receive(:upload_files)
         post '/dog-picture', params: { answers: }
       end
+
+      # TODO: FIXME
+      # it 'uploads to a multiupload then remains on the same page' do
+      #   answers = {
+      #     'dog-picture_upload_2' => file
+      #   }
+
+      #   post '/dog-picture-2', params: { answers: }
+      #   expect(response).to redirect_to('/dog-picture-2')
+      # end
     end
 
     context 'when invalid' do

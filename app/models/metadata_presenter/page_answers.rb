@@ -59,6 +59,7 @@ module MetadataPresenter
       file_details = answers[component_id.to_s] unless answers.is_a?(MetadataPresenter::MultiUploadAnswer)
       return nil if file_details.nil? && answers.nil?
 
+      # byebug
       if file_details.is_a?(Hash)
         # when referencing a single previous answer but no incoming new answer
         presentable = MetadataPresenter::MultiUploadAnswer.new

@@ -43,6 +43,7 @@ en:
       application_complete: 'Application complete'
     questions:
       multiupload:
+        remove_file: 'Delete'
         add_another: 'Add another file'
         answered_singular: 'You can add 1 more file (maximum 7MB)'
         answered_plural: 'You can add %{num} more files (maximum 7MB)'

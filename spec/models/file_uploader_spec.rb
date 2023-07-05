@@ -24,6 +24,7 @@ RSpec.describe MetadataPresenter::FileUploader do
 
       it 'returns an empty uploaded file' do
         expect(adapter).to_not receive(:new)
+        allow(component).to receive(:multiupload?).and_return(false)
         expect(file_uploader.upload).to eq(
           MetadataPresenter::UploadedFile.new(
             file: {},
@@ -48,6 +49,7 @@ RSpec.describe MetadataPresenter::FileUploader do
       end
 
       it 'returns uploaded file' do
+        allow(component).to receive(:multiupload?).and_return(false)
         expect(adapter).to receive(:new).with(
           session:,
           file_details:,
@@ -59,6 +61,57 @@ RSpec.describe MetadataPresenter::FileUploader do
             component:
           )
         )
+      end
+    end
+
+    context 'when uploading for a multiupload component' do
+      context 'when there is no file' do
+        let(:page_answers) do
+          double(
+            'dog-picture' => { 'dog-picture' => [] }
+          )
+        end
+  
+        it 'returns an empty uploaded file' do
+          expect(adapter).to_not receive(:new)
+          allow(component).to receive(:multiupload?).and_return(true)
+          expect(file_uploader.upload).to eq(
+            MetadataPresenter::UploadedFile.new(
+              file: {},
+              component:
+            )
+          )
+        end
+      end
+
+      context 'when there is a file' do
+        let(:page_answers) do
+          double(
+            'dog-picture' => { 'dog-picture' => [file_details] }
+          )
+        end
+        let(:file_details) do
+          {
+            'original_filename' => './spec/fixtures/thats-not-a-knife.txt',
+            'content_type' => 'text/plain',
+            'tempfile' => Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt')
+          }
+        end
+  
+        it 'returns uploaded file' do
+          allow(component).to receive(:multiupload?).and_return(true)
+          expect(adapter).to receive(:new).with(
+            session:,
+            file_details:,
+            allowed_file_types: accept
+          ).and_return(double(call: { 'fingerprint' => '28d' }))
+          expect(file_uploader.upload).to eq(
+            MetadataPresenter::UploadedFile.new(
+              file: { 'fingerprint' => '28d' },
+              component:
+            )
+          )
+        end
       end
     end
   end
