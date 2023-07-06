@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.12] - 2023-07-06
+### Fixed
+ - Fixed an issue where save and return would 404 if using a custom check your answers page.
+
 ## [3.0.11] - 2023-07-03
 ### Added 
  - Added notification banners to accessibility and privacy standalone pages.
