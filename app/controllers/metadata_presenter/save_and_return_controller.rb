@@ -156,7 +156,7 @@ module MetadataPresenter
     def resume_progress
       @user_data = load_user_data
 
-      @page ||= service.find_page_by_url('check-answers')
+      @page ||= service.checkanswers_page
 
       if @page
         @page_answers = PageAnswers.new(@page, @answered_pages)

@@ -7,6 +7,18 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.12] - 2023-07-06
+### Fixed
+ - Fixed an issue where save and return would 404 if using a custom check your answers page.
+
+## [3.0.11] - 2023-07-03
+### Added 
+ - Added notification banners to accessibility and privacy standalone pages.
+
+## [3.0.10] - 2023-06-30
+### Added
+ - Added nonces to the GA scripts for CSP violations.
+
 ## [3.0.9] - 2023-06-28
 ### Added
  - Added a list of placeholders to the standalone pages, so wee can determine
