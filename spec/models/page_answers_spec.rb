@@ -107,6 +107,30 @@ RSpec.describe MetadataPresenter::PageAnswers do
       end
     end
 
+    context 'when there are multiupload answers' do
+      let(:page) { service.find_page_by_url('dog-picture-2') }
+
+      context 'when uploading a file' do
+        let(:upload_file) do
+          ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'), filename: 'thats-not-a-knife.txt', content_type: "text/plain")
+        end
+        let(:multiupload_object) { MetadataPresenter::MultiUploadAnswer.new }
+        let(:answers) { multiupload_object }
+
+        before do
+          multiupload_object.key = 'dog-picture-2'
+          multiupload_object.incoming_answer = { 'dog-picture-2' => upload_file }
+        end
+
+        it 'returns file details hash' do
+          expect(
+            # returned with a very different hash structure to single uploads in order to manage file list
+            page_answers.send('dog-picture_upload_2')['dog-picture-2'].first['dog-picture-2'].original_filename
+          ).to eq(upload_file.original_filename)
+        end
+      end
+    end
+
     context 'when the components are optional' do
       let(:page) { service.find_page_by_url('burgers') }
 

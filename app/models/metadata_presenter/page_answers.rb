@@ -58,7 +58,6 @@ module MetadataPresenter
     def multiupload_answer(component_id, _count)
       file_details = answers[component_id.to_s] unless answers.is_a?(MetadataPresenter::MultiUploadAnswer)
       return nil if file_details.nil? && answers.nil?
-
       # byebug
       if file_details.is_a?(Hash)
         # when referencing a single previous answer but no incoming new answer
@@ -89,6 +88,7 @@ module MetadataPresenter
           answers[component_id].each { |answer| answer['original_filename'] = sanitize(filename(update_filename(answer['original_filename']))) }
         end
 
+        # byebug
         answers[component_id] = answers[component_id].reject { |a| a['original_filename'].blank? }
         return answers
       end
