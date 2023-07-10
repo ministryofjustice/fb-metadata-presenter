@@ -19,19 +19,23 @@ module MetadataPresenter
         save_user_data # method signature
 
         # if adding another file in multi upload, redirect back to referrer
-        if answers_params.present? && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
+        if about_to_render_multiupload?
           redirect_back(fallback_location: root_path) and return
         end
 
         redirect_to_next_page
       else
         # can't render error in the same way for the multiupload component
-        if answers_params.present? && @page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
+        if about_to_render_multiupload?
           @user_data = @previous_answers
           render template: @page.template, status: :unprocessable_entity and return
         end
         render_validation_error
       end
+    end
+
+    def about_to_render_multiupload?
+      answers_params.present? && page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
     end
 
     def update_count_matching_filenames(original_filename, user_data)
@@ -40,6 +44,32 @@ module MetadataPresenter
       filename_regex = /^#{Regexp.quote(basename)}(?>-\((\d)\))?#{Regexp.quote(extname)}/
 
       user_data.select { |_k, v| v.is_a?(Array) ? v.any? { |e| e['original_filename'] =~ filename_regex } : v['original_filename'] =~ filename_regex }.count
+    end
+
+    def upload_multiupload_new_files
+      user_data = load_user_data
+      @page_answers.page.multiupload_components.each do |component|
+        previous_answers = user_data[component.id]
+        incoming_filename = @page_answers.send(component.id)[component.id].last['original_filename']
+
+        if incoming_filename.present?
+          # determine if duplicate filename from any other user answer
+          @page_answers.count = update_count_matching_filenames(incoming_filename, user_data)
+        end
+
+        if previous_answers.present? && previous_answers.any? { |answer| answer['original_filename'] == incoming_answer.incoming_answer.values.first.original_filename }
+          @page_answers.count = nil # ensure we don't also try to suffix this filename as we will reject it anyway
+          file = MetadataPresenter::UploadedFile.new(
+            file: @page_answers.send(component.id)[component.id].last,
+            component:
+          )
+
+          file.errors.add('invalid.multiupload')
+          @page_answers.uploaded_files.push(file)
+        else
+          @page_answers.uploaded_files.push(multiuploaded_file(previous_answers, component))
+        end
+      end
     end
 
     private
@@ -108,33 +138,6 @@ module MetadataPresenter
         end
 
         @page_answers.uploaded_files.push(uploaded_file(answer, component))
-      end
-    end
-
-    def upload_multiupload_new_files
-      user_data = load_user_data
-      @page_answers.page.multiupload_components.each do |component|
-        previous_answers = user_data[component.id]
-        incoming_filename = @page_answers.send(component.id)[component.id].last['original_filename']
-
-        if incoming_filename.present?
-          # determine if duplicate filename from any other user answer
-          @page_answers.count = update_count_matching_filenames(incoming_filename, user_data)
-        end
-
-        if previous_answers.present? && previous_answers.any? { |answer| answer['original_filename'] == incoming_answer.incoming_answer.values.first.original_filename }
-          @page_answers.count = nil # ensure we don't also try to suffix this filename as we will reject it anyway
-          file = MetadataPresenter::UploadedFile.new(
-            file: @page_answers.send(component.id)[component.id].last,
-            component:
-          )
-          # file = multiuploaded_file(previous_answers, component)
-
-          file.errors.add('invalid.multiupload')
-          @page_answers.uploaded_files.push(file)
-        else
-          @page_answers.uploaded_files.push(multiuploaded_file(previous_answers, component))
-        end
       end
     end
 

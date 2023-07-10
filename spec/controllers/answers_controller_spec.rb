@@ -1,37 +1,61 @@
-RSpec.describe 'Answers Controller Requests', type: :request do
-  describe '#create' do
-    it 'saves and redirects if the param is set' do
-      expect_any_instance_of(MetadataPresenter::AnswersController).to receive(:save_user_data)
-      post '/', params: { save_for_later: true }
-
-      expect(response).to redirect_to('/save')
-    end
+RSpec.describe MetadataPresenter::AnswersController, type: :controller do
+  let(:page) { MetadataPresenter::Page.new(service.find_page_by_url('dog-picture-2')) }
+  let(:previous_answers) { {} }
+  let(:incoming_answer) { MetadataPresenter::MultiUploadAnswer.new }
+  let(:file) do
+    ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'), filename: 'thats-not-a-knife.txt', content_type: "text/plain")
+  end
+  let(:params) do
+    ActionController::Parameters.new({
+      'dog-picture_upload_2' => file
+    }).permit!
+  end
+  let(:page_answers) { MetadataPresenter::PageAnswers.new(page, incoming_answer, nil) }
+  let(:uploaded_file) do
+    MetadataPresenter::UploadedFile.new(
+    file:,
+    component: page.components.first
+    )
   end
 
-  describe 'reserved submissions path' do
-    it 'does not create a submission from check your answers' do
-      expect_any_instance_of(MetadataPresenter::SubmissionsController).to_not receive(:create_submission)
-      post '/reserved/submissions', params: { save_for_later_check_answers: true }
-
-      expect(response).to redirect_to('/save')
+  context '#upload_multiupload_new_files' do
+    before do
+      controller.instance_variable_set(:@page, page)
+      controller.instance_variable_set(:@previous_answers, previous_answers)
+      incoming_answer.key = 'dog-picture_upload_2'
+      incoming_answer.incoming_answer = params
+      controller.instance_variable_set(:@page_answers, page_answers)
+      allow(file).to receive(:tempfile).and_return(OpenStruct.new(path: 'spec/dummy/spec/fixtures/thats-not-a-knife.txt'))
+      allow(controller).to receive(:incoming_answer).and_return(incoming_answer)
     end
-  end
 
-  describe 'count duplicate filenames' do
-    let(:controller) { MetadataPresenter::AnswersController.new }
-    let(:user_data) do
-      {
-        'dog_picture_upload-1' => { 'original_filename' => 'peanut.jpg' },
-        'dog_picture_upload-2' => { 'original_filename' => 'peanut.jpg' },
-        'dog_picture_upload-3' => { 'original_filename' => 'notpeanut.jpg' },
-        'another_type_of_question' => 'peanut.jpg'
+    it 'uploads the first file' do
+      expect_any_instance_of(MetadataPresenter::FileUploader).to receive(:upload).and_return(uploaded_file)
+      controller.upload_multiupload_new_files
+    end
+
+    it 'uploads additional files' do
+      previous_answers = {
+        'dog-picture_upload_2' => [{ 'original_filename' => 'a-file.txt'}]
       }
+
+      expect_any_instance_of(MetadataPresenter::FileUploader).to receive(:upload).and_return(uploaded_file)
+      controller.upload_multiupload_new_files
     end
 
-    it 'counts matches' do
-      expect(controller.update_count_matching_filenames('peanut.jpg', user_data)).to eq(2)
-      expect(controller.update_count_matching_filenames('peanut2.jpg', user_data)).to eq(0)
-      expect(controller.update_count_matching_filenames('peanut-(1).jpg', user_data)).to eq(0)
+    it 'sets an error if the filename is a duplicate' do
+      previous_answers = {
+        'dog-picture_upload_2' => [{ 'original_filename' => 'thats-not-a-knife.txt'}]
+      }
+      incoming_answer.incoming_answer = {
+        'dog-picture_upload_2' => OpenStruct.new(original_filename: 'thats-not-a-knife.txt')
+      }
+
+      allow(controller).to receive(:load_user_data).and_return(previous_answers)
+      expect_any_instance_of(MetadataPresenter::FileUploader).to_not receive(:upload)
+      controller.upload_multiupload_new_files
+
+      expect(page_answers.uploaded_files.first.errors.first.attribute.to_s).to eq('invalid.multiupload')
     end
   end
 end
