@@ -18,7 +18,7 @@
        </div>
 
      <% else %>
-        <% if editable? %>
+        <% if editable? && @page.contains_placeholders? %>
           <%= govuk_notification_banner(title_text: t('notification_banners.important')) do |nb|
             nb.with_heading(
               text: t("notification_banners.#{@page.id.gsub('page.','')}.heading"),

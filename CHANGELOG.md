@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.0.13] - 2023-07-10
+### Added
+ - Makes the notification banners on standalone pages only display if the page
+     still requires edits
+
 ## [3.0.12] - 2023-07-06
 ### Fixed
  - Fixed an issue where save and return would 404 if using a custom check your answers page.
