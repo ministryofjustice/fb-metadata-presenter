@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'govuk_design_system_formbuilder', '>= 2.1.5'
   spec.add_dependency 'json-schema', '2.8.1'
   spec.add_dependency 'kramdown', '>= 2.4.0'
-  spec.add_dependency 'govspeak', '~> 7.1'
+  spec.add_dependency 'govspeak', '>= 7.1', '< 9.0'
   spec.add_dependency 'rails', '>=7.0.0'
   spec.add_dependency 'sassc-rails', '2.1.2'
   spec.add_dependency 'sprockets-rails'
