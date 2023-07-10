@@ -112,13 +112,15 @@ RSpec.describe MetadataPresenter::PageAnswers do
 
       context 'when uploading a file' do
         let(:upload_file) do
-          ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'), filename: 'thats-not-a-knife.txt', content_type: "text/plain")
+          ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'), filename: 'thats-not-a-knife.txt', content_type: 'text/plain')
         end
         let(:multiupload_object) { MetadataPresenter::MultiUploadAnswer.new }
         let(:answers) { multiupload_object }
+        let(:previous_answers) { nil }
 
         before do
           multiupload_object.key = 'dog-picture-2'
+          multiupload_object.previous_answers = previous_answers
           multiupload_object.incoming_answer = { 'dog-picture-2' => upload_file }
         end
 
@@ -127,6 +129,94 @@ RSpec.describe MetadataPresenter::PageAnswers do
             # returned with a very different hash structure to single uploads in order to manage file list
             page_answers.send('dog-picture_upload_2')['dog-picture-2'].first['dog-picture-2'].original_filename
           ).to eq(upload_file.original_filename)
+        end
+
+        context 'when there are previous answers' do
+          let(:previous_answers) do
+            {
+              'dog-picture-2' => { 'original_filename' => 'some_other_file.txt' }
+            }
+          end
+
+          it 'adds the incoming and existing files to the same hash' do
+            result = page_answers.send('dog-picture_upload_2')
+            result.extend Hashie::Extensions::DeepFind
+
+            # first values will contain previous files
+            expect(
+              result.deep_find('original_filename')
+            ).to eq('some_other_file.txt')
+            # last in the array should be the incoming file, still as a rack file
+            expect(
+              result['dog-picture-2'].last.values.first.original_filename
+            ).to eq('thats-not-a-knife.txt')
+          end
+
+          context 'but no incoming answer' do
+            let(:answers) do
+              {
+                'dog-picture_upload_2' => { 'original_filename' => 'just_existing_file.txt' }
+              }
+            end
+
+            it 'returns a renderable hash of just existing files' do
+              result = page_answers.send('dog-picture_upload_2')
+              result.extend Hashie::Extensions::DeepFind
+
+              expect(
+                result.deep_find('original_filename')
+              ).to eq('just_existing_file.txt')
+            end
+          end
+
+          context 'when there are many previous answers' do
+            let(:previous_answers) do
+              {
+                'dog-picture-2' => [{ 'original_filename' => 'even_more_files.txt' }, { 'original_filename' => 'yet_another.txt' }]
+              }
+            end
+
+            it 'adds the incoming and existing files to the same hash' do
+              result = page_answers.send('dog-picture_upload_2')
+              result.extend Hashie::Extensions::DeepFind
+
+              # first values will contain previous files
+              expect(
+                result.deep_find('original_filename')
+              ).to eq('even_more_files.txt')
+              # last in the array should be the incoming file, still as a rack file
+              expect(
+                result['dog-picture-2'].last.values.first.original_filename
+              ).to eq('thats-not-a-knife.txt')
+            end
+
+            context 'but no incoming answer' do
+              let(:answers) do
+                {
+                  'dog-picture_upload_2' => [{ 'original_filename' => 'even_more_files_this_time.txt' }, { 'original_filename' => 'yet_another.txt' }]
+                }
+              end
+
+              it 'returns a renderable hash of just existing files' do
+                result = page_answers.send('dog-picture_upload_2')
+
+                result.extend Hashie::Extensions::DeepFind
+
+                expect(
+                  result.deep_find('original_filename')
+                ).to eq('even_more_files_this_time.txt')
+              end
+            end
+          end
+        end
+      end
+
+      context 'when answers are nil' do
+        let(:page) { service.find_page_by_url('dog-picture-2') }
+        let(:answers) { { 'dog-picture_upload_2' => nil } }
+
+        it 'returns nil' do
+          expect(page_answers.send('dog-picture_upload_2')).to eq(nil)
         end
       end
     end

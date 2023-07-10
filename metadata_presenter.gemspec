@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'binding_of_caller'
   spec.add_development_dependency 'brakeman'
   spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'hashie'
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-govuk'

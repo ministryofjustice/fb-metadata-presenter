@@ -151,7 +151,7 @@ RSpec.describe MetadataPresenter::TraversedPages do
                 'star-wars-knowledge',
                 'how-many-lights',
                 'dog-picture',
-                "dog-picture-2",
+                'dog-picture-2',
                 'countries',
                 'check-answers',
                 'confirmation'

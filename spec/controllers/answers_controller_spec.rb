@@ -3,7 +3,7 @@ RSpec.describe MetadataPresenter::AnswersController, type: :controller do
   let(:previous_answers) { {} }
   let(:incoming_answer) { MetadataPresenter::MultiUploadAnswer.new }
   let(:file) do
-    ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'), filename: 'thats-not-a-knife.txt', content_type: "text/plain")
+    ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'), filename: 'thats-not-a-knife.txt', content_type: 'text/plain')
   end
   let(:params) do
     ActionController::Parameters.new({
@@ -13,8 +13,8 @@ RSpec.describe MetadataPresenter::AnswersController, type: :controller do
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, incoming_answer, nil) }
   let(:uploaded_file) do
     MetadataPresenter::UploadedFile.new(
-    file:,
-    component: page.components.first
+      file:,
+      component: page.components.first
     )
   end
 
@@ -35,17 +35,13 @@ RSpec.describe MetadataPresenter::AnswersController, type: :controller do
     end
 
     it 'uploads additional files' do
-      previous_answers = {
-        'dog-picture_upload_2' => [{ 'original_filename' => 'a-file.txt'}]
-      }
-
       expect_any_instance_of(MetadataPresenter::FileUploader).to receive(:upload).and_return(uploaded_file)
       controller.upload_multiupload_new_files
     end
 
     it 'sets an error if the filename is a duplicate' do
       previous_answers = {
-        'dog-picture_upload_2' => [{ 'original_filename' => 'thats-not-a-knife.txt'}]
+        'dog-picture_upload_2' => [{ 'original_filename' => 'thats-not-a-knife.txt' }]
       }
       incoming_answer.incoming_answer = {
         'dog-picture_upload_2' => OpenStruct.new(original_filename: 'thats-not-a-knife.txt')

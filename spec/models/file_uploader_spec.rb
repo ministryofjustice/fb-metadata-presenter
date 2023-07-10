@@ -71,7 +71,7 @@ RSpec.describe MetadataPresenter::FileUploader do
             'dog-picture' => { 'dog-picture' => [] }
           )
         end
-  
+
         it 'returns an empty uploaded file' do
           expect(adapter).to_not receive(:new)
           allow(component).to receive(:multiupload?).and_return(true)
@@ -97,7 +97,7 @@ RSpec.describe MetadataPresenter::FileUploader do
             'tempfile' => Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt')
           }
         end
-  
+
         it 'returns uploaded file' do
           allow(component).to receive(:multiupload?).and_return(true)
           expect(adapter).to receive(:new).with(

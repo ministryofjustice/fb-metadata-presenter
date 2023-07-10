@@ -113,7 +113,7 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       end
       let(:accept) { %w[text/csv] }
       let(:file) do
-        ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'), filename: 'thats-not-a-knife.txt', content_type: "text/plain")
+        ActionDispatch::Http::UploadedFile.new(tempfile: Rails.root.join('spec', 'fixtures', 'thats-not-a-knife.txt'), filename: 'thats-not-a-knife.txt', content_type: 'text/plain')
       end
 
       before do

@@ -15,33 +15,33 @@ RSpec.describe MetadataPresenter::MultiUploadAnswer do
       let(:incoming_answer) { nil }
 
       it 'should return empty' do
-        expect(subject.to_h).to eq({key => []})
+        expect(subject.to_h).to eq({ key => [] })
       end
 
       context 'incoming answer is present' do
         let(:incoming_answer) { { 'original_filename' => 'a_new_file.txt' } }
 
         it 'should return new upload as part of an array' do
-          expect(subject.to_h).to eq({key => [incoming_answer]})
+          expect(subject.to_h).to eq({ key => [incoming_answer] })
         end
       end
     end
 
     context 'single previous answer' do
-      let(:previous_answers) { { 'original_filename' => 'file.txt'} }
+      let(:previous_answers) { { 'original_filename' => 'file.txt' } }
 
       context 'incoming answer is nil' do
         let(:incoming_answer) { nil }
 
         it 'should return the previous answer as an array' do
-          expect(subject.to_h).to eq({key => [previous_answers]})
+          expect(subject.to_h).to eq({ key => [previous_answers] })
         end
 
         context 'previous answers somehow is only an empty hash' do
-          let(:previous_answers) {{}}
+          let(:previous_answers) { {} }
 
           it 'should reject blank previous answers' do
-            expect(subject.to_h).to eq({key => []})
+            expect(subject.to_h).to eq({ key => [] })
           end
         end
       end
@@ -50,35 +50,34 @@ RSpec.describe MetadataPresenter::MultiUploadAnswer do
         let(:incoming_answer) { { 'original_filename' => 'another_file.txt' } }
 
         it 'should return the previous answer as an array with the incoming answer' do
-          expect(subject.to_h).to eq({key => [previous_answers, incoming_answer]})
+          expect(subject.to_h).to eq({ key => [previous_answers, incoming_answer] })
         end
 
         context 'previous answers somehow is only an empty hash' do
-          let(:previous_answers) {{}}
-          
+          let(:previous_answers) { {} }
+
           it 'should reject blank previous answers' do
-            expect(subject.to_h).to eq({key => [incoming_answer]})
+            expect(subject.to_h).to eq({ key => [incoming_answer] })
           end
         end
       end
     end
 
     context 'multiple previous answers' do
-      let(:previous_answers) { [{ 'original_filename' => 'file.txt'}, { 'original_filename' => 'another_file.txt'}] }
+      let(:previous_answers) { [{ 'original_filename' => 'file.txt' }, { 'original_filename' => 'another_file.txt' }] }
 
       context 'incoming answer is nil' do
         let(:incoming_answer) { nil }
 
         it 'should return the previous answer as an array' do
-          expect(subject.to_h).to eq({key => previous_answers})
+          expect(subject.to_h).to eq({ key => previous_answers })
         end
 
         context 'previous answers somehow include an empty hash' do
-          let(:previous_answers) { [{ 'original_filename' => 'file.txt'}, { 'original_filename' => 'another_file.txt'}, {}] }
-
+          let(:previous_answers) { [{ 'original_filename' => 'file.txt' }, { 'original_filename' => 'another_file.txt' }, {}] }
 
           it 'should reject blank previous answers' do
-            expect(subject.to_h).to eq({key => [{ 'original_filename' => 'file.txt'}, { 'original_filename' => 'another_file.txt'}]})
+            expect(subject.to_h).to eq({ key => [{ 'original_filename' => 'file.txt' }, { 'original_filename' => 'another_file.txt' }] })
           end
         end
       end
@@ -87,17 +86,16 @@ RSpec.describe MetadataPresenter::MultiUploadAnswer do
         let(:incoming_answer) { { 'original_filename' => 'yet_another_file.txt' } }
 
         it 'should return the previous answer as an array with the incoming answer' do
-          expect(subject.to_h).to eq({key => [previous_answers, incoming_answer].flatten})
+          expect(subject.to_h).to eq({ key => [previous_answers, incoming_answer].flatten })
         end
 
         context 'previous answers somehow is only an empty hash' do
-          let(:previous_answers) { [{ 'original_filename' => 'file.txt'}, { 'original_filename' => 'another_file.txt'}, {}] }
+          let(:previous_answers) { [{ 'original_filename' => 'file.txt' }, { 'original_filename' => 'another_file.txt' }, {}] }
 
-          
           it 'should reject blank previous answers' do
             previous_answers.push({})
 
-            expect(subject.to_h).to eq({key => [{ 'original_filename' => 'file.txt'}, { 'original_filename' => 'another_file.txt'}, { 'original_filename' => 'yet_another_file.txt' }]})
+            expect(subject.to_h).to eq({ key => [{ 'original_filename' => 'file.txt' }, { 'original_filename' => 'another_file.txt' }, { 'original_filename' => 'yet_another_file.txt' }] })
           end
         end
 
@@ -105,7 +103,7 @@ RSpec.describe MetadataPresenter::MultiUploadAnswer do
           let(:incoming_answer) { { 'original_filename' => 'another_file.txt' } }
 
           it 'should not duplicate the answer in the returned set' do
-            expect(subject.to_h).to eq({key => previous_answers})
+            expect(subject.to_h).to eq({ key => previous_answers })
           end
         end
       end
@@ -116,7 +114,7 @@ RSpec.describe MetadataPresenter::MultiUploadAnswer do
     let(:input) do
       {
         'cool-files' => [
-          { 'original_filename' => 'file.txt'},
+          { 'original_filename' => 'file.txt' },
           { 'original_filename' => 'another_file.txt' }
         ]
       }
