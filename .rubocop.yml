@@ -41,3 +41,6 @@ Layout/AccessModifierIndentation:
 
 Rails/RequestReferer:
   EnforcedStyle: referrer
+
+Rails/HelperInstanceVariable:
+  Enabled: false
