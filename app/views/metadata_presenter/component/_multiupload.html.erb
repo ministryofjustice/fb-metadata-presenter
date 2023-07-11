@@ -15,7 +15,7 @@
           <% if editor_preview? %>
             <%= link_to t('presenter.questions.multiupload.remove_file'), '#', class: 'govuk-link' %>
           <% else %>
-            <%= link_to t('presenter.questions.multiupload.remove_file'), remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link' %>
+            <%= link_to t('presenter.questions.multiupload.remove_file'), remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link', alt: t('presenter.questions.multiupload.remove_file_alt_text', filename: previous_file['original_filename']) %>
           <% end %>
         </dd>
       </div>

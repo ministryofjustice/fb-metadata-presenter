@@ -44,6 +44,7 @@ en:
     questions:
       multiupload:
         remove_file: 'Delete'
+        remove_file_alt_text: 'Delete %{filename}'
         add_another: 'Add another file'
         answered_singular: 'You can add 1 more file (maximum 7MB)'
         answered_plural: 'You can add %{num} more files (maximum 7MB)'

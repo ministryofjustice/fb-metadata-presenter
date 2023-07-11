@@ -85,7 +85,7 @@ module MetadataPresenter
     end
 
     def multiupload(multifile_hash)
-      multifile_hash[component.id].map { |i| i['original_filename'] }.join(', ')
+      multifile_hash[component.id].map { |i| i['original_filename'] }.join('<br>').html_safe
     end
 
     def autocomplete(value)
