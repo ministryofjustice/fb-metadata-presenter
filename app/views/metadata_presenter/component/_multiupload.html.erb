@@ -20,7 +20,7 @@
 <% end %>
 
 <% if uploads_remaining.positive? %>
-  <div data-multiupload-element="upload-another-file" hidden>
+  <div data-multiupload-element="upload-another-file" <%= answered?(component.id) ? '' : 'style="display: none;"' %>>
     <%= f.govuk_file_field component.id.to_sym,
       label: { hidden: true },
       hint: {
@@ -31,12 +31,6 @@
       disabled: editable?
     %>
   </div>
-
-  <% if editor_preview? || editable? %>
-    <div class="govuk-button govuk-button--secondary" data-multiupload-element="add-another-file"><%= t('presenter.questions.multiupload.add_another') %></div>
-  <% else %>
-    <div class="govuk-button govuk-button--secondary" data-multiupload-element="add-another-file"><%= t('presenter.questions.multiupload.add_another') %></div>
-  <% end %>
 <% end %>
 
 <% if editable? %>
