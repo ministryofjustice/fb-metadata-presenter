@@ -67,7 +67,19 @@ module MetadataPresenter
           file.errors.add('invalid.multiupload')
           @page_answers.uploaded_files.push(file)
         else
-          @page_answers.uploaded_files.push(multiuploaded_file(previous_answers, component))
+          file = multiuploaded_file(previous_answers, component)
+
+          if file.errors.any?
+            # prevents saving the file in the event of a filetype error
+            @page_answers.uploaded_files.push(
+              MetadataPresenter::UploadedFile.new(
+                file: @page_answers.send(component.id)[component.id].last,
+                component:
+              )
+            )
+          else
+            @page_answers.uploaded_files.push(file)
+          end
         end
       end
     end

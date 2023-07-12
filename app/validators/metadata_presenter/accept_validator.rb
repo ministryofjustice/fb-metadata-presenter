@@ -5,7 +5,6 @@ module MetadataPresenter
     end
 
     def error_message_hash
-      # byebug
       if component.type == 'multiupload'
         {
           control: page_answers.send(component.id)[component.id].last['original_filename'],
