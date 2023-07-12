@@ -47,6 +47,6 @@
   </div>
 <% end %>
 
-<% if answered?(component.id) %>
+<% if answered?(component.id) && uploads_remaining.positive? %>
   <button class="govuk-button govuk-button--secondary" data-multiupload-element="add-another-file"><%= t('presenter.questions.multiupload.add_another') %></button>
 <% end %>
