@@ -110,6 +110,11 @@ module MetadataPresenter
         }
       end
 
+      if answers.previous_answers.present? && answers.previous_answers.is_a?(Hash) && answers.incoming_answer.present? && answers.incoming_answer[component_id].is_a?(ActionDispatch::Http::UploadedFile)
+        # we're re-rendering or uploading and need to check for duplicate filenames
+        answers.previous_answers = answers.previous_answers.reject { |answer| answer['original_filename'] == incoming_answer[component_id].original_filename }
+      end
+
       answers
     end
 
