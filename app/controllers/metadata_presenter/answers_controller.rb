@@ -28,6 +28,8 @@ module MetadataPresenter
         # can't render error in the same way for the multiupload component
         if about_to_render_multiupload?
           @user_data = @previous_answers
+
+          # FIXME: showing the answer in the answers list when it fails accept validation
           render template: @page.template, status: :unprocessable_entity and return
         end
         render_validation_error
@@ -52,22 +54,27 @@ module MetadataPresenter
         previous_answers = user_data[component.id]
         incoming_filename = @page_answers.send(component.id)[component.id].last['original_filename']
 
-        if incoming_filename.present?
-          # determine if duplicate filename from any other user answer
-          @page_answers.count = update_count_matching_filenames(incoming_filename, user_data)
-        end
-
-        if previous_answers.present? && previous_answers.any? { |answer| answer['original_filename'] == incoming_answer.incoming_answer.values.first.original_filename }
-          @page_answers.count = nil # ensure we don't also try to suffix this filename as we will reject it anyway
-          file = MetadataPresenter::UploadedFile.new(
-            file: @page_answers.send(component.id)[component.id].last,
-            component:
-          )
-
-          file.errors.add('invalid.multiupload')
-          @page_answers.uploaded_files.push(file)
-        else
+        if editor_preview?
           @page_answers.uploaded_files.push(multiuploaded_file(previous_answers, component))
+        else
+
+          if incoming_filename.present?
+            # determine if duplicate filename from any other user answer
+            @page_answers.count = update_count_matching_filenames(incoming_filename, user_data)
+          end
+
+          if previous_answers.present? && previous_answers.any? { |answer| answer['original_filename'] == incoming_answer.incoming_answer.values.first.original_filename }
+            @page_answers.count = nil # ensure we don't also try to suffix this filename as we will reject it anyway
+            file = MetadataPresenter::UploadedFile.new(
+              file: @page_answers.send(component.id)[component.id].last,
+              component:
+            )
+
+            file.errors.add('invalid.multiupload')
+            @page_answers.uploaded_files.push(file)
+          else
+            @page_answers.uploaded_files.push(multiuploaded_file(previous_answers, component))
+          end
         end
       end
     end

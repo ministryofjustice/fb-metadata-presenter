@@ -1,22 +1,18 @@
 <label for="<%= component.id %>" class="govuk-heading-xl"><%= input_title %></label>
 
-<% if answered?(component.id) %>
+<% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
   <label for="uploaded-file-summary-list"><p class="govuk-heading-s"><%= uploads_count %></p>
   <span class="govuk-hint" id="answers-dog-picture-upload-1-hint" data-fb-default-text="<%= default_text('upload_hint') %>">
   </span>
   <dl id="uploaded-file-summary-list" class="fb-block fb-block-answers govuk-summary-list">
-    <% @page_answers.send(component.id)[component.id].compact.each do |previous_file| %>
+    <% files_to_render.each do |previous_file| %>
     
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__value">
-          <%= editor_preview? ? 'example-file.doc' : previous_file['original_filename'] %>
+          <%= previous_file['original_filename'] %>
         </dt>
         <dd class="govuk-summary-list__actions">
-          <% if editor_preview? %>
-            <%= link_to t('presenter.questions.multiupload.remove_file'), '#', class: 'govuk-link' %>
-          <% else %>
-            <%= link_to t('presenter.questions.multiupload.remove_file'), remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link', alt: t('presenter.questions.multiupload.remove_file_alt_text', filename: previous_file['original_filename']) %>
-          <% end %>
+          <%= link_to t('presenter.questions.multiupload.remove_file'), remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link', alt: t('presenter.questions.multiupload.remove_file_alt_text', filename: previous_file['original_filename']) %>
         </dd>
       </div>
     <% end %>

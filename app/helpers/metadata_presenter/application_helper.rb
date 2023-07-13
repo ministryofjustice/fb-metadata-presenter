@@ -72,5 +72,17 @@ module MetadataPresenter
 
       answers.count == 1 ? I18n.t('presenter.questions.multiupload.answered_count_singular') : I18n.t('presenter.questions.multiupload.answered_count_plural', num: answers.count)
     end
+
+    def files_to_render
+      component = @page.components.select { |c| c.type == 'multiupload' }.first
+
+      error_file = @page_answers.uploaded_files.select { |file| file.errors.any? }.first
+
+      if error_file.present?
+        @page_answers.send(component.id)[component.id].compact.reject { |file| file[error_file.file['original_filename'] == 'original_filename'] }
+      else
+        @page_answers.send(component.id)[component.id].compact
+      end
+    end
   end
 end

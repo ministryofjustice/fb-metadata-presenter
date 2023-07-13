@@ -4,6 +4,7 @@ module MetadataPresenter
 
     def show
       @user_data = load_user_data # method signature
+
       @page ||= service.find_page_by_url(request.env['PATH_INFO'])
       if @page
         load_autocomplete_items
