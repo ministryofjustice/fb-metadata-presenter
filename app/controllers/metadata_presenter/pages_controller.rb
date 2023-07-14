@@ -25,6 +25,11 @@ module MetadataPresenter
     end
     helper_method :pages_presenters
 
+    def show_save_and_return
+      @page.upload_components.none?
+    end
+    helper_method :show_save_and_return
+
     def answered_pages
       TraversedPages.new(service, load_user_data, @page).all
     end
