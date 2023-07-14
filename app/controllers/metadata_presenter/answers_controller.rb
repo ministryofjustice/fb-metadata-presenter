@@ -79,6 +79,11 @@ module MetadataPresenter
       end
     end
 
+    def show_save_and_return
+      page.upload_components.none?
+    end
+    helper_method :show_save_and_return
+
     private
 
     def page
