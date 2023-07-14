@@ -1,22 +1,20 @@
 <label for="<%= component.id %>" class="govuk-heading-xl"><%= input_title %></label>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
-  <label for="uploaded-file-summary-list"><p class="govuk-heading-s"><%= uploads_count %></p>
-  <span class="govuk-hint" id="answers-dog-picture-upload-1-hint" data-fb-default-text="<%= default_text('upload_hint') %>">
-  </span>
-  <dl id="uploaded-file-summary-list" class="fb-block fb-block-answers govuk-summary-list">
+  <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= uploads_count %></p></label>
+
+  <dl id="uploaded-file-summary-list" class="fb-block fb-block-answers govuk-summary-list" aria-labelled-by="uploaded-file-summary-list-label">
     <% files_to_render.each do |previous_file| %>
-    
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__value">
           <%= previous_file['original_filename'] %>
         </dt>
         <dd class="govuk-summary-list__actions">
-          <%= link_to t('presenter.questions.multiupload.remove_file'), remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link', alt: t('presenter.questions.multiupload.remove_file_alt_text', filename: previous_file['original_filename']) %>
+          <%= link_to "#{t('presenter.questions.multiupload.remove_file')}<span class=\"govuk-visually-hidden\">#{previous_file['original_filename']}</span>".html_safe, remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link' %>
         </dd>
       </div>
     <% end %>
-  <dl>
+  </dl>
 <% end %>
 
 <% if editable? %>
@@ -31,8 +29,10 @@
 
 <% if uploads_remaining.positive? || editable? %>
   <div data-multiupload-element="upload-another-file" <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? ? 'hidden' : '' %>>
+    <label class="govuk-heading-s" for=<%= component.id.to_sym %> <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? ? '' : 'hidden' %>><%= t('presenter.questions.multiupload.add_another') %></label>
+
     <%= f.govuk_file_field component.id.to_sym,
-      label: { text: t('presenter.questions.multiupload.add_another'), hidden: editable? },
+      label: { hidden: true },
       hint: {
         data: { "fb-default-text" => default_text('upload_hint') },
         text: component.hint.present? ? component.hint : ''
