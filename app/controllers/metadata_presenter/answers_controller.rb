@@ -30,6 +30,11 @@ module MetadataPresenter
       user_data.select { |_k, v| v.instance_of?(Hash) && v['original_filename'] =~ filename_regex }.count
     end
 
+    def show_save_and_return
+      page.upload_components.none?
+    end
+    helper_method :show_save_and_return
+
     private
 
     def page
