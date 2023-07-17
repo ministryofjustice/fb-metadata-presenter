@@ -1,4 +1,4 @@
-<label for="<%= component.id %>" class="govuk-heading-xl"><%= input_title %></label>
+<label for="<%= component.id.to_sym %>" class="govuk-heading-xl"><%= input_title %></label>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
   <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= uploads_count %></p></label>
@@ -19,7 +19,7 @@
 
 <% if uploads_remaining.positive? || editable? %>
   <div data-multiupload-element="upload-another-file" <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? ? 'hidden' : '' %>>
-    <label class="govuk-heading-s" for=<%= component.id.to_sym %> <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? ? '' : 'hidden' %>><%= t('presenter.questions.multiupload.add_another') %></label>
+    <label class="govuk-heading-s" for=<%= component.id.to_sym %> <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? ? '' : 'hidden' %>><%= t('presenter.questions.multiupload.add_another') %></label>
 
     <%= f.govuk_file_field component.id.to_sym,
       label: { hidden: true },
@@ -40,7 +40,7 @@
     <p><%= component.validation['max_files'].to_i > 1 ? t('presenter.questions.multiupload.plural', num: component.validation['max_files']) : '' %></p>
   <% end %>
 <% else %>
-  <p><%= multiupload_files_remaining %></p>
+  <p><%= component.validation['max_files'].to_i > 1 || uploads_remaining == 0 ? multiupload_files_remaining : '' %></p>
 <% end %>
 
 <% if answered?(component.id) && uploads_remaining.positive? && @page_answers.send(component.id)[component.id].compact.count.positive? %>
