@@ -17,16 +17,6 @@
   </dl>
 <% end %>
 
-<% if editable? %>
-  <% if editor_preview? && answered?(component.id) %>
-      <p><%= t('presenter.questions.multiupload.none') %></p>
-  <% else %>
-    <p><%= component.validation['max_files'].to_i == 1 ? t('presenter.questions.multiupload.singular') : t('presenter.questions.multiupload.plural', num: component.validation['max_files']) %></p>
-  <% end %>
-<% else %>
-  <p><%= multiupload_files_remaining %></p>
-<% end %>
-
 <% if uploads_remaining.positive? || editable? %>
   <div data-multiupload-element="upload-another-file" <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? ? 'hidden' : '' %>>
     <label class="govuk-heading-s" for=<%= component.id.to_sym %> <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? ? '' : 'hidden' %>><%= t('presenter.questions.multiupload.add_another') %></label>
@@ -35,12 +25,22 @@
       label: { hidden: true },
       hint: {
         data: { "fb-default-text" => default_text('upload_hint') },
-        text: component.hint.present? ? component.hint : ''
+        text: component.hint.present? ? component.hint : default_text('upload_hint')
       },
       accept: component.validation['accept'],
       disabled: editable?
     %>
   </div>
+<% end %>
+
+<% if editable? %>
+  <% if editor_preview? && answered?(component.id) %>
+      <p><%= t('presenter.questions.multiupload.none') %></p>
+  <% else %>
+    <p><%= component.validation['max_files'].to_i > 1 ? t('presenter.questions.multiupload.plural', num: component.validation['max_files']) : '' %></p>
+  <% end %>
+<% else %>
+  <p><%= multiupload_files_remaining %></p>
 <% end %>
 
 <% if answered?(component.id) && uploads_remaining.positive? && @page_answers.send(component.id)[component.id].compact.count.positive? %>
