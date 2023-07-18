@@ -30,7 +30,7 @@
       <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? %>
         <h3 class="govuk-heading-s"><%= t('presenter.questions.multiupload.add_another') %></h3>
       <% else %>
-        <h3 class="govuk-heading-s" hidden><%= t('presenter.questions.multiupload.add_another') %></h3>
+        <h3 class="govuk-heading-s" style="display: none"><%= t('presenter.questions.multiupload.add_another') %></h3>
       <% end %>
     <% end %>
   </div>
