@@ -19,8 +19,9 @@
 
 <% if uploads_remaining.positive? || editable? %>
   <div data-multiupload-element="upload-another-file" <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? ? 'hidden' : '' %>>
-    <label class="govuk-heading-s" for=<%= component.id.to_sym %> <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? ? '' : 'hidden' %>><%= t('presenter.questions.multiupload.add_another') %></label>
-
+    <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? %>
+      <label class="govuk-heading-s" for=<%= component.id.to_sym %>><%= t('presenter.questions.multiupload.add_another') %></label>
+    <% end %>
     <%= f.govuk_file_field component.id.to_sym,
       label: { hidden: true },
       hint: {
