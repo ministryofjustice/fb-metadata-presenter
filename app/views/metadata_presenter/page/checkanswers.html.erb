@@ -88,6 +88,10 @@
                    content_components: @page.supported_content_components
                  } %>
 
+        <%if pages_presenters.any?{|presenter| presenter[0].component.metadata._type == 'email'} %>
+          <%= I18n.t('presenter.confirmation.email_basic_disclaimer') %>
+        <%end%>
+
         <div class="govuk-button-group">
           <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
             <%= t('presenter.actions.submit') -%></button>
