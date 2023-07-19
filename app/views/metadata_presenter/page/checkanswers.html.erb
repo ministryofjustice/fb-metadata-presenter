@@ -89,7 +89,12 @@
                  } %>
 
         <%if pages_presenters.any?{|presenter| presenter[0].component.metadata._type == 'email'} %>
+          <% if confirmation_email_enabled? %>
+            <%= I18n.t('presenter.confirmation.checkbox_disclaimer') %>
+          <%else%>
           <%= I18n.t('presenter.confirmation.email_basic_disclaimer') %>
+          <%end%>
+          <br><br>
         <%end%>
 
         <div class="govuk-button-group">

@@ -57,4 +57,7 @@ class ApplicationController < ActionController::Base
   def service_slug_config
     service.service_slug
   end
+
+  def confirmation_email_enabled?; end
+  helper_method :confirmation_email_enabled?
 end
