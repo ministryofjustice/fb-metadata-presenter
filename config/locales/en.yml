@@ -56,6 +56,7 @@ en:
       email_disclaimer_email_question: 'This email will be used to send you a confirmation email with a copy of your answers.'
       email_basic_disclaimer: 'You will receive a confirmation  with a copy of the answers you provided by email at %{email_provided}'
       checkbox_disclaimer: 'I want to receive a confirmation with a copy of the answer I provided by email at %{email_provided}'
+      payment_link_disclaimer: 'To ensure you keep track of the link you need to pay for your application, you will receive a confirmation email at %{email_provided}. It will contains all the answers you have submitted above.'
     save_and_return:
       save: 'Save for later'
       show:

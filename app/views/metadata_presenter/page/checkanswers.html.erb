@@ -89,11 +89,15 @@
                  } %>
 
         <%if pages_presenters.any?{|presenter| presenter[0].component.metadata._type == 'email'} %>
-          <%email_provided = 'an email TBC'%>
+          <%email_provided = 'a bold email'%>
           <% if confirmation_email_enabled? %>
-            <%= I18n.t('presenter.confirmation.checkbox_disclaimer', email_provided: email_provided) %>
+            <% if payment_link_enabled? %>
+              <%= I18n.t('presenter.confirmation.payment_link_disclaimer', email_provided: email_provided) %>
+            <%else%>
+              <%= I18n.t('presenter.confirmation.checkbox_disclaimer', email_provided: email_provided) %>
+            <%end%>
           <%else%>
-          <%= I18n.t('presenter.confirmation.email_basic_disclaimer', email_provided: email_provided) %>
+            <%= I18n.t('presenter.confirmation.email_basic_disclaimer', email_provided: email_provided) %>
           <%end%>
           <br><br>
         <%end%>
