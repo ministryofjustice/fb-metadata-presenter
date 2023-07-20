@@ -7,7 +7,11 @@ module MetadataPresenter
 
       @page_answers = PageAnswers.new(page, incoming_answer, autocomplete_items(page.components))
 
-      check_for_save_for_later_on_upload_page
+      if params[:save_for_later].present?
+        save_user_data unless upload? || multiupload?
+
+        redirect_to save_path(page_slug: params[:page_slug]) and return
+      end
 
       upload_files if upload?
       upload_multiupload_new_files if multiupload? && answers_params.present?
@@ -35,14 +39,6 @@ module MetadataPresenter
 
     def about_to_render_multiupload?
       answers_params.present? && page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
-    end
-
-    def check_for_save_for_later_on_upload_page
-      if params[:save_for_later].present?
-        save_user_data unless upload? || multiupload?
-
-        redirect_to save_path(page_slug: params[:page_slug]) and return
-      end
     end
 
     def update_count_matching_filenames(original_filename, user_data)
