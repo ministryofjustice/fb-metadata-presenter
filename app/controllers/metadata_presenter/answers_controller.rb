@@ -3,17 +3,11 @@ module MetadataPresenter
     before_action :check_page_exists
 
     def create
-      check_for_save_for_later_on_upload_page
-
       @previous_answers = reload_user_data.deep_dup
 
       @page_answers = PageAnswers.new(page, incoming_answer, autocomplete_items(page.components))
 
-      if params[:save_for_later].present?
-        save_user_data
-
-        redirect_to save_path(page_slug: params[:page_slug]) and return
-      end
+      check_for_save_for_later_on_upload_page
 
       upload_files if upload?
       upload_multiupload_new_files if multiupload? && answers_params.present?
@@ -44,12 +38,10 @@ module MetadataPresenter
     end
 
     def check_for_save_for_later_on_upload_page
-      if upload? || multiupload?
-        if params[:save_for_later].present?
-          # save_user_data
+      if params[:save_for_later].present?
+        save_user_data unless upload? || multiupload?
 
-          redirect_to save_path(page_slug: params[:page_slug]) and return
-        end
+        redirect_to save_path(page_slug: params[:page_slug]) and return
       end
     end
 
