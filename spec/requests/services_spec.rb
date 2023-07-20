@@ -134,16 +134,6 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
         ).to receive(:upload_files)
         post '/dog-picture', params: { answers: }
       end
-
-      # TODO: FIXME
-      # it 'uploads to a multiupload then remains on the same page' do
-      #   answers = {
-      #     'dog-picture_upload_2' => file
-      #   }
-
-      #   post '/dog-picture-2', params: { answers: }
-      #   expect(response).to redirect_to('/dog-picture-2')
-      # end
     end
 
     context 'when invalid' do
