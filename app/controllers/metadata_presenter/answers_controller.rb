@@ -44,12 +44,12 @@ module MetadataPresenter
     end
 
     def check_for_save_for_later_on_upload_page
-      return unless upload? || multiupload?
+      if upload? || multiupload?
+        if params[:save_for_later].present?
+          # save_user_data
 
-      if params[:save_for_later].present?
-        # save_user_data
-
-        redirect_to save_path(page_slug: params[:page_slug]) and return
+          redirect_to save_path(page_slug: params[:page_slug]) and return
+        end
       end
     end
 
