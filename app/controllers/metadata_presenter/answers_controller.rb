@@ -5,16 +5,18 @@ module MetadataPresenter
     def create
       @previous_answers = reload_user_data.deep_dup
 
-      @page_answers = PageAnswers.new(page, incoming_answer, autocomplete_items(page.components))
+      check_for_save_for_later_on_upload_page
 
-      upload_files if upload?
-      upload_multiupload_new_files if multiupload? && answers_params.present?
+      @page_answers = PageAnswers.new(page, incoming_answer, autocomplete_items(page.components))
 
       if params[:save_for_later].present?
         save_user_data
-        # NOTE: if the user is on a file upload page, files will not be uploaded before redirection
+
         redirect_to save_path(page_slug: params[:page_slug]) and return
       end
+
+      upload_files if upload?
+      upload_multiupload_new_files if multiupload? && answers_params.present?
 
       if @page_answers.validate_answers
         save_user_data # method signature
@@ -39,6 +41,16 @@ module MetadataPresenter
 
     def about_to_render_multiupload?
       answers_params.present? && page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
+    end
+
+    def check_for_save_for_later_on_upload_page
+      return unless upload? || multiupload?
+
+      if params[:save_for_later].present?
+        save_user_data
+
+        redirect_to save_path(page_slug: params[:page_slug]) and return
+      end
     end
 
     def update_count_matching_filenames(original_filename, user_data)
