@@ -6,14 +6,15 @@ module MetadataPresenter
       @previous_answers = reload_user_data.deep_dup
 
       @page_answers = PageAnswers.new(page, incoming_answer, autocomplete_items(page.components))
+
+      upload_files if upload?
+      upload_multiupload_new_files if multiupload? && answers_params.present?
+
       if params[:save_for_later].present?
         save_user_data
         # NOTE: if the user is on a file upload page, files will not be uploaded before redirection
         redirect_to save_path(page_slug: params[:page_slug]) and return
       end
-
-      upload_files if upload?
-      upload_multiupload_new_files if multiupload? && answers_params.present?
 
       if @page_answers.validate_answers
         save_user_data # method signature
