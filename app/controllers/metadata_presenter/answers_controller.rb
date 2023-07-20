@@ -47,7 +47,7 @@ module MetadataPresenter
       return unless upload? || multiupload?
 
       if params[:save_for_later].present?
-        save_user_data
+        # save_user_data
 
         redirect_to save_path(page_slug: params[:page_slug]) and return
       end
