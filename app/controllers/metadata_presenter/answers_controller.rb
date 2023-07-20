@@ -3,9 +3,9 @@ module MetadataPresenter
     before_action :check_page_exists
 
     def create
-      @previous_answers = reload_user_data.deep_dup
-
       check_for_save_for_later_on_upload_page
+
+      @previous_answers = reload_user_data.deep_dup
 
       @page_answers = PageAnswers.new(page, incoming_answer, autocomplete_items(page.components))
 
