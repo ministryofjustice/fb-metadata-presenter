@@ -1,4 +1,4 @@
-<label for="upload-another-file" class="govuk-heading-xl"><%= input_title %></label>
+<legend for="upload-another-file" class="govuk-heading-xl"><%= input_title %></legend>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
   <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= uploads_count %></p></label>
@@ -30,7 +30,7 @@
       <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? %>
         <h3 class="govuk-heading-s"><%= t('presenter.questions.multiupload.add_another') %></h3>
       <% else %>
-        <h3 class="govuk-heading-s" style="display: none"><%= t('presenter.questions.multiupload.add_another') %></h3>
+        <h3 class="govuk-visually-hidden"><%= t('presenter.questions.multiupload.add_another') %></h3>
       <% end %>
     <% end %>
   </div>
@@ -38,14 +38,14 @@
 
 <% if editable? %>
   <% if editor_preview? && answered?(component.id) %>
-      <p><%= t('presenter.questions.multiupload.none') %></p>
+      <p class="govuk-!-margin-bottom-8"><%= t('presenter.questions.multiupload.none') %></p>
   <% else %>
-    <p><%= component.validation['max_files'].to_i > 1 ? t('presenter.questions.multiupload.plural', num: component.validation['max_files']) : '' %></p>
+    <p class="govuk-!-margin-bottom-8"><%= component.validation['max_files'].to_i > 1 ? t('presenter.questions.multiupload.plural', num: component.validation['max_files']) : t('presenter.questions.multiupload.single_upload') %></p>
   <% end %>
 <% else %>
-  <p><%= component.validation['max_files'].to_i > 1 || uploads_remaining == 0 ? multiupload_files_remaining : '' %></p>
+  <p class="govuk-!-margin-bottom-8"><%= multiupload_files_remaining %></p>
 <% end %>
 
 <% if answered?(component.id) && uploads_remaining.positive? && @page_answers.send(component.id)[component.id].compact.count.positive? %>
-  <button class="govuk-button govuk-button--secondary" data-multiupload-element="add-another-file"><%= t('presenter.questions.multiupload.add_another') %></button>
+  <button class="govuk-button govuk-!-margin-bottom-8 govuk-button--secondary" data-multiupload-element="add-another-file"><%= t('presenter.questions.multiupload.add_another') %></button>
 <% end %>

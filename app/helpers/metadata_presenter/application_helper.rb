@@ -39,9 +39,12 @@ module MetadataPresenter
     def multiupload_files_remaining
       component = @page.components.select { |c| c.type == 'multiupload' }.first
       answers = @user_data.keys.include?(component.id) ? @user_data.find(component.id).first : []
+      max_files = component.validation['max_files'].to_i
 
       if uploads_remaining.zero?
         I18n.t('presenter.questions.multiupload.none')
+      elsif max_files == 1
+        I18n.t('presenter.questions.multiupload.single_upload')
       elsif uploads_remaining == 1
         if answers.present?
           I18n.t('presenter.questions.multiupload.answered_singular')

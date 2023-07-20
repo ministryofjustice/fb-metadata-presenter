@@ -159,7 +159,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
         component = OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: { 'max_files' => '1' } })
         @page = OpenStruct.new(components: [component])
 
-        expect(helper.multiupload_files_remaining).to eq(I18n.t('presenter.questions.multiupload.singular'))
+        expect(helper.multiupload_files_remaining).to eq(I18n.t('presenter.questions.multiupload.single_upload'))
       end
     end
 
