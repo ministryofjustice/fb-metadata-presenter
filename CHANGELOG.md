@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.1.0] - 2023-07-24
+### Added
+ - Multifile upload component release
+
 ## [3.0.15] - 2023-07-10
 ### Added
  - Added helper to answers controller to prevent error when validating
