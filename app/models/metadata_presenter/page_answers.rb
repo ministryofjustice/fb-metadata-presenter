@@ -31,7 +31,7 @@ module MetadataPresenter
         upload_answer(component.id, count)
       elsif component && component.type == 'multiupload'
         answer_object = multiupload_answer(component.id, count)
-        return answer_object.to_h if answer_object.present?
+       answer_object.to_h if answer_object.present?
       elsif component && component.type == 'checkboxes'
         answers[method_name.to_s].to_a
       else
