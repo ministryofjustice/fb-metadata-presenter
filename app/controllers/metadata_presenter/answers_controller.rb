@@ -30,7 +30,6 @@ module MetadataPresenter
         if about_to_render_multiupload?
           @user_data = @previous_answers
 
-          # FIXME: showing the answer in the answers list when it fails accept validation
           render template: @page.template, status: :unprocessable_entity and return
         end
         render_validation_error
