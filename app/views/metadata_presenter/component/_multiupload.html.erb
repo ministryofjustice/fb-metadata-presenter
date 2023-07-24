@@ -1,4 +1,4 @@
-<legend for="upload-another-file" class="govuk-heading-xl"><%= input_title %></legend>
+<label class="govuk-heading-xl"><%= input_title %></label>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
   <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= uploads_count %></p></label>
