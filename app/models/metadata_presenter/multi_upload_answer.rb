@@ -13,13 +13,14 @@ module MetadataPresenter
       return [incoming_answer] if previous_answers.nil? && incoming_answer.present?
 
       if previous_answers.is_a?(Array)
-        return previous_answers.reject(&:blank?) if incoming_answer.nil? || previous_answers.find do |answer|
-            answer['original_filename'] == incoming_answer['original_filename']
-          end.present?
+        return previous_answers.reject(&:blank?) if incoming_answer.nil? || previous_answers.find { |answer|
+                                                      answer['original_filename'] == incoming_answer['original_filename']
+                                                    }.present?
 
         previous_answers.reject(&:blank?).push(incoming_answer)
       else
         return [previous_answers] if incoming_answer.nil?
+
         [previous_answers, incoming_answer]
       end
     end

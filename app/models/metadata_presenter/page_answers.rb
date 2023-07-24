@@ -31,7 +31,7 @@ module MetadataPresenter
         upload_answer(component.id, count)
       elsif component && component.type == 'multiupload'
         answer_object = multiupload_answer(component.id, count)
-       answer_object.to_h if answer_object.present?
+        answer_object.to_h if answer_object.present?
       elsif component && component.type == 'checkboxes'
         answers[method_name.to_s].to_a
       else
@@ -80,7 +80,7 @@ module MetadataPresenter
       end
 
       if answers.is_a?(Hash) # rendering only existing answers
-       return if answers[component_id].blank?
+        return if answers[component_id].blank?
 
         if answers[component_id].is_a?(Array)
           answers[component_id].each { |answer| answer['original_filename'] = sanitize(filename(update_filename(answer['original_filename']))) }
