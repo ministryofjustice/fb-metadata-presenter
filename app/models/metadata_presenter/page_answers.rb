@@ -80,9 +80,7 @@ module MetadataPresenter
       end
 
       if answers.is_a?(Hash) # rendering only existing answers
-        if answers[component_id].blank?
-          return
-        end
+       return if answers[component_id].blank?
 
         if answers[component_id].is_a?(Array)
           answers[component_id].each { |answer| answer['original_filename'] = sanitize(filename(update_filename(answer['original_filename']))) }
