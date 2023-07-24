@@ -37,7 +37,7 @@ module MetadataPresenter
     end
 
     def about_to_render_multiupload?
-      answers_params.present? && page.metadata.components.any? { |e| e['_type'] == 'multiupload' }
+      answers_params.present? && multiupload?
     end
 
     def update_count_matching_filenames(original_filename, user_data)
