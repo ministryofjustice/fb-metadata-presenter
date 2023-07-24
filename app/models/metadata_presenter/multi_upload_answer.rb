@@ -9,22 +9,17 @@ module MetadataPresenter
     end
 
     def previous_answers_value
-      if previous_answers.nil?
-        return nil if incoming_answer.nil?
+      return nil if previous_answers.nil? && incoming_answer.nil?
+      return [incoming_answer] if previous_answers.nil? && incoming_answer.present?
 
-        [incoming_answer]
-      elsif previous_answers.is_a?(Array)
-        if incoming_answer.nil?
-          return previous_answers.reject(&:blank?)
-        end
-        return previous_answers.reject(&:blank?) if previous_answers.find { |answer| answer['original_filename'] == incoming_answer['original_filename'] }.present?
+      if previous_answers.is_a?(Array)
+        return previous_answers.reject(&:blank?) if incoming_answer.nil? || previous_answers.find do |answer|
+            answer['original_filename'] == incoming_answer['original_filename']
+          end.present?
 
         previous_answers.reject(&:blank?).push(incoming_answer)
       else
-        if incoming_answer.nil?
-          return [previous_answers]
-        end
-
+        return [previous_answers] if incoming_answer.nil?
         [previous_answers, incoming_answer]
       end
     end
