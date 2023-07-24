@@ -2,7 +2,7 @@
   "_id": "component.multiupload",
   "_type": "multiupload",
   "errors": {},
-  "label": "Question",
+  "legend": "Question",
   "hint": "",
   "name": "component-name",
   "validation": {

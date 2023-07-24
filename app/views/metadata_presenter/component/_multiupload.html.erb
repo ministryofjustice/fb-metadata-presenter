@@ -1,4 +1,4 @@
-<label class="govuk-heading-xl"><%= input_title %></label>
+<legend class="govuk-heading-xl"><%= input_title %></legend>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
   <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= uploads_count %></p></label>
@@ -28,9 +28,9 @@
     disabled: editable?,
     label: -> do %>
       <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? %>
-        <h2 class="govuk-heading-s govuk-!-margin-top-8"><%= t('presenter.questions.multiupload.add_another') %></h3>
+        <h3 class="govuk-heading-s govuk-!-margin-top-8"><%= t('presenter.questions.multiupload.add_another') %></h3>
       <% else %>
-        <h2 class="govuk-visually-hidden"><%= t('presenter.questions.multiupload.add_another') %></h3>
+        <h3 class="govuk-visually-hidden"><%= t('presenter.questions.multiupload.add_another') %></h3>
       <% end %>
     <% end %>
   </div>
