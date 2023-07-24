@@ -48,7 +48,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
   end
 
   describe '#page_upload_component' do
-    let(:page) { OpenStruct.new(components: components) }
+    let(:page) { OpenStruct.new(components:) }
     let(:components) do
       [
         OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: { 'max_files' => '2' } }),
