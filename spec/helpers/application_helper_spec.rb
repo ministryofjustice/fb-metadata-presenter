@@ -47,6 +47,24 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
     end
   end
 
+  describe '#page_upload_component' do
+    let(:page) { OpenStruct.new(components: components) }
+    let(:components) do
+      [
+        OpenStruct.new({ id: 'cool-files', type: 'multiupload', validation: { 'max_files' => '2' } }),
+        OpenStruct.new({ id: 'more-cool-files', type: 'multiupload', validation: { 'max_files' => '3' } })
+      ]
+    end
+
+    before do
+      @page = page
+    end
+
+    it 'returns only the first multiuppload component, as there should only ever be one' do
+      expect(helper.page_multiupload_component.id).to eq('cool-files')
+    end
+  end
+
   describe '#uploads_remaining' do
     let(:page) { OpenStruct.new(components: [component]) }
     let(:component) do

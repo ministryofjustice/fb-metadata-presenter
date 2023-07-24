@@ -37,7 +37,7 @@ module MetadataPresenter
     end
 
     def multiupload_files_remaining
-      component = @page.components.select { |c| c.type == 'multiupload' }.first
+      component = page_multiupload_component
       answers = @user_data.keys.include?(component.id) ? @user_data.find(component.id).first : []
       max_files = component.validation['max_files'].to_i
 
@@ -59,7 +59,7 @@ module MetadataPresenter
     end
 
     def uploads_remaining
-      component = @page.components.select { |c| c.type == 'multiupload' }.first
+      component = page_multiupload_component
       max_files = component.validation['max_files'].to_i
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
       return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
@@ -68,7 +68,7 @@ module MetadataPresenter
     end
 
     def uploads_count
-      component = @page.components.select { |c| c.type == 'multiupload' }.first
+      component = page_multiupload_component
       answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
 
       return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
@@ -77,7 +77,7 @@ module MetadataPresenter
     end
 
     def files_to_render
-      component = @page.components.select { |c| c.type == 'multiupload' }.first
+      component = page_multiupload_component
 
       error_file = @page_answers.uploaded_files.select { |file| file.errors.any? }.first
 
@@ -86,6 +86,10 @@ module MetadataPresenter
       else
         @page_answers.send(component.id)[component.id].compact
       end
+    end
+
+    def page_multiupload_component
+      @page.components.select { |c| c.type == 'multiupload' }.first
     end
   end
 end
