@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop-govuk'
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'simplecov-console'
-  spec.add_development_dependency 'site_prism', '4.0'
+  spec.add_development_dependency 'site_prism', '4.0.3'
   spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'yard'
 end
