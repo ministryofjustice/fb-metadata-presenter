@@ -397,28 +397,6 @@
           ]
         },
         {
-          "_id": "show-colours_content_2",
-          "name": "show-colours_content_2",
-          "_type": "content",
-          "_uuid": "514cfee1-9bc1-4232-b52a-d151d05752bb",
-          "content": "You choose BLUE",
-          "collection": "components",
-          "conditionals": [
-            {
-              "_uuid": "ecd60ac9-c3ea-47b1-8f79-c4e42df9a9dd",
-              "_type": "if",
-              "expressions": [
-                {
-                  "operator": "is",
-                  "page": "d0f7b265-17c9-4c22-8739-d7c46d6d1426",
-                  "component": "bfa711a6-e937-4d73-acbd-be19cc334645",
-                  "field": "8ec6802d-6a5e-4b5f-bea3-e7418584acad"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "_id": "show-colours_content_3",
           "name": "show-colours_content_3",
           "_type": "content",
@@ -449,7 +427,7 @@
           "collection": "components",
           "conditionals": [
             {
-              "_type": "if",
+              "_type": "or",
               "_uuid": "ad9e5a31-8a83-4089-94d4-a1e14d2dc42a",
               "expressions": [
                 {
@@ -457,13 +435,7 @@
                   "field": "acbfc0d8-7dbf-437f-8d9b-3c140140958e",
                   "operator": "is",
                   "component": "ea13126a-7ae2-45a5-a08f-949bd1953877"
-                }
-              ]
-            },
-            {
-              "_type": "if",
-              "_uuid": "935ba547-35c1-40cb-bbb9-e7768564a80d",
-              "expressions": [
+                },
                 {
                   "page": "d0f7b265-17c9-4c22-8739-d7c46d6d1426",
                   "field": "2d62e730-dbf4-45ee-b91f-266170b2bb29",

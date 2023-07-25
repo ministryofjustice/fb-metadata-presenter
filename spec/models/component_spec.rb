@@ -254,4 +254,43 @@ RSpec.describe MetadataPresenter::Component do
       end
     end
   end
+
+  describe '#conditionals' do
+    context 'when there are conditionals' do
+      let(:component) do
+        service.find_page_by_url('check-answers').components.first
+      end
+
+      it 'returns conditionals' do
+        expect(component.conditionals).to eq(
+          [
+            MetadataPresenter::Conditional.new(
+              {
+                "_type": 'if',
+                "_uuid": '98cfd843-7c02-4534-9055-201487e9be16',
+                "expressions": [
+                  {
+                    "page": '68fbb180-9a2a-48f6-9da6-545e28b8d35a',
+                    "field": 'c5571937-9388-4411-b5fa-34ddf9bc4ca0',
+                    "operator": 'is',
+                    "component": 'ac41be35-914e-4b22-8683-f5477716b7d4'
+                  }
+                ]
+              }
+            )
+          ]
+        )
+      end
+    end
+
+    context 'when there are no conditionals' do
+      let(:component) do
+        service.find_page_by_url('how-many-lights').components.first
+      end
+
+      it 'returns empty' do
+        expect(component.conditionals).to eq([])
+      end
+    end
+  end
 end

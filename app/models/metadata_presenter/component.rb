@@ -82,6 +82,12 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     metadata.max_files.presence || '0'
   end
 
+  def conditionals
+    Array(metadata['conditionals']).map do |conditional_metadata|
+      MetadataPresenter::Conditional.new(conditional_metadata)
+    end
+  end
+
   private
 
   def validation_bundle_key
