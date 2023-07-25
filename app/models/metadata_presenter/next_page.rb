@@ -7,7 +7,7 @@ module MetadataPresenter
       return check_answers_page if return_to_check_your_answer?
 
       if conditionals?
-        evaluate_conditionals
+        evaluate_branch_conditionals
       else
         service.find_page_by_uuid(current_page_flow.default_next)
       end
@@ -66,8 +66,8 @@ module MetadataPresenter
         next_flow_branch_object?
     end
 
-    def evaluate_conditionals
-      EvaluateConditionals.new(
+    def evaluate_branch_conditionals
+      EvaluateBranchConditionals.new(
         service:,
         flow: next_flow,
         user_data:

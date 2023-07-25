@@ -28,7 +28,7 @@ module MetadataPresenter
     private
 
     def evaluated_page(flow_object)
-      EvaluateConditionals.new(
+      EvaluateBranchConditionals.new(
         service:,
         flow: flow_object,
         user_data:
