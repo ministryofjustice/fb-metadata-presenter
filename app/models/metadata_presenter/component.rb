@@ -3,7 +3,8 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     'date' => 'date',
     'number' => 'number',
     'text' => 'string',
-    'textarea' => 'string'
+    'textarea' => 'string',
+    'multiupload' => 'file'
   }.freeze
 
   # Used for max_length and max_word validations.
@@ -57,6 +58,10 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     type == 'upload'
   end
 
+  def multiupload?
+    type == 'multiupload'
+  end
+
   def find_item_by_uuid(uuid)
     items.find { |item| item.uuid == uuid }
   end
@@ -71,6 +76,10 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
 
   def validation_threshold
     VALIDATION_STRING_LENGTH_THRESHOLD
+  end
+
+  def max_files
+    metadata.max_files.presence || '0'
   end
 
   private

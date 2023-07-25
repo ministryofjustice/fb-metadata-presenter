@@ -35,5 +35,61 @@ module MetadataPresenter
     def default_page_title(type)
       MetadataPresenter::DefaultMetadata[type.to_s]&.[]('heading')
     end
+
+    def multiupload_files_remaining
+      component = page_multiupload_component
+      answers = @user_data.keys.include?(component.id) ? @user_data.find(component.id).first : []
+      max_files = component.validation['max_files'].to_i
+
+      if uploads_remaining.zero?
+        I18n.t('presenter.questions.multiupload.none')
+      elsif max_files == 1
+        I18n.t('presenter.questions.multiupload.single_upload')
+      elsif uploads_remaining == 1
+        if answers.present?
+          I18n.t('presenter.questions.multiupload.answered_singular')
+        else
+          I18n.t('presenter.questions.multiupload.singular')
+        end
+      elsif answers.present?
+        I18n.t('presenter.questions.multiupload.answered_plural', num: uploads_remaining)
+      else
+        I18n.t('presenter.questions.multiupload.plural', num: uploads_remaining)
+      end
+    end
+
+    def uploads_remaining
+      component = page_multiupload_component
+      max_files = component.validation['max_files'].to_i
+      answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
+      return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
+
+      max_files - answers.count
+    end
+
+    def uploads_count
+      component = page_multiupload_component
+      answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
+
+      return 0 if answers.is_a?(ActionDispatch::Http::UploadedFile)
+
+      answers.count == 1 ? I18n.t('presenter.questions.multiupload.answered_count_singular') : I18n.t('presenter.questions.multiupload.answered_count_plural', num: answers.count)
+    end
+
+    def files_to_render
+      component = page_multiupload_component
+
+      error_file = @page_answers.uploaded_files.select { |file| file.errors.any? }.first
+
+      if error_file.present?
+        @page_answers.send(component.id)[component.id].compact.reject { |file| file[error_file.file['original_filename'] == 'original_filename'] }
+      else
+        @page_answers.send(component.id)[component.id].compact
+      end
+    end
+
+    def page_multiupload_component
+      @page.components.select { |c| c.type == 'multiupload' }.first
+    end
   end
 end

@@ -85,6 +85,10 @@ module MetadataPresenter
       components.select(&:upload?)
     end
 
+    def multiupload_components
+      components.select(&:multiupload?)
+    end
+
     def standalone?
       type == 'page.standalone'
     end

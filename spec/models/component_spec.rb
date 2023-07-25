@@ -188,6 +188,7 @@ RSpec.describe MetadataPresenter::Component do
             maximum
             minimum
             multiple_of
+            max_files
           ]
         end
 
@@ -229,6 +230,17 @@ RSpec.describe MetadataPresenter::Component do
         end
 
         it 'returns the supported validations for date component type' do
+          expect(component.supported_validations).to match_array(expected_validations)
+        end
+      end
+
+      context 'file bundle' do
+        let(:attributes) { { '_type' => 'multiupload' } }
+        let(:expected_validations) do
+          %w[max_files]
+        end
+
+        it 'returns the supported validations for multiupload component type' do
           expect(component.supported_validations).to match_array(expected_validations)
         end
       end

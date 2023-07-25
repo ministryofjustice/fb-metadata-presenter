@@ -1,0 +1,51 @@
+<legend class="govuk-heading-xl"><%= input_title %></legend>
+
+<% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
+  <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= uploads_count %></p></label>
+
+  <dl id="uploaded-file-summary-list" class="fb-block fb-block-answers govuk-summary-list" aria-labelled-by="uploaded-file-summary-list-label">
+    <% files_to_render.each do |previous_file| %>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__value">
+          <%= previous_file['original_filename'] %>
+        </dt>
+        <dd class="govuk-summary-list__actions">
+          <%= link_to "#{t('presenter.questions.multiupload.remove_file')}<span class=\"govuk-visually-hidden\">#{previous_file['original_filename']}</span>".html_safe, remove_multifile_path(component.id, previous_file['uuid']), class: 'govuk-link' %>
+        </dd>
+      </div>
+    <% end %>
+  </dl>
+<% end %>
+
+<% if uploads_remaining.positive? || editable? %>
+  <div data-multiupload-element="upload-another-file" <%= answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? ? 'hidden' : '' %>>
+    <%= f.govuk_file_field component.id.to_sym,
+    hint: {
+      data: { "fb-default-text" => default_text('option_hint') },
+      text: component.hint.present? ? component.hint : ''
+    },
+    accept: component.validation['accept'],
+    disabled: editable?,
+    label: -> do %>
+      <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? %>
+        <h3 class="govuk-heading-s govuk-!-margin-top-8"><%= t('presenter.questions.multiupload.add_another') %></h3>
+      <% else %>
+        <h3 class="govuk-visually-hidden"><%= t('presenter.questions.multiupload.add_another') %></h3>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if editable? %>
+  <% if editor_preview? && answered?(component.id) %>
+      <p class="govuk-!-margin-bottom-8"><%= t('presenter.questions.multiupload.none') %></p>
+  <% else %>
+    <p class="govuk-!-margin-bottom-8"><%= component.validation['max_files'].to_i > 1 ? t('presenter.questions.multiupload.plural', num: component.validation['max_files']) : t('presenter.questions.multiupload.single_upload') %></p>
+  <% end %>
+<% else %>
+  <p class="govuk-!-margin-bottom-8"><%= multiupload_files_remaining %></p>
+<% end %>
+
+<% if answered?(component.id) && uploads_remaining.positive? && @page_answers.send(component.id)[component.id].compact.count.positive? %>
+  <button class="govuk-button govuk-!-margin-bottom-8 govuk-button--secondary" data-multiupload-element="add-another-file"><%= t('presenter.questions.multiupload.add_another') %></button>
+<% end %>
