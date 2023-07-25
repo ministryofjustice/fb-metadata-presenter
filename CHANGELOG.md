@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.0] - 2023-07-25
+### Added
+ - Update content component schema to accept conditionals and expressions
+ - Update content page and check answers page schemas to remove 'body' attribute as we can not make this attribute conditional
+ - Show 'body' HTML on content or check answers page only if it has been modified
+
 ## [3.1.0] - 2023-07-24
 ### Added
  - Multifile upload component release
@@ -29,7 +35,7 @@ All notable changes to this project will be documented in this file.
  - Fixed an issue where save and return would 404 if using a custom check your answers page.
 
 ## [3.0.11] - 2023-07-03
-### Added 
+### Added
  - Added notification banners to accessibility and privacy standalone pages.
 
 ## [3.0.10] - 2023-06-30
