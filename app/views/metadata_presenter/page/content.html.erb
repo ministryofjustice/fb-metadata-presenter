@@ -12,7 +12,10 @@
       </h1>
 
       <%= render 'metadata_presenter/attribute/lede' %>
-      <%= render 'metadata_presenter/attribute/body' %>
+
+      <% unless @page.body == default_text('body') %>
+        <%= render 'metadata_presenter/attribute/body' %>
+      <% end %>
 
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
 
