@@ -114,9 +114,21 @@ module MetadataPresenter
     helper_method :external_or_relative_link
 
     def load_conditional_content
-      show_components(@page).compact
+      if @page.content_component_present?
+        if components_without_conditionals(@page).present?
+          return components_without_conditionals(@page) + show_components(@page).compact
+        end
+
+        show_components(@page).compact
+      end
     end
     helper_method :load_conditional_content
+
+    def components_without_conditionals(page)
+      page.content_components.select { |component|
+        component.conditionals.blank?
+      }.map(&:uuid)
+    end
 
     def show_components(page)
       return @page.content_components.map(&:uuid) if editor_preview?

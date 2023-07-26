@@ -141,6 +141,10 @@ module MetadataPresenter
       end
     end
 
+    def content_component_present?
+      components.any?(&:content?)
+    end
+
     private
 
     def heading?

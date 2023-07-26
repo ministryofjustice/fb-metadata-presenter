@@ -411,4 +411,22 @@ RSpec.describe MetadataPresenter::Page do
       end
     end
   end
+
+  describe '#content_component_present?' do
+    context 'when page contains content components' do
+      let(:page) { service.find_page_by_url('check-answers') }
+
+      it 'should return true' do
+        expect(page.content_component_present?).to be_truthy
+      end
+    end
+
+    context 'when page does not contain content components' do
+      let(:page) { service.find_page_by_url('holiday') }
+
+      it 'should return false' do
+        expect(page.content_component_present?).to be_falsey
+      end
+    end
+  end
 end
