@@ -1,0 +1,15 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/definition/expressions",
+  "_name": "definition.expressions",
+  "title": "Expressions",
+  "type": "array",
+  "items": {
+    "$ref": "definition.expression_item"
+  },
+  "required": [
+    "items"
+  ],
+  "category": [
+    "expression"
+  ]
+}

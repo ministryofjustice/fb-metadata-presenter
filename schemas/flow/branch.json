@@ -48,33 +48,7 @@
             "type": "string"
           },
           "expressions": {
-            "$ref": "#/definitions/expressions"
-          }
-        }
-      }
-    },
-    "expressions": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "operator": {
-            "type": "string",
-            "enum": [
-              "is",
-              "is_not",
-              "is_answered",
-              "is_not_answered"
-            ],
-            "page": {
-              "type": "string"
-            },
-            "component": {
-              "type": "string"
-            },
-            "field": {
-              "type": "string"
-            }
+            "$ref": "definition.expressions"
           }
         }
       }
