@@ -17,6 +17,35 @@
       "type": "string",
       "content": true,
       "multiline": true
+    },
+    "conditionals": {
+      "$ref": "#/definitions/conditionals"
+    }
+  },
+  "definitions": {
+    "conditionals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_uuid": {
+            "type": "string",
+            "title": "Unique identifier of the conditional",
+            "description": "Used internally in the editor and the runner"
+          },
+          "_type": {
+            "type": "string",
+            "enum": [
+              "if",
+              "and",
+              "or"
+            ]
+          },
+          "expressions": {
+            "$ref": "definition.expressions"
+          }
+        }
+      }
     }
   },
   "allOf": [
