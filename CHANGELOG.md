@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.1] - 2023-07-28
+### Added
+- Add logic to evaluate the content conditionals
+- Content components will always show if no conditionals are present or if in the editor preview mode
+
 ## [3.2.0] - 2023-07-25
 ### Added
  - Update content component schema to accept conditionals and expressions
