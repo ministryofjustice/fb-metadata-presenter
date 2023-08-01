@@ -1,5 +1,5 @@
 module MetadataPresenter
-  class EvaluateConditionals
+  class EvaluateBranchConditionals
     include ActiveModel::Model
     attr_accessor :service, :flow, :user_data
 

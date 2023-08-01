@@ -300,4 +300,50 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
       end
     end
   end
+
+  describe '#show_components' do
+    context 'when page should show conditional content' do
+      let(:page) { service.find_page_by_url('check-answers') }
+      let(:load_user_data) do
+        {
+          'do-you-like-star-wars_radios_1' => 'Only on weekends'
+        }
+      end
+
+      before do
+        allow_any_instance_of(MetadataPresenter::EngineController).to receive(:load_user_data).and_return(load_user_data)
+      end
+
+      it 'returns the component uuids without conditionals' do
+        expect(controller.show_components(page)).to eq(['b065ff4f-90c5-4ba2-b4ac-c984a9dd2470', nil])
+      end
+    end
+
+    context 'when page should not show the conditional content' do
+      let(:page) { service.find_page_by_url('check-answers') }
+      let(:load_user_data) do
+        {
+          'do-you-like-star-wars_radios_1' => 'Hell no!'
+        }
+      end
+
+      before do
+        allow_any_instance_of(MetadataPresenter::EngineController).to receive(:load_user_data).and_return(load_user_data)
+      end
+
+      it 'returns the component uuids without conditionals' do
+        expect(controller.show_components(page)).to eq([nil, nil])
+      end
+    end
+  end
+
+  describe '#components_without_conditionals' do
+    context 'when page has content components' do
+      let(:page) { service.find_page_by_url('check-answers') }
+
+      it 'returns the component uuids without conditionals' do
+        expect(controller.components_without_conditionals(page)).to eq(%w[3e6ef27e-91a6-402f-8291-b7ce669e824e])
+      end
+    end
+  end
 end

@@ -689,7 +689,21 @@
           "_type": "content",
           "_uuid": "b065ff4f-90c5-4ba2-b4ac-c984a9dd2470",
           "content": "Take the cannoli.",
-          "collection": "components"
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "if",
+              "_uuid": "98cfd843-7c02-4534-9055-201487e9be16",
+              "expressions": [
+                {
+                  "page": "68fbb180-9a2a-48f6-9da6-545e28b8d35a",
+                  "field": "c5571937-9388-4411-b5fa-34ddf9bc4ca0",
+                  "operator": "is",
+                  "component": "ac41be35-914e-4b22-8683-f5477716b7d4"
+                }
+              ]
+            }
+          ]
         }
       ],
       "send_heading": "Now send your application",

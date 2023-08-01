@@ -1,5 +1,5 @@
-RSpec.describe MetadataPresenter::EvaluateConditionals do
-  subject(:evaluate_conditionals) do
+RSpec.describe MetadataPresenter::EvaluateBranchConditionals do
+  subject(:evaluate_branch_conditionals) do
     described_class.new(
       service:,
       flow:,
@@ -9,7 +9,7 @@ RSpec.describe MetadataPresenter::EvaluateConditionals do
   let(:service_metadata) { metadata_fixture(:branching) }
 
   describe '#page' do
-    subject(:page) { evaluate_conditionals.page }
+    subject(:page) { evaluate_branch_conditionals.page }
 
     context 'when simple if conditional' do
       let(:flow) { service.flow_object('09e91fd9-7a46-4840-adbc-244d545cfef7') }
