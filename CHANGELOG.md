@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.4] - 2023-08-07
+### Changed
+ - Use full URL for skip link 
+ - Prefix form actions with / to work with above change
+
 ## [3.2.3] - 2023-08-07
  - Update header logo to link to GOV.UK in response to accessibility audit
 

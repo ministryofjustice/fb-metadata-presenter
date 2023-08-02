@@ -5,7 +5,7 @@
       <%= render 'metadata_presenter/attribute/section_heading' %>
       <%= render 'metadata_presenter/attribute/heading' %>
 
-      <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
+      <%= form_for @page_answers, as: :answers, url: "/#{@page.url}", method: :post do |f| %>
         <%= f.govuk_error_summary %>
 
         <%= render partial: 'metadata_presenter/component/components', locals: {

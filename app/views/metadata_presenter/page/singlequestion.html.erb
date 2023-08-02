@@ -4,7 +4,7 @@
 
       <%= render 'metadata_presenter/attribute/section_heading' %>
 
-      <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
+      <%= form_for @page_answers, as: :answers, url: "/#{@page.url}", method: :post do |f| %>
         <%= f.govuk_error_summary %>
 
         <% @page.components.each_with_index do |component, index| %>

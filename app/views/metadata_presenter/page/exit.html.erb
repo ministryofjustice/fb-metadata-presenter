@@ -13,7 +13,7 @@
 
       <%= render 'metadata_presenter/attribute/lede' %>
 
-      <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
+      <%= form_for @page_answers, as: :answers, url: "#{@page.url}", method: :post do |f| %>
 
         <%= render partial: 'metadata_presenter/component/components',
                    locals: {
