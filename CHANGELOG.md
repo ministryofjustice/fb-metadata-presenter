@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.1] - 2023-08-03
+### Added
+- Updated test app default config to 7.0, deleted seetings initialiser. Just part of cleanup after upgrading everything to rails 7.
+
 ## [3.2.1] - 2023-07-28
 ### Added
 - Add logic to evaluate the content conditionals
