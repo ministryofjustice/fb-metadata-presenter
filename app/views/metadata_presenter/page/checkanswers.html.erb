@@ -89,7 +89,7 @@
                  } %>
 
         <%if pages_presenters.any?{|presenter| presenter[0].component.metadata._type == 'email'} %>
-          <%email_provided = 'a bold email'%>
+          <%email_provided = confirmation_email%>
           <% if confirmation_email_enabled? %>
             <% if payment_link_enabled? %>
               <%= I18n.t('presenter.confirmation.payment_link_disclaimer', email_provided: email_provided) %>

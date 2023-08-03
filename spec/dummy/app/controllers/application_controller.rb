@@ -60,4 +60,7 @@ class ApplicationController < ActionController::Base
 
   def confirmation_email_enabled?; end
   helper_method :confirmation_email_enabled?
+
+  def confirmation_email; end
+  helper_method :confirmation_email
 end
