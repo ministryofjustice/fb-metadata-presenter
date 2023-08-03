@@ -92,12 +92,12 @@
           <%email_provided = confirmation_email%>
           <% if confirmation_email_enabled? %>
             <% if payment_link_enabled? %>
-              <%= I18n.t('presenter.confirmation.payment_link_disclaimer', email_provided: email_provided) %>
+              <%= I18n.t('presenter.confirmation.payment_link_disclaimer_html', email_provided: email_provided) %>
             <%else%>
-              <%= I18n.t('presenter.confirmation.checkbox_disclaimer', email_provided: email_provided) %>
+              <%= I18n.t('presenter.confirmation.checkbox_disclaimer_html', email_provided: email_provided)%>
             <%end%>
           <%else%>
-            <%= I18n.t('presenter.confirmation.email_basic_disclaimer', email_provided: email_provided) %>
+            <%= I18n.t('presenter.confirmation.email_basic_disclaimer_html', email_provided: email_provided) %>
           <%end%>
           <br><br>
         <%end%>
