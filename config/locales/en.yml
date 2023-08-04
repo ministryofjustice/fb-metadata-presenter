@@ -54,9 +54,9 @@ en:
         plural: 'You can add up to %{num} files (maximum 7MB per file)'
         none: "You can't add any more files. Remove a file if you need to add a different one."
       email_disclaimer_email_question: 'This email will be used to send you a confirmation email with a copy of your answers.'
-      email_basic_disclaimer_html: 'You will receive a confirmation  with a copy of the answers you provided by email at <b> %{email_provided} </b>'
+      email_basic_disclaimer_html: 'You will receive a confirmation  with a copy of the answers you provided by email at %{email_provided}'
       checkbox_disclaimer_html: "I want to receive a confirmation with a copy of the answer I provided by email at %{email_provided}"
-      payment_link_disclaimer_html: 'To ensure you keep track of the link you need to pay for your application, you will receive a confirmation email at <b> %{email_provided} </b>. It will contains all the answers you have submitted above.'
+      payment_link_disclaimer_html: 'To ensure you keep track of the link you need to pay for your application, you will receive a confirmation email at %{email_provided}. It will contains all the answers you have submitted above.'
     save_and_return:
       save: 'Save for later'
       show:
