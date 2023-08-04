@@ -100,6 +100,10 @@ The `autocomplete_items` takes the components on a page and retrieves any items 
 `service_slug_config` method checks whether the user has configured their own service URL. In the Editor this will be a `SERVICE_SLUG` row in the `ServiceConfiguration` table. In the Runner, it will be the `ENV['SERVICE_SLUG']` config.
 If it does not exist, we use the current method of parameterizing the `service_name`.
 
+`confirmation_email_enabled?` method checks whether confirmation email is enabled in the Runner or Editor app. For the Runner app confirmation email is enabled when the `ENV['CONFIRMATION_EMAIL_COMPONENT_ID']` variable is present. In the Editor, confirmation email enabled is checked by checking the `ServiceConfiguration` table.
+
+`confirmation_email` method provides the confirmation email in the Runner or Editor app. For the Runner app confirmation email is being stored in the user data. In the Editor, confirmation email is only stored in session and called during preview.
+
 ## Generate documentation
 
 Run `rake doc` and open the doc/index.html
