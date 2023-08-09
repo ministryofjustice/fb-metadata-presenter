@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.4] - 2023-08-09
+### Fixed
+ - Manually add in form_authenticity token field into form_for blocks.  This
+     makes the authenticity token valid for when javascript is disabled and
+     rails ujs is not duplicating the csrf meta tag into the form.
+
 ## [3.2.3] - 2023-08-07
  - Update header logo to link to GOV.UK in response to accessibility audit
 

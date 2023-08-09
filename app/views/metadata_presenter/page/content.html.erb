@@ -17,7 +17,8 @@
         <%= render 'metadata_presenter/attribute/body' %>
       <% end %>
 
-      <%= form_for @page_answers, as: :answers, url: @page.url, method: :post do |f| %>
+      <%= form_for @page_answers, as: :answers, url: @page.url, method: :post, authenticity_token: false do |f| %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
 
         <%= render partial: 'metadata_presenter/component/components',
                    locals: {
