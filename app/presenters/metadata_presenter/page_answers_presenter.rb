@@ -71,10 +71,7 @@ module MetadataPresenter
         format: '%d %B %Y'
       )
     rescue Date::Error
-      I18n.l(
-        Date.civil(1900, 1, 1),
-        format: '%d %B %Y'
-      )
+      ''
     end
 
     def textarea(value)

@@ -78,6 +78,21 @@ RSpec.describe MetadataPresenter::PageAnswersPresenter do
           expect(presenter.answer).to eq('')
         end
       end
+
+      # shouldn't happen, but save and return bypasses validation
+      context 'when presenting an invalid date' do
+        let(:answers) do
+          {
+            "#{component.id}(3i)" => '35',
+            "#{component.id}(2i)" => '35',
+            "#{component.id}(1i)" => '2021'
+          }
+        end
+
+        it 'returns empty string' do
+          expect(presenter.answer).to eq('')
+        end
+      end
     end
 
     context 'when component is a checkbox' do
