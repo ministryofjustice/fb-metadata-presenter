@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 ## [3.2.5] - 2023-08-10
+## Fixed
+ - Fixed a bug where saving and returning could cause an error rendering invalid dates
+
+## [3.2.5] - 2023-08-10
 ## Changed
  - Updated copy within timeout modal to ensure that screenreader announcements
      are clear that answers will be deleted
