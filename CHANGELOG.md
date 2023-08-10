@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.5] - 2023-08-10
+## Changed
+ - Updated copy within timeout modal to ensure that screenreader announcements
+     are clear that answers will be deleted
+
 ## [3.2.4] - 2023-08-09
 ### Fixed
  - Manually add in form_authenticity token field into form_for blocks.  This
