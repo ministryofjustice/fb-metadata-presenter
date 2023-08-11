@@ -88,25 +88,8 @@
                    content_components: @page.supported_content_components
                  } %>
 
-        <%if pages_presenters.any?{|presenter| presenter[0].component.metadata._type == 'email'} %>
-          <%email_provided = confirmation_email%>
-          <% if confirmation_email_enabled? %>
-            <% if payment_link_enabled? %>
-              <%= I18n.t('presenter.confirmation.payment_link_disclaimer_html', email_provided: content_tag(:b, email_provided)).html_safe %>
-            <%else%>
-              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="confirmation_email_optin" name="confirmation_email_optin" type="checkbox" value="confirmation_email_optin" checked = 'checked'>
-                  <label class="govuk-label govuk-checkboxes__label" for="confirmation_email_optin">
-                    <%= I18n.translate('presenter.confirmation.checkbox_disclaimer_html', email_provided: content_tag(:b, email_provided)).html_safe%>
-                  </label>
-                </div>
-              </div>
-            <%end%>
-          <%else%>
-            <%= I18n.t('presenter.confirmation.email_basic_disclaimer_html', email_provided: content_tag(:b, email_provided)).html_safe %>
-          <%end%>
-          <br><br>
+        <% if confirmation_email_enabled? %>
+          <%= I18n.t('presenter.confirmation.email_basic_disclaimer_html', email_provided: content_tag(:b, confirmation_email)).html_safe %>
         <%end%>
 
         <div class="govuk-button-group">

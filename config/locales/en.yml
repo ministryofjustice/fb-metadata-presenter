@@ -43,8 +43,6 @@ en:
       application_complete: 'Application complete'
       email_disclaimer_email_question: 'This email will be used to send you a confirmation email with a copy of your answers.'
       email_basic_disclaimer_html: 'You will receive a confirmation  with a copy of the answers you provided by email at %{email_provided}'
-      checkbox_disclaimer_html: "I want to receive a confirmation with a copy of the answer I provided by email at %{email_provided}"
-      payment_link_disclaimer_html: 'To ensure you keep track of the link you need to pay for your application, you will receive a confirmation email at %{email_provided}. It will contains all the answers you have submitted above.'
     questions:
       multiupload:
         remove_file: 'Delete'
