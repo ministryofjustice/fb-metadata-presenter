@@ -65,5 +65,5 @@ class ApplicationController < ActionController::Base
   helper_method :confirmation_email
 
   def is_confirmation_email_question?; end
-  helper_method is_confirmation_email_question?
+  helper_method :is_confirmation_email_question?
 end

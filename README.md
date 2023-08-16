@@ -104,6 +104,7 @@ If it does not exist, we use the current method of parameterizing the `service_n
 
 `confirmation_email` method provides the confirmation email in the Runner or Editor app. For the Runner app confirmation email is being stored in the user data. In the Editor, confirmation email is only stored in session and called during preview.
 
+`is_confirmation_email_question?` method checks whether the page shown is a component used for confirmation email in the Runner or Editor app. For the Editor app confirmation email the component ID will be found in `ServiceConfiguration` table, while from the Runner the component ID is stored in the `ENV['CONFIRMATION_EMAIL_COMPONENT_ID']` variable.
 ## Generate documentation
 
 Run `rake doc` and open the doc/index.html
