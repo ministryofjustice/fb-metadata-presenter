@@ -91,7 +91,7 @@
         <% if confirmation_email_enabled? %>
           <%= I18n.t('presenter.confirmation.email_basic_disclaimer_html', email_provided: content_tag(:b, confirmation_email)).html_safe %>
         <%end%>
-
+        <br><br>
         <div class="govuk-button-group">
           <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
             <%= t('presenter.actions.submit') -%></button>
