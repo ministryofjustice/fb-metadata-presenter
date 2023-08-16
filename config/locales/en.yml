@@ -41,8 +41,8 @@ en:
       payment_enabled: You still need to pay
       continue_to_pay_button: Continue to pay
       application_complete: 'Application complete'
-      email_disclaimer_email_question: 'This email will be used to send you a confirmation email with a copy of your answers.'
-      email_basic_disclaimer_html: 'You will receive a confirmation with a copy of the answers you provided by email at %{email_provided}'
+      email_disclaimer_email_question: 'We will use this address to send you a confirmation email with a copy of your answers.'
+      email_basic_disclaimer_html: 'We will send a confirmation email with a copy of these answers to %{email_provided}'
     questions:
       multiupload:
         remove_file: 'Delete'
