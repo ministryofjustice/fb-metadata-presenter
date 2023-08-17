@@ -89,7 +89,9 @@
                  } %>
 
         <% if confirmation_email_enabled? %>
-          <%= I18n.t('presenter.confirmation.email_basic_disclaimer_html', email_provided: content_tag(:b, confirmation_email)).html_safe %>
+          <% if confirmation_email.present? %>
+            <%= I18n.t('presenter.confirmation.email_basic_disclaimer_html', email_provided: content_tag(:b, confirmation_email)).html_safe %>
+          <%end%>
         <%end%>
         <br><br>
         <div class="govuk-button-group">
