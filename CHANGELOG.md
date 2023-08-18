@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.8] - 2023-08-18
+## Added
+ - Adding a disclaimer to inform form filler about the use of confirmation email
 
 ## [3.2.7] - 2023-08-18
 ## Fixed
