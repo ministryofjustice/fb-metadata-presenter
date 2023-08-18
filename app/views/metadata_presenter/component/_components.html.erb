@@ -1,5 +1,5 @@
 <% components.each_with_index do |component, index| %>
-  <% if component.type == 'content' && (component.uuid).in?(load_conditional_content) %>
+  <% if component.type == 'content' %>
     <editable-content id="<%= "page[#{component.collection}[#{index}]]" %>"
                       class="fb-editable govuk-!-margin-top-8"
                       type="<%= component.type %>"

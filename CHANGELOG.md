@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+
+## [3.2.7] - 2023-08-18
+## Fixed
+ - Fixed a bug where load_conditional_components was returning `nil` causing pages to not render
+
 ## [3.2.5] - 2023-08-10
 ## Fixed
  - Fixed a bug where saving and returning could cause an error rendering invalid dates
