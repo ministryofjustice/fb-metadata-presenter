@@ -9,3 +9,12 @@
     spellcheck: "false",
     autocomplete: "email"
 %>
+
+<% if is_confirmation_email_question? %>
+  <div class ="govuk-warning-text">
+    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+    <strong class="govuk-warning-text__text">
+      <%= I18n.t('presenter.confirmation.email_disclaimer_email_question') %>
+    </strong>
+  </div>
+<%end%>
