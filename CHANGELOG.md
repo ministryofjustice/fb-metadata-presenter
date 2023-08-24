@@ -7,20 +7,24 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.9] - 2023-08-24
+### Fixed
+- Disclaimer warning the user of the use of confirmation email is now being shown for multiple component page.
+
 ## [3.2.8] - 2023-08-18
-## Added
+### Added
  - Adding a disclaimer to inform form filler about the use of confirmation email
 
 ## [3.2.7] - 2023-08-18
-## Fixed
+### Fixed
  - Fixed a bug where load_conditional_components was returning `nil` causing pages to not render
 
 ## [3.2.5] - 2023-08-10
-## Fixed
+### Fixed
  - Fixed a bug where saving and returning could cause an error rendering invalid dates
 
 ## [3.2.5] - 2023-08-10
-## Changed
+### Changed
  - Updated copy within timeout modal to ensure that screenreader announcements
      are clear that answers will be deleted
 
