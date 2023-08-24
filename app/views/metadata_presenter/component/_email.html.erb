@@ -10,7 +10,7 @@
     autocomplete: "email"
 %>
 
-<% if is_confirmation_email_question? %>
+<% if is_confirmation_email_question?(component._id) %>
   <div class ="govuk-warning-text">
     <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
     <strong class="govuk-warning-text__text">
