@@ -36,6 +36,12 @@ module MetadataPresenter
       MetadataPresenter::DefaultMetadata[type.to_s]&.[]('heading')
     end
 
+    def timeout_fallback(time)
+      time.strftime('%l:%M %p')
+    rescue NoMethodError
+      time
+    end
+
     def multiupload_files_remaining
       component = page_multiupload_component
       answers = @user_data.keys.include?(component.id) ? @user_data.find(component.id).first : []
