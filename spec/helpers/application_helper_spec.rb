@@ -212,7 +212,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
   end
 
   describe '#timeout_fallback' do
-    let(:time) { DateTime.now }
+    let(:time) { Time.zone.now }
 
     it 'returns the time in the right format' do
       expect(helper.timeout_fallback(time)).to eq(time.strftime('%l:%M %p'))
