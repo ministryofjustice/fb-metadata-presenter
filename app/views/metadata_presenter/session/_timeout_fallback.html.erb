@@ -2,7 +2,7 @@
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
-    <%= t('presenter.session_timeout_warning.timer_fallback') %> <%= session_expiry_time&.strftime('%l:%M %p') %>.
+    <%= t('presenter.session_timeout_warning.timer_fallback') %> <%= timeout_fallback(session_expiry_time) %>.
     <%= t('presenter.session_timeout_warning.timer_extra') %>
   </strong>
 </div>

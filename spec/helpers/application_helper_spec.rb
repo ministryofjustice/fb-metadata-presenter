@@ -210,4 +210,16 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe '#timeout_fallback' do
+    let(:time) { Time.zone.now }
+
+    it 'returns the time in the right format' do
+      expect(helper.timeout_fallback(time)).to eq(time.strftime('%l:%M %p'))
+    end
+
+    it 'returns the string if the time is a string' do
+      expect(helper.timeout_fallback(time.to_s)).to eq(time.to_s)
+    end
+  end
 end

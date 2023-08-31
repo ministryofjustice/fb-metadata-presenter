@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.10] - 2023-08-24
+### Fixed
+- Fixed an issue causing errors when resuming progress
+
 ## [3.2.9] - 2023-08-24
 ### Fixed
 - Disclaimer warning the user of the use of confirmation email is now being shown for multiple component page.
