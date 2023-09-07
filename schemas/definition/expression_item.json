@@ -10,6 +10,8 @@
       "enum": [
         "is",
         "is_not",
+        "contains",
+        "does_not_contain",
         "is_answered",
         "is_not_answered"
       ],
