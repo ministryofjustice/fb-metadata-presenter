@@ -18,6 +18,7 @@
       "content": true,
       "multiline": true
     },
+    "show": ["always", "conditional", "never"],
     "conditionals": {
       "$ref": "#/definitions/conditionals"
     }
