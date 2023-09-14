@@ -1,6 +1,6 @@
 {
   "_id": "component.content",
   "_type": "content",
-  "show": "always",
+  "display": "always",
   "content": "[Optional content]"
 }
