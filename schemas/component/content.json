@@ -18,7 +18,14 @@
       "content": true,
       "multiline": true
     },
-    "show": ["always", "conditional", "never"],
+    "show": {
+      "type": "string",
+      "enum": [
+        "always",
+        "conditional",
+        "never"
+      ]
+    },
     "conditionals": {
       "$ref": "#/definitions/conditionals"
     }
@@ -55,6 +62,7 @@
     }
   ],
   "required": [
-    "content"
+    "content",
+    "show"
   ]
 }
