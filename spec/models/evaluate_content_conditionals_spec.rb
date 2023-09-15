@@ -6,7 +6,7 @@ RSpec.describe MetadataPresenter::EvaluateContentConditionals do
       user_data:
     )
   end
-  let(:service_metadata) { metadata_fixture(:conditional_content) }
+  let(:service_metadata) { metadata_fixture(:conditional) }
 
   describe '#show_component' do
     subject(:show_component) { evaluate_content_conditionals.show_component }

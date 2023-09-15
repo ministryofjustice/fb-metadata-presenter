@@ -129,7 +129,7 @@ module MetadataPresenter
     def list_conditional_components
       @page.content_components.map(&:uuid).compact
     end
-    
+
     def show_components(page)
       return @page.content_components.map(&:uuid) if editor_preview?
 
