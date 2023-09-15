@@ -143,7 +143,6 @@ module MetadataPresenter
       end
     end
 
-
     private
 
     def not_found
