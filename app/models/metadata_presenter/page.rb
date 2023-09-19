@@ -145,6 +145,14 @@ module MetadataPresenter
       components.any?(&:content?)
     end
 
+    def assign_conditional_component(items)
+      @conditional_content_to_show ||= items
+    end
+
+    def conditional_content_to_show
+      @conditional_content_to_show || []
+    end
+
     private
 
     def heading?

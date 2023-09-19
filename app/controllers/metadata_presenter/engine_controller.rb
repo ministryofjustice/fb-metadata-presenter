@@ -116,7 +116,7 @@ module MetadataPresenter
     def load_conditional_content
       if @page.content_component_present?
         items = conditional_components_uuids(@page)
-        items.flatten.first
+        @page.assign_conditional_component(items.flatten.first)
       end
     end
     helper_method :load_conditional_content
