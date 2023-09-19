@@ -1,7 +1,7 @@
 module MetadataPresenter
   class EvaluateContentConditionals
     include ActiveModel::Model
-    attr_accessor :service, :component, :user_data
+    attr_accessor :service, :candidate_component, :user_data
 
     def show_component
       component_uuid
@@ -15,28 +15,28 @@ module MetadataPresenter
           case expression.operator
           when 'is'
             if expression.field_label == user_data[expression.expression_component.id]
-              results << component.uuid
+              results << candidate_component.uuid
             end
           when 'is not'
             if expression.field_label != user_data[expression.expression_component.id]
-              results << component.uuid
+              results << candidate_component.uuid
             end
           when 'is answered'
             if user_data[expression.expression_component.id].present?
-              results << component.uuid
+              results << candidate_component.uuid
             end
           when 'is not answered'
             if user_data[expression.expression_component.id].blank?
-              results << component.uuid
+              results << candidate_component.uuid
             end
           when 'always'
-            results << component.uuid
+            results << candidate_component.uuid
           when 'never'
             next
           end
         end
       end
-      results.flatten.first
+      results
     end
 
     def component_uuid
@@ -61,6 +61,6 @@ module MetadataPresenter
       @results.flatten.compact.first
     end
 
-    delegate :conditionals, to: :component
+    delegate :conditionals, to: :candidate_component
   end
 end

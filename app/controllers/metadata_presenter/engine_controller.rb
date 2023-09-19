@@ -115,30 +115,15 @@ module MetadataPresenter
 
     def load_conditional_content
       if @page.content_component_present?
-        conditional_components_uuids(@page)
+        items = conditional_components_uuids(@page)
+        items.flatten.first
       end
     end
     helper_method :load_conditional_content
 
-    def components_without_conditionals(page)
-      page.content_components.select { |component|
-        component.conditionals.blank?
-      }.map(&:uuid)
-    end
-
-    def list_conditional_components
-      @page.content_components.map(&:uuid).compact
-    end
-
-    def show_components(page)
-      return @page.content_components.map(&:uuid) if editor_preview?
-
-      conditional_components_uuids(page)
-    end
-
     def conditional_components_uuids(page)
       page.content_components.map do |content_component|
-        evaluator = EvaluateContentConditionals.new(service:, component: content_component, user_data: load_user_data)
+        evaluator = EvaluateContentConditionals.new(service:, candidate_component: content_component, user_data: load_user_data)
         evaluator.uuids_to_include
       end
     end
