@@ -154,11 +154,11 @@ module MetadataPresenter
     end
 
     def always_shown_conditional_components
-      all_components.select { |component| component[:display] == "always"}
+      all_components.select { |component| component[:display] == 'always' }
     end
 
     def never_shown_conditional_components
-      all_components.select { |component| component[:display] == "never"}
+      all_components.select { |component| component[:display] == 'never' }
     end
 
     private

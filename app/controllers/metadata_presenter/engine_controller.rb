@@ -184,6 +184,7 @@ module MetadataPresenter
         if page.never_shown_conditional_components.include?(content_component.uuid)
           next
         end
+
         if page.always_shown_conditional_components.include?(content_component.uuid)
           displayed_components << content_component.uuid
         else
