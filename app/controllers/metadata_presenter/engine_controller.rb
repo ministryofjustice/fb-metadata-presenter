@@ -121,6 +121,24 @@ module MetadataPresenter
     end
     helper_method :load_conditional_content
 
+    def components_without_conditionals(page)
+      page.content_components.select { |component|
+        component.conditionals.blank?
+      }.map(&:uuid)
+    end
+
+    def show_components(page)
+      return @page.content_components.map(&:uuid) if editor_preview?
+
+      page.content_components.map do |content_component|
+        EvaluateContentConditionals.new(
+          service:,
+          candidate_component: content_component,
+          user_data: load_user_data
+        ).show_component
+      end
+    end
+
     private
 
     def not_found
