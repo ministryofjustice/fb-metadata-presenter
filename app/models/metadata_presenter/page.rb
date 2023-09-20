@@ -153,6 +153,14 @@ module MetadataPresenter
       @conditional_content_to_show = items
     end
 
+    def always_shown_conditional_components
+      all_components.select { |component| component[:display] == "always"}
+    end
+
+    def never_shown_conditional_components
+      all_components.select { |component| component[:display] == "never"}
+    end
+
     private
 
     def heading?

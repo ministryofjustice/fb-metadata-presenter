@@ -115,7 +115,7 @@ module MetadataPresenter
 
     def load_conditional_content
       if @page.content_component_present?
-        items = conditional_components_uuids(@page)
+        items = evaluate_content_components(@page)
         @page.assign_conditional_component(items.flatten)
       end
     end
@@ -167,6 +167,22 @@ module MetadataPresenter
         results << evaluator.uuids_to_include
       end
       results
+    end
+
+    def evaluate_content_components(page)
+      displayed_components = []
+      page.content_components.map do |content_component|
+        if page.never_shown_conditional_components.include?(content_component.uuid)
+          next
+        end
+        if page.always_shown_conditional_components.include?(content_component.uuid)
+          displayed_components << content_component.uuid
+        else
+          evaluator = EvaluateContentConditionals.new(service:, candidate_component: content_component, user_data: load_user_data)
+          displayed_components << evaluator.uuids_to_include
+        end
+      end
+      displayed_components
     end
   end
 end
