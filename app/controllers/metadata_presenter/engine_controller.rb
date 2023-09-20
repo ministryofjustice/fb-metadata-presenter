@@ -160,15 +160,6 @@ module MetadataPresenter
       URI(request.original_url).path.split('/').include?('preview')
     end
 
-    def conditional_components_uuids(page)
-      results = []
-      page.content_components.map do |content_component|
-        evaluator = EvaluateContentConditionals.new(service:, candidate_component: content_component, user_data: load_user_data)
-        results << evaluator.uuids_to_include
-      end
-      results
-    end
-
     def evaluate_content_components(page)
       displayed_components = []
       page.content_components.map do |content_component|
