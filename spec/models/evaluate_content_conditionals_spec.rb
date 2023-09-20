@@ -2,13 +2,13 @@ RSpec.describe MetadataPresenter::EvaluateContentConditionals do
   subject(:evaluate_content_conditionals) do
     described_class.new(
       service:,
-      component:,
+      candidate_component: component,
       user_data:
     )
   end
-  let(:service_metadata) { metadata_fixture(:conditional) }
 
   describe '#show_component' do
+    let(:service_metadata) { metadata_fixture(:conditional) }
     subject(:show_component) { evaluate_content_conditionals.show_component }
 
     context 'when the question is a checkbox' do

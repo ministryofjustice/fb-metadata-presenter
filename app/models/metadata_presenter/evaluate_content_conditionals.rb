@@ -53,9 +53,9 @@ module MetadataPresenter
           end
 
           if conditional.type == 'or' && evaluated_expressions.any?
-            component.uuid
+            candidate_component.uuid
           elsif evaluated_expressions.all?
-            component.uuid
+            candidate_component.uuid
           end
         end
       @results.flatten.compact.first
