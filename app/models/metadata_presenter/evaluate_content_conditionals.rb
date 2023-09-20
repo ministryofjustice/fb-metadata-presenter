@@ -17,15 +17,15 @@ module MetadataPresenter
             if expression.field_label == user_data[expression.expression_component.id]
               results << candidate_component.uuid
             end
-          when 'is not'
+          when 'is_not'
             if expression.field_label != user_data[expression.expression_component.id]
               results << candidate_component.uuid
             end
-          when 'is answered'
+          when 'is_answered'
             if user_data[expression.expression_component.id].present?
               results << candidate_component.uuid
             end
-          when 'is not answered'
+          when 'is_not_answered'
             if user_data[expression.expression_component.id].blank?
               results << candidate_component.uuid
             end

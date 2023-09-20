@@ -116,17 +116,10 @@ module MetadataPresenter
     def load_conditional_content
       if @page.content_component_present?
         items = conditional_components_uuids(@page)
-        @page.assign_conditional_component(items.flatten.first)
+        @page.assign_conditional_component(items.flatten)
       end
     end
     helper_method :load_conditional_content
-
-    def conditional_components_uuids(page)
-      page.content_components.map do |content_component|
-        evaluator = EvaluateContentConditionals.new(service:, candidate_component: content_component, user_data: load_user_data)
-        evaluator.uuids_to_include
-      end
-    end
 
     private
 
@@ -165,6 +158,15 @@ module MetadataPresenter
 
     def editor_preview?
       URI(request.original_url).path.split('/').include?('preview')
+    end
+
+    def conditional_components_uuids(page)
+      results = []
+      page.content_components.map do |content_component|
+        evaluator = EvaluateContentConditionals.new(service:, candidate_component: content_component, user_data: load_user_data)
+        results << evaluator.uuids_to_include
+      end
+      results
     end
   end
 end
