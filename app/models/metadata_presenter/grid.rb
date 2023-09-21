@@ -138,7 +138,7 @@ module MetadataPresenter
       Rails.logger.info("Total potential routes: #{total_potential_routes}")
 
       until routes_to_traverse.empty?
-        if index > total_potential_routes || index == 100
+        if index > total_potential_routes
           ActiveSupport::Notifications.instrument(
             'exceeded_total_potential_routes',
             message: 'Exceeded total number of potential routes'
@@ -155,7 +155,6 @@ module MetadataPresenter
         # this route is looping back, so we don't need to traverse the nested routes.
         route.traverse
         unless traversed_uuids.include?(route.flow_uuids.first)
-          Rails.logger.info("Not looping back, traversing: #{route.flow_uuids.first}")
           routes_to_traverse.concat(route.routes)
         end
         traversed_uuids.concat(route.flow_uuids)
@@ -460,7 +459,7 @@ module MetadataPresenter
     # total possible routes but not too much bigger.
     def total_potential_routes
       total_conditionals = service.branches.sum { |branch| branch.conditionals.size + 1 }
-      @total_potential_routes ||= total_conditionals * total_conditionals
+      @total_potential_routes ||= total_conditionals * service.branches.size
     end
   end
 end
