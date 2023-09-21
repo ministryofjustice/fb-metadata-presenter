@@ -154,6 +154,7 @@ module MetadataPresenter
         # this route is looping back, so we don't need to traverse the nested routes.
         route.traverse
         unless traversed_uuids.include?(route.flow_uuids.first)
+          Rails.logger.info("Not looping back, traversing: #{route.flow_uuids.first}")
           routes_to_traverse.concat(route.routes)
         end
         traversed_uuids.concat(route.flow_uuids)
