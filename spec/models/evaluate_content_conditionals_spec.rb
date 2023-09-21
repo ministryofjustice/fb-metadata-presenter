@@ -29,7 +29,7 @@ RSpec.describe MetadataPresenter::EvaluateContentConditionals do
       context 'when conditions are not met' do
         let(:user_data) do
           {
-            'multiple_checkboxes_1' => ['1']
+            'multiple_checkboxes_1' => %w[1]
           }
         end
 
@@ -82,7 +82,7 @@ RSpec.describe MetadataPresenter::EvaluateContentConditionals do
 
     context 'when multiple conditionals' do
       context 'when multiple expressions with "OR" rule' do
-        let(:component) { service.find_page_by_url('best-content').components[0]  }
+        let(:component) { service.find_page_by_url('best-content').components[0] }
 
         context 'when choosing one option' do
           let(:user_data) do
@@ -115,7 +115,7 @@ RSpec.describe MetadataPresenter::EvaluateContentConditionals do
         let(:component) { service.find_page_by_url('best-content').components[0] }
         let(:user_data) do
           {
-            'multiple_checkboxes_1' => ['2']
+            'multiple_checkboxes_1' => %w[2]
           }
         end
 
