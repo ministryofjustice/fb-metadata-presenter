@@ -188,5 +188,13 @@ module MetadataPresenter
     def raw_type
       type.gsub('page.', '')
     end
+
+    # TODO: refactor this in here
+    def conditional_components_uuids(service)
+      content_components.map do |content_component|
+        evaluator = EvaluateContentConditionals.new(service, candidate_component: content_component, user_data: load_user_data)
+        evaluator.uuids_to_include
+      end
+    end
   end
 end
