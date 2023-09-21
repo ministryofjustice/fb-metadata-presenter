@@ -121,22 +121,21 @@ module MetadataPresenter
     end
     helper_method :load_conditional_content
 
-    def components_without_conditionals(page)
-      page.content_components.select { |component|
-        component.conditionals.blank?
-      }.map(&:uuid)
-    end
-
-    def show_components(page)
-      return @page.content_components.map(&:uuid) if editor_preview?
-
+    def evaluate_content_components(page)
+      displayed_components = []
       page.content_components.map do |content_component|
-        EvaluateContentConditionals.new(
-          service:,
-          candidate_component: content_component,
-          user_data: load_user_data
-        ).show_component
+        if page.never_shown_conditional_components.include?(content_component.uuid)
+          next
+        end
+
+        if page.always_shown_conditional_components.include?(content_component.uuid)
+          displayed_components << content_component.uuid
+        else
+          evaluator = EvaluateContentConditionals.new(service:, candidate_component: content_component, user_data: load_user_data)
+          displayed_components << evaluator.uuids_to_include
+        end
       end
+      displayed_components
     end
 
     private
@@ -176,23 +175,6 @@ module MetadataPresenter
 
     def editor_preview?
       URI(request.original_url).path.split('/').include?('preview')
-    end
-
-    def evaluate_content_components(page)
-      displayed_components = []
-      page.content_components.map do |content_component|
-        if page.never_shown_conditional_components.include?(content_component.uuid)
-          next
-        end
-
-        if page.always_shown_conditional_components.include?(content_component.uuid)
-          displayed_components << content_component.uuid
-        else
-          evaluator = EvaluateContentConditionals.new(service:, candidate_component: content_component, user_data: load_user_data)
-          displayed_components << evaluator.uuids_to_include
-        end
-      end
-      displayed_components
     end
   end
 end

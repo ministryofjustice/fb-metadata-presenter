@@ -315,7 +315,7 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
       end
 
       it 'returns the component uuids without conditionals' do
-        expect(controller.show_components(page)).to eq(['b065ff4f-90c5-4ba2-b4ac-c984a9dd2470', nil])
+        expect(controller.evaluate_content_components(page)).to eq([%w[b065ff4f-90c5-4ba2-b4ac-c984a9dd2470], []])
       end
     end
 
@@ -332,17 +332,7 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
       end
 
       it 'returns the component uuids without conditionals' do
-        expect(controller.show_components(page)).to eq([nil, nil])
-      end
-    end
-  end
-
-  describe '#components_without_conditionals' do
-    context 'when page has content components' do
-      let(:page) { service.find_page_by_url('check-answers') }
-
-      it 'returns the component uuids without conditionals' do
-        expect(controller.components_without_conditionals(page)).to eq(%w[3e6ef27e-91a6-402f-8291-b7ce669e824e])
+        expect(controller.evaluate_content_components(page)).to eq([[], []])
       end
     end
   end
