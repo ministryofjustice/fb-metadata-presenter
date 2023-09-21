@@ -37,7 +37,7 @@ module MetadataPresenter
     def build
       return @ordered unless @ordered.empty?
 
-      @ordered = make_grid
+      @ordered = get_ordered_traversed_objects
       set_column_numbers
       set_row_numbers
       set_previous_uuids
@@ -48,6 +48,10 @@ module MetadataPresenter
       insert_warning if main_flow.empty?
 
       @ordered = @ordered.reject(&:empty?)
+    end
+
+    def get_ordered_traversed_objects
+      @ordered_traversed_objects ||= make_grid
     end
 
     def ordered_flow
