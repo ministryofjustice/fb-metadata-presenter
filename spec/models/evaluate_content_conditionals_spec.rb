@@ -8,7 +8,7 @@ RSpec.describe MetadataPresenter::EvaluateContentConditionals do
   end
 
   describe '#uuids_to_include' do
-    let(:service_metadata) { metadata_fixture(:conditionalcontent) }
+    let(:service_metadata) { metadata_fixture(:conditional) }
     subject(:uuids_to_include) { evaluate_content_conditionals.uuids_to_include }
 
     context 'when the question is a checkbox' do
