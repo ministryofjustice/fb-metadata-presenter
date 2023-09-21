@@ -137,7 +137,7 @@ module MetadataPresenter
       Rails.logger.info("Total potential routes: #{total_potential_routes}")
 
       until routes_to_traverse.empty?
-        if index > total_potential_routes || index = total_potential_routes/2
+        if index > total_potential_routes
           ActiveSupport::Notifications.instrument(
             'exceeded_total_potential_routes',
             message: 'Exceeded total number of potential routes'
