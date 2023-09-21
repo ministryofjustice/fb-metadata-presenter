@@ -21,7 +21,7 @@ module MetadataPresenter
     include BranchDestinations
     attr_reader :service, :start_from, :previous_uuids, :traverse_cap
 
-    def initialize(service, start_from: nil, main_flow: [], traverse_cap: 100000)
+    def initialize(service, start_from: nil, main_flow: [], traverse_cap: 10_000)
       @service = service
       @start_from = start_from
       @main_flow = main_flow
