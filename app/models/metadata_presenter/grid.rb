@@ -19,9 +19,9 @@ module MetadataPresenter
 
   class Grid
     include BranchDestinations
-    attr_reader :service, :start_from, :previous_uuids
+    attr_reader :service, :start_from, :previous_uuids, :traverse_cap
 
-    def initialize(service, start_from: nil, main_flow: [])
+    def initialize(service, start_from: nil, main_flow: [], traverse_cap: 100000)
       @service = service
       @start_from = start_from
       @main_flow = main_flow
@@ -30,6 +30,7 @@ module MetadataPresenter
       @traversed = []
       @coordinates = MetadataPresenter::Coordinates.new(service)
       @previous_uuids = {}
+      @traverse_cap = traverse_cap
     end
 
     ROW_ZERO = 0
@@ -137,7 +138,7 @@ module MetadataPresenter
       Rails.logger.info("Total potential routes: #{total_potential_routes}")
 
       until routes_to_traverse.empty?
-        if index > total_potential_routes
+        if index > total_potential_routes || index >= traverse_cap
           ActiveSupport::Notifications.instrument(
             'exceeded_total_potential_routes',
             message: 'Exceeded total number of potential routes'
