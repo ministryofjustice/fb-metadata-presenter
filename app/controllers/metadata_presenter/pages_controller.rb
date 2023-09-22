@@ -8,7 +8,7 @@ module MetadataPresenter
       @page ||= service.find_page_by_url(request.env['PATH_INFO'])
       if @page
         load_autocomplete_items
-        load_conditional_content
+        @page.load_conditional_content(service, @user_data)
 
         @page_answers = PageAnswers.new(@page, @user_data)
         render template: @page.template

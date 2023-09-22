@@ -412,54 +412,25 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
-  describe '#content_component_present?' do
-    context 'when page contains content components' do
-      let(:page) { service.find_page_by_url('check-answers') }
-
-      it 'should return true' do
-        expect(page.content_component_present?).to be_truthy
-      end
-    end
-
-    context 'when page does not contain content components' do
-      let(:page) { service.find_page_by_url('holiday') }
-
-      it 'should return false' do
-        expect(page.content_component_present?).to be_falsey
-      end
-    end
-  end
-
-  describe '#never_shown_conditional_components' do
-    let(:page) { service.find_page_by_url('check-answers') }
-
-    it 'should return the right number of never display component' do
-      expect(page.never_shown_conditional_components).to be_empty
-    end
-  end
-
-  describe '#always_shown_conditional_components' do
-    let(:page) { service.find_page_by_url('check-answers') }
-
-    it 'should return the right number of always display component' do
-      expect(page.always_shown_conditional_components.count).to eq(2)
-    end
-  end
-
-  context 'when conditional content' do
+  describe '#load_conditional_content' do
     let(:service_metadata) { metadata_fixture(:conditional) }
     let(:page) { service.find_page_by_url('best-content') }
-
-    context '#never_shown_conditional_components' do
-      it 'should return the right number of never display component' do
-        expect(page.never_shown_conditional_components.count).to eq(1)
-      end
+    let(:user_data) do
+      {
+        'multiple_radios_1' => 'Option A',
+        'multiple_checkboxes_1' => %w[2]
+      }
+    end
+    let(:expected_components) do
+      %w[
+        d74476c0-16e2-42b9-870e-dcec2083410c
+        c3bfc9bf-4af8-47b5-a9da-8f40b68acbed
+        ba917dc0-4489-4934-868b-af987db02515
+      ]
     end
 
-    context '#always_shown_conditional_components' do
-      it 'should return the right number of always display component' do
-        expect(page.always_shown_conditional_components.count).to eq(3)
-      end
+    it 'should return the right number of always display component' do
+      expect(page.load_conditional_content(service, user_data)).to eq(expected_components)
     end
   end
 end
