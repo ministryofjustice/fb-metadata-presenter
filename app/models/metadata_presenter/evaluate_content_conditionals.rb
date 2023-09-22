@@ -25,10 +25,6 @@ module MetadataPresenter
             if user_data[expression.expression_component.id].blank?
               included_content << candidate_component.uuid
             end
-          when 'always'
-            included_content << candidate_component.uuid
-          when 'never'
-            next
           end
         end
       end

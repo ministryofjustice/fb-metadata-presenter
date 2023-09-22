@@ -279,7 +279,7 @@
           "conditionals": [
             {
               "_type": "if",
-              "_uuid": "fd24d4a7-4000-488d-8022-9f98f585d424",
+              "_uuid": "5ab5205b-1858-4771-b46d-27e5abf22f61",
               "expressions": [
                 {
                   "page": "d4f6322d-c006-4956-ad5d-83e7505561cb",
@@ -289,6 +289,73 @@
                 }
               ]
             }
+          ]
+        },
+        {
+          "_id": "best-content_content_4",
+          "name": "best-content_content_4",
+          "_type": "content",
+          "_uuid": "c3bfc9bf-4af8-47b5-a9da-8f40b68acbed",
+          "content": "Well done you filled in the checkbox",
+          "display": "conditional",
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "if",
+              "_uuid": "fe54b08d-c5a4-4384-8e11-fa9eec15b4b3",
+              "expressions": [
+                {
+                  "page": "d4f6322d-c006-4956-ad5d-83e7505561cb",
+                  "field": "",
+                  "operator": "is_answered",
+                  "component": "ab02a9c2-6d53-4986-9b40-af7cdeb6cc41"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_id": "best-content_content_5",
+          "name": "best-content_content_5",
+          "_type": "content",
+          "_uuid": "ba917dc0-4489-4934-868b-af987db02515",
+          "content": "You didn't choose the No Option option",
+          "display": "conditional",
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "if",
+              "_uuid": "de66cfed-62e3-4e40-a49e-974eb079f4da",
+              "expressions": [
+                {
+                  "page": "d4f6322d-c006-4956-ad5d-83e7505561cb",
+                  "field": "95d15025-965d-420f-83d5-351d88b2d8ab",
+                  "operator": "is_not",
+                  "component": "677c3948-e951-4843-ba95-511e85a6b3bf"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_id": "best-content_content_6",
+          "name": "best-content_content_6",
+          "_type": "content",
+          "_uuid": "9d0e127b-4019-4ccf-b246-ab5fb242d188",
+          "content": "You will always see this",
+          "display": "always",
+          "collection": "components"
+        },
+        {
+          "_id": "best-content_content_7",
+          "name": "best-content_content_7",
+          "_type": "content",
+          "_uuid": "7bc21db9-24c0-4550-914c-4fc5933ee3e2",
+          "content": "You will never see this",
+          "display": "never",
+          "collection": "components",
+          "conditionals": [
+
           ]
         }
       ],
@@ -322,10 +389,10 @@
     }
   ],
   "locale": "en",
-  "created_at": "2023-09-15T16:45:59Z",
+  "created_at": "2023-09-22T07:23:37Z",
   "created_by": "7a215cc6-e2de-4ede-93a2-ed725df3758b",
   "service_id": "5042804d-d6d9-4ef7-a290-21e63f4edabc",
-  "version_id": "8257d5d4-f75d-4e37-bf3a-d7dcd9278ecb",
+  "version_id": "c09595c1-4a8d-4e9a-a01b-6047ab596622",
   "service_name": "form",
   "configuration": {
     "meta": {
@@ -393,3 +460,4 @@
     }
   ]
 }
+
