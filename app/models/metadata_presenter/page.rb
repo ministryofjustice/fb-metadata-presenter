@@ -154,7 +154,7 @@ module MetadataPresenter
     end
 
     def always_shown_conditional_components
-      all_components.select { |component| component[:display] == 'always' }
+      all_components - never_shown_conditional_components
     end
 
     def never_shown_conditional_components

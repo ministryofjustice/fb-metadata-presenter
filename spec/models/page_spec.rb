@@ -429,4 +429,20 @@ RSpec.describe MetadataPresenter::Page do
       end
     end
   end
+
+  describe '#never_shown_conditional_components' do
+    let(:page) { service.find_page_by_url('check-answers') }
+
+    it 'should return the right number of never display component' do
+      expect(page.never_shown_conditional_components).to be_empty
+    end
+  end
+
+  describe '#always_shown_conditional_components' do
+    let(:page) { service.find_page_by_url('check-answers') }
+
+    it 'should return the right number of always display component' do
+      expect(page.always_shown_conditional_components.count).to eq(2)
+    end
+  end
 end
