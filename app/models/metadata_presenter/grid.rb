@@ -459,7 +459,7 @@ module MetadataPresenter
     # total possible routes but not too much bigger.
     def total_potential_routes
       total_conditionals = service.branches.sum { |branch| branch.conditionals.size + 1 }
-      @total_potential_routes ||= 100
+      @total_potential_routes ||= total_conditionals * total_conditionals
     end
   end
 end
