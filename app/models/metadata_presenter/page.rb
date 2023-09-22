@@ -154,7 +154,7 @@ module MetadataPresenter
     end
 
     def always_shown_conditional_components
-      all_components - never_shown_conditional_components
+      all_components - never_shown_conditional_components - only_if_conditional_components
     end
 
     def never_shown_conditional_components
@@ -189,12 +189,8 @@ module MetadataPresenter
       type.gsub('page.', '')
     end
 
-    # TODO: refactor this in here
-    def conditional_components_uuids(service)
-      content_components.map do |content_component|
-        evaluator = EvaluateContentConditionals.new(service, candidate_component: content_component, user_data: load_user_data)
-        evaluator.uuids_to_include
-      end
+    def only_if_conditional_components
+      all_components.select { |component| component[:display] == 'conditional' }
     end
   end
 end

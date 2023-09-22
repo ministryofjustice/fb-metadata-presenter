@@ -445,4 +445,21 @@ RSpec.describe MetadataPresenter::Page do
       expect(page.always_shown_conditional_components.count).to eq(2)
     end
   end
+
+  context 'when conditional content' do
+    let(:service_metadata) { metadata_fixture(:conditional) }
+    let(:page) { service.find_page_by_url('best-content') }
+
+    context '#never_shown_conditional_components' do
+      it 'should return the right number of never display component' do
+        expect(page.never_shown_conditional_components.count).to eq(1)
+      end
+    end
+
+    context '#always_shown_conditional_components' do
+      it 'should return the right number of always display component' do
+        expect(page.always_shown_conditional_components.count).to eq(3)
+      end
+    end
+  end
 end
