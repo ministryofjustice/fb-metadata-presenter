@@ -1,36 +1,28 @@
 module MetadataPresenter
   class EvaluateContentConditionals
     include ActiveModel::Model
-    attr_accessor :service, :candidate_component, :user_data
+    attr_accessor :service, :component, :user_data
 
-    def uuids_to_include
-      included_content = []
-      conditionals.map do |conditional|
-        conditional.expressions.map do |expression|
+    # returns true/false whether the component should display
+    def display?
+      return false if component.display == 'never'
+      return true if component.display == 'always'
+      # returns true if any conditionals match (OR)
+      conditionals.any? do |conditional|
+        # returns true if all expressions match (AND)
+        conditional.expressions.all? do |expression|
           expression.service = service
-          case expression.operator
-          when 'is'
-            if expression.field_label == user_data[expression.expression_component.id]
-              included_content << candidate_component.uuid
-            end
-          when 'is_not'
-            if expression.field_label != user_data[expression.expression_component.id]
-              included_content << candidate_component.uuid
-            end
-          when 'is_answered'
-            if user_data[expression.expression_component.id].present?
-              included_content << candidate_component.uuid
-            end
-          when 'is_not_answered'
-            if user_data[expression.expression_component.id].blank?
-              included_content << candidate_component.uuid
-            end
-          end
+
+          Operator.new(
+            expression.operator
+          ).evaluate(
+            expression.field_label,
+            user_data[expression.expression_component.id]
+          )
         end
       end
-      included_content
     end
 
-    delegate :conditionals, to: :candidate_component
+    delegate :conditionals, to: :component
   end
 end

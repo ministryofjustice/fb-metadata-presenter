@@ -147,8 +147,7 @@ module MetadataPresenter
 
     def load_conditional_content(service, user_data)
       if content_component_present?
-        items = evaluate_content_components(service, user_data)
-        assign_conditional_component(items.flatten)
+        assign_conditional_component evaluate_content_components(service, user_data)
       end
     end
 
@@ -180,33 +179,14 @@ module MetadataPresenter
       type.gsub('page.', '')
     end
 
-    def only_if_conditional_components
-      all_components.select { |component| component[:display] == 'conditional' }
-    end
-
+    # returns an array of component uuids that should display in the page
     def evaluate_content_components(service, user_data)
-      displayed_components = []
-      content_components.map do |content_component|
-        if never_shown_conditional_components.include?(content_component.uuid)
-          next
-        end
-
-        if always_shown_conditional_components.include?(content_component.uuid)
-          displayed_components << content_component.uuid
-        else
-          evaluator = EvaluateContentConditionals.new(service:, candidate_component: content_component, user_data:)
-          displayed_components << evaluator.uuids_to_include
-        end
-      end
-      displayed_components
-    end
-
-    def always_shown_conditional_components
-      all_components - never_shown_conditional_components - only_if_conditional_components
-    end
-
-    def never_shown_conditional_components
-      all_components.select { |component| component[:display] == 'never' }
+      content_components.select { |content_component| 
+          EvaluateContentConditionals.new(
+            service:, 
+            component: content_component, 
+            user_data:).display?
+      }.compact.map(&:uuid)
     end
 
     def assign_conditional_component(items)
