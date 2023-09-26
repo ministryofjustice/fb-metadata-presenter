@@ -1,11 +1,25 @@
 module MetadataPresenter
   class EvaluateContentConditionals
     include ActiveModel::Model
-    attr_accessor :service, :candidate_component, :user_data
+    attr_accessor :service, :user_data
 
-    def uuids_to_include
+    def evaluate_content_components(page)
+      displayed_components = []
+      page.content_components.map do |content_component|
+        next if page.never_shown_conditional_components.include?(content_component.uuid)
+        if page.always_shown_conditional_components.include?(content_component.uuid)
+          displayed_components << content_component.uuid
+        end
+        if page.only_if_conditional_components.include?(content_component.uuid)
+          displayed_components << uuid_to_include?(content_component)
+        end
+      end
+      displayed_components.compact
+    end
+
+    def uuid_to_include?(candidate_component)
       evaluation_expressions = []
-      conditionals[0].expressions.map do |expression|
+      candidate_component.conditionals[0].expressions.map do |expression|
         expression.service = service
         case expression.operator
         when 'is'
@@ -35,7 +49,5 @@ module MetadataPresenter
 
       expression.field_label.include?(answer.first)
     end
-
-    delegate :conditionals, to: :candidate_component
   end
 end
