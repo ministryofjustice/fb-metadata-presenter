@@ -4,37 +4,29 @@ module MetadataPresenter
     attr_accessor :service, :candidate_component, :user_data
 
     def uuids_to_include
-      conditionals.map do |conditional|
-        evaluation_expressions = []
-        conditional.expressions.map do |expression|
-          expression.service = service
-          case expression.operator
-          when 'is'
-            if expression.field_label == user_data[expression.expression_component.id]
-              evaluation_expressions << true
-            end
-          when 'is_not'
-            if expression.field_label != user_data[expression.expression_component.id]
-              evaluation_expressions << true
-            end
-          when 'is_answered'
-            if user_data[expression.expression_component.id].present?
-              evaluation_expressions << true
-            end
-          when 'is_not_answered'
-            if user_data[expression.expression_component.id].blank?
-              evaluation_expressions << true
-            end
-          when 'contains'
-            evaluation_expressions << check_answer_include_expression(expression, user_data)
-          when 'does_not_contain'
-            if check_answer_include_expression(expression, user_data)
-              evaluation_expressions << false
-            end
-          end
+      evaluation_expressions = []
+      conditionals[0].expressions.map do |expression|
+        expression.service = service
+        case expression.operator
+        when 'is'
+          evaluation_expressions << check_answer_equal_expression(expression, user_data)
+        when 'is_not'
+          evaluation_expressions << !check_answer_equal_expression(expression, user_data)
+        when 'is_answered'
+          evaluation_expressions << user_data[expression.expression_component.id].present?
+        when 'is_not_answered'
+          evaluation_expressions << user_data[expression.expression_component.id].blank?
+        when 'contains'
+          evaluation_expressions << check_answer_include_expression(expression, user_data)
+        when 'does_not_contain'
+          evaluation_expressions << !check_answer_include_expression(expression, user_data)
         end
-        return candidate_component.uuid if evaluation_expressions.all?
       end
+      return candidate_component.uuid if evaluation_expressions.all?
+    end
+
+    def check_answer_equal_expression(expression, user_data)
+      expression.field_label == user_data[expression.expression_component.id] ? true : false
     end
 
     def check_answer_include_expression(expression, user_data)
