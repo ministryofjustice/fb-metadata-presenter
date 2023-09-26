@@ -154,16 +154,8 @@ module MetadataPresenter
       end
     end
 
-    def only_if_conditional_components
-      all_components.filter_map { |component| component[:_uuid] if component[:display] == 'conditional' }
-    end
-
-    def always_shown_conditional_components
-      all_components.filter_map { |component| component[:_uuid] if component[:display] == 'always' }
-    end
-
-    def never_shown_conditional_components
-      all_components.filter_map { |component| component[:_uuid] if component[:display] == 'never' }
+    def conditionals_uuids_by_type(display)
+      all_components.filter_map { |component| component[:_uuid] if component[:display] == display }
     end
 
     private

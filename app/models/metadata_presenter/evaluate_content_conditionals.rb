@@ -6,17 +6,19 @@ module MetadataPresenter
     def evaluate_content_components(page)
       displayed_components = []
       page.content_components.map do |content_component|
-        next if page.never_shown_conditional_components.include?(content_component.uuid)
+        next if page.conditionals_uuids_by_type('never').include?(content_component.uuid)
 
-        if page.always_shown_conditional_components.include?(content_component.uuid)
+        if page.conditionals_uuids_by_type('always').include?(content_component.uuid)
           displayed_components << content_component.uuid
         end
-        if page.only_if_conditional_components.include?(content_component.uuid)
+        if page.conditionals_uuids_by_type('conditional').include?(content_component.uuid)
           displayed_components << uuid_to_include?(content_component)
         end
       end
       displayed_components.compact
     end
+
+    private
 
     def uuid_to_include?(candidate_component)
       evaluation_expressions = []
