@@ -2,7 +2,7 @@ module MetadataPresenter
   class EvaluateContentConditionals
     include ActiveModel::Model
     attr_accessor :service, :candidate_component, :user_data
-    
+
     def uuids_to_include
       conditionals.map do |conditional|
         evaluation_expressions = []
@@ -25,10 +25,22 @@ module MetadataPresenter
             if user_data[expression.expression_component.id].blank?
               evaluation_expressions << true
             end
+          when 'contains'
+            evaluation_expressions << check_answer_include_expression(expression, user_data)
+          when 'does_not_contain'
+            if check_answer_include_expression(expression, user_data)
+              evaluation_expressions << false
+            end
           end
         end
         return candidate_component.uuid if evaluation_expressions.all?
       end
+    end
+
+    def check_answer_include_expression(expression, user_data)
+      answer = user_data[expression.expression_component.id]
+      return false if answer.blank?
+      expression.field_label.include?(answer.first)
     end
 
     delegate :conditionals, to: :candidate_component
