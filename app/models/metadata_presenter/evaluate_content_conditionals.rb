@@ -26,12 +26,13 @@ module MetadataPresenter
     end
 
     def check_answer_equal_expression(expression, user_data)
-      expression.field_label == user_data[expression.expression_component.id] ? true : false
+      expression.field_label == user_data[expression.expression_component.id]
     end
 
     def check_answer_include_expression(expression, user_data)
       answer = user_data[expression.expression_component.id]
       return false if answer.blank?
+
       expression.field_label.include?(answer.first)
     end
 
