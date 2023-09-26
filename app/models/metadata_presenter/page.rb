@@ -148,24 +148,23 @@ module MetadataPresenter
     def load_conditional_content(service, user_data)
       if content_component_present?
         evaluator = EvaluateContentConditionals.new(service:, user_data:)
-        items = evaluator.evaluate_content_components(self )
+        items = evaluator.evaluate_content_components(self)
         items << conditional_component_shown_by_default
         assign_conditional_component(items.flatten)
       end
     end
 
     def only_if_conditional_components
-      all_components.filter_map { |component| component[:_uuid] if component[:display] == 'conditional'}
+      all_components.filter_map { |component| component[:_uuid] if component[:display] == 'conditional' }
     end
 
     def always_shown_conditional_components
-      all_components.filter_map { |component| component[:_uuid] if component[:display] == 'always'}
+      all_components.filter_map { |component| component[:_uuid] if component[:display] == 'always' }
     end
 
     def never_shown_conditional_components
-      all_components.filter_map { |component| component[:_uuid] if component[:display] == 'never'}
+      all_components.filter_map { |component| component[:_uuid] if component[:display] == 'never' }
     end
-
 
     private
 
@@ -202,11 +201,11 @@ module MetadataPresenter
     def content_component_present?
       components.any?(&:content?)
     end
-    
+
     def conditional_component_shown_by_default
-      conditionals = all_components{ |component| component[:display].present? }
+      conditionals = all_components { |component| component[:display].present? }
       default_components = all_components - conditionals
-      default_components.map{|component| component[:_uuid]}
+      default_components.map { |component| component[:_uuid] }
     end
   end
 end

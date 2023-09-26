@@ -7,6 +7,7 @@ module MetadataPresenter
       displayed_components = []
       page.content_components.map do |content_component|
         next if page.never_shown_conditional_components.include?(content_component.uuid)
+
         if page.always_shown_conditional_components.include?(content_component.uuid)
           displayed_components << content_component.uuid
         end
