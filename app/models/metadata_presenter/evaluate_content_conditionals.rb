@@ -22,24 +22,32 @@ module MetadataPresenter
 
     def uuid_to_include?(candidate_component)
       evaluation_expressions = []
-      candidate_component.conditionals[0].expressions.map do |expression|
-        expression.service = service
-        case expression.operator
-        when 'is'
-          evaluation_expressions << check_answer_equal_expression(expression, user_data)
-        when 'is_not'
-          evaluation_expressions << !check_answer_equal_expression(expression, user_data)
-        when 'is_answered'
-          evaluation_expressions << user_data[expression.expression_component.id].present?
-        when 'is_not_answered'
-          evaluation_expressions << user_data[expression.expression_component.id].blank?
-        when 'contains'
-          evaluation_expressions << check_answer_include_expression(expression, user_data)
-        when 'does_not_contain'
-          evaluation_expressions << !check_answer_include_expression(expression, user_data)
+      candidate_component.conditionals.map do |conditional|
+        conditional.expressions.map do |expression|
+          expression.service = service
+          case expression.operator
+          when 'is'
+            evaluation_expressions << check_answer_equal_expression(expression, user_data)
+          when 'is_not'
+            evaluation_expressions << !check_answer_equal_expression(expression, user_data)
+          when 'is_answered'
+            evaluation_expressions << user_data[expression.expression_component.id].present?
+          when 'is_not_answered'
+            evaluation_expressions << user_data[expression.expression_component.id].blank?
+          when 'contains'
+            evaluation_expressions << check_answer_include_expression(expression, user_data)
+          when 'does_not_contain'
+            evaluation_expressions << !check_answer_include_expression(expression, user_data)
+          end
         end
       end
-      return candidate_component.uuid if evaluation_expressions.all?
+      if candidate_component.conditionals.count == 1
+        # if there are only and rules or the particular case where there is only one condition
+        return candidate_component.uuid if evaluation_expressions.all?
+      elsif candidate_component.conditionals.count > 1
+        # if there are or rule
+        return candidate_component.uuid if evaluation_expressions.any?
+      end
     end
 
     def check_answer_equal_expression(expression, user_data)
