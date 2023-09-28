@@ -21,6 +21,14 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     branches.map(&:conditionals).flatten
   end
 
+  def content_expressions
+    content_conditionals.flat_map(&:expressions)
+  end
+
+  def content_conditionals
+    pages.flat_map(&:content_components).flat_map(&:conditionals)
+  end
+
   def flow_object(uuid)
     MetadataPresenter::Flow.new(uuid, metadata.flow[uuid])
   rescue StandardError
