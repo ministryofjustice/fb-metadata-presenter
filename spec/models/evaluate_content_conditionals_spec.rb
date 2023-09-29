@@ -187,5 +187,40 @@ RSpec.describe MetadataPresenter::EvaluateContentConditionals do
         end
       end
     end
+
+    context 'for multiple conditions with or and and rule combined' do
+      let(:rare_content) {'b23d885d-5326-49f2-b4f4-5ac5d53a03da'}
+
+      context 'when conditions are met' do
+        context 'in case 1' do
+          let(:user_data) { { 'multiple_checkboxes_1' => %w[1], 'multiple_radios_1' => 'Option A' } }
+          it 'expected conditional content is displayed' do
+            expect(conditional_content).to include(rare_content)
+          end
+        end
+
+        context 'in case 2' do
+          let(:user_data) { { 'multiple_checkboxes_1' => [], 'multiple_radios_1' => 'No Option' } }
+          it 'expected conditional content is displayed' do
+            expect(conditional_content).to include(rare_content)
+          end
+        end
+      end
+      context 'when conditions are not met' do
+        context 'in some case' do
+          let(:user_data) { { 'multiple_checkboxes_1' => %w[2], 'multiple_radios_1' => 'Option B' } }
+          it 'expected conditional content is not displayed' do
+            expect(conditional_content).to_not include(rare_content)
+          end
+        end
+
+        context 'in another case' do
+          let(:user_data) { { 'multiple_checkboxes_1' => [], 'multiple_radios_1' => 'Option C' } }
+          it 'expected conditional content is not displayed' do
+            expect(conditional_content).to_not include(rare_content)
+          end
+        end
+      end
+    end
   end
 end

@@ -1,39 +1,39 @@
-                    {
+{
   "_id": "service.base",
   "flow": {
-    "00cc353e-51c5-4462-88bc-c357e344cd4d": {
-      "next": {
-        "default": "d5fb3582-c6a4-46f0-8e03-a9acc482c848"
-      },
-      "_type": "flow.page"
-    },
-    "163695cd-fcce-41d7-8332-5801baa10fbb": {
-      "next": {
-        "default": "2a39b170-6f66-4ee9-8d7a-909235cd7b6a"
-      },
-      "_type": "flow.page"
-    },
-    "2a39b170-6f66-4ee9-8d7a-909235cd7b6a": {
-      "next": {
-        "default": "00cc353e-51c5-4462-88bc-c357e344cd4d"
-      },
-      "_type": "flow.page"
-    },
-    "8ad57888-062c-432f-8e3f-1570c8b5b265": {
+    "1eb59923-b97a-4118-9311-2f70d3074e44": {
       "next": {
         "default": ""
       },
       "_type": "flow.page"
     },
-    "ba8a4976-a1c7-43b1-8d54-ba0a903d744d": {
+    "26cd3e8c-9c6b-453f-9503-d1741b561b39": {
       "next": {
-        "default": "8ad57888-062c-432f-8e3f-1570c8b5b265"
+        "default": "f30305dc-a429-442f-9d34-d7ea71135b80"
       },
       "_type": "flow.page"
     },
-    "d5fb3582-c6a4-46f0-8e03-a9acc482c848": {
+    "58b2c747-5042-4914-b27f-e02a93520bed": {
       "next": {
-        "default": "ba8a4976-a1c7-43b1-8d54-ba0a903d744d"
+        "default": "26cd3e8c-9c6b-453f-9503-d1741b561b39"
+      },
+      "_type": "flow.page"
+    },
+    "78a482dd-3000-464e-b2cf-697d69d88878": {
+      "next": {
+        "default": "58b2c747-5042-4914-b27f-e02a93520bed"
+      },
+      "_type": "flow.page"
+    },
+    "f13f19fb-5ca6-41cc-a0b7-c46a42ed4b0f": {
+      "next": {
+        "default": "1eb59923-b97a-4118-9311-2f70d3074e44"
+      },
+      "_type": "flow.page"
+    },
+    "f30305dc-a429-442f-9d34-d7ea71135b80": {
+      "next": {
+        "default": "f13f19fb-5ca6-41cc-a0b7-c46a42ed4b0f"
       },
       "_type": "flow.page"
     }
@@ -45,33 +45,33 @@
       "url": "/",
       "body": "Use this service to apply for a service or contact us about a case.\r\n\r\n## Before you start\r\nYou will need:\r\n\r\n* your 8-digit reference number\r\n* a copy of your photo ID\r\n* something else\r\n\r\nThis form will take around 5 minutes to complete. We will reply within 10 working days.",
       "_type": "page.start",
-      "_uuid": "163695cd-fcce-41d7-8332-5801baa10fbb",
+      "_uuid": "78a482dd-3000-464e-b2cf-697d69d88878",
       "heading": "Service name goes here",
       "before_you_start": "## Other ways to get in touch\r\nYou can also apply or contact us about your case by:\r\n\r\n* telephone: 01234 567889\r\n* email: <example.service@justice.gov.uk>\r\n\r\nThis form is also [available in Welsh (Cymraeg)](https://example-service.form.service.justice.gov.uk/)."
     },
     {
-      "_id": "page.single-page-radios",
-      "url": "single-page-radios",
+      "_id": "page.checkbox",
+      "url": "checkbox",
       "body": "Body section",
       "lede": "",
       "_type": "page.singlequestion",
-      "_uuid": "2a39b170-6f66-4ee9-8d7a-909235cd7b6a",
+      "_uuid": "58b2c747-5042-4914-b27f-e02a93520bed",
       "heading": "",
       "components": [
         {
-          "_id": "single-page-radios_radios_1",
+          "_id": "checkbox_checkboxes_1",
           "hint": "",
-          "name": "single-page-radios_radios_1",
-          "_type": "radios",
-          "_uuid": "df00fe7e-6f4e-4439-8d21-abbcf49af47f",
+          "name": "checkbox_checkboxes_1",
+          "_type": "checkboxes",
+          "_uuid": "aab1d068-77cf-46f4-bff3-f4cb396dbb3a",
           "items": [
             {
-              "_id": "single-page-radios_radios_1_item_1",
+              "_id": "checkbox_checkboxes_1_item_1",
               "hint": "",
-              "name": "single-page-radios_radios_1",
-              "_type": "radio",
-              "_uuid": "0aa513f1-61c7-41ae-ad99-204aa05369da",
-              "label": "yes",
+              "name": "checkbox_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "55d78667-cbb1-4ead-a440-382a6842f5b2",
+              "label": "1",
               "value": "value-1",
               "errors": {
               },
@@ -82,29 +82,13 @@
               }
             },
             {
-              "_id": "single-page-radios_radios_1_item_2",
+              "_id": "checkbox_checkboxes_1_item_2",
               "hint": "",
-              "name": "single-page-radios_radios_1",
-              "_type": "radio",
-              "_uuid": "c5e17a95-de01-4526-8a54-8b7825f22212",
-              "label": "no",
+              "name": "checkbox_checkboxes_1",
+              "_type": "checkbox",
+              "_uuid": "2a4d065f-9c0d-4e93-b421-a0fb40a1d733",
+              "label": "2",
               "value": "value-2",
-              "errors": {
-              },
-              "legend": "Question",
-              "collection": "components",
-              "validation": {
-                "required": true
-              }
-            },
-            {
-              "_id": "single-page-radios_radios_1_item_3",
-              "hint": "",
-              "name": "single-page-radios_radios_1",
-              "_type": "radio",
-              "_uuid": "6b5bf251-f0ba-4ff6-9eac-addeb2cbb76e",
-              "label": "maybe",
-              "value": "value-3",
               "errors": {
               },
               "legend": "Question",
@@ -116,36 +100,38 @@
           ],
           "errors": {
           },
-          "legend": "Single Radios",
+          "legend": "checkbox (optional)",
           "collection": "components",
           "validation": {
-            "required": true
+            "required": false
           }
         }
       ],
       "section_heading": ""
     },
     {
-      "_id": "page.multiple",
-      "url": "multiple",
-      "_type": "page.multiplequestions",
-      "_uuid": "00cc353e-51c5-4462-88bc-c357e344cd4d",
-      "heading": "Multiple",
+      "_id": "page.radio",
+      "url": "radio",
+      "body": "Body section",
+      "lede": "",
+      "_type": "page.singlequestion",
+      "_uuid": "26cd3e8c-9c6b-453f-9503-d1741b561b39",
+      "heading": "",
       "components": [
         {
-          "_id": "multiple_radios_1",
+          "_id": "radio_radios_1",
           "hint": "",
-          "name": "multiple_radios_1",
+          "name": "radio_radios_1",
           "_type": "radios",
-          "_uuid": "db99d122-17e4-47b1-b5a4-d6e8bf70fa86",
+          "_uuid": "60aa4497-2a93-43a7-87e3-a591c2ab4370",
           "items": [
             {
-              "_id": "multiple_radios_1_item_1",
+              "_id": "radio_radios_1_item_1",
               "hint": "",
-              "name": "multiple_radios_1",
+              "name": "radio_radios_1",
               "_type": "radio",
-              "_uuid": "38492ffc-b18c-4b0b-94fe-c1addd854738",
-              "label": "Option A",
+              "_uuid": "27216423-af30-414c-89a6-0f2304d88b54",
+              "label": "a",
               "value": "value-1",
               "errors": {
               },
@@ -156,45 +142,13 @@
               }
             },
             {
-              "_id": "multiple_radios_1_item_2",
+              "_id": "radio_radios_1_item_2",
               "hint": "",
-              "name": "multiple_radios_1",
+              "name": "radio_radios_1",
               "_type": "radio",
-              "_uuid": "88c1cd02-c561-49eb-884d-69ad4e31a1b1",
-              "label": "Option B",
+              "_uuid": "6ef564b0-a2ea-4551-9c1b-2f04bb6a1bf6",
+              "label": "b",
               "value": "value-2",
-              "errors": {
-              },
-              "legend": "Question",
-              "collection": "components",
-              "validation": {
-                "required": true
-              }
-            },
-            {
-              "_id": "multiple_radios_1_item_3",
-              "hint": "",
-              "name": "multiple_radios_1",
-              "_type": "radio",
-              "_uuid": "f0c1585e-7b23-461a-8644-4da3b2e1ebc4",
-              "label": "Option C",
-              "value": "value-3",
-              "errors": {
-              },
-              "legend": "Question",
-              "collection": "components",
-              "validation": {
-                "required": true
-              }
-            },
-            {
-              "_id": "multiple_radios_1_item_4",
-              "hint": "",
-              "name": "multiple_radios_1",
-              "_type": "radio",
-              "_uuid": "63dce510-a641-4649-906c-334262c37673",
-              "label": "No Option",
-              "value": "value-4",
               "errors": {
               },
               "legend": "Question",
@@ -211,236 +165,196 @@
           "validation": {
             "required": true
           }
-        },
-        {
-          "_id": "multiple_content_1",
-          "name": "multiple_content_1",
-          "_type": "content",
-          "_uuid": "73869807-f82f-4000-8204-fcb3f62718a2",
-          "content": "Answer the question above",
-          "display": "always",
-          "collection": "components"
-        },
-        {
-          "_id": "multiple_checkboxes_1",
-          "hint": "",
-          "name": "multiple_checkboxes_1",
-          "_type": "checkboxes",
-          "_uuid": "96190800-a610-4f23-a6c9-d8d68df25e93",
-          "items": [
-            {
-              "_id": "multiple_checkboxes_1_item_1",
-              "hint": "",
-              "name": "multiple_checkboxes_1",
-              "_type": "checkbox",
-              "_uuid": "40499fb9-b92d-43ca-89a7-8c3cdcfd4393",
-              "label": "1",
-              "value": "value-1",
-              "errors": {
-              },
-              "legend": "Question",
-              "collection": "components",
-              "validation": {
-                "required": false
-              }
-            },
-            {
-              "_id": "multiple_checkboxes_1_item_2",
-              "hint": "",
-              "name": "multiple_checkboxes_1",
-              "_type": "checkbox",
-              "_uuid": "21660147-df66-4e7a-8b13-04b66f8c1699",
-              "label": "2",
-              "value": "value-2",
-              "errors": {
-              },
-              "legend": "Question",
-              "collection": "components",
-              "validation": {
-                "required": false
-              }
-            }
-          ],
-          "errors": {
-          },
-          "legend": "checkbox (optional)",
-          "collection": "components",
-          "validation": {
-            "required": false
-          }
-        },
-        {
-          "_id": "multiple_text_1",
-          "hint": "",
-          "name": "multiple_text_1",
-          "_type": "text",
-          "_uuid": "9ad038a2-019d-4f1b-bc23-8c2b85c55336",
-          "label": "name",
-          "errors": {
-          },
-          "collection": "components",
-          "validation": {
-            "required": true
-          }
         }
       ],
-      "add_component": "text",
       "section_heading": ""
     },
     {
-      "_id": "page.best-content",
-      "url": "best-content",
+      "_id": "page.content",
+      "url": "content",
       "lede": "",
       "_type": "page.content",
-      "_uuid": "d5fb3582-c6a4-46f0-8e03-a9acc482c848",
-      "heading": "Best content",
+      "_uuid": "f30305dc-a429-442f-9d34-d7ea71135b80",
+      "heading": "content",
       "components": [
         {
-          "_id": "best-content_content_1",
-          "name": "best-content_content_1",
+          "_id": "content_content_1",
+          "name": "content_content_1",
           "_type": "content",
-          "_uuid": "f7208ed7-ed10-4c53-9271-ab075f6d3e3c",
-          "content": "Hey you answered A or C",
-          "display": "conditional",
-          "collection": "components",
-          "conditionals": [
-            {
-              "_type": "if",
-              "_uuid": "6b1dea31-abbd-4053-8e6f-6211534dcd3b",
-              "expressions": [
-                {
-                  "page": "00cc353e-51c5-4462-88bc-c357e344cd4d",
-                  "field": "38492ffc-b18c-4b0b-94fe-c1addd854738",
-                  "operator": "is",
-                  "component": "db99d122-17e4-47b1-b5a4-d6e8bf70fa86"
-                }
-              ]
-            },
-            {
-              "_type": "if",
-              "_uuid": "291df640-16b0-4b7d-876e-92662d95e7a5",
-              "expressions": [
-                {
-                  "page": "00cc353e-51c5-4462-88bc-c357e344cd4d",
-                  "field": "f0c1585e-7b23-461a-8644-4da3b2e1ebc4",
-                  "operator": "is",
-                  "component": "db99d122-17e4-47b1-b5a4-d6e8bf70fa86"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "_id": "best-content_content_2",
-          "name": "best-content_content_2",
-          "_type": "content",
-          "_uuid": "83923195-eae0-414c-9fa9-3ae6de725d6f",
-          "content": "I think you answered B :)",
-          "display": "conditional",
-          "collection": "components",
-          "conditionals": [
-            {
-              "_type": "if",
-              "_uuid": "278f16b0-7ca3-45e7-8c49-ef390bd91c5e",
-              "expressions": [
-                {
-                  "page": "00cc353e-51c5-4462-88bc-c357e344cd4d",
-                  "field": "88c1cd02-c561-49eb-884d-69ad4e31a1b1",
-                  "operator": "is",
-                  "component": "db99d122-17e4-47b1-b5a4-d6e8bf70fa86"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "_id": "best-content_content_3",
-          "name": "best-content_content_3",
-          "_type": "content",
-          "_uuid": "11438b63-27f6-4604-85f6-a25c8d97bb14",
-          "content": "You didn't fill in the checkbox",
-          "display": "conditional",
-          "collection": "components",
-          "conditionals": [
-            {
-              "_type": "if",
-              "_uuid": "7072a9b8-347c-4954-9b1d-6799fbc4f164",
-              "expressions": [
-                {
-                  "page": "00cc353e-51c5-4462-88bc-c357e344cd4d",
-                  "field": "",
-                  "operator": "is_not_answered",
-                  "component": "96190800-a610-4f23-a6c9-d8d68df25e93"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "_id": "best-content_content_4",
-          "name": "best-content_content_4",
-          "_type": "content",
-          "_uuid": "65875888-c56e-4341-9659-dc38420cf1ee",
-          "content": "Well done you filled in the checkbox",
-          "display": "conditional",
-          "collection": "components",
-          "conditionals": [
-            {
-              "_type": "if",
-              "_uuid": "e794b9e9-1ead-436d-8817-797432314e82",
-              "expressions": [
-                {
-                  "page": "00cc353e-51c5-4462-88bc-c357e344cd4d",
-                  "field": "",
-                  "operator": "is_answered",
-                  "component": "96190800-a610-4f23-a6c9-d8d68df25e93"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "_id": "best-content_content_5",
-          "name": "best-content_content_5",
-          "_type": "content",
-          "_uuid": "166dd21c-4730-4f36-9554-04884a4a6601",
-          "content": "You didn't choose the No Option option",
-          "display": "conditional",
-          "collection": "components",
-          "conditionals": [
-            {
-              "_type": "if",
-              "_uuid": "b124b417-bb57-4961-af29-83dcf4bc6685",
-              "expressions": [
-                {
-                  "page": "00cc353e-51c5-4462-88bc-c357e344cd4d",
-                  "field": "63dce510-a641-4649-906c-334262c37673",
-                  "operator": "is_not",
-                  "component": "db99d122-17e4-47b1-b5a4-d6e8bf70fa86"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "_id": "best-content_content_6",
-          "name": "best-content_content_6",
-          "_type": "content",
-          "_uuid": "e6c3f2c6-8f87-4ac7-b2a4-33d3f30840d1",
-          "content": "You will always see this",
+          "_uuid": "a9317973-4734-4b13-933f-795cec97c29b",
+          "content": "Always show this",
           "display": "always",
-          "collection": "components"
+          "collection": "components",
+          "conditionals": [
+
+          ]
         },
         {
-          "_id": "best-content_content_7",
-          "name": "best-content_content_7",
+          "_id": "content_content_2",
+          "name": "content_content_2",
           "_type": "content",
-          "_uuid": "e3406aea-7f9b-421c-a677-0ac32c65e288",
-          "content": "You will never see this",
+          "_uuid": "1e541aa1-e3be-42d0-87f1-8afb833e6d3c",
+          "content": "Never show this",
           "display": "never",
           "collection": "components",
           "conditionals": [
 
+          ]
+        },
+        {
+          "_id": "content_content_3",
+          "name": "content_content_3",
+          "_type": "content",
+          "_uuid": "21d66bb1-bd3a-437d-bf05-e0486cc1e5ec",
+          "content": "If radio a",
+          "display": "conditional",
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "if",
+              "_uuid": "87077524-7cff-446b-af6c-acc0a7d67f77",
+              "expressions": [
+                {
+                  "page": "26cd3e8c-9c6b-453f-9503-d1741b561b39",
+                  "field": "27216423-af30-414c-89a6-0f2304d88b54",
+                  "operator": "is",
+                  "component": "60aa4497-2a93-43a7-87e3-a591c2ab4370"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_id": "content_content_4",
+          "name": "content_content_4",
+          "_type": "content",
+          "_uuid": "697032c5-1fda-4ad5-826e-18aa650d0f4a",
+          "content": "If radio is not a",
+          "display": "conditional",
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "if",
+              "_uuid": "a1812e4d-2646-4162-bd15-b6659e8a9a61",
+              "expressions": [
+                {
+                  "page": "26cd3e8c-9c6b-453f-9503-d1741b561b39",
+                  "field": "27216423-af30-414c-89a6-0f2304d88b54",
+                  "operator": "is_not",
+                  "component": "60aa4497-2a93-43a7-87e3-a591c2ab4370"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_id": "content_content_5",
+          "name": "content_content_5",
+          "_type": "content",
+          "_uuid": "d5bf667d-2ec2-4ea2-8e73-61e0bc6eb9c6",
+          "content": "If radio is a and checkbox is 1",
+          "display": "conditional",
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "and",
+              "_uuid": "17414ea5-e8d2-4cbd-b9d8-1ab9cd7d65c5",
+              "expressions": [
+                {
+                  "page": "58b2c747-5042-4914-b27f-e02a93520bed",
+                  "field": "55d78667-cbb1-4ead-a440-382a6842f5b2",
+                  "operator": "contains",
+                  "component": "aab1d068-77cf-46f4-bff3-f4cb396dbb3a"
+                },
+                {
+                  "page": "26cd3e8c-9c6b-453f-9503-d1741b561b39",
+                  "field": "27216423-af30-414c-89a6-0f2304d88b54",
+                  "operator": "is",
+                  "component": "60aa4497-2a93-43a7-87e3-a591c2ab4370"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_id": "content_content_6",
+          "name": "content_content_6",
+          "_type": "content",
+          "_uuid": "72a52a58-d040-4342-811b-7ed10dd40293",
+          "content": "If checkbox is 2 and radio is b",
+          "display": "conditional",
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "if",
+              "_uuid": "e4993493-1e1c-4cc9-86f6-ef26cfe7b640",
+              "expressions": [
+                {
+                  "page": "58b2c747-5042-4914-b27f-e02a93520bed",
+                  "field": "2a4d065f-9c0d-4e93-b421-a0fb40a1d733",
+                  "operator": "contains",
+                  "component": "aab1d068-77cf-46f4-bff3-f4cb396dbb3a"
+                }
+              ]
+            },
+            {
+              "_type": "if",
+              "_uuid": "706a5f30-a3db-49fa-9bc9-e6d85c361058",
+              "expressions": [
+                {
+                  "page": "26cd3e8c-9c6b-453f-9503-d1741b561b39",
+                  "field": "6ef564b0-a2ea-4551-9c1b-2f04bb6a1bf6",
+                  "operator": "is",
+                  "component": "60aa4497-2a93-43a7-87e3-a591c2ab4370"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_id": "content_content_7",
+          "name": "content_content_7",
+          "_type": "content",
+          "_uuid": "411d1645-13bd-41a2-92c8-80e103e769b7",
+          "content": "checkbox was answered",
+          "display": "conditional",
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "if",
+              "_uuid": "f0765fbe-5be3-44ef-b893-1aac62fcd9ca",
+              "expressions": [
+                {
+                  "page": "58b2c747-5042-4914-b27f-e02a93520bed",
+                  "field": "",
+                  "operator": "is_answered",
+                  "component": "aab1d068-77cf-46f4-bff3-f4cb396dbb3a"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_id": "content_content_8",
+          "name": "content_content_8",
+          "_type": "content",
+          "_uuid": "6a503c31-332b-4cd6-9fea-2fe05aa81dd1",
+          "content": "checkbox wasn't answered",
+          "display": "conditional",
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "if",
+              "_uuid": "c7a76933-f0f9-48c9-a394-5cfb8c4070ea",
+              "expressions": [
+                {
+                  "page": "58b2c747-5042-4914-b27f-e02a93520bed",
+                  "field": "",
+                  "operator": "is_not_answered",
+                  "component": "aab1d068-77cf-46f4-bff3-f4cb396dbb3a"
+                }
+              ]
+            }
           ]
         }
       ],
@@ -451,7 +365,7 @@
       "_id": "page.checkanswers",
       "url": "check-answers",
       "_type": "page.checkanswers",
-      "_uuid": "ba8a4976-a1c7-43b1-8d54-ba0a903d744d",
+      "_uuid": "f13f19fb-5ca6-41cc-a0b7-c46a42ed4b0f",
       "heading": "Check your answers",
       "send_body": "By submitting this application you confirm that, to the best of your knowledge, the details you are providing are correct.",
       "components": [
@@ -466,7 +380,7 @@
       "_id": "page.confirmation",
       "url": "form-sent",
       "_type": "page.confirmation",
-      "_uuid": "8ad57888-062c-432f-8e3f-1570c8b5b265",
+      "_uuid": "1eb59923-b97a-4118-9311-2f70d3074e44",
       "heading": "Application complete",
       "components": [
 
@@ -474,11 +388,11 @@
     }
   ],
   "locale": "en",
-  "created_at": "2023-09-27T10:20:30Z",
-  "created_by": "339d8726-a6e7-4084-a3ad-0a8300093c40",
-  "service_id": "0893ef6d-c528-4ab6-aafa-268885643f04",
-  "version_id": "031b5898-7c20-44e7-b850-6bc30428ed13",
-  "service_name": "Conditional Content Test Fixture",
+  "created_at": "2023-09-25T12:47:30Z",
+  "created_by": "7a215cc6-e2de-4ede-93a2-ed725df3758b",
+  "service_id": "66048fb7-2698-4f01-99df-8d457393f404",
+  "version_id": "68644be4-78e9-47a7-b83a-c03f5130c923",
+  "service_name": "form",
   "configuration": {
     "meta": {
       "_id": "config.meta",
@@ -515,7 +429,7 @@
       "url": "cookies",
       "body": "This form saves small files (known as 'cookies') onto your device.\r\n \r\nCookies are used to:\r\n \r\n* remember your progress\r\n* measure how you use the form so it can be updated and improved based on your needs\r\n \r\nThese cookies are not used to identify you personally.\r\n \r\nYou will normally see a message on the form before we store a cookie on your computer. Essential cookies are necessary for the form to work but you can still complete the form if you choose not to accept analytics cookies.\r\n \r\nFind out more about [how to manage cookies](https://www.aboutcookies.org/).\r\n \r\n## Essential cookies\r\n \r\nEssential cookies are required to make this form work and keep your information secure while you use it.\r\n \r\nWe use the following essential cookies: \r\n \r\n| Name | Purpose | Expires |\r\n|---|---|---|\r\n| \\_fb\\_runner\\_session | Saves your current progress on this computer and tracks inactivity periods | After 30 minutes of inactivity or when you close your browser |\r\n| analytics | Remembers whether you accept or reject analytics cookies on this form | After 1 year |\r\n \r\n## Analytics cookies\r\n \r\nAnalytics cookies collect information about how you use this form. This helps us make sure the form is meeting the needs of its users and to help us make improvements.\r\n \r\nWe use Google Analytics to learn about:\r\n \r\n* the pages you visit\r\n* how long you spend on each page\r\n* how you got to the form\r\n* what you click on while you are using the form\r\n \r\nWe do not collect or store your personal information (for example your name or address) so this information can't be used to identify who you are. We do not allow third parties to use or share our analytics data.\r\n \r\nThis form may use different versions of Google Analytics and could save some or all of the following cookies:\r\n \r\n| Name | Purpose | Expires |\r\n|---|---|---|\r\n| \\_ga | Helps us count how many people visit this form | 2 years |\r\n| \\_gid | Helps us count how many people visit this form | 1 day   |\r\n| \\_ga\\_\\<container-id> | Used to persist session state | 2 years |\r\n| \\_gac\\_gb\\_\\<container-id> | Contains campaign-related information | 90 days |\r\n| \\_gat | Used to throttle request rate | 1 minute |\r\n| \\_dc\\_gtm\\_\\<property-id>| Used to throttle request rate | 1 minute |\r\n| AMP\\_TOKEN | Contains a token that can be used to retrieve a Client ID from AMP Client ID service | 30 seconds to 1 year |\r\n| \\_gac\\_\\<property-id> | Contains campaign related information | 90 days |\r\n \r\nYou can use a browser addon to [opt out of Google Analytics cookies](https://tools.google.com/dlpage/gaoptout) on all websites.",
       "_type": "page.standalone",
-      "_uuid": "04033df0-c58d-48c6-a17f-45febf53f6e6",
+      "_uuid": "b89859c4-21de-459b-85b9-475cb5797ed9",
       "heading": "Cookies",
       "components": [
 
@@ -526,7 +440,7 @@
       "url": "privacy",
       "body": "[[Guidance notes on completing this notice](https://intranet.justice.gov.uk/documents/2018/03/privacy-notice-guidance.pdf) - delete before publishing]\r\n\r\n## [Name of your form or service]\r\n\r\nThe Ministry of Justice (MoJ) is committed to the protection and security of your personal information.\r\n\r\nIt is important that you read this notice so that you are aware of how and why we are using such information. This privacy notice describes how we collect and use personal information during and after your relationship with us, in accordance with data protection law. \r\n\r\n[Insert name – delete if not an EA or ALB] is an Executive Agency/Arm’s Length Body of the MoJ. MoJ is the data controller for the personal data used for the purposes of [Insert overarching purpose].\r\n\r\n### The type of personal data we process\r\n\r\nWe currently collect and use the following information:\r\n\r\n[list the type of personal data used e.g. name, address, contact details etc]\r\n\r\nWe also collect special categories of information, such as [delete this section if not applicable]:\r\n\r\n* race or ethnicity \r\n* political opinions\r\n* religious or philosophical beliefs\r\n* trade union membership\r\n* health, sex life or sexual orientation \r\n* genetics or biometrics\r\n* criminal convictions\r\n\r\n\r\n### How we get your personal data and why we have it\r\n\r\nMost of the personal information we process is provided to us directly by you for one of the following reasons: [List reasons e.g. providing an online service]\r\n\r\nWe also receive personal information indirectly, from the following sources in the following scenarios: [Include details of the source of the personal data unless the data is collected directly from the data subject]\r\n\r\nWe use the personal data we receive in order to: [list how you use the personal data] \r\n\r\nWe may share this information with: [enter organisations or individuals]\r\n\r\nUnder the UK General Data Protection Regulation (UK GDPR), the lawful bases we rely on for processing this information are: [delete as appropriate]\r\n\r\n* Your consent. You may withdraw your consent at any time by contacting [enter contact details].\r\n* We have a contractual obligation.\r\n* We have a legal obligation.\r\n* We have a vital interest.\r\n* We need it to perform a public task.\r\n* We have a legitimate interest.\r\n\r\n[Explain the purpose and lawful basis for processing the personal data you collect. If lawful basis is a legal obligation or public task, explain what this is e.g. refer to legislation or policy.]  \r\n\r\nThe legal bases on which the MoJ processes special categories of information you have provided, is on the basis of: [delete this section if not applicable]\r\n\r\n* Your explicit consent. You may withdraw your consent at any time by contacting [insert contact details].\r\n* The processing being necessary for the MoJ in the field of employment, social security and social protection law.\r\n* The information being manifestly made public by you.\r\n* The processing being necessary for the establishment, exercise or defence of legal claims.\r\n* The substantial public interest in the MoJ [tailor as required and choose relevant [substantial public interest condition](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/special-category-data/what-are-the-substantial-public-interest-conditions/)]. \r\n* The processing is necessary for historical research purposes/statistical purposes.\r\n\r\n### International data transfers\r\n\r\n[Delete one of the following paragraphs as appropriate]\r\n\r\nPersonal data is transferred to [insert name of country] for the purpose of [insert purpose]. This international transfer complies with UK data protection law [delete as appropriate].\r\n\r\n\r\nThere are no international transfers.\r\n\r\n### How we store your personal data\r\n\r\n[set out how long the information is retained, or the criteria used to determine how long the information is retained]\r\n\r\nPersonal data is stored securely and in accordance with our data retention schedule [insert link to the schedule or details of retention periods]. At the end of this period your data is [insert with it is retained as a public record or whether it is disposed of].\r\n\r\n### Your rights\r\n\r\n[This section lists all data subject rights found in the UKGDPR and the Data Protection Act 2018. You should only include those relevant to your lawful basis for processing. [Find out more about which rights apply and when](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/individual-rights/)]\r\n\r\n* Your right of access - You have the right to ask us for copies of your personal information. \r\n* Your right to rectification - You have the right to ask us to rectify personal information you think is inaccurate. You also have the right to ask us to complete information you think is incomplete. \r\n* Your right to erasure - You have the right to ask us to erase your personal information in certain circumstances. \r\n* Your right to restriction of processing - You have the right to ask us to restrict the processing of your personal information in certain circumstances. \r\n* Your right to object to processing - You have the right to object to the processing of your personal information in certain circumstances. \r\n* Your right to data portability - You have the right to ask that we transfer the personal information you gave us to another organisation, or to you, in certain circumstances. \r\n\r\nDepending on the lawful basis on which your personal data is being processed, not all rights will apply.\r\n\r\nYou are not required to pay any charge for exercising your rights. If you make a request, we have one month to respond to you. If you wish to exercise your data protection rights please contact one of these teams.\r\n\r\nIf you have ever been convicted of a criminal offence, contact:\r\n\r\n\r\nBranston Registry<br> \r\nBuilding 16, S & T Store<br> \r\nBurton Road<br>\r\nBranston<br>\r\nBurton-on-Trent<br> \r\nStaffordshire<br>\r\nDE14 3EG\r\nEmail: <data.access1@justice.gov.uk>\r\n\r\nOtherwise, contact:\r\n\r\n\r\nDisclosure Team<br>\r\nPost point 10.38<br>\r\n102 petty France<br>\r\nLondon<br>\r\nSW1H 9AJ\r\nEmail: <data.access@justice.gov.uk> \r\n\r\n### How to complain\r\n\r\nIf you have any concerns about our use of your personal data, you can contact the MoJ data protection officer:\r\n\r\nData Protection Officer<br>\r\nMinistry of Justice<br>\r\n3rd Floor, Post Point 3.20<br>\r\n10 South Colonnades<br>\r\nCanary Wharf<br>\r\nLondon<br>\r\nE14 4PU\r\n\r\nEmail: <dpo@justice.gov.uk> \r\n\r\n\r\nYou can also complain to the Information Commissioner’s Office (ICO) if you are unhappy with how we have used your data:\r\n\r\n\r\nInformation Commissioner’s Office<br>\r\nWycliffe House<br>\r\nWater Lane<br>\r\nWilmslow<br>\r\nCheshire<br>\r\nSK9 5AF\r\n\r\nTelephone: 0303 123 1113<br>\r\n[ICO website](https://www.ico.org.uk)\r\n\r\nDate of last review: [Insert publication or update date]",
       "_type": "page.standalone",
-      "_uuid": "3fee830a-259c-4abc-8181-be26bb22be7e",
+      "_uuid": "301267c2-cdc9-4f62-96c0-272cd635b594",
       "heading": "Privacy notice",
       "components": [
 
@@ -537,7 +451,7 @@
       "url": "accessibility",
       "body": "This accessibility statement applies to [describe your form here - for example, the general enquiries form for the CICA]. There is a separate [accessibility statement for the main GOV.UK website](https://www.gov.uk/help/accessibility-statement).\r\n\r\n### Using this online form\r\n\r\nThis form was built using MoJ Forms, a tool developed by the Ministry of Justice, and uses components from the [GOV.UK Design System](https://design-system.service.gov.uk/).\r\n\r\n[insert your organisation here] is responsible for the content of this online form. The Ministry of Justice is responsible for its technical aspects.\r\n\r\nWe want as many people as possible to be able to use this online form. For example, that means you should be able to:\r\n\r\n- change colours, contrast levels and fonts\r\n- zoom in up to 300% without the text spilling off the screen\r\n- navigate the form using just a keyboard\r\n- navigate the form using speech recognition software\r\n- listen to the form using a screen reader (including recent versions of JAWS, NVDA and VoiceOver)\r\n\r\nWe’ve also made the text as simple as possible to understand.\r\n\r\n[AbilityNet](https://mcmw.abilitynet.org.uk/) has advice on making your device easier to use if you have a disability.\r\n\r\n### Feedback and contact information\r\n\r\nIf you need information on this website in a different format:\r\n\r\n[insert your contact details for user requests here - add other channels, such as text phones or Relay UK, as required]\r\n\r\n- email: [your email address]\r\n- call: [your telephone number]\r\n- [Hours - e.g. Monday to Friday, 9am to 5pm]\r\n\r\nWe'll consider your request and get back to you in [add your SLA - e.g. a week or 5 working days].\r\n\r\n### Reporting accessibility problems with this form\r\n\r\nWe’re always looking to improve the accessibility of this form. If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact:\r\n\r\n[insert your contact details for user feedback here - add other channels, such as text phones or Relay UK, as required]\r\n\r\n- email: [your email address]\r\n- call: [your telephone number]\r\n- [Hours - e.g. Monday to Friday, 9am to 5pm]\r\n\r\n### Enforcement procedure\r\n\r\nThe Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint, contact the [Equality Advisory and Support Service (EASS)](https://www.equalityadvisoryservice.com/).\r\n\r\n### Technical information about this online form’s accessibility\r\n\r\nWe are committed to making our online forms and services accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.\r\n\r\n#### Compliance status\r\n\r\nThis online form is fully compliant with the [Web Content Accessibility Guidelines version 2.1 AA standard](https://www.w3.org/TR/WCAG21/)\r\n\r\n### Preparation of this accessibility statement\r\n\r\nThis statement was prepared on [date when it was first published]. It was last reviewed on [date when it was last reviewed].\r\n\r\nThis form was last tested on [date when you performed your basic accessibility check].\r\n\r\nIn order to test the compliance of all forms built using the MoJ Forms tool, the Ministry of Justice commissioned The Digital Accessibility Centre (DAC) to carry out a WCAG 2.1 AA level audit of a sample form. This included extensive testing by users with a wide range of disabilities. The audit was performed on 8 April 2021. The audit highlighted a number of non-compliance issues which were fixed on 11 May 2021.\r\n\r\nIn addition, this form was tested by [insert team or organisation here]. It was tested using the [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) following guidance from the Ministry of Justice and the Government Digital Service (GDS).\r\n\r\n### What we’re doing to improve accessibility\r\n\r\nWe will monitor the accessibility of this website on an ongoing basis and fix any accessibility issues reported to us.",
       "_type": "page.standalone",
-      "_uuid": "6a2ebb3e-b353-4733-ab48-60f50d26fc78",
+      "_uuid": "49cb6ea1-dd30-4538-8bf2-ac4ebfcb8ecf",
       "heading": "Accessibility statement",
       "components": [
 
@@ -545,4 +459,3 @@
     }
   ]
 }
-        

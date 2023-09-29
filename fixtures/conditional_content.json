@@ -427,6 +427,53 @@
               ]
             }
           ]
+        },
+        {
+          "_id": "content_content_11",
+          "name": "content_content_11",
+          "_type": "content",
+          "_uuid": "b23d885d-5326-49f2-b4f4-5ac5d53a03da",
+          "content": "if CB 1 and radio A OR no CB and radio is No Option",
+          "display": "conditional",
+          "collection": "components",
+          "conditionals": [
+            {
+              "_type": "and",
+              "_uuid": "2cc6580d-70d6-40fd-b629-5b446b1a87a2",
+              "expressions": [
+                {
+                  "page": "f8881623-e697-499b-81df-0ebf7d03ec3f",
+                  "field": "a85cc419-7f7a-48ef-bab6-ee1f4bc7927c",
+                  "operator": "contains",
+                  "component": "95c15e7c-8229-4280-9667-4db1c2c32966"
+                },
+                {
+                  "page": "f8881623-e697-499b-81df-0ebf7d03ec3f",
+                  "field": "87cc40e6-eda6-45ba-9522-01f51cba109a",
+                  "operator": "is",
+                  "component": "2c1333ca-b28c-4a98-b2a7-a300bab54cc7"
+                }
+              ]
+            },
+            {
+              "_type": "and",
+              "_uuid": "4bbe4c06-a791-43a3-a4b4-b2f838e1b0b1",
+              "expressions": [
+                {
+                  "page": "f8881623-e697-499b-81df-0ebf7d03ec3f",
+                  "field": "",
+                  "operator": "is_not_answered",
+                  "component": "95c15e7c-8229-4280-9667-4db1c2c32966"
+                },
+                {
+                  "page": "f8881623-e697-499b-81df-0ebf7d03ec3f",
+                  "field": "ff14778f-a7b4-4ceb-b4e8-46f4b83aac42",
+                  "operator": "is",
+                  "component": "2c1333ca-b28c-4a98-b2a7-a300bab54cc7"
+                }
+              ]
+            }
+          ]
         }
       ],
       "add_component": "content",
@@ -459,10 +506,10 @@
     }
   ],
   "locale": "en",
-  "created_at": "2023-09-26T14:45:33Z",
+  "created_at": "2023-09-29T12:42:09Z",
   "created_by": "7a215cc6-e2de-4ede-93a2-ed725df3758b",
   "service_id": "b16e93c9-5cca-44e1-b97f-588e951aa080",
-  "version_id": "9706c613-5b22-40d9-b5a6-f91fc47c0e36",
+  "version_id": "79835dab-2220-4820-b181-ee5e235b7f1d",
   "service_name": "hoho",
   "configuration": {
     "meta": {
@@ -530,4 +577,3 @@
     }
   ]
 }
-        
