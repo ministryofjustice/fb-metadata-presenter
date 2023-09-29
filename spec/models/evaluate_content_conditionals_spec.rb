@@ -173,7 +173,7 @@ RSpec.describe MetadataPresenter::EvaluateContentConditionals do
     context 'for multiple conditions combined with the and rule' do
       let(:two_and_b) { '5ccc3681-4aa5-447a-8763-6fcdd257bfcc' }
       context 'when all conditions are met' do
-        let(:user_data) { { 'multiple_checkboxes_1' => ["2"], 'multiple_radios_1' => 'Option B' } }
+        let(:user_data) { { 'multiple_checkboxes_1' => %w[2], 'multiple_radios_1' => 'Option B' } }
         it 'returns successfully the content' do
           expect(conditional_content).to include(two_and_b)
         end
@@ -189,7 +189,7 @@ RSpec.describe MetadataPresenter::EvaluateContentConditionals do
     end
 
     context 'for multiple conditions with or and and rule combined' do
-      let(:rare_content) {'b23d885d-5326-49f2-b4f4-5ac5d53a03da'}
+      let(:rare_content) { 'b23d885d-5326-49f2-b4f4-5ac5d53a03da' }
 
       context 'when conditions are met' do
         context 'in case 1' do
