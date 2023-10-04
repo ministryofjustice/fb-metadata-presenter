@@ -413,8 +413,8 @@ RSpec.describe MetadataPresenter::Page do
   end
 
   describe '#load_conditional_content' do
-    let(:service_metadata) { metadata_fixture(:conditional) }
-    let(:page) { service.find_page_by_url('best-content') }
+    let(:service_metadata) { metadata_fixture(:conditional_content) }
+    let(:page) { service.find_page_by_url('content') }
     let(:user_data) do
       {
         'multiple_radios_1' => 'Option A',
@@ -423,9 +423,11 @@ RSpec.describe MetadataPresenter::Page do
     end
     let(:expected_components) do
       %w[
-        d74476c0-16e2-42b9-870e-dcec2083410c
-        c3bfc9bf-4af8-47b5-a9da-8f40b68acbed
-        ba917dc0-4489-4934-868b-af987db02515
+        701f93e3-1d78-4a1f-9495-07e32b6e26fe
+        71bfc176-613d-42ec-8d53-63e50b696ec6
+        61139d00-53eb-4ff3-9227-6ecd0b80aac4
+        4d4d7ace-9ce2-4415-9edb-abcac75ed17b
+        6a3b4104-1d4c-4534-87d8-b81f5c764d43
       ]
     end
 

@@ -40,6 +40,8 @@ module MetadataPresenter
     end
 
     def single_page_preview?
+      return true if request.referrer.blank?
+
       !URI(request.referrer).path.split('/').include?('preview')
     end
     helper_method :single_page_preview?
