@@ -5,7 +5,18 @@
     <% next unless editable? || @page.conditional_content_to_show.include?(component.uuid) || ( editor_preview? && @user_data.blank?) %>
 
     <% if editor_preview? && @user_data.blank? %>
-      <%= "Some info banner to inform you not all content may be visible on the page when used in a form. "%>
+      <div class="govuk-notification-banner" role="region"
+           aria-labelledby="govuk-notification-banner-title"
+           data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">Not all content may be visible on the page when used in a form.</p>
+        </div>
+      </div>
     <% end%>
 
 
