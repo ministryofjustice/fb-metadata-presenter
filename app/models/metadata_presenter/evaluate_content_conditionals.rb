@@ -75,7 +75,7 @@ module MetadataPresenter
       answer = user_data[expression.expression_component.id]
       return false if answer.blank?
 
-      expression.field_label.include?(answer.first)
+      answer.include?(expression.field_label)
     end
   end
 end
