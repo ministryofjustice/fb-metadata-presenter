@@ -20,6 +20,24 @@
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post, authenticity_token: false do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
 
+        <% if editor_preview? && @user_data.blank? %>
+
+          <div class="govuk-notification-banner" role="region"
+               aria-labelledby="govuk-notification-banner-title"
+               data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Important
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-notification-banner__heading">
+                <%= t('presenter.conditional_content.notification') %>
+              </p>
+            </div>
+          </div>
+        <% end%>
+
         <%= render partial: 'metadata_presenter/component/components',
                    locals: {
                      f: f,
