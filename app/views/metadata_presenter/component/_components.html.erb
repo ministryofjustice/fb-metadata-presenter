@@ -2,7 +2,12 @@
 
   <% if component.type == 'content' %>
 
-    <% next unless editable? || @page.conditional_content_to_show.include?(component.uuid) %>
+    <% next unless editable? || @page.conditional_content_to_show.include?(component.uuid) || ( editor_preview? && @user_data.blank?) %>
+
+    <% if editor_preview? && @user_data.blank? %>
+      <%= "Some info banner to inform you not all content may be visible on the page when used in a form. "%>
+    <% end%>
+
 
     <editable-content id="<%= "page[#{component.collection}[#{index}]]" %>"
                       class="fb-editable govuk-!-margin-top-8"
