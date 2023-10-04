@@ -20,7 +20,7 @@
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post, authenticity_token: false do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
 
-        <% if editor_preview? && @user_data.blank? %>
+        <% if single_page_preview? %>
 
           <div class="govuk-notification-banner" role="region"
                aria-labelledby="govuk-notification-banner-title"

@@ -145,6 +145,12 @@ module MetadataPresenter
       @conditional_content_to_show || []
     end
 
+    def show_conditional_component?(component_id)
+      return true if editor_preview? && @user_data.blank?
+
+      conditional_content_to_show.include?(component_id)
+    end
+
     def load_conditional_content(service, user_data)
       if content_component_present?
         evaluator = EvaluateContentConditionals.new(service:, user_data:)
@@ -156,6 +162,10 @@ module MetadataPresenter
 
     def conditionals_uuids_by_type(display)
       all_components.filter_map { |component| component[:_uuid] if component[:display] == display }
+    end
+
+    def load_all_conditional_content
+      @conditional_content_to_show = content_components
     end
 
     private
