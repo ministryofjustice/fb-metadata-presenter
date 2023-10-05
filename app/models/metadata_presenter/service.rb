@@ -86,7 +86,7 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
 
   def page_with_component(uuid)
     pages.find do |page|
-      Array(page.components).any? { |component| component.uuid == uuid }
+      Array(page.all_components).any? { |component| component.uuid == uuid }
     end
   end
 
