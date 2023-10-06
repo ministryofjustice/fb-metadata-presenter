@@ -47,7 +47,7 @@ module MetadataPresenter
     helper_method :single_page_preview?
 
     def conditional_components_present?
-      @page.conditional_components.present?
+      @page.conditional_components.any?
     end
     helper_method :conditional_components_present?
 
