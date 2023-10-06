@@ -11,6 +11,13 @@
 
       <%= form_for @page, url: reserved_submissions_path, authenticity_token: false, html: { id: 'answers-form' } do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+
+        <% if single_page_preview? && editor_preview? && conditional_components_present? %>
+          <%= govuk_notification_banner(title_text: 'Important') do |nb|
+            nb.with_heading(text: t('presenter.conditional_content.notification'))
+          end %>
+        <% end%>
+
         <%= render partial: 'metadata_presenter/component/components',
                    locals: {
                    f: f,

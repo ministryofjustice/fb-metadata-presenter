@@ -1,9 +1,3 @@
-<% if single_page_preview? && editor_preview? && conditional_components_present? %>
-  <%= govuk_notification_banner(title_text: 'Important') do |nb|
-    nb.with_heading(text: t('presenter.conditional_content.notification'))
-  end %>
-<% end%>
-
 <% components.each_with_index do |component, index| %>
 
   <% if component.type == 'content' %>
