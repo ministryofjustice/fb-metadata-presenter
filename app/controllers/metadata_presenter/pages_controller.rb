@@ -9,7 +9,7 @@ module MetadataPresenter
       if @page
         load_autocomplete_items
         if single_page_preview?
-          @page.load_all_conditional_content
+          @page.load_all_content
         else
           @page.load_conditional_content(service, @user_data)
         end

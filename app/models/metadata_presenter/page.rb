@@ -153,7 +153,7 @@ module MetadataPresenter
       if content_component_present?
         evaluator = EvaluateContentConditionals.new(service:, user_data:)
         items = evaluator.evaluate_content_components(self)
-        items << conditional_component_shown_by_default
+        items << legacy_content_components
         assign_conditional_component(items.flatten)
       end
     end
@@ -162,8 +162,8 @@ module MetadataPresenter
       all_components.filter_map { |component| component[:_uuid] if component[:display] == display }
     end
 
-    def load_all_conditional_content
-      @conditional_content_to_show = all_conditional_content
+    def load_all_content
+      @conditional_content_to_show = content_components
     end
 
     def conditional_components
@@ -208,13 +208,9 @@ module MetadataPresenter
       components.any?(&:content?)
     end
 
-    def conditional_component_shown_by_default
-      default_components = all_components - all_conditional_content
-      default_components.map { |component| component[:_uuid] }
+    def legacy_content_components
+      content_components.filter_map { |component| component[:_uuid] unless component[:display].present? }
     end
 
-    def all_conditional_content
-      all_components { |component| component[:display].present? }
-    end
   end
 end
