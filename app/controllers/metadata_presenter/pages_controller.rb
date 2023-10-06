@@ -46,6 +46,11 @@ module MetadataPresenter
     end
     helper_method :single_page_preview?
 
+    def conditional_components_present?
+      @page.conditional_components.present?
+    end
+    helper_method :conditional_components_present?
+
     private
 
     def set_caching_header
