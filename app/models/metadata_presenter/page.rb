@@ -163,11 +163,13 @@ module MetadataPresenter
     end
 
     def load_all_conditional_content
-      @conditional_content_to_show = conditional_components
+      @conditional_content_to_show = all_conditional_content
     end
 
     def conditional_components
-      all_components { |component| component[:display].present? }
+      never = conditionals_uuids_by_type('never')
+      only_if = conditionals_uuids_by_type('conditional')
+      never + only_if
     end
 
     private
@@ -207,8 +209,12 @@ module MetadataPresenter
     end
 
     def conditional_component_shown_by_default
-      default_components = all_components - conditional_components
+      default_components = all_components - all_conditional_content
       default_components.map { |component| component[:_uuid] }
+    end
+
+    def all_conditional_content
+      all_components { |component| component[:display].present? }
     end
   end
 end
