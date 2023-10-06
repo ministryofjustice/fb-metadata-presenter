@@ -20,11 +20,7 @@
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post, authenticity_token: false do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
 
-        <% if single_page_preview? && editor_preview? && conditional_components_present? %>
-          <%= govuk_notification_banner(title_text: 'Important') do |nb|
-            nb.with_heading(text: t('presenter.conditional_content.notification'))
-          end %>
-        <% end%>
+        <%= render partial:'metadata_presenter/component/conditional_component_banner'%>
 
         <%= render partial: 'metadata_presenter/component/components',
                    locals: {
