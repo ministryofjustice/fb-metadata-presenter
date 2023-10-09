@@ -158,8 +158,12 @@ module MetadataPresenter
       end
     end
 
-    def conditionals_uuids_by_type(display)
-      all_components.filter_map { |component| component[:_uuid] if component[:display] == display }
+    def content_components_by_type(*display)
+      content_components.filter{|component| display.include? component[:display] }
+    end
+
+    def conditionals_uuids_by_type(*display)
+      content_components_by_type(*display).map{|component| component[:_uuid]}
     end
 
     def load_all_content
@@ -167,9 +171,7 @@ module MetadataPresenter
     end
 
     def conditional_components
-      never = conditionals_uuids_by_type('never')
-      only_if = conditionals_uuids_by_type('conditional')
-      never + only_if
+      conditionals_uuids_by_type('never', 'conditional')
     end
 
     private
