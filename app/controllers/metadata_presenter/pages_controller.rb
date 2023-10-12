@@ -39,13 +39,6 @@ module MetadataPresenter
       TraversedPages.new(service, load_user_data, @page).all
     end
 
-    def single_page_preview?
-      return true if request.referrer.blank?
-
-      !URI(request.referrer).path.split('/').include?('preview')
-    end
-    helper_method :single_page_preview?
-
     def conditional_components_present?
       @page.conditional_components.any?
     end
