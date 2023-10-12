@@ -1,8 +1,7 @@
 <% components.each_with_index do |component, index| %>
 
   <% if component.type == 'content' %>
-
-    <% next unless editable? || @page.show_conditional_component?(component.uuid) || single_page_preview? %>
+    <% next unless (editable? || @page.show_conditional_component?(component.uuid) || single_page_preview?) %>
 
     <editable-content id="<%= "page[#{component.collection}[#{index}]]" %>"
                       class="fb-editable govuk-!-margin-top-8"

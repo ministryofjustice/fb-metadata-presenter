@@ -1,4 +1,4 @@
-<% if !in_runner? && single_page_preview? && !editable? && @page.conditional_components.any? %>
+<% if single_page_preview? && !editable? && @page.conditional_components.any? %>
   <%= govuk_notification_banner(title_text: 'Important') do |nb|
     nb.with_heading(text: t('presenter.conditional_content.notification'))
   end %>
