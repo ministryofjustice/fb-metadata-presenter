@@ -207,7 +207,7 @@ module MetadataPresenter
     end
 
     def content_component_present?
-      components.any?(&:content?)
+      all_components.any?(&:content?)
     end
 
     def legacy_content_components
