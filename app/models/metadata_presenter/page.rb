@@ -159,11 +159,11 @@ module MetadataPresenter
     end
 
     def content_components_by_type(*display)
-      content_components.filter{|component| display.include? component[:display] }
+      content_components.filter { |component| display.include? component[:display] }
     end
 
     def conditionals_uuids_by_type(*display)
-      content_components_by_type(*display).map{|component| component[:_uuid]}
+      content_components_by_type(*display).map { |component| component[:_uuid] }
     end
 
     def load_all_content
@@ -211,8 +211,7 @@ module MetadataPresenter
     end
 
     def legacy_content_components
-      content_components.filter_map { |component| component[:_uuid] unless component[:display].present? }
+      content_components.filter_map { |component| component[:_uuid] if component[:display].blank? }
     end
-
   end
 end

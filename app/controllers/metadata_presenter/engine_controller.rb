@@ -154,7 +154,7 @@ module MetadataPresenter
 
     def single_page_preview?
       return false if in_runner?
-      return true if request.referrer.blank? 
+      return true if request.referrer.blank?
 
       !URI(request.referrer).path.split('/').include?('preview')
     end
