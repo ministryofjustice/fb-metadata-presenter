@@ -114,15 +114,6 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     @all_pages ||= pages + standalone_pages
   end
 
-  def flow_page(current_page)
-    page_index = pages.index(current_page)
-    pages[page_index - 1] if page_index.present?
-  end
-
-  def referrer_page(referrer)
-    find_page_by_url(URI(referrer).path) if referrer
-  end
-
   def strip_slash(url)
     return url if url == '/'
 
