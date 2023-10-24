@@ -8,7 +8,11 @@ module MetadataPresenter
       @page ||= service.find_page_by_url(request.env['PATH_INFO'])
       if @page
         load_autocomplete_items
-        load_conditional_content
+        if single_page_preview?
+          @page.load_all_content
+        else
+          @page.load_conditional_content(service, @user_data)
+        end
 
         @page_answers = PageAnswers.new(@page, @user_data)
         render template: @page.template
@@ -34,6 +38,11 @@ module MetadataPresenter
     def answered_pages
       TraversedPages.new(service, load_user_data, @page).all
     end
+
+    def conditional_components_present?
+      @page.conditional_components.any?
+    end
+    helper_method :conditional_components_present?
 
     private
 

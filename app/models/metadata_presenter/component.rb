@@ -88,6 +88,12 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
     end
   end
 
+  def find_conditional_content_by_uuid(uuid)
+    metadata['conditionals'].select do |conditional|
+      conditional['_uuid'] == uuid
+    end
+  end
+
   private
 
   def validation_bundle_key

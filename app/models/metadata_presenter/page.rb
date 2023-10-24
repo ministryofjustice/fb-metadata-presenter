@@ -141,8 +141,37 @@ module MetadataPresenter
       end
     end
 
-    def content_component_present?
-      components.any?(&:content?)
+    def conditional_content_to_show
+      @conditional_content_to_show || []
+    end
+
+    def show_conditional_component?(component_id)
+      conditional_content_to_show.include?(component_id)
+    end
+
+    def load_conditional_content(service, user_data)
+      if content_component_present?
+        evaluator = EvaluateContentConditionals.new(service:, user_data:)
+        items = evaluator.evaluate_content_components(self)
+        items << legacy_content_components
+        assign_conditional_component(items.flatten)
+      end
+    end
+
+    def content_components_by_type(*display)
+      content_components.filter { |component| display.include? component[:display] }
+    end
+
+    def conditionals_uuids_by_type(*display)
+      content_components_by_type(*display).map { |component| component[:_uuid] }
+    end
+
+    def load_all_content
+      @conditional_content_to_show = content_components
+    end
+
+    def conditional_components
+      conditionals_uuids_by_type('never', 'conditional')
     end
 
     private
@@ -171,6 +200,18 @@ module MetadataPresenter
 
     def raw_type
       type.gsub('page.', '')
+    end
+
+    def assign_conditional_component(items)
+      @conditional_content_to_show = items
+    end
+
+    def content_component_present?
+      all_components.any?(&:content?)
+    end
+
+    def legacy_content_components
+      content_components.filter_map { |component| component[:_uuid] if component[:display].blank? }
     end
   end
 end

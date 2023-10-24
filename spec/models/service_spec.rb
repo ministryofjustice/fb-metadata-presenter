@@ -85,6 +85,18 @@ RSpec.describe MetadataPresenter::Service do
     end
   end
 
+  describe '#content_expressions' do
+    let(:service_metadata) { metadata_fixture(:conditional_content) }
+
+    it 'returns all content expressions' do
+      expect(service.content_expressions.size).to be(15)
+
+      service.content_expressions.each do |expression|
+        expect(expression).to be_kind_of(MetadataPresenter::Expression)
+      end
+    end
+  end
+
   describe '#find_page_by_url' do
     subject(:page) { service.find_page_by_url(path) }
 
@@ -195,9 +207,39 @@ RSpec.describe MetadataPresenter::Service do
     end
   end
 
+  describe '#checkanswers_page' do
+    it 'returns the check answers page for the service' do
+      expect(service.checkanswers_page.type).to eq('page.checkanswers')
+    end
+  end
+
   describe '#meta' do
     it 'returns a meta object' do
       expect(service.meta).to be_kind_of(MetadataPresenter::Meta)
+    end
+  end
+
+  describe '#no_back_link' do
+    let(:start_page) { service.start_page }
+    let(:confirmation_page) { service.confirmation_page }
+    let(:checkanswers_page) { service.checkanswers_page }
+
+    it 'returns true for start page' do
+      expect(service.no_back_link?(start_page)).to be true
+    end
+
+    it 'returns true for confirmation page' do
+      expect(service.no_back_link?(confirmation_page)).to be true
+    end
+
+    it 'returns true for standalone pages' do
+      service.standalone_pages.each do |page|
+        expect(service.no_back_link?(page)).to be true
+      end
+    end
+
+    it 'returns false for other pages' do
+      expect(service.no_back_link?(checkanswers_page)).to be false
     end
   end
 
@@ -207,6 +249,42 @@ RSpec.describe MetadataPresenter::Service do
 
     it 'returns the correct page containing the component' do
       expect(service.page_with_component(component_uuid)).to eq(page)
+    end
+  end
+
+  describe '#pages_with_conditional_content_for_page' do
+    let(:service_metadata) { metadata_fixture(:conditional_content_2) }
+    let(:page) { 'fa925598-c4b9-4494-a42b-01ed5390ad7d' }
+    let(:subject) { service.pages_with_conditional_content_for_page(page) }
+
+    it 'returns the pages that use the uuid in content conditionals' do
+      expect(subject.size).to eq(1)
+
+      expect(subject.map(&:_uuid)).to eq(%w[bb72a6a3-5f75-4874-90c3-ac7a6b83e9e5])
+    end
+  end
+
+  describe '#pages_with_conditional_content_for_question' do
+    let(:service_metadata) { metadata_fixture(:conditional_content_2) }
+    let(:question) { '37bc88a2-26c9-42c7-a4b4-3803a4a313a1' }
+    let(:subject) { service.pages_with_conditional_content_for_question(question) }
+
+    it 'returns the pages that use the uuid in content conditionals' do
+      expect(subject.size).to eq(1)
+
+      expect(subject.map(&:_uuid)).to eq(%w[88ce3bb5-bd9f-493b-85c5-d2e93466415e])
+    end
+  end
+
+  describe '#pages_with_conditional_content_for_question_option' do
+    let(:service_metadata) { metadata_fixture(:conditional_content_2) }
+    let(:question_option) { 'f1443897-cf2f-401b-ac97-41711a8f9388' }
+    let(:subject) { service.pages_with_conditional_content_for_question_option(question_option) }
+
+    it 'returns the pages that use the uuid in content conditionals' do
+      expect(subject.size).to eq(1)
+
+      expect(subject.map(&:_uuid)).to eq(%w[88ce3bb5-bd9f-493b-85c5-d2e93466415e])
     end
   end
 end

@@ -1,12 +1,16 @@
 <% components.each_with_index do |component, index| %>
+
   <% if component.type == 'content' %>
+    <% next unless (editable? || @page.show_conditional_component?(component.uuid) || single_page_preview?) %>
+
     <editable-content id="<%= "page[#{component.collection}[#{index}]]" %>"
                       class="fb-editable govuk-!-margin-top-8"
                       type="<%= component.type %>"
                       default-content="<%= default_text('content') %>"
                       content="<%= component.content %>"
                       data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
-                      data-config="<%= component.to_json %>">
+                      data-config="<%= component.to_json %>"
+                      data-conditional-api-path="<%= editable? ? URI.decode_www_form_component(api_service_edit_conditional_content_path(service.service_id, component.uuid)) : '' %>">
         <%= to_html(component.content) %>
     </editable-content>
   <% end %>

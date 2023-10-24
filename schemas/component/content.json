@@ -18,6 +18,14 @@
       "content": true,
       "multiline": true
     },
+    "display": {
+      "type": "string",
+      "enum": [
+        "always",
+        "conditional",
+        "never"
+      ]
+    },
     "conditionals": {
       "$ref": "#/definitions/conditionals"
     }

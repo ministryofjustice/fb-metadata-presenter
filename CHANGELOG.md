@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.2.11] - 2023-10-23
+### Changed
+- Updated the presenter logic for conditional content 
+- Added tests and tests fixtures for unit tests and editor acceptance tests
+
 ## [3.2.10] - 2023-08-24
 ### Fixed
 - Fixed an issue causing errors when resuming progress

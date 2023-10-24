@@ -55,6 +55,8 @@ en:
         singular: 'You can add 1 more file (maximum 7MB)'
         plural: 'You can add up to %{num} files (maximum 7MB per file)'
         none: "You can't add any more files. Remove a file if you need to add a different one."
+    conditional_content:
+      notification: "Some content on this page will be hidden under certain conditions. Preview the full form or publish to Test to check."
     save_and_return:
       save: 'Save for later'
       show:

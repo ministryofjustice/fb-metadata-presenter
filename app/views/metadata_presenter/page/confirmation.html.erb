@@ -1,59 +1,64 @@
 <% content_for :manual_global_analytics_properties do %>'page_title': 'Confirmation page'<% end %>
 <div class="fb-main-grid-wrapper" data-fb-pagetype="<%= @page.type %>">
-<% if payment_link_enabled? %>
-  <div class="govuk-panel govuk-panel--confirmation-payment govuk-grid-column-two-thirds">
-  <% else %>
-  <div class="govuk-panel govuk-panel--confirmation govuk-grid-column-two-thirds">
-<% end %>
-    <h1 class="fb-editable govuk-panel__title"
-        data-fb-content-type="element"
-        data-fb-content-id="page[heading]"
-        data-fb-default-value="<%= default_page_title(@page.type) %>">
-      <% if payment_link_enabled? && @page.heading == I18n.t('presenter.confirmation.application_complete') %>
-        <p><%= I18n.t('presenter.confirmation.payment_enabled') %></p>
-      <% else %>
-        <%= @page.heading %>
-      <% end %>
-    </h1>
 
-    <div class="govuk-panel__body">
-      <% if reference_number_enabled? %>
-        <p><%= I18n.t('presenter.confirmation.reference_number') %><br />
-          <strong><%= show_reference_number %></strong>
-        </p>
-      <% end %>
+  <%= render partial:'metadata_presenter/component/conditional_component_banner'%>
 
-      <%# Do not replace with app/views/metadata_presenter/attribute _lede.html.erb because that is different %>
-      <% if @page.lede %>
-        <div class="fb-editable"
-            data-fb-content-id="page[lede]"
-            data-fb-content-type="element"
-            data-fb-default-text="<%= default_text('lede') %>">
-          <%= @page.lede %>
-        </div>
-      <%- end %>
-    </div>
-  </div>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-     <% unless @page.body == default_text('body') %>
-      <%= render 'metadata_presenter/attribute/body' %>
-      <% end %>
-
-      <%= render partial: 'metadata_presenter/component/components',
-                 locals: {
-                 f: nil,
-                 components: @page.components,
-                 tag: nil,
-                 classes: nil,
-                 input_components: @page.supported_input_components,
-                 content_components: @page.supported_content_components
-                 } %>
-
-    </div>
-  </div>
   <% if payment_link_enabled? %>
-    <a href="<%= payment_link_url %>" class="govuk-button" data-module="govuk-button" data-component="pay-button"><%= t('presenter.confirmation.continue_to_pay_button') %></a>
-  <% end %>
-</div>
+    <div class="govuk-panel govuk-panel--confirmation-payment govuk-grid-column-two-thirds">
+    <% else %>
+      <div class="govuk-panel govuk-panel--confirmation govuk-grid-column-two-thirds">
+      <% end %>
+      <h1 class="fb-editable govuk-panel__title"
+          data-fb-content-type="element"
+          data-fb-content-id="page[heading]"
+          data-fb-default-value="<%= default_page_title(@page.type) %>">
+        <% if payment_link_enabled? && @page.heading == I18n.t('presenter.confirmation.application_complete') %>
+          <p><%= I18n.t('presenter.confirmation.payment_enabled') %></p>
+        <% else %>
+          <%= @page.heading %>
+        <% end %>
+      </h1>
+
+      <div class="govuk-panel__body">
+        <% if reference_number_enabled? %>
+          <p><%= I18n.t('presenter.confirmation.reference_number') %><br />
+            <strong><%= show_reference_number %></strong>
+          </p>
+        <% end %>
+
+        <%# Do not replace with app/views/metadata_presenter/attribute _lede.html.erb because that is different %>
+        <% if @page.lede %>
+          <div class="fb-editable"
+               data-fb-content-id="page[lede]"
+               data-fb-content-type="element"
+               data-fb-default-text="<%= default_text('lede') %>">
+            <%= @page.lede %>
+          </div>
+        <%- end %>
+      </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <% unless @page.body == default_text('body') %>
+            <%= render 'metadata_presenter/attribute/body' %>
+          <% end %>
+
+          <% render partial:'metadata_presenter/component/conditional_component_banner'%>
+
+          <%= render partial: 'metadata_presenter/component/components',
+            locals: {
+              f: nil,
+              components: @page.components,
+              tag: nil,
+              classes: nil,
+              input_components: @page.supported_input_components,
+              content_components: @page.supported_content_components
+            } %>
+
+        </div>
+      </div>
+      <% if payment_link_enabled? %>
+        <a href="<%= payment_link_url %>" class="govuk-button" data-module="govuk-button" data-component="pay-button"><%= t('presenter.confirmation.continue_to_pay_button') %></a>
+      <% end %>
+    </div>

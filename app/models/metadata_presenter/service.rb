@@ -21,6 +21,14 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
     branches.map(&:conditionals).flatten
   end
 
+  def content_expressions
+    content_conditionals.flat_map(&:expressions)
+  end
+
+  def content_conditionals
+    pages.flat_map(&:content_components).flat_map(&:conditionals)
+  end
+
   def flow_object(uuid)
     MetadataPresenter::Flow.new(uuid, metadata.flow[uuid])
   rescue StandardError
@@ -78,7 +86,25 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
 
   def page_with_component(uuid)
     pages.find do |page|
-      Array(page.components).any? { |component| component.uuid == uuid }
+      Array(page.all_components).any? { |component| component.uuid == uuid }
+    end
+  end
+
+  def pages_with_conditional_content_for_page(uuid)
+    pages.select do |page|
+      uuid.in? page.content_components_by_type('conditional').flat_map(&:conditionals).flat_map(&:expressions).map(&:page)
+    end
+  end
+
+  def pages_with_conditional_content_for_question(uuid)
+    pages.select do |page|
+      uuid.in?  page.content_components_by_type('conditional').flat_map(&:conditionals).flat_map(&:expressions).map(&:component)
+    end
+  end
+
+  def pages_with_conditional_content_for_question_option(uuid)
+    pages.select do |page|
+      uuid.in?  page.content_components_by_type('conditional').flat_map(&:conditionals).flat_map(&:expressions).map(&:field)
     end
   end
 
@@ -86,15 +112,6 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
 
   def all_pages
     @all_pages ||= pages + standalone_pages
-  end
-
-  def flow_page(current_page)
-    page_index = pages.index(current_page)
-    pages[page_index - 1] if page_index.present?
-  end
-
-  def referrer_page(referrer)
-    find_page_by_url(URI(referrer).path) if referrer
   end
 
   def strip_slash(url)
