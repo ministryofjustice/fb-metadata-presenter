@@ -9,9 +9,6 @@
     "fieldset"
   ],
   "properties": {
-    "_type": {
-      "const": "fieldset"
-    },
     "legend": {
       "title": "Legend",
       "description": "Text to use in fieldset legend",

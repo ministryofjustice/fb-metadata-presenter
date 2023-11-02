@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.0] - 2023-11-02
+### Changed
+- Use latest `json-schema` version (4.1.1) which performs (since version 3.0.0) validation of `const` attributes.
+### Fixed
+- Attribute `_type` (const) in _radios_, _checkboxes_ and _date_ components was being wrongly validated against a
+  duplicated `_type` inherited from `definition.fieldset`. Removed this attribute from the fieldset definition.
+- Fixed warning "character class has '-' without escape" in a pattern regexp.
+
 ## [3.2.11] - 2023-10-23
 ### Changed
 - Updated the presenter logic for conditional content 

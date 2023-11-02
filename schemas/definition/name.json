@@ -8,7 +8,7 @@
       "title": "Input name",
       "description": "Used by system to identify user's answer - also used as the component's HTML name property.",
       "type": "string",
-      "pattern": "^[a-zA-Z0-9-_]+$",
+      "pattern": "^[a-zA-Z0-9_-]+$",
       "processInput": true,
       "category": [
         "userinput"
