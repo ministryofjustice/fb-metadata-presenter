@@ -8,12 +8,6 @@
       "title": "Unique identifier of the page",
       "description": "Used internally in the editor and the runner."
     },
-    "_id": {
-      "title": "Page ID",
-      "description": "A short name in the form of 'page.xyz' derived from user input",
-      "type": "string",
-      "pattern": "^page\\.[a-z0-9._-]+$"
-    },
     "url": {
       "title": "URL",
       "description": "The page’s relative url - it must not contain any spaces",
