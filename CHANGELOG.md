@@ -13,6 +13,8 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Attribute `_type` (const) in _radios_, _checkboxes_ and _date_ components was being wrongly validated against a
   duplicated `_type` inherited from `definition.fieldset`. Removed this attribute from the fieldset definition.
+- Attribute `_id` in page schema changed from const to string as it is derived from user input and cannot be a constant.
+- All pages now have this `_id` attribute validated (before only a few pages had this).
 - Fixed warning "character class has '-' without escape" in a pattern regexp.
 
 ## [3.2.11] - 2023-10-23
