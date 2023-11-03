@@ -5,9 +5,6 @@
   "description": "Let users start using a service",
   "type": "object",
   "properties": {
-    "_id": {
-      "const": "page.start"
-    },
     "_type": {
       "const": "page.start"
     },

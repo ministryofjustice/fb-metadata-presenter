@@ -5,9 +5,6 @@
   "description": "Confirm to users that they’ve completed their answers",
   "type": "object",
   "properties": {
-    "_id": {
-      "const": "page.confirmation"
-    },
     "_type": {
       "const": "page.confirmation"
     },
