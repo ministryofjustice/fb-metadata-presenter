@@ -10,11 +10,11 @@ All notable changes to this project will be documented in this file.
 ## [3.3.0] - 2023-11-02
 ### Changed
 - Use latest `json-schema` version (4.1.1) which performs (since version 3.0.0) validation of `const` attributes.
+- Removed `_id` const in page schema as pages inherit already an `_id` of type string from `definition.data`
 ### Fixed
 - Attribute `_type` (const) in _radios_, _checkboxes_ and _date_ components was being wrongly validated against a
   duplicated `_type` inherited from `definition.fieldset`. Removed this attribute from the fieldset definition.
-- Attribute `_id` in page schema changed from const to string as it is derived from user input and cannot be a constant.
-- All pages now have this `_id` attribute validated (before only a few pages had this).
+- Added missing `page.exit` to list of allowed types in base schema.
 - Fixed warning "character class has '-' without escape" in a pattern regexp.
 
 ## [3.2.11] - 2023-10-23

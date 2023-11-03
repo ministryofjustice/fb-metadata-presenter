@@ -43,6 +43,9 @@
             "$ref": "page.start"
           },
           {
+            "$ref": "page.exit"
+          },
+          {
             "$ref": "page.checkanswers"
           },
           {
