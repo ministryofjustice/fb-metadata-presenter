@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.1] - 2023-11-08
+### Changed
+- Updated the id attribute on content areas to enable tehm to be correcly
+focused in the editor
+
 ## [3.3.0] - 2023-11-02
 ### Changed
 - Use latest `json-schema` version (4.1.1) which performs (since version 3.0.0) validation of `const` attributes.
@@ -19,7 +24,7 @@ All notable changes to this project will be documented in this file.
 
 ## [3.2.11] - 2023-10-23
 ### Changed
-- Updated the presenter logic for conditional content 
+- Updated the presenter logic for conditional content
 - Added tests and tests fixtures for unit tests and editor acceptance tests
 
 ## [3.2.10] - 2023-08-24
