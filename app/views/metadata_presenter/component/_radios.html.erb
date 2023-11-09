@@ -5,9 +5,14 @@
     :name,
     :description,
     legend: { text: input_title },
+    data: {
+      controller: 'default-hint-text',
+      'default-hint-text-empty-value': default_text('hint'),
+      'default-hint-text-hint-class': 'govuk-hint'
+    },
     hint: {
+      text: component.hint,
       data: { "fb-default-text" => default_text('hint') },
-      text: component.hint
     },
     bold_labels: false
 %>

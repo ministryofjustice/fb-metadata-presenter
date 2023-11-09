@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.2] - 2023-11-09
+ - Updated the radios and checkboxes to use a stimulus controller in the editor
+
 ## [3.3.1] - 2023-11-08
 ### Changed
 - Updated the id attribute on content areas to enable tehm to be correcly
