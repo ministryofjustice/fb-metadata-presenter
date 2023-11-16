@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.2] - 2023-11-16
+ - Update the text in the session reset modal to only contain one line in order
+   to pass WCAG accessibility criteria
+
 ## [3.3.1] - 2023-11-08
 ### Changed
 - Updated the id attribute on content areas to enable tehm to be correcly
