@@ -2,7 +2,7 @@ module MetadataPresenter
   class DateValidator < BaseValidator
     DATE_STRING_VALIDATIONS = %w[date_after date_before].freeze
     YEAR_LOWER_BOUND = 1000
-    YEAR_UPPER_BOUND = 2099
+    YEAR_UPPER_BOUND = 3000
 
     def invalid_answer?
       date = Date.civil(
