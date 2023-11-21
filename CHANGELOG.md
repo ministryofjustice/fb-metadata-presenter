@@ -7,6 +7,17 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.3] - 2023-11-21
+### Added
+- Baseline date year upper/lower bound validation to catch obvious typos / fat finger errors.
+- Some errors in the uploader were not being properly handled. This is now fixed by introducing
+  a catch-all validator.
+### Fixed
+- Ensure if there is not a concrete validator for a given error, we use a catch-all validator.
+- Some error messages like the virus scan were not properly showing the filename when triggered 
+  in a multiuploader component.
+- Made the date validator more robust and in line with the submitter.
+
 ## [3.3.2] - 2023-11-16
  - Update the text in the session reset modal to only contain one line in order
    to pass WCAG accessibility criteria
