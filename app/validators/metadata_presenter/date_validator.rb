@@ -1,12 +1,17 @@
 module MetadataPresenter
   class DateValidator < BaseValidator
     DATE_STRING_VALIDATIONS = %w[date_after date_before].freeze
+    YEAR_LOWER_BOUND = 1000
+    YEAR_UPPER_BOUND = 2099
 
     def invalid_answer?
-      Date.strptime(
-        "#{user_answer.year}-#{user_answer.month}-#{user_answer.day}",
-        '%Y-%m-%d'
+      date = Date.civil(
+        user_answer.year.to_i, user_answer.month.to_i, user_answer.day.to_i
       )
+
+      # additional validations that `#civil` will not raise as errors
+      return true if date.year < YEAR_LOWER_BOUND
+      return true if date.year > YEAR_UPPER_BOUND
 
       false
     rescue Date::Error

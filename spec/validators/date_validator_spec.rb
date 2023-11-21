@@ -60,6 +60,26 @@ RSpec.describe MetadataPresenter::DateValidator do
         end
       end
 
+      context 'when invalid day' do
+        let(:day) { '310' }
+        let(:month) { '12' }
+        let(:year) { '2020' }
+
+        it 'returns invalid' do
+          expect(validator).to_not be_valid
+        end
+      end
+
+      context 'when answer has invalid day format' do
+        let(:day) { 'abcdef' }
+        let(:month) { '12' }
+        let(:year) { '2020' }
+
+        it 'returns invalid' do
+          expect(validator).to_not be_valid
+        end
+      end
+
       context 'when invalid month' do
         let(:day) { '04' }
         let(:month) { '13' }
@@ -72,7 +92,7 @@ RSpec.describe MetadataPresenter::DateValidator do
 
       context 'when invalid year' do
         let(:day) { '04' }
-        let(:month) { '13' }
+        let(:month) { '12' }
         let(:year) { 'xxxx' }
 
         it 'returns invalid' do
@@ -80,10 +100,20 @@ RSpec.describe MetadataPresenter::DateValidator do
         end
       end
 
-      context 'when answer has invalid day format' do
-        let(:day) { 'abcdef' }
+      context 'when year is below lower bound' do
+        let(:day) { '04' }
         let(:month) { '12' }
-        let(:year) { '2020' }
+        let(:year) { (described_class::YEAR_LOWER_BOUND - 1).to_s }
+
+        it 'returns invalid' do
+          expect(validator).to_not be_valid
+        end
+      end
+
+      context 'when year is above upper bound' do
+        let(:day) { '04' }
+        let(:month) { '12' }
+        let(:year) { (described_class::YEAR_UPPER_BOUND + 1).to_s }
 
         it 'returns invalid' do
           expect(validator).to_not be_valid
