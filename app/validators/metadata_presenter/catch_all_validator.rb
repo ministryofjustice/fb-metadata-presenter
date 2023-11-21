@@ -7,7 +7,7 @@ module MetadataPresenter
     def invalid_answer?
       case component.type
       when 'upload', 'multiupload'
-        upload_user_answer.error_name.to_s.start_with?(ERROR_NAME_PREFIX)
+        upload_user_answer&.error_name.to_s.start_with?(ERROR_NAME_PREFIX)
       else
         false
       end
