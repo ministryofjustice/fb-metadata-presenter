@@ -1,5 +1,5 @@
 module MetadataPresenter
-  class VirusScanValidator < UploadValidator
+  class VirusScanValidator < BaseUploadValidator
     def error_name
       'invalid.virus'
     end

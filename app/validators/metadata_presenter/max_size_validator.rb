@@ -1,5 +1,5 @@
 module MetadataPresenter
-  class MaxSizeValidator < UploadValidator
+  class MaxSizeValidator < BaseUploadValidator
     def error_name
       'invalid.too-large'
     end
