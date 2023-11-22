@@ -25,6 +25,7 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
           expect_any_instance_of(MetadataPresenter::RequiredValidator).not_to receive(:invalid_answer?)
           expect_any_instance_of(MetadataPresenter::MinLengthValidator).not_to receive(:invalid_answer?)
           expect_any_instance_of(MetadataPresenter::MaxLengthValidator).not_to receive(:invalid_answer?)
+          expect_any_instance_of(MetadataPresenter::CatchAllValidator).not_to receive(:invalid_answer?)
           expect(validate_answers).to be_valid
         end
       end
@@ -36,6 +37,7 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
           expect_any_instance_of(MetadataPresenter::RequiredValidator).not_to receive(:invalid_answer?)
           expect_any_instance_of(MetadataPresenter::MinLengthValidator).to receive(:invalid_answer?)
           expect_any_instance_of(MetadataPresenter::MaxLengthValidator).to receive(:invalid_answer?)
+          expect_any_instance_of(MetadataPresenter::CatchAllValidator).to receive(:invalid_answer?)
           expect(validate_answers).to be_valid
         end
       end
@@ -56,7 +58,8 @@ RSpec.describe MetadataPresenter::ValidateAnswers do
         [
           MetadataPresenter::RequiredValidator,
           MetadataPresenter::MinLengthValidator,
-          MetadataPresenter::MaxLengthValidator
+          MetadataPresenter::MaxLengthValidator,
+          MetadataPresenter::CatchAllValidator
         ].each do |klass|
           expect_any_instance_of(klass).to receive(:valid?).and_return(valid)
         end

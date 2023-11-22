@@ -131,7 +131,14 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       it 'uploads the file' do
         expect_any_instance_of(
           MetadataPresenter::AnswersController
-        ).to receive(:upload_files)
+        ).to receive(:upload_files).and_call_original
+        post '/dog-picture', params: { answers: }
+      end
+
+      it 'performs a catch-all validation' do
+        expect(
+          MetadataPresenter::CatchAllValidator
+        ).to receive(:new).and_call_original
         post '/dog-picture', params: { answers: }
       end
     end

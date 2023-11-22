@@ -115,7 +115,7 @@ en:
           continue: 'Continue'
         progress:
           heading: '%{service_name}'
-          content_1: 'You have sucessfuly retrieved your saved information.'
+          content_1: 'You have successfully retrieved your saved information.'
           content_2: 'Here are the answers you have provided so far.'
           continue: 'Continue'
     footer:

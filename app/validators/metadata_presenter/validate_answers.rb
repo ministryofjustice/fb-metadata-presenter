@@ -21,29 +21,24 @@ module MetadataPresenter
     def validators
       components.map { |component|
         component_validations(component).map do |key|
-          if key == 'max_files'
-            'MetadataPresenter::MaxFilesValidator'.constantize.new(
-              **{
-                page_answers:,
-                component:
-              }.merge(autocomplete_param(key))
-            )
-          else
-            "MetadataPresenter::#{key.classify}Validator".constantize.new(
-              **{
-                page_answers:,
-                component:
-              }.merge(autocomplete_param(key))
-            )
-          end
+          "MetadataPresenter::#{key.camelize}Validator".constantize.new(
+            **{
+              page_answers:,
+              component:
+            }.merge(autocomplete_param(key))
+          )
         end
-      }.compact.flatten
+      }.flatten.compact
     end
 
     def component_validations(component)
       return [] if component.validation.blank?
 
-      component.validation.select { |_, value| value.present? }.keys
+      component.validation.compact_blank.keys + additional_validators
+    end
+
+    def additional_validators
+      %w[catch_all].freeze
     end
 
     def autocomplete_param(key)
