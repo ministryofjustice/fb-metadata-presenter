@@ -44,11 +44,22 @@ module MetadataPresenter
 
       return {} unless file_details
 
-      if file_details.is_a?(Hash) || file_details.is_a?(ActionController::Parameters)
-        file_details.merge('original_filename' => sanitize(filename(update_filename(file_details['original_filename']))))
+      if file_details.is_a?(ActionController::Parameters)
+        unless file_details.permitted?
+          Rails.logger.warn("[PageAnswers#upload_answer] Permitting unfiltered params in component `#{component_id}`")
+          file_details.permit!
+        end
+
+        file_details.merge(
+          'original_filename' => sanitize_filename(file_details['original_filename'])
+        )
+      elsif file_details.is_a?(Hash)
+        file_details.merge(
+          'original_filename' => sanitize_filename(file_details['original_filename'])
+        )
       else
         {
-          'original_filename' => sanitize(filename(update_filename(file_details.original_filename))),
+          'original_filename' => sanitize_filename(file_details.original_filename),
           'content_type' => file_details.content_type,
           'tempfile' => file_details.tempfile.path.to_s
         }
@@ -83,25 +94,34 @@ module MetadataPresenter
         return if answers[component_id].blank?
 
         if answers[component_id].is_a?(Array)
-          answers[component_id].each { |answer| answer['original_filename'] = sanitize(filename(update_filename(answer['original_filename']))) }
+          answers[component_id].each { |answer| answer['original_filename'] = sanitize_filename(answer['original_filename']) }
         end
 
         answers[component_id] = answers[component_id].reject { |a| a['original_filename'].blank? }
         return answers
       end
 
+      return answers if answers.incoming_answer.blank?
+
       # uploading a new answer, this method will be called during multiple render operations
-      if answers.incoming_answer.present? && answers.incoming_answer.is_a?(ActionController::Parameters)
-        answers.incoming_answer[component_id].original_filename = sanitize(filename(update_filename(answers.incoming_answer[component_id].original_filename)))
+      if answers.incoming_answer.is_a?(ActionController::Parameters)
+        # :nocov:
+        unless answers.incoming_answer.permitted?
+          Rails.logger.warn("[PageAnswers#multiupload_answer] Permitting unfiltered params in component `#{component_id}`")
+          answers.incoming_answer.permit!
+        end
+        # :nocov:
+
+        answers.incoming_answer[component_id].original_filename = sanitize_filename(answers.incoming_answer[component_id].original_filename)
       end
 
-      if answers.incoming_answer.present? && answers.incoming_answer.is_a?(Hash)
-        answers.incoming_answer['original_filename'] = sanitize(filename(update_filename(answers.incoming_answer['original_filename'])))
+      if answers.incoming_answer.is_a?(Hash)
+        answers.incoming_answer['original_filename'] = sanitize_filename(answers.incoming_answer['original_filename'])
       end
 
-      if answers.incoming_answer.present? && answers.incoming_answer[component_id].is_a?(ActionDispatch::Http::UploadedFile)
+      if answers.incoming_answer[component_id].is_a?(ActionDispatch::Http::UploadedFile)
         answers.incoming_answer = {
-          'original_filename' => sanitize(filename(update_filename(answers.incoming_answer[component_id].original_filename))),
+          'original_filename' => sanitize_filename(answers.incoming_answer[component_id].original_filename),
           'content_type' => answers.incoming_answer[component_id].content_type,
           'tempfile' => answers.incoming_answer[component_id].tempfile.path.to_s,
           'uuid' => SecureRandom.uuid
@@ -128,6 +148,10 @@ module MetadataPresenter
     end
 
     private
+
+    def sanitize_filename(answer)
+      sanitize(filename(update_filename(answer)))
+    end
 
     def filename(path)
       return sanitize(path) if path.nil?
