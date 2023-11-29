@@ -133,7 +133,6 @@ module MetadataPresenter
     end
 
     def answers_params
-      params.permit(:page_slug, :save_for_later)
       params[:answers] ? params[:answers].permit! : {}
     end
 

@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.4] - 2023-11-29
+### Fixed
+- Mitigate unfiltered params edge case. Adds logging and avoid user-facing errors.
+- Remove extraneous `max_files` validation in number component. This is only required 
+  in the multi file upload component.
+
 ## [3.3.3] - 2023-11-21
 ### Added
 - Baseline date year upper/lower bound validation to catch obvious typos / fat finger errors.
