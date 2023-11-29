@@ -120,7 +120,7 @@
     },
     "max_files": {
       "title": "Maximum files",
-      "description": "The maximum number of fiels a user can upload",
+      "description": "The maximum number of files a user can upload",
       "type": "number",
       "minimum": 0
     },
@@ -464,9 +464,6 @@
             },
             "exclusive_minimum": {
               "$ref": "#/definitions/exclusive_minimum"
-            },
-            "max_files": {
-              "$ref": "#/definitions/max_files"
             }
           }
         },
@@ -486,9 +483,6 @@
             },
             "exclusive_minimum": {
               "$ref": "#/definitions/errors_exclusive_minimum"
-            },
-            "max_files": {
-              "$ref": "#/definitions/max_files"
             }
           }
         }
@@ -542,7 +536,7 @@
         "errors": {
           "properties": {
             "max_files": {
-              "$ref": "#/definitions/max_files"
+              "$ref": "#/definitions/errors_max_files"
             }
           }
         }
