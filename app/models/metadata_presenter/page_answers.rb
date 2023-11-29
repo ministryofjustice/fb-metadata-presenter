@@ -105,13 +105,6 @@ module MetadataPresenter
 
       # uploading a new answer, this method will be called during multiple render operations
       if answers.incoming_answer.is_a?(ActionController::Parameters)
-        # :nocov:
-        unless answers.incoming_answer.permitted?
-          Rails.logger.warn("[PageAnswers#multiupload_answer] Permitting unfiltered params in component `#{component_id}`")
-          answers.incoming_answer.permit!
-        end
-        # :nocov:
-
         answers.incoming_answer[component_id].original_filename = sanitize_filename(answers.incoming_answer[component_id].original_filename)
       end
 
