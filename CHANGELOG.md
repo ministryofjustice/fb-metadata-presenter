@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.5] - 2023-12-01
+### Changed
+- Updated accessibility statement standalone page body.
+
 ## [3.3.4] - 2023-11-29
 ### Fixed
 - Mitigate unfiltered params edge case. Adds logging and avoid user-facing errors.

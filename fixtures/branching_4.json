@@ -526,33 +526,5 @@
       "_type": "config.service"
     }
   },
-  "standalone_pages": [
-    {
-      "_id": "page.cookies",
-      "url": "cookies",
-      "body": "Cookies body",
-      "_type": "page.standalone",
-      "_uuid": "fd52e7c0-03f7-4001-ae7e-f2e4142b0ccc",
-      "heading": "Cookies",
-      "components": []
-    },
-    {
-      "_id": "page.privacy",
-      "url": "privacy",
-      "body": "Privacy body",
-      "_type": "page.standalone",
-      "_uuid": "4b86fe8c-7723-4cce-9378-7b2510279e04",
-      "heading": "Privacy notice",
-      "components": []
-    },
-    {
-      "_id": "page.accessibility",
-      "url": "accessibility",
-      "body": "Accessibility body",
-      "_type": "page.standalone",
-      "_uuid": "c439c7fd-f411-4e11-8598-4023934bac93",
-      "heading": "Accessibility statement",
-      "components": []
-    }
-  ]
+  "standalone_pages": []
 }
