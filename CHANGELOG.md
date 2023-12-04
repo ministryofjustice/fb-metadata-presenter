@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [3.3.5] - 2023-12-01
+## [3.3.5] - 2023-12-04
 ### Changed
 - Updated accessibility statement standalone page body.
 
