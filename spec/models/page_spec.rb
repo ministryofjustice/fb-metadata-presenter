@@ -365,7 +365,7 @@ RSpec.describe MetadataPresenter::Page do
       subject(:page) { service.find_page_by_url('privacy') }
 
       before do
-        allow(page).to receive(:placeholders).and_return(['[insert your organisation name]', '[your organisation]'])
+        allow(page).to receive(:placeholders).and_return(['[Name of your form or service]', '[insert contact details]'])
       end
 
       it 'returns true' do
