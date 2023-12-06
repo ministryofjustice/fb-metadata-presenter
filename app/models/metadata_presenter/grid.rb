@@ -112,7 +112,7 @@ module MetadataPresenter
         destinations_count = service.branches.map do |branch|
           exiting_destinations_from_branch(branch).count
         end
-        destinations_count.sum
+        [destinations_count.sum, 1].max # ensure there is always 1 row
       end
     end
 
@@ -294,12 +294,12 @@ module MetadataPresenter
     # Therefore replace any Pointers after the first one with Spacers.
     def trim_to_first_pointer
       max_potential_rows.times do |row|
-        first_index_of = first_pointer(row)
-        next unless first_index_of
+        index_of_first_pointer = first_pointer(row)
+        next unless index_of_first_pointer
 
-        next_column = first_index_of + 1
-        @ordered.drop(next_column).each do |column|
-          column[row] = MetadataPresenter::Spacer.new
+        starting_column = index_of_first_pointer + 1
+        @ordered.drop(starting_column).each.with_index(starting_column) do |_, column_index|
+          @ordered[column_index][row] = MetadataPresenter::Spacer.new
         end
       end
     end
