@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.6] - 2023-12-07
+### Fixed
+- Fixed issues with the `trim_pointers` method on the grid. It now runs if there
+are no branches, and correctly trims pointers on the `@ordered` array.
+
 ## [3.3.5] - 2023-12-04
 ### Changed
 - Updated accessibility statement standalone page body.

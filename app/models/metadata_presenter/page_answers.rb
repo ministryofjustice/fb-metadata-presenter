@@ -44,7 +44,8 @@ module MetadataPresenter
 
       return {} unless file_details
 
-      if file_details.is_a?(ActionController::Parameters)
+      case file_details
+      when ActionController::Parameters
         unless file_details.permitted?
           Rails.logger.warn("[PageAnswers#upload_answer] Permitting unfiltered params in component `#{component_id}`")
           file_details.permit!
@@ -53,7 +54,7 @@ module MetadataPresenter
         file_details.merge(
           'original_filename' => sanitize_filename(file_details['original_filename'])
         )
-      elsif file_details.is_a?(Hash)
+      when Hash
         file_details.merge(
           'original_filename' => sanitize_filename(file_details['original_filename'])
         )
