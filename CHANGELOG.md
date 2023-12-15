@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 
 ## [3.3.7] - 2023-12-12
 ### Changed
+- Minor change to pin versions to minor updates
+
+## [3.3.7] - 2023-12-12
+### Changed
 - Minor copy change to the accessibility statement.
 
 ## [3.3.6] - 2023-12-07
