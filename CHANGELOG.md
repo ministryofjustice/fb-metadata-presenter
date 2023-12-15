@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [3.3.7] - 2023-12-12
+## [3.3.8] - 2023-12-15
 ### Changed
 - Minor change to pin versions to minor updates
 
