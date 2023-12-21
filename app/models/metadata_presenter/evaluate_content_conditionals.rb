@@ -25,7 +25,7 @@ module MetadataPresenter
       if candidate_component.conditionals.count == 1
         # if there are only and rules or the particular case where there is only one condition
         evaluation_conditions << evaluate_condition(candidate_component.conditionals[0])
-        return candidate_component.uuid if evaluation_conditions.flatten.all?
+        candidate_component.uuid if evaluation_conditions.flatten.all?
       elsif candidate_component.conditionals.count > 1
         # if there are or rule
         if candidate_component.conditionals[0][:_type] == 'and'
@@ -40,7 +40,7 @@ module MetadataPresenter
           candidate_component.conditionals.map do |conditional|
             evaluation_conditions << evaluate_condition(conditional)
           end
-          return candidate_component.uuid if evaluation_conditions.flatten.any?
+          candidate_component.uuid if evaluation_conditions.flatten.any?
         end
       end
     end
