@@ -300,4 +300,30 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
       end
     end
   end
+
+  describe '#answered?' do
+    let(:page) { MetadataPresenter::Page.new(service.pages.first) }
+    let(:component_id) { 'text_text_1' }
+    let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
+
+    before do
+      controller.instance_variable_set(:@page_answers, page_answers)
+    end
+
+    context 'when component has an answer' do
+      let(:answers) { { component_id => 'pouf' } }
+
+      it 'returns true' do
+        expect(controller.answered?(component_id)).to be_truthy
+      end
+    end
+
+    context 'when component has no answer' do
+      let(:answers) { { component_id => '' } }
+
+      it 'returns false' do
+        expect(controller.answered?(component_id)).to be_falsey
+      end
+    end
+  end
 end
