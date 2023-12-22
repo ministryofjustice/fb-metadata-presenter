@@ -222,4 +222,31 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
       expect(helper.timeout_fallback(time.to_s)).to eq(time.to_s)
     end
   end
+
+  describe '#default_item_title' do
+    context 'when component is a not a checkbox nor a radio' do
+      let(:component_type) { 'text' }
+
+      it 'returns nil' do
+        expect(default_item_title(component_type)).to be_nil
+      end
+    end
+
+    context 'when component is a checkbox' do
+      let(:component_type) { 'checkboxes' }
+
+      it 'returns Option' do
+        expect(default_item_title(component_type)).to eq('Option')
+      end
+    end
+
+    context 'when component is a radio' do
+      let(:component_type) { 'radios' }
+
+      it 'returns Option' do
+        expect(default_item_title(component_type)).to eq('Option')
+      end
+    end
+
+  end
 end
