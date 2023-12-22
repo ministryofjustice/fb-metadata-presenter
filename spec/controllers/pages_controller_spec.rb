@@ -1,5 +1,5 @@
 RSpec.describe MetadataPresenter::PagesController do
-  describe '#page_answers_presenters' do
+  describe '#page_presenters' do
     let(:user_data) { { 'han' => 'Let the Wookiee win' } }
     before do
       controller.instance_variable_set(:@user_data, user_data)
