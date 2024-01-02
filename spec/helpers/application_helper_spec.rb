@@ -247,6 +247,40 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
         expect(default_item_title(component_type)).to eq('Option')
       end
     end
+  end
 
+  describe '#files_to_render' do
+    let(:page) { OpenStruct.new(components: [component]) }
+    let(:component) do
+      OpenStruct.new({ id: 'upload_multiupload_1', type: 'multiupload', validation: { 'max_files' => '2' } })
+    end
+
+    let(:page_answers) { double(MetadataPresenter::PageAnswers) }
+    let(:uploaded_files) do
+      [
+        {
+          'original_filename' => 'computer_says_no.gif',
+          'content_type' => 'image/gif',
+          'tempfile' => 'filepath'
+        },
+        {
+          'original_filename' => 'diagram.png',
+          'content_type' => 'image/png',
+          'tempfile' => 'another_filepath'
+        }
+      ]
+    end
+    let(:upload_component) { { 'upload_multiupload_1' => uploaded_files } }
+
+    before do
+      allow(page_answers).to receive(:uploaded_files).and_return([])
+      allow(page_answers).to receive(:upload_multiupload_1).and_return(upload_component)
+      controller.instance_variable_set(:@page, page)
+      controller.instance_variable_set(:@page_answers, page_answers)
+    end
+
+    it 'list the files to render' do
+      expect(helper.files_to_render).to eq(uploaded_files)
+    end
   end
 end
