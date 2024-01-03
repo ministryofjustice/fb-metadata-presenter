@@ -15,7 +15,7 @@ RSpec.describe MetadataPresenter::PagesController do
     context 'when page exists' do
       let(:page) { double(MetadataPresenter::Page) }
       let(:template_page) { 'metadata_presenter/page/start' }
-      let(:a_response) { {status: 'OK'} }
+      let(:a_response) { { status: 'OK' } }
 
       before do
         allow(page).to receive(:template).and_return(template_page)
@@ -61,7 +61,7 @@ RSpec.describe MetadataPresenter::PagesController do
     end
 
     context 'when there are upload components' do
-      let(:upload_components) { ['A', 'B'] }
+      let(:upload_components) { %w[A B] }
 
       it 'does not show save and return' do
         expect(controller.show_save_and_return).to be_falsey
@@ -86,7 +86,7 @@ RSpec.describe MetadataPresenter::PagesController do
     end
 
     context 'when there are upload components' do
-      let(:conditional_components) { ['if', 'or', 'and'] }
+      let(:conditional_components) { %w[if or and] }
 
       it 'does not show save and return' do
         expect(controller.conditional_components_present?).to be_truthy
