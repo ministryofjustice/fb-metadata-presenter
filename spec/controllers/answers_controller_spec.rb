@@ -53,5 +53,11 @@ RSpec.describe MetadataPresenter::AnswersController, type: :controller do
 
       expect(page_answers.uploaded_files.first.errors.first.attribute.to_s).to eq('invalid.multiupload')
     end
+
+    it 'uploads files in the editor preview' do
+      allow(controller).to receive(:editor_preview?).and_return(true)
+      expect_any_instance_of(MetadataPresenter::FileUploader).to receive(:upload).and_return(uploaded_file)
+      controller.upload_multiupload_new_files
+    end
   end
 end
