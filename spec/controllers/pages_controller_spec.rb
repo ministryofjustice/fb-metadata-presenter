@@ -43,4 +43,54 @@ RSpec.describe MetadataPresenter::PagesController do
       end
     end
   end
+
+  describe '#show_save_and_return' do
+    let(:page) { double(MetadataPresenter::Page) }
+
+    before do
+      allow(page).to receive(:upload_components).and_return(upload_components)
+      controller.instance_variable_set(:@page, page)
+    end
+
+    context 'when there are no upload components' do
+      let(:upload_components) { {} }
+
+      it 'shows save and return' do
+        expect(controller.show_save_and_return).to be_truthy
+      end
+    end
+
+    context 'when there are upload components' do
+      let(:upload_components) { ['A', 'B'] }
+
+      it 'does not show save and return' do
+        expect(controller.show_save_and_return).to be_falsey
+      end
+    end
+  end
+
+  describe '#conditional_components_present?' do
+    let(:page) { double(MetadataPresenter::Page) }
+
+    before do
+      allow(page).to receive(:conditional_components).and_return(conditional_components)
+      controller.instance_variable_set(:@page, page)
+    end
+
+    context 'when there are no conditional components' do
+      let(:conditional_components) { {} }
+
+      it 'checks there are no conditional component' do
+        expect(controller.conditional_components_present?).to be_falsey
+      end
+    end
+
+    context 'when there are upload components' do
+      let(:conditional_components) { ['if', 'or', 'and'] }
+
+      it 'does not show save and return' do
+        expect(controller.conditional_components_present?).to be_truthy
+      end
+    end
+  end
 end
