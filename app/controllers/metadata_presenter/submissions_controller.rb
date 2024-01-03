@@ -33,9 +33,11 @@ module MetadataPresenter
       # So in the Runner we defined the #create_save_and_return_submission in the parent
       # controller and in the Editor we don't.
       #
+      # :nocov:
       if defined?(super)
         super
       end
+      # :nocov:
     end
   end
 end

@@ -412,7 +412,7 @@ RSpec.describe MetadataPresenter::Page do
     end
   end
 
-  describe '#load_conditional_content' do
+  describe 'Conditional Content and Components' do
     let(:service_metadata) { metadata_fixture(:conditional_content) }
     let(:page) { service.find_page_by_url('content') }
     let(:user_data) do
@@ -421,18 +421,50 @@ RSpec.describe MetadataPresenter::Page do
         'multiple_checkboxes_1' => %w[2]
       }
     end
-    let(:expected_components) do
-      %w[
-        701f93e3-1d78-4a1f-9495-07e32b6e26fe
-        71bfc176-613d-42ec-8d53-63e50b696ec6
-        61139d00-53eb-4ff3-9227-6ecd0b80aac4
-        4d4d7ace-9ce2-4415-9edb-abcac75ed17b
-        6a3b4104-1d4c-4534-87d8-b81f5c764d43
-      ]
+
+    context '#load_conditional_content' do
+      let(:expected_components) do
+        %w[
+          701f93e3-1d78-4a1f-9495-07e32b6e26fe
+          71bfc176-613d-42ec-8d53-63e50b696ec6
+          61139d00-53eb-4ff3-9227-6ecd0b80aac4
+          4d4d7ace-9ce2-4415-9edb-abcac75ed17b
+          6a3b4104-1d4c-4534-87d8-b81f5c764d43
+        ]
+      end
+
+      before do
+        page.load_conditional_content(service, user_data)
+      end
+
+      it 'should return the right number of always display component' do
+        expect(page.conditional_content_to_show).to eq(expected_components)
+      end
+
+      it 'should show conditional component' do
+        expect(page.show_conditional_component?('701f93e3-1d78-4a1f-9495-07e32b6e26fe')).to be_truthy
+      end
     end
 
-    it 'should return the right number of always display component' do
-      expect(page.load_conditional_content(service, user_data)).to eq(expected_components)
+    context '#conditional_components' do
+      let(:expected_components) do
+        %w[
+          1ed7161c-b712-429c-b647-edd39f71b39f
+          2e8d0ad4-5640-4cd5-815c-4f4116a685d5
+          701f93e3-1d78-4a1f-9495-07e32b6e26fe
+          71bfc176-613d-42ec-8d53-63e50b696ec6
+          37a83516-20c3-4208-ae5f-752038113742
+          5ccc3681-4aa5-447a-8763-6fcdd257bfcc
+          61139d00-53eb-4ff3-9227-6ecd0b80aac4
+          4d4d7ace-9ce2-4415-9edb-abcac75ed17b
+          75fd4dd0-2be1-44d0-9153-d7ec5ceb2a55
+          b23d885d-5326-49f2-b4f4-5ac5d53a03da
+        ]
+      end
+
+      it 'should include the conditional components uuids' do
+        expect(Set.new(page.conditional_components)).to eq(Set.new(expected_components))
+      end
     end
   end
 end
