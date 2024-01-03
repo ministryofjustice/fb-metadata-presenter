@@ -326,4 +326,23 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
       end
     end
   end
+
+  describe '#load_autocomplete_items' do
+    let(:page) { MetadataPresenter::Page.new(service.pages.first) }
+    let(:items) { { 'component_id' => [{ 'text' => 'abc', 'value' => '123' }] } }
+    let(:autocomplete_items) { items }
+
+    context 'when there is an autocomplete component on the page' do
+      before do
+        allow(page).to receive(:autocomplete_component_present?).and_return(true)
+        allow(page).to receive(:assign_autocomplete_items)
+        controller.instance_variable_set(:@page, page)
+      end
+
+      it 'load the autocomplete items' do
+        expect(controller).to receive(:autocomplete_items)
+        controller.load_autocomplete_items
+      end
+    end
+  end
 end
