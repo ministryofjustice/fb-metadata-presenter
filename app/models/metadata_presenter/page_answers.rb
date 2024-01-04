@@ -34,6 +34,8 @@ module MetadataPresenter
         answer_object.to_h if answer_object.present?
       elsif component && component.type == 'checkboxes'
         answers[method_name.to_s].to_a
+      elsif component && component.type == 'address'
+        address_answer(method_name.to_s)
       else
         sanitize(answers[method_name.to_s])
       end
@@ -172,6 +174,12 @@ module MetadataPresenter
 
       file_extension = File.extname(answer)
       %w[.jfif .jpg].include?(file_extension)
+    end
+
+    def address_answer(component_id)
+      MetadataPresenter::AddressField.new(
+        answers[component_id]
+      )
     end
   end
 end
