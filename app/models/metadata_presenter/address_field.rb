@@ -21,5 +21,9 @@ module MetadataPresenter
     def blank?
       @address_line_one.blank? || @city.blank? || @postcode.blank? || @country.blank?
     end
+
+    def to_s
+      "#{@address_line_one}\n#{@address_line_two}\n#{@city}\n#{@county}\n#{@postcode}\n#{@country}\n"
+    end
   end
 end

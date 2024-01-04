@@ -93,5 +93,9 @@ module MetadataPresenter
     def autocomplete(value)
       JSON.parse(value)['text']
     end
+
+    def address(value)
+      value.to_s
+    end
   end
 end
