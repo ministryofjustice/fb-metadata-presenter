@@ -1,0 +1,12 @@
+{
+  "$id": "http://gov.uk/schema/v1.0.0/address",
+  "_name": "component.address",
+  "title": "Address",
+  "description": "Let users enter their address",
+  "type": "object",
+  "properties": {
+    "_type": {
+      "const": "address"
+    }
+  }
+}

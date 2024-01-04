@@ -1,0 +1,37 @@
+<%= f.govuk_fieldset legend: { text: nil } do %>
+  <%=
+    f.govuk_text_field :address_line_one,
+                       label: { text: 'Address line 1' },
+                       name: "answers[#{component.name}][address_line_one]"
+  %>
+  <%=
+    f.govuk_text_field :address_line_two,
+                       label: { text: 'Address line 2 (optional)' },
+                       name: "answers[#{component.name}][address_line_two]"
+  %>
+  <%=
+    f.govuk_text_field :city,
+                       label: { text: 'Town or city' },
+                       name: "answers[#{component.name}][city]",
+                       width: 'two-thirds'
+  %>
+  <%=
+    f.govuk_text_field :county,
+                       label: { text: 'County (optional)' },
+                       name: "answers[#{component.name}][county]",
+                       width: 'two-thirds'
+  %>
+  <%=
+    f.govuk_text_field :postcode,
+                       label: { text: 'Postcode' },
+                       name: "answers[#{component.name}][postcode]",
+                       width: 'one-quarter'
+  %>
+  <%=
+    f.govuk_text_field :country,
+                       label: { text: 'Country' },
+                       name: "answers[#{component.name}][country]",
+                       value: 'United Kingdom',
+                       width: 'one-quarter'
+  %>
+<% end %>

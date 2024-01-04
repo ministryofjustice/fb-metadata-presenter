@@ -1,0 +1,11 @@
+{
+  "_id": "component.address",
+  "_type": "address",
+  "errors": {},
+  "label": "Address",
+  "hint": "",
+  "name": "component-name",
+  "validation": {
+    "required": true
+  }
+}
