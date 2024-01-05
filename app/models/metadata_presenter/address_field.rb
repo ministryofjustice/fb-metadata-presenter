@@ -4,12 +4,21 @@ module MetadataPresenter
     attr_reader :address_line_one, :address_line_two, :city, :county, :postcode, :country
 
     def initialize(address_field)
-      @address_line_one = sanitize(address_field[:address_line_one])
-      @address_line_two = sanitize(address_field[:address_line_two])
-      @city = sanitize(address_field[:city])
-      @county = sanitize(address_field[:county])
-      @postcode = sanitize(address_field[:postcode])
-      @country = sanitize(address_field[:country])
+      if address_field
+        @address_line_one = sanitize(address_field[:address_line_one])
+        @address_line_two = sanitize(address_field.fetch(:address_line_two, ''))
+        @city = sanitize(address_field[:city])
+        @county = sanitize(address_field.fetch(:county, ''))
+        @postcode = sanitize(address_field[:postcode])
+        @country = sanitize(address_field[:country])
+      else
+        @address_line_one = ''
+        @address_line_two  = ''
+        @city  = ''
+        @county  = ''
+        @postcode  = ''
+        @country  = ''
+      end
     end
 
     def present?
