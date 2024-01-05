@@ -95,7 +95,9 @@ module MetadataPresenter
     end
 
     def address(value)
-      value.to_s
+      view.simple_format(
+        value.to_a.join("\r\n"), {}, wrapper_tag: 'span'
+      )
     end
   end
 end
