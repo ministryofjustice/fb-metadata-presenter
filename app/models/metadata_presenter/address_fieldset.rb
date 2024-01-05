@@ -2,22 +2,24 @@ module MetadataPresenter
   class AddressFieldset
     include ActionView::Helpers
 
-    FIELDS = [
-      :address_line_one,
-      :address_line_two,
-      :city,
-      :county,
-      :postcode,
-      :country
+    FIELDS = %i[
+      address_line_one
+      address_line_two
+      city
+      county
+      postcode
+      country
     ].freeze
 
     attr_reader(*FIELDS)
 
     def initialize(address)
       FIELDS.each do |field|
+        next unless address[field]
+
         instance_variable_set(
           :"@#{field}", sanitize(address[field])
-        ) if address[field]
+        )
       end
     end
 
