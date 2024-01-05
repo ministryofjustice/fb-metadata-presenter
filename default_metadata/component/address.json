@@ -6,7 +6,6 @@
   "hint": "",
   "name": "component-name",
   "validation": {
-    "required": true,
-    "address": true
+    "required": true
   }
 }
