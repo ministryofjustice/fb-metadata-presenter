@@ -1,0 +1,6 @@
+{
+  "_id": "error.address",
+  "_type": "string.error",
+  "description": "Input (address) is blank",
+  "value": "Enter an answer for \"%{control}\""
+}

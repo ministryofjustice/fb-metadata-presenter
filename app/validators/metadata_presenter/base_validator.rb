@@ -129,7 +129,7 @@ module MetadataPresenter
     # blank values. We should not allow blank when performing the required
     # validation.
     #
-    # @return [TrueClass]
+    # @return [Boolean]
     #
     def allow_blank?
       user_answer.blank? && !self.class.name.demodulize.include?('RequiredValidator')

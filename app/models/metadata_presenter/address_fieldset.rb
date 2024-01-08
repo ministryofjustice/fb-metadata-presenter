@@ -1,7 +1,9 @@
 module MetadataPresenter
   class AddressFieldset
+    include ActiveModel::Validations
     include ActionView::Helpers
 
+    DEFAULT_COUNTRY = 'United Kingdom'.freeze
     FIELDS = %i[
       address_line_one
       address_line_two
@@ -21,16 +23,8 @@ module MetadataPresenter
           :"@#{field}", sanitize(address[field])
         )
       end
-    end
 
-    def present?
-      # rubocop:disable Rails/Present
-      !blank?
-      # rubocop:enable Rails/Present
-    end
-
-    def blank?
-      address_line_one.blank? || city.blank? || postcode.blank? || country.blank?
+      @country ||= DEFAULT_COUNTRY
     end
 
     def to_a

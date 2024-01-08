@@ -146,7 +146,7 @@ module MetadataPresenter
     end
 
     def address_answer(component_id)
-      MetadataPresenter::AddressFieldset.new(
+      @address_answer ||= MetadataPresenter::AddressFieldset.new(
         answers.fetch(component_id, {})
       )
     end
