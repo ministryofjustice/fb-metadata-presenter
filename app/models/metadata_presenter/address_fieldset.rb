@@ -30,7 +30,7 @@ module MetadataPresenter
     end
 
     def strip
-      to_a
+      instance_values.values.join(', ')
     end
   end
 end
