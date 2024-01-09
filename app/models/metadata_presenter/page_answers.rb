@@ -146,9 +146,7 @@ module MetadataPresenter
     end
 
     def address_answer(component_id)
-      @address_answer ||= MetadataPresenter::AddressFieldset.new(
-        answers.fetch(component_id, {})
-      )
+      MetadataPresenter::AddressFieldset.new(answers.fetch(component_id, {}))
     end
 
     def sanitize_filename(answer)

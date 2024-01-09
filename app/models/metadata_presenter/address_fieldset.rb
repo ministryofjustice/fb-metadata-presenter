@@ -17,11 +17,9 @@ module MetadataPresenter
 
     def initialize(address)
       FIELDS.each do |field|
-        next unless address[field]
+        next unless address["#{field}"]
 
-        instance_variable_set(
-          :"@#{field}", sanitize(address[field])
-        )
+        instance_variable_set(:"@#{field}", sanitize(address["#{field}"]))
       end
 
       @country ||= DEFAULT_COUNTRY
