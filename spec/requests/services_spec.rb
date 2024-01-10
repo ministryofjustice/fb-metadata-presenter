@@ -16,6 +16,19 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
     it 'has no back link' do
       expect(response.body).not_to include('Back')
     end
+
+    context 'external start page' do
+      before do
+        allow(ENV).to receive(:[])
+        allow(ENV).to receive(:[]).with('EXTERNAL_START_PAGE_URL').and_return('external_url.com')
+
+        get '/'
+      end
+
+      it 'returns a redirect status' do
+        expect(response.status).to be(302)
+      end
+    end
   end
 
   context 'maintenance mode enabled' do

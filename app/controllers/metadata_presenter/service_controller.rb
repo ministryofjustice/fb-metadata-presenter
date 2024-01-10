@@ -1,11 +1,17 @@
 module MetadataPresenter
   class ServiceController < EngineController
     def start
-      if true # will be if external start page somehow
+      if use_external_start_page?
         return redirect_to_next_page
       end
       @page = service.start_page
       render template: @page.template
+    end
+
+    private
+
+    def use_external_start_page?
+      ENV['EXTERNAL_START_PAGE_URL'].present?
     end
 
     def redirect_to_next_page
