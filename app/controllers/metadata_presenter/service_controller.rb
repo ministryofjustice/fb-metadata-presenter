@@ -4,6 +4,7 @@ module MetadataPresenter
       if use_external_start_page?
         return redirect_to_next_page
       end
+
       @page = service.start_page
       render template: @page.template
     end
