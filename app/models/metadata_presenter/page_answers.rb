@@ -145,10 +145,6 @@ module MetadataPresenter
       end
     end
 
-    def address_answer(component_id)
-      MetadataPresenter::AddressFieldset.new(answers.fetch(component_id, {}))
-    end
-
     def sanitize_filename(answer)
       sanitize(filename(update_filename(answer)))
     end
@@ -178,6 +174,10 @@ module MetadataPresenter
 
       file_extension = File.extname(answer)
       %w[.jfif .jpg].include?(file_extension)
+    end
+
+    def address_answer(component_id)
+      MetadataPresenter::AddressFieldset.new(answers.fetch(component_id, {}))
     end
   end
 end

@@ -458,6 +458,37 @@ RSpec.describe MetadataPresenter::PageAnswers do
         end
       end
     end
+
+    context 'when there are address components' do
+      let(:answers) do
+        {
+          'address_address_1' =>
+            { 'address_line_one' => 'test road',
+              'address_line_two' => '',
+              'city' => 'test city',
+              'county' => '',
+              'postcode' => 'test code',
+              'country' => 'United Kingdom' }
+        }
+      end
+
+      let(:component) { OpenStruct.new(id: 'address_address_1', name: 'address_address_1', type: 'address') }
+      let(:components_collection) { [component] }
+
+      before do
+        allow(page_answers).to receive(:components).and_return(components_collection)
+      end
+
+      it 'returns the right keyword arguments of address' do
+        address = page_answers.send('address_address_1')
+        expect(address.address_line_one).to eq('test road')
+        expect(address.address_line_two).to eq('')
+        expect(address.city).to eq('test city')
+        expect(address.county).to eq('')
+        expect(address.postcode).to eq('test code')
+        expect(address.country).to eq('United Kingdom')
+      end
+    end
   end
 
   describe '#respond_to?' do
