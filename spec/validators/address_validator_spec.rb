@@ -8,12 +8,12 @@ RSpec.describe MetadataPresenter::AddressValidator do
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
 
   describe '#valid?' do
-    let(:first_line) {'most beautiful road'}
-    let(:second_line) {'of the most beautiful hamlet'}
-    let(:city_line) {'far far from the city'}
-    let(:county_line) {'in a far far away county'}
-    let(:postcode_line) {'999'}
-    let(:country_line) {'Great country'}
+    let(:first_line) { 'most beautiful road' }
+    let(:second_line) { 'of the most beautiful hamlet' }
+    let(:city_line) { 'far far from the city' }
+    let(:county_line) { 'in a far far away county' }
+    let(:postcode_line) { '999' }
+    let(:country_line) { 'Great country' }
 
     let(:answers) do
       {
@@ -33,7 +33,7 @@ RSpec.describe MetadataPresenter::AddressValidator do
     end
 
     context 'when a required field is missing' do
-      [:first_line, :city_line, :postcode_line, :country_line].each do |field|
+      %i[first_line city_line postcode_line country_line].each do |field|
         context "when #{field} is missing" do
           let(field) { '' }
           it 'returns invalid' do
@@ -44,7 +44,7 @@ RSpec.describe MetadataPresenter::AddressValidator do
     end
 
     context 'when a optional field is missing' do
-      [:second_line, :county_line].each do |field|
+      %i[second_line county_line].each do |field|
         context "when #{field} is missing" do
           let(field) { '' }
           it 'returns valid' do
