@@ -222,4 +222,65 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
       expect(helper.timeout_fallback(time.to_s)).to eq(time.to_s)
     end
   end
+
+  describe '#default_item_title' do
+    context 'when component is a not a checkbox nor a radio' do
+      let(:component_type) { 'text' }
+
+      it 'returns nil' do
+        expect(default_item_title(component_type)).to be_nil
+      end
+    end
+
+    context 'when component is a checkbox' do
+      let(:component_type) { 'checkboxes' }
+
+      it 'returns Option' do
+        expect(default_item_title(component_type)).to eq('Option')
+      end
+    end
+
+    context 'when component is a radio' do
+      let(:component_type) { 'radios' }
+
+      it 'returns Option' do
+        expect(default_item_title(component_type)).to eq('Option')
+      end
+    end
+  end
+
+  describe '#files_to_render' do
+    let(:page) { OpenStruct.new(components: [component]) }
+    let(:component) do
+      OpenStruct.new({ id: 'upload_multiupload_1', type: 'multiupload', validation: { 'max_files' => '2' } })
+    end
+
+    let(:page_answers) { double(MetadataPresenter::PageAnswers) }
+    let(:uploaded_files) do
+      [
+        {
+          'original_filename' => 'computer_says_no.gif',
+          'content_type' => 'image/gif',
+          'tempfile' => 'filepath'
+        },
+        {
+          'original_filename' => 'diagram.png',
+          'content_type' => 'image/png',
+          'tempfile' => 'another_filepath'
+        }
+      ]
+    end
+    let(:upload_component) { { 'upload_multiupload_1' => uploaded_files } }
+
+    before do
+      allow(page_answers).to receive(:uploaded_files).and_return([])
+      allow(page_answers).to receive(:upload_multiupload_1).and_return(upload_component)
+      controller.instance_variable_set(:@page, page)
+      controller.instance_variable_set(:@page_answers, page_answers)
+    end
+
+    it 'list the files to render' do
+      expect(helper.files_to_render).to eq(uploaded_files)
+    end
+  end
 end

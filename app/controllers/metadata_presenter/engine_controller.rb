@@ -8,34 +8,44 @@ module MetadataPresenter
     before_action :show_maintenance_page
 
     def reload_user_data
+      # :nocov:
       if defined? super
         super
+        # :nocov:
       else
         load_user_data
       end
     end
 
     def save_form_progress
+      # :nocov:
       if defined? super
         super
+        # :nocov:
       end
     end
 
     def get_saved_progress(uuid)
+      # :nocov:
       if defined? super
         super(uuid)
+        # :nocov:
       end
     end
 
     def increment_record_counter(uuid)
+      # :nocov:
       if defined? super
         super(uuid)
+        # :nocov:
       end
     end
 
     def invalidate_record(uuid)
+      # :nocov:
       if defined? super
         super(uuid)
+        # :nocov:
       end
     end
 
