@@ -153,6 +153,7 @@ RSpec.describe MetadataPresenter::TraversedPages do
                 'dog-picture',
                 'dog-picture-2',
                 'countries',
+                'postal-address',
                 'check-answers',
                 'confirmation'
               ]
