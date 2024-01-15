@@ -28,9 +28,5 @@ module MetadataPresenter
     def to_a
       instance_values.values.compact_blank
     end
-
-    def strip
-      to_a.join(', ')
-    end
   end
 end
