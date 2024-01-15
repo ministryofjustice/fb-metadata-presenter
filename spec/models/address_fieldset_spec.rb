@@ -1,5 +1,6 @@
 RSpec.describe MetadataPresenter::AddressFieldset do
   subject(:address_fieldset) { described_class.new(metadata) }
+
   let(:metadata) do
     {
       'address_line_one' => '1 road',
@@ -9,15 +10,19 @@ RSpec.describe MetadataPresenter::AddressFieldset do
     }
   end
 
-  describe '#to_a' do
-    it 'returns a nice array to be shown in CYA page' do
-      expect(subject.to_a).to eq(['1 road', 'ruby town', '99 999', 'ruby land'])
+  describe '.new' do
+    context 'country' do
+      let(:metadata) { super().merge('country' => nil) }
+
+      it 'sets a default country if none was provided' do
+        expect(subject.country).to eq(described_class::DEFAULT_COUNTRY)
+      end
     end
   end
 
-  describe '#strip' do
-    it 'returns a nice string to be included in emails' do
-      expect(subject.strip).to eq('1 road, ruby town, 99 999, ruby land')
+  describe '#to_a' do
+    it 'returns a nice array to be shown in CYA page' do
+      expect(subject.to_a).to eq(['1 road', 'ruby town', '99 999', 'ruby land'])
     end
   end
 end

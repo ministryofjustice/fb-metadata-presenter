@@ -4,7 +4,7 @@ module MetadataPresenter
     include ActionView::Helpers
 
     DEFAULT_COUNTRY = 'United Kingdom'.freeze
-    FIELDS = %i[
+    FIELDS = %w[
       address_line_one
       address_line_two
       city
@@ -17,16 +17,16 @@ module MetadataPresenter
 
     def initialize(address)
       FIELDS.each do |field|
-        next unless address[field.to_s]
+        next unless address[field]
 
-        instance_variable_set(:"@#{field}", sanitize(address[field.to_s]))
+        instance_variable_set(:"@#{field}", sanitize(address[field]))
       end
 
       @country ||= DEFAULT_COUNTRY
     end
 
     def to_a
-      instance_values.values.compact_blank
+      instance_values.values_at(*FIELDS).compact_blank
     end
   end
 end

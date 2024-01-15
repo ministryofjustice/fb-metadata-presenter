@@ -7,6 +7,11 @@ module MetadataPresenter
       country
     ].freeze
 
+    OPTIONAL_FIELDS = %i[
+      address_line_two
+      county
+    ].freeze
+
     def valid?
       return true if allow_blank?
 

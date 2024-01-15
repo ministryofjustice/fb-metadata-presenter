@@ -8,48 +8,44 @@ RSpec.describe MetadataPresenter::AddressValidator do
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
 
   describe '#valid?' do
-    let(:first_line) { 'most beautiful road' }
-    let(:second_line) { 'of the most beautiful hamlet' }
-    let(:city_line) { 'far far from the city' }
-    let(:county_line) { 'in a far far away county' }
-    let(:postcode_line) { '999' }
-    let(:country_line) { 'Great country' }
+    let(:address_line_one) { 'most beautiful road' }
+    let(:address_line_two) { 'of the most beautiful hamlet' }
+    let(:city) { 'far far from the city' }
+    let(:county) { 'in a far far away county' }
+    let(:postcode) { '999' }
+    let(:country) { 'Great country' }
 
     let(:answers) do
       {
-        address_line_one: first_line,
-        address_line_two: second_line,
-        city: city_line,
-        county: county_line,
-        postcode: postcode_line,
-        country: country_line
+        component.id => {
+          address_line_one:,
+          address_line_two:,
+          city:,
+          county:,
+          postcode:,
+          country:
+        }
       }
     end
 
     context 'when address fields are all filled properly' do
-      it 'is valid' do
-        expect(validator.valid?).to be_truthy
-      end
+      it { expect(validator).to be_valid }
     end
 
     context 'when a required field is missing' do
-      %i[first_line city_line postcode_line country_line].each do |field|
+      described_class::REQUIRED_FIELDS.each do |field|
         context "when #{field} is missing" do
           let(field) { '' }
-          it 'returns invalid' do
-            expect(validator.valid?).to be_falsey
-          end
+          it { expect(validator).not_to be_valid }
         end
       end
     end
 
-    context 'when a optional field is missing' do
-      %i[second_line county_line].each do |field|
+    context 'when an optional field is missing' do
+      described_class::OPTIONAL_FIELDS.each do |field|
         context "when #{field} is missing" do
           let(field) { '' }
-          it 'returns valid' do
-            expect(validator.valid?).to be_truthy
-          end
+          it { expect(validator).to be_valid }
         end
       end
     end
