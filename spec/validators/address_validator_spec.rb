@@ -24,7 +24,7 @@ RSpec.describe MetadataPresenter::AddressValidator do
           county:,
           postcode:,
           country:
-        }
+        }.stringify_keys
       }
     end
 
