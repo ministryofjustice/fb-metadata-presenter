@@ -1,5 +1,6 @@
 module MetadataPresenter
   class AddressFieldset
+    extend ActiveModel::Translation
     include ActiveModel::Validations
     include ActionView::Helpers
 

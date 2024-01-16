@@ -8,5 +8,24 @@
     "_type": {
       "const": "address"
     }
-  }
+  },
+  "allOf": [
+    {
+      "$ref": "definition.fieldset"
+    },
+    {
+      "$ref": "definition.width_class.input"
+    },
+    {
+      "$ref": "validations#/definitions/errors_address"
+    }
+  ],
+  "composite": [
+    "address_line_one",
+    "address_line_two",
+    "city",
+    "county",
+    "postcode",
+    "country"
+  ]
 }
