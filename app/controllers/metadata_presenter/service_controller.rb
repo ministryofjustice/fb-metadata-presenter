@@ -11,10 +11,6 @@ module MetadataPresenter
 
     private
 
-    def use_external_start_page?
-      ENV['EXTERNAL_START_PAGE_URL'].present?
-    end
-
     def redirect_to_next_page
       next_page = NextPage.new(
         service:,
