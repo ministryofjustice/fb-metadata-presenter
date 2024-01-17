@@ -1,0 +1,38 @@
+<%= f.govuk_fieldset legend: { text: input_title } do %>
+  <%= f.fields_for component.id, f.object.send(component.id) do |a| %>
+    <%=
+      a.govuk_text_field :address_line_one,
+                         label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('address_line_one') },
+                         autocorrect: 'off'
+    %>
+    <%=
+      a.govuk_text_field :address_line_two,
+                         label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('address_line_two') },
+                         autocorrect: 'off'
+    %>
+    <%=
+      a.govuk_text_field :city,
+                         label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('city') },
+                         width: 'two-thirds',
+                         autocorrect: 'off'
+    %>
+    <%=
+      a.govuk_text_field :county,
+                         label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('county') },
+                         width: 'two-thirds',
+                         autocorrect: 'off'
+    %>
+    <%=
+      a.govuk_text_field :postcode,
+                         label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('postcode') },
+                         width: 'one-quarter',
+                         autocorrect: 'off'
+    %>
+    <%=
+      a.govuk_text_field :country,
+                         label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('country') },
+                         width: 'one-quarter',
+                         autocorrect: 'off'
+    %>
+  <% end %>
+<% end %>

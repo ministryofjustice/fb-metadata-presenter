@@ -34,6 +34,24 @@
         }
       ]
     },
+    "address": {
+      "title": "Address",
+      "description": "Address required fields",
+      "oneOf": [
+        {
+          "$ref": "definition.conditional.boolean"
+        }
+      ],
+      "default": true
+    },
+    "errors_address": {
+      "title": "Error messages for 'Address'",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
     "errors_required": {
       "title": "Error messages for ‘Required’",
       "allOf": [

@@ -171,3 +171,13 @@ en:
           - "[date when you performed your basic accessibility check]"
           - "[insert team or organisation here]"
         url: 'accessibility'
+
+  activemodel:
+    attributes:
+      metadata_presenter/address_fieldset:
+        address_line_one: Address line 1
+        address_line_two: Address line 2 (optional)
+        city: Town or city
+        county: County (optional)
+        postcode: Postcode
+        country: Country

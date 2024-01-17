@@ -20,6 +20,14 @@
         }
       ]
     },
+    "address": {
+      "title": "Error strings for required address fields",
+      "allOf": [
+        {
+          "$ref": "#/definitions/error_strings"
+        }
+      ]
+    },
     "min_length": {
       "title": "Error strings for minimum length",
       "allOf": [
@@ -90,6 +98,17 @@
           "properties": {
             "required": {
               "$ref": "#/definitions/required"
+            }
+          }
+        }
+      }
+    },
+    "address_errors": {
+      "properties": {
+        "errors": {
+          "properties": {
+            "address": {
+              "$ref": "#/definitions/address"
             }
           }
         }
