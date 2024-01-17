@@ -696,14 +696,13 @@
           "name": "postal-address_address_1",
           "_type": "address",
           "_uuid": "f72db038-d1cd-4c0d-baea-570b3e4863f5",
-          "label": "Address question",
-          "errors": {
-          },
+          "errors": {},
           "legend": "Confirm your postal address",
           "collection": "components",
           "validation": {
             "address": true,
-            "required": true
+            "required": true,
+            "postcode": true
           }
         }
       ],

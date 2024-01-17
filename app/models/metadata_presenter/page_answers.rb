@@ -176,8 +176,13 @@ module MetadataPresenter
       %w[.jfif .jpg].include?(file_extension)
     end
 
+    # NOTE: Address component is different to other components in the sense it can
+    # produce different validation errors in different fields, and we need to track
+    # those errors between page renders, thus needing memoisation.
     def address_answer(component_id)
-      @address_answer ||= MetadataPresenter::AddressFieldset.new(
+      @address_answer ||= {}
+
+      @address_answer[component_id] ||= MetadataPresenter::AddressFieldset.new(
         answers.fetch(component_id, {})
       )
     end
