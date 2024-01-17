@@ -93,5 +93,11 @@ module MetadataPresenter
     def autocomplete(value)
       JSON.parse(value)['text']
     end
+
+    def address(value)
+      view.simple_format(
+        value.to_a.join("\r\n"), {}, wrapper_tag: 'span'
+      )
+    end
   end
 end

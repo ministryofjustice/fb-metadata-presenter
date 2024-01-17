@@ -73,14 +73,14 @@ module MetadataPresenter
     # @return [String] returns the default error message
     # @raise [MetadataPresenter::NoDefaultMessage] raises no default message if
     # is not present
-    def default_error_message
+    def default_error_message(params = {})
       default_error_message_key = "error.#{schema_key}"
       default_message = Rails.application
                              .config
                              .default_metadata[default_error_message_key]
 
       if default_message.present?
-        default_message['value'] % error_message_hash
+        default_message['value'] % error_message_hash.merge(params)
       else
         raise NoDefaultMessage, "No default message found for key '#{default_error_message_key}'."
       end
@@ -129,7 +129,7 @@ module MetadataPresenter
     # blank values. We should not allow blank when performing the required
     # validation.
     #
-    # @return [TrueClass]
+    # @return [Boolean]
     #
     def allow_blank?
       user_answer.blank? && !self.class.name.demodulize.include?('RequiredValidator')
