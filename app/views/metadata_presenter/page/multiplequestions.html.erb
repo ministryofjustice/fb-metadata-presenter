@@ -11,6 +11,7 @@
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
         <%= f.govuk_error_summary %>
 
+        <div data-controller="questions">
         <%= render partial: 'metadata_presenter/component/components', locals: {
             f: f,
             components: @page.components,
@@ -20,6 +21,7 @@
             content_components: @page.supported_content_components
           }
         %>
+        </div>
         <div class="govuk-button-group">
           <%= f.govuk_submit(disabled: editable?) %>
           <% if save_and_return_enabled? && show_save_and_return %>
