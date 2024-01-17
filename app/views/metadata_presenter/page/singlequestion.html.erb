@@ -2,6 +2,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+    <% if editor_preview? && use_external_start_page? && first_question? %>
+      <%= render 'metadata_presenter/attribute/external_start_page_info' %>
+    <% end %>
+
       <%= render 'metadata_presenter/attribute/section_heading' %>
 
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post, authenticity_token: false do |f| %>

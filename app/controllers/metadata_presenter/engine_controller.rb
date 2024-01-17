@@ -140,6 +140,11 @@ module MetadataPresenter
     end
     helper_method :external_start_page_url
 
+    def first_page?
+      @page.url == service.pages[1].url
+    end
+    helper_method :first_page?
+
     private
 
     def not_found
