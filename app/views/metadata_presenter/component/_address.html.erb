@@ -1,5 +1,13 @@
-<%= f.govuk_fieldset legend: { text: input_title } do %>
+<% hint_id = f.field_id(component.id, [:hint]).tr('_', '-') %>
+
+<%= f.govuk_fieldset legend: { text: input_title }, described_by: hint_id do %>
   <%= f.fields_for component.id, f.object.send(component.id) do |a| %>
+    <% if component.hint.present? %>
+      <div class="govuk-hint govuk-!-margin-bottom-6" id="<%= hint_id %>" data-fb-default-text="<%= default_text('hint') %>">
+        <%= component.hint %>
+      </div>
+    <% end %>
+
     <%=
       a.govuk_text_field :address_line_one,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('address_line_one') },
