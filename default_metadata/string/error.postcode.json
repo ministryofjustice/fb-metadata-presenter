@@ -1,0 +1,6 @@
+{
+  "_id": "error.postcode",
+  "_type": "string.error",
+  "description": "Postcode format is not valid",
+  "value": "Enter a full UK postcode for \"%{control}\""
+}
