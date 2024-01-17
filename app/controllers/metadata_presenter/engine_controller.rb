@@ -123,28 +123,6 @@ module MetadataPresenter
     end
     helper_method :external_or_relative_link
 
-    def use_external_start_page?
-      ENV['EXTERNAL_START_PAGE_URL'].present?
-    end
-    helper_method :use_external_start_page?
-
-    def external_start_page_url
-      if ENV['EXTERNAL_START_PAGE_URL'].blank?
-        ''
-      else
-        # ensure url is absolute - we limit to only gov.uk urls which will be https
-        unless ENV['EXTERNAL_START_PAGE_URL'][/\Ahttps:\/\//]
-          "https://#{ENV['EXTERNAL_START_PAGE_URL']}"
-        end
-      end
-    end
-    helper_method :external_start_page_url
-
-    def first_page?
-      @page.url == service.pages[1].url
-    end
-    helper_method :first_page?
-
     private
 
     def not_found

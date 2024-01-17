@@ -19,7 +19,7 @@ en:
       hide: Hide this message
     external_start_page_info:
       important: 'Important'
-      content: "Your form has a %(href}. Links to your form's 'home' page, such as your form's name in the header, will not work until the GOV.UK page has been published."
+      content: "Your form has a %{href}. Links to your form's 'home' page, such as your form's name in the header, will not work until the GOV.UK page has been published."
       link_text: 'GOV.UK start page'
     maintenance:
       maintenance_page_heading: 'Sorry, this form is unavailable'
