@@ -1,4 +1,4 @@
-<% hint_id = f.field_id(component.id, [:hint]).tr('_', '-') %>
+<% hint_id = f.field_id(component.id, [:hint]).tr('_', '-') if component.hint.present? %>
 
 <%= f.govuk_fieldset legend: { text: input_title }, described_by: hint_id do %>
   <%= f.fields_for component.id, f.object.send(component.id) do |a| %>
