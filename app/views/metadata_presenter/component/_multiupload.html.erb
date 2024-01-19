@@ -28,7 +28,7 @@
       text: component.hint.present? ? component.hint : ''
     },
     accept: component.validation['accept'],
-    disabled: editable?,
+    'aria-disabled': editable?,
     label: -> do %>
       <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? %>
         <h3 class="govuk-heading-s govuk-!-margin-top-8"><%= t('presenter.questions.multiupload.add_another') %></h3>
