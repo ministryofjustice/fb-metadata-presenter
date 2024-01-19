@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'sassc-rails', '2.1.2'
   spec.add_dependency 'sprockets-rails'
   spec.add_dependency 'sprockets'
+  spec.add_dependency 'uk_postcode'
 
 
   spec.add_development_dependency 'better_errors'

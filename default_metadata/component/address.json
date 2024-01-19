@@ -2,11 +2,12 @@
   "_id": "component.address",
   "_type": "address",
   "errors": {},
-  "label": "Address question",
+  "legend": "Address question",
   "hint": "",
   "name": "component-name",
   "validation": {
     "required": true,
-    "address": true
+    "address": true,
+    "postcode": true
   }
 }
