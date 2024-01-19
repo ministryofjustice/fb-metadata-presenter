@@ -7,27 +7,27 @@ RSpec.describe MetadataPresenter::AddressValidator do
   let(:component) { page.components.first }
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
 
+  let(:address_line_one) { 'most beautiful road' }
+  let(:address_line_two) { 'of the most beautiful hamlet' }
+  let(:city) { 'far far from the city' }
+  let(:county) { 'in a far far away county' }
+  let(:postcode) { '999' }
+  let(:country) { 'Great country' }
+
+  let(:answers) do
+    {
+      component.id => {
+        address_line_one:,
+        address_line_two:,
+        city:,
+        county:,
+        postcode:,
+        country:
+      }.stringify_keys
+    }
+  end
+
   describe '#valid?' do
-    let(:address_line_one) { 'most beautiful road' }
-    let(:address_line_two) { 'of the most beautiful hamlet' }
-    let(:city) { 'far far from the city' }
-    let(:county) { 'in a far far away county' }
-    let(:postcode) { '999' }
-    let(:country) { 'Great country' }
-
-    let(:answers) do
-      {
-        component.id => {
-          address_line_one:,
-          address_line_two:,
-          city:,
-          county:,
-          postcode:,
-          country:
-        }.stringify_keys
-      }
-    end
-
     context 'when address fields are all filled properly' do
       it { expect(validator).to be_valid }
     end
@@ -48,6 +48,27 @@ RSpec.describe MetadataPresenter::AddressValidator do
           it { expect(validator).to be_valid }
         end
       end
+    end
+  end
+
+  context 'error messages' do
+    let(:postcode) { '' }
+    let(:expected_error) { 'Enter an answer for "Postcode" of "Confirm your postal address"' }
+
+    before do
+      validator.valid?
+    end
+
+    it 'adds an error to the page answers' do
+      expect(
+        page_answers.errors[:'postal-address_address_1.postcode']
+      ).to include(expected_error)
+    end
+
+    it 'adds an error to user answer' do
+      expect(
+        subject.user_answer.errors[:postcode]
+      ).to include(expected_error)
     end
   end
 end

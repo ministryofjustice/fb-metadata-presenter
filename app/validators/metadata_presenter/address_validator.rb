@@ -16,7 +16,6 @@ module MetadataPresenter
       return true if allow_blank?
 
       validate_required_fields
-      # TODO: validate_postcode
 
       user_answer.errors.empty?
     end

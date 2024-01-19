@@ -1,38 +1,46 @@
-<%= f.govuk_fieldset legend: { text: input_title } do %>
+<% hint_id = f.field_id(component.id, [:hint]).tr('_', '-') if component.hint.present? %>
+
+<%= f.govuk_fieldset legend: { text: input_title }, described_by: hint_id do %>
   <%= f.fields_for component.id, f.object.send(component.id) do |a| %>
+    <% if component.hint.present? %>
+      <div class="govuk-hint govuk-!-margin-bottom-6" id="<%= hint_id %>" data-fb-default-text="<%= default_text('hint') %>">
+        <%= component.hint %>
+      </div>
+    <% end %>
+
     <%=
       a.govuk_text_field :address_line_one,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('address_line_one') },
-                         autocorrect: 'off'
+                         autocorrect: 'off', autocomplete: 'address-line1'
     %>
     <%=
       a.govuk_text_field :address_line_two,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('address_line_two') },
-                         autocorrect: 'off'
+                         autocorrect: 'off', autocomplete: 'address-line2'
     %>
     <%=
       a.govuk_text_field :city,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('city') },
                          width: 'two-thirds',
-                         autocorrect: 'off'
+                         autocorrect: 'off', autocomplete: 'address-level2'
     %>
     <%=
       a.govuk_text_field :county,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('county') },
                          width: 'two-thirds',
-                         autocorrect: 'off'
+                         autocorrect: 'off', autocomplete: 'address-level1'
     %>
     <%=
       a.govuk_text_field :postcode,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('postcode') },
                          width: 'one-quarter',
-                         autocorrect: 'off'
+                         autocorrect: 'off', autocomplete: 'postal-code'
     %>
     <%=
       a.govuk_text_field :country,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('country') },
                          width: 'one-quarter',
-                         autocorrect: 'off'
+                         autocorrect: 'off', autocomplete: 'country-name'
     %>
   <% end %>
 <% end %>
