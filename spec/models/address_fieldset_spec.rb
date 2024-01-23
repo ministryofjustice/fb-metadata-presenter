@@ -18,6 +18,25 @@ RSpec.describe MetadataPresenter::AddressFieldset do
         expect(subject.country).to eq(described_class::DEFAULT_COUNTRY)
       end
     end
+
+    context 'sanitize and strip spaces from fields' do
+      let(:metadata) do
+        super().merge(
+          {
+            'city' => "<div> some tag <img src='test.jpg'>",
+            'country' => '  UK   '
+          }
+        )
+      end
+
+      it 'removes the tags' do
+        expect(subject.city).to eq('some tag')
+      end
+
+      it 'removes leading and trailing spaces' do
+        expect(subject.country).to eq('UK')
+      end
+    end
   end
 
   describe '#to_a' do
