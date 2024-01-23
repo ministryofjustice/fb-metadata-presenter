@@ -54,7 +54,7 @@ RSpec.describe MetadataPresenter::PostcodeValidator do
 
   context 'error messages' do
     let(:postcode) { 'XY1 2EN' } # invalid postcode
-    let(:expected_error) { 'Enter a full UK postcode for "Confirm your postal address"' }
+    let(:expected_error) { 'Enter a valid UK postcode for "Confirm your postal address"' }
 
     before do
       validator.valid?
