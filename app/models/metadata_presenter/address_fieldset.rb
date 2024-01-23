@@ -20,7 +20,7 @@ module MetadataPresenter
       FIELDS.each do |field|
         next unless address[field]
 
-        instance_variable_set(:"@#{field}", sanitize(address[field]))
+        instance_variable_set(:"@#{field}", conform(address[field]))
       end
 
       @country ||= DEFAULT_COUNTRY
@@ -28,6 +28,10 @@ module MetadataPresenter
 
     def to_a
       instance_values.values_at(*FIELDS).compact_blank
+    end
+
+    def conform(address_field)
+      sanitize(address_field, tags: [], attributes: []).strip
     end
   end
 end

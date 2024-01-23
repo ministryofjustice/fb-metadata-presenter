@@ -40,7 +40,7 @@ module MetadataPresenter
     end
 
     def translated_field(field)
-      MetadataPresenter::AddressFieldset.human_attribute_name(field)
+      MetadataPresenter::AddressFieldset.human_attribute_name(field).downcase
     end
   end
 end
