@@ -73,6 +73,8 @@ class ApplicationController < ActionController::Base
   def external_start_page_url; end
   helper_method :external_start_page_url
 
-  def first_page?; end
+  def first_page?
+    @page.url == @service.pages[1].url
+  end
   helper_method :first_page?
 end
