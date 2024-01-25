@@ -26,17 +26,11 @@
         </span>
       </a>
     </div>
-    <% if use_external_start_page? && service.service_name.present? %>
+    <% if service.service_name.present? %>
       <div class="govuk-header__content">
-        <a href="<%= external_start_page_url.html_safe %>" class="govuk-header__link govuk-header__service-name">
+        <a href="<%= start_page_url %>" class="govuk-header__link govuk-header__service-name">
           <%= service.service_name %>
         </a>
-    <% elsif service.service_name.present? %>
-      <div class="govuk-header__content">
-        <a href="<%= root_path %>" class="govuk-header__link govuk-header__service-name">
-          <%= service.service_name %>
-        </a>
-    <% end %>
     </div>
   </div>
 </header>
