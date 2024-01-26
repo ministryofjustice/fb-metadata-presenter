@@ -42,7 +42,7 @@
       <div class="govuk-width-container govuk-body-m">
         <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
           <% if back_link.present? %>
-            <a class="govuk-back-link" href="<%= back_link %>">Back</a>
+            <a class="govuk-back-link" href="<%= back_link %>"><%= t('presenter.back') %></a>
           <% end %>
           <% if !allowed_page? %>
             <%= render partial: 'metadata_presenter/session/timeout_fallback' %>

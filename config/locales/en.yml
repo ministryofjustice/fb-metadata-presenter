@@ -13,9 +13,9 @@ en:
       accept: Accept analytics cookies
       reject: Reject analytics cookies
       view_cookies: View cookies
-      accepted: accepted
-      rejected: rejected
-      confirmation: You've %{action} analytics cookies.
+      confirmation:
+        accepted: You've accepted analytics cookies.
+        rejected: You've rejected analytics cookies.
       hide: Hide this message
     external_start_page_info:
       important: 'Important'
@@ -27,7 +27,7 @@ en:
     session_timeout_warning:
       heading: Do you need more time?
       timer: We will reset your form and delete your information if you do not continue in
-      timer_fallback: We will reset your form and delete your information if you do not complete the page and press continue by
+      timer_fallback: We will reset your form and delete your information if you do not complete the page and press continue by %{expiry_time}.
       redirect: You are about to be redirected
       close_button: Close
       button: Continue
@@ -61,7 +61,9 @@ en:
     conditional_content:
       notification: "Some content on this page will be hidden under certain conditions. Preview the full form or publish to Test to check."
     save_and_return:
-      save: 'Save for later'
+      actions:
+        save: Save for later
+        continue: Continue
       show:
         heading: 'Save for later'
         description: 'We will send you a one-off link that you can use to resume this form within 28 days.'
@@ -92,7 +94,6 @@ en:
         three: 'What is the name of the hospital where you were born?'
       resume:
         heading: "Continue with \"%{service_name}\""
-        continue: 'Continue'
         content: 'To retrieve your information, enter the answer to your security question that you set when saving your progress.'
         information: 'This will use up your save link. To save your progress again, you will need to repeat the save process and generate another link.'
         errors:
@@ -116,12 +117,10 @@ en:
           heading: "\"%{service_name}\" has been updated"
           info_1: 'Your information has been successfully retrieved. However, the form has been updated since your last visit.'
           info_2: 'Please check from the beginning in case anything has changed, such as new requirements or questions.'
-          continue: 'Continue'
         progress:
           heading: '%{service_name}'
           content_1: 'You have successfully retrieved your saved information.'
           content_2: 'Here are the answers you have provided so far.'
-          continue: 'Continue'
     footer:
       cookies:
         heading: "Cookies"
