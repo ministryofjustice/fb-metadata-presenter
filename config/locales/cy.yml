@@ -1,4 +1,13 @@
 cy:
+  date:
+    day_names: [ Dydd Sul, Dydd Llun, Dydd Mawrth, Dydd Mercher, Dydd Iau, Dydd Gwener, Dydd Sadwrn ]
+    abbr_day_names: [ Sul, Llun, Maw, Mer, Iau, Gwe, Sad ]
+    month_names: [ ~, Ionawr, Chwefror, Mawrth, Ebrill, Mai, Mehefin, Gorffennaf, Awst, Medi, Hydref, Tachwedd, Rhagfyr ]
+    abbr_month_names: [ ~, Ion, Chw, Maw, Ebr, Mai, Meh, Gor, Awst, Med, Hyd, Tach, Rha ]
+  time:
+    am: yb
+    pm: yh
+
   presenter:
     back: Yn ôl
     actions:
@@ -6,6 +15,7 @@ cy:
       continue: Parhau
       submit: (cy) Submit
       upload_options: (cy) Upload options
+      change_html: (cy) Change <span class="govuk-visually-hidden">your answer for %{question}</span>
     analytics:
       heading: (cy) Cookies on %{service_name}
       body_1: (cy) We use some essential cookies to make this service work.
@@ -26,7 +36,7 @@ cy:
       timer_fallback: (cy) We will reset your form and delete your information if you do not complete the page and press continue by %{expiry_time}.
       redirect: (cy) You are about to be redirected
       close_button: (cy) Close
-      button: (cy) Continue
+      button: Parhau
     session_expired:
       title: (cy) Your form has been reset
       content: "(cy) To protect your personal information, we have reset the form and cleared your answers.\r\n\r\nThis is because you were inactive for 30 minutes."

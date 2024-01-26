@@ -1,4 +1,13 @@
 en:
+  date:
+    day_names: [ Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday ]
+    abbr_day_names: [ Sun, Mon, Tue, Wed, Thu, Fri, Sat ]
+    month_names: [ ~, January, February, March, April, May, June, July, August, September, October, November, December ]
+    abbr_month_names: [ ~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec ]
+  time:
+    am: am
+    pm: pm
+
   presenter:
     back: 'Back'
     actions:
@@ -6,6 +15,7 @@ en:
       continue: Continue
       submit: Submit
       upload_options: Upload options
+      change_html: Change <span class="govuk-visually-hidden">your answer for %{question}</span>
     analytics:
       heading: Cookies on %{service_name}
       body_1: We use some essential cookies to make this service work.
