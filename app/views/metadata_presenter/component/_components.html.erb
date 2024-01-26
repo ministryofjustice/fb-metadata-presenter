@@ -2,7 +2,11 @@
 
   <% if component.type == 'content' %>
     <% next unless (editable? || @page.show_conditional_component?(component.uuid) || single_page_preview?) %>
-
+<div data-controller="orderable-item movable-item component"
+         data-orderable-item-order-value="<%= index %>"
+         data-movable-items-target="movableItem"
+         data-orderable-items-target="orderableItem"
+         data-action="movable-item:move->orderable-items#reorder orderable-item:orderUpdated->component#update">
     <editable-content id="<%= component.id %>"
                       class="fb-editable govuk-!-margin-top-8"
                       type="<%= component.type %>"
@@ -10,12 +14,19 @@
                       content="<%= component.content %>"
                       data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
                       data-config="<%= component.to_json %>"
-                      data-conditional-api-path="<%= editable? ? URI.decode_www_form_component(api_service_edit_conditional_content_path(service.service_id, component.uuid)) : '' %>">
-        <%= to_html(component.content) %>
+                      data-conditional-api-path="<%= editable? ? URI.decode_www_form_component(api_service_edit_conditional_content_path(service.service_id, component.uuid)) : '' %>"
+                      data-component-target="content">
+         <%= to_html(component.content) %>
     </editable-content>
+</div>
   <% end %>
 
   <% unless component.type == 'content' %>
+    <div data-controller="orderable-item movable-item component"
+         data-orderable-item-order-value="<%= index %>"
+         data-movable-items-target="movableItem"
+         data-orderable-items-target="orderableItem"
+         data-action="movable-item:move->orderable-items#reorder orderable-item:orderUpdated->component#update">
     <div class="fb-editable govuk-!-margin-top-8"
          id="<%= component.id %>"
          data-fb-content-type="<%= component.type %>"
@@ -23,10 +34,7 @@
          data-fb-content-data="<%= component.to_json %>"
          data-fb-default-value="<%= default_title(component.type) %>"
          data-fb-default-item-value="<%= default_item_title(component.type) %>"
-         data-questions-target="question"
-         data-controller="question"
-         data-question-index-value="<%= index %>"
-         data-question-content-value="<%= component.to_json %>">
+         data-component-target="question">
 
          <%= render partial: component, locals: {
            f: f,
@@ -39,6 +47,7 @@
            )
          }
        %>
+    </div>
     </div>
   <% end %>
 <% end %>
