@@ -176,7 +176,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
     context 'answer is valid' do
       it 'redirects to resume progress if versions match' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(saved_form)
-        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(version_id:))
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).at_least(1).and_return(OpenStruct.new(version_id:))
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:invalidate_record).with(uuid)
 
         post '/resume_forms', params: { resume_form: { uuid:, secret_answer: } }
@@ -186,7 +186,7 @@ RSpec.describe 'Save and Return Controller Requests', type: :request do
 
       it 'redirects to resume from start if versions do not match' do
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:get_saved_progress).with(uuid).and_return(saved_form)
-        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).and_return(OpenStruct.new(version_id: 'something else'))
+        expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:service).at_least(1).and_return(OpenStruct.new(version_id: 'something else'))
         expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:invalidate_record).with(uuid)
 
         post '/resume_forms', params: { resume_form: { uuid:, secret_answer: } }
