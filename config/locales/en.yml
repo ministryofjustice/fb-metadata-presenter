@@ -121,6 +121,8 @@ en:
           heading: '%{service_name}'
           content_1: 'You have successfully retrieved your saved information.'
           content_2: 'Here are the answers you have provided so far.'
+    header:
+      skip: Skip to main content
     footer:
       cookies:
         heading: "Cookies"
@@ -174,6 +176,11 @@ en:
           - "[date when you performed your basic accessibility check]"
           - "[insert team or organisation here]"
         url: 'accessibility'
+      copyright: © Crown copyright
+      license_html: |
+        All content is available under the
+        <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, 
+        except where otherwise stated
 
   activemodel:
     attributes:
