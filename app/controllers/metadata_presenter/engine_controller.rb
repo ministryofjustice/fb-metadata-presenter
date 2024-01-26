@@ -50,6 +50,10 @@ module MetadataPresenter
     end
 
     def back_link
+      if use_external_start_page? && first_page?
+        return external_start_page_url
+      end
+
       previous_page = PreviousPage.new(
         service:,
         user_data: load_user_data,

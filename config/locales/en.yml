@@ -17,6 +17,10 @@ en:
       rejected: rejected
       confirmation: You've %{action} analytics cookies.
       hide: Hide this message
+    external_start_page_info:
+      important: 'Important'
+      content: "Your form has a %{href}. Links to your form's 'home' page, such as your form's name in the header, will not work until the GOV.UK page has been published."
+      link_text: 'GOV.UK start page'
     maintenance:
       maintenance_page_heading: 'Sorry, this form is unavailable'
       maintenance_page_content: "If you were in the middle of completing the form, your data has not been saved.\r\n\r\nThe form will be available again from 9am on Monday 19 November 2018.\r\n\r\n\r\n\r\n### Other ways to apply\r\n\r\nContact us if your application is urgent \r\n\r\nEmail:  \r\nTelephone:  \r\nMonday to Friday, 9am to 5pm  \r\n[Find out about call charges](https://www.gov.uk/call-charges)"

@@ -66,4 +66,15 @@ class ApplicationController < ActionController::Base
 
   def is_confirmation_email_question?(component_id); end
   helper_method :is_confirmation_email_question?
+
+  def use_external_start_page?; end
+  helper_method :use_external_start_page?
+
+  def external_start_page_url; end
+  helper_method :external_start_page_url
+
+  def first_page?
+    @page.url == @service.pages[1].url
+  end
+  helper_method :first_page?
 end
