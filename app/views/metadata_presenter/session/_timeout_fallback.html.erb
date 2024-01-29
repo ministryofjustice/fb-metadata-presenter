@@ -1,7 +1,7 @@
 <div class="govuk-warning-text govuk-timeout-warning-fallback">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">Warning</span>
+    <span class="govuk-warning-text__assistive"><%= t('presenter.notification_banners.warning') %></span>
     <%= t('presenter.session_timeout_warning.timer_fallback', expiry_time: timeout_fallback(session_expiry_time)) %>
   </strong>
 </div>

@@ -7,6 +7,9 @@ en:
       submit: Submit
       upload_options: Upload options
       change_html: Change <span class="govuk-visually-hidden">your answer for %{question}</span>
+    notification_banners:
+      important: Important
+      warning: Warning
     analytics:
       heading: Cookies on %{service_name}
       body_1: We use some essential cookies to make this service work.
@@ -19,7 +22,6 @@ en:
         rejected: You've rejected analytics cookies.
       hide: Hide this message
     external_start_page_info:
-      important: 'Important'
       content: "Your form has a %{href}. Links to your form's 'home' page, such as your form's name in the header, will not work until the GOV.UK page has been published."
       link_text: 'GOV.UK start page'
     maintenance:
@@ -48,6 +50,8 @@ en:
       email_disclaimer_email_question: 'We will use this address to send you a confirmation email with a copy of your answers.'
       email_basic_disclaimer_html: 'We will send a confirmation email with a copy of these answers to %{email_provided}'
     questions:
+      upload:
+        remove_file: Remove file
       multiupload:
         remove_file: 'Delete'
         add_another: 'Add another file'
@@ -124,6 +128,7 @@ en:
           content_2: 'Here are the answers you have provided so far.'
     header:
       skip: Skip to main content
+      govuk_url: 'https://www.gov.uk'
     footer:
       cookies:
         heading: "Cookies"

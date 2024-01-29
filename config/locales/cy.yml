@@ -16,6 +16,9 @@ cy:
       submit: (cy) Submit
       upload_options: (cy) Upload options
       change_html: (cy) Change <span class="govuk-visually-hidden">your answer for %{question}</span>
+    notification_banners:
+      important: (cy) Important
+      warning: (cy) Warning
     analytics:
       heading: (cy) Cookies on %{service_name}
       body_1: (cy) We use some essential cookies to make this service work.
@@ -28,7 +31,6 @@ cy:
         rejected: (cy) You've rejected analytics cookies.
       hide: (cy) Hide this message
     external_start_page_info:
-      important: (cy) Important
       content: (cy) Your form has a %{href}. Links to your form's 'home' page, such as your form's name in the header, will not work until the GOV.UK page has been published.
       link_text: (cy) GOV.UK start page
     maintenance:
@@ -57,6 +59,8 @@ cy:
       email_disclaimer_email_question: '(cy) We will use this address to send you a confirmation email with a copy of your answers.'
       email_basic_disclaimer_html: '(cy) We will send a confirmation email with a copy of these answers to %{email_provided}'
     questions:
+      upload:
+        remove_file: (cy) Remove file
       multiupload:
         remove_file: '(cy) Delete'
         add_another: '(cy) Add another file'
@@ -133,6 +137,7 @@ cy:
           content_2: '(cy) Here are the answers you have provided so far.'
     header:
       skip: Neidio i’r prif gynnwys
+      govuk_url: 'https://www.gov.uk/cymraeg'
     footer:
       cookies:
         heading: Cwcis
