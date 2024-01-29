@@ -5,6 +5,7 @@ module MetadataPresenter
     helper MetadataPresenter::ApplicationHelper
     default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
+    around_action :switch_locale
     before_action :show_maintenance_page
 
     def reload_user_data
@@ -135,6 +136,12 @@ module MetadataPresenter
 
     def internal_server_error
       render template: 'errors/500', status: :internal_server_error
+    end
+
+    def switch_locale(&action)
+      I18n.with_locale(
+        service.metadata&.[]('locale') || I18n.default_locale, &action
+      )
     end
 
     def redirect_to_page(url)

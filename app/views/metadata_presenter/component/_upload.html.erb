@@ -6,7 +6,7 @@
   <p><%= @page_answers.send(component.id)['original_filename'] %></p>
 
   <p>
-    <%= link_to 'Remove file', remove_file_path(component.id), class: 'govuk-link' %>
+    <%= link_to t('presenter.questions.upload.remove_file'), remove_file_path(component.id), class: 'govuk-link' %>
   </p>
 <% else %>
   <%= f.govuk_file_field component.id.to_sym,

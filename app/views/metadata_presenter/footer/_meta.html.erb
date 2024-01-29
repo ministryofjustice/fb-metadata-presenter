@@ -2,7 +2,9 @@
 <ul class="govuk-footer__inline-list">
 <% service.meta.items.each do |item| %>
   <li class="govuk-footer__inline-list-item">
-    <a class="govuk-footer__link" href=<%= external_or_relative_link(item.href) %>><%= item.text %></a>
+    <a class="govuk-footer__link" href=<%= external_or_relative_link(item.href) %>>
+      <%= t(item._id, scope: [:presenter, :meta], default: item.text) %>
+    </a>
   </li>
 <% end %>
 </ul>

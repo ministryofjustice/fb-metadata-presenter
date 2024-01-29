@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= I18n.locale %>" class="govuk-template">
   <head>
     <meta charset="utf-8">
     <title><%= service.service_name %></title>
@@ -42,7 +42,7 @@
       <div class="govuk-width-container govuk-body-m">
         <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
           <% if back_link.present? %>
-            <a class="govuk-back-link" href="<%= back_link %>">Back</a>
+            <a class="govuk-back-link" href="<%= back_link %>"><%= t('presenter.back') %></a>
           <% end %>
           <% if !allowed_page? %>
             <%= render partial: 'metadata_presenter/session/timeout_fallback' %>
