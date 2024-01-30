@@ -2,5 +2,6 @@
   "_id": "error.number",
   "_type": "string.error",
   "description": "Input (number) is not a number",
-  "value": "Enter a number for \"%{control}\""
+  "value:en": "Enter a number for \"%{control}\"",
+  "value:cy": "(cy) Enter a number for \"%{control}\""
 }

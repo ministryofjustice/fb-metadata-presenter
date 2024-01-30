@@ -2,5 +2,6 @@
   "_id": "error.multiupload",
   "_type": "string.error",
   "description": "Cannot upload files with duplicate filenames",
-  "value": "The selected file cannot have the same name as a file you have already selected. Please check you aren't uploading the same file again."
+  "value:en": "The selected file cannot have the same name as a file you have already selected. Please check you aren't uploading the same file again.",
+  "value:cy": "(cy) The selected file cannot have the same name as a file you have already selected. Please check you aren't uploading the same file again."
 }

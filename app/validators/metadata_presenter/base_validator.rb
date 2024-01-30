@@ -68,7 +68,7 @@ module MetadataPresenter
 
     # The default error message will be look using the schema key.
     # Assuming the schema key is 'grogu' then the default message
-    # will look for 'error.grogu.value'.
+    # will look for 'error.grogu.value:en' or 'error.grogu.value:cy'.
     #
     # @return [String] returns the default error message
     # @raise [MetadataPresenter::NoDefaultMessage] raises no default message if
@@ -80,9 +80,9 @@ module MetadataPresenter
                              .default_metadata[default_error_message_key]
 
       if default_message.present?
-        default_message['value'] % error_message_hash.merge(params)
+        default_message[error_key] % error_message_hash.merge(params)
       else
-        raise NoDefaultMessage, "No default message found for key '#{default_error_message_key}'."
+        raise NoDefaultMessage, "No default '#{error_key}' message found for key '#{default_error_message_key}'."
       end
     end
 
@@ -104,6 +104,16 @@ module MetadataPresenter
     #
     def schema_key
       @schema_key ||= self.class.name.demodulize.gsub('Validator', '').underscore
+    end
+
+    # The key to use when retrieving localised error messages.
+    # This key will be `value:locale` i.e. `value:en` for English or
+    # `value:cy` for Welsh.
+    #
+    # @return [String] value key to be looked in the default error metadata
+    #
+    def error_key
+      @error_key ||= ['value', I18n.locale].join(':').freeze
     end
 
     # Error message hash that will be interpolate with the custom message or

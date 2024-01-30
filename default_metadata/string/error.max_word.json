@@ -2,5 +2,6 @@
   "_id": "error.max_word",
   "_type": "string.error",
   "description": "Input (number) is higher than the maximum number of words allowed",
-  "value": "Your answer for \"%{control}\" must be %{max_word} words or fewer"
+  "value:en": "Your answer for \"%{control}\" must be %{max_word} words or fewer",
+  "value:cy": "(cy) Your answer for \"%{control}\" must be %{max_word} words or fewer"
 }

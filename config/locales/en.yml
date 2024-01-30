@@ -7,6 +7,8 @@ en:
       submit: Submit
       upload_options: Upload options
       change_html: Change <span class="govuk-visually-hidden">your answer for %{question}</span>
+    errors:
+      summary_heading: There is a problem
     notification_banners:
       important: Important
       warning: Warning
@@ -189,7 +191,13 @@ en:
         except where otherwise stated
 
   activemodel:
+    errors:
+      messages:
+        blank: 'Enter an answer for "%{attribute}"'
     attributes:
+      metadata_presenter/saved_form:
+        secret_question: Secret question
+        secret_answer: Secret answer
       metadata_presenter/address_fieldset:
         address_line_one: Address line 1
         address_line_two: Address line 2 (optional)

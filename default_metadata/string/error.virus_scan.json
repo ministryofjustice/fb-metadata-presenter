@@ -2,6 +2,6 @@
   "_id": "error.virus_scan",
   "_type": "string.error",
   "description": "File uploaded contains virus",
-  "value": "\"%{control}\" was not uploaded successfully because it contains a virus"
+  "value:en": "\"%{control}\" was not uploaded successfully because it contains a virus",
+  "value:cy": "(cy) \"%{control}\" was not uploaded successfully because it contains a virus"
 }
-

@@ -16,6 +16,8 @@ cy:
       submit: (cy) Submit
       upload_options: (cy) Upload options
       change_html: (cy) Change <span class="govuk-visually-hidden">your answer for %{question}</span>
+    errors:
+      summary_heading: Mae yna broblem
     notification_banners:
       important: (cy) Important
       warning: (cy) Warning
@@ -159,7 +161,13 @@ cy:
         meta--link--3: Hygyrchedd
 
   activemodel:
+    errors:
+      messages:
+        blank: 'Rhowch ateb i "%{attribute}"'
     attributes:
+      metadata_presenter/saved_form:
+        secret_question: (cy) Secret question
+        secret_answer: (cy) Secret answer
       metadata_presenter/address_fieldset:
         address_line_one: (cy) Address line 1
         address_line_two: (cy) Address line 2 (optional)

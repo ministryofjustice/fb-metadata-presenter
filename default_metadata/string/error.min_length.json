@@ -2,5 +2,6 @@
   "_id": "error.min_length",
   "_type": "string.error",
   "description": "Input (string) is too short",
-  "value": "Your answer for \"%{control}\" must be %{min_length} characters or more"
+  "value:en": "Your answer for \"%{control}\" must be %{min_length} characters or more",
+  "value:cy": "(cy) Your answer for \"%{control}\" must be %{min_length} characters or more"
 }

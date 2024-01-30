@@ -3,7 +3,7 @@
     <div class="govuk-grid-column-two-thirds">
       <a class="govuk-back-link" href="<%= :back %>"><%= t('presenter.back') %></a>
       <%= form_for @email_confirmation do |f| %>
-        <%= f.govuk_error_summary %>
+        <%= f.govuk_error_summary(t('presenter.errors.summary_heading')) %>
         <div class="govuk-form-group">
           <%=
           f.govuk_email_field :email_confirmation,
