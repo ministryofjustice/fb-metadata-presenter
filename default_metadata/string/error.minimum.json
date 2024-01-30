@@ -2,5 +2,6 @@
   "_id": "error.minimum",
   "_type": "string.error",
   "description": "Input (number) is lower than the minimum allowed",
-  "value": "Your answer for \"%{control}\" must be %{minimum} or higher"
+  "value:en": "Your answer for \"%{control}\" must be %{minimum} or higher",
+  "value:cy": "(cy) Your answer for \"%{control}\" must be %{minimum} or higher"
 }

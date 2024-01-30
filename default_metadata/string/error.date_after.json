@@ -2,5 +2,6 @@
   "_id": "error.date_after",
   "_type": "string.error",
   "description": "Input (date) is earlier than allowed",
-  "value": "Your answer for \"%{control}\" must be %{date_after} or later"
+  "value:en": "Your answer for \"%{control}\" must be %{date_after} or later",
+  "value:cy": "(cy) Your answer for \"%{control}\" must be %{date_after} or later"
 }

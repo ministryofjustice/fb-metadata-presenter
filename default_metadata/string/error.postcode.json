@@ -2,5 +2,6 @@
   "_id": "error.postcode",
   "_type": "string.error",
   "description": "Postcode format is not valid",
-  "value": "Enter a valid UK postcode for \"%{control}\""
+  "value:en": "Enter a valid UK postcode for \"%{control}\"",
+  "value:cy": "(cy) Enter a valid UK postcode for \"%{control}\""
 }

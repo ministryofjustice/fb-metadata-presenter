@@ -2,5 +2,6 @@
   "_id": "error.autocomplete",
   "_type": "string.error",
   "description": "Autocomplete item is not on the list",
-  "value": "Select an option from the list"
+  "value:en": "Select an option from the list",
+  "value:cy": "(cy) Select an option from the list"
 }

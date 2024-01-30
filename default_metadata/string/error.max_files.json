@@ -2,5 +2,6 @@
   "_id": "error.max_files",
   "_type": "string.error",
   "description": "Input (number) is larger than the maximum allowed",
-  "value": "Your answer for \"%{control}\" must be %{maximum} or lower"
+  "value:en": "Your answer for \"%{control}\" must be %{maximum} or lower",
+  "value:cy": "(cy) Your answer for \"%{control}\" must be %{maximum} or lower"
 }

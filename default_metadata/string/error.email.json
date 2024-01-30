@@ -2,5 +2,6 @@
   "_id": "error.email",
   "_type": "string.error",
   "description": "Input (email) is not a valid email",
-  "value": "Enter an email address in the correct format, like name@example.com"
+  "value:en": "Enter an email address in the correct format, like name@example.com",
+  "value:cy": "(cy) Enter an email address in the correct format, like name@example.com"
 }

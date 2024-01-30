@@ -2,5 +2,6 @@
   "_id": "error.max_length",
   "_type": "string.error",
   "description": "Input (string) is too long",
-  "value": "Your answer for \"%{control}\" must be %{max_length} characters or fewer"
+  "value:en": "Your answer for \"%{control}\" must be %{max_length} characters or fewer",
+  "value:cy": "(cy) Your answer for \"%{control}\" must be %{max_length} characters or fewer"
 }

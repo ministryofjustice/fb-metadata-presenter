@@ -2,5 +2,6 @@
   "_id": "error.catch_all",
   "_type": "string.error",
   "description": "A generic validation error not handled by a more concrete validator",
-  "value": "We could not save your answer, please try again"
+  "value:en": "We could not save your answer, please try again",
+  "value:cy": "(cy) We could not save your answer, please try again"
 }

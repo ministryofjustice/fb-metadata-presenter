@@ -6,8 +6,10 @@ RSpec.describe MetadataPresenter::RequiredValidator do
   let(:page_answers) { MetadataPresenter::PageAnswers.new(page, answers) }
 
   describe '#valid?' do
+    let(:locale) { :en }
+
     before do
-      validator.valid?
+      I18n.with_locale(locale) { validator.valid? }
     end
 
     context 'when there is required validations on the metadata' do
@@ -60,6 +62,22 @@ RSpec.describe MetadataPresenter::RequiredValidator do
               ['Enter a parent name']
             )
           end
+        end
+      end
+
+      context 'when locale is welsh' do
+        let(:page) { service.find_page_by_url('/name') }
+        let(:answers) { {} }
+        let(:locale) { :cy }
+
+        it 'is invalid' do
+          expect(validator).to_not be_valid
+        end
+
+        it 'sets welsh error message on page' do
+          expect(page_answers.errors.full_messages).to eq(
+            ['Rhowch ateb i "Full name"']
+          )
         end
       end
 
@@ -116,6 +134,17 @@ RSpec.describe MetadataPresenter::RequiredValidator do
           it 'returns valid' do
             expect(validator).to be_valid
           end
+        end
+      end
+
+      context 'when component is an address' do
+        let(:page) { service.find_page_by_url('/postal-address') }
+        let(:answers) { { 'postal-address_address_1' => {} } }
+
+        # NOTE: required fields validation performed in separate `AddressValidator`
+        # For an address component this validator is always successful
+        it 'is valid' do
+          expect(validator).to be_valid
         end
       end
     end
