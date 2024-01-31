@@ -15,7 +15,8 @@
     </editable-content>
   <% end %>
 
-  <% unless component.type == 'content' %>
+  <% unless ['content','multiupload'].include?(component.type) %>
+
     <div class="fb-editable govuk-!-margin-top-8"
          id="<%= component.id %>"
          data-fb-content-type="<%= component.type %>"
