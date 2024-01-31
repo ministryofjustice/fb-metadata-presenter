@@ -27,7 +27,7 @@
                     editable? ? '#' : page_answers_presenter.url,
                     class: 'govuk-link'
                   ) do %>
-                    Change<span class="govuk-visually-hidden"> Your answer for <%= page_answers_presenter.humanised_title %></span>
+                    <%= t('presenter.actions.change_html', question: page_answers_presenter.humanised_title) %>
                   <% end %>
                 </dd>
               </div>

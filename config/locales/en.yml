@@ -6,7 +6,7 @@ en:
       continue: Continue
       submit: Submit
       upload_options: Upload options
-      change_html: Change <span class="govuk-visually-hidden">your answer for %{question}</span>
+      change_html: Change <span class="govuk-visually-hidden">Your answer for %{question}</span>
     errors:
       summary_heading: There is a problem
     notification_banners:
@@ -184,6 +184,11 @@ en:
           - "[date when you performed your basic accessibility check]"
           - "[insert team or organisation here]"
         url: 'accessibility'
+    meta:
+      config:
+        meta--link: Cookies
+        meta--link--2: Privacy
+        meta--link--3: Accessibility
       copyright: © Crown copyright
       license_html: |
         All content is available under the
