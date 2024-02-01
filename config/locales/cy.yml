@@ -139,6 +139,8 @@ cy:
           heading: '(cy) %{service_name}'
           content_1: '(cy) You have successfully retrieved your saved information.'
           content_2: '(cy) Here are the answers you have provided so far.'
+      confirmation_email:
+        subject: "(cy) Your saved form - '%{service_name}'"
     header:
       skip: Neidio i’r prif gynnwys
       govuk_url: 'https://www.gov.uk/cymraeg'

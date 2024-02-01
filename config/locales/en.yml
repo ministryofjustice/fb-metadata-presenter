@@ -130,6 +130,8 @@ en:
           heading: '%{service_name}'
           content_1: 'You have successfully retrieved your saved information.'
           content_2: 'Here are the answers you have provided so far.'
+      confirmation_email:
+        subject: "Your saved form - '%{service_name}'"
     header:
       skip: Skip to main content
       govuk_url: 'https://www.gov.uk'
