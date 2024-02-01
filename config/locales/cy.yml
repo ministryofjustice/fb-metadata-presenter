@@ -60,6 +60,8 @@ cy:
       application_complete: '(cy) Application complete'
       email_disclaimer_email_question: '(cy) We will use this address to send you a confirmation email with a copy of your answers.'
       email_basic_disclaimer_html: '(cy) We will send a confirmation email with a copy of these answers to %{email_provided}'
+    confirmation_email:
+      table_heading: (cy) Your answers
     questions:
       upload:
         remove_file: (cy) Remove file
