@@ -141,6 +141,7 @@ cy:
           content_2: '(cy) Here are the answers you have provided so far.'
       confirmation_email:
         subject: "(cy) Your saved form - '%{service_name}'"
+        body: "(cy) You have saved your progress with the form '%{service_name}'.<br /><br /><a href=%{magic_link}>Continue with your form</a><br /><br />This link will only work once. If you want to save your progress again after resuming the form, you will need to repeat the save process and generate another link.<br /><br />The link is valid for 28 days. After that time, your saved information will be deleted."
     header:
       skip: Neidio i’r prif gynnwys
       govuk_url: 'https://www.gov.uk/cymraeg'
