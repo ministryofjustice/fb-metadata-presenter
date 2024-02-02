@@ -22,6 +22,6 @@ Rails.application.config.supported_components =
     },
     singlequestion: {
       input: %w(text textarea number date address radios checkboxes email upload multiupload autocomplete),
-      content: %w()
+      content: %w(content)
      }
   })
