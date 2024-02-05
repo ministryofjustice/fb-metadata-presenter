@@ -27,6 +27,7 @@
   "surplus_properties": [
     "heading",
     "lede",
-    "body"
+    "body",
+    "content"
   ]
 }
