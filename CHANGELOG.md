@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.11] - 2024-02-06
+### Added
+- Initial support for locales other than english in preparation for Welsh translation. A future gem version will update the `cy.yml` with the actual translations.
+
 ## [3.3.10] - 2024-01-26
 ### Added
 - External start page release. If a form is configured to use an external start page, the static start page will by pypassed using a redirect to the first question. The header link and back links will also be updated to use that external start page URL.
