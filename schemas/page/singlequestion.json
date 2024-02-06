@@ -9,10 +9,10 @@
       "const": "page.singlequestion"
     },
     "components": {
-      "maxItems": 3,
+      "maxItems": 2,
       "accepts": [
         "control",
-        "component"
+        "content"
       ]
     }
   },
