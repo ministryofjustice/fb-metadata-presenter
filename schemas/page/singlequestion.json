@@ -9,22 +9,11 @@
       "const": "page.singlequestion"
     },
     "components": {
-      "anyOf": [
-        {
-          "title": "Components",
-          "description": "The form or content elements used on the page",
-          "type": "array",
-          "items": {
-            "$ref": "component.content"
-          }
-        },
-        {
-          "maxItems": 1,
+          "maxItems": 2,
           "accepts": [
-            "control"
+            "control",
+            "components"
            ]
-        }
-      ]
     }
   },
   "allOf": [
