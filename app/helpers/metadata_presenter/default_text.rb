@@ -1,7 +1,13 @@
 module MetadataPresenter
   class DefaultText
-    def self.[](property)
-      Rails.application.config.default_text[property.to_s]
+    class << self
+      delegate :[], :key?, to: :defaults
+
+      private
+
+      def defaults
+        Rails.application.config.default_text
+      end
     end
   end
 end
