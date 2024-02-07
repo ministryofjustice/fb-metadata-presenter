@@ -1,4 +1,6 @@
 class MetadataPresenter::Component < MetadataPresenter::Metadata
+  include Comparable
+
   VALIDATION_BUNDLES = {
     'date' => 'date',
     'number' => 'number',
@@ -10,6 +12,13 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
   # Used for max_length and max_word validations.
   # Threshold percentage at which the remaining count is shown
   VALIDATION_STRING_LENGTH_THRESHOLD = 75
+
+  def <=>(other)
+    return nil unless other.is_a?(MetadataPresenter::Component)
+    return 0 unless order
+
+    order <=> other.order
+  end
 
   # Overriding here because autocomplete component's items property is non interactable
   # in the Editor therefore it does not need to exist in the data-fb-content-data

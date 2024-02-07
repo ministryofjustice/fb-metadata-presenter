@@ -425,7 +425,8 @@
           "collection": "components",
           "validation": {
             "required": true
-          }
+          },
+          "order": 2
         },
         {
           "_id": "star-wars-knowledge_content_1",
@@ -433,7 +434,8 @@
           "_type": "content",
           "_uuid": "82444d3d-dab6-44c4-a147-e2650326c9eb",
           "content": "Stay on target",
-          "collection": "components"
+          "collection": "components",
+          "order": 1
         },
         {
           "_id": "star-wars-knowledge_radios_1",
@@ -493,7 +495,8 @@
           "collection": "components",
           "validation": {
             "required": true
-          }
+          },
+          "order": 0
         }
       ],
       "add_component": "radios",
@@ -528,7 +531,7 @@
       "heading": "Question",
       "components": [
         {
-          "_id":  "dog-picture_upload_1",
+          "_id": "dog-picture_upload_1",
           "name": "dog-picture_upload_1",
           "_type": "upload",
           "_uuid": "f056a76e-ec3f-47ae-b625-1bba92220ad1",
@@ -594,7 +597,7 @@
       "heading": "Multiupload",
       "components": [
         {
-          "_id":  "dog-picture_upload_2",
+          "_id": "dog-picture_upload_2",
           "name": "dog-picture_upload_2",
           "_type": "multiupload",
           "_uuid": "f056a76e-ec3f-47ae-b625-1bba92220ad2",
@@ -668,10 +671,8 @@
           "name": "countries_autocomplete_1",
           "_type": "autocomplete",
           "_uuid": "4dc23b9c-9757-4526-813d-b43efbe07dad",
-          "items": [
-          ],
-          "errors": {
-          },
+          "items": [],
+          "errors": {},
           "legend": "Countries",
           "validation": {
             "required": true,
