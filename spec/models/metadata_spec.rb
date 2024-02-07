@@ -21,10 +21,36 @@ RSpec.describe MetadataPresenter::Metadata do
     end
 
     context 'when there is no default text for an empty property' do
-      let(:meta) { { 'nope' => '' } }
+      context 'for an empty string' do
+        let(:meta) { { 'nope' => '' } }
 
-      it 'should be nil' do
-        expect(metadata.nope).to be_nil
+        it 'should present back the empty string' do
+          expect(metadata.nope).to eq('')
+        end
+      end
+
+      context 'for an empty hash' do
+        let(:meta) { { 'nope' => {} } }
+
+        it 'should present back the empty hash' do
+          expect(metadata.nope).to eq({})
+        end
+      end
+
+      context 'for an empty array' do
+        let(:meta) { { 'nope' => [] } }
+
+        it 'should present back the empty array' do
+          expect(metadata.nope).to eq([])
+        end
+      end
+
+      context 'for a nil value' do
+        let(:meta) { { 'nope' => nil } }
+
+        it 'should present back the nil value' do
+          expect(metadata.nope).to be_nil
+        end
       end
     end
   end
