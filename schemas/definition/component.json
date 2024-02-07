@@ -2,6 +2,13 @@
   "$id": "http://gov.uk/schema/v1.0.0/definition/component",
   "_name": "definition.component",
   "title": "Component definition",
+  "properties": {
+    "order": {
+      "title": "Order",
+      "description": "Used to order components within a page",
+      "type": "integer"
+    }
+  },
   "allOf": [
     {
       "$ref": "definition.block"

@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.12] - 2024-01-29
+### Added
+ - Added schema definitions for order property to component.json to allow for ordering of components on multiquestion pages.
+
 ## [3.3.11] - 2024-02-06
 ### Added
 - Initial support for locales other than english in preparation for Welsh translation. A future gem version will update the `cy.yml` with the actual translations.
