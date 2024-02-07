@@ -57,6 +57,7 @@ en:
       upload:
         remove_file: Remove file
       multiupload:
+        upload_file: 'Upload a file'
         remove_file: 'Delete'
         add_another: 'Add another file'
         single_upload: 'Maximum file size 7MB'

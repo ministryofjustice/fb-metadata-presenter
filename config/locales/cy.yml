@@ -66,6 +66,7 @@ cy:
       upload:
         remove_file: (cy) Remove file
       multiupload:
+        upload_file: '(cy) Upload a file'
         remove_file: '(cy) Delete'
         add_another: '(cy) Add another file'
         single_upload: '(cy) Maximum file size 7MB'
