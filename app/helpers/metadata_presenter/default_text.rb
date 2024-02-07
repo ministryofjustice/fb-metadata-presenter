@@ -1,7 +1,7 @@
 module MetadataPresenter
   class DefaultText
     class << self
-      delegate :[], :key?, to: :defaults
+      delegate :[], :fetch, to: :defaults
 
       private
 

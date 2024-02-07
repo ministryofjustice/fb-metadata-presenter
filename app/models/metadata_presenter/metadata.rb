@@ -31,7 +31,7 @@ class MetadataPresenter::Metadata
 
   def method_missing(method_name, *args, &block)
     value = metadata.send(method_name, *args, &block)
-    value.blank? && editor? && has_default?(method_name) ? MetadataPresenter::DefaultText[method_name] : value
+    value.blank? && editor? ? MetadataPresenter::DefaultText.fetch(method_name, value) : value
   end
 
   def ==(other)
@@ -40,9 +40,5 @@ class MetadataPresenter::Metadata
 
   def editor?
     @editor.present?
-  end
-
-  def has_default?(key)
-    MetadataPresenter::DefaultText.key?(key)
   end
 end
