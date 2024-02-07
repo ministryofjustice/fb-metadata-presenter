@@ -7,7 +7,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [3.3.12] - 2024-01-29
+## [3.3.13] - 2024-02-07
+### Fixed
+- When inquiring metadata attributes in the editor, return the original value (even if is empty or nil) 
+  unless there is a default value for it set in `Rails.application.config.default_text`. This fixes an edge case 
+  where some old forms would have a `validation` attribute with empty hash value.
+
+## [3.3.12] - 2024-02-07
 ### Added
  - Added schema definitions for order property to component.json to allow for ordering of components on multiquestion pages.
 
