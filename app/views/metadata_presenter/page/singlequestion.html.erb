@@ -12,21 +12,19 @@
         <%= f.govuk_error_summary(t('presenter.errors.summary_heading')) %>
 <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
         <% @page.components.each_with_index do |component, index| %>
-              <% unless component._type == 'content' %>
-                <div class="fb-editable"
-                     data-fb-content-type="<%= component._type %>"
-                     data-fb-content-id="<%= "page[components[#{index}]]" %>"
-                     data-fb-content-data="<%= component.to_json %>"
-                     data-fb-default-value="<%= default_title(component.type) %>"
-                     data-fb-default-item-value="<%= default_item_title(component.type) %>">
-                  <%= render partial: component, locals: {
-                    component: component,
-                    f: f,
-                    input_title: main_title(component: component) }
-                  %>
-                </div>
-            <% end %>
-      <% end %>
+          <div class="fb-editable"
+               data-fb-content-type="<%= component._type %>"
+               data-fb-content-id="<%= "page[components[#{index}]]" %>"
+               data-fb-content-data="<%= component.to_json %>"
+               data-fb-default-value="<%= default_title(component.type) %>"
+               data-fb-default-item-value="<%= default_item_title(component.type) %>">
+            <%= render partial: component, locals: {
+              component: component,
+              f: f,
+              input_title: main_title(component: component) }
+            %>
+          </div>
+        <% end %>
 
         <div class="govuk-button-group">
           <%= f.govuk_submit(t('presenter.actions.continue'), disabled: editable?) %>
