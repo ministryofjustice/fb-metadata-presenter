@@ -181,12 +181,12 @@ module MetadataPresenter
     end
 
     def to_components(node_components, collection:)
-      Array(node_components).map do |component|
+      Array(node_components).map { |component|
         MetadataPresenter::Component.new(
           component.merge(collection:),
           editor: editor?
         )
-      end
+      }.sort
     end
 
     def supported_components(page_type)

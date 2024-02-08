@@ -52,7 +52,7 @@ RSpec.describe MetadataPresenter::Page do
 
   describe '#input_components' do
     let(:page) { service.find_page_by_url('star-wars-knowledge') }
-    let(:expected_component_ids) { %w[star-wars-knowledge_text_1 star-wars-knowledge_radios_1] }
+    let(:expected_component_ids) { %w[star-wars-knowledge_radios_1 star-wars-knowledge_text_1] }
 
     it 'returns an array of only components that take user input' do
       component_ids = page.input_components.map(&:id)

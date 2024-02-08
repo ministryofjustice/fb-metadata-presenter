@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.14] - 2024-02-08
+### Added
+ - Added `Comparable` module to `Component` class to enable sorting of components based on the `order` property.
+
 ## [3.3.13] - 2024-02-07
 ### Fixed
 - When inquiring metadata attributes in the editor, return the original value (even if is empty or nil) 
