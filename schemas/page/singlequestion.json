@@ -9,10 +9,9 @@
       "const": "page.singlequestion"
     },
     "components": {
-          "maxItems": 2,
+          "maxItems": 1,
           "accepts": [
-            "control",
-            "components"
+            "control"
            ]
     }
   },
@@ -27,7 +26,6 @@
   ],
   "surplus_properties": [
     "heading",
-    "lede",
-    "body"
+    "lede"
   ]
 }

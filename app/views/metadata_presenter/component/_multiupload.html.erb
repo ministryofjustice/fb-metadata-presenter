@@ -1,16 +1,5 @@
 <legend class="govuk-heading-xl"><%= input_title %></legend>
-
-<%= render partial: 'metadata_presenter/component/components', locals: {
-  f: f,
-  components: @page.components,
-  tag: :h2,
-  classes: 'govuk-heading-m',
-  input_components: [],
-  content_components: ["content"]
-}
-%>
-
-<br>
+<%= render 'metadata_presenter/attribute/body' %>
 <b><%= t('presenter.questions.multiupload.upload_file') %></b>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
