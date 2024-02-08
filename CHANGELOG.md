@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.15] - 2024-02-08
+### Added
+- Added a content area for the upload component.
+
 ## [3.3.14] - 2024-02-08
 ### Added
  - Added `Comparable` module to `Component` class to enable sorting of components based on the `order` property.
