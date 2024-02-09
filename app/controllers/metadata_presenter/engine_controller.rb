@@ -124,6 +124,12 @@ module MetadataPresenter
       ENV['MAINTENANCE_MODE'].present? && ENV['MAINTENANCE_MODE'] == '1'
     end
 
+    def session_authorised?
+      return true if ENV['BASIC_AUTH_USER'].blank? || ENV['BASIC_AUTH_PASS'].blank?
+
+      !!session[:authorised]
+    end
+
     def external_or_relative_link(link)
       uri = URI.parse(link)
       return link if uri.scheme.present? && uri.host.present?
