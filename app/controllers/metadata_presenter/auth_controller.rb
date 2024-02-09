@@ -12,7 +12,7 @@ module MetadataPresenter
       if @auth_form.invalid?
         render :show
       elsif @auth_form.authorised?
-        session[:authorised] = 1
+        set_authorised_cookie!
         redirect_to root_path
       else
         redirect_to auth_path, flash: { error: :unauthorised }
@@ -31,6 +31,12 @@ module MetadataPresenter
 
     def check_session_is_authorised
       redirect_to root_path if session_authorised?
+    end
+
+    def set_authorised_cookie!
+      cookies.signed[:_fb_authorised] = {
+        value: 1, same_site: :strict, httponly: true
+      }
     end
 
     def auth_params

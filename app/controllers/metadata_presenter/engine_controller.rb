@@ -127,7 +127,7 @@ module MetadataPresenter
     def session_authorised?
       return true if ENV['BASIC_AUTH_USER'].blank? || ENV['BASIC_AUTH_PASS'].blank?
 
-      !!session[:authorised]
+      !!cookies.signed[:_fb_authorised]
     end
 
     def external_or_relative_link(link)
