@@ -130,6 +130,12 @@ module MetadataPresenter
       !!cookies.signed[:_fb_authorised]
     end
 
+    def authorised_session!
+      cookies.signed[:_fb_authorised] = {
+        value: 1, same_site: :strict, httponly: true
+      }
+    end
+
     def external_or_relative_link(link)
       uri = URI.parse(link)
       return link if uri.scheme.present? && uri.host.present?
