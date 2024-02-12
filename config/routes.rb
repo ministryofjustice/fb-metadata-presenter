@@ -12,19 +12,22 @@ MetadataPresenter::Engine.routes.draw do
   get 'session/expired', to: 'session#expired'
   get 'session/complete', to: 'session#complete'
 
+  # save form journey
   get 'save', to: 'save_and_return#show'
   post 'saved_forms', to: 'save_and_return#create'
   get 'save/email_confirmation', to: 'save_and_return#email_confirmation'
   post 'email_confirmations', to: 'save_and_return#confirm_email'
   get 'save/progress_saved', to: 'save_and_return#save_progress'
-  get '/return/:uuid', to: 'save_and_return#return'
-  post 'resume_forms', to: 'save_and_return#submit_secret_answer'
-  get 'record_error', to: 'save_and_return#record_error'
-  get 'record_failure', to: 'save_and_return#record_failure'
-  get 'expired', to: 'save_and_return#record_link_expired'
-  get 'already_used', to: 'save_and_return#record_link_used'
-  get 'resume_from_start', to: 'save_and_return#resume_from_start'
-  get 'resume_progress', to: 'save_and_return#resume_progress'
+
+  # resume form journey
+  get '/return/:uuid', to: 'resume#return'
+  post 'resume_forms', to: 'resume#submit_secret_answer'
+  get 'resume_from_start', to: 'resume#resume_from_start'
+  get 'resume_progress', to: 'resume#resume_progress'
+  get 'record_error', to: 'resume#record_error'
+  get 'record_failure', to: 'resume#record_failure'
+  get 'expired', to: 'resume#record_link_expired'
+  get 'already_used', to: 'resume#record_link_used'
 
   post '/', to: 'answers#create'
   match '*path', to: 'answers#create', via: :post
