@@ -1,30 +1,28 @@
 <% components.each_with_index do |component, index| %>
-
   <% if component.type == 'content' %>
     <% next unless (editable? || @page.show_conditional_component?(component.uuid) || single_page_preview?) %>
-<div data-controller="orderable-item movable-item component"
-         data-orderable-item-order-value="<%= component.order %>"
-         data-movable-items-target="movableItem"
-         data-orderable-items-target="orderableItem"
-         data-action="movable-item:move->orderable-items#reorder orderable-item:orderUpdated->component#update"
-         data-movable-item-moving-class="moving">
- 
-    <editable-content id="<%= component.id %>"
-                      class="fb-editable govuk-!-margin-top-8"
-                      type="<%= component.type %>"
-                      default-content="<%= default_text('content') %>"
-                      content="<%= component.content %>"
-                      data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
-                      data-config="<%= component.to_json %>"
-                      data-conditional-api-path="<%= editable? ? URI.decode_www_form_component(api_service_edit_conditional_content_path(service.service_id, component.uuid)) : '' %>"
-                      data-component-target="content">
-         <%= to_html(component.content) %>
-    </editable-content>
-</div>
-  <% end %>
-
-  <% unless component.type == 'content' %>
-
+        <editable-content id="<%= component.id %>"
+                          class="fb-editable govuk-!-margin-top-8"
+                          type="<%= component.type %>"
+                          default-content="<%= default_text('content') %>"
+                          content="<%= component.content %>"
+                          data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
+                          data-config="<%= component.to_json %>"
+                          data-conditional-api-path="<%= editable? ? URI.decode_www_form_component(api_service_edit_conditional_content_path(service.service_id, component.uuid)) : '' %>"
+                          data-controller="orderable-item movable-item component"
+                          data-orderable-item-order-value="<%= component.order %>"
+                          data-movable-items-target="movableItem"
+                          data-orderable-items-target="orderableItem"
+                          data-action="movable-item:move->orderable-items#reorder 
+                                       movable-item:move->component#focus
+                                       orderable-item:orderUpdated->component#update 
+                                       questionRemove->component#destroy" 
+                          data-movable-item-moving-class="moving">
+              <div class="html">
+                <%= to_html(component.content) %>
+              </div>
+        </editable-content>
+  <% else %>
     <div class="fb-editable govuk-!-margin-top-8"
          id="<%= component.id %>"
          data-fb-content-type="<%= component.type %>"
