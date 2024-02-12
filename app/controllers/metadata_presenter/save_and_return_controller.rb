@@ -1,8 +1,6 @@
-require_relative 'concerns/save_and_return'
-
 module MetadataPresenter
   class SaveAndReturnController < EngineController
-    include MetadataPresenter::SaveAndReturn
+    include Concerns::SaveAndReturn
 
     helper_method :secret_questions, :confirmed_email
 

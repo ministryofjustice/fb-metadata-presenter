@@ -1,8 +1,6 @@
-require_relative 'concerns/save_and_return'
-
 module MetadataPresenter
   class ResumeController < EngineController
-    include MetadataPresenter::SaveAndReturn
+    include Concerns::SaveAndReturn
 
     helper_method :get_service_name, :get_uuid, :pages_presenters
 
