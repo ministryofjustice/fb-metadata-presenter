@@ -3,10 +3,12 @@
   <% if component.type == 'content' %>
     <% next unless (editable? || @page.show_conditional_component?(component.uuid) || single_page_preview?) %>
 <div data-controller="orderable-item movable-item component"
-         data-orderable-item-order-value="<%= index %>"
+         data-orderable-item-order-value="<%= component.order %>"
          data-movable-items-target="movableItem"
          data-orderable-items-target="orderableItem"
-         data-action="movable-item:move->orderable-items#reorder orderable-item:orderUpdated->component#update">
+         data-action="movable-item:move->orderable-items#reorder orderable-item:orderUpdated->component#update"
+         data-movable-item-moving-class="moving">
+ 
     <editable-content id="<%= component.id %>"
                       class="fb-editable govuk-!-margin-top-8"
                       type="<%= component.type %>"
@@ -22,11 +24,7 @@
   <% end %>
 
   <% unless component.type == 'content' %>
-    <div data-controller="orderable-item movable-item component"
-         data-orderable-item-order-value="<%= index %>"
-         data-movable-items-target="movableItem"
-         data-orderable-items-target="orderableItem"
-         data-action="movable-item:move->orderable-items#reorder orderable-item:orderUpdated->component#update">
+
     <div class="fb-editable govuk-!-margin-top-8"
          id="<%= component.id %>"
          data-fb-content-type="<%= component.type %>"
@@ -34,7 +32,15 @@
          data-fb-content-data="<%= component.to_json %>"
          data-fb-default-value="<%= default_title(component.type) %>"
          data-fb-default-item-value="<%= default_item_title(component.type) %>"
-         data-component-target="question">
+         data-controller="orderable-item movable-item component"
+         data-orderable-item-order-value="<%= component.order %>"
+         data-movable-items-target="movableItem"
+         data-orderable-items-target="orderableItem"
+         data-action="movable-item:move->orderable-items#reorder 
+                      movable-item:move->component#focus
+                      orderable-item:orderUpdated->component#update 
+                      questionRemove->component#destroy" 
+         data-movable-item-moving-class="moving">
 
          <%= render partial: component, locals: {
            f: f,
@@ -47,7 +53,6 @@
            )
          }
        %>
-    </div>
     </div>
   <% end %>
 <% end %>

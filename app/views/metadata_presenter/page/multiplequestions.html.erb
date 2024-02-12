@@ -15,6 +15,7 @@
         <%= f.govuk_error_summary(t('presenter.errors.summary_heading')) %>
 
         <div data-controller="orderable-items movable-items components">
+
         <%= render partial: 'metadata_presenter/component/components', locals: {
             f: f,
             components: @page.components,
