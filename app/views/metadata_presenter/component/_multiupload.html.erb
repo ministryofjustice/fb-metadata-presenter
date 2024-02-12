@@ -2,7 +2,7 @@
 <%= render 'metadata_presenter/attribute/body' %>
 
 <% if files_to_render.empty?%>
-  <b><%= t('presenter.questions.multiupload.upload_file') %></b>
+  <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= t('presenter.questions.multiupload.upload_file') %></p></label>
 <% end %>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
