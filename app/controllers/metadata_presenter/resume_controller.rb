@@ -49,6 +49,9 @@ module MetadataPresenter
 
         invalidate_record(@saved_form.id)
 
+        # authorise user as to not ask them again for credentials, if set
+        authorised_session! unless session_authorised?
+
         if @saved_form.service_version == service.version_id
           redirect_to '/resume_progress' and return
         else
