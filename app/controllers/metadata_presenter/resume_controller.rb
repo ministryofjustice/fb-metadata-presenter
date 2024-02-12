@@ -4,6 +4,8 @@ module MetadataPresenter
 
     helper_method :get_service_name, :get_uuid, :pages_presenters
 
+    skip_before_action :require_basic_auth
+
     def return
       response = get_saved_progress(get_uuid)
 

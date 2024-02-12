@@ -1,5 +1,6 @@
 module MetadataPresenter
   class AuthController < EngineController
+    skip_before_action :require_basic_auth
     before_action :check_session_is_authorised
 
     def show

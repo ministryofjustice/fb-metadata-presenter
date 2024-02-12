@@ -6,7 +6,11 @@ module MetadataPresenter
     default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
     around_action :switch_locale
-    before_action :show_maintenance_page
+    before_action :show_maintenance_page, :require_basic_auth
+
+    def require_basic_auth
+      redirect_to auth_path unless session_authorised?
+    end
 
     def reload_user_data
       # :nocov:
