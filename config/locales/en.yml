@@ -63,8 +63,8 @@ en:
         single_upload: 'Maximum file size 7MB'
         answered_singular: 'You can add 1 more file (maximum 7MB per file)'
         answered_plural: 'You can add %{num} more files (maximum 7MB per file)'
-        answered_count_singular: 'You have added 1 file'
-        answered_count_plural: 'You have added %{num} files'
+        answered_count_singular: 'You have uploaded 1 file'
+        answered_count_plural: 'You have uploaded %{num} files'
         singular: 'You can add 1 more file (maximum 7MB)'
         plural: 'You can add up to %{num} files (maximum 7MB per file)'
         none: "You can't add any more files. Remove a file if you need to add a different one."
