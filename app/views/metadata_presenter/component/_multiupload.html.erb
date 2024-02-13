@@ -1,10 +1,6 @@
 <legend class="govuk-heading-xl"><%= input_title %></legend>
 <%= render 'metadata_presenter/attribute/body' %>
 
-<% if files_to_render.empty?%>
-  <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= t('presenter.questions.multiupload.upload_file') %></p></label>
-<% end %>
-
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
   <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= uploads_count %></p></label>
 
@@ -20,6 +16,8 @@
       </div>
     <% end %>
   </dl>
+<% else %>
+  <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= t('presenter.questions.multiupload.upload_file') %></p></label>
 <% end %>
 
 <% if uploads_remaining.positive? || editable? %>

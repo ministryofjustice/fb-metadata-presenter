@@ -97,5 +97,15 @@ module MetadataPresenter
     def page_multiupload_component
       @page.components.select { |c| c.type == 'multiupload' }.first
     end
+
+    def no_uploaded_files?
+      component = page_multiupload_component
+      return true if @user_data.nil?
+
+      answers = @user_data.keys.include?(component.id) ? @user_data[component.id] : []
+      return true if answers.count == 0
+
+      true
+    end
   end
 end
