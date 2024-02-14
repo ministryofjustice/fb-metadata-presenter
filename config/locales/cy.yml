@@ -66,13 +66,14 @@ cy:
       upload:
         remove_file: (cy) Remove file
       multiupload:
+        upload_file: '(cy) Upload a file'
         remove_file: '(cy) Delete'
         add_another: '(cy) Add another file'
         single_upload: '(cy) Maximum file size 7MB'
         answered_singular: '(cy) You can add 1 more file (maximum 7MB per file)'
         answered_plural: '(cy) You can add %{num} more files (maximum 7MB per file)'
-        answered_count_singular: '(cy) You have added 1 file'
-        answered_count_plural: '(cy) You have added %{num} files'
+        answered_count_singular: '(cy) You have uploaded 1 file'
+        answered_count_plural: '(cy) You have uploaded %{num} files'
         singular: '(cy) You can add 1 more file (maximum 7MB)'
         plural: '(cy) You can add up to %{num} files (maximum 7MB per file)'
         none: "(cy) You can't add any more files. Remove a file if you need to add a different one."
