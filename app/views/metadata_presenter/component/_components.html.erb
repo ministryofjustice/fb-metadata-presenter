@@ -10,7 +10,7 @@
                           data-config="<%= component.to_json %>"
                           data-conditional-api-path="<%= editable? ? URI.decode_www_form_component(api_service_edit_conditional_content_path(service.service_id, component.uuid)) : '' %>"
                           data-controller="orderable-item movable-item component"
-                          data-orderable-item-order-value="<%= component.order %>"
+                          data-orderable-item-order-value="<%= component.order || index %>"
                           data-movable-items-target="movableItem"
                           data-orderable-items-target="orderableItem"
                           data-action="movable-item:move->orderable-items#reorder 
@@ -31,7 +31,7 @@
          data-fb-default-value="<%= default_title(component.type) %>"
          data-fb-default-item-value="<%= default_item_title(component.type) %>"
          data-controller="orderable-item movable-item component"
-         data-orderable-item-order-value="<%= component.order %>"
+         data-orderable-item-order-value="<%= component.order || index %>"
          data-movable-items-target="movableItem"
          data-orderable-items-target="orderableItem"
          data-action="movable-item:move->orderable-items#reorder 
