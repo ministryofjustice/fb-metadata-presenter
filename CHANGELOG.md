@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [3.3.15] - 2024-02-08
+## [3.3.15] - 2024-02-14
 ### Added
 - Added a content area for the upload component.
 
