@@ -16,12 +16,12 @@
         </div>
       <% end %>
 
-      <h1 id="page-heading" class="govuk-heading-xl">
-        <%= t('presenter.authorisation.heading') %>
-      </h1>
-
       <%= form_for @auth_form, url: { action: :create } do |f| %>
         <%= f.govuk_error_summary(t('presenter.errors.summary_heading')) %>
+
+        <h1 id="page-heading" class="govuk-heading-xl">
+          <%= t('presenter.authorisation.heading') %>
+        </h1>
 
         <%= f.govuk_text_field :username, width: 'one-third', autocorrect: 'off',
                                label: { text: t('presenter.authorisation.labels.username') } %>
