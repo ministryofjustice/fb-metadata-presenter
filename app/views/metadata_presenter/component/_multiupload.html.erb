@@ -1,5 +1,7 @@
 <legend class="govuk-heading-xl"><%= input_title %></legend>
-<%= render 'metadata_presenter/attribute/body' %>
+<% if @page.body && @page.body != old_body_content %>
+  <%= render 'metadata_presenter/attribute/body' %>
+<% end %>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
   <label id="uploaded-file-summary-list-label"><p class="govuk-heading-s"><%= uploads_count %></p></label>

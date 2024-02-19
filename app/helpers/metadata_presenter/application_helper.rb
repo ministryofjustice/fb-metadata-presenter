@@ -2,6 +2,8 @@ require 'govspeak'
 
 module MetadataPresenter
   module ApplicationHelper
+    OLD_BODY_DEFAULT_CONTENT = 'Body section'.freeze
+
     def main_title(component:, tag: :h1, classes: 'govuk-heading-xl')
       content_tag(tag, class: classes) do
         component.humanised_title
@@ -19,6 +21,10 @@ module MetadataPresenter
 
     def default_text(property)
       MetadataPresenter::DefaultText[property]
+    end
+
+    def old_body_content
+      OLD_BODY_DEFAULT_CONTENT
     end
 
     def default_title(component_type)
