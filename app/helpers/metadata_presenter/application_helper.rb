@@ -23,8 +23,13 @@ module MetadataPresenter
       MetadataPresenter::DefaultText[property]
     end
 
-    def old_body_content
-      OLD_BODY_DEFAULT_CONTENT
+    # we used to have some placeholder text in the body key, which was always replaced
+    # we since exposed the body key in an optional content area for certain pages, so forms created before that
+    # need to have their old default content ignored
+    def page_body_content
+      if @page.body
+        @page.body == OLD_BODY_DEFAULT_CONTENT ? '' : @page.body
+      end
     end
 
     def default_title(component_type)
