@@ -285,7 +285,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
   end
 
   describe 'page body content' do
-    let(:page) { OpenStruct.new(body: body) }
+    let(:page) { OpenStruct.new(body:) }
     let(:body) { '' }
 
     before do
