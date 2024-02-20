@@ -283,4 +283,33 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
       expect(helper.files_to_render).to eq(uploaded_files)
     end
   end
+
+  describe 'page body content' do
+    let(:page) { OpenStruct.new(body: body) }
+    let(:body) { '' }
+
+    before do
+      controller.instance_variable_set(:@page, page)
+    end
+
+    it 'returns the content' do
+      expect(helper.page_body_content).to eq(body)
+    end
+
+    context 'using old default' do
+      let(:body) { 'Body section' }
+
+      it 'gives blank response' do
+        expect(helper.page_body_content).to eq('')
+      end
+    end
+
+    context 'body content has been customised' do
+      let(:body) { 'I am a new Body section' }
+
+      it 'gives the content' do
+        expect(helper.page_body_content).to eq(body)
+      end
+    end
+  end
 end
