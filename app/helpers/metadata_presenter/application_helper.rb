@@ -2,6 +2,8 @@ require 'govspeak'
 
 module MetadataPresenter
   module ApplicationHelper
+    OLD_BODY_DEFAULT_CONTENT = 'Body section'.freeze
+
     def main_title(component:, tag: :h1, classes: 'govuk-heading-xl')
       content_tag(tag, class: classes) do
         component.humanised_title
@@ -19,6 +21,15 @@ module MetadataPresenter
 
     def default_text(property)
       MetadataPresenter::DefaultText[property]
+    end
+
+    # we used to have some placeholder text in the body key, which was always replaced
+    # we since exposed the body key in an optional content area for certain pages, so forms created before that
+    # need to have their old default content ignored
+    def page_body_content
+      if @page.body
+        @page.body == OLD_BODY_DEFAULT_CONTENT ? '' : @page.body
+      end
     end
 
     def default_title(component_type)

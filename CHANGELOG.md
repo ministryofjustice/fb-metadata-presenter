@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.16] - 2024-02-20
+### Fixed
+- Fixed an issue where old default content in components created before recent changes was rendered
+
 ## [3.3.15] - 2024-02-14
 ### Added
 - Added a content area for the upload component.
