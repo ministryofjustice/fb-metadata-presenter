@@ -9,15 +9,14 @@
                           data-fb-content-id="<%= "page[#{component.collection}[#{index}]]" %>"
                           data-config="<%= component.to_json %>"
                           data-conditional-api-path="<%= editable? ? URI.decode_www_form_component(api_service_edit_conditional_content_path(service.service_id, component.uuid)) : '' %>"
-                          data-controller="orderable-item movable-item component"
+                          data-controller="orderable-item component"
                           data-orderable-item-order-value="<%= component.order || index %>"
-                          data-movable-items-target="movableItem"
                           data-orderable-items-target="orderableItem"
-                          data-action="movable-item:move->orderable-items#reorder 
-                                       movable-item:move->component#focus
+                          data-action="orderable-item:move->orderable-items#reorder 
+                                       orderable-item:move->component#focus
                                        orderable-item:orderUpdated->component#update 
                                        questionRemove->component#destroy" 
-                          data-movable-item-moving-class="moving">
+                          data-orderable-item-moving-class="moving">
               <div class="html">
                 <%= to_html(component.content) %>
               </div>
@@ -30,15 +29,14 @@
          data-fb-content-data="<%= component.to_json %>"
          data-fb-default-value="<%= default_title(component.type) %>"
          data-fb-default-item-value="<%= default_item_title(component.type) %>"
-         data-controller="orderable-item movable-item component"
+         data-controller="orderable-item component"
          data-orderable-item-order-value="<%= component.order || index %>"
-         data-movable-items-target="movableItem"
          data-orderable-items-target="orderableItem"
-         data-action="movable-item:move->orderable-items#reorder 
-                      movable-item:move->component#focus
+         data-action="orderable-item:move->orderable-items#reorder 
+                      orderable-item:move->component#focus
                       orderable-item:orderUpdated->component#update 
                       questionRemove->component#destroy" 
-         data-movable-item-moving-class="moving">
+         data-orderable-item-moving-class="moving">
 
          <%= render partial: component, locals: {
            f: f,
