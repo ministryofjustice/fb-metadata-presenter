@@ -5,6 +5,8 @@
                           default-content="<%= default_text('body') %>"
                           content="<%= page_body_content %>"
                           data-fb-content-id="<%= "page[body]" %>">
-    <%= to_html(page_body_content) %>
+              <div class="html">
+                <%= to_html(page_body_content) %>
+              </div>
   </editable-content>
 <%- end %>

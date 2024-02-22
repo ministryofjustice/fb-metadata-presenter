@@ -77,7 +77,9 @@
                             default-content="<%= default_text('body') %>"
                             content="<%= @page.send_body %>"
                             data-fb-content-id="<%= "page[send_body]" %>">
-              <%= to_html(@page.send_body) %>
+              <div class="html">
+                <%= to_html(@page.send_body) %>
+              </div>
           </editable-content>
         <% end %>
 

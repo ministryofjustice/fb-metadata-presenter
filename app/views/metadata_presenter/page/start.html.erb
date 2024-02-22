@@ -22,7 +22,9 @@
                           default-content="<%= default_text('before_you_start') %>"
                           content="<%= @page.before_you_start %>"
                           data-fb-content-id="<%= "page[before_you_start]" %>">
-          <%= to_html(@page.before_you_start) %>
+              <div class="html">
+                <%= to_html(@page.before_you_start) %>
+              </div>
         </editable-content>
       <%- end %>
     </div>
