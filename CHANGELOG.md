@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.17] - 2024-02-23
+### Added
+- New method to serialise an address component.
+
 ## [3.3.16] - 2024-02-20
 ### Fixed
 - Fixed an issue where old default content in components created before recent changes was rendered
