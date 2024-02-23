@@ -27,7 +27,11 @@ module MetadataPresenter
     end
 
     def to_a
-      instance_values.values_at(*FIELDS).compact_blank
+      as_json.values.compact_blank
+    end
+
+    def as_json
+      super(only: FIELDS)
     end
 
     def conform(address_field)
