@@ -15,7 +15,7 @@ class MetadataPresenter::Component < MetadataPresenter::Metadata
 
   def <=>(other)
     return nil unless other.is_a?(MetadataPresenter::Component)
-    return 0 unless order
+    return 0 unless order && other.order
 
     order <=> other.order
   end

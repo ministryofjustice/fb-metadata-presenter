@@ -14,15 +14,17 @@
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
         <%= f.govuk_error_summary(t('presenter.errors.summary_heading')) %>
 
-        <%= render partial: 'metadata_presenter/component/components', locals: {
-            f: f,
-            components: @page.components,
-            tag: :h2,
-            classes: 'govuk-heading-m',
-            input_components: @page.supported_input_components,
-            content_components: @page.supported_content_components
-          }
-        %>
+        <div class="components" data-controller="orderable-items">
+          <%= render partial: 'metadata_presenter/component/components', locals: {
+              f: f,
+              components: @page.components,
+              tag: :h2,
+              classes: 'govuk-heading-m',
+              input_components: @page.supported_input_components,
+              content_components: @page.supported_content_components
+            }
+          %>
+        </div>
         <div class="govuk-button-group">
           <%= f.govuk_submit(t('presenter.actions.continue'), disabled: editable?) %>
 
