@@ -13,138 +13,138 @@ cy:
     actions:
       start: Dechrau nawr
       continue: Parhau
-      submit: (cy) Submit
-      upload_options: (cy) Upload options
-      change_html: (cy) Change <span class="govuk-visually-hidden">Your answer for %{question}</span>
+      submit: Cyflwyno
+      upload_options: Llwytho opsiynau
+      change_html: Newid <span class="govuk-visually-hidden">eich ateb ar gyfer %{question}</span>
     errors:
       summary_heading: Mae yna broblem
     notification_banners:
-      important: (cy) Important
-      warning: (cy) Warning
+      important: Pwysig
+      warning: Rhybudd
     analytics:
-      heading: (cy) Cookies on %{service_name}
-      body_1: (cy) We use some essential cookies to make this service work.
-      body_2: (cy) We'd also like to use analytics cookies so we can understand how you use the service and make improvements.
-      accept: (cy) Accept analytics cookies
-      reject: (cy) Reject analytics cookies
-      view_cookies: (cy) View cookies
+      heading: Cwcis ar %{service_name}
+      body_1: Rydym ni’n defnyddio rhai cwcis hanfodol i wneud i’r gwasanaeth hwn weithio.
+      body_2: Rydym hefyd eisiau defnyddio cwcis dadansoddol fel y gallwn ddeall sut rydych yn defnyddio’r gwasanaeth ac i wneud gwelliannau.
+      accept: Derbyn cwcis dadansoddol
+      reject: Gwrthod cwcis dadansoddol
+      view_cookies: Gweld cwcis
       confirmation:
-        accepted: (cy) You've accepted analytics cookies.
-        rejected: (cy) You've rejected analytics cookies.
-      hide: (cy) Hide this message
+        accepted: Rydych wedi derbyn cwcis dadansoddol.
+        rejected: Rydych wedi gwrthod cwcis dadansoddol.
+      hide: Cuddio’r neges hon
     external_start_page_info:
-      content: (cy) Your form has a %{href}. Links to your form's 'home' page, such as your form's name in the header, will not work until the GOV.UK page has been published.
-      link_text: (cy) GOV.UK start page
+      content: Mae gan eich ffurflen %{href}. Ni fydd dolenni i dudalen 'cartref' eich ffurflen, fel enw eich ffurflen yn y pennawd, yn gweithio nes bod y dudalen GOV.UK wedi'i chyhoeddi.
+      link_text: Tudalen gychwyn GOV.UK
     maintenance:
-      maintenance_page_heading: (cy) Sorry, this form is unavailable
-      maintenance_page_content: "(cy) If you were in the middle of completing the form, your data has not been saved.\r\n\r\nThe form will be available again from 9am on Monday 19 November 2018.\r\n\r\n\r\n\r\n### Other ways to apply\r\n\r\nContact us if your application is urgent \r\n\r\nEmail:  \r\nTelephone:  \r\nMonday to Friday, 9am to 5pm  \r\n[Find out about call charges](https://www.gov.uk/call-charges)"
+      maintenance_page_heading: Mae’n ddrwg gennym, nid yw’r ffurflen hon ar gael
+      maintenance_page_content: "Os oeddech chi yng nghanol llenwi’r ffurflen, nid yw eich data wedi’i chadw.\r\n\r\nBydd y ffurflen ar gael eto o 9am ar ddydd Llun 19 Tachwedd.\r\n\r\n\r\n\r\n### Other ways to apply\r\n\r\nCysylltwch â ni os yw eich cais yn frys \r\n\r\nEmail:  \r\nTelephone:  \r\nDydd Llun i ddydd Gwener, 9am i 5pm  \r\n[Gwybodaeth am gost galwadau](https://www.gov.uk/costau-galwadau)"
     session_timeout_warning:
-      heading: (cy) Do you need more time?
-      timer: (cy) We will reset your form and delete your information if you do not continue in
-      timer_fallback: (cy) We will reset your form and delete your information if you do not complete the page and press continue by %{expiry_time}.
-      redirect: (cy) You are about to be redirected
-      close_button: (cy) Close
+      heading: Ydych chi eisiau mwy o amser?
+      timer: Byddwn yn ailosod eich ffurflen ac yn dileu eich gwybodaeth os na fyddwch yn parhau mewn
+      timer_fallback: Byddwn yn ailosod eich ffurflen ac yn dileu eich gwybodaeth os na fyddwch yn cwblhau’r dudalen ac yn pwyso parhau erbyn %{expiry_time}.
+      redirect: Rydych chi ar fin cael eich ailgyfeirio
+      close_button: Cau
       button: Parhau
     session_expired:
-      title: (cy) Your form has been reset
-      content: "(cy) To protect your personal information, we have reset the form and cleared your answers.\r\n\r\nThis is because you were inactive for 30 minutes."
-      restart_link: (cy) Start again
+      title: Mae eich ffurflen wedi’i hailosod
+      content: "I ddiogelu eich gwybodaeth bersonol, rydym wedi ailosod y ffurflen ac wedi clirio’ch atebion.\r\n\r\nMae hyn oherwydd eich bod wedi bod yn segur am 30 munud."
+      restart_link: Dechrau eto
     session_complete:
-      title: (cy) Submission complete
-      content: "(cy) This form has already been submitted.\r\n\r\nTo protect your personal information, we have reset the form and cleared your answers."
-      restart_link: (cy) Start again
+      title: Wedi cyflwyno
+      content: "Mae’r ffurflen hon eisoes wedi’i chyflwyno.\r\n\r\nI ddiogelu eich gwybodaeth bersonol, rydym wedi ailosod y ffurflen ac wedi clirio’ch atebion."
+      restart_link: Dechrau eto
     confirmation:
-      reference_number: '(cy) Your reference number is:'
-      payment_enabled: (cy) You still need to pay
-      continue_to_pay_button: (cy) Continue to pay
-      application_complete: '(cy) Application complete'
-      email_disclaimer_email_question: '(cy) We will use this address to send you a confirmation email with a copy of your answers.'
-      email_basic_disclaimer_html: '(cy) We will send a confirmation email with a copy of these answers to %{email_provided}'
+      reference_number: 'Eich cyfeirnod yw:'
+      payment_enabled: Rydych dal angen talu
+      continue_to_pay_button: Parhau i dalu
+      application_complete: Cais wedi’i gwblhau
+      email_disclaimer_email_question: Byddwn yn defnyddio’r cyfeiriad hwn i anfon e-bost cadarnhau atoch gyda chopi o’ch atebion.
+      email_basic_disclaimer_html: Byddwn yn anfon e-bost cadarnhau gyda chopi o’r atebion hyn at %{email_provided}
     confirmation_email:
-      table_heading: (cy) Your answers
+      table_heading: Eich atebion
     questions:
       upload:
-        remove_file: (cy) Remove file
+        remove_file: Dileu ffeil
       multiupload:
         upload_file: '(cy) Upload a file'
-        remove_file: '(cy) Delete'
-        add_another: '(cy) Add another file'
-        single_upload: '(cy) Maximum file size 7MB'
-        answered_singular: '(cy) You can add 1 more file (maximum 7MB per file)'
-        answered_plural: '(cy) You can add %{num} more files (maximum 7MB per file)'
-        answered_count_singular: '(cy) You have uploaded 1 file'
-        answered_count_plural: '(cy) You have uploaded %{num} files'
-        singular: '(cy) You can add 1 more file (maximum 7MB)'
-        plural: '(cy) You can add up to %{num} files (maximum 7MB per file)'
-        none: "(cy) You can't add any more files. Remove a file if you need to add a different one."
+        remove_file: Dileu
+        add_another: Ychwanegu ffeil arall
+        single_upload: Ffeil sydd hyd at 7MB o ran maint
+        answered_singular: Gallwch ychwanegu 1 ffeil arall (hyd at 7MB o ran maint)
+        answered_plural: Gallwch ychwanegu %{num} ffeil arall (hyd at 7MB o ran maint)
+        answered_count_singular: Rydych wedi ychwanegu 1 ffeil
+        answered_count_plural: Rydych wedi ychwanegu %{num} ffeil
+        singular: Gallwch ychwanegu 1 ffeil arall (hyd at 7MB o ran maint)
+        plural: Gallwch ychwanegu hyd at %{num} ffeil (hyd at 7MB o ran maint)
+        none: Ni allwch ychwanegu mwy o ffeiliau. Dylech ddileu ffeil os ydych eisiau ychwanegu un gwahanol.
     conditional_content:
-      notification: "(cy) Some content on this page will be hidden under certain conditions. Preview the full form or publish to Test to check."
+      notification: Bydd rhywfaint o gynnwys ar y dudalen hon yn cael ei guddio o dan amodau penodol. Cael golwg ar y ffurflen lawn neu gyhoeddi i Test to check.
     save_and_return:
       actions:
-        save: (cy) Save for later
+        save: Cadw at yn hwyrach ymlaen
         continue: Parhau
       show:
-        heading: '(cy) Save for later'
-        description: '(cy) We will send you a one-off link that you can use to resume this form within 28 days.'
-        email: '(cy) Email address'
-        email_hint: '(cy) We will only use this to send you a link to your form'
-        secret_question: '(cy) Pick a security question'
-        secret_question_hint: '(cy) We will use this to verify your identity when you return'
-        secret_answer: '(cy) The answer to your security question'
-        continue: '(cy) Continue with saving'
-        cancel: '(cy) Cancel saving and resume form'
+        heading: Cadw at yn hwyrach ymlaen
+        description: Byddwn yn anfon dolen untro atoch y gallwch ei defnyddio i ailddechrau’r ffurflen hon o fewn 28 diwrnod.
+        email: Cyfeiriad e-bost
+        email_hint: Byddwn ond yn defnyddio hyn i anfon dolen i’ch ffurflen atoch
+        secret_question: Dewiswch gwestiwn diogelwch
+        secret_question_hint: Byddwn yn defnyddio hwn i wirio eich hunaniaeth pan fyddwch yn dychwelyd
+        secret_answer: Eich ateb i’ch cwestiwn diogelwch
+        continue: Parhau heb gadw
+        cancel: Canslo cadw a dychwelyd i lenwi’r ffurflen
       confirm_email:
-        heading: '(cy) Check your email address is correct'
-        description: '(cy) Make sure this is correct before finishing'
+        heading: Gwnewch yn siŵr bod eich cyfeiriad e-bost yn gywir
+        description: Gwnewch yn siŵr bod hwn yn gywir cyn gorffen
       saved:
-        heading: '(cy) Your form has been saved'
-        success: "(cy) We have sent a one-off link to %{email} which you can use to resume this form within 28 days. After that time, your saved information will be deleted."
-        info_1: "(cy) If you haven't received the email after a few minutes, check your spam folder."
-        info_2: '(cy) This link will only work once. If you want to save your progress again after resuming the form, you will need to repeat the save process and generate another link'
-        info_3: '(cy) You are now free to close this window or navigate away from this page.'
+        heading: Mae eich ffurflen wedi’i chadw
+        success: Rydym wedi anfon dolen untro i %{email} y gallwch ei defnyddio i ailddechrau’r ffurflen hon o fewn 28 diwrnod. Ar ôl yr amser hwnnw, bydd eich gwybodaeth a gedwir yn cael ei dileu.
+        info_1: Os nad ydych wedi cael yr e-bost ar ôl ychydig funudau, edrychwch yn eich ffolder sbam.
+        info_2: Dim ond unwaith y bydd y ddolen hon yn gweithio. Os ydych chi eisiau cadw eich cynnydd eto ar ôl ailddechrau’r ffurflen, bydd angen i chi ailadrodd y broses gadw a chreu dolen arall
+        info_3: Rydych bellach yn rhydd i gau’r ffenestr hon neu fynd i ffwrdd o’r dudalen hon.
       validation:
-        email: '(cy) Enter an email address in the correct format, like name@example.com'
-        email_not_matched: '(cy) Does not match'
-        answer_not_matched: '(cy) Your answer is incorrect. You have %{attempts} attempts remaining.'
-        answer_too_long: '(cy) Your answer for %{attribute} must be 100 characters or fewer.'
+        email: Rhowch gyfeiriad e-bost yn y fformat cywir, fel name@example.com
+        email_not_matched: Nid yw’n cyfateb
+        answer_not_matched: Mae eich ateb yn anghywir. Mae gennych %{attempts} cyfle yn weddill.
+        answer_too_long: Rhaid i’ch ateb ar gyfer %{attribute} fod yn 100 o nodau neu lai.
       secret_questions:
-        one: "(cy) What is your mother's maiden name?"
-        two: '(cy) What is the last name of your favourite teacher?'
-        three: '(cy) What is the name of the hospital where you were born?'
+        one: Beth yw enw morwynol eich mam?
+        two: Beth yw enw olaf eich hoff athro/athrawes?
+        three: Beth yw enw’r ysbyty lle cawsoch eich geni?
       resume:
-        heading: "(cy) Continue with \"%{service_name}\""
-        content: '(cy) To retrieve your information, enter the answer to your security question that you set when saving your progress.'
-        information: '(cy) This will use up your save link. To save your progress again, you will need to repeat the save process and generate another link.'
+        heading: Parhau gyda "%{service_name}"
+        content: I adfer eich gwybodaeth, rhowch yr ateb i’ch cwestiwn diogelwch wnaethoch chi ei osod wrth gadw eich cynnydd.
+        information: Bydd hyn yn defnyddio eich dolen gadw. I gadw eich cynnydd eto, bydd angen i chi ailadrodd y broses gadw a chreu dolen arall.
         errors:
           generic_problem:
-            heading: '(cy) There is a problem with your link'
-            info_1: '(cy) Please try again. If you copied and pasted the link into your browser, check you copied the entire link.'
-            info_2: '(cy) If this problem persists, you will need to start the form again. Your saved answers will be securely deleted after 28 days.'
+            heading: Mae yna broblem gyda’ch dolen
+            info_1: Rhowch gynnig arall arni. Os gwnaethoch gopïo a gludo'r ddolen i'ch porwr, gwiriwch eich bod wedi copïo'r ddolen gyfan.
+            info_2: Os bydd y broblem hon yn parhau, bydd angen i chi ddechrau'r ffurflen eto. Bydd eich atebion a gadwyd gennych yn cael eu dileu’n ddiogel ar ôl 28 diwrnod.
           expired:
-            heading: '(cy) Your link has expired'
-            info_1: '(cy) It has been more than 28 days since you saved your progress on this form and the link is no longer valid.'
-            info_2: '(cy) Your saved answers have been be securely deleted.'
+            heading: Mae eich dolen wedi dod i ben
+            info_1: Mae wedi bod yn fwy na 28 diwrnod ers i chi gadw eich cynnydd ar y ffurflen hon ac nid yw'r ddolen bellach yn ddilys.
+            info_2: Mae eich atebion a gadwyd wedi eu dileu yn ddiogel.
           link_used:
-            heading: '(cy) That link has already been used'
-            info_1: '(cy) Links to resume a form only work once. If you have saved your progress more than once, check for a more recent link.'
-            info_2: '(cy) Otherwise, you will need to start the form again. Your saved answers will be securely deleted after 28 days.'
+            heading: Mae’r ddolen hon wedi cael ei defnyddio yn barod
+            info_1: Dim ond unwaith mae dolenni i ailgychwyn ffurflen yn gweithio. Os ydych wedi cadw eich cynnydd fwy nag unwaith, gwiriwch am ddolen fwy diweddar.
+            info_2: Fel arall, bydd rhaid i chi gychwyn llenwi’r ffurflen eto. Bydd eich atebion a gadwyd gennych yn cael eu dileu’n ddiogel ar ôl 28 diwrnod.
           failure:
-            heading: '(cy) Your information cannot be retrieved'
-            info_1: '(cy) The answer to your security question was incorrect and you have run out of attempts to retrieve your information.'
-            info_2: '(cy) You will need to start the form again. Your saved answers will be securely deleted.'
+            heading: Ni ellir adfer eich gwybodaeth
+            info_1: Roedd yr ateb i’ch cwestiwn diogelwch yn anghywir ac rydych wedi rhedeg allan o ymdrechion i adfer eich gwybodaeth.
+            info_2: Bydd angen i chi ddechrau llenwi’r ffurflen eto. Bydd eich atebion a gadwyd yn cael eu dileu yn ddiogel.
         from_start:
-          heading: "(cy) \"%{service_name}\" has been updated"
-          info_1: '(cy) Your information has been successfully retrieved. However, the form has been updated since your last visit.'
-          info_2: '(cy) Please check from the beginning in case anything has changed, such as new requirements or questions.'
+          heading: Mae "%{service_name}" wedi cael ei ddiweddaru
+          info_1: Mae eich gwybodaeth wedi ei hadfer yn llwyddiannus. Fodd bynnag, mae’r ffurflen wedi cael ei diweddaru ers i chi ymweld ddiwethaf.
+          info_2: Gwiriwch o'r dechrau os bydd unrhyw beth wedi newid, megis gofynion newydd neu gwestiynau.
         progress:
-          heading: '(cy) %{service_name}'
-          content_1: '(cy) You have successfully retrieved your saved information.'
-          content_2: '(cy) Here are the answers you have provided so far.'
+          heading: '%{service_name}'
+          content_1: Rydych chi wedi adfer eich gwybodaeth a gedwir yn llwyddiannus.
+          content_2: Dyma’r atebion yr ydych wed’u darparu hyd yma.
       confirmation_email:
-        subject: "(cy) Your saved form - '%{service_name}'"
-        body: "(cy) You have saved your progress with the form '%{service_name}'.<br /><br /><a href=%{magic_link}>Continue with your form</a><br /><br />This link will only work once. If you want to save your progress again after resuming the form, you will need to repeat the save process and generate another link.<br /><br />The link is valid for 28 days. After that time, your saved information will be deleted."
+        subject: Eich ffurflen a gadwyd - '%{service_name}'
+        body: "Rydych wedi cadw eich cynnydd gyda'r ffurflen '%{service_name}'.<br /><br /><a href=%{magic_link}>Parhau gyda'ch ffurflen</a><br /><br />Dim ond unwaith y bydd y ddolen hon yn gweithio. Os ydych chi eisiau cadw eich cynnydd eto ar ôl ailddechrau'r ffurflen, bydd angen i chi ailadrodd y broses gadw a chynhyrchu dolen arall.<br /><br />Mae'r ddolen yn ddilys am 28 diwrnod. Ar ôl yr amser hwnnw, bydd eich gwybodaeth a gedwir yn cael ei dileu."
     header:
-      skip: Neidio i’r prif gynnwys
+      skip: Ymlaen i’r prif gynnwys
       govuk_url: 'https://www.gov.uk/cymraeg'
     footer:
       cookies:
