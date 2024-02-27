@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "File is too large",
   "value:en": "The selected file must be smaller than %{max_size}MB.",
-  "value:cy": "(cy) The selected file must be smaller than %{max_size}MB."
+  "value:cy": "Rhaid i’r ffeil a ddewiswyd gennych fod yn llai na %{max_size}MB."
 }

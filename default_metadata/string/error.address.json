@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "Input (address) is blank",
   "value:en": "Enter %{field} for \"%{control}\"",
-  "value:cy": "(cy) Enter %{field} for \"%{control}\""
+  "value:cy": "Nodwch %{field} ar gyfer \"%{control}\""
 }

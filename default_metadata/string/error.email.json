@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "Input (email) is not a valid email",
   "value:en": "Enter an email address in the correct format, like name@example.com",
-  "value:cy": "(cy) Enter an email address in the correct format, like name@example.com"
+  "value:cy": "Rhowch gyfeiriad e-bost yn y fformat cywir, er enghraifft enw@enghraifft.com"
 }

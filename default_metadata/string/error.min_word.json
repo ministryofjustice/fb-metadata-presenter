@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "Input (number) is lower than the minimum number of words allowed",
   "value:en": "Your answer for \"%{control}\" must be %{min_word} words or more",
-  "value:cy": "(cy) Your answer for \"%{control}\" must be %{min_word} words or more"
+  "value:cy": "Rhaid i’ch ateb ar gyfer \"%{control}\" fod yn %{min_word} o eiriau neu fwy"
 }

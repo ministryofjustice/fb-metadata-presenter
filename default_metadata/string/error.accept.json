@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "File uploaded is wrong type",
   "value:en": "\"%{control}\" was not uploaded successfully as it is the wrong type",
-  "value:cy": "(cy) \"%{control}\" was not uploaded successfully as it is the wrong type"
+  "value:cy": "Ni gafodd y \"%{control}\" ei lwytho’n llwyddiannus ac mae o’r math anghywir"
 }

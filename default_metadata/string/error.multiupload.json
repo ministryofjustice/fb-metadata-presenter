@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "Cannot upload files with duplicate filenames",
   "value:en": "The selected file cannot have the same name as a file you have already selected. Please check you aren't uploading the same file again.",
-  "value:cy": "(cy) The selected file cannot have the same name as a file you have already selected. Please check you aren't uploading the same file again."
+  "value:cy": "Ni all y ffeil a ddewiswyd gennych gael yr un enw â ffeil rydych chi eisoes wedi'i dewis. Gwnewch yn siŵr nad ydych yn llwytho yr un ffeil eto."
 }

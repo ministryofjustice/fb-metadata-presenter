@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "A generic validation error not handled by a more concrete validator",
   "value:en": "We could not save your answer, please try again",
-  "value:cy": "(cy) We could not save your answer, please try again"
+  "value:cy": "Nid oedd modd inni gadw eich ateb, rhowch gynnig arall arni yn hwyrach ymlaen"
 }

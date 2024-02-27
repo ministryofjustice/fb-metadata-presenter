@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "File uploaded contains virus",
   "value:en": "\"%{control}\" was not uploaded successfully because it contains a virus",
-  "value:cy": "(cy) \"%{control}\" was not uploaded successfully because it contains a virus"
+  "value:cy": "Ni lwythwyd \"%{control}\" yn llwyddiannus oherwydd roedd yn cynnwys firws"
 }
