@@ -38,20 +38,45 @@ RSpec.describe MetadataPresenter::ServiceController, type: :request do
       allow(ENV).to receive(:[])
       allow(ENV).to receive(:[]).with('MAINTENANCE_MODE').and_return('1')
 
-      get '/'
+      allow_any_instance_of(
+        MetadataPresenter::EngineController
+      ).to receive(:service).and_return(service_double)
     end
 
-    it 'returns an ok status' do
-      expect(response).to be_successful
+    let(:service_double) { double(metadata: { 'locale' => locale }) }
+
+    context 'for english locale' do
+      let(:locale) { :en }
+      let(:maintenance_page_heading) { 'Sorry, this form is unavailable' }
+
+      it 'renders the view correctly' do
+        get '/'
+        expect(response).to be_successful
+        expect(response.body).to include(maintenance_page_heading)
+      end
+
+      it 'renders the maintenance page for any page' do
+        get '/name'
+        expect(response).to be_successful
+        expect(response.body).to include(maintenance_page_heading)
+      end
     end
 
-    it 'renders the view correctly' do
-      expect(response.body).to include 'Sorry, this form is unavailable'
-    end
+    context 'for welsh locale' do
+      let(:locale) { :cy }
+      let(:maintenance_page_heading) { 'Mae’n ddrwg gennym, nid yw’r ffurflen hon ar gael' }
 
-    it 'renders the maintenance page for any page' do
-      get '/name'
-      expect(response.body).to include 'Sorry, this form is unavailable'
+      it 'renders the view correctly' do
+        get '/'
+        expect(response).to be_successful
+        expect(response.body).to include(maintenance_page_heading)
+      end
+
+      it 'renders the maintenance page for any page' do
+        get '/name'
+        expect(response).to be_successful
+        expect(response.body).to include(maintenance_page_heading)
+      end
     end
   end
 

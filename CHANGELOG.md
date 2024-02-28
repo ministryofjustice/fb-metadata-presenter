@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.19] - 2024-02-28
+### Added
+- Welsh locales and error message translations.
+
 ## [3.3.18] - 2024-02-23
 ### Added
  - Changes to templates to support moving components in the editor

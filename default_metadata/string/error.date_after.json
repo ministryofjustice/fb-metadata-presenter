@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "Input (date) is earlier than allowed",
   "value:en": "Your answer for \"%{control}\" must be %{date_after} or later",
-  "value:cy": "(cy) Your answer for \"%{control}\" must be %{date_after} or later"
+  "value:cy": "Rhaid i’ch ateb ar gyfer \"%{control}\" fod yn %{date_after} neu’n hwyrach"
 }
