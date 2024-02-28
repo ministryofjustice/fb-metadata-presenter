@@ -416,6 +416,24 @@
         }
       }
     },
+    "regex": {
+      "properties": {
+        "validation": {
+          "properties": {
+            "pattern": {
+              "$ref": "#/definitions/pattern"
+            }
+          }
+        },
+        "errors": {
+          "properties": {
+            "pattern": {
+              "$ref": "#/definitions/errors_pattern"
+            }
+          }
+        }
+      }
+    },
     "string_bundle": {
       "properties": {
         "validation": {

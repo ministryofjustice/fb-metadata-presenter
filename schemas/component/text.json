@@ -15,6 +15,9 @@
     },
     {
       "$ref": "definition.width_class.input"
+    },
+    {
+      "$ref": "validations#/definitions/regex"
     }
   ]
 }
