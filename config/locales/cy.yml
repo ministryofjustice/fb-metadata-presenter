@@ -66,14 +66,14 @@ cy:
       upload:
         remove_file: Dileu ffeil
       multiupload:
-        upload_file: '(cy) Upload a file'
+        upload_file: Lanlwytho ffeil
         remove_file: Dileu
         add_another: Ychwanegu ffeil arall
         single_upload: Ffeil sydd hyd at 7MB o ran maint
         answered_singular: Gallwch ychwanegu 1 ffeil arall (hyd at 7MB o ran maint)
         answered_plural: Gallwch ychwanegu %{num} ffeil arall (hyd at 7MB o ran maint)
-        answered_count_singular: Rydych wedi ychwanegu 1 ffeil
-        answered_count_plural: Rydych wedi ychwanegu %{num} ffeil
+        answered_count_singular: Rydych wedi lanlwytho 1 ffeil
+        answered_count_plural: Rydych wedi lanlwytho %{num} o ffeiliau
         singular: Gallwch ychwanegu 1 ffeil arall (hyd at 7MB o ran maint)
         plural: Gallwch ychwanegu hyd at %{num} ffeil (hyd at 7MB o ran maint)
         none: Ni allwch ychwanegu mwy o ffeiliau. Dylech ddileu ffeil os ydych eisiau ychwanegu un gwahanol.
@@ -171,12 +171,12 @@ cy:
         blank: 'Rhowch ateb i "%{attribute}"'
     attributes:
       metadata_presenter/saved_form:
-        secret_question: (cy) Secret question
-        secret_answer: (cy) Secret answer
+        secret_question: Cwestiwn cudd
+        secret_answer: Ateb cudd
       metadata_presenter/address_fieldset:
-        address_line_one: (cy) Address line 1
-        address_line_two: (cy) Address line 2 (optional)
-        city: (cy) Town or city
-        county: (cy) County (optional)
-        postcode: (cy) Postcode
-        country: (cy) Country
+        address_line_one: Llinell cyfeiriad 1
+        address_line_two: Llinell cyfeiriad 2 (dewisol)
+        city: Tref neu ddinas
+        county: Sir (dewisol)
+        postcode: Cod post
+        country: Gwlad
