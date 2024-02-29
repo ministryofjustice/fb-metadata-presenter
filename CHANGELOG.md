@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.20] - 2024-02-29
+### Fixed
+- Fixed a bug where content wasn't loaded when rendering a template directly (such as with validation errors)
+
 ## [3.3.19] - 2024-02-28
 ### Added
 - Welsh locales and error message translations.
