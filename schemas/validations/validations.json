@@ -420,15 +420,22 @@
       "properties": {
         "validation": {
           "properties": {
-            "pattern": {
-              "$ref": "#/definitions/pattern"
+            "regex": {
+              "title": "Regex to match string against",
+              "description": "A regular expression for validating users’ answers",
+              "type": "string"
             }
           }
         },
         "errors": {
           "properties": {
-            "pattern": {
-              "$ref": "#/definitions/errors_pattern"
+            "regex": {
+              "title": "Error messages for regex",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/error_strings"
+                }
+              ]
             }
           }
         }
