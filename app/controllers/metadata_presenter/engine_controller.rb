@@ -112,6 +112,14 @@ module MetadataPresenter
       end
     end
 
+    def load_page_content
+      if single_page_preview?
+        @page.load_all_content
+      else
+        @page.load_conditional_content(service, @user_data)
+      end
+    end
+
     def maintenance_mode?
       ENV['MAINTENANCE_MODE'].present? && ENV['MAINTENANCE_MODE'] == '1'
     end

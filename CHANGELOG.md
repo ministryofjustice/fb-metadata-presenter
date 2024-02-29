@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.21] - 2024-02-29
+### Fixed
+ - Fixed an issue where content wouldn't render on multiquestion pages with validation errors.
+
 ## [3.3.20] - 2024-02-29
 ### Changed
  - Updated header to use the Tudor crown.
