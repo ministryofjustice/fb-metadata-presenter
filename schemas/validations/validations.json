@@ -416,31 +416,6 @@
         }
       }
     },
-    "regex": {
-      "properties": {
-        "validation": {
-          "properties": {
-            "regex": {
-              "title": "Regex to match string against",
-              "description": "A regular expression for validating users’ answers",
-              "type": "string"
-            }
-          }
-        },
-        "errors": {
-          "properties": {
-            "regex": {
-              "title": "Error messages for regex",
-              "allOf": [
-                {
-                  "$ref": "#/definitions/error_strings"
-                }
-              ]
-            }
-          }
-        }
-      }
-    },
     "string_bundle": {
       "properties": {
         "validation": {
