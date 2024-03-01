@@ -14,7 +14,6 @@
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
         <%= f.govuk_error_summary(t('presenter.errors.summary_heading')) %>
 
-        <div class="components" data-controller="orderable-items">
           <%= render partial: 'metadata_presenter/component/components', locals: {
               f: f,
               components: @page.components,
@@ -24,7 +23,7 @@
               content_components: @page.supported_content_components
             }
           %>
-        </div>
+
         <div class="govuk-button-group">
           <%= f.govuk_submit(t('presenter.actions.continue'), disabled: editable?) %>
 
