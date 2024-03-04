@@ -24,22 +24,16 @@ module MetadataPresenter
       evaluation_conditions = []
 
       if candidate_component.conditionals.count > 1
-        if candidate_component.conditionals[0][:_type] == 'and'
-          # if there are 'and' in conditions between the 'or' rule
-          candidate_component.conditionals.map do |conditional|
+        candidate_component.conditionals.each do |conditional|
+          if conditional[:_type] == 'and'
             evaluation_conditions << evaluate_condition(conditional).flatten.all?
-          end
-          return candidate_component.uuid if evaluation_conditions.flatten.any?
-        end
-        if candidate_component.conditionals[0][:_type] == 'if'
-          # then this is an 'or' condition between conditionals
-          candidate_component.conditionals.map do |conditional|
+          else
             evaluation_conditions << evaluate_condition(conditional)
           end
-          candidate_component.uuid if evaluation_conditions.flatten.any?
         end
+
+        candidate_component.uuid if evaluation_conditions.flatten.any?
       else
-        # if there are only and rules or the particular case where there is only one condition
         evaluation_conditions << evaluate_condition(candidate_component.conditionals[0])
         candidate_component.uuid if evaluation_conditions.flatten.all?
       end
