@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.22] - 2024-03-06
+### Fixed
+ - Fixed an issue where conditional content visibility would incorrectly return true if the first condition was `if` and was true.
+
 ## [3.3.21] - 2024-02-29
 ### Fixed
  - Fixed an issue where content wouldn't render on multiquestion pages with validation errors.

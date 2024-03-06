@@ -22,26 +22,20 @@ module MetadataPresenter
 
     def uuid_to_include?(candidate_component)
       evaluation_conditions = []
-      if candidate_component.conditionals.count == 1
-        # if there are only and rules or the particular case where there is only one condition
+
+      if candidate_component.conditionals.count > 1
+        candidate_component.conditionals.each do |conditional|
+          evaluation_conditions << if conditional[:_type] == 'and'
+                                     evaluate_condition(conditional).flatten.all?
+                                   else
+                                     evaluate_condition(conditional)
+                                   end
+        end
+
+        candidate_component.uuid if evaluation_conditions.flatten.any?
+      else
         evaluation_conditions << evaluate_condition(candidate_component.conditionals[0])
         candidate_component.uuid if evaluation_conditions.flatten.all?
-      elsif candidate_component.conditionals.count > 1
-        # if there are or rule
-        if candidate_component.conditionals[0][:_type] == 'and'
-          # if there are 'and' in conditions between the 'or' rule
-          candidate_component.conditionals.map do |conditional|
-            evaluation_conditions << evaluate_condition(conditional).flatten.all?
-          end
-          return candidate_component.uuid if evaluation_conditions.flatten.any?
-        end
-        if candidate_component.conditionals[0][:_type] == 'if'
-          # then this is an 'or' condition between conditionals
-          candidate_component.conditionals.map do |conditional|
-            evaluation_conditions << evaluate_condition(conditional)
-          end
-          candidate_component.uuid if evaluation_conditions.flatten.any?
-        end
       end
     end
 
