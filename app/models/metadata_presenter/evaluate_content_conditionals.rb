@@ -25,11 +25,11 @@ module MetadataPresenter
 
       if candidate_component.conditionals.count > 1
         candidate_component.conditionals.each do |conditional|
-          if conditional[:_type] == 'and'
-            evaluation_conditions << evaluate_condition(conditional).flatten.all?
-          else
-            evaluation_conditions << evaluate_condition(conditional)
-          end
+          evaluation_conditions << if conditional[:_type] == 'and'
+                                     evaluate_condition(conditional).flatten.all?
+                                   else
+                                     evaluate_condition(conditional)
+                                   end
         end
 
         candidate_component.uuid if evaluation_conditions.flatten.any?
