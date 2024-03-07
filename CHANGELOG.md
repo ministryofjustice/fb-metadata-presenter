@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.23] - 2024-03-07
+### Changed
+ - Updated templates to allow components to be moved on any page type not just
+ multiplequestion
+
 ## [3.3.22] - 2024-03-06
 ### Fixed
  - Fixed an issue where conditional content visibility would incorrectly return true if the first condition was `if` and was true.
