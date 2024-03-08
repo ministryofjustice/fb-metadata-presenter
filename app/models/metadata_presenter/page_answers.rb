@@ -172,8 +172,8 @@ module MetadataPresenter
     def jfif_or_jpg_extension?(answer)
       return false if answer.nil?
 
-      file_extension = File.extname(answer)
-      %w[.jfif .jpg].include?(file_extension)
+      file_extension = File.extname(answer).downcase
+      %w[.jpg .jpe .jif .jfif].include?(file_extension)
     end
 
     # NOTE: Address component is different to other components in the sense it can
