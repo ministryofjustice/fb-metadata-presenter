@@ -146,7 +146,7 @@ module MetadataPresenter
     end
 
     def sanitize_filename(answer)
-      sanitize(filename(update_filename(answer)))
+      sanitize(filename(normalise_file_extension(answer)))
     end
 
     def filename(path)
@@ -165,15 +165,17 @@ module MetadataPresenter
       filename
     end
 
-    def update_filename(answer)
-      jfif_or_jpg_extension?(answer) ? "#{File.basename(answer, '.*')}.jpeg" : answer
-    end
-
-    def jfif_or_jpg_extension?(answer)
-      return false if answer.nil?
+    def normalise_file_extension(answer)
+      return if answer.nil?
 
       file_extension = File.extname(answer)
-      %w[.jfif .jpg].include?(file_extension)
+      file_basename  = answer.delete_suffix(file_extension)
+
+      # Handle less common `image/jpeg` MIME type extensions
+      file_extension.downcase!
+      file_extension = '.jpeg' if %w[.jpg .jpe .jif .jfif].include?(file_extension)
+
+      [file_basename, file_extension].join
     end
 
     # NOTE: Address component is different to other components in the sense it can

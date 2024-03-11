@@ -8,11 +8,11 @@
       <%= render partial:'metadata_presenter/component/conditional_component_banner'%>
 
       <%= render 'metadata_presenter/attribute/section_heading' %>
-      <%= render 'metadata_presenter/attribute/heading' %>
 
       <%= form_for @page_answers, as: :answers, url: @page.url, method: :post, authenticity_token: false do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
         <%= f.govuk_error_summary(t('presenter.errors.summary_heading')) %>
+        <%= render 'metadata_presenter/attribute/heading' %>
 
           <%= render partial: 'metadata_presenter/component/components', locals: {
               f: f,

@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.24] - 2024-03-11
+### Fixed
+- Fixed position of error summary in multi-question pages.
+- Fixed an edge case with uploaded files with uncommon `image/jpeg` uppercase file extensions.
+
 ## [3.3.23] - 2024-03-07
 ### Changed
  - Updated templates to allow components to be moved on any page type not just
