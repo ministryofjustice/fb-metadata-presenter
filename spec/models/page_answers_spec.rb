@@ -418,6 +418,18 @@ RSpec.describe MetadataPresenter::PageAnswers do
                 ).to eq('hello.png')
               end
             end
+
+            context 'when file extension is uncommon jpeg mime type' do
+              let(:upload_file) do
+                { 'original_filename' => 'test.JFIF' }
+              end
+
+              it 'replaces the extension and makes it lowercase' do
+                expect(
+                  page_answers.send('dog-picture_upload_1')['original_filename']
+                ).to eq('test.jpeg')
+              end
+            end
           end
 
           context 'when file details is an ActionController::Parameters object' do

@@ -168,10 +168,11 @@ module MetadataPresenter
     def normalise_file_extension(answer)
       return if answer.nil?
 
-      file_extension = File.extname(answer).downcase
+      file_extension = File.extname(answer)
       file_basename  = answer.delete_suffix(file_extension)
 
       # Handle less common `image/jpeg` MIME type extensions
+      file_extension.downcase!
       file_extension = '.jpeg' if %w[.jpg .jpe .jif .jfif].include?(file_extension)
 
       [file_basename, file_extension].join
