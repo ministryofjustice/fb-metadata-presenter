@@ -14,6 +14,7 @@ cy:
       start: Dechrau nawr
       continue: Parhau
       submit: Cyflwyno
+      sign_in: (cy) Sign in
       upload_options: Llwytho opsiynau
       change_html: Newid <span class="govuk-visually-hidden">eich ateb ar gyfer %{question}</span>
     errors:
@@ -40,6 +41,8 @@ cy:
       maintenance_page_content: "Os oeddech chi yng nghanol llenwi’r ffurflen, nid yw eich data wedi’i chadw.\r\n\r\nBydd y ffurflen ar gael eto o 9am ar ddydd Llun 19 Tachwedd.\r\n\r\n\r\n\r\n### Other ways to apply\r\n\r\nCysylltwch â ni os yw eich cais yn frys \r\n\r\nEmail:  \r\nTelephone:  \r\nDydd Llun i ddydd Gwener, 9am i 5pm  \r\n[Gwybodaeth am gost galwadau](https://www.gov.uk/costau-galwadau)"
     authorisation:
       heading: (cy) Sign in
+      lede: (cy) This form has its own username and password. Contact the form owner if you are unsure what these are.
+      warning: (cy) This is a Test version of the form and should not be shared without the form owner’s permission.
       labels:
         username: (cy) Username
         password: (cy) Password

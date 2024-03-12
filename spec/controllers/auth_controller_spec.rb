@@ -59,4 +59,43 @@ RSpec.describe MetadataPresenter::AuthController, type: :controller do
       end
     end
   end
+
+  describe 'helpers' do
+    subject { controller.helpers.production_env? }
+
+    before do
+      allow(ENV).to receive(:[]).with('PLATFORM_ENV').and_return(platform_env)
+      allow(ENV).to receive(:[]).with('DEPLOYMENT_ENV').and_return(deployment_env)
+    end
+
+    describe '#production_env?' do
+      context 'for test-dev' do
+        let(:platform_env) { 'test' }
+        let(:deployment_env) { 'dev' }
+
+        it { is_expected.to be(false) }
+      end
+
+      context 'for test-production' do
+        let(:platform_env) { 'test' }
+        let(:deployment_env) { 'production' }
+
+        it { is_expected.to be(false) }
+      end
+
+      context 'for live-dev' do
+        let(:platform_env) { 'live' }
+        let(:deployment_env) { 'dev' }
+
+        it { is_expected.to be(false) }
+      end
+
+      context 'for live-production' do
+        let(:platform_env) { 'live' }
+        let(:deployment_env) { 'production' }
+
+        it { is_expected.to be(true) }
+      end
+    end
+  end
 end

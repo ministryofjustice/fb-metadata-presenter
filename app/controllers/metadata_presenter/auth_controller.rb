@@ -1,5 +1,7 @@
 module MetadataPresenter
   class AuthController < EngineController
+    PRODUCTION_ENV = 'live-production'.freeze
+
     skip_before_action :require_basic_auth
     before_action :check_session_is_authorised
 
@@ -31,6 +33,11 @@ module MetadataPresenter
     def check_session_is_authorised
       redirect_to root_path if session_authorised?
     end
+
+    def production_env?
+      "#{ENV['PLATFORM_ENV']}-#{ENV['DEPLOYMENT_ENV']}".eql?(PRODUCTION_ENV)
+    end
+    helper_method :production_env?
 
     def auth_params
       params.require(:auth_form).permit(

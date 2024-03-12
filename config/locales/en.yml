@@ -5,6 +5,7 @@ en:
       start: Start now
       continue: Continue
       submit: Submit
+      sign_in: Sign in
       upload_options: Upload options
       change_html: Change <span class="govuk-visually-hidden">Your answer for %{question}</span>
     errors:
@@ -31,6 +32,8 @@ en:
       maintenance_page_content: "If you were in the middle of completing the form, your data has not been saved.\r\n\r\nThe form will be available again from 9am on Monday 19 November 2018.\r\n\r\n\r\n\r\n### Other ways to apply\r\n\r\nContact us if your application is urgent \r\n\r\nEmail:  \r\nTelephone:  \r\nMonday to Friday, 9am to 5pm  \r\n[Find out about call charges](https://www.gov.uk/call-charges)"
     authorisation:
       heading: Sign in
+      lede: This form has its own username and password. Contact the form owner if you are unsure what these are.
+      warning: This is a Test version of the form and should not be shared without the form owner’s permission.
       labels:
         username: Username
         password: Password
