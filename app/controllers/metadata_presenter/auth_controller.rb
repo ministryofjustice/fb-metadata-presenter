@@ -10,13 +10,11 @@ module MetadataPresenter
     def create
       @auth_form = AuthForm.new(auth_params)
 
-      if @auth_form.invalid?
-        render :show
-      elsif @auth_form.authorised?
+      if @auth_form.valid?
         authorised_session!
         redirect_to root_path
       else
-        redirect_to auth_path, flash: { error: :unauthorised }
+        render :show
       end
     end
 
