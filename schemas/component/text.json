@@ -17,7 +17,7 @@
       "$ref": "definition.width_class.input"
     },
     {
-      "$ref": "validations#/definitions/pattern"
+      "$ref": "validations#/definitions/string_bundle"
     }
   ]
 }
