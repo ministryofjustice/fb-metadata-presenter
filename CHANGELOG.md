@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.25] - 2024-03-14
+### Added
+- Support for custom form authentication in the runner, replacing http basic auth.
+
 ## [3.3.24] - 2024-03-11
 ### Fixed
 - Fixed position of error summary in multi-question pages.
