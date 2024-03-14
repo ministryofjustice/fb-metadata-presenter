@@ -80,14 +80,14 @@ RSpec.describe MetadataPresenter::AuthController, type: :controller do
         let(:platform_env) { 'test' }
         let(:deployment_env) { 'production' }
 
-        it { is_expected.to be(false) }
+        it { is_expected.to be(true) }
       end
 
       context 'for live-dev' do
         let(:platform_env) { 'live' }
         let(:deployment_env) { 'dev' }
 
-        it { is_expected.to be(true) }
+        it { is_expected.to be(false) }
       end
 
       context 'for live-production' do

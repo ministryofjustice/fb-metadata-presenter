@@ -1,6 +1,6 @@
 module MetadataPresenter
   class AuthController < EngineController
-    PRODUCTION_ENVS = %w[live-dev live-production].freeze
+    PRODUCTION_ENVS = %w[test-production live-production].freeze
 
     skip_before_action :require_basic_auth
     before_action :check_session_is_authorised
