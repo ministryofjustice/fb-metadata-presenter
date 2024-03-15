@@ -14,6 +14,7 @@ cy:
       start: Dechrau nawr
       continue: Parhau
       submit: Cyflwyno
+      sign_in: Sign in
       upload_options: Llwytho opsiynau
       change_html: Newid <span class="govuk-visually-hidden">eich ateb ar gyfer %{question}</span>
     errors:
@@ -38,6 +39,13 @@ cy:
     maintenance:
       maintenance_page_heading: Mae’n ddrwg gennym, nid yw’r ffurflen hon ar gael
       maintenance_page_content: "Os oeddech chi yng nghanol llenwi’r ffurflen, nid yw eich data wedi’i chadw.\r\n\r\nBydd y ffurflen ar gael eto o 9am ar ddydd Llun 19 Tachwedd.\r\n\r\n\r\n\r\n### Other ways to apply\r\n\r\nCysylltwch â ni os yw eich cais yn frys \r\n\r\nEmail:  \r\nTelephone:  \r\nDydd Llun i ddydd Gwener, 9am i 5pm  \r\n[Gwybodaeth am gost galwadau](https://www.gov.uk/costau-galwadau)"
+    authorisation:
+      heading: Sign in
+      lede: This form has its own username and password. Contact the form owner if you are unsure what these are.
+      warning: This is a Test version of the form and should not be shared without the form owner’s permission.
+      labels:
+        username: Username
+        password: Password
     session_timeout_warning:
       heading: Ydych chi eisiau mwy o amser?
       timer: Byddwn yn ailosod eich ffurflen ac yn dileu eich gwybodaeth os na fyddwch yn parhau mewn
@@ -169,6 +177,15 @@ cy:
     errors:
       messages:
         blank: 'Rhowch ateb i "%{attribute}"'
+      models:
+        metadata_presenter/auth_form:
+          attributes:
+            base:
+              unauthorised: The username and password do not match. Try again
+            username:
+              blank: Enter a username
+            password:
+              blank: Enter a password
     attributes:
       metadata_presenter/saved_form:
         secret_question: Cwestiwn cudd

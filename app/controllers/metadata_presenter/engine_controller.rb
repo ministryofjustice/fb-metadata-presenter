@@ -6,7 +6,11 @@ module MetadataPresenter
     default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
 
     around_action :switch_locale
-    before_action :show_maintenance_page
+    before_action :show_maintenance_page, :require_basic_auth
+
+    def require_basic_auth
+      redirect_to auth_path unless session_authorised?
+    end
 
     def reload_user_data
       # :nocov:
@@ -122,6 +126,18 @@ module MetadataPresenter
 
     def maintenance_mode?
       ENV['MAINTENANCE_MODE'].present? && ENV['MAINTENANCE_MODE'] == '1'
+    end
+
+    def session_authorised?
+      return true if ENV['BASIC_AUTH_USER'].blank? || ENV['BASIC_AUTH_PASS'].blank?
+
+      !!cookies.signed[:_fb_authorised]
+    end
+
+    def authorised_session!
+      cookies.signed[:_fb_authorised] = {
+        value: 1, same_site: :strict, httponly: true
+      }
     end
 
     def external_or_relative_link(link)

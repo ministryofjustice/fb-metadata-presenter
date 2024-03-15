@@ -4,6 +4,8 @@ module MetadataPresenter
 
     helper_method :get_service_name, :get_uuid, :pages_presenters
 
+    skip_before_action :require_basic_auth
+
     def return
       response = get_saved_progress(get_uuid)
 
@@ -48,6 +50,9 @@ module MetadataPresenter
         session[:returning_slug] = @saved_form.page_slug
 
         invalidate_record(@saved_form.id)
+
+        # authorise user as to not ask them again for credentials, if set
+        authorised_session! unless session_authorised?
 
         if @saved_form.service_version == service.version_id
           redirect_to '/resume_progress' and return

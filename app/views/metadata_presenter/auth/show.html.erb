@@ -1,0 +1,37 @@
+<div class="fb-main-grid-wrapper">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <%= form_for @auth_form, url: { action: :create } do |f| %>
+        <%= f.govuk_error_summary(t('presenter.errors.summary_heading'), link_base_errors_to: :username) %>
+
+        <h1 id="page-heading" class="govuk-heading-xl">
+          <%= t('presenter.authorisation.heading') %>
+        </h1>
+
+        <p class="govuk-body">
+          <%= t('presenter.authorisation.lede') %>
+        </p>
+
+        <% unless production_env? %>
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden"><%= t('presenter.notification_banners.warning') %></span>
+              <%= t('presenter.authorisation.warning') %>
+            </strong>
+          </div>
+        <% end %>
+
+        <%= f.govuk_text_field :username, width: 'one-third', autocorrect: 'off',
+                               label: { text: t('presenter.authorisation.labels.username') } %>
+
+        <%= f.govuk_password_field :password, width: 'one-third', autocorrect: 'off',
+                                   label: { text: t('presenter.authorisation.labels.password') } %>
+
+        <div class="govuk-button-group">
+          <%= f.govuk_submit t('presenter.actions.sign_in') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

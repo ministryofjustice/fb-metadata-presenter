@@ -1,6 +1,9 @@
 MetadataPresenter::Engine.routes.draw do
   root to: 'service#start'
 
+  get  '/auth', to: 'auth#show'
+  post '/auth', to: 'auth#create'
+
   post '/reserved/submissions', to: 'submissions#create', as: :reserved_submissions
   get '/reserved/change-answer', to: 'change_answer#create', as: :change_answer
 
