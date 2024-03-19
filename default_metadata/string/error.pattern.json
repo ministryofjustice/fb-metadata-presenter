@@ -2,6 +2,6 @@
   "_id": "error.pattern",
   "_type": "string.error",
   "description": "Input (string) does not match with the regular expression",
-  "value:en": "Your answer for \"%{control}\" much match the required format",
-  "value:cy": "(cy) Your answer for \"%{control}\" much match the required format"
+  "value:en": "Your answer for \"%{control}\" must match the required format",
+  "value:cy": "(cy) Your answer for \"%{control}\" must match the required format"
 }
