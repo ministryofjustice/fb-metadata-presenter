@@ -1,4 +1,4 @@
-<legend class="govuk-heading-xl"><%= input_title %></legend>
+<label><%= input_title %></label>
 <%= render 'metadata_presenter/attribute/body' %>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>

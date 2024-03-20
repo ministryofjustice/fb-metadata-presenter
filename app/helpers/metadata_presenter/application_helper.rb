@@ -6,7 +6,7 @@ module MetadataPresenter
 
     def main_title(component:, tag: :h1, classes: 'govuk-heading-xl')
       content_tag(tag, class: classes) do
-        component.humanised_title
+        content_tag(:span, component.humanised_title)
       end
     end
 
