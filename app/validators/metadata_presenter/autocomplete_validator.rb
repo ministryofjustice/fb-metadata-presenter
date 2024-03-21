@@ -11,6 +11,9 @@ module MetadataPresenter
     def invalid_answer?
       return if autocomplete_item_list.blank?
 
+      Rails.logger.info('********************')
+      Rails.logger.info(user_answer)
+
       autocomplete_item_list.exclude?(JSON.parse(sanitized_user_answer))
     end
 
