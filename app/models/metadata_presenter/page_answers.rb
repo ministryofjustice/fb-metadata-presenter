@@ -14,6 +14,8 @@ module MetadataPresenter
     end
 
     def validate_answers
+      Rails.logger.info('************* validating answers:')
+      Rails.logger.info(@answers)
       ValidateAnswers.new(self, components:, autocomplete_items:).valid?
     end
 
