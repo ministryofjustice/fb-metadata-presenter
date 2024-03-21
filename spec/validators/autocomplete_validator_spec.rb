@@ -44,7 +44,7 @@ RSpec.describe MetadataPresenter::AutocompleteValidator do
 
     context 'when answer includes special characters' do
       let(:answers) do
-        { 'countries_autocomplete_1' => '{"text":"Special & Characters","value":"SC"}' }
+        { 'countries_autocomplete_1' => '{"text":"Special &amp; Characters","value":"SC"}' }
       end
 
       it 'returns valid' do
