@@ -6,11 +6,13 @@
 
       <%= render 'metadata_presenter/attribute/section_heading' %>
 
-      <h1 class="fb-editable govuk-heading-xl"
+      <h1>
+        <span class="fb-editable govuk-heading-xl"
           data-fb-content-id="page[heading]"
           data-fb-content-type="element"
           data-fb-default-value="<%= default_page_title(@page.type) %>">
-        <%= @page.heading %>
+          <%= @page.heading %>
+        </span>
       </h1>
 
       <%= render 'metadata_presenter/attribute/lede' %>
