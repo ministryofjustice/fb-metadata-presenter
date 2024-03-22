@@ -74,7 +74,7 @@ cy:
       upload:
         remove_file: Dileu ffeil
       multiupload:
-        upload_file: Lanlwytho ffeil
+        upload_file: Uwchlwytho ffeil
         remove_file: Dileu
         add_another: Ychwanegu ffeil arall
         single_upload: Ffeil sydd hyd at 7MB o ran maint
