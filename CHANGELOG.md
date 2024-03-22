@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.27] - 2024-03-22
+### Added
+- Update some of the Cymreag localisations based on feedback and testing
+
 ## [3.3.26] - 2024-03-20
 ### Added
 - Adding regex pattern validation on text area

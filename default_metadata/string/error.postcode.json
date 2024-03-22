@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "Postcode format is not valid",
   "value:en": "Enter a valid UK postcode for \"%{control}\"",
-  "value:cy": "Nodwch god post y DU dilys ar gyfer \"%{control}\""
+  "value:cy": "Nodwch god post dilys y DU dilys ar gyfer \"%{control}\""
 }
