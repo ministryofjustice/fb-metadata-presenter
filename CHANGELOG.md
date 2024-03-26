@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.28] - 2024-03-25
+### Fixed
+- Fix issue with validating autocomplete options containing ampersands
+
 ## [3.3.27] - 2024-03-22
 ### Added
 - Update some of the Cymreag localisations based on feedback and testing

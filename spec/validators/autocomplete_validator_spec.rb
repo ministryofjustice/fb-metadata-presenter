@@ -11,7 +11,8 @@ RSpec.describe MetadataPresenter::AutocompleteValidator do
       component_id.to_s => [
         { 'text' => 'Afghanistan', 'value' => 'AF' },
         { 'text' => 'Albania', 'value' => 'AL' },
-        { 'text' => 'Australia', 'value' => 'AU' }
+        { 'text' => 'Australia', 'value' => 'AU' },
+        { 'text' => 'Special & Characters', 'value' => 'SC' }
       ]
     }
   end
@@ -34,6 +35,26 @@ RSpec.describe MetadataPresenter::AutocompleteValidator do
     context 'when answer is valid' do
       let(:answers) do
         { 'countries_autocomplete_1' => '{"text":"Australia","value":"AU"}' }
+      end
+
+      it 'returns valid' do
+        expect(validator).to be_valid
+      end
+    end
+
+    context 'when answer includes special characters' do
+      let(:answers) do
+        { 'countries_autocomplete_1' => '{"text":"Special &amp; Characters","value":"SC"}' }
+      end
+
+      it 'returns valid' do
+        expect(validator).to be_valid
+      end
+    end
+
+    context 'when answer includes encoded special characters' do
+      let(:answers) do
+        { 'countries_autocomplete_1' => '{"text":"Special \u0026 Characters","value":"SC"}' }
       end
 
       it 'returns valid' do
