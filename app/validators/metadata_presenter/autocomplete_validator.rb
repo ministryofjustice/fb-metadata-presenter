@@ -21,8 +21,8 @@ module MetadataPresenter
     private
 
     def sanitized_user_answer
-      user_answer.gsub('&amp;', '&')
-      user_answer.gsub('\u0026', '&')
+      result = user_answer.gsub(/&amp;/, '&')
+      result.gsub(/\\u0026/, '&')
     end
   end
 end
