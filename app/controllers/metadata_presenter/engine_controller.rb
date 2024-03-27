@@ -72,6 +72,10 @@ module MetadataPresenter
           previous_page.url
         )
       end
+
+      if response.status == 404
+        @back_link = File.join(request.script_name, @page.url)
+      end
     end
     helper_method :back_link
 
