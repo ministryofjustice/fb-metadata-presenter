@@ -46,7 +46,6 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
         let(:referrer) { '/' }
         let(:status) { 200 }
 
-
         it 'returns the previous page' do
           expect(controller.back_link).to eq('/')
         end
