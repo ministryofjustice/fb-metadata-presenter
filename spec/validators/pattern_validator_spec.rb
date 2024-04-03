@@ -26,7 +26,7 @@ RSpec.describe MetadataPresenter::PatternValidator do
     context 'when answer does not match pattern' do
       let(:answers) { { 'name_text_1' => '123' } }
 
-      it 'returns valid' do
+      it 'returns invalid' do
         expect(validator).to_not be_valid
       end
     end
