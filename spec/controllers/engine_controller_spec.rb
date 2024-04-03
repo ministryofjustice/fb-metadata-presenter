@@ -3,6 +3,13 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
     before do
       allow(controller.request).to receive(:script_name).and_return(script_name)
       allow(controller.request).to receive(:referrer).and_return(referrer)
+      RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
+      allow(controller.response).to receive(:status).and_return(status)
+      controller.instance_variable_set(:@page, page)
+    end
+
+    after do
+      RSpec::Mocks.configuration.allow_message_expectations_on_nil = false
     end
 
     context 'when in preview' do
@@ -10,11 +17,8 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
         '/services/1/preview'
       end
 
-      before do
-        controller.instance_variable_set(:@page, page)
-      end
-
       context 'when there is a page' do
+        let(:status) { 200 }
         let(:page) { MetadataPresenter::Page.new(service.pages.second) }
         let(:referrer) { 'http://localhost:3000/services/1/preview' }
 
@@ -26,6 +30,7 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
       context 'when there is no page' do
         let(:page) { MetadataPresenter::Page.new(service.pages.first) }
         let(:referrer) { nil }
+        let(:status) { 404 }
 
         it 'returns nil' do
           expect(controller.back_link).to be_nil
@@ -39,10 +44,7 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
       context 'when there is a page' do
         let(:page) { MetadataPresenter::Page.new(service.pages.second) }
         let(:referrer) { '/' }
-
-        before do
-          controller.instance_variable_set(:@page, page)
-        end
+        let(:status) { 200 }
 
         it 'returns the previous page' do
           expect(controller.back_link).to eq('/')
@@ -51,6 +53,8 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
 
       context 'when there is no page' do
         let(:referrer) { nil }
+        let(:status) { 404 }
+        let(:page) { MetadataPresenter::Page.new(service.pages.second) }
 
         it 'returns nil' do
           expect(controller.back_link).to be_nil

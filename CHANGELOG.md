@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.29] - 2024-04-03
+### Fixed
+- Make sure that the back link on a non existent page is referencing the previous page and not the precedent of the previous page
+
 ## [3.3.28] - 2024-03-25
 ### Fixed
 - Fix issue with validating autocomplete options containing ampersands
