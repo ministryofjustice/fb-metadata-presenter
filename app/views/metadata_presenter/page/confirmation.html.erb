@@ -8,15 +8,17 @@
     <% else %>
       <div class="govuk-panel govuk-panel--confirmation govuk-grid-column-two-thirds">
       <% end %>
-      <h1 class="fb-editable govuk-panel__title"
+      <h1>
+        <span class="fb-editable govuk-panel__title"
           data-fb-content-type="element"
           data-fb-content-id="page[heading]"
           data-fb-default-value="<%= default_page_title(@page.type) %>">
-        <% if payment_link_enabled? && @page.heading == I18n.t('presenter.confirmation.application_complete') %>
-          <p><%= I18n.t('presenter.confirmation.payment_enabled') %></p>
-        <% else %>
-          <%= @page.heading %>
-        <% end %>
+          <% if payment_link_enabled? && @page.heading == I18n.t('presenter.confirmation.application_complete') %>
+            <%= I18n.t('presenter.confirmation.payment_enabled') %>
+          <% else %>
+            <%= @page.heading %>
+          <% end %>
+        </span>
       </h1>
 
       <div class="govuk-panel__body">

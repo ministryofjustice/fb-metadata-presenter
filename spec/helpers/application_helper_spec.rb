@@ -7,7 +7,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
 
       it 'returns h1 wrapped in a legend by default' do
         expect(helper.main_title(component:)).to eq(
-          %(<h1 class="govuk-heading-xl">Luke Skywalker</h1>)
+          %(<h1 class="govuk-heading-xl"><span>Luke Skywalker</span></h1>)
         )
       end
     end
@@ -19,7 +19,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
 
       it 'returns h1 default' do
         expect(helper.main_title(component:)).to eq(
-          %(<h1 class="govuk-heading-xl">Luke Skywalker</h1>)
+          %(<h1 class="govuk-heading-xl"><span>Luke Skywalker</span></h1>)
         )
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe MetadataPresenter::ApplicationHelper, type: :helper do
         expect(
           helper.main_title(component:, tag: :h2, classes: 'govuk-heading-m govuk-margin-top-5')
         ).to eq(
-          %(<h2 class="govuk-heading-m govuk-margin-top-5">Mace Windu</h2>)
+          %(<h2 class="govuk-heading-m govuk-margin-top-5"><span>Mace Windu</span></h2>)
         )
       end
     end

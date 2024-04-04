@@ -1,4 +1,4 @@
-<legend class="govuk-heading-xl"><%= input_title %></legend>
+<label><%= input_title %></label>
 <%= render 'metadata_presenter/attribute/body' %>
 
 <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? %>
@@ -28,7 +28,7 @@
       text: component.hint.present? ? component.hint : ''
     },
     accept: component.validation['accept'],
-    disabled: editable?,
+    'aria-disabled': editable?,
     label: -> do %>
       <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? %>
         <h3 class="govuk-heading-s govuk-!-margin-top-8"><%= t('presenter.questions.multiupload.add_another') %></h3>

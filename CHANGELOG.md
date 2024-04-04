@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.30] - 2024-04-04
+### Changed
+ - Updated all editable headings to have a nested span for improved semantics when editing
+
 ## [3.3.29] - 2024-04-03
 ### Fixed
 - Make sure that the back link on a non existent page is referencing the previous page and not the precedent of the previous page
