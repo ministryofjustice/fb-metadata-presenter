@@ -56,6 +56,7 @@ module MetadataPresenter
 
     def back_link
       if response.status == 404
+        byebug
         @back_link = File.join(request.script_name, @page.url)
       end
 
