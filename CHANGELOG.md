@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.32] - 2024-04-15
+### Fixed
+ - Fixed missing allowed mimetype for text/rtf in supported file list
+
 ## [3.3.31] - 2024-04-05
 ### Fixed
  - Fixed issue where going directly to a 404 page could cause a nil value exception
