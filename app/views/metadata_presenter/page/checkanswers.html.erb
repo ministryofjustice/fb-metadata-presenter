@@ -65,10 +65,12 @@
         </dl>
 
         <% if @page.send_heading.present? %>
-          <h2 class="fb-send-heading fb-editable govuk-heading-m"
+          <h2>
+            <span class="fb-send-heading fb-editable govuk-heading-m"
               data-fb-content-type="element"
               data-fb-content-id="page[send_heading]">
-            <%= @page.send_heading %>
+              <%= @page.send_heading %>
+            </span>
           </h2>
         <% end %>
 
@@ -102,9 +104,10 @@
         <%end%>
         <br><br>
         <div class="govuk-button-group">
-          <button <%= 'disabled' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
-            <%= t('presenter.actions.submit') -%></button>
-            <% if save_and_return_enabled? %>
+          <button <%= 'aria-disabled=true' if editable? %> data-prevent-double-click="true" class="fb-block fb-block-actions govuk-button" data-module="govuk-button" data-block-id="actions" data-block-type="actions">
+            <%= t('presenter.actions.submit') -%>
+          </button>
+          <% if save_and_return_enabled? %>
             <% if editor_preview? || editable? %>
               <%= button_to t('presenter.save_and_return.actions.save'), '/', params: { page_slug:request.env['PATH_INFO'] }, method: :post, class: "govuk-button govuk-button--secondary", name: 'save_for_later_check_answers', disabled: true %>
             <% else %>

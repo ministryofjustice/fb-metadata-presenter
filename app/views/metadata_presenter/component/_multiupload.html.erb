@@ -31,9 +31,9 @@
     'aria-disabled': editable?,
     label: -> do %>
       <% if answered?(component.id) && @page_answers.send(component.id)[component.id].compact.count.positive? && !editable? %>
-        <h3 class="govuk-heading-s govuk-!-margin-top-8"><%= t('presenter.questions.multiupload.add_another') %></h3>
+        <h2 class="govuk-heading-s govuk-!-margin-top-8"><%= t('presenter.questions.multiupload.add_another') %></h2>
       <% else %>
-        <h3 class="govuk-visually-hidden"><%= t('presenter.questions.multiupload.add_another') %></h3>
+        <h2 class="govuk-visually-hidden"><%= t('presenter.questions.multiupload.add_another') %></h2>
       <% end %>
     <% end %>
   </div>

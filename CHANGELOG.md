@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.33] - 2024-04-17
+### Changed
+ - Updated templates to improve accessible labelling when editing
+
 ## [3.3.32] - 2024-04-15
 ### Fixed
  - Fixed missing allowed mimetype for text/rtf in supported file list
