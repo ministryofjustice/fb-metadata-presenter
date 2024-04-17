@@ -1,8 +1,8 @@
 {
-  "_id": "page.start",
-  "_type": "page.start",
-  "heading": "Service name goes here",
-  "body": "Use this service to apply for a service or contact us about a case.\r\n\r\n## Before you start\r\nYou will need:\r\n\r\n* your 8-digit reference number\r\n* a copy of your photo ID\r\n* something else\r\n\r\nThis form will take around 5 minutes to complete. We will reply within 10 working days.",
-  "before_you_start": "## Other ways to get in touch\r\nYou can also apply or contact us about your case by:\r\n\r\n* telephone: 01234 567889\r\n* email: <example.service@justice.gov.uk>\r\n\r\nThis form is also [available in Welsh (Cymraeg)](https://example-service.form.service.justice.gov.uk/).",
-  "url": "/"
+    "_id": "page.start",
+    "_type": "page.start",
+    "heading": "Service name goes here",
+    "body": "Use this service to apply for a service or contact us about a case.\r\n\r\n## Before you start\r\nYou will need:\r\n\r\n* your 8-digit reference number\r\n* a copy of your photo ID\r\n* something else\r\n\r\nThis form will take around 5 minutes to complete. We will reply within 10 working days.",
+    "before_you_start": "## Other ways to get in touch\r\nYou can also apply or contact us about your case by:\r\n\r\n* telephone: 01234 567889\r\n* email: <example.service@justice.gov.uk>\r\n\r\nThis form is also [available in Welsh (Cymraeg)](https://example-service.form.service.justice.gov.uk/).",
+    "url": "/"
 }
