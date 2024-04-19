@@ -4,14 +4,12 @@
 
       <%= render partial:'metadata_presenter/component/conditional_component_banner'%>
 
-      <h1>
-        <span class="fb-editable govuk-heading-xl"
+        <h1 class="fb-editable govuk-heading-xl"
           data-fb-content-type="element"
           data-fb-content-id="page[heading]"
           data-fb-default-value="<%= default_page_title(@page.type) %>">
           <%= @page.heading %>
-        </span>
-      </h1>
+        </h1>
 
       <%= form_for @page, url: reserved_submissions_path, authenticity_token: false, html: { id: 'answers-form' } do |f| %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
@@ -65,13 +63,11 @@
         </dl>
 
         <% if @page.send_heading.present? %>
-          <h2>
-            <span class="fb-send-heading fb-editable govuk-heading-m"
+            <h2 class="fb-send-heading fb-editable govuk-heading-m"
               data-fb-content-type="element"
               data-fb-content-id="page[send_heading]">
               <%= @page.send_heading %>
-            </span>
-          </h2>
+            </h2>
         <% end %>
 
         <% if @page.send_body.present? %>
