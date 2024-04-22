@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.34] - 2024-04-22
+### Added
+- Additional welsh locales (authorisation page and regex validation)
+
 ## [3.3.33] - 2024-04-17
 ### Changed
  - Updated templates to improve accessible labelling when editing
