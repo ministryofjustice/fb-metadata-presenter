@@ -41,6 +41,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'simplecov-console'
   spec.add_development_dependency 'site_prism', '< 5.0'
-  spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'yard'
 end
