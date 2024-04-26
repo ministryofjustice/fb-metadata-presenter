@@ -1,7 +1,7 @@
 <div class="fb-main-grid-wrapper">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-    <%= link_to t('presenter.back'), :back %>
+    <%= link_to t('presenter.back'), :back , class: "govuk-back-link" %>
       <%= form_for @email_confirmation do |f| %>
         <%= f.govuk_error_summary(t('presenter.errors.summary_heading')) %>
         <div class="govuk-form-group">
