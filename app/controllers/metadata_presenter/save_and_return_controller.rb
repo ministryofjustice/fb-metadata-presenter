@@ -45,7 +45,7 @@ module MetadataPresenter
       if @saved_form
         @email_confirmation = EmailConfirmation.new(@saved_form['email'])
       else
-        # we see errors when the session saved form is nil, if this is affecting real users we'd prefer to 
+        # we see errors when the session saved form is nil, if this is affecting real users we'd prefer to
         # bump them back to the create step, but we can't easily recreate all the params and we can't cover crawlers hitting the page directly
         redirect_back fallback_location: root_path
       end
