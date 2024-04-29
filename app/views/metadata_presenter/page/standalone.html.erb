@@ -29,12 +29,11 @@
         <% end %>
        <%# ORIGINAL TEMPLATE: Uses content from form metadata %>
        <% if @page.heading %>
-         <h1> <span class="fb-editable govuk-heading-xl"
+         <h1 class="fb-editable govuk-heading-xl"
              data-fb-content-id="page[heading]"
              data-fb-content-type="element"
              data-fb-default-value="<%= t("presenter.footer.#{@page.id.gsub('page.','')}.heading") %>">
            <%= @page.heading %>
-           </span>
          </h1>
        <% end %>
        <%= render 'metadata_presenter/attribute/body' %>
