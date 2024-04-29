@@ -3,7 +3,7 @@
     <h1 class="govuk-heading-l"><%= t('presenter.session_expired.title') %></h1>
     <div class="maintenance-content">
       <%= to_html t('presenter.session_expired.content') %>
-      <p><%= link_to t('presenter.session_expired.restart_link'), root_url %></p>
     </div>
+    <%= render partial: 'metadata_presenter/shared/start_again_button' %>
   </div>
 </div>

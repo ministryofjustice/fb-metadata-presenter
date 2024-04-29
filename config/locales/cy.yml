@@ -15,6 +15,7 @@ cy:
       continue: Parhau
       submit: Cyflwyno
       sign_in: Mewngofnodi
+      start_again: Dechrau eto
       upload_options: Llwytho opsiynau
       change_html: Newid <span class="govuk-visually-hidden">eich ateb ar gyfer %{question}</span>
     errors:
@@ -56,11 +57,9 @@ cy:
     session_expired:
       title: Mae eich ffurflen wedi’i hailosod
       content: "I ddiogelu eich gwybodaeth bersonol, rydym wedi ailosod y ffurflen ac wedi clirio’ch atebion.\r\n\r\nMae hyn oherwydd eich bod wedi bod yn segur am 30 munud."
-      restart_link: Dechrau eto
     session_complete:
       title: Wedi cyflwyno
       content: "Mae’r ffurflen hon eisoes wedi’i chyflwyno.\r\n\r\nI ddiogelu eich gwybodaeth bersonol, rydym wedi ailosod y ffurflen ac wedi clirio’ch atebion."
-      restart_link: Dechrau eto
     confirmation:
       reference_number: 'Eich cyfeirnod yw:'
       payment_enabled: Rydych dal angen talu

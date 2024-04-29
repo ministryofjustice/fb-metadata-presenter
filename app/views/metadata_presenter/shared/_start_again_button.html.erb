@@ -1,0 +1,6 @@
+<div class="govuk-button-group govuk-!-margin-top-6">
+  <%= button_to(
+        defined?(button_text) ? button_text : t('presenter.actions.start_again'),
+        root_path, method: :get, class: 'govuk-button', data: { module: 'govuk-button' }
+      ) %>
+</div>
