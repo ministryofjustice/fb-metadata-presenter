@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.35] - 2024-04-25
+### Fixed
+- Fixed an issue with the back link in save and return pages and prevented an error when access email confirmation page when session cannot be loaded
+
 ## [3.3.34] - 2024-04-22
 ### Added
 - Additional welsh locales (authorisation page and regex validation)
