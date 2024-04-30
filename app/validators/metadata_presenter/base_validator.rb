@@ -52,10 +52,16 @@ module MetadataPresenter
     # Assuming for example that the schema key is 'grogu' then the message
     # will lookup for 'errors.grogu.any'.
     #
-    # @return [String] message from the service metadata
+    # If there is a custom message defined in the locales, it will take
+    # precedence. Example: `presenter.components.upload.errors.required`
+    #
+    # @return [String] custom error message or `nil`
     #
     def custom_error_message
-      message = component.dig('errors', schema_key, 'any')
+      message = I18n.t(
+        "presenter.components.#{component.type}.errors.#{schema_key}",
+        default: component.dig('errors', schema_key, 'any')
+      )
 
       message % error_message_hash if message.present?
     end

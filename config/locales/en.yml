@@ -11,6 +11,13 @@ en:
       change_html: Change <span class="govuk-visually-hidden">Your answer for %{question}</span>
     errors:
       summary_heading: There is a problem
+    components:
+      upload:
+        errors:
+          required: Choose a file to upload
+      multiupload:
+        errors:
+          required: Choose a file to upload
     notification_banners:
       important: Important
       warning: Warning

@@ -20,6 +20,13 @@ cy:
       change_html: Newid <span class="govuk-visually-hidden">eich ateb ar gyfer %{question}</span>
     errors:
       summary_heading: Mae yna broblem
+    components:
+      upload:
+        errors:
+          required: (cy) Choose a file to upload
+      multiupload:
+        errors:
+          required: (cy) Choose a file to upload
     notification_banners:
       important: Pwysig
       warning: Rhybudd
