@@ -11,7 +11,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Save and return error pages now include a "Start again" CTA button
 ### Changed
-- Required file upload error message changed from "Enter an answer for <question name>" to "Choose a file to upload"
+- Required file upload error message changed from "Enter an answer for 'question name'" to "Choose a file to upload"
 
 ## [3.3.35] - 2024-04-25
 ### Fixed
