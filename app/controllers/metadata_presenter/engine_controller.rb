@@ -54,6 +54,14 @@ module MetadataPresenter
       end
     end
 
+    def delete_session
+      # :nocov:
+      if defined? super
+        super
+        # :nocov:
+      end
+    end
+
     def back_link
       if response.status == 404 && @page
         @back_link = File.join(request.script_name, @page.url)
