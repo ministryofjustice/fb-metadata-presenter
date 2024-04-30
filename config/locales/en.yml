@@ -6,10 +6,18 @@ en:
       continue: Continue
       submit: Submit
       sign_in: Sign in
+      start_again: Start again
       upload_options: Upload options
       change_html: Change <span class="govuk-visually-hidden">Your answer for %{question}</span>
     errors:
       summary_heading: There is a problem
+    components:
+      upload:
+        errors:
+          required: Choose a file to upload
+      multiupload:
+        errors:
+          required: Choose a file to upload
     notification_banners:
       important: Important
       warning: Warning
@@ -47,11 +55,9 @@ en:
     session_expired:
       title: Your form has been reset
       content: "To protect your personal information, we have reset the form and cleared your answers.\r\n\r\nThis is because you were inactive for 30 minutes."
-      restart_link: Start again
     session_complete:
       title: Submission complete
       content: "This form has already been submitted.\r\n\r\nTo protect your personal information, we have reset the form and cleared your answers."
-      restart_link: Start again
     confirmation:
       reference_number: 'Your reference number is:'
       payment_enabled: You still need to pay

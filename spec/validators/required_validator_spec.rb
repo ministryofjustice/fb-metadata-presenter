@@ -48,7 +48,34 @@ RSpec.describe MetadataPresenter::RequiredValidator do
         end
       end
 
-      context 'when there is custom error message' do
+      context 'when there is custom error message defined on the locales' do
+        let(:page) { service.find_page_by_url('/dog-picture-2') }
+        let(:answers) { { 'dog-picture_upload_2' => {} } }
+
+        it 'is invalid' do
+          expect(validator).to_not be_valid
+        end
+
+        context 'for english locale' do
+          it 'gets the error message from the locales' do
+            expect(page_answers.errors.full_messages).to eq(
+              ['Choose a file to upload']
+            )
+          end
+        end
+
+        context 'for welsh locale' do
+          let(:locale) { :cy }
+
+          it 'gets the error message from the locales' do
+            expect(page_answers.errors.full_messages).to eq(
+              ['Dewiswch ffeil i’w llwytho']
+            )
+          end
+        end
+      end
+
+      context 'when there is custom error message defined on the metadata' do
         context 'when there is "any"' do
           let(:page) { service.find_page_by_url('/parent-name') }
           let(:answers) { { 'parent-name_text_1' => '' } }

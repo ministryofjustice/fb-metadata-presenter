@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.36] - 2024-04-30
+### Added
+- Save and return error pages now include a "Start again" CTA button
+### Changed
+- Required file upload error message changed from "Enter an answer for 'question name'" to "Choose a file to upload"
+
 ## [3.3.35] - 2024-04-25
 ### Fixed
 - Fixed an issue with the back link in save and return pages and prevented an error when access email confirmation page when session cannot be loaded
