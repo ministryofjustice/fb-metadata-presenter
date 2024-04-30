@@ -64,7 +64,7 @@ module MetadataPresenter
         payload = response.body.merge(email: @email_confirmation.email_confirmation).deep_symbolize_keys
         create_save_and_return_submission(payload)
 
-        redirect_to '/save/progress_saved'
+        redirect_to '/save/progress_saved' and delete_session
       else
         render :email_confirmation, status: :unprocessable_entity
       end
