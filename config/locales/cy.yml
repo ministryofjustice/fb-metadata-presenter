@@ -23,10 +23,10 @@ cy:
     components:
       upload:
         errors:
-          required: (cy) Choose a file to upload
+          required: Dewiswch ffeil i’w llwytho
       multiupload:
         errors:
-          required: (cy) Choose a file to upload
+          required: Dewiswch ffeil i’w llwytho
     notification_banners:
       important: Pwysig
       warning: Rhybudd

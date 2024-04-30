@@ -69,7 +69,7 @@ RSpec.describe MetadataPresenter::RequiredValidator do
 
           it 'gets the error message from the locales' do
             expect(page_answers.errors.full_messages).to eq(
-              ['(cy) Choose a file to upload']
+              ['Dewiswch ffeil i’w llwytho']
             )
           end
         end
