@@ -1,0 +1,27 @@
+<% if answers_presenter.answers.any? %>
+  <% if answers_presenter.multi_questions_page? %>
+    <h2 class="govuk-heading-m">
+      <%= answers_presenter.page.heading %>
+    </h2>
+  <% end %>
+
+  <dl class="fb-block fb-block-answers govuk-summary-list">
+    <% answers_presenter.answers.each do |answer| %>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          <%= answer.humanised_title %>
+        </dt>
+
+        <dd class="govuk-summary-list__value">
+          <%= answer.answer %>
+        </dd>
+
+        <dd class="govuk-summary-list__actions">
+          <%= link_to(answer.url, class: 'govuk-link') do
+            t('presenter.actions.change_html', question: answer.humanised_title)
+          end %>
+        </dd>
+      </div>
+    <% end %>
+  </dl>
+<% end %>
