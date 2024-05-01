@@ -5,5 +5,7 @@ module MetadataPresenter
     def expired; end
 
     def complete; end
+
+    def destroyed; end
   end
 end
