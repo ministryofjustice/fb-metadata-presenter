@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.37] - 2024-05-02
+### Fixed
+- Missing multi question headings when resuming saved forms
+
 ## [3.3.36] - 2024-04-30
 ### Added
 - Save and return error pages now include a "Start again" CTA button
