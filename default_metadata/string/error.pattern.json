@@ -3,5 +3,5 @@
   "_type": "string.error",
   "description": "Input (string) does not match with the regular expression",
   "value:en": "Your answer for \"%{control}\" must match the required format",
-  "value:cy": "Rhaid i’ch ateb ar gyfer \"%{control}\" gyfateb i’r fformat gofynnol"
+  "value:cy": "Rhaid i'ch ateb ar gyfer \"%{control}\" gyfateb i'r fformat gofynnol"
 }
