@@ -68,9 +68,8 @@ cy:
       title: Wedi cyflwyno
       content: "Mae’r ffurflen hon eisoes wedi’i chyflwyno.\r\n\r\nI ddiogelu eich gwybodaeth bersonol, rydym wedi ailosod y ffurflen ac wedi clirio’ch atebion."
     session_destroyed:
-      title: (cy) Session complete
-      content: "(cy) This forms progress has already been saved.\r\n\r\nTo protect your personal information, we have reset the form and cleared your answers.\r\n\r\nTo resume your progress, use the link emailed to you."
-
+      title: (cy) This form has been saved for later
+      content: "(cy) To continue working on your form, use the one-off link that we have sent to the email address you provided.\r\n\r\nIf you haven't received the email after a few minutes, check your spam folder."
     confirmation:
       reference_number: 'Eich cyfeirnod yw:'
       payment_enabled: Rydych dal angen talu

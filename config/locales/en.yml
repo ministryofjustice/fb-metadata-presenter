@@ -59,8 +59,8 @@ en:
       title: Submission complete
       content: "This form has already been submitted.\r\n\r\nTo protect your personal information, we have reset the form and cleared your answers."
     session_destroyed:
-      title: Session complete
-      content: "This forms progress has already been saved.\r\n\r\nTo protect your personal information, we have reset the form and cleared your answers.\r\n\r\nTo resume your progress, use the link emailed to you."
+      title: This form has been saved for later
+      content: "To continue working on your form, use the one-off link that we have sent to the email address you provided.\r\n\r\nIf you haven't received the email after a few minutes, check your spam folder."
     confirmation:
       reference_number: 'Your reference number is:'
       payment_enabled: You still need to pay
