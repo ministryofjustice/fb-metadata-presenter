@@ -77,4 +77,6 @@ class ApplicationController < ActionController::Base
     @page.url == @service.pages[1].url
   end
   helper_method :first_page?
+
+  def destroy_session; end
 end

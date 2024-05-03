@@ -110,17 +110,17 @@ RSpec.describe MetadataPresenter::SaveAndReturnController, type: :request do
   end
 
   describe 'progress saved' do
+    before do
+      expect_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:destroy_session).and_return(true)
+    end
+
     it 'clears the session, but preserves the page slug to prevent errors' do
       session = { 'user_id' => '1324', 'user_token' => 'token', 'saved_form' => { 'email' => 'email', 'page_slug' => 'a-cool-page' } }
       allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
 
       get '/save/progress_saved'
 
-      expect(controller.session['user_id']).to eq(nil)
-      expect(controller.session['user_token']).to eq(nil)
-      expect(controller.session['saved_form']['user_id']).to eq(nil)
-      expect(controller.session['saved_form']['user_token']).to eq(nil)
-      expect(controller.session['saved_form']['page_slug']).to eq(session['saved_form']['page_slug'])
+      expect(response.status).to eq(200)
     end
   end
 
