@@ -54,14 +54,6 @@ module MetadataPresenter
       end
     end
 
-    def delete_session
-      # :nocov:
-      if defined? super
-        super
-        # :nocov:
-      end
-    end
-
     def destroy_session
       # :nocov:
       if defined? super
