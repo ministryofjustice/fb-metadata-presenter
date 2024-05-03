@@ -31,7 +31,7 @@ en:
       confirmation:
         accepted: You've accepted analytics cookies.
         rejected: You've rejected analytics cookies.
-      hide: Hide this message
+      hide: Hide cookie message
     external_start_page_info:
       content: "Your form has a %{href}. Links to your form's 'home' page, such as your form's name in the header, will not work until the GOV.UK page has been published."
       link_text: 'GOV.UK start page'

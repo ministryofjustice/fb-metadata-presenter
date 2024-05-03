@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.3.38] - 2024-05-03
+### Changed
+ - Updated copy on hide cookie message button for better screenreader accessibility
+
 ## [3.3.37] - 2024-05-02
 ### Fixed
 - Missing multi question headings when resuming saved forms
