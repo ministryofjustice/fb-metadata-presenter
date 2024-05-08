@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
-## [3.3.39] - 2024-05-03
+## [3.4.0] - 2024-05-03
 ### Added
  - Added new page when session is destroyed when progress is saved, prevents a bad state where form is continued with some previously entered answers missing.
 
