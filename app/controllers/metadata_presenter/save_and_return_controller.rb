@@ -71,10 +71,7 @@ module MetadataPresenter
     end
 
     def save_progress
-      session['saved_form']['user_id'] = nil
-      session['saved_form']['user_token'] = nil
-      session['user_id'] = nil
-      session['user_token'] = nil
+      destroy_session
     end
 
     def secret_questions

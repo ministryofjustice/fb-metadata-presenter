@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.0] - 2024-05-08
+### Added
+ - Added new page when session is destroyed when progress is saved, prevents a bad state where form is continued with some previously entered answers missing.
+
 ## [3.3.38] - 2024-05-03
 ### Changed
  - Updated copy on hide cookie message button for better screenreader accessibility

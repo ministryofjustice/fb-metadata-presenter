@@ -14,6 +14,7 @@ MetadataPresenter::Engine.routes.draw do
 
   get 'session/expired', to: 'session#expired'
   get 'session/complete', to: 'session#complete'
+  get 'session/destroyed', to: 'session#destroyed'
 
   # save form journey
   get 'save', to: 'save_and_return#show'
