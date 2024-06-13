@@ -2,6 +2,6 @@
   "_id": "error.accept",
   "_type": "string.error",
   "description": "File uploaded is wrong type",
-  "value:en": "\"%{control}\" was not uploaded successfully as it is the wrong type",
+  "value:en": "\"%{control}\" cannot be uploaded. Files must be one of the following file types: portable document format (.pdf), comma-separated values (.csv), images (.jpg, .jpeg, .png), Microsoft Excel (.xls, xlsx), Microsoft Word (.doc, .docx), Open Office (.odt, .ods), plain text (.txt), rich text (.rtf).",
   "value:cy": "Ni gafodd y \"%{control}\" ei lwytho’n llwyddiannus ac mae o’r math anghywir"
 }
