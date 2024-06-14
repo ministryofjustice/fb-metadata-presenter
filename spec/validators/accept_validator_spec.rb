@@ -45,7 +45,7 @@ RSpec.describe MetadataPresenter::AcceptValidator do
       it 'returns a custom error message' do
         validator.valid?
         expect(page_answers.errors.full_messages).to eq(
-          ['"beethoven.txt" was not uploaded successfully as it is the wrong type']
+          ['"beethoven.txt" cannot be uploaded. Files must be one of the following file types: portable document format (.pdf), comma-separated values (.csv), images (.jpg, .jpeg, .png), Microsoft Excel (.xls, xlsx), Microsoft Word (.doc, .docx), Open Office (.odt, .ods), plain text (.txt), rich text (.rtf).']
         )
       end
     end
