@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.2] - 2024-06-18
+### Changed
+ - Updated Welsh translation of incorrect filetype error message
+
 ## [3.4.1] - 2024-06-13
 ### Changed
  - Updated incorrect filetype error message to be clearer on what types are supported.
