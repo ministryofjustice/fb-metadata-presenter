@@ -93,4 +93,60 @@ RSpec.describe MetadataPresenter::PagesController do
       end
     end
   end
+
+  describe 'page title helper' do
+    let(:page) { double(MetadataPresenter::Page) }
+    let(:components) { nil }
+
+    before do
+      allow(page).to receive(:components).and_return(components)
+      allow(page).to receive(:heading).and_return('hello')
+      allow(page).to receive(:[])
+      controller.instance_variable_set(:@page, page)
+    end
+
+    it 'shows the page heading and service name in the title' do
+      expect(controller.form_page_title).to eq('Version Fixture - hello')
+    end
+
+    context 'when there are components in the page' do
+      context 'when the component has a label' do
+        let(:components) { [{ 'label' => 'a label', 'legend' => 'a legend' }] }
+
+        it 'uses the label in the title' do
+          expect(controller.form_page_title).to eq('Version Fixture - a label')
+        end
+      end
+
+      context 'when the component has no label' do
+        let(:components) { [{ 'legend' => 'a legend' }] }
+
+        it 'uses the legend in the title' do
+          expect(controller.form_page_title).to eq('Version Fixture - a legend')
+        end
+      end
+    end
+
+    context 'when no page' do
+      let(:page) { nil }
+
+      it 'shows the service name in the title' do
+        expect(controller.form_page_title).to eq('Version Fixture')
+      end
+    end
+
+    context 'defaulting to the base title' do
+      let(:page) { nil }
+      let(:service_double) { double(MetadataPresenter::Service) }
+
+      before do
+        allow(service_double).to receive(:service_name).and_return(nil)
+        allow(controller).to receive(:service).and_return(service_double)
+      end
+
+      it 'shows the default title' do
+        expect(controller.form_page_title).to eq('MoJ Forms')
+      end
+    end
+  end
 end

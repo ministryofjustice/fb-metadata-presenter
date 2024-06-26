@@ -40,12 +40,6 @@ module MetadataPresenter
     end
     helper_method :conditional_components_present?
 
-    private
-
-    def set_caching_header
-      response.headers['Cache-Control'] = 'no-store'
-    end
-
     def form_page_title
       if @page
         if @page.components.present?
@@ -69,4 +63,10 @@ module MetadataPresenter
     end
     helper_method :form_page_title
   end
+
+    private
+
+    def set_caching_header
+      response.headers['Cache-Control'] = 'no-store'
+    end
 end
