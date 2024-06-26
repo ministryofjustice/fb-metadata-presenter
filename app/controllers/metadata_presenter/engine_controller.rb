@@ -221,5 +221,10 @@ module MetadataPresenter
       ::Rails.application.class.module_parent.name == 'FbRunner'
     end
     helper_method :in_runner?
+
+    def form_page_title
+      service.service_name || 'MoJ Forms'
+    end
+    helper_method :form_page_title
   end
 end
