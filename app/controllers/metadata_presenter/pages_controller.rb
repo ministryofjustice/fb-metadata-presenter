@@ -44,21 +44,17 @@ module MetadataPresenter
       if @page
         if @page.components.present?
           if @page.components.first['label'].present?
-            "#{service.service_name} - #{@page.components.first['label']}"
+            "#{@page.components.first['label']} - #{service.service_name} - GOV.UK"
           elsif @page.components.first['legend'].present?
-            "#{service.service_name} - #{@page.components.first['legend']}"
+            "#{@page.components.first['legend']} - #{service.service_name} - GOV.UK"
           end
         elsif @page.heading.present?
-          if @page['_type'] == 'page.standalone' && @page['_id'] == 'page.cookies'
-            "#{service.service_name} - #{@page.heading}"
-          else
-            "#{service.service_name} - #{@page.heading}"
-          end
+          "#{@page.heading} - #{service.service_name} - GOV.UK"
         else
-          service.service_name || 'MoJ Forms'
+          service.present? && service.service_name ? "#{service.service_name} - GOV.UK" : 'MoJ Forms'
         end
       else
-        service.service_name || 'MoJ Forms'
+        service.present? && service.service_name ? "#{service.service_name} - GOV.UK" : 'MoJ Forms'
       end
     end
     helper_method :form_page_title
