@@ -93,4 +93,66 @@ RSpec.describe MetadataPresenter::PagesController do
       end
     end
   end
+
+  describe 'page title helper' do
+    let(:page) { double(MetadataPresenter::Page) }
+    let(:components) { [] }
+
+    before do
+      RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
+
+      allow(page).to receive(:components).and_return(components)
+      allow(page).to receive(:heading).and_return('hello')
+      allow(page).to receive(:[])
+      controller.instance_variable_set(:@page, page)
+    end
+
+    after do
+      RSpec::Mocks.configuration.allow_message_expectations_on_nil = false
+    end
+
+    it 'shows the page heading and service name in the title' do
+      expect(controller.form_page_title).to eq('hello - Version Fixture - GOV.UK')
+    end
+
+    context 'when there are components in the page' do
+      context 'when the component has a label' do
+        let(:components) { [{ 'label' => 'a label', 'legend' => 'a legend' }] }
+
+        it 'uses the label in the title' do
+          expect(controller.form_page_title).to eq('a label - Version Fixture - GOV.UK')
+        end
+      end
+
+      context 'when the component has no label' do
+        let(:components) { [{ 'legend' => 'a legend' }] }
+
+        it 'uses the legend in the title' do
+          expect(controller.form_page_title).to eq('a legend - Version Fixture - GOV.UK')
+        end
+      end
+    end
+
+    context 'when no page' do
+      let(:page) { nil }
+
+      it 'shows the service name in the title' do
+        expect(controller.form_page_title).to eq('Version Fixture - GOV.UK')
+      end
+    end
+
+    context 'defaulting to the base title' do
+      let(:page) { nil }
+      let(:service_double) { double(MetadataPresenter::Service) }
+
+      before do
+        allow(service_double).to receive(:service_name).and_return(nil)
+        allow(controller).to receive(:service).and_return(service_double)
+      end
+
+      it 'shows the default title' do
+        expect(controller.form_page_title).to eq('MoJ Forms')
+      end
+    end
+  end
 end
