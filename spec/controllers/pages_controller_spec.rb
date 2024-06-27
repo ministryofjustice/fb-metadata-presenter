@@ -96,13 +96,19 @@ RSpec.describe MetadataPresenter::PagesController do
 
   describe 'page title helper' do
     let(:page) { double(MetadataPresenter::Page) }
-    let(:components) { nil }
+    let(:components) { [] }
 
     before do
+      RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
+
       allow(page).to receive(:components).and_return(components)
       allow(page).to receive(:heading).and_return('hello')
       allow(page).to receive(:[])
       controller.instance_variable_set(:@page, page)
+    end
+
+    after do
+      RSpec::Mocks.configuration.allow_message_expectations_on_nil = false
     end
 
     it 'shows the page heading and service name in the title' do

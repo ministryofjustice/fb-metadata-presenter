@@ -58,11 +58,11 @@ module MetadataPresenter
       end
     end
     helper_method :form_page_title
-  end
 
-  private
+    private
 
-  def set_caching_header
-    response.headers['Cache-Control'] = 'no-store'
+    def set_caching_header
+      response.headers['Cache-Control'] = 'no-store'
+    end
   end
 end
