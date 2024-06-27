@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.3] - 2024-06-18
+### Changed
+ - Change page titles to include h1 text so each page is unique
+
 ## [3.4.2] - 2024-06-18
 ### Changed
  - Updated Welsh translation of incorrect filetype error message
