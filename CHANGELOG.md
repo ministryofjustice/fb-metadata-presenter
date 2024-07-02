@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.4] - 2024-07-02
+### Added
+ - Added noreferrer attribute to save and return confirmation
+
 ## [3.4.3] - 2024-06-18
 ### Changed
  - Change page titles to include h1 text so each page is unique
