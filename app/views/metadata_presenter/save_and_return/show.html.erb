@@ -41,7 +41,7 @@
 
         <div class="govuk-button-group">
           <%= f.govuk_submit t('presenter.save_and_return.show.continue') %>
-          <%= sanitize(link_to t('presenter.save_and_return.show.cancel'), cancel_button_helper, class: "govuk-button govuk-button--secondary" )%>
+          <%= sanitize(link_to t('presenter.save_and_return.show.cancel'), page_slug, class: "govuk-button govuk-button--secondary" )%>
         </div>
       <% end %>
     </div>

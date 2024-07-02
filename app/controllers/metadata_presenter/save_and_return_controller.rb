@@ -88,12 +88,6 @@ module MetadataPresenter
       secret_questions.select { |s| s.id.to_s == question.to_s }.first.name
     end
 
-    def cancel_button_helper
-      return '/' if controller.flash[:session_destroyed].present?
-      page_slug.precence
-    end
-    helper_method :cancel_button_helper
-
     private
 
     def saved_form_params
