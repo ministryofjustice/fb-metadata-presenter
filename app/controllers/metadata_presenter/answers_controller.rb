@@ -13,8 +13,12 @@ module MetadataPresenter
         redirect_to save_path(page_slug: params[:page_slug]) and return
       end
 
-      upload_files if upload?
-      upload_multiupload_new_files if multiupload? && answers_params.present?
+      begin
+        upload_files if upload?
+        upload_multiupload_new_files if multiupload? && answers_params.present?
+      rescue
+        render template: @page.template, status: :unprocessable_entity and return
+      end
 
       if @page_answers.validate_answers
         save_user_data # method signature
