@@ -17,6 +17,7 @@ module MetadataPresenter
         upload_files if upload?
         upload_multiupload_new_files if multiupload? && answers_params.present?
       rescue
+        @page_answers.errors.add(:base, 'file too large')
         render template: @page.template, status: :unprocessable_entity and return
       end
 
