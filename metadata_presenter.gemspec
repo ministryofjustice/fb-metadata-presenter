@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'json-schema', '~> 4.1.1'
   spec.add_dependency 'kramdown', '~> 2.4.0'
   spec.add_dependency 'govspeak', '~> 7.1'
-  spec.add_dependency 'rails', '~> 7.0.0'
+  spec.add_dependency 'rails', '~> 7.2.0'
   spec.add_dependency 'sassc-rails', '2.1.2'
   spec.add_dependency 'sprockets-rails'
   spec.add_dependency 'sprockets'
