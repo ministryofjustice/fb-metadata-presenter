@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.5] - 2025-25-03
+### Changed
+ - Bumped rails dependency to 7.1
+
 ## [3.4.4] - 2024-07-02
 ### Added
  - Added noreferrer attribute to save and return confirmation
