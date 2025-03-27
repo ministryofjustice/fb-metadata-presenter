@@ -139,6 +139,19 @@ RSpec.describe MetadataPresenter::PagesController do
           expect(controller.form_page_title).to eq('a legend - Version Fixture - GOV.UK')
         end
       end
+
+      context 'when the component has neither, becauase it is a content component' do
+        let(:components) { [{ 'content' => 'some content' }] }
+
+        it 'uses the page title in the title' do
+          expect(controller.form_page_title).to eq('title - Version Fixture - GOV.UK')
+        end
+
+        it 'also uses the page heading in the title' do
+          allow(page).to receive(:title).and_return(nil)
+          expect(controller.form_page_title).to eq('hello - Version Fixture - GOV.UK')
+        end
+      end
     end
 
     context 'when no page' do

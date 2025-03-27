@@ -47,8 +47,10 @@ module MetadataPresenter
             "#{@page.components.first['label']} - #{service.service_name} - GOV.UK"
           elsif @page.components.first['legend'].present?
             "#{@page.components.first['legend']} - #{service.service_name} - GOV.UK"
-          elsif @page.components.first['title'].present?
-            "#{@page.components.first['title']} - #{service.service_name} - GOV.UK"
+          elsif @page.title.present?
+            "#{@page.title} - #{service.service_name} - GOV.UK"
+          elsif @page.heading.present?
+            "#{@page.heading} - #{service.service_name} - GOV.UK"
           end
         elsif @page.title.present?
           "#{@page.title} - #{service.service_name} - GOV.UK"
