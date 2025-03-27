@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
     'README.md'
   ]
 
+  spec.add_development_dependency 'byebug'
   spec.add_dependency 'govuk_design_system_formbuilder', '~> 4.1.1'
   spec.add_dependency 'json-schema', '~> 4.1.1'
   spec.add_dependency 'kramdown', '~> 2.4.0'
@@ -33,7 +34,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'better_errors'
   spec.add_development_dependency 'binding_of_caller'
   spec.add_development_dependency 'brakeman'
-  spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'hashie'
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop'
