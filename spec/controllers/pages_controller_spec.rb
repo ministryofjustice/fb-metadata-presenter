@@ -103,6 +103,7 @@ RSpec.describe MetadataPresenter::PagesController do
 
       allow(page).to receive(:components).and_return(components)
       allow(page).to receive(:heading).and_return('hello')
+      allow(page).to receive(:title).and_return('title')
       allow(page).to receive(:[])
       controller.instance_variable_set(:@page, page)
     end
@@ -111,8 +112,15 @@ RSpec.describe MetadataPresenter::PagesController do
       RSpec::Mocks.configuration.allow_message_expectations_on_nil = false
     end
 
-    it 'shows the page heading and service name in the title' do
-      expect(controller.form_page_title).to eq('hello - Version Fixture - GOV.UK')
+    it 'shows the page title and service name in the title' do
+      expect(controller.form_page_title).to eq('title - Version Fixture - GOV.UK')
+    end
+
+    context 'when the title is nil' do
+      it 'shows the page heading if present and service name in the title' do
+        allow(page).to receive(:title).and_return(nil)
+        expect(controller.form_page_title).to eq('hello - Version Fixture - GOV.UK')
+      end
     end
 
     context 'when there are components in the page' do
