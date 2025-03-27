@@ -41,7 +41,6 @@ module MetadataPresenter
     helper_method :conditional_components_present?
 
     def form_page_title
-      byebug
       if @page
         if @page.components.present?
           if @page.components.first['label'].present?
