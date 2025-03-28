@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.6] - 2025-27-03
+### Changed
+ - Updated page title helper to work when first component on a page is a content component
+
 ## [3.4.5] - 2025-25-03
 ### Changed
  - Bumped rails dependency to 7.1
