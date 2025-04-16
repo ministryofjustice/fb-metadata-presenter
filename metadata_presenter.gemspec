@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
     'README.md'
   ]
 
-  spec.add_dependency 'govuk_design_system_formbuilder', '~> 4.1.1'
+  spec.add_dependency 'govuk_design_system_formbuilder', '> 4.1.1'
   spec.add_dependency 'json-schema', '~> 4.1.1'
   spec.add_dependency 'kramdown', '~> 2.4.0'
   spec.add_dependency 'govspeak', '~> 7.1'
