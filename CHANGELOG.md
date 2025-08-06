@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+
+## [3.4.8] - 2025-08-05
+### Changed
+- Added localisation for date labels(Day/Month/Year)
+
 ## [3.4.7] - 2025-17-04
 ### Changed
  - Updated GOVUK crest in footer

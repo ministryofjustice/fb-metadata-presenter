@@ -4,6 +4,9 @@ cy:
     abbr_day_names: [ Sul, Llun, Maw, Mer, Iau, Gwe, Sad ]
     month_names: [ ~, Ionawr, Chwefror, Mawrth, Ebrill, Mai, Mehefin, Gorffennaf, Awst, Medi, Hydref, Tachwedd, Rhagfyr ]
     abbr_month_names: [ ~, Ion, Chw, Maw, Ebr, Mai, Meh, Gor, Awst, Med, Hyd, Tach, Rha ]
+    day: Diwrnod
+    month: Mis
+    year: Blwyddyn
   time:
     am: yb
     pm: yh

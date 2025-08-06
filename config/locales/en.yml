@@ -1,4 +1,8 @@
 en:
+  date:
+    day: Day
+    month: Month
+    year: Year
   presenter:
     back: 'Back'
     actions:

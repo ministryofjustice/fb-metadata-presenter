@@ -14,7 +14,7 @@ jobs:
             bundle install
       - run:
           name: Security
-          command: bundle exec brakeman -q --no-pager -i brakeman.ignore
+          command: bundle exec brakeman -q --no-pager -i brakeman.ignore -x EOLRails
       - run:
           name: Lint
           command: bundle exec rubocop

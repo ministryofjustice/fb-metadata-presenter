@@ -137,9 +137,9 @@ module MetadataPresenter
 
     def raw_date_answer(component_id)
       [
-        GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:day],
-        GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:month],
-        GOVUKDesignSystemFormBuilder::Elements::Date::SEGMENTS[:year]
+        GOVUKDesignSystemFormBuilder::DEFAULTS[:default_date_segments][:day],
+        GOVUKDesignSystemFormBuilder::DEFAULTS[:default_date_segments][:month],
+        GOVUKDesignSystemFormBuilder::DEFAULTS[:default_date_segments][:year]
       ].map do |segment|
         sanitize(answers["#{component_id}(#{segment})"])
       end
