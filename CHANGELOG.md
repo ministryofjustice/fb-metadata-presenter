@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.9] - 2025-08-20
+### Changed
+- Bumped rails dependency to 7.2
 
 ## [3.4.8] - 2025-08-05
 ### Changed
