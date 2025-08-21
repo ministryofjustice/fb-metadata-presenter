@@ -108,3 +108,7 @@ If it does not exist, we use the current method of parameterizing the `service_n
 ## Generate documentation
 
 Run `rake doc` and open the doc/index.html
+
+## Run Specs
+
+Run `bundle exec rspec`
