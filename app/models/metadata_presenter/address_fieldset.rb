@@ -3,6 +3,7 @@ module MetadataPresenter
     extend ActiveModel::Translation
     include ActiveModel::Validations
     include ActionView::Helpers
+    include SpecialCharacterUnescaper
 
     DEFAULT_COUNTRY = 'United Kingdom'.freeze
     FIELDS = %w[
@@ -35,7 +36,7 @@ module MetadataPresenter
     end
 
     def conform(address_field)
-      sanitize(address_field, tags: [], attributes: []).strip
+      unescape_special_characters(sanitize(address_field, tags: [], attributes: []).strip)
     end
   end
 end

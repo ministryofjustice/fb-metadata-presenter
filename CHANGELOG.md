@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.10] - 2025-12-03
+### Changed
+- Unescape special characters during submission
+
 ## [3.4.9] - 2025-08-20
 ### Changed
 - Bumped rails dependency to 7.2

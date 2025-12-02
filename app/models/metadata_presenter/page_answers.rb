@@ -3,6 +3,7 @@ module MetadataPresenter
     include ActiveModel::Model
     include ActiveModel::Validations
     include ActionView::Helpers
+    include SpecialCharacterUnescaper
     attr_reader :page, :answers, :uploaded_files, :autocomplete_items
     attr_accessor :count
 
@@ -37,7 +38,7 @@ module MetadataPresenter
       elsif component && component.type == 'address'
         address_answer(method_name.to_s)
       else
-        sanitize(answers[method_name.to_s])
+        unescape_special_characters(sanitize(answers[method_name.to_s]))
       end
     end
 

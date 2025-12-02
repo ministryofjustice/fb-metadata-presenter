@@ -38,6 +38,14 @@ RSpec.describe MetadataPresenter::PageAnswers do
         end
       end
 
+      context "when there are answers with special characters in 'text' component (?, &, /, <, > ')" do
+        let(:answers) { { 'name_text_1' => " Text with special characters in it ?, &, /, <, > '" } }
+
+        it 'returns the value of the answer' do
+          expect(page_answers.name_text_1).to eq(" Text with special characters in it ?, &, /, <, > '")
+        end
+      end
+
       context 'when there are no answers' do
         let(:answers) { {} }
 
@@ -251,6 +259,14 @@ RSpec.describe MetadataPresenter::PageAnswers do
 
           it 'returns the value of the answer' do
             expect(page_answers.hobbies_textarea_1).to eq('Hiking, script/, eating muffins')
+          end
+
+          context "answer with special characters in textarea  e.g. (?, &, /, <, > ')" do
+            let(:answers) { { 'hobbies_textarea_1' => " Hiking, script/, eating muffins, &, /, <, > '" } }
+
+            it 'returns the value of the answer' do
+              expect(page_answers.hobbies_textarea_1).to eq(" Hiking, script/, eating muffins, &, /, <, > '")
+            end
           end
         end
 
@@ -499,6 +515,30 @@ RSpec.describe MetadataPresenter::PageAnswers do
         expect(address.county).to eq('')
         expect(address.postcode).to eq('test code')
         expect(address.country).to eq('United Kingdom')
+      end
+
+      context 'when address components has special characters' do
+        let(:answers) do
+          {
+            'address_address_1' =>
+              { 'address_line_one' => 'test road ?, &, /, <, >',
+                'address_line_two' => '?, &, /, <, >',
+                'city' => 'test city ?, &, /, <, >',
+                'county' => '?, &, /, <, >',
+                'postcode' => 'test code',
+                'country' => 'United Kingdom' }
+          }
+        end
+
+        it 'returns the right keyword arguments of address' do
+          address = page_answers.send('address_address_1')
+          expect(address.address_line_one).to eq('test road ?, &, /, <, >')
+          expect(address.address_line_two).to eq('?, &, /, <, >')
+          expect(address.city).to eq('test city ?, &, /, <, >')
+          expect(address.county).to eq('?, &, /, <, >')
+          expect(address.postcode).to eq('test code')
+          expect(address.country).to eq('United Kingdom')
+        end
       end
     end
   end
