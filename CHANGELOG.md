@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.11] - 2025-12-03
+### Changed
+- Update test scenarios for special characters during submission
+- 
 ## [3.4.10] - 2025-12-03
 ### Changed
 - Unescape special characters during submission
