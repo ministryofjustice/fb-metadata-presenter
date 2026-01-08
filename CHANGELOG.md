@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.12] - 2026-01-08
+### Changed
+- Updated the regex for email address to invalidate single-label domain
+
 ## [3.4.11] - 2025-12-03
 ### Changed
 - Update test scenarios for special characters during submission
