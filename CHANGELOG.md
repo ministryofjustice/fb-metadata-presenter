@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.13] - 2026-04-16
+### Changed
+- Updated rails from 7.2.0 to 7.2.3.1
+- Updated ruby from 3.2.0 to 3.4.9
+
 ## [3.4.12] - 2026-01-08
 ### Changed
 - Updated the regex for email address to invalidate single-label domain
