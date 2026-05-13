@@ -148,7 +148,10 @@ module MetadataPresenter
 
     def authorised_session!
       cookies.signed[:_fb_authorised] = {
-        value: 1, same_site: :strict, httponly: true
+        value: 1,
+        same_site: :strict,
+        secure: !(Rails.env.test? || Rails.env.development?),
+        httponly: !(Rails.env.test? || Rails.env.development?)
       }
     end
 
