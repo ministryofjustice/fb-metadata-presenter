@@ -8,8 +8,10 @@ RSpec.describe MetadataPresenter::SaveAndReturnController, type: :request do
 
   describe '#create' do
     context 'valid request' do
+      let(:user_id) { '1324' }
+      let(:user_token) { 'token' }
       it 'posts the save progress form' do
-        session = { user_id: '1324', user_token: 'token', user_data_payload: { 'question_1' => 'answer' } }
+        session = { user_id: user_id, user_token: user_token, user_data_payload: { 'question_1' => 'answer' } }
         allow_any_instance_of(MetadataPresenter::SaveAndReturnController).to receive(:session).and_return(session)
 
         params = { email: 'valid@example.com', secret_answer: 'secret stuff', saved_form: { page_slug: '/a-page', secret_question: 1 } }
