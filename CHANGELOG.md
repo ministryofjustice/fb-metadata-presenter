@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.14] - 2026-05-13
+### Changed
+- Cookie httponly is not set explicitly and defaults to false. Set it to true to protect the cookie from malicious client-side JavaScript code.
+- Cookie secure is not set explicitly and defaults to false. Set it to true to ensure the cookie is only sent via HTTPS and help protect from man-in-the-middle attacks.
+
 ## [3.4.13] - 2026-04-16
 ### Changed
 - Updated rails from 7.2.0 to 7.2.3.1
