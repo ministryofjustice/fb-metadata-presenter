@@ -5,13 +5,21 @@ orbs:
 jobs:
   test:
     docker:
-      - image: cimg/ruby:3.1.3
+      - image: cimg/ruby:3.4.9
+    resource_class: medium
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ arch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-{{ arch }}-
       - run:
           name: Dependencies
-          command: |
-            bundle install
+          command: bundle install --jobs 4 --retry 3
+      - save_cache:
+          key: gem-cache-v1-{{ arch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/.bundle
       - run:
           name: Security
           command: bundle exec brakeman -q --no-pager -i brakeman.ignore
@@ -26,28 +34,36 @@ jobs:
           only_for_branches: main
           failure_message: ":facepalm:  Failed job $CIRCLE_JOB  :homer-disappear:"
           include_job_number_field: false
+
   publish:
     docker:
-      - image: cimg/ruby:3.1.3
+      - image: cimg/ruby:3.4.9
+    resource_class: medium
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ arch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-{{ arch }}-
       - run:
           name: Dependencies
-          command: |
-            bundle install
+          command: bundle install --jobs 4 --retry 3
+      - save_cache:
+          key: gem-cache-v1-{{ arch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/.bundle
       - run:
           name: Setup Rubygems
           command: |
             mkdir ~/.gem
-            echo -e "---\r\n:rubygems_api_key: $RUBYGEMS_API_KEY" > ~/.gem/credentials
-            chmod 0600 /home/circleci/.gem/credentials
+            echo "---" > ~/.gem/credentials
+            echo ":rubygems_api_key: $RUBYGEMS_API_KEY" >> ~/.gem/credentials
+            chmod 0600 ~/.gem/credentials
       - run:
           name: Publish to Rubygems
           command: |
-            set -e
-
             VERSION=$(ruby -e "require './lib/metadata_presenter/version.rb'; puts MetadataPresenter::VERSION")
-            PUBLISHED_VERSION=$(curl https://rubygems.org/api/v1/versions/metadata_presenter/latest.json | sed -e 's/[{}]/''/g' | sed s/\"//g | awk -v RS=',' -F: '$1=="version"{print $2}')
+            PUBLISHED_VERSION=$(curl --silent --fail https://rubygems.org/api/v1/versions/metadata_presenter/latest.json | sed -e 's/[{}]/''/g' | sed s/\"//g | awk -v RS=',' -F: '$1=="version"{print $2}')
 
             if [ "$VERSION" != "$PUBLISHED_VERSION" ]
             then
@@ -62,7 +78,7 @@ workflows:
   test_and_build:
     jobs:
       - test:
-         context: &moj-forms-context
+          context: &moj-forms-context
             - moj-forms
       - publish:
           context: *moj-forms-context
