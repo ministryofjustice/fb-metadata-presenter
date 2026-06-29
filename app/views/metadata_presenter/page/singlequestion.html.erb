@@ -14,7 +14,7 @@
         <% @page.components.each_with_index do |component, index| %>
           <div class="fb-editable"
                data-fb-content-type="<%= component._type %>"
-               data-fb-content-id="<%= "page[components[#{index}]]" %>"
+               data-fb-content-id="<%= "page[components][#{index}]" %>"
                data-fb-content-data="<%= component.to_json %>"
                data-fb-default-value="<%= default_title(component.type) %>"
                data-fb-default-item-value="<%= default_item_title(component.type) %>">
