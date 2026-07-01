@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.16] - 2026-07-01
+### Fixed
+-  Fix frontend or templates using the old naming convention 'page[components[0]]' instead of the correct Rails convention 'page[components][0]'
+
 ## [3.4.15] - 2026-06-09
 ### Changed
 - Updated rails from 7.2.3.1 to 8.1.3
