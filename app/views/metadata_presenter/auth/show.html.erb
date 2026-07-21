@@ -23,6 +23,7 @@
         <% end %>
 
         <%= f.govuk_text_field :username, autocorrect: 'off',
+                               class: 'govuk-!-width-one-third',
                                label: { text: t('presenter.authorisation.labels.username') } %>
 
         <%= f.govuk_password_field :password, autocorrect: 'off',
