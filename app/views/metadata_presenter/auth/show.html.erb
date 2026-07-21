@@ -25,7 +25,8 @@
         <%= f.govuk_text_field :username, width: 'one-third', autocorrect: 'off',
                                label: { text: t('presenter.authorisation.labels.username') } %>
 
-        <%= f.govuk_password_field :password, width: 'one-third', autocorrect: 'off',
+        <%= f.govuk_password_field :password, autocorrect: 'off',
+                                   class: 'govuk-!-width-one-third',
                                    label: { text: t('presenter.authorisation.labels.password') } %>
 
         <div class="govuk-button-group">
