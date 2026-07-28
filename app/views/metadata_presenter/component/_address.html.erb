@@ -21,25 +21,25 @@
     <%=
       a.govuk_text_field :city,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('city') },
-                         class: 'govuk-!-width-two-thirds',
+                         width: 'two-thirds',
                          autocorrect: 'off', autocomplete: 'address-level2'
     %>
     <%=
       a.govuk_text_field :county,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('county') },
-                         class: 'govuk-!-width-two-thirds',
+                         width: 'two-thirds',
                          autocorrect: 'off', autocomplete: 'address-level1'
     %>
     <%=
       a.govuk_text_field :postcode,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('postcode') },
-                         class: 'govuk-!-width-one-quarter',
+                         width: 'one-quarter',
                          autocorrect: 'off', autocomplete: 'postal-code'
     %>
     <%=
       a.govuk_text_field :country,
                          label: { text: MetadataPresenter::AddressFieldset.human_attribute_name('country') },
-                         class: 'govuk-!-width-one-quarter',
+                         width: 'one-quarter',
                          autocorrect: 'off', autocomplete: 'country-name'
     %>
   <% end %>
