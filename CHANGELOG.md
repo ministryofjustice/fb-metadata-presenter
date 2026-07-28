@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.17] - 2026-07-23
+### Fixed
+-  Change sign up page password field to be one third in width
+
 ## [3.4.16] - 2026-07-01
 ### Fixed
 -  Fix frontend or templates using the old naming convention 'page[components[0]]' instead of the correct Rails convention 'page[components][0]'
