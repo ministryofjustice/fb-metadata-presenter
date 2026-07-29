@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.18] - 2026-07-29
+### Fixed
+-  Enable functionality for the password show button. Includes new JS classnames from https://frontend.design-system.service.gov.uk/import-javascript/#before-you-start and icons.
+
 ## [3.4.17] - 2026-07-23
 ### Fixed
 -  Change sign up page password field to be one third in width
