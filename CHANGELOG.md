@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file.
 
 ## [3.4.18] - 2026-07-29
 ### Fixed
--  Enable functionality for the password show button. Includes new JS classnames from https://frontend.design-system.service.gov.uk/import-javascript/#before-you-start and icons.
+-  Enable functionality for the password show button. Includes new JS classnames from https://frontend.design-system.service.gov.uk/import-javascript/#before-you-start.
 
 ## [3.4.17] - 2026-07-23
 ### Fixed
