@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.20] - 2026-07-30
+### Fixed
+-  Revert changes made in version 3.4.18
+
 ## [3.4.19] - 2026-07-30
 ### Fixed
 -  Upgrade rails to 8.1.3.1
