@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.19] - 2026-07-30
+### Fixed
+-  Upgrade rails to 8.1.3.1
+-  Fix Critical Active Storage Vulnerability in Rails https://ethiack.com/info-hub/research/kindarails2shell-rails-rce-cve-2026-66066
+
 ## [3.4.18] - 2026-07-29
 ### Fixed
 -  Enable functionality for the password show button. Includes new JS classnames from https://frontend.design-system.service.gov.uk/import-javascript/#before-you-start and icons.
