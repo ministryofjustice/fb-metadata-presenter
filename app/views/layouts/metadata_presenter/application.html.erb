@@ -24,7 +24,7 @@
   </head>
 
   <body class="govuk-template__body">
-    <script nonce=<%= request.content_security_policy_nonce %>>
+    <script>
      document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
     </script>
 
