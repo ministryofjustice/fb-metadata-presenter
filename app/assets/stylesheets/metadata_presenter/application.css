@@ -14,6 +14,6 @@
  *= require_self
  */
 
-.govuk-password-input__toggle {
+.govuk-button--secondary {
     display: none !important;
 }
