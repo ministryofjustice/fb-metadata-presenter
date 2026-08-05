@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.govuk-password-input__toggle {
+    display: none !important;
+}
