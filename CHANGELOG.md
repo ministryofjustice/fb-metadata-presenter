@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.21] - 2026-08-07
+### Fixed
+-  Change assets path (replacing `media/images/*` with `static/*`) to be used by `shakapacker`
+
 ## [3.4.20] - 2026-07-30
 ### Fixed
 -  Revert changes made in version 3.4.18
