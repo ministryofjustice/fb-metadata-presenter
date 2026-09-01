@@ -68,10 +68,6 @@ module MetadataPresenter
     private
 
     def set_caching_header
-      response.headers['Cache-Control'] = 'no-store'
-    end
-
-    def set_caching_header
       response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate'
       response.headers['Pragma'] = 'no-cache'
       response.headers['Expires'] = '0'
