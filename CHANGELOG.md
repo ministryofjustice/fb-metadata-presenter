@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.22] - 2026-09-01
+### Changed
+-   Update govuk-frontend icon assets, header, and footer (including the royal arms crest) and the JavaScript body class script. Required for the govuk-frontend 6.4.0 upgrade in fb-runner and fb-editor.
+
 ## [3.4.21] - 2026-08-07
 ### Fixed
 -  Change assets path (replacing `media/images/*` with `static/*`) to be used by `shakapacker`
