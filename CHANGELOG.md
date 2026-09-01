@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.23] - 2026-09-01
+### Changed
+-   Updated cache control header attributes, so data is not available in the form when the session has ended.
+-   Set autocomplete to off for html forms.
+
 ## [3.4.22] - 2026-09-01
 ### Changed
 -   Update govuk-frontend icon assets, header, and footer (including the royal arms crest) and the JavaScript body class script. Required for the govuk-frontend 6.4.0 upgrade in fb-runner and fb-editor.
