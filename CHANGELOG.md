@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.24] - 2026-09-04
+### Changed
+-   Change accessibility statement's contact email address from `contact-moj-forms@digital.justice.gov.uk` to `contact-moj-forms-team@justice.gov.uk`.
+
 ## [3.4.23] - 2026-09-01
 ### Changed
 -   Updated cache control header attributes, so data is not available in the form when the session has ended.
