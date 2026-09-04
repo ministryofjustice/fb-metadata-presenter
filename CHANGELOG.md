@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.25] - 2026-09-04
+### Fixed
+-   Updated cache control header attributes, so data is not available in the form when the session has ended in Save for Later.
+-   Set autocomplete to off for html Save for Later forms.
+
 ## [3.4.24] - 2026-09-04
 ### Changed
 -   Change accessibility statement's contact email address from `contact-moj-forms@digital.justice.gov.uk` to `contact-moj-forms-team@justice.gov.uk`.

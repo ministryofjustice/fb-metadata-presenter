@@ -1,7 +1,7 @@
 module MetadataPresenter
   class SaveAndReturnController < EngineController
     include Concerns::SaveAndReturn
-
+    before_action :set_caching_header
     helper_method :secret_questions, :confirmed_email
 
     def show
@@ -63,7 +63,6 @@ module MetadataPresenter
 
         payload = response.body.merge(email: @email_confirmation.email_confirmation).deep_symbolize_keys
         create_save_and_return_submission(payload)
-
         redirect_to '/save/progress_saved'
       else
         render :email_confirmation, status: :unprocessable_entity
