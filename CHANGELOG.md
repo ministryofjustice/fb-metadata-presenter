@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.26] - 2026-09-18
+### Fixed
+-   Add crown logo to footer
+
 ## [3.4.25] - 2026-09-04
 ### Fixed
 -   Updated cache control header attributes, so data is not available in the form when the session has ended in Save for Later.
