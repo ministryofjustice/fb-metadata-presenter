@@ -688,7 +688,6 @@ RSpec.describe MetadataPresenter::Grid do
 
   context 'previous flow uuids and conditional uuids' do
     let(:latest_metadata) { metadata_fixture(:branching_10) }
-    let(:previous_uuids) { grid.previous_uuids }
     let(:previous_uuid_details) { grid.previous_uuids[uuid] }
 
     before do

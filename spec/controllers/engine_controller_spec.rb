@@ -333,8 +333,6 @@ RSpec.describe MetadataPresenter::EngineController, type: :controller do
 
   describe '#load_autocomplete_items' do
     let(:page) { MetadataPresenter::Page.new(service.pages.first) }
-    let(:items) { { 'component_id' => [{ 'text' => 'abc', 'value' => '123' }] } }
-    let(:autocomplete_items) { items }
 
     context 'when there is an autocomplete component on the page' do
       before do
