@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.28] - 2026-10-12
+### Changed
+-   Replaced hardcoded session timeout values in the timeout warning modal with values loaded from Rails configuration. 
+-   A new initializer defines the idle timeout and modal visibility settings, making the timeout behavior easier to adjust in one place without editing the view.
+
 ## [3.4.27] - 2026-09-23
 ### Changed
 -   Revert UI changes introduced from version 3.4.21 onwards.

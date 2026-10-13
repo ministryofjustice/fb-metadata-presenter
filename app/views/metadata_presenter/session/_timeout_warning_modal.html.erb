@@ -1,8 +1,8 @@
 <div class="govuk-timeout-warning"
      data-module="govuk-timeout-warning"
      id="js-timeout-warning"
-     data-minutes-idle-timeout="24"
-     data-minutes-modal-visible="5"
+     data-minutes-idle-timeout="<%=Rails.application.config.session_timeout[:minutes_idle_timeout] %>"
+     data-minutes-modal-visible="<%=Rails.application.config.session_timeout[:minutes_modal_visible] %>"
      data-url-redirect="/session/reset"
      data-timer-text="<%= t('presenter.session_timeout_warning.timer') %>"
      data-timer-redirect-text="<%= t('presenter.session_timeout_warning.redirect') %>">
