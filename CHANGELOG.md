@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.29] - 2026-10-05
+### Changed
+- Updated ruby from 3.4.9 to 4.0.9
+
 ## [3.4.28] - 2026-10-12
 ### Changed
 -   Replaced hardcoded session timeout values in the timeout warning modal with values loaded from Rails configuration. 
