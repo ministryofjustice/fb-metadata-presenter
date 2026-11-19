@@ -98,13 +98,13 @@ class MetadataPresenter::Service < MetadataPresenter::Metadata
 
   def pages_with_conditional_content_for_question(uuid)
     pages.select do |page|
-      uuid.in? page.content_components_by_type('conditional').flat_map(&:conditionals).flat_map(&:expressions).map(&:component)
+      uuid.in?  page.content_components_by_type('conditional').flat_map(&:conditionals).flat_map(&:expressions).map(&:component)
     end
   end
 
   def pages_with_conditional_content_for_question_option(uuid)
     pages.select do |page|
-      uuid.in? page.content_components_by_type('conditional').flat_map(&:conditionals).flat_map(&:expressions).map(&:field)
+      uuid.in?  page.content_components_by_type('conditional').flat_map(&:conditionals).flat_map(&:expressions).map(&:field)
     end
   end
 
