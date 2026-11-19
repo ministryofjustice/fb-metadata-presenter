@@ -11,13 +11,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - gem-cache-v1-{{ arch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-{{ arch }}-{{ checksum "metadata_presenter.gemspec" }}
             - gem-cache-v1-{{ arch }}-
       - run:
           name: Dependencies
           command: bundle install --jobs 4 --retry 3
       - save_cache:
-          key: gem-cache-v1-{{ arch }}-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v1-{{ arch }}-{{ checksum "metadata_presenter.gemspec" }}
           paths:
             - ~/.bundle
       - run:
@@ -43,13 +43,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - gem-cache-v1-{{ arch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-{{ arch }}-{{ checksum "metadata_presenter.gemspec" }}
             - gem-cache-v1-{{ arch }}-
       - run:
           name: Dependencies
           command: bundle install --jobs 4 --retry 3
       - save_cache:
-          key: gem-cache-v1-{{ arch }}-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v1-{{ arch }}-{{ checksum "metadata_presenter.gemspec" }}
           paths:
             - ~/.bundle
       - run:
