@@ -7,6 +7,10 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.31] - 2026-11-20
+### Changed
+- Updated ruby from 4.0.9 to 4.0.10
+
 ## [3.4.30] - 2026-11-19
 ### Changed
 - Support Rails 8.1.4.1.
