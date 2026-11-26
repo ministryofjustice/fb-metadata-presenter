@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 ### Changed
 ### Fixed
 
+## [3.4.32] - 2026-11-26
+### Changed
+- GOVUK Frontend 6.6.0 compatibility
+- Added footer crest and crown logo
+
 ## [3.4.31] - 2026-11-20
 ### Changed
 - Updated ruby from 4.0.9 to 4.0.10
